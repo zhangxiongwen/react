@@ -3,6 +3,12 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import './LiveDemo.css'
 
+/** 两侧共用的等宽字体度量，避免光标/选区错位 */
+const EDITOR_FONT =
+  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace'
+const EDITOR_FONT_SIZE = 13
+const EDITOR_LINE_HEIGHT = 21 // 固定 px，禁止用 1.65 这种两边算出来不一致的值
+
 /**
  * 把片段 HTML 包成完整文档，便于 iframe 预览
  */
@@ -53,6 +59,30 @@ function resolveLanguage(language = 'html') {
 }
 
 /**
+ * 去掉 theme 里会改变字形度量的样式（粗体/斜体会导致越往下越错位）
+ */
+function buildHighlightStyle(theme) {
+  const next = { ...theme }
+  Object.keys(next).forEach((key) => {
+    const rule = next[key]
+    if (!rule || typeof rule !== 'object') return
+    next[key] = {
+      ...rule,
+      fontWeight: '400',
+      fontStyle: 'normal',
+      textDecoration: 'none',
+      letterSpacing: 'normal',
+      fontFamily: EDITOR_FONT,
+      fontSize: `${EDITOR_FONT_SIZE}px`,
+      lineHeight: `${EDITOR_LINE_HEIGHT}px`,
+    }
+  })
+  return next
+}
+
+const highlightStyle = buildHighlightStyle(oneLight)
+
+/**
  * 左侧可编辑代码（语法高亮）+ 右侧实时渲染
  */
 function LiveDemo({ title, language = 'html', initialCode = '' }) {
@@ -79,11 +109,17 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
     return () => window.clearTimeout(timer)
   }, [code])
 
+  // 高亮层内容变化后，重新对齐一次滚动位置
+  useEffect(() => {
+    const editor = editorRef.current
+    const highlight = highlightRef.current
+    if (!editor || !highlight) return
+    highlight.scrollTop = editor.scrollTop
+    highlight.scrollLeft = editor.scrollLeft
+  }, [code])
+
   const srcDoc = useMemo(() => buildSrcDoc(previewCode), [previewCode])
   const prismLang = resolveLanguage(language)
-
-  // 末尾补换行，避免高亮层高度略短导致滚动不同步
-  const highlightCode = code.endsWith('\n') ? code : `${code}\n`
 
   function syncHighlightScroll() {
     const editor = editorRef.current
@@ -148,28 +184,44 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
             >
               <SyntaxHighlighter
                 language={prismLang}
-                style={oneLight}
+                style={highlightStyle}
+                PreTag="pre"
+                CodeTag="code"
                 showLineNumbers={false}
                 wrapLongLines={false}
+                wrapLines={false}
                 customStyle={{
                   margin: 0,
                   padding: 0,
                   background: 'transparent',
-                  fontSize: 13,
-                  lineHeight: 1.65,
+                  fontFamily: EDITOR_FONT,
+                  fontSize: EDITOR_FONT_SIZE,
+                  lineHeight: `${EDITOR_LINE_HEIGHT}px`,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
+                  letterSpacing: 'normal',
+                  wordSpacing: 'normal',
+                  tabSize: 2,
                   overflow: 'visible',
+                  whiteSpace: 'pre',
                 }}
                 codeTagProps={{
                   style: {
-                    fontFamily:
-                      '"IBM Plex Mono", Menlo, Monaco, Consolas, monospace',
+                    fontFamily: EDITOR_FONT,
+                    fontSize: EDITOR_FONT_SIZE,
+                    lineHeight: `${EDITOR_LINE_HEIGHT}px`,
+                    fontWeight: 400,
+                    fontStyle: 'normal',
+                    letterSpacing: 'normal',
+                    wordSpacing: 'normal',
                     background: 'transparent',
-                    fontSize: 13,
-                    lineHeight: 1.65,
+                    display: 'block',
+                    tabSize: 2,
+                    whiteSpace: 'pre',
                   },
                 }}
               >
-                {highlightCode}
+                {code}
               </SyntaxHighlighter>
             </div>
             <textarea
@@ -180,6 +232,9 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
               onScroll={syncHighlightScroll}
               onKeyDown={handleKeyDown}
               spellCheck={false}
+              autoCapitalize="off"
+              autoCorrect="off"
+              autoComplete="off"
               aria-label={title ? `${title} 代码编辑` : '代码编辑'}
             />
           </div>
