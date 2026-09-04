@@ -6,7 +6,7 @@ const jsx = {
   id: 'jsx',
   title: 'JSX 语法精讲',
   summary: '在 JS 里写界面：根节点、Fragment、花括号表达式、className、style——每个都有完整 Demo',
-  order: 4,
+  order: 5,
   items: [
     {
       id: 'jsx-basics',

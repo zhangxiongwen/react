@@ -5,7 +5,7 @@
 const conventions = {
   id: 'conventions',
   title: '命名与目录规范',
-  order: 3,
+  order: 4,
   summary:
     'React 项目里约定很多：文件夹怎么分、组件为什么必须大写、事件叫 handle 还是 on、CSS 怎么写 className……这一章按「为什么 → 怎么写 → 反例」讲透，让你写得整齐、别人也一眼能看懂。',
   items: [

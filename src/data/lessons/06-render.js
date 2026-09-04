@@ -5,7 +5,7 @@ const render = {
   id: 'render',
   title: '条件渲染与列表',
   summary: '条件渲染完整场景（&&/三元/提前return）；列表 map+key+过滤搜索完整 Demo',
-  order: 8,
+  order: 9,
   items: [
     {
       id: 'conditional',

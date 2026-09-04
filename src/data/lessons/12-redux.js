@@ -7,7 +7,7 @@ const redux = {
   title: 'Redux 状态管理',
   summary:
     'useState / Context / Redux 怎么选；state / action / reducer 三词；Toolkit 建 store；Provider；useSelector / useDispatch 完整用法',
-  order: 13,
+  order: 14,
   items: [
     {
       id: 'redux-when-to-use',

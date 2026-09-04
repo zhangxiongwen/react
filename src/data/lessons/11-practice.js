@@ -6,7 +6,7 @@ const practice = {
   id: 'practice',
   title: '请求数据与工程实践',
   summary: 'fetch vs axios、json-server 本地 mock、axios 封装、Todolist 骨架、入门毕业清单',
-  order: 14,
+  order: 15,
   items: [
     {
       id: 'fetch-vs-axios',

@@ -5,7 +5,7 @@ const events = {
   id: 'events',
   title: '事件与表单',
   summary: '事件绑定完整用法、受控表单全家桶、带校验的登录表单完整 Demo',
-  order: 7,
+  order: 8,
   items: [
     {
       id: 'event-basic',

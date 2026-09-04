@@ -6,7 +6,7 @@ const communicate = {
   id: 'communicate',
   title: '组件通信',
   summary: '父传子 props、子传父回调、状态提升、Context 主题切换——全部用完整 demo 学会',
-  order: 10,
+  order: 11,
   items: [
     {
       id: 'parent-child-props',

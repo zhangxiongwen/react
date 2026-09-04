@@ -6,7 +6,7 @@ const router = {
   id: 'router',
   title: '路由实战（react-router-dom）',
   summary: '从定义路由、useRoutes，到守卫、403、404、登录回跳——含可运行 Demo',
-  order: 11,
+  order: 12,
   items: [
     {
       id: 'router-setup-full',

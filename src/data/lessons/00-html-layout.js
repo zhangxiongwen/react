@@ -6,7 +6,7 @@ const htmlLayout = {
   title: 'HTML 布局（对照 Flutter）',
   summary:
     'display 常用值讲透（含 flex）；盒子模型、选择器；Flex 容器/子项属性；再对照 Flutter 做案例',
-  order: 1,
+  order: 2,
   items: [
     {
       id: 'display-common',

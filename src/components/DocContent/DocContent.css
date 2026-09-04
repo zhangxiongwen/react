@@ -32,7 +32,7 @@
   background: #eef6f1;
 }
 
-.DocContent-tip strong {
+.DocContent-tipTitle {
   display: block;
   margin-bottom: 8px;
   font-size: 14px;
@@ -112,4 +112,46 @@
   font-size: 13px;
   line-height: 1.6;
   color: #5c6b62;
+}
+
+/* 行内代码：和正文颜色区分开 */
+.DocContent-code {
+  display: inline;
+  padding: 0.12em 0.4em;
+  margin: 0 0.1em;
+  border-radius: 5px;
+  border: 1px solid #d5e2da;
+  background: #eef4f0;
+  color: #b42318;
+  font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: break-spaces;
+  word-break: break-word;
+}
+
+.DocContent-para strong,
+.DocContent-tip .DocContent-para strong,
+.DocContent-tip .DocContent-inlineList strong,
+.DocContent-list li strong,
+.DocContent-inlineList strong,
+.DocContent-table strong {
+  color: #1f2a24;
+  font-weight: 700;
+}
+
+.DocContent-inlineList {
+  margin: 0 0 12px;
+  padding-left: 1.35em;
+  color: #3d4a43;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.DocContent-inlineList li {
+  margin-bottom: 6px;
+}
+
+.DocContent-inlineList li:last-child {
+  margin-bottom: 0;
 }

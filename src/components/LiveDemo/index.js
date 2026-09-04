@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import './LiveDemo.css'
 
 /**
@@ -37,8 +39,21 @@ ${trimmed}
 </html>`
 }
 
+function resolveLanguage(language = 'html') {
+  const map = {
+    js: 'javascript',
+    javascript: 'javascript',
+    jsx: 'jsx',
+    css: 'css',
+    html: 'markup',
+    markup: 'markup',
+    text: 'text',
+  }
+  return map[String(language).toLowerCase()] || 'markup'
+}
+
 /**
- * 左侧可编辑代码 + 右侧实时渲染（仅用于需要看效果的 demo）
+ * 左侧可编辑代码（语法高亮）+ 右侧实时渲染
  */
 function LiveDemo({ title, language = 'html', initialCode = '' }) {
   const starter = useMemo(
@@ -49,13 +64,14 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
   const [previewCode, setPreviewCode] = useState(starter)
   const [iframeHeight, setIframeHeight] = useState(160)
 
-  // 外部切换小节时，重置编辑内容
+  const editorRef = useRef(null)
+  const highlightRef = useRef(null)
+
   useEffect(() => {
     setCode(starter)
     setPreviewCode(starter)
   }, [starter])
 
-  // 防抖更新预览，避免每敲一个字都重刷 iframe
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setPreviewCode(code)
@@ -64,6 +80,18 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
   }, [code])
 
   const srcDoc = useMemo(() => buildSrcDoc(previewCode), [previewCode])
+  const prismLang = resolveLanguage(language)
+
+  // 末尾补换行，避免高亮层高度略短导致滚动不同步
+  const highlightCode = code.endsWith('\n') ? code : `${code}\n`
+
+  function syncHighlightScroll() {
+    const editor = editorRef.current
+    const highlight = highlightRef.current
+    if (!editor || !highlight) return
+    highlight.scrollTop = editor.scrollTop
+    highlight.scrollLeft = editor.scrollLeft
+  }
 
   function handleIframeLoad(event) {
     try {
@@ -79,6 +107,19 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
   function handleReset() {
     setCode(starter)
     setPreviewCode(starter)
+  }
+
+  function handleKeyDown(event) {
+    if (event.key !== 'Tab') return
+    event.preventDefault()
+    const el = event.currentTarget
+    const start = el.selectionStart
+    const end = el.selectionEnd
+    const next = `${code.slice(0, start)}  ${code.slice(end)}`
+    setCode(next)
+    requestAnimationFrame(() => {
+      el.selectionStart = el.selectionEnd = start + 2
+    })
   }
 
   return (
@@ -99,13 +140,49 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
       <div className="LiveDemo-grid">
         <div className="LiveDemo-pane LiveDemo-pane--code">
           <div className="LiveDemo-paneLabel">代码</div>
-          <textarea
-            className="LiveDemo-editor"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            spellCheck={false}
-            aria-label={title ? `${title} 代码编辑` : '代码编辑'}
-          />
+          <div className="LiveDemo-editorShell">
+            <div
+              ref={highlightRef}
+              className="LiveDemo-highlight"
+              aria-hidden="true"
+            >
+              <SyntaxHighlighter
+                language={prismLang}
+                style={oneLight}
+                showLineNumbers={false}
+                wrapLongLines={false}
+                customStyle={{
+                  margin: 0,
+                  padding: 0,
+                  background: 'transparent',
+                  fontSize: 13,
+                  lineHeight: 1.65,
+                  overflow: 'visible',
+                }}
+                codeTagProps={{
+                  style: {
+                    fontFamily:
+                      '"IBM Plex Mono", Menlo, Monaco, Consolas, monospace',
+                    background: 'transparent',
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                  },
+                }}
+              >
+                {highlightCode}
+              </SyntaxHighlighter>
+            </div>
+            <textarea
+              ref={editorRef}
+              className="LiveDemo-editor"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              onScroll={syncHighlightScroll}
+              onKeyDown={handleKeyDown}
+              spellCheck={false}
+              aria-label={title ? `${title} 代码编辑` : '代码编辑'}
+            />
+          </div>
         </div>
 
         <div className="LiveDemo-pane LiveDemo-pane--preview">
@@ -115,7 +192,7 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
               title={title ? `${title} 预览` : '代码预览'}
               className="LiveDemo-iframe"
               srcDoc={srcDoc}
-              sandbox="allow-same-origin"
+              sandbox="allow-same-origin allow-forms"
               onLoad={handleIframeLoad}
               style={{ height: iframeHeight }}
             />

@@ -5,7 +5,7 @@ const state = {
   id: 'state',
   title: 'State 状态管理',
   summary: 'useState 完整用法、函数式更新、对象/数组不可变更新、状态设计 + 完整表单 Demo',
-  order: 6,
+  order: 7,
   items: [
     {
       id: 'usestate-basic',

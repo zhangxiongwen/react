@@ -6,7 +6,7 @@ const intro = {
   id: 'intro',
   title: '认识 React',
   summary: '搞清楚 React 是什么、为什么学、环境怎么搭、项目目录怎么组织',
-  order: 2,
+  order: 3,
   items: [
     {
       id: 'what-is-react',

@@ -5,7 +5,7 @@ const components = {
   id: 'components',
   title: '组件与 Props',
   summary: '函数组件定义导出使用、Props 传参解构默认值、children 插槽——每个都有完整大 Demo',
-  order: 5,
+  order: 6,
   items: [
     {
       id: 'function-component',

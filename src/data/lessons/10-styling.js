@@ -6,7 +6,7 @@ const styling = {
   id: 'styling',
   title: '样式方案入门',
   summary: 'CSS 文件怎么组织、className 怎么写、动态样式怎么切换——入门够用的一套完整做法',
-  order: 12,
+  order: 13,
   items: [
     {
       id: 'css-files-organization',

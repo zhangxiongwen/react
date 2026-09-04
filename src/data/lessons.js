@@ -2,6 +2,7 @@
  * 知识点总入口
  * 把各章节合并成一个数组，供首页和详情页使用
  */
+import htmlTags from './lessons/00-html-tags'
 import htmlLayout from './lessons/00-html-layout'
 import intro from './lessons/01-intro'
 import conventions from './lessons/02-conventions'
@@ -18,6 +19,7 @@ import redux from './lessons/12-redux'
 import practice from './lessons/11-practice'
 
 const lessons = [
+  htmlTags,
   htmlLayout,
   intro,
   conventions,

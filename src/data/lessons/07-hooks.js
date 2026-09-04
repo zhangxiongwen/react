@@ -5,7 +5,7 @@ const hooks = {
   id: 'hooks',
   title: '常用 Hooks 精讲',
   summary: 'useEffect 依赖与清理、useRef DOM与定时器、自定义 Hook 两个完整例子',
-  order: 9,
+  order: 10,
   items: [
     {
       id: 'useeffect-basic',
