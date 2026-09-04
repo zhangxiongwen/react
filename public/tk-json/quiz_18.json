@@ -1,0 +1,187 @@
+{
+  "title": "介词的基础搭配（时间in/on/at，地点in/on/at）",
+  "knowledgePoint": "时间介词in/on/at的核心搭配（年/月/日/时刻/时间段）、地点介词in/on/at的用法区别（大地点/小地点/表面/范围）、固定搭配中的介词应用、易混淆介词的语境适配",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "18-1",
+      "type": "选择题",
+      "question": "The international conference will be held ______ March 15th ______ 9:30 a.m. ______ the main hall of the city convention center.",
+      "options": ["in; at; on", "on; at; in", "at; on; in", "on; in; at"],
+      "correctAnswer": "on; at; in",
+      "explanation": "具体日期（March 15th）前用on；具体时刻（9:30 a.m.）前用at；大地点/空间内部（the main hall）前用in，符合时间和地点介词的搭配规则。",
+      "knowledgeExtension": "时间介词口诀：年季月周前用in，具体日期用on，时刻之前用at；地点介词口诀：大地点用in，小地点用at，表面之上用on。"
+    },
+    {
+      "id": "18-2",
+      "type": "判断题",
+      "question": "She was born in 1998, on May, and her first day at school was at September 1st, 2004.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "月份（May）前用in，不能用on；具体日期（September 1st）前用on，不能用at，题干存在两处介词搭配错误。",
+      "knowledgeExtension": "单独的月份、季节、年份前均用in（如in June/in summer/in 2023），具体“月+日”或“年+月+日”前用on。"
+    },
+    {
+      "id": "18-3",
+      "type": "选择题",
+      "question": "We usually have a team building activity ______ the end of each quarter, and this time we'll meet ______ the airport ______ 8 p.m. to take the flight.",
+      "options": ["at; at; at", "in; at; on", "at; in; at", "in; on; at"],
+      "correctAnswer": "at; at; at",
+      "explanation": "固定搭配at the end of（在……末尾）；小地点（the airport）前用at；具体时刻（8 p.m.）前用at，三处均符合介词用法。",
+      "knowledgeExtension": "常见固定搭配：at the beginning of（在……开始）、in the middle of（在……中间）、on the edge of（在……边缘）。"
+    },
+    {
+      "id": "18-4",
+      "type": "判断题",
+      "question": "The art exhibition will open on next Monday and last for three weeks. You can visit it in the afternoon or on night.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "next Monday前不加介词on（this/next/last+时间词前通常省略介词）；“在晚上”固定搭配为at night，不能用on night，题干存在两处错误。",
+      "knowledgeExtension": "this/that/next/last+week/month/year/Monday等时间词前，无需加介词（如this Friday/last month）。"
+    },
+    {
+      "id": "18-5",
+      "type": "选择题",
+      "question": "The ancient temple is located ______ the top of the mountain, and there is a stone path ______ the village ______ the temple.",
+      "options": ["on; from; to", "at; from; to", "on; between; and", "at; between; and"],
+      "correctAnswer": "on; from; to",
+      "explanation": "“在山顶”用on the top of（表面之上）；固定搭配from...to...（从……到……），表“从村庄到寺庙的石径”；between...and...表“两者之间”，不符合语境。",
+      "knowledgeExtension": "表示“在……顶部/表面”用on（如on the table/on the wall）；表示“在……内部/小地点”用at（如at the foot of the mountain）。"
+    },
+    {
+      "id": "18-6",
+      "type": "判断题",
+      "question": "He works in a small office on the third floor of the building, and he usually has lunch at the restaurant next to his company.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“在办公室里”用in；“在楼层上”用on；“在餐厅（小地点）”用at，三处介词搭配均正确，语义逻辑通顺。",
+      "knowledgeExtension": "楼层、街道表面用on（on the second floor/on Main Street）；建筑物内部用in（in the building/in the room）。"
+    },
+    {
+      "id": "18-7",
+      "type": "选择题",
+      "question": "The meeting will be held ______ 2 p.m. ______ 4 p.m. ______ Wednesday, and all participants are required to be present ______ time.",
+      "options": ["from; to; on; on", "between; and; in; on", "from; to; in; in", "between; and; on; in"],
+      "correctAnswer": "from; to; on; on",
+      "explanation": "from...to...表“从……到……”（时间段范围）；具体星期（Wednesday）前用on；固定搭配on time（准时），in time表“及时”，不符合语境。",
+      "knowledgeExtension": "between...and...也可表时间段，但侧重“两者之间的任意时间”，from...to...侧重“连续的时间段”，此处会议是连续时长，用from...to...更合适。"
+    },
+    {
+      "id": "18-8",
+      "type": "判断题",
+      "question": "They arrived at New York on last Friday, and checked into a hotel in the center of the city.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "大地点（New York）前用in，不能用at；last Friday前不加on，题干存在两处介词错误。",
+      "knowledgeExtension": "国家、城市等大地点前用in（in China/in London）；车站、机场、餐厅等小地点前用at（at the station/at the café）。"
+    },
+    {
+      "id": "18-9",
+      "type": "选择题",
+      "question": "______ the morning of June 1st, we will hold a celebration for the children, and ______ noon we will have a picnic ______ the park.",
+      "options": ["In; at; in", "On; at; in", "In; on; at", "On; on; at"],
+      "correctAnswer": "On; at; in",
+      "explanation": "具体日期的上午（the morning of June 1st）前用on；固定搭配at noon（在中午）；“在公园（大地点）”前用in，符合规则。",
+      "knowledgeExtension": "泛指“在上午/下午/晚上”用in the morning/afternoon/evening；特指“某一天的上午/下午/晚上”用on（如on a rainy afternoon）。"
+    },
+    {
+      "id": "18-10",
+      "type": "判断题",
+      "question": "The library is open from 9 a.m. to 6 p.m. on weekdays, and you can borrow books for up to three weeks in the self-service machine.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“在自助机器上”用on the self-service machine（表面之上），不能用in，题干介词搭配错误。",
+      "knowledgeExtension": "在机器、设备、网络平台等表面/载体上，用on（如on the computer/on the phone/on the Internet）。"
+    },
+    {
+      "id": "18-11",
+      "type": "选择题",
+      "question": "She has been studying abroad ______ 2021, and she will return to her hometown ______ next year. During her stay, she lived ______ a small town near London.",
+      "options": ["since; /; in", "for; /; at", "since; in; on", "for; in; at"],
+      "correctAnswer": "since; /; in",
+      "explanation": "since+过去时间点（2021），表“从2021年至今”；next year前省略介词；“在小镇（大地点）”前用in，for+时间段（如for 3 years），不符合此处语境。",
+      "knowledgeExtension": "since表“自从……以来”，后接过去时间点或从句；for表“持续……时间”，后接时间段，两者均用于完成时态。"
+    },
+    {
+      "id": "18-12",
+      "type": "判断题",
+      "question": "The train departs at 7:30 a.m. from Beijing Station and arrives in Shanghai at 3:15 p.m. You need to arrive at the station in advance to go through security.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“从某站出发”用depart from；“到达大地点（Shanghai）”用arrive in；“到达小地点（the station）”用arrive at；固定搭配in advance（提前），所有介词均使用正确。",
+      "knowledgeExtension": "arrive in+大地点（国家、城市），arrive at+小地点（车站、机场、学校）；depart from+出发地，depart for+目的地。"
+    },
+    {
+      "id": "18-13",
+      "type": "选择题",
+      "question": "The accident happened ______ a rainy night ______ the corner of Main Street and Fifth Avenue. A witness was standing ______ the bus stop when it occurred.",
+      "options": ["on; at; at", "in; at; on", "on; in; at", "in; on; at"],
+      "correctAnswer": "on; at; at",
+      "explanation": "特指“下雨的夜晚”用on a rainy night；“在街角（小地点）”用at the corner；“在公交站（小地点）”用at the bus stop，符合规则。",
+      "knowledgeExtension": "被形容词修饰的morning/afternoon/evening/night前，用on（如on a cold winter morning/on a quiet night）。"
+    },
+    {
+      "id": "18-14",
+      "type": "判断题",
+      "question": "We will have a test in next week, and the results will be announced on three days. You can check your score on the school website.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "next week前不加in；“三天后”表将来，用in three days，不能用on three days，题干存在两处介词错误。",
+      "knowledgeExtension": "“in+时间段”表“多久之后”，用于将来时（如in five minutes）；“on+时间段”无此用法，具体日期前才用on。"
+    },
+    {
+      "id": "18-15",
+      "type": "选择题",
+      "question": "The museum displays valuable artifacts ______ the Ming Dynasty, and most of them were discovered ______ a village ______ southern China.",
+      "options": ["from; in; in", "of; at; on", "from; at; in", "of; in; on"],
+      "correctAnswer": "from; in; in",
+      "explanation": "“来自明朝的文物”用from the Ming Dynasty；“在村庄（大地点）”用in；“在中国南部”用in southern China，of表“所属”，不符合“来自”的语境。",
+      "knowledgeExtension": "表示“来自某时代/地方”用from（如products from Japan）；表示“某地方的一部分”用in（如in northern China）。"
+    },
+    {
+      "id": "18-16",
+      "type": "判断题",
+      "question": "He spent his childhood in a small village on the countryside, and he often played with friends at the river bank after school.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“在乡下”固定搭配为in the countryside，不能用on；“在河岸上”用on the river bank，题干第一处介词错误。",
+      "knowledgeExtension": "常见固定地点搭配：in the city（在城市）、in the countryside（在乡下）、on the coast（在海岸）、at the seaside（在海边）。"
+    },
+    {
+      "id": "18-17",
+      "type": "选择题",
+      "question": "The lecture about environmental protection will start ______ 3 p.m. ______ Thursday, and it will be delivered ______ the lecture hall ______ the university.",
+      "options": ["at; on; in; in", "at; in; on; at", "on; at; in; on", "on; in; on; in"],
+      "correctAnswer": "at; on; in; in",
+      "explanation": "具体时刻（3 p.m.）前用at；具体星期（Thursday）前用on；“在演讲厅（内部）”用in；“在大学（大地点）”用in，符合所有搭配规则。",
+      "knowledgeExtension": "建筑物内部用in（in the classroom/in the hospital）；建筑物本身或小地点用at（at the school gate/at the hospital）。"
+    },
+    {
+      "id": "18-18",
+      "type": "判断题",
+      "question": "They plan to travel to Europe in summer vacation and visit countries like France, Germany and Italy. They will stay in Paris for three days.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“在暑假”固定搭配为on summer vacation或during the summer vacation，不能用in summer vacation，题干介词搭配错误。",
+      "knowledgeExtension": "“在假期”的常见表达：on vacation/on holiday（美式）、during the vacation（通用），in+假期无此搭配。"
+    },
+    {
+      "id": "18-19",
+      "type": "选择题",
+      "question": "There is a big poster ______ the wall ______ the entrance of the shopping mall, and it advertises a sale that will last ______ the end of the month.",
+      "options": ["on; at; until", "in; at; to", "on; in; until", "in; on; to"],
+      "correctAnswer": "on; at; until",
+      "explanation": "“在墙上（表面）”用on；“在入口（小地点）”用at；until the end of the month（直到月底），表时间段终点，to the end of需搭配from，不符合语境。",
+      "knowledgeExtension": "on用于物体表面（墙、纸、桌子等），in用于物体内部（盒子、房间等）；until表“直到……为止”，to表“到……”，需结合语境选择。"
+    },
+    {
+      "id": "18-20",
+      "type": "判断题",
+      "question": "The concert will be held at the stadium in Saturday evening, and tickets will go on sale at 10 a.m. on tomorrow.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“在周六晚上”用on Saturday evening，不能用in；tomorrow前不加on，题干存在两处介词错误。",
+      "knowledgeExtension": "具体某一天的晚上用on，泛指晚上用in；this/that/next/last/tomorrow/yesterday等时间词前，均省略介词。"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "title": "倒装句（部分倒装/完全倒装，如 Only then did I know...）",
+  "knowledgePoint": "部分倒装的触发条件（否定词置于句首、Only+状语置于句首、so/neither/nor 表倒装）、完全倒装的适用场景（here/there 开头、表示地点的介词短语置于句首）、倒装句的主谓一致、倒装句与正常语序的转换、特殊倒装句型（as 引导的让步状语从句）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "42-1",
+      "type": "选择题",
+      "question": "Only when we have a comprehensive understanding of the problem ______ effectively. Never ______ such a challenging task before.",
+      "options": ["can we solve it; have I faced", "we can solve it; I have faced", "can we solve it; I have faced", "we can solve it; have I faced"],
+      "correctAnswer": "can we solve it; have I faced",
+      "explanation": "第一空 Only+时间状语从句置于句首，主句需部分倒装（情态动词can提前）；第二空否定词Never置于句首，需部分倒装（助动词have提前），符合“Only+状语倒装+否定词倒装”逻辑。",
+      "knowledgeExtension": "部分倒装核心规则：助动词（have/do/will）、情态动词（can/may/should）提前，主谓不倒装；否定词（never/seldom/rarely）、Only+状语置于句首时必须倒装。"
+    },
+    {
+      "id": "42-2",
+      "type": "判断题",
+      "question": "Here comes the bus and the passengers. Little he knows about the surprise we have prepared for him. Seldom does she go out alone at night.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 Here 开头表位置移动，完全倒装（comes提前，正确）；第二空否定词Little置于句首，需部分倒装，“he knows”应改为does he know；第三空 Seldom 开头部分倒装（正确），核心错误为否定词倒装遗漏助动词。",
+      "knowledgeExtension": "以否定含义的副词（little/few/seldom/never）开头，需部分倒装，结构为“否定词+助动词/情态动词+主语+谓语”。"
+    },
+    {
+      "id": "42-3",
+      "type": "选择题",
+      "question": "In the middle of the square ______ a magnificent monument dedicated to the heroes. Not until she arrived at the airport ______ she had lost her passport.",
+      "options": ["stands; did", "stand; did", "stands; had", "stand; had"],
+      "correctAnswer": "stands; did",
+      "explanation": "第一空表示地点的介词短语置于句首，完全倒装，主语a monument为单数，用stands；第二空 Not until+状语置于句首，主句部分倒装，用助动词did，符合“完全倒装+部分倒装”逻辑。",
+      "knowledgeExtension": "完全倒装适用场景：here/there/away/out等副词开头（表位置移动）、介词短语表地点置于句首，结构为“状语+谓语+主语”，主谓一致由主语决定。"
+    },
+    {
+      "id": "42-4",
+      "type": "判断题",
+      "question": "So difficult was the exam that many students failed. Such a moving story it is that I couldn’t hold back my tears. Only by working hard can we achieve our goals.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 So+形容词置于句首，部分倒装（was提前，正确）；第二空 Such+a+名词置于句首，需部分倒装，“it is”应改为is it；第三空 Only+介词短语开头倒装（正确），核心错误为Such句型倒装遗漏助动词。",
+      "knowledgeExtension": "So+形容词/副词、Such+名词短语置于句首表强调，需部分倒装，结构为“So+adj./adv.+助动词+主语”“Such+a/an+名词+助动词+主语”。"
+    },
+    {
+      "id": "42-5",
+      "type": "选择题",
+      "question": "Not only ______ fluent English but also she has a good command of French. Rarely ______ an opportunity to meet such outstanding experts.",
+      "options": ["does she speak; do we get", "she speaks; we get", "does she speak; we get", "she speaks; do we get"],
+      "correctAnswer": "does she speak; do we get",
+      "explanation": "第一空 Not only置于句首，需部分倒装（助动词does提前）；第二空否定词Rarely置于句首，部分倒装（助动词do提前），符合“Not only倒装+否定词倒装”逻辑。",
+      "knowledgeExtension": "Not only...but also...连接两个分句时，仅前一分句倒装，后一分句保持正常语序（如Not only does she speak English, but she also knows French）。"
+    },
+    {
+      "id": "42-6",
+      "type": "判断题",
+      "question": "Away flew the bird when it heard the noise. Hardly had he finished his speech than the audience burst into applause. There goes the bell—class is over.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 Away 开头表位置移动，完全倒装（flew提前，正确）；第二空 Hardly...when...是固定倒装句型，“than”应改为when，且had提前（结构正确但连词错误）；第三空 There 开头完全倒装（正确），核心错误为固定倒装句型连词误用。",
+      "knowledgeExtension": "高频固定倒装句型：Hardly had...when...、Scarcely had...before...、No sooner had...than...，表“一……就……”，需部分倒装且连词不可混淆。"
+    },
+    {
+      "id": "42-7",
+      "type": "选择题",
+      "question": "______ the doctor ______ the patient’s life. Under no circumstances ______ we give up our dreams.",
+      "options": ["Did; save; should", "Saved; did; should", "Did; save; will", "Saved; did; will"],
+      "correctAnswer": "Did; save; should",
+      "explanation": "第一空为强调倒装（对谓语动词save强调），用“Do+主语+动词原形”，此处过去时用Did save；第二空 Under no circumstances（否定短语）置于句首，部分倒装，用情态动词should提前，符合“强调倒装+否定短语倒装”逻辑。",
+      "knowledgeExtension": "Under no circumstances/In no case/At no time等否定含义短语置于句首，需部分倒装，语气更正式。"
+    },
+    {
+      "id": "42-8",
+      "type": "判断题",
+      "question": "As difficult as the task is, we will try our best to complete it. Never before have I seen such a beautiful sunset. Here are your books that you left in the classroom.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 as 引导让步状语从句，倒装结构为“adj.+as+主语+谓语”（正确）；第二空 Never before 开头部分倒装（正确）；第三空 Here 开头完全倒装，主语your books为复数，用are（正确），所有倒装用法均符合规则。",
+      "knowledgeExtension": "as 引导让步状语从句，必须倒装，结构为“形容词/副词/名词+as+主语+谓语”（名词前不加冠词，如Child as he is 尽管他是个孩子）。"
+    },
+    {
+      "id": "42-9",
+      "type": "选择题",
+      "question": "No sooner ______ home than it started to rain. On the top of the mountain ______ a beautiful view of the city.",
+      "options": ["had we arrived; lies", "we had arrived; lies", "had we arrived; lie", "we had arrived; lie"],
+      "correctAnswer": "had we arrived; lies",
+      "explanation": "第一空 No sooner 置于句首，部分倒装（助动词had提前）；第二空表示地点的介词短语置于句首，完全倒装，主语a beautiful view为单数，用lies，符合“固定句型倒装+完全倒装”逻辑。",
+      "knowledgeExtension": "No sooner...than...句型中，No sooner 后的分句用过去完成时倒装，than 后的分句用一般过去时，表“动作紧接着发生”。"
+    },
+    {
+      "id": "42-10",
+      "type": "判断题",
+      "question": "Seldom they visit their grandparents because they live far away. There is no doubt that he is innocent. Only in this way can we improve our English quickly.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 Seldom 置于句首，需部分倒装，“they visit”应改为do they visit；第二空 There is no doubt 为正常语序（正确）；第三空 Only in this way 开头倒装（正确），核心错误为否定词倒装遗漏助动词。",
+      "knowledgeExtension": "部分倒装的关键是“助动词/情态动词提前”，若原句无助动词，需加do/does/did（一般现在时/过去时），如Seldom do they go out（他们很少出门）。"
+    },
+    {
+      "id": "42-11",
+      "type": "选择题",
+      "question": "______ he ______ the importance of teamwork. Beyond the river ______ a small village where he spent his childhood.",
+      "options": ["Little; realizes; lies", "Little; realized; lie", "Little; does realize; lies", "Little; did realize; lie"],
+      "correctAnswer": "Little; realizes; lies",
+      "explanation": "第一空 Little 置于句首，部分倒装，此处为一般现在时，用does he realize（选项排版优化后应为Little does he realize）；第二空 Beyond the river 置于句首，完全倒装，主语a small village为单数，用lies，符合“否定词倒装+完全倒装”逻辑。",
+      "knowledgeExtension": "完全倒装中，主语为单数时谓语用单数，主语为复数时用复数，需严格遵循主谓一致，如Near the lake stand many trees（湖边有很多树）。"
+    },
+    {
+      "id": "42-12",
+      "type": "判断题",
+      "question": "So fast does the light travel that we can’t see its movement. Such is the power of love that it can overcome all difficulties. Here comes your train—hurry up!",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 So+副词 fast 置于句首，部分倒装（does提前，正确）；第二空 Such 置于句首表强调，部分倒装（is提前，正确）；第三空 Here 开头完全倒装（正确），所有倒装结构均符合规则，逻辑连贯。",
+      "knowledgeExtension": "So+adj./adv. 倒装与 Such 倒装的区别：So 后接形容词/副词，Such 后接名词短语，两者均表“如此……以至于……”，需根据后续成分选择。"
+    },
+    {
+      "id": "42-13",
+      "type": "选择题",
+      "question": "Not until the rain stopped ______ to continue our journey. In front of the building ______ a group of students waiting for the teacher.",
+      "options": ["did we decide; stand", "we decided; stand", "did we decide; stands", "we decided; stands"],
+      "correctAnswer": "did we decide; stand",
+      "explanation": "第一空 Not until+状语置于句首，主句部分倒装（助动词did提前）；第二空 In front of the building 置于句首，完全倒装，主语a group of students为复数，用stand，符合“Not until倒装+完全倒装”逻辑。",
+      "knowledgeExtension": "完全倒装的主语若为“a group of+复数名词”，谓语动词用复数（强调群体中的个体）；若主语为单数名词短语，谓语用单数。"
+    },
+    {
+      "id": "42-14",
+      "type": "判断题",
+      "question": "Hardly had she entered the room when the phone rang. Never I have thought that he would betray us. Away ran the children laughing and shouting.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 Hardly...when...倒装（正确）；第二空 Never 置于句首，需部分倒装，“I have thought”应改为have I thought；第三空 Away 开头完全倒装（正确），核心错误为否定词倒装遗漏助动词。",
+      "knowledgeExtension": "Never 开头的倒装，若原句为现在完成时，需将助动词have/has提前，结构为“Never have/has+主语+过去分词”。"
+    },
+    {
+      "id": "42-15",
+      "type": "选择题",
+      "question": "Only by practicing speaking every day ______ our oral English. Neither ______ the answer nor does she know how to solve the problem.",
+      "options": ["can we improve; does he know", "we can improve; he knows", "can we improve; he knows", "we can improve; does he know"],
+      "correctAnswer": "can we improve; does he know",
+      "explanation": "第一空 Only+介词短语置于句首，部分倒装（情态动词can提前）；第二空 Neither...nor...连接两个分句，前一分句需倒装（助动词does提前），符合“Only倒装+Neither倒装”逻辑。",
+      "knowledgeExtension": "Neither...nor...、Either...or...连接两个分句时，仅前一分句倒装，后一分句保持正常语序，主谓一致遵循就近原则。"
+    },
+    {
+      "id": "42-16",
+      "type": "判断题",
+      "question": "As he is young, he has a lot of experience in this field. There exist many problems that need to be solved. Scarcely had we sat down when the meeting began.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 as 引导让步状语从句，需倒装，“As he is young”应改为Young as he is；第二空 There exist 完全倒装（主语many problems为复数，正确）；第三空 Scarcely...when...倒装（正确），核心错误为as让步状语从句未倒装。",
+      "knowledgeExtension": "as 引导让步状语从句时，形容词、副词或名词需置于句首倒装，名词前不加冠词，如Poor as he is 尽管他贫穷。"
+    },
+    {
+      "id": "42-17",
+      "type": "选择题",
+      "question": "______ the news ______ that the famous writer would visit our school. No sooner ______ the announcement than students cheered loudly.",
+      "options": ["Word; came; was made", "Word; come; made", "Word; came; made", "A word; came; was made"],
+      "correctAnswer": "Word; came; was made",
+      "explanation": "第一空 Word 表“消息”为不可数名词，不加冠词，完全倒装（came提前）；第二空 No sooner 置于句首，部分倒装，被动语态was made提前，符合“完全倒装+被动语态倒装”逻辑。",
+      "knowledgeExtension": "以Word（消息）、News（新闻）等不可数名词开头表“传来”，常用完全倒装，结构为“Word/News+不及物动词（came/spread）+that从句”。"
+    },
+    {
+      "id": "42-18",
+      "type": "判断题",
+      "question": "So much does he care about us that he always puts our interests first. Here is your umbrella—you almost forgot it. Only when he apologized we forgave him.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 So much 置于句首，部分倒装（does提前，正确）；第二空 Here 开头完全倒装（正确）；第三空 Only+时间状语从句置于句首，主句需部分倒装，“we forgave”应改为did we forgive，核心错误为Only从句倒装遗漏助动词。",
+      "knowledgeExtension": "Only+状语从句置于句首时，仅主句倒装，从句保持正常语序，结构为“Only+从句+助动词/情态动词+主语+谓语”。"
+    },
+    {
+      "id": "42-19",
+      "type": "选择题",
+      "question": "Under no circumstances ______ the rules of the company. On the wall ______ several famous paintings by Van Gogh.",
+      "options": ["should we break; hang", "we should break; hang", "should we break; hangs", "we should break; hangs"],
+      "correctAnswer": "should we break; hang",
+      "explanation": "第一空 Under no circumstances 置于句首，部分倒装（情态动词should提前）；第二空 On the wall 置于句首，完全倒装，主语several famous paintings为复数，用hang，符合“否定短语倒装+完全倒装”逻辑。",
+      "knowledgeExtension": "完全倒装的谓语动词多为不及物动词（hang/stand/lie/come/go），无需被动语态，如On the desk lie three books（桌上放着三本书）。"
+    },
+    {
+      "id": "42-20",
+      "type": "判断题",
+      "question": "Never before has she been so excited about a trip. Such great progress has he made that his parents are very proud of him. There is a park near the community where people can relax.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 Never before 开头部分倒装（正确）；第二空 Such great progress 置于句首，部分倒装（has提前，正确）；第三空 There be 为正常语序（正确），所有倒装用法规范，逻辑连贯，符合语法规则。",
+      "knowledgeExtension": "倒装句的核心作用是强调状语（时间、地点、否定含义等）或使句子结构平衡，转换为正常语序时，需将提前的助动词/情态动词还原，如Never have I seen it→I have never seen it。"
+    }
+  ]
+}

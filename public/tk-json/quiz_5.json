@@ -1,0 +1,267 @@
+{
+  "title": "情态动词can/may/must的基础用法（能力/许可/义务）",
+  "knowledgePoint": "can（能力/许可/可能性）、may（许可/可能性）、must（义务/推测）的基础用法与区别",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "5-1",
+      "type": "选择题",
+      "question": "—______ I use your laptop for a while? I need to send an urgent email. —Sorry, you ______ not. I’m using it to finish an important report right now.",
+      "options": [
+        "Can; can",
+        "May; may",
+        "Must; must",
+        "May; can"
+      ],
+      "correctAnswer": "May; can",
+      "explanation": "第一空表“请求许可”，may比can更礼貌，适合正式或陌生场景；第二空表“拒绝许可”，口语中常用can not（can’t），语气更自然，may not语气较生硬，故答案为May; can。",
+      "knowledgeExtension": "请求许可的礼貌程度排序：Could I...? > May I...? > Can I...?；拒绝许可时，常用I’m afraid you can’t. 或 Sorry, you can’t.，避免用You may not."
+    },
+    {
+      "id": "5-2",
+      "type": "判断题",
+      "question": "He must finish his homework before 9 o’clock tonight, otherwise he can’t watch TV or play computer games.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "must表“义务、必须”，强调外部要求或规定；can’t表“不允许”，题干表述符合“必须完成作业才能娱乐”的逻辑和语法规则，故正确。",
+      "knowledgeExtension": "must表“必须”时，否定形式为mustn’t（禁止），而非can’t；但此处后半句表“不允许做某事”，用can’t正确（can’t表“不允许”，mustn’t表“禁止”，语气更强）。"
+    },
+    {
+      "id": "5-3",
+      "type": "选择题",
+      "question": "She ______ speak three languages fluently when she was only 10 years old, which surprised all her teachers and classmates.",
+      "options": [
+        "can",
+        "could",
+        "may",
+        "must"
+      ],
+      "correctAnswer": "could",
+      "explanation": "时间状语when she was only 10 years old表过去，can的过去式为could，表“过去的能力”，故答案为could。",
+      "knowledgeExtension": "表“能力”的时态搭配：现在能力→can，过去能力→could；若表“过去具体某次成功做到”，用was/were able to do，而非could（如She was able to finish the task in one hour yesterday）。"
+    },
+    {
+      "id": "5-4",
+      "type": "判断题",
+      "question": "You may not smoke in public places, because it’s not only harmful to your health but also disturbs others.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "表“禁止”时，用mustn’t比may not更准确、语气更强，符合“公共场所禁止吸烟”的规定场景；may not表“可能不”或“不被允许”，语气较弱，不适合禁止性规定，故题干错误。",
+      "knowledgeExtension": "mustn’t 表“禁止”（强调绝对不允许），may not 表“可能不”（推测）或“不被允许”（语气委婉），can’t 表“不可能”（推测）或“不允许”（口语）。"
+    },
+    {
+      "id": "5-5",
+      "type": "选择题",
+      "question": "—Where ______ Lucy be? She was supposed to arrive 20 minutes ago. —She ______ be stuck in traffic, or she ______ have forgotten the meeting time.",
+      "options": [
+        "can; may; must",
+        "may; can; might",
+        "can; might; may",
+        "must; can; may"
+      ],
+      "correctAnswer": "can; might; may",
+      "explanation": "第一空表“对现在的疑问推测”，can用于否定/疑问句中表推测；第二、三空表“对现在的肯定推测”，might和may语气较弱（可能），must语气太强（一定），符合“不确定露西迟到原因”的语境，故答案为can; might; may。",
+      "knowledgeExtension": "情态动词表推测的语气强度：must（一定）> should（应该）> may/might/could（可能）；can仅用于否定句（can’t 不可能）和疑问句（can...? 可能吗？）表推测。"
+    },
+    {
+      "id": "5-6",
+      "type": "判断题",
+      "question": "The test is not difficult, so you must not worry too much about it; you can pass it easily if you review the key points.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "must not表“禁止”，此处表“不必担心”，需用needn’t或don’t have to，must not用法错误，故题干错误。",
+      "knowledgeExtension": "must表“必须”时，否定形式：mustn’t（禁止）≠ needn’t（不必）；needn’t 强调“没有必要”，don’t have to 强调“外部没有要求”，可互换。"
+    },
+    {
+      "id": "5-7",
+      "type": "选择题",
+      "question": "Students ______ bring their student IDs to the exam room; otherwise they ______ not be allowed to take the exam.",
+      "options": [
+        "must; will",
+        "can; may",
+        "may; can",
+        "must; may"
+      ],
+      "correctAnswer": "must; will",
+      "explanation": "第一空表“考试必须带学生证”的规定，用must；第二空表“否则将不被允许”，will表将来的结果，比may更符合“规定后果”的语境，故答案为must; will。",
+      "knowledgeExtension": "情态动词+be allowed to do 表“被允许做某事”，其否定形式为be not allowed to do；此处用will not be allowed 强调“将来的禁止”，符合考试场景的规定逻辑。"
+    },
+    {
+      "id": "5-8",
+      "type": "判断题",
+      "question": "Could you please help me carry this heavy box to the office? I can’t do it by myself.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "could you please...? 是请求帮助的礼貌表达，比can you...? 更委婉；can’t表“没有能力”，题干表述符合语法和语境，故正确。",
+      "knowledgeExtension": "请求帮助的常用表达：Could you (please) do...? > Would you mind doing...? > Can you do...?；回应时用Sure, I’d be glad to. 或 Of course.。"
+    },
+    {
+      "id": "5-9",
+      "type": "选择题",
+      "question": "—______ I leave the office early today? My daughter is ill and I need to take her to the hospital. —Yes, you ______, but you ______ finish the report before you leave.",
+      "options": [
+        "May; can; must",
+        "Can; may; need",
+        "Must; can; may",
+        "May; must; can"
+      ],
+      "correctAnswer": "May; can; must",
+      "explanation": "第一空表“请求许可提前下班”，用may更礼貌；第二空表“允许”，用can自然；第三空表“义务，必须完成报告”，用must，故答案为May; can; must。",
+      "knowledgeExtension": "许可与义务结合的场景：先请求许可（May I...?），得到允许（you can），再附加义务（you must...），逻辑连贯，符合职场沟通场景。"
+    },
+    {
+      "id": "5-10",
+      "type": "判断题",
+      "question": "He can’t be at home now; I saw him going to the library with his friend 10 minutes ago.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "can’t表“对现在的否定推测，不可能”，结合“10分钟前看到他去图书馆”的证据，推测“现在不可能在家”，逻辑和语法均正确，故题干正确。",
+      "knowledgeExtension": "can’t表否定推测时，语气非常肯定，基于明确证据；若语气较弱，用may not（可能不在家），此处用can’t更符合语境。"
+    },
+    {
+      "id": "5-11",
+      "type": "选择题",
+      "question": "This task ______ be completed by Friday; there’s no flexibility on the deadline because the client will review it next Monday.",
+      "options": [
+        "must",
+        "can",
+        "may",
+        "could"
+      ],
+      "correctAnswer": "must",
+      "explanation": "后句强调“截止日期没有灵活性”，表“必须在周五前完成”的强制要求，用must，故答案为must。",
+      "knowledgeExtension": "must 表“必须”时，强调内部决心或外部强制要求；have to 也表“必须”，更强调外部压力（如I have to finish this task because of the deadline），此处两者可互换，但must语气更强。"
+    },
+    {
+      "id": "5-12",
+      "type": "判断题",
+      "question": "May you have a happy holiday! I hope you can enjoy yourself and relax fully during the vacation.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "may用于祝福语中，表“祝愿”（May you...! 祝你……！），是固定用法；can表“能够”，题干表述符合祝福语境和语法规则，故正确。",
+      "knowledgeExtension": "may表祝愿的固定句型：May you succeed!（祝你成功！）、May you be happy!（祝你幸福！），此时may需置于句首，主语you紧跟其后。"
+    },
+    {
+      "id": "5-13",
+      "type": "选择题",
+      "question": "—Is that Tom’s car outside the building? —It ______ be his; he told me he was going to drive his brother’s car today because his own car ______ be repaired.",
+      "options": [
+        "can’t; needs",
+        "may not; must",
+        "can’t; is being",
+        "mustn’t; has to"
+      ],
+      "correctAnswer": "can’t; is being",
+      "explanation": "第一空表“否定推测，不可能是他的车”，用can’t；第二空表“他的车正在被修理”，用现在进行时的被动语态is being repaired，故答案为can’t; is being。",
+      "knowledgeExtension": "情态动词表推测时，需结合语境证据；此处“他说要开哥哥的车”是证据，故用can’t（不可能），而非may not（可能不）。"
+    },
+    {
+      "id": "5-14",
+      "type": "判断题",
+      "question": "You mustn’t park your car here; this area is reserved for emergency vehicles only.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "mustn’t表“禁止”，强调“绝对不允许”，符合“该区域仅预留应急车辆”的禁止性规定，题干表述正确。",
+      "knowledgeExtension": "mustn’t 与 can’t 表“禁止”的区别：mustn’t 强调“违反规定或法律的禁止”，can’t 强调“客观条件不允许或口语中的禁止”。"
+    },
+    {
+      "id": "5-15",
+      "type": "选择题",
+      "question": "She ______ not attend the meeting tomorrow because she has to take care of her sick mother, but she ______ send her comments via email later.",
+      "options": [
+        "may; can",
+        "must; will",
+        "can; must",
+        "should; may"
+      ],
+      "correctAnswer": "may; can",
+      "explanation": "第一空表“可能不参加会议”，基于“要照顾生病的妈妈”的原因，用may not表不确定的推测；第二空表“能够通过邮件发送意见”，用can，故答案为may; can。",
+      "knowledgeExtension": "may not 表“可能不”（推测），区别于 mustn’t（禁止）；此处并非禁止，而是客观原因导致的“可能不”，故用may not正确。"
+    },
+    {
+      "id": "5-16",
+      "type": "判断题",
+      "question": "Can you swim when you were a child? Or did you learn it when you were in middle school?",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "时间状语when you were a child表过去，表“过去的能力”需用could，而非现在时can，时态不一致，故题干错误。",
+      "knowledgeExtension": "时态一致性原则：询问过去的能力，用Could you...? 或 Were you able to...?，不能用Can you...? 搭配过去时间状语。"
+    },
+    {
+      "id": "5-17",
+      "type": "选择题",
+      "question": "—______ I borrow your reference book for a few days? I need to check some important data for my paper. —Yes, you ______, but you ______ return it to me before next Monday.",
+      "options": [
+        "Can; may; must",
+        "May; can; must",
+        "Could; can; should",
+        "Must; may; can"
+      ],
+      "correctAnswer": "Could; can; should",
+      "explanation": "第一空Could I...? 是请求借用的最礼貌表达；第二空表“允许”，用can自然；第三空表“建议，应该按时归还”，用should比must更委婉，符合朋友间借用的语境，故答案为Could; can; should。",
+      "knowledgeExtension": "借用物品的礼貌表达：Could I borrow...? > May I borrow...?；归还要求用should（建议）比must（强制）更得体，除非是正式借阅场景。"
+    },
+    {
+      "id": "5-18",
+      "type": "判断题",
+      "question": "The light in his room is on, so he must be at home now. He can’t be out with his friends.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "“房间灯亮着”是明确证据，用must表“肯定推测，一定在家”；用can’t表“否定推测，不可能出去”，逻辑和语法均正确，故题干正确。",
+      "knowledgeExtension": "情态动词表推测的语境搭配：肯定证据→must，否定证据→can’t，不确定→may/might/could。"
+    },
+    {
+      "id": "5-19",
+      "type": "选择题",
+      "question": "Employees ______ wear formal clothes to work; it’s one of the company’s dress code rules. Those who don’t follow the rule ______ be asked to go home and change.",
+      "options": [
+        "must; may",
+        "can; must",
+        "may; can",
+        "should; must"
+      ],
+      "correctAnswer": "must; may",
+      "explanation": "第一空表“公司规定必须穿正装”，用must；第二空表“可能会被要求回家换衣服”，用may表“可能的后果”，语气客观，故答案为must; may。",
+      "knowledgeExtension": "公司规定、规章制度等场景，常用must表“必须遵守”；表“违反规定的可能后果”，用may（可能）或will（将会），may更委婉，will更肯定。"
+    },
+    {
+      "id": "5-20",
+      "type": "判断题",
+      "question": "May I ask you a question? But I must apologize in advance if it makes you uncomfortable.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "May I ask...? 是询问问题的礼貌表达；must表“必须提前道歉”，强调主观意愿，题干表述符合礼貌沟通的语境和语法规则，故正确。",
+      "knowledgeExtension": "礼貌询问的常用结构：May I...? + 补充说明（如道歉、解释原因），让请求更得体，符合社交礼仪。"
+    }
+  ]
+}

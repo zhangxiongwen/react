@@ -1,0 +1,267 @@
+{
+  "title": "现在进行时（结构be+doing，表示正在进行的动作）",
+  "knowledgePoint": "现在进行时的用法（当前正在发生的动作/现阶段进行的动作/计划中的将来动作）、动词-ing形式变化、否定句与疑问句结构、与一般现在时的区别",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "11-1",
+      "type": "选择题",
+      "question": "The marketing team ______ a new campaign for the product launch, and they ______ interviews with key influencers this week.",
+      "options": [
+        "develops; conduct",
+        "is developing; are conducting",
+        "developed; conducted",
+        "will develop; will conduct"
+      ],
+      "correctAnswer": "is developing; are conducting",
+      "explanation": "第一空表“当前正在进行的动作”，用现在进行时is developing；第二空this week表“现阶段进行的动作”（并非特指此刻），用现在进行时are conducting，时态一致，故答案为is developing; are conducting。",
+      "knowledgeExtension": "现在进行时的核心用法：1. 此时此刻正在发生（Look! He is running.）；2. 现阶段正在进行（He is learning English this month.）；3. 计划好的将来动作（I am leaving tomorrow.）。"
+    },
+    {
+      "id": "11-2",
+      "type": "判断题",
+      "question": "She is always complaining about her work recently, which makes her colleagues feel uncomfortable.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "现在进行时+always表“反复发生的动作”，带有感情色彩（此处表“频繁抱怨”的不满语气），recently为现阶段时间状语，符合现在进行时用法，题干表述正确。",
+      "knowledgeExtension": "现在进行时与always/constantly/forever连用，表“频繁发生的动作”，常含赞扬、不满、惊讶等感情色彩（如He is always helping others. 他总是乐于助人（赞扬））。"
+    },
+    {
+      "id": "11-3",
+      "type": "选择题",
+      "question": "______ you ______ the final revisions to the contract? The client is waiting for our response.",
+      "options": [
+        "Do; make",
+        "Are; making",
+        "Did; make",
+        "Will; make"
+      ],
+      "correctAnswer": "Are; making",
+      "explanation": "语境“客户正在等待”表明动作“修改合同”正在进行，现在进行时一般疑问句结构为Are you+动词-ing，make的-ing形式为making，故答案为Are; making。",
+      "knowledgeExtension": "动词-ing形式规则变化：1. 一般加ing（work→working, make→making）；2. 以不发音e结尾去e加ing（live→living, write→writing）；3. 重读闭音节双写尾字母加ing（stop→stopping, sit→sitting）；4. 以ie结尾变ie为y加ing（lie→lying, die→dying）。"
+    },
+    {
+      "id": "11-4",
+      "type": "判断题",
+      "question": "My brother is study for the postgraduate entrance exam these days, so he has no time to hang out with us.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "现在进行时结构为“am/is/are+动词-ing”，study的-ing形式为studying，题干中study为原形，用法错误，正确表达为is studying。",
+      "knowledgeExtension": "现在进行时的构成：主语+am/is/are+动词-ing（肯定式）；主语+am/is/are+not+动词-ing（否定式）；Am/Is/Are+主语+动词-ing？（疑问式），需注意动词-ing的正确变化。"
+    },
+    {
+      "id": "11-5",
+      "type": "选择题",
+      "question": "The company ______ a new office building in the central business district, and it ______ open to employees next year.",
+      "options": [
+        "builds; is",
+        "is building; will be",
+        "is building; is",
+        "built; was"
+      ],
+      "correctAnswer": "is building; will be",
+      "explanation": "第一空表“现阶段正在进行的动作”（建办公楼），用现在进行时is building；第二空next year表“将来的状态”，用一般将来时will be，逻辑连贯，故答案为is building; will be。",
+      "knowledgeExtension": "现在进行时表将来时，需满足“计划好、有安排”的条件，常用动词：come, go, leave, arrive, start, begin等（如She is leaving for Beijing tomorrow. 她明天要去北京）；无计划的将来用will。"
+    },
+    {
+      "id": "11-6",
+      "type": "判断题",
+      "question": "Look! The children are play football on the playground, and their PE teacher is watching them closely.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "Look!为现在进行时的标志性提示词，表“此刻正在发生”，play的-ing形式为playing，题干中play为原形，用法错误，正确表达为are playing。",
+      "knowledgeExtension": "现在进行时的标志性时间状语/提示词：now, at the moment, look, listen, these days, recently等，遇到这些词时优先考虑现在进行时。"
+    },
+    {
+      "id": "11-7",
+      "type": "选择题",
+      "question": "I ______ to finish the project report by Friday, so I ______ overtime every evening this week.",
+      "options": [
+        "try; work",
+        "am trying; am working",
+        "tried; worked",
+        "will try; will work"
+      ],
+      "correctAnswer": "am trying; am working",
+      "explanation": "第一空表“现阶段正在努力做的动作”（试图完成报告），用am trying；第二空this week表“现阶段持续的动作”（每晚加班），用am working，符合现在进行时表“现阶段活动”的用法，故答案为am trying; am working。",
+      "knowledgeExtension": "现在进行时与一般现在时的区别：一般现在时表“经常性、习惯性动作”（He works overtime every day.）；现在进行时表“现阶段临时的动作”（He is working overtime this week.）。"
+    },
+    {
+      "id": "11-8",
+      "type": "判断题",
+      "question": "She is not like coffee; she prefers tea because she thinks coffee is too bitter.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "like为静态动词（表“喜好”），静态动词（如like, hate, love, know, believe等）不能用于现在进行时，需用一般现在时，正确表达为She does not like coffee，题干中is not like用法错误。",
+      "knowledgeExtension": "不能用于现在进行时的静态动词分类：1. 情感类（like, hate, love, prefer）；2. 认知类（know, understand, believe, remember）；3. 状态类（be, have, own, belong）。"
+    },
+    {
+      "id": "11-9",
+      "type": "选择题",
+      "question": "______ the manager ______ a meeting with the board of directors? I need to ask him about the budget approval.",
+      "options": [
+        "Do; have",
+        "Is; having",
+        "Did; have",
+        "Will; have"
+      ],
+      "correctAnswer": "Is; having",
+      "explanation": "语境表“此刻是否正在开会”，用现在进行时一般疑问句Is; having，have的-ing形式为having（去e加ing），故答案为Is; having。",
+      "knowledgeExtension": "以不发音e结尾的动词，-ing形式需去e加ing（have→having, take→taking, give→giving）；以ie结尾的动词变ie为y加ing（tie→tying, lie→lying）。"
+    },
+    {
+      "id": "11-10",
+      "type": "判断题",
+      "question": "They are planing to visit the new factory next Monday to check the production line.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "plan为重读闭音节动词（辅+元+辅），-ing形式需双写尾字母加ing（planning），题干中planing拼写错误，正确表达为are planning。",
+      "knowledgeExtension": "重读闭音节动词判断：1. 单词末尾为“辅音字母+元音字母+辅音字母”（如plan, stop, sit）；2. 最后一个音节重读，此时-ing形式需双写尾字母（如running, swimming, putting）。"
+    },
+    {
+      "id": "11-11",
+      "type": "选择题",
+      "question": "The price of oil ______ sharply these months due to global supply chain issues, and it ______ no sign of decreasing.",
+      "options": [
+        "rises; shows",
+        "is rising; is showing",
+        "rose; showed",
+        "will rise; will show"
+      ],
+      "correctAnswer": "is rising; is showing",
+      "explanation": "these months表“现阶段正在发生的变化”（油价持续上涨），两个并列动作均用现在进行时（is rising, is showing），强调“当前的趋势”，故答案为is rising; is showing。",
+      "knowledgeExtension": "现在进行时可表“当前正在发生的变化或趋势”，常用动词：rise, fall, increase, decrease, grow, develop等（如The population is growing rapidly. 人口正在快速增长）。"
+    },
+    {
+      "id": "11-12",
+      "type": "判断题",
+      "question": "He is having a lot of money, so he can afford to buy a new house in the city center.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "have此处表“拥有”，为静态动词，不能用于现在进行时，需用一般现在时has，正确表达为He has a lot of money，题干中is having用法错误。",
+      "knowledgeExtension": "have的动态用法（表“吃、喝、举办、进行”）可用于现在进行时（如He is having breakfast. 他正在吃早饭；They are having a party. 他们正在举办派对）；静态用法（表“拥有”）不能。"
+    },
+    {
+      "id": "11-13",
+      "type": "选择题",
+      "question": "My sister ______ in a foreign company now, and she ______ English every day to improve her communication skills.",
+      "options": [
+        "works; learns",
+        "is working; is learning",
+        "worked; learned",
+        "will work; will learn"
+      ],
+      "correctAnswer": "is working; is learning",
+      "explanation": "now表“当前的工作状态”（现阶段在外国公司工作），用is working；every day此处表“现阶段每天持续的动作”（为提升技能而学习），而非长期习惯，用is learning，故答案为is working; is learning。",
+      "knowledgeExtension": "every day与现在进行时连用，表“现阶段每天都在做的临时动作”（强调持续性）；与一般现在时连用，表“长期的习惯性动作”（强调规律性）。"
+    },
+    {
+      "id": "11-14",
+      "type": "判断题",
+      "question": "Listen! Someone is knock at the door. Could you please go and open it?",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "Listen!为现在进行时提示词，knock的-ing形式为knocking，现在进行时结构为is knocking，题干中knock为原形，用法错误，正确表达为is knocking。",
+      "knowledgeExtension": "动词-ing形式的发音规则：1. 一般动词加ing后读/ɪŋ/（working /ˈwɜːkɪŋ/）；2. 以t结尾的动词加ing后读/tɪŋ/（sitting /ˈsɪtɪŋ/）；3. 以d结尾的动词加ing后读/dɪŋ/（standing /ˈstændɪŋ/）。"
+    },
+    {
+      "id": "11-15",
+      "type": "选择题",
+      "question": "We ______ a team-building activity this weekend, and all employees ______ to participate actively.",
+      "options": [
+        "organize; encourage",
+        "are organizing; are encouraged",
+        "organized; were encouraged",
+        "will organize; will be encouraged"
+      ],
+      "correctAnswer": "are organizing; are encouraged",
+      "explanation": "第一空this weekend表“计划好的将来动作”（组织团建），用现在进行时are organizing；第二空表“现阶段被鼓励参与”，用现在进行时的被动语态are encouraged，故答案为are organizing; are encouraged。",
+      "knowledgeExtension": "现在进行时的被动语态结构：主语+am/is/are+being+过去分词（如The bridge is being built. 桥正在被建造；The letters are being typed. 信件正在被打印）。"
+    },
+    {
+      "id": "11-16",
+      "type": "判断题",
+      "question": "I am not understanding what you mean. Could you please explain it again more clearly?",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "understand为认知类静态动词，不能用于现在进行时，需用一般现在时，正确表达为I do not understand，题干中am not understanding用法错误。",
+      "knowledgeExtension": "静态动词的否定形式：用一般现在时的否定式（don’t/doesn’t+动词原形），如I don’t know（我不知道）、She doesn’t believe（她不相信），不能用am/is/are+not+动词-ing。"
+    },
+    {
+      "id": "11-17",
+      "type": "选择题",
+      "question": "______ your parents ______ for your birthday party? I heard you are preparing a big surprise for them.",
+      "options": [
+        "Do; come",
+        "Are; coming",
+        "Did; come",
+        "Will; come"
+      ],
+      "correctAnswer": "Are; coming",
+      "explanation": "语境表“计划好的将来动作”（父母要来参加生日派对），come为位移类动词，用现在进行时are coming表将来，比will come更强调“已安排好”，故答案为Are; coming。",
+      "knowledgeExtension": "常用现在进行时表将来的位移类动词：come, go, leave, arrive, start, begin, travel, fly, drive等（如The train is arriving in 10 minutes. 火车10分钟后到达）。"
+    },
+    {
+      "id": "11-18",
+      "type": "判断题",
+      "question": "The sun is shining brightly, and the birds are singing in the trees. It’s a beautiful day for a picnic.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "now语境下，shine和sing均为此刻正在发生的动作，用现在进行时is shining, are singing，结构正确，描述符合逻辑，题干表述正确。",
+      "knowledgeExtension": "现在进行时可同时描述多个正在发生的动作，常用and连接，形成“同时进行”的场景（如She is cooking in the kitchen, and her husband is cleaning the living room.）。"
+    },
+    {
+      "id": "11-19",
+      "type": "选择题",
+      "question": "The research team ______ a new experiment to test the effectiveness of the drug, and they ______ preliminary results next month.",
+      "options": [
+        "conducts; release",
+        "is conducting; will release",
+        "conducted; released",
+        "will conduct; will release"
+      ],
+      "correctAnswer": "is conducting; will release",
+      "explanation": "第一空表“现阶段正在进行的动作”（进行实验），用is conducting；第二空next month表“将来的动作”（发布结果），无“计划好”的暗示，用will release，逻辑连贯，故答案为is conducting; will release。",
+      "knowledgeExtension": "现在进行时表将来需满足“有明确计划或安排”，若仅为“将来会发生”且无计划，用will；可通过时间状语（如next month）结合语境判断。"
+    },
+    {
+      "id": "11-20",
+      "type": "判断题",
+      "question": "She is always lose her keys, which is really annoying because we have to help her find them every time.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "现在进行时+always表“频繁动作”时，动词需用-ing形式，lose的-ing形式为losing，题干中lose为原形，用法错误，正确表达为is always losing。",
+      "knowledgeExtension": "现在进行时+always/constantly/forever的结构中，动词必须用-ing形式，且需注意-ing的正确变化（如stop→stopping, lose→losing），不能用动词原形。"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+.LessonGroup {
+  margin-bottom: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e6ddd0;
+  /* 跳转时避开顶部 Header + 吸顶章节导航 */
+  scroll-margin-top: 88px;
+}
+
+.LessonGroup:last-child {
+  border-bottom: none;
+}
+
+.LessonGroup-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.LessonGroup-order {
+  flex-shrink: 0;
+  font-family: "Fraunces", "Songti SC", serif;
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1;
+  color: #2f6b4f;
+  letter-spacing: -0.03em;
+  min-width: 1.4em;
+}
+
+.LessonGroup-title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 650;
+  color: #1f2a24;
+  letter-spacing: -0.02em;
+}
+
+.LessonGroup-summary {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5c6b63;
+}
+
+.LessonGroup-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.LessonGroup-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.55);
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.LessonGroup-item:hover {
+  border-color: #c5d4cb;
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.LessonGroup-item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2a24;
+}
+
+.LessonGroup-item-summary {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #5c6b63;
+}
+
+@media (max-width: 640px) {
+  .LessonGroup-header {
+    gap: 12px;
+  }
+
+  .LessonGroup-order {
+    font-size: 24px;
+  }
+
+  .LessonGroup-title {
+    font-size: 19px;
+  }
+}

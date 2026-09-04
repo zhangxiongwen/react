@@ -1,0 +1,267 @@
+{
+  "title": "可数名词与不可数名词的用法（数量修饰+主谓一致）",
+  "knowledgePoint": "可数名词的数量修饰与主谓一致、不可数名词的量化表达、可数与不可数名词的转换、易混淆名词的可数性判断",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "9-1",
+      "type": "选择题",
+      "question": "The research team has collected ______ data from ______ different regions to support their conclusion.",
+      "options": [
+        "many; several",
+        "much; several",
+        "many; much",
+        "much; many"
+      ],
+      "correctAnswer": "much; several",
+      "explanation": "data在此处为不可数名词（表“数据”整体），需用much修饰；different regions为可数名词复数，several可修饰可数名词复数（表“几个”），故答案为much; several。",
+      "knowledgeExtension": "不可数名词常用修饰词：much, a little, little, some, any, a great deal of；可数名词复数常用修饰词：many, a few, few, several, a number of, some, any。"
+    },
+    {
+      "id": "9-2",
+      "type": "判断题",
+      "question": "There are a large number of informations about the new policy on the official website.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "information为不可数名词，无复数形式，不能用a number of（修饰可数名词复数）修饰，正确表达为a great deal of information或some information，题干中informations和a number of用法均错误。",
+      "knowledgeExtension": "常见不可数名词（抽象概念）：information（信息）、advice（建议）、knowledge（知识）、progress（进步）、news（新闻），均无复数形式，需用不可数名词修饰词。"
+    },
+    {
+      "id": "9-3",
+      "type": "选择题",
+      "question": "My mother bought ______ bread and ______ eggs from the supermarket this morning, and we will make sandwiches for lunch.",
+      "options": [
+        "a loaf of; a dozen",
+        "a loaf of; a dozen of",
+        "loaves of; a dozen",
+        "loaf of; dozen"
+      ],
+      "correctAnswer": "a loaf of; a dozen",
+      "explanation": "bread为不可数名词，量化表达用“a loaf of bread（一条面包）”；egg为可数名词，a dozen后直接接可数名词复数（a dozen eggs 一打鸡蛋），无需加of，故答案为a loaf of; a dozen。",
+      "knowledgeExtension": "不可数名词量化结构：“单位词+of+不可数名词”，常见单位词：a piece of（纸/面包/建议）、a bottle of（水/饮料）、a cup of（茶/咖啡）、a loaf of（面包）。"
+    },
+    {
+      "id": "9-4",
+      "type": "判断题",
+      "question": "The equipment in the laboratory are updated regularly to ensure the accuracy of the experiments.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "equipment为不可数名词（表“设备”总称），视为单数，主谓一致要求谓语动词用is，而非are，题干中are用法错误。",
+      "knowledgeExtension": "常见不可数名词（具体事物）：equipment（设备）、furniture（家具）、luggage（行李）、machinery（机械）、jewelry（珠宝），作主语时谓语动词用单数。"
+    },
+    {
+      "id": "9-5",
+      "type": "选择题",
+      "question": "______ of the land in this region is covered with forests, and ______ of the trees are over 100 years old.",
+      "options": [
+        "Two third; three fourth",
+        "Two thirds; three fourths",
+        "Two third; three fourths",
+        "Two thirds; three fourth"
+      ],
+      "correctAnswer": "Two thirds; three fourths",
+      "explanation": "分数表达中，分子大于1时分母需用复数形式（third→thirds，fourth→fourths）；第一空land为不可数名词，谓语动词用is；第二空trees为可数名词复数，谓语动词用are，故答案为Two thirds; three fourths。",
+      "knowledgeExtension": "分数修饰名词时的主谓一致：分数+of+不可数名词→单数谓语；分数+of+可数名词复数→复数谓语（如One third of the water is clean. Two fifths of the students are girls.）。"
+    },
+    {
+      "id": "9-6",
+      "type": "判断题",
+      "question": "She has three pieces of luggage and two pieces of bread in her suitcase for the trip.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "luggage和bread均为不可数名词，量化表达用“数词+piece(s) of+名词”，three pieces of luggage（三件行李）、two pieces of bread（两片面包）搭配正确，题干表述符合规则。",
+      "knowledgeExtension": "不可数名词量化时，单位词的单复数由前面的数词决定（a piece of→one piece of，two pieces of），名词本身始终用原形。"
+    },
+    {
+      "id": "9-7",
+      "type": "选择题",
+      "question": "The company offers ______ training courses for new employees, and each course provides ______ practical experience in the field.",
+      "options": [
+        "many; a great deal of",
+        "much; a lot of",
+        "many; many",
+        "much; much"
+      ],
+      "correctAnswer": "many; a great deal of",
+      "explanation": "training courses为可数名词复数，需用many修饰；experience此处为不可数名词（表“经验”），a great deal of可修饰不可数名词，故答案为many; a great deal of。",
+      "knowledgeExtension": "部分名词可兼作可数与不可数：experience（不可数，经验；可数，经历）、success（不可数，成功；可数，成功的人/事）、failure（不可数，失败；可数，失败的人/事）。"
+    },
+    {
+      "id": "9-8",
+      "type": "判断题",
+      "question": "A number of students in our class is from rural areas, and they all study very hard.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "a number of后接可数名词复数，作主语时谓语动词用复数，正确表达为A number of students...are，题干中is用法错误；若为the number of（……的数量），谓语动词用单数。",
+      "knowledgeExtension": "易混淆短语：a number of（许多，修饰可数名词复数，复数谓语）vs. the number of（……的数量，修饰可数名词复数，单数谓语）。"
+    },
+    {
+      "id": "9-9",
+      "type": "选择题",
+      "question": "We need to buy ______ fruit and ______ rice before the store closes, as we have guests coming tonight.",
+      "options": [
+        "some; a bag of",
+        "some; a bag",
+        "a few; a bag of",
+        "a few; a bag"
+      ],
+      "correctAnswer": "some; a bag of",
+      "explanation": "fruit此处为不可数名词（表“水果”总称），some可修饰不可数名词；rice为不可数名词，量化表达用“a bag of rice（一袋大米）”，故答案为some; a bag of。",
+      "knowledgeExtension": "fruit的可数性：表“水果总称”→不可数；表“多种水果”→可数（fruits），如There are many kinds of fruits in the store.（店里有多种水果）。"
+    },
+    {
+      "id": "9-10",
+      "type": "判断题",
+      "question": "He has little friends in this city, so he often feels lonely on weekends.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "friends为可数名词复数，little修饰不可数名词（表“很少，几乎没有”），修饰可数名词复数需用few，正确表达为few friends，题干中little用法错误。",
+      "knowledgeExtension": "few vs. little：few（修饰可数名词复数）、little（修饰不可数名词），均表“很少，几乎没有”（否定含义）；a few（修饰可数名词复数）、a little（修饰不可数名词），均表“一些”（肯定含义）。"
+    },
+    {
+      "id": "9-11",
+      "type": "选择题",
+      "question": "______ the furniture in the office ______ made of recycled materials, which reflects the company’s environmental concept.",
+      "options": [
+        "All; is",
+        "All; are",
+        "Every; is",
+        "Every; are"
+      ],
+      "correctAnswer": "All; is",
+      "explanation": "furniture为不可数名词，all可修饰不可数名词（表“所有的”），every后接可数名词单数（不能接不可数名词）；不可数名词作主语，谓语动词用is，故答案为All; is。",
+      "knowledgeExtension": "可修饰不可数名词的限定词：all, some, any, much, a little, little, a great deal of, a large amount of；可修饰可数名词单数的限定词：every, each, one, a/an。"
+    },
+    {
+      "id": "9-12",
+      "type": "判断题",
+      "question": "There is a great amount of books in the school library, covering various subjects from literature to science.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "a great amount of修饰不可数名词，books为可数名词复数，需用a great number of修饰，正确表达为a great number of books，题干中a great amount of用法错误。",
+      "knowledgeExtension": "易混淆修饰词：a great amount of（+不可数名词）、a large quantity of（+可数名词复数/不可数名词）、a great number of（+可数名词复数）。"
+    },
+    {
+      "id": "9-13",
+      "type": "选择题",
+      "question": "The team has made ______ progress in solving the technical problem, but they still have ______ difficulties to overcome.",
+      "options": [
+        "much; many",
+        "many; much",
+        "much; much",
+        "many; many"
+      ],
+      "correctAnswer": "much; many",
+      "explanation": "progress为不可数名词，需用much修饰；difficulties为可数名词复数，需用many修饰，故答案为much; many。",
+      "knowledgeExtension": "固定搭配：make progress（不可数，取得进步）、overcome difficulties（可数复数，克服困难）、solve problems（可数复数，解决问题），需记忆常见名词的可数性搭配。"
+    },
+    {
+      "id": "9-14",
+      "type": "判断题",
+      "question": "Some of the advice given by the expert are very practical and helpful for our project.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "advice为不可数名词，some of+不可数名词作主语时，谓语动词用单数，正确表达为Some of the advice...is，题干中are用法错误。",
+      "knowledgeExtension": "some of的主谓一致：some of+不可数名词→单数谓语；some of+可数名词复数→复数谓语（如Some of the water is dirty. Some of the apples are rotten.）。"
+    },
+    {
+      "id": "9-15",
+      "type": "选择题",
+      "question": "______ people attended the international forum, and ______ of them are experts from academic institutions.",
+      "options": [
+        "Thousands of; two third",
+        "Thousand of; two thirds",
+        "Thousands of; two thirds",
+        "Thousand of; two third"
+      ],
+      "correctAnswer": "Thousands of; two thirds",
+      "explanation": "thousand表“成千上万”时，需用复数形式加of（thousands of）；分数表达中分子大于1时分母用复数（two thirds），故答案为Thousands of; two thirds。",
+      "knowledgeExtension": "数词+thousand/hundred/million：表具体数字时用单数（two thousand people 两千人）；表泛指“成千上万”时用复数+of（thousands of people 成千上万的人）。"
+    },
+    {
+      "id": "9-16",
+      "type": "判断题",
+      "question": "The news about the new discovery in space are exciting, and it has attracted widespread attention from the public.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "news为不可数名词（形式为复数，含义为单数），作主语时谓语动词用is，正确表达为The news...is，题干中are用法错误。",
+      "knowledgeExtension": "形式为复数、含义为单数的不可数名词：news（新闻）、maths（数学）、physics（物理）、politics（政治）、economics（经济学），作主语时谓语动词用单数。"
+    },
+    {
+      "id": "9-17",
+      "type": "选择题",
+      "question": "She bought ______ new clothing for the trip, but she still needs ______ pair of comfortable shoes.",
+      "options": [
+        "some; a",
+        "a piece of; a",
+        "some; a piece of",
+        "a; a"
+      ],
+      "correctAnswer": "some; a",
+      "explanation": "clothing为不可数名词（表“衣物总称”），some可修饰不可数名词；shoe为可数名词，“a pair of shoes（一双鞋）”为固定搭配，此处省略shoes（避免重复），故答案为some; a。",
+      "knowledgeExtension": "clothing vs. clothes：clothing为不可数名词（总称），clothes为可数名词复数（具体衣物），如a piece of clothing（一件衣物）、a set of clothes（一套衣服）。"
+    },
+    {
+      "id": "9-18",
+      "type": "判断题",
+      "question": "We have a few milk left in the fridge, so we don’t need to buy more today.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "milk为不可数名词，a few修饰可数名词复数，修饰不可数名词需用a little，正确表达为a little milk，题干中a few用法错误。",
+      "knowledgeExtension": "a few vs. a little：a few（+可数名词复数，表“一些，有几个”），如a few apples；a little（+不可数名词，表“一些，有一点”），如a little milk。"
+    },
+    {
+      "id": "9-19",
+      "type": "选择题",
+      "question": "The number of ______ in the company has increased by 20% this year, and most of them have ______ years of work experience.",
+      "options": [
+        "employee; five",
+        "employees; five",
+        "employee; five more",
+        "employees; five more"
+      ],
+      "correctAnswer": "employees; five",
+      "explanation": "the number of后接可数名词复数（employees）；“five years of work experience”为固定表达（year用复数），five more years表“再多五年”，不符合语境，故答案为employees; five。",
+      "knowledgeExtension": "“数词+years of experience”为不可数名词的量化表达（experience表“经验”），如three years of teaching experience（三年教学经验）。"
+    },
+    {
+      "id": "9-20",
+      "type": "判断题",
+      "question": "A large quantity of food and water were sent to the disaster-stricken area to help the affected people.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "a large quantity of后接不可数名词（food, water）时，谓语动词可用单数或复数（英式英语常用单数，美式英语常用复数），题干中用were符合美式英语习惯，表述正确。",
+      "knowledgeExtension": "a quantity of/a large quantity of的主谓一致：后接不可数名词→单复数谓语均可；后接可数名词复数→复数谓语（如A large quantity of books are sold.）。"
+    }
+  ]
+}

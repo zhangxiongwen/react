@@ -1,0 +1,187 @@
+{
+  "title": "选择疑问句（or 连接，如Do you like coffee or tea?）",
+  "knowledgePoint": "选择疑问句的核心结构（一般疑问句+or+选项/特殊疑问句+or+选项）、语序规则、回答方式（直接选择不用yes/no）、or连接并列选项的语法一致性、与一般疑问句的区别",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "16-1",
+      "type": "选择题",
+      "question": "— ______ you prefer to work from home ______ go to the office tomorrow? — I prefer working from home to avoid the traffic jam.",
+      "options": ["Do; or", "Are; or", "Do; and", "Are; and"],
+      "correctAnswer": "Do; or",
+      "explanation": "谓语动词prefer是实义动词，一般疑问句需用助动词Do；选择疑问句用or连接两个并列选项，and用于肯定句表并列，不符合语境。",
+      "knowledgeExtension": "实义动词作谓语时，选择疑问句的结构为“Do/Does/Did+主语+动词原形+选项A+or+选项B？”。"
+    },
+    {
+      "id": "16-2",
+      "type": "判断题",
+      "question": "Is the meeting going to be held on Monday or on Tuesday? The manager hasn’t confirmed the exact date yet.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "句子为be动词引导的选择疑问句，or连接两个并列的时间状语（on Monday/on Tuesday），语序正确，语义逻辑通顺。",
+      "knowledgeExtension": "选择疑问句中，or连接的选项需保持语法结构一致（如均为介词短语、名词短语等）。"
+    },
+    {
+      "id": "16-3",
+      "type": "选择题",
+      "question": "— ______ is more suitable for the project—Mr. Li ______ Ms. Wang? — Ms. Wang, because she has more relevant experience.",
+      "options": ["Who; or", "Whom; or", "Who; and", "Whom; and"],
+      "correctAnswer": "Who; or",
+      "explanation": "疑问词询问“人”且作主语，用Who；选择疑问句用or连接两个并列的人名选项，Whom作宾语，不符合此处主语位置需求。",
+      "knowledgeExtension": "特殊疑问句型的选择疑问句结构为“疑问词+一般疑问句+选项A+or+选项B？”。"
+    },
+    {
+      "id": "16-4",
+      "type": "判断题",
+      "question": "Did they decide to take the train, the plane, or by bus? They need to arrive at the destination before Friday.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "or连接的选项语法结构不一致：the train/the plane是名词短语，by bus是介词短语，需统一为名词短语（the train, the plane, or the bus）或介词短语（by train, by plane, or by bus）。",
+      "knowledgeExtension": "选择疑问句中，or连接的多个选项需保持语法形式一致，避免结构混杂导致歧义。"
+    },
+    {
+      "id": "16-5",
+      "type": "选择题",
+      "question": "— ______ the new policy will benefit small businesses ______ large corporations more? — It will benefit both equally, according to the official statement.",
+      "options": ["Will; or", "Does; or", "Will; and", "Does; and"],
+      "correctAnswer": "Will; or",
+      "explanation": "句子为主语从句结构（the new policy will benefit...），选择疑问句需将助动词Will提前；or连接两个并列宾语（small businesses/large corporations），符合选择逻辑。",
+      "knowledgeExtension": "含从句的选择疑问句，需将主句的助动词/情态动词提前，保持主句语序正确。"
+    },
+    {
+      "id": "16-6",
+      "type": "判断题",
+      "question": "Would you like to have dinner at home or go to a restaurant? I can cook your favorite dishes if you choose to stay.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "句子为委婉请求型选择疑问句，Would you like to...后接两个并列的不定式结构（have dinner/go to a restaurant），or连接符合规则，语义连贯。",
+      "knowledgeExtension": "Would you like to...引导的选择疑问句，or连接的选项需为并列的不定式短语（to do sth.）。"
+    },
+    {
+      "id": "16-7",
+      "type": "选择题",
+      "question": "— ______ language do you want to learn next—Spanish ______ Portuguese? — Spanish, because it’s more widely used in international business.",
+      "options": ["Which; or", "What; or", "Which; and", "What; and"],
+      "correctAnswer": "Which; or",
+      "explanation": "疑问词询问“在特定范围内选择哪一个”，用Which；选择疑问句用or连接两个并列的语言名称选项，What无“限定范围选择”的含义。",
+      "knowledgeExtension": "选择范围明确时用Which，范围不明确时用What（如What language do you speak?）。"
+    },
+    {
+      "id": "16-8",
+      "type": "判断题",
+      "question": "Has she finished reading the novel or the article? She told me she would finish one of them today.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "句子为现在完成时的选择疑问句，助动词Has提前，or连接两个并列的名词宾语（the novel/the article），语序正确，与后文“one of them”逻辑一致。",
+      "knowledgeExtension": "完成时态的选择疑问句结构为“Have/Has/Had+主语+过去分词+选项A+or+选项B？”。"
+    },
+    {
+      "id": "16-9",
+      "type": "选择题",
+      "question": "— ______ will the conference start—at 9 a.m. ______ at 10 a.m.? — At 9 a.m., so we need to arrive 15 minutes earlier.",
+      "options": ["When; or", "What time; or", "When; and", "What time; and"],
+      "correctAnswer": "What time; or",
+      "explanation": "疑问词询问“具体时间点”，用What time更精准；选择疑问句用or连接两个并列的时间点选项，When侧重“时间段”，不符合此处语境。",
+      "knowledgeExtension": "询问具体时间点用What time/When，选择疑问句中需连接两个明确的时间选项。"
+    },
+    {
+      "id": "16-10",
+      "type": "判断题",
+      "question": "Do you want to buy the red dress, the blue one, or green? I think the red one suits you best.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "or连接的选项语法结构不一致：the red dress/the blue one是名词短语（含限定词），green是形容词，需补充为the green one保持一致。",
+      "knowledgeExtension": "选择疑问句中，并列选项需保持词性、结构一致，避免因省略导致语法残缺。"
+    },
+    {
+      "id": "16-11",
+      "type": "选择题",
+      "question": "— ______ the team use traditional methods ______ adopt new technology to solve the problem? — They will adopt new technology for higher efficiency.",
+      "options": ["Will; or", "Shall; or", "Will; and", "Shall; and"],
+      "correctAnswer": "Will; or",
+      "explanation": "主语the team为第三人称，一般将来时选择疑问句用Will引导；or连接两个并列的谓语动词短语（use traditional methods/adopt new technology），Shall仅用于第一人称。",
+      "knowledgeExtension": "第一人称（I/we）的将来时选择疑问句可用Shall，第三人称用Will。"
+    },
+    {
+      "id": "16-12",
+      "type": "判断题",
+      "question": "Is this book about history, literature, or science fiction? I’m looking for a science fiction book to read in my spare time.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "句子为be动词引导的选择疑问句，or连接三个并列的名词短语（history/literature/science fiction），结构一致，语义与后文需求匹配。",
+      "knowledgeExtension": "选择疑问句可连接两个及以上选项，or放在最后一个选项前，其余选项用逗号分隔。"
+    },
+    {
+      "id": "16-13",
+      "type": "选择题",
+      "question": "— ______ did you receive the invitation—by email ______ by phone? — By email, it was sent last Monday.",
+      "options": ["How; or", "What; or", "How; and", "What; and"],
+      "correctAnswer": "How; or",
+      "explanation": "疑问词询问“方式”，用How；选择疑问句用or连接两个并列的方式状语（by email/by phone），What询问“内容”，不符合语境。",
+      "knowledgeExtension": "询问方式、方法的选择疑问句，用How引导，or连接并列的方式选项。"
+    },
+    {
+      "id": "16-14",
+      "type": "判断题",
+      "question": "Did he go to the supermarket to buy food, drinks, or to buy snacks? He needs to prepare for the party tonight.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "or连接的选项语法结构不一致：buy food/drinks是不定式短语省略to（与前文to buy并列），to buy snacks重复to，需改为buy snacks保持一致。",
+      "knowledgeExtension": "并列不定式短语作目的状语时，or连接的后续选项可省略to，保持结构简洁一致。"
+    },
+    {
+      "id": "16-15",
+      "type": "选择题",
+      "question": "— ______ is the better choice for the team leader—someone with experience ______ someone with enthusiasm? — Someone with both, I think.",
+      "options": ["Who; or", "Which; or", "Who; and", "Which; and"],
+      "correctAnswer": "Which; or",
+      "explanation": "疑问词询问“两个选项中哪一个”，用Which；or连接两个并列的名词短语（someone with experience/someone with enthusiasm），Who询问“具体的人”，不符合此处“选择类型”的语境。",
+      "knowledgeExtension": "选择疑问句中，询问“哪一个选项更优”时用Which，询问“具体的人”用Who。"
+    },
+    {
+      "id": "16-16",
+      "type": "判断题",
+      "question": "Can you speak English fluently or French? I need someone who can communicate with foreign clients.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "or连接的选项语法结构不一致：speak English fluently是“动词+宾语+副词”，French是名词，需补充为speak French fluently保持一致。",
+      "knowledgeExtension": "选择疑问句中，并列的谓语短语需保持结构完整，避免因省略导致语义不清晰。"
+    },
+    {
+      "id": "16-17",
+      "type": "选择题",
+      "question": "— ______ will the project be completed—in three months ______ in six months? — In three months, if everything goes smoothly.",
+      "options": ["How soon; or", "How long; or", "How soon; and", "How long; and"],
+      "correctAnswer": "How soon; or",
+      "explanation": "疑问词询问“多久之后”，用How soon；选择疑问句用or连接两个并列的时间段选项（in three months/in six months），How long询问“动作持续时间”，不符合语境。",
+      "knowledgeExtension": "How soon用于询问“将来多久之后”，回答用in+时间段；How long用于询问“持续时间”，回答用for+时间段。"
+    },
+    {
+      "id": "16-18",
+      "type": "判断题",
+      "question": "Are we going to visit the museum, the art gallery, or the zoo this weekend? Everyone can vote for their favorite place.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "句子为be going to结构的选择疑问句，or连接三个并列的地点名词（the museum/the art gallery/the zoo），结构一致，语义逻辑通顺。",
+      "knowledgeExtension": "选择疑问句连接多个选项时，需确保所有选项属于同一类别（如均为地点、时间、事物等）。"
+    },
+    {
+      "id": "16-19",
+      "type": "选择题",
+      "question": "— ______ do you think is more important for success—hard work ______ talent? — Hard work, because talent without effort is useless.",
+      "options": ["What; or", "Which; or", "What; and", "Which; and"],
+      "correctAnswer": "What; or",
+      "explanation": "疑问词询问“抽象事物”，用What；选择疑问句用or连接两个并列的名词（hard work/talent），Which侧重“特定范围内的选择”，此处无明确限定范围，用What更合适。",
+      "knowledgeExtension": "询问抽象概念、无明确限定范围的选择时用What，有明确范围时用Which。"
+    },
+    {
+      "id": "16-20",
+      "type": "判断题",
+      "question": "Did she choose to study abroad or staying in her home country? Her parents support whatever decision she makes.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "or连接的选项语法结构不一致：to study abroad是不定式，staying in her home country是动名词，需统一为to study abroad or stay（不定式）或studying abroad or staying（动名词）。",
+      "knowledgeExtension": "选择疑问句中，or连接的选项需保持词性一致（如均为不定式、动名词、名词等），确保语法平行。"
+    }
+  ]
+}

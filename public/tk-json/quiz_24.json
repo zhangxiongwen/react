@@ -1,0 +1,187 @@
+{
+  "title": "被动语态（基础结构 be+done，一般现在/过去时被动）",
+  "knowledgePoint": "被动语态的基础结构（be+过去分词）、一般现在时/一般过去时被动的用法、主动语态与被动语态的转换、及物动词与被动语态的适配、被动语态中by短语的使用场景",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "24-1",
+      "type": "选择题",
+      "question": "The annual international conference ______ in Shanghai every November—it ______ by experts and scholars from over 50 countries last year.",
+      "options": ["holds; was attended", "is held; attended", "is held; was attended", "held; was attended"],
+      "correctAnswer": "is held; was attended",
+      "explanation": "第一空“每年11月举办”是常规动作，用一般现在时被动is held；第二空“去年被参加”是过去动作，用一般过去时被动was attended，符合被动语态的时态适配规则。",
+      "knowledgeExtension": "一般现在时被动表常规、客观的被动动作（常搭配every/day/usually等）；一般过去时被动表过去发生的被动动作（常搭配yesterday/last year/in 2020等）。"
+    },
+    {
+      "id": "24-2",
+      "type": "判断题",
+      "question": "The ancient manuscripts are kept in a special vault to protect them from damage. They were discovered in a remote village by archaeologists ten years ago.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“手稿被保存在特殊金库”用一般现在时被动are kept；第二空“十年前被考古学家发现”用一般过去时被动were discovered，结构正确，逻辑连贯。",
+      "knowledgeExtension": "被动语态中，by短语用于明确动作执行者，若执行者不重要或未知，可省略（如The letter was sent yesterday. 无需说by谁）。"
+    },
+    {
+      "id": "24-3",
+      "type": "选择题",
+      "question": "The new policy ______ to reduce carbon emissions—related measures ______ in most cities since last month.",
+      "options": ["is designed; are implemented", "designs; implement", "is designed; have been implemented", "designed; were implemented"],
+      "correctAnswer": "is designed; have been implemented",
+      "explanation": "第一空“政策被设计”是客观事实，用一般现在时被动is designed；第二空“since last month”提示用现在完成时被动have been implemented，表“从过去持续到现在的被动动作”。",
+      "knowledgeExtension": "虽题干聚焦一般现在/过去时被动，但需注意：since/for+时间段搭配现在完成时被动，表持续影响。"
+    },
+    {
+      "id": "24-4",
+      "type": "判断题",
+      "question": "The bridge was built in 2010—it connects two major cities and is used by thousands of vehicles every day.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“2010年被建造”用一般过去时被动was built；“每天被数千车辆使用”用一般现在时被动is used，时态与语境匹配，语法正确。",
+      "knowledgeExtension": "被动语态的核心逻辑：主语是动作的承受者，需确保谓语动词为“be+过去分词”结构。"
+    },
+    {
+      "id": "24-5",
+      "type": "选择题",
+      "question": "— Why ______ the meeting ______? — Because the key speaker ______ ill suddenly. It ______ again next Monday.",
+      "options": ["was; canceled; fell; will be held", "did; cancel; fell; will hold", "was; canceled; felt; is held", "did; cancel; felt; holds"],
+      "correctAnswer": "was; canceled; fell; will be held",
+      "explanation": "第一空“会议被取消”用一般过去时被动was canceled；第二空“突然生病”是主动动作，用fell ill（fall的过去式）；第三空“下周一被再次举办”用一般将来时被动will be held，符合动作逻辑。",
+      "knowledgeExtension": "不及物动词（如fall ill）无被动语态，需用主动形式表达；及物动词（cancel/hold）需根据主被动关系选择语态。"
+    },
+    {
+      "id": "24-6",
+      "type": "判断题",
+      "question": "The report is being written by the research team now—they will submit it to the committee next week. It was started last month and has made great progress.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“报告被开始”需用一般过去时被动was started，题干后半句“has made great progress”的主语应为the team（主动）或the report（被动has been made），存在主谓搭配错误，被动语态使用不连贯。",
+      "knowledgeExtension": "同一语境中，被动语态的主语需保持一致，避免“报告被开始”后接“报告取得进展”的逻辑矛盾（进展需由人主动推进）。"
+    },
+    {
+      "id": "24-7",
+      "type": "选择题",
+      "question": "The old building ______ not ______ down—it ______ as a historical landmark by the government. Renovations ______ last year to preserve its original structure.",
+      "options": ["is; pulled; recognizes; were carried out", "was; pulled; is recognized; carried out", "is; pulled; is recognized; were carried out", "was; pulled; recognized; carried out"],
+      "correctAnswer": "is; pulled; is recognized; were carried out",
+      "explanation": "第一空“建筑不被拆除”是客观规定，用一般现在时被动is not pulled；第二空“被认定为历史地标”用一般现在时被动is recognized；第三空“去年进行翻新”用一般过去时被动were carried out，符合时态和语态规则。",
+      "knowledgeExtension": "被动语态的否定结构：be not+过去分词（一般现在时→is/are not+done；一般过去时→was/were not+done）。"
+    },
+    {
+      "id": "24-8",
+      "type": "判断题",
+      "question": "He was praised by his teacher for his excellent performance in the exam. His hard work was finally paid off with good grades.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "pay off（取得成功/得到回报）是不及物动词短语，无被动语态，需改为主动形式“His hard work finally paid off”，题干误用被动语态。",
+      "knowledgeExtension": "常见无被动语态的动词/短语：happen/occur/take place/break out/pay off/come true等，需牢记并避免误用。"
+    },
+    {
+      "id": "24-9",
+      "type": "选择题",
+      "question": "The data ______ carefully before it ______ to the public. Errors ______ in the initial analysis, so revisions ______ immediately.",
+      "options": ["checks; releases; found; made", "is checked; is released; were found; were made", "is checked; releases; found; made", "checks; is released; were found; were made"],
+      "correctAnswer": "is checked; is released; were found; were made",
+      "explanation": "第一空“数据被仔细检查”用一般现在时被动is checked；第二空“被公之于众”用一般现在时被动is released；第三空“错误被发现”用一般过去时被动were found；第四空“修订被进行”用一般过去时被动were made，符合逻辑链。",
+      "knowledgeExtension": "被动语态可用于描述流程性动作（如数据检查→发布→发现错误→修订），使表述更客观。"
+    },
+    {
+      "id": "24-10",
+      "type": "判断题",
+      "question": "The book was written by a famous author in 2005—it has been translated into 12 languages and is sold in over 50 countries.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“2005年被写”用一般过去时被动was written；“被翻译成12种语言”用现在完成时被动has been translated；“在50多个国家销售”用一般现在时被动is sold，时态和语态均正确。",
+      "knowledgeExtension": "一般现在时被动可表“产品被销售/使用”等常规状态，无需强调具体时间。"
+    },
+    {
+      "id": "24-11",
+      "type": "选择题",
+      "question": "— ______ the letters ______ yet? — No, they ______ yesterday and ______ now. They ______ tomorrow morning.",
+      "options": ["Have; sent; were received; are being sorted; will be posted", "Are; sent; received; sorted; will post", "Have; been sent; were received; are being sorted; will be posted", "Are; been sent; were received; sorted; will be posted"],
+      "correctAnswer": "Have; been sent; were received; are being sorted; will be posted",
+      "explanation": "第一空“信件被寄出了吗”用现在完成时被动Have; been sent（yet提示）；第二空“昨天被收到”用一般过去时被动were received；第三空“现在被分类”用现在进行时被动are being sorted；第四空“明天早上被邮寄”用一般将来时被动will be posted，符合时间线逻辑。",
+      "knowledgeExtension": "现在完成时被动表“动作是否已完成”，常搭配yet/already/so far等标志词。"
+    },
+    {
+      "id": "24-12",
+      "type": "判断题",
+      "question": "The problem was discussed at the meeting yesterday—all participants gave their opinions, but no solution was reached.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“问题在昨天的会议上被讨论”用一般过去时被动was discussed；“解决方案未被达成”用一般过去时被动was not reached，符合“会议讨论问题但未达成共识”的逻辑，语法正确。",
+      "knowledgeExtension": "及物动词（discuss/reach）的过去分词需准确拼写（discussed/reached），避免拼写错误影响语态表达。"
+    },
+    {
+      "id": "24-13",
+      "type": "选择题",
+      "question": "The festival ______ every spring to celebrate the harvest—it ______ for over 1,000 years. Last year, it ______ by more than 100,000 tourists.",
+      "options": ["celebrates; exists; attended", "is celebrated; has existed; was attended", "is celebrated; exists; was attended", "celebrated; has existed; attended"],
+      "correctAnswer": "is celebrated; has existed; was attended",
+      "explanation": "第一空“节日被庆祝”用一般现在时被动is celebrated；第二空“存在超过1000年”用现在完成时has existed（主动，exist无被动）；第三空“去年被10万多名游客参加”用一般过去时被动was attended，符合规则。",
+      "knowledgeExtension": "存在类动词（exist/live/occur）无被动语态，需用主动形式表达“存在/发生”。"
+    },
+    {
+      "id": "24-14",
+      "type": "判断题",
+      "question": "The machine is made in China and is exported to many parts of the world. It was invented by a Chinese engineer in the 1990s.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“机器在中国被制造”用一般现在时被动is made；“被出口到世界许多地方”用一般现在时被动is exported；“20世纪90年代被中国工程师发明”用一般过去时被动was invented，表述客观，语法正确。",
+      "knowledgeExtension": "产品的生产、出口、发明等场景，常用被动语态强调“被制造/出口/发明”的属性，而非动作执行者。"
+    },
+    {
+      "id": "24-15",
+      "type": "选择题",
+      "question": "The decision ______ after a thorough investigation—all relevant factors ______ into account. The results ______ to the public next week.",
+      "options": ["was made; were taken; will be announced", "made; took; will announce", "was made; took; will be announced", "made; were taken; will announce"],
+      "correctAnswer": "was made; were taken; will be announced",
+      "explanation": "第一空“决定被做出”用一般过去时被动was made；第二空“相关因素被考虑”用一般过去时被动were taken（take into account）；第三空“结果被公布”用一般将来时被动will be announced，符合被动语态的搭配规则。",
+      "knowledgeExtension": "固定短语的被动形式：take into account→be taken into account；make a decision→a decision be made，需保持短语完整性。"
+    },
+    {
+      "id": "24-16",
+      "type": "判断题",
+      "question": "She was offered a promotion by the company because of her outstanding work. She accepted it and will start her new role next month.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“被提供晋升机会”用一般过去时被动was offered；后半句“接受机会”用主动accepted，主动与被动切换自然，逻辑连贯，语法正确。",
+      "knowledgeExtension": "同一主语的动作可灵活切换主被动：“被提供（被动）→接受（主动）”，符合“承受动作→主动回应”的逻辑。"
+    },
+    {
+      "id": "24-17",
+      "type": "选择题",
+      "question": "The exam papers ______ by the teachers now—they ______ tomorrow morning. The results ______ within a week.",
+      "options": ["are marking; will be returned; will be released", "are being marked; will return; will release", "are being marked; will be returned; will be released", "mark; will be returned; will be released"],
+      "correctAnswer": "are being marked; will be returned; will be released",
+      "explanation": "第一空“试卷现在被老师批改”用现在进行时被动are being marked；第二空“明天早上被归还”用一般将来时被动will be returned；第三空“一周内被公布”用一般将来时被动will be released，符合时间逻辑和语态规则。",
+      "knowledgeExtension": "现在进行时被动表“此时此刻正在被进行的动作”，常搭配now/at the moment等标志词。"
+    },
+    {
+      "id": "24-18",
+      "type": "判断题",
+      "question": "The accident was happened on a rainy night—three cars were involved and several people were injured.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "happen是不及物动词，无被动语态，需改为主动形式“The accident happened”，题干误用被动语态，语法错误。",
+      "knowledgeExtension": "不及物动词（happen/occur/break out等）的核心特征：不能直接接宾语，因此无被动语态，只能用主动形式表达“发生/爆发”。"
+    },
+    {
+      "id": "24-19",
+      "type": "选择题",
+      "question": "The rules ______ to ensure everyone’s safety—they ______ strictly. Anyone who breaks them ______ punished.",
+      "options": ["are made; must be followed; will be", "make; must follow; will", "are made; must follow; will be", "made; must be followed; will"],
+      "correctAnswer": "are made; must be followed; will be",
+      "explanation": "第一空“规则被制定”用一般现在时被动are made；第二空“必须被严格遵守”用情态动词被动must be followed；第三空“违反规则会被惩罚”用一般将来时被动will be punished，符合被动语态的多层级应用。",
+      "knowledgeExtension": "情态动词被动结构：情态动词+be+过去分词（如must be followed/should be done/can be used）。"
+    },
+    {
+      "id": "24-20",
+      "type": "判断题",
+      "question": "The project was completed ahead of schedule—all tasks were finished on time and the quality was met the required standards.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“质量达到要求标准”需用主动形式“the quality met the required standards”（meet是及物动词，主语quality是动作执行者），或“the required standards were met”（主语为standards），题干主谓搭配错误，被动语态使用不当。",
+      "knowledgeExtension": "被动语态的主语必须是动作的承受者，若主语是动作执行者，需用主动语态，避免主谓逻辑矛盾。"
+    }
+  ]
+}

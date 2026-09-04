@@ -1,0 +1,187 @@
+{
+  "title": "冠词的特殊用法（零冠词场景，如球类/语言前不加 the）",
+  "knowledgePoint": "零冠词的核心场景（球类/棋类/语言/学科/三餐/节日等）、定冠词 the 的特殊限定用法、不定冠词 a/an 的特殊搭配、冠词在固定短语中的差异（加 the 与不加 the 的语义区别）、专有名词前冠词的使用规则",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "44-1",
+      "type": "选择题",
+      "question": "She plays ______ piano very well, but she doesn’t like playing ______ basketball. She often says ______ music is her favorite subject at school.",
+      "options": ["the; /; /", "a; the; /", "the; the; the", "a; /; the"],
+      "correctAnswer": "the; /; /",
+      "explanation": "第一空“play+乐器”需加定冠词the；第二空“play+球类”用零冠词；第三空music表抽象概念“音乐”，用零冠词，符合“乐器加the+球类零冠词+抽象名词零冠词”逻辑。",
+      "knowledgeExtension": "零冠词常见场景：球类（basketball/football）、棋类（chess/go）、语言（English/Chinese）、学科（maths/history）、三餐（breakfast/lunch），前不加the。"
+    },
+    {
+      "id": "44-2",
+      "type": "判断题",
+      "question": "He is studying the Chinese and the history at university. He hopes to visit the Great Wall and learn more about the Chinese culture next year.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“语言Chinese”和“学科history”前需用零冠词，去掉the；第二句“the Great Wall”（专有名词加the）和“Chinese culture”（抽象文化零冠词）用法正确，核心错误为语言和学科前多余加the。",
+      "knowledgeExtension": "单个语言、学科名称前用零冠词；若语言后接language，需加the（如the Chinese language）。"
+    },
+    {
+      "id": "44-3",
+      "type": "选择题",
+      "question": "______ Spring Festival is one of ______ most important festivals in China. Families usually get together to have ______ big dinner on ______ Eve of Spring Festival.",
+      "options": ["The; the; a; the", "/; the; a; /", "The; /; the; the", "/; /; a; /"],
+      "correctAnswer": "The; the; a; the",
+      "explanation": "第一空“传统节日Spring Festival”前加the；第二空“形容词最高级most important”前加the；第三空“一顿丰盛的晚餐”用不定冠词a；第四空“Eve前加the表特指”，符合“节日加the+最高级加the+泛指单数加a+特指加the”逻辑。",
+      "knowledgeExtension": "传统节日（the Spring Festival/the Mid-Autumn Festival）前加the；西方节日（Christmas/New Year's Day）前用零冠词，需特殊记忆。"
+    },
+    {
+      "id": "44-4",
+      "type": "判断题",
+      "question": "We usually have breakfast at 7 o’clock and have the supper at 6 o’clock in the evening. He had a big lunch with his friends yesterday and talked about his trip to the Europe.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“三餐breakfast/supper”前用零冠词，去掉the；第二句“a big lunch”（泛指加a）用法正确，但“Europe”（专有名词大洲）前用零冠词，去掉the，核心错误为三餐和大洲前多余加the。",
+      "knowledgeExtension": "三餐前一般用零冠词，若有形容词修饰表“一顿……的饭”，加不定冠词（a big breakfast）；大洲、国家、城市等专有名词前通常用零冠词（China/Asia/Beijing）。"
+    },
+    {
+      "id": "44-5",
+      "type": "选择题",
+      "question": "He went to ______ hospital to visit his sick friend yesterday. His friend works in ______ hospital near our school. ______ hospital is one of the best in the city.",
+      "options": ["the; a; The", "/; a; The", "the; /; A", "/; /; The"],
+      "correctAnswer": "the; a; The",
+      "explanation": "第一空“去医院探望病人”加the（表特定用途场所）；第二空“一家医院”用不定冠词a（泛指）；第三空“特指前文提到的医院”加the，符合“特定用途加the+泛指加a+特指加the”逻辑。",
+      "knowledgeExtension": "固定场所（hospital/school/prison）：表“去场所做对应事情”（看病/上学/坐牢）用零冠词；表“去场所做其他事情”（探病/参观）加the。"
+    },
+    {
+      "id": "44-6",
+      "type": "判断题",
+      "question": "She plays the chess with her father every weekend. They often talk about the life and study after the game. She hopes to join a chess club next term.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“play+棋类chess”用零冠词，去掉the；第二句“life and study”表抽象概念，用零冠词，去掉the；第三句“a chess club”（泛指加a）用法正确，核心错误为棋类和抽象名词前多余加the。",
+      "knowledgeExtension": "棋类（chess/chess）、牌类（cards/poker）前用零冠词，“play+棋类/牌类”无需加the。"
+    },
+    {
+      "id": "44-7",
+      "type": "选择题",
+      "question": "______ English is ______ international language. We should learn ______ English well to communicate with people from all over ______ world.",
+      "options": [" /; an; /; the", "The; an; the; the", "/; a; /; /", "The; a; the; /"],
+      "correctAnswer": " /; an; /; the",
+      "explanation": "第一空“语言English”前用零冠词；第二空“一门国际语言”用不定冠词an（international以元音音素开头）；第三空“learn+语言”用零冠词；第四空“all over the world”（固定短语加the），符合“语言零冠词+泛指单数加an+语言零冠词+固定短语加the”逻辑。",
+      "knowledgeExtension": "不定冠词a/an的区别：以辅音音素开头的单词前用a，以元音音素开头的单词前用an（如an hour/an honest man），需看发音而非拼写。"
+    },
+    {
+      "id": "44-8",
+      "type": "判断题",
+      "question": "He is good at playing the guitar and the violin. He often performs at the school concerts and wins a lot of praise. He dreams of becoming a musician in the future.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句“play+乐器guitar/violin”前加the（正确）；第二句“school concerts”（泛指不加the）和“a lot of praise”（抽象名词零冠词）用法正确；第三句“a musician”（泛指加a）用法正确，所有冠词使用均符合规则。",
+      "knowledgeExtension": "“play+乐器”是定冠词the的固定用法，乐器名称前必须加the，无例外（如the piano/the drums）。"
+    },
+    {
+      "id": "44-9",
+      "type": "选择题",
+      "question": "We will have ______ exam in ______ history next week. ______ exam will cover the history of ______ Tang Dynasty.",
+      "options": ["an; /; The; the", "a; the; An; /", "an; the; The; /", "a; /; An; the"],
+      "correctAnswer": "an; /; The; the",
+      "explanation": "第一空“一场考试”用不定冠词an（exam以元音音素开头）；第二空“学科history”前用零冠词；第三空“特指下周的考试”加the；第四空“朝代Tang Dynasty”前加the，符合“泛指加an+学科零冠词+特指加the+朝代加the”逻辑。",
+      "knowledgeExtension": "朝代、朝代、党派、组织等专有名词前加the（如the Qing Dynasty/the Communist Party of China）；学科前用零冠词，即使有形容词修饰（如interesting history）也不加the。"
+    },
+    {
+      "id": "44-10",
+      "type": "判断题",
+      "question": "She went to the school to pick up her brother after work. The school is about 10 minutes’ walk from her office. She often waits for him at gate of the school.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“去学校接人”加the（正确）；第二句“特指前文提到的学校”加the（正确）；第三句“gate前加the表特指”，应为at the gate of the school，核心错误为特指的可数名词前漏加the。",
+      "knowledgeExtension": "可数名词单数表特指时，必须加定冠词the；表泛指时用不定冠词a/an或零冠词（复数），不可单独使用。"
+    },
+    {
+      "id": "44-11",
+      "type": "选择题",
+      "question": "______ Himalayas are ______ highest mountains in the world. Many people dream of climbing ______ mountains one day.",
+      "options": ["The; the; the", "/; the; /", "The; /; the", "/; /; /"],
+      "correctAnswer": "The; the; the",
+      "explanation": "第一空“山脉Himalayas”前加the；第二空“形容词最高级highest”前加the；第三空“特指喜马拉雅山脉”加the，符合“山脉加the+最高级加the+特指加the”逻辑。",
+      "knowledgeExtension": "山脉、群岛、河流、海洋等专有名词前加the（如the Alps/the Yangtze River/the Pacific Ocean）；单个山峰前用零冠词（如Mount Qomolangma）。"
+    },
+    {
+      "id": "44-12",
+      "type": "判断题",
+      "question": "He likes listening to the music and reading the books in his free time. He often goes to the library to borrow books about the science and technology.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“music”（抽象名词零冠词）和“books”（泛指复数零冠词），去掉the；第二句“science and technology”（抽象概念零冠词），去掉the，核心错误为抽象名词和泛指复数前多余加the。",
+      "knowledgeExtension": "抽象名词（music/love/happiness）和泛指的可数名词复数（books/students）前用零冠词，表一类事物或抽象概念。"
+    },
+    {
+      "id": "44-13",
+      "type": "选择题",
+      "question": "She has ______ uncle who works as ______ doctor in ______ United States. ______ uncle often tells her stories about his work.",
+      "options": ["an; a; the; The", "a; a; /; An", "an; the; the; /", "a; the; /; The"],
+      "correctAnswer": "an; a; the; The",
+      "explanation": "第一空“uncle以元音音素开头”用an；第二空“一名医生”用a；第三空“国家United States”前加the；第四空“特指前文提到的叔叔”加the，符合“元音音素加an+辅音音素加a+专有名词加the+特指加the”逻辑。",
+      "knowledgeExtension": "以元音字母u开头的单词，若发音为/juː/（如university），前用a；若发音为/ʌ/（如uncle），前用an，需根据发音判断。"
+    },
+    {
+      "id": "44-14",
+      "type": "判断题",
+      "question": "We celebrate the Christmas on December 25th every year. People usually give gifts to their friends and family during the festival. It is a time for joy and peace.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“西方节日Christmas”前用零冠词，去掉the；第二句“the festival”（特指圣诞节）加the（正确）；第三句“a time”（泛指加a）用法正确，核心错误为西方节日前多余加the。",
+      "knowledgeExtension": "西方传统节日（Christmas/Easter/Thanksgiving）前用零冠词；中国传统节日（the Spring Festival/the Dragon Boat Festival）前加the，这是中西节日冠词用法的核心区别。"
+    },
+    {
+      "id": "44-15",
+      "type": "选择题",
+      "question": "______ sun rises in ______ east and sets in ______ west. ______ earth goes around ______ sun.",
+      "options": ["The; the; the; The; the", "/; /; /; /; /", "The; /; /; The; /", "/; the; the; /; the"],
+      "correctAnswer": "The; the; the; The; the",
+      "explanation": "第一空“独一无二的天体sun”前加the；第二、三空“方位east/west”前加the；第四空“独一无二的天体earth”前加the；第五空“特指太阳”加the，符合“独一无二事物加the+方位加the+特指加the”逻辑。",
+      "knowledgeExtension": "独一无二的事物（sun/earth/moon/world/universe）前必须加the；方位名词（east/west/north/south）前通常加the。"
+    },
+    {
+      "id": "44-16",
+      "type": "判断题",
+      "question": "He plays basketball very well and is on the school team. He often practices after the school and participates in the competitions. He hopes to become a professional player.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“play basketball”（零冠词）和“the school team”（特指加the）用法正确；第二句“after school”（固定短语零冠词），去掉the，“competitions”（泛指复数零冠词），去掉the，核心错误为固定短语和泛指复数前多余加the。",
+      "knowledgeExtension": "固定短语“after school/at home/in bed”等前用零冠词，不可随意加the；泛指的竞赛、活动等复数名词前用零冠词。"
+    },
+    {
+      "id": "44-17",
+      "type": "选择题",
+      "question": "She is studying ______ medicine at university and wants to be ______ doctor for ______ children. She thinks ______ medicine is a noble profession.",
+      "options": [" /; a; /; /", "the; a; the; the", "/; the; /; the", "the; the; the; /"],
+      "correctAnswer": " /; a; /; /",
+      "explanation": "第一空“学科medicine”前用零冠词；第二空“一名医生”用a；第三空“children”（泛指复数零冠词）；第四空“medicine”（抽象概念零冠词），符合“学科零冠词+泛指加a+泛指复数零冠词+抽象名词零冠词”逻辑。",
+      "knowledgeExtension": "“study+学科”前用零冠词，“be+职业”前用不定冠词a/an（如a doctor/an engineer），职业名称前不加the。"
+    },
+    {
+      "id": "44-18",
+      "type": "判断题",
+      "question": "The Yellow River is one of the longest rivers in China. We should protect the environment to keep the river clean. He took a trip along the river last summer.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句“河流The Yellow River”前加the（正确）；第二句“the environment”（特指地球环境加the）和“the river”（特指黄河加the）用法正确；第三句“along the river”（特指加the）用法正确，所有冠词使用均符合规则。",
+      "knowledgeExtension": "江河、湖泊、海洋等自然景观专有名词前加the（如the Nile/the West Lake/the Atlantic Ocean）；普通湖泊、河流前用a/an或零冠词（如a small river）。"
+    },
+    {
+      "id": "44-19",
+      "type": "选择题",
+      "question": "______ People’s Republic of China was founded in 1949. ______ country has made great progress since then. We are proud of ______ motherland.",
+      "options": ["The; The; the", "/; The; /", "The; /; the", "/; /; /"],
+      "correctAnswer": "The; The; the",
+      "explanation": "第一空“国家全称The People’s Republic of China”前加the；第二空“特指中国”加the；第三空“特指祖国”加the，符合“国家全称加the+特指加the+特指加the”逻辑。",
+      "knowledgeExtension": "国家全称前加the（如the United States of America/the Republic of France）；国家简称前用零冠词（如China/France）。"
+    },
+    {
+      "id": "44-20",
+      "type": "判断题",
+      "question": "She likes to play the piano and listen to the classical music. She often goes to the concerts on weekends. She wants to learn the violin next year.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“play the piano”（加the正确）和“classical music”（抽象名词零冠词），去掉the；第二句“the concerts”（特指加the正确）；第三句“learn the violin”（加the正确），核心错误为抽象名词前多余加the。",
+      "knowledgeExtension": "音乐类型（classical music/pop music/rock music）前用零冠词，表抽象音乐类别；特指某一首或某一类特定音乐时，加the（如the music of Mozart）。"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "title": "名词单复数（规则变化+不规则变化+特殊形式）",
+  "knowledgePoint": "名词单复数（规则变化+不规则变化+特殊形式）",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "1-1",
+      "type": "选择题",
+      "question": "The research team has collected data from three different ______ over the past decade.",
+      "options": [
+        "city",
+        "cities",
+        "citys",
+        "city's"
+      ],
+      "correctAnswer": "cities",
+      "explanation": "以辅音字母+y结尾的可数名词，复数需变y为i加es。city的复数形式为cities，句中three修饰可数名词复数，故答案为cities。",
+      "knowledgeExtension": "注意区分：以元音字母+y结尾的名词，复数直接加s（如boy→boys，toy→toys）；部分以y结尾的外来词可直接加s（如gym→gyms，spy→spies需特殊记忆）。"
+    },
+    {
+      "id": "1-2",
+      "type": "判断题",
+      "question": "Both of the company's chief editors have published several important papers on environmental protection.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "editor为规则可数名词，复数直接加s（editors）；chief editor的复数形式为chief editors（复合名词中核心名词变复数），题干表述符合语法规则，故正确。",
+      "knowledgeExtension": "复合名词复数变化规律：1. 核心名词变复数（如looker-on→lookers-on）；2. 无核心名词时在末尾变复数（如grown-up→grown-ups）；3. 前后名词均变复数（如man doctor→men doctors）。"
+    },
+    {
+      "id": "1-3",
+      "type": "选择题",
+      "question": "Unlike most birds, ______ have the ability to rotate their heads 180 degrees without injury.",
+      "options": [
+        "owl",
+        "owls",
+        "owl's",
+        "owls'"
+      ],
+      "correctAnswer": "owls",
+      "explanation": "句中谓语动词have为复数形式，主语需对应可数名词复数。owl的复数直接加s（owls），表泛指“猫头鹰这类动物”，故答案为owls。",
+      "knowledgeExtension": "主谓一致中，可数名词复数作主语时，谓语动词用复数；不可数名词作主语时，谓语动词用单数（如water is important）。"
+    },
+    {
+      "id": "1-4",
+      "type": "判断题",
+      "question": "The criteria for evaluating the project's success include innovation, feasibility and social impact.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "criterion为不规则名词，复数形式为criteria（而非criterions），题干中谓语动词include与复数主语criteria一致，表述正确。",
+      "knowledgeExtension": "常见以-on结尾的不规则名词复数：phenomenon→phenomena，bacterium→bacteria，medium→media。"
+    },
+    {
+      "id": "1-5",
+      "type": "选择题",
+      "question": "After the earthquake, the government provided temporary shelters for hundreds of ______ whose homes were destroyed.",
+      "options": [
+        "family",
+        "families",
+        "familyes",
+        "family's"
+      ],
+      "correctAnswer": "families",
+      "explanation": "family为可数名词，复数形式为families（以“辅音+y”结尾，变y为i加es）；hundreds of后接可数名词复数，表“数百个家庭”，故答案为families。",
+      "knowledgeExtension": "集合名词family的用法：表“家庭整体”时为单数（The family is big）；表“家庭成员”时为复数（The family are watching TV）。"
+    },
+    {
+      "id": "1-6",
+      "type": "判断题",
+      "question": "Five police were sent to the scene to handle the emergency situation.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "police为集体名词，无单数形式，表“警察”时常用复数含义，可直接用数词+police表示“几名警察”，题干表述符合语法习惯，故正确。",
+      "knowledgeExtension": "类似的集体名词：people（人们）、cattle（牛群）、poultry（家禽），均无单数形式，作主语时谓语动词用复数。"
+    },
+    {
+      "id": "1-7",
+      "type": "选择题",
+      "question": "The professor's lecture focused on the ______ of ancient Greek philosophy in modern society.",
+      "options": [
+        "influence",
+        "influences",
+        "influence's",
+        "influences'"
+      ],
+      "correctAnswer": "influence",
+      "explanation": "influence此处为不可数名词，表“影响力”的抽象概念，不可数名词无复数形式，故答案为influence。",
+      "knowledgeExtension": "部分名词可兼作可数与不可数：表抽象概念时不可数（如success成功），表具体“成功的人/事”时可数（如a great success）；influence同理（抽象“影响力”不可数，具体“影响因素”可数）。"
+    },
+    {
+      "id": "1-8",
+      "type": "判断题",
+      "question": "The scissors on the desk belongs to the art teacher.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "scissors为“成对出现”的可数名词，仅有复数形式，作主语时谓语动词需用复数（belong而非belongs），故题干错误。",
+      "knowledgeExtension": "类似的复数形式名词：trousers（裤子）、glasses（眼镜）、shorts（短裤）、chopsticks（筷子），需用a pair of修饰表单数（a pair of scissors一把剪刀）。"
+    },
+    {
+      "id": "1-9",
+      "type": "选择题",
+      "question": "To improve their ______, the students are required to read at least two English novels per month.",
+      "options": [
+        "vocabulary",
+        "vocabularies",
+        "vocabularys",
+        "vocabulary's"
+      ],
+      "correctAnswer": "vocabulary",
+      "explanation": "vocabulary表“词汇量”时为不可数名词，无复数形式；表“词汇表”时可数（a vocabulary），此处结合语境为“词汇量”，故答案为vocabulary。",
+      "knowledgeExtension": "常见不可数名词（抽象概念）：information（信息）、advice（建议）、knowledge（知识）、progress（进步），均无复数形式，需用some/much等修饰。"
+    },
+    {
+      "id": "1-10",
+      "type": "判断题",
+      "question": "The series of experiments conducted by the scientists have yielded valuable results.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "series为单复数同形的名词（复数仍为series），此处主语为a series of（一系列），中心词为series，视为单数，谓语动词需用has而非have，故题干错误。",
+      "knowledgeExtension": "单复数同形的名词：sheep（羊）、deer（鹿）、fish（鱼，表种类时可加es）、means（方法）、species（物种）。"
+    },
+    {
+      "id": "1-11",
+      "type": "选择题",
+      "question": "The ______ of the new policy have been widely discussed in the media recently.",
+      "options": [
+        "implication",
+        "implications",
+        "implicationes",
+        "implication's"
+      ],
+      "correctAnswer": "implications",
+      "explanation": "implication为可数名词，表“影响、含义”，此处谓语动词have为复数，主语需用复数形式implications（规则变化加s），故答案为implications。",
+      "knowledgeExtension": "以-tion结尾的可数名词，复数多直接加s（如action→actions）；部分以-sion结尾的名词复数加s（如decision→decisions），少数特殊（如criterion→criteria）。"
+    },
+    {
+      "id": "1-12",
+      "type": "判断题",
+      "question": "Three pieces of furniture were moved to the storage room to make more space.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "furniture为不可数名词，表“一件家具”需用a piece of furniture，表“多件”用数词+pieces of furniture，题干中three pieces of furniture搭配正确，谓语动词were与复数形式一致，故正确。",
+      "knowledgeExtension": "不可数名词量化表达：a cup of tea（一杯茶）、two bottles of water（两瓶水）、a loaf of bread（一条面包）、four pieces of paper（四张纸）。"
+    },
+    {
+      "id": "1-13",
+      "type": "选择题",
+      "question": "The ______ of the Renaissance period made a profound impact on European culture.",
+      "options": [
+        "artist",
+        "artists",
+        "artist's",
+        "artists'"
+      ],
+      "correctAnswer": "artists",
+      "explanation": "artist为可数名词，复数直接加s（artists）；此处表“文艺复兴时期的艺术家们”，为复数概念，作主语中心词，故答案为artists。",
+      "knowledgeExtension": "名词所有格用法：复数名词以s结尾时，直接加’（artists’ works艺术家们的作品）；单数名词或复数名词不以s结尾时，加’s（children’s books儿童书籍）。"
+    },
+    {
+      "id": "1-14",
+      "type": "判断题",
+      "question": "The phenomenon of online education has become increasingly popular in recent years.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "phenomenon为不规则名词，单数形式为phenomenon，复数为phenomena，题干中主语为单数（the phenomenon），谓语动词has与主语一致，表述正确。",
+      "knowledgeExtension": "易混淆的不规则名词：analysis→analyses（分析），diagnosis→diagnoses（诊断），thesis→theses（论文）。"
+    },
+    {
+      "id": "1-15",
+      "type": "选择题",
+      "question": "The company has signed cooperation agreements with two leading ______ in the automobile industry.",
+      "options": [
+        "company",
+        "companies",
+        "companys",
+        "company's"
+      ],
+      "correctAnswer": "companies",
+      "explanation": "company以“辅音+y”结尾，复数形式为companies（变y为i加es）；two修饰可数名词复数，表“两家公司”，故答案为companies。",
+      "knowledgeExtension": "注意区分：以“元音+y”结尾的名词复数直接加s（如boy→boys）；以f/fe结尾的名词，多数变f/fe为v加es（如knife→knives），少数直接加s（如roof→roofs）。"
+    },
+    {
+      "id": "1-16",
+      "type": "判断题",
+      "question": "A number of volunteers are needed to help organize the international conference.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "a number of后接可数名词复数，表“许多”，作主语时谓语动词用复数；此处volunteers为复数，谓语动词are符合语法规则，题干表述正确。",
+      "knowledgeExtension": "the number of后接可数名词复数，表“……的数量”，作主语时谓语动词用单数（The number of students is 50）。"
+    },
+    {
+      "id": "1-17",
+      "type": "选择题",
+      "question": "The ______ of the survey show that most people support the new environmental protection policy.",
+      "options": [
+        "result",
+        "results",
+        "resultes",
+        "result's"
+      ],
+      "correctAnswer": "results",
+      "explanation": "result为可数名词，复数直接加s（results）；句中谓语动词show为复数，主语需对应复数形式results，表“调查结果”（多项结果），故答案为results。",
+      "knowledgeExtension": "可数名词单复数与谓语动词的一致性：单数主语→单数谓语（The result is clear），复数主语→复数谓语（The results are clear）。"
+    },
+    {
+      "id": "1-18",
+      "type": "判断题",
+      "question": "Five equipments are required to complete the experiment successfully.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "equipment为不可数名词，无复数形式，表“一件设备”需用a piece of equipment，表“五件设备”用five pieces of equipment，题干中直接用five修饰equipment错误。",
+      "knowledgeExtension": "常见不可数名词（具体事物）：equipment（设备）、furniture（家具）、luggage（行李）、machinery（机械）、jewelry（珠宝）。"
+    },
+    {
+      "id": "1-19",
+      "type": "选择题",
+      "question": "The ______ from different countries gathered in Geneva to discuss global climate issues.",
+      "options": [
+        "representative",
+        "representatives",
+        "representative's",
+        "representatives'"
+      ],
+      "correctAnswer": "representatives",
+      "explanation": "representative为可数名词，复数直接加s（representatives）；句中from different countries暗示“多名代表”，需用复数形式，故答案为representatives。",
+      "knowledgeExtension": "以-tive结尾的可数名词，复数多直接加s（如active→actives活跃分子，relative→relatives亲戚）。"
+    },
+    {
+      "id": "1-20",
+      "type": "判断题",
+      "question": "The data collected from the experiment proves that the hypothesis is correct.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "data为单复数同形的名词（单数为datum，复数为data），此处表“实验数据”（复数概念），谓语动词需用prove而非proves，故题干错误。",
+      "knowledgeExtension": "部分名词的单数形式较少使用，常用复数形式表达：data（数据）、media（媒体）、premises（场所）、headquarters（总部）。"
+    }
+  ]
+}

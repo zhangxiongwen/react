@@ -1,0 +1,187 @@
+{
+  "title": "被动语态进阶（情态动词被动/完成时被动）",
+  "knowledgePoint": "情态动词被动语态结构（情态动词+be+过去分词）、完成时被动语态（have/has/had been+过去分词）、被动语态与主动语态的转换、不同时态被动语态的语境适配、被动语态的否定式与疑问式",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "37-1",
+      "type": "选择题",
+      "question": "The important document ______ by the manager before it is sent to the client. It ______ carefully to avoid any mistakes.",
+      "options": ["must be checked; should be reviewed", "must check; should review", "must have been checked; should have been reviewed", "must be checking; should be reviewing"],
+      "correctAnswer": "must be checked; should be reviewed",
+      "explanation": "第一空“文件必须被经理检查”，情态动词must的被动语态为must be checked；第二空“应该被仔细审核”，should的被动语态为should be reviewed，符合“情态动词被动+语境逻辑”。",
+      "knowledgeExtension": "情态动词（must/should/can/may等）的被动语态固定结构：情态动词+be+过去分词，表“必须/应该/能/可能被……”。"
+    },
+    {
+      "id": "37-2",
+      "type": "判断题",
+      "question": "The project has been completed on time, and it will be present to the board of directors next week. All team members have been praised for their hard work.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空现在完成时被动has been completed（正确）；第二空“将被展示”应为will be presented（present的过去分词为presented）；第三空现在完成时被动has been praised（正确），核心错误为过去分词形式误用。",
+      "knowledgeExtension": "规则动词过去分词变化：一般加ed（check→checked）、以e结尾加d（present→presented）、重读闭音节双写尾字母加ed（stop→stopped）。"
+    },
+    {
+      "id": "37-3",
+      "type": "选择题",
+      "question": "The old building ______ for over a year before it was finally demolished. It ______ as a historical site in the 1980s.",
+      "options": ["had been abandoned; was recognized", "has been abandoned; is recognized", "was abandoned; had been recognized", "abandoned; recognized"],
+      "correctAnswer": "had been abandoned; was recognized",
+      "explanation": "第一空“被遗弃”发生在“被拆除”之前，用过去完成时被动had been abandoned；第二空“1980年代被认定”是过去动作，用一般过去时被动was recognized，符合“过去的过去+过去动作”的时态逻辑。",
+      "knowledgeExtension": "过去完成时被动结构：had been+过去分词，用于强调“在过去某个动作之前已被完成的动作”。"
+    },
+    {
+      "id": "37-4",
+      "type": "判断题",
+      "question": "This book has been translated into 10 languages since it was published. It can be found in most major libraries around the world.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“自出版以来被翻译成10种语言”，现在完成时被动has been translated（正确）；第二空“能在多数图书馆找到”，情态动词can的被动语态can be found（正确），逻辑连贯，语法无误。",
+      "knowledgeExtension": "现在完成时被动常与since/for等时间标志词搭配，表“从过去持续到现在的被动动作”。"
+    },
+    {
+      "id": "37-5",
+      "type": "选择题",
+      "question": "The problem ______ by the technical team right now. It ______ solved before the system update tomorrow.",
+      "options": ["is being handled; must be", "is handling; must", "has been handled; should be", "was handled; must have been"],
+      "correctAnswer": "is being handled; must be",
+      "explanation": "第一空“现在正在被技术团队处理”，现在进行时被动is being handled；第二空“明天更新前必须被解决”，情态动词must的被动语态must be solved，符合“当前被动动作+未来被动要求”的逻辑。",
+      "knowledgeExtension": "现在进行时被动结构：am/is/are being+过去分词，表“当前正在被进行的动作”。"
+    },
+    {
+      "id": "37-6",
+      "type": "判断题",
+      "question": "The meeting should have been held yesterday, but it was postponed due to the manager’s absence. A new time will be announced as soon as possible.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“本该昨天举行（却未举行）”，情态动词should的完成时被动should have been held（正确）；第二空“新时间将被通知”，一般将来时被动will be announced（正确），逻辑连贯，符合“计划被动动作+推迟+后续安排”的场景。",
+      "knowledgeExtension": "情态动词完成时被动结构：情态动词+have been+过去分词，表“本该/可能/一定已被……”，含虚拟或推测语气。"
+    },
+    {
+      "id": "37-7",
+      "type": "选择题",
+      "question": "The results of the experiment ______ not ______ yet. They ______ by the researchers for further analysis.",
+      "options": ["have; been released; are being studied", "has; been released; are studying", "had; released; were being studied", "are; released; have been studying"],
+      "correctAnswer": "have; been released; are being studied",
+      "explanation": "第一空“结果尚未被公布”，现在完成时被动的否定式have not been released；第二空“正在被研究人员分析”，现在进行时被动are being studied，符合“未公布+当前研究”的逻辑。",
+      "knowledgeExtension": "被动语态否定式：be动词/情态动词/助动词+not+过去分词（如has not been released、should not be done）。"
+    },
+    {
+      "id": "37-8",
+      "type": "判断题",
+      "question": "He might have been misunderstand by his colleagues. His original intention was to help, but his words were taken the wrong way.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“可能被同事误解”，情态动词might的完成时被动应为might have been misunderstood（misunderstand的过去分词为misunderstood）；第二空“被误解”were taken the wrong way（正确），核心错误为过去分词形式误用。",
+      "knowledgeExtension": "不规则动词过去分词需特殊记忆：understand→understood、take→taken、do→done、go→gone。"
+    },
+    {
+      "id": "37-9",
+      "type": "选择题",
+      "question": "The new policy ______ by the government last month. It ______ widely accepted by the public so far.",
+      "options": ["was introduced; has been", "introduced; has", "has been introduced; was", "was introducing; is"],
+      "correctAnswer": "was introduced; has been",
+      "explanation": "第一空“上个月被政府推出”，一般过去时被动was introduced；第二空“到目前为止被广泛接受”，现在完成时被动has been accepted，符合“过去被动动作+持续到现在的被动结果”的逻辑。",
+      "knowledgeExtension": "一般过去时被动用于描述“过去某个具体时间发生的被动动作”，常与last month/yesterday/in 2023等时间标志词搭配。"
+    },
+    {
+      "id": "37-10",
+      "type": "判断题",
+      "question": "The bridge had been building for five years before it was opened to traffic. Thousands of workers have contributed to the project.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“建成前已被建造五年”，过去完成时被动应为had been built（build的过去分词为built）；第二空“工人贡献力量”主动态（正确），核心错误为被动语态结构误用（漏写been+过去分词）。",
+      "knowledgeExtension": "完成时被动的核心结构：have/has/had been+过去分词，缺一不可，需避免遗漏been或用现在分词代替过去分词。"
+    },
+    {
+      "id": "37-11",
+      "type": "选择题",
+      "question": "______ the data ______ by the IT department before the report is submitted? It ______ accurately to ensure the report’s reliability.",
+      "options": ["Will; be verified; must be checked", "Is; verified; should check", "Has; been verified; must check", "Was; being verified; should be checked"],
+      "correctAnswer": "Will; be verified; must be checked",
+      "explanation": "第一空“提交报告前数据会被IT部门核实吗”，一般将来时被动的疑问式Will be verified；第二空“必须被准确核对”，情态动词must的被动语态must be checked，符合“未来被动疑问+被动要求”的逻辑。",
+      "knowledgeExtension": "被动语态疑问式：be动词/情态动词/助动词提到主语前（如Will be verified、Has been done）。"
+    },
+    {
+      "id": "37-12",
+      "type": "判断题",
+      "question": "These materials can’t be taken out of the laboratory without permission. They have been used for the experiment only and are not for personal use.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“未经允许不能被带出实验室”，情态动词can’t的被动语态can’t be taken（正确）；第二空“仅被用于实验”，现在完成时被动has been used（正确），逻辑连贯，符合“禁止被动动作+被动用途说明”的场景。",
+      "knowledgeExtension": "情态动词否定式被动：情态动词+not+be+过去分词（如can’t be taken、shouldn’t be done）。"
+    },
+    {
+      "id": "37-13",
+      "type": "选择题",
+      "question": "The accident ______ by a witness when it happened. The details ______ to the police now.",
+      "options": ["was witnessed; are being reported", "witnessed; are reporting", "has been witnessed; were reported", "was witnessing; have been reported"],
+      "correctAnswer": "was witnessed; are being reported",
+      "explanation": "第一空“事故发生时被目击者看到”，一般过去时被动was witnessed；第二空“细节现在正在被上报给警察”，现在进行时被动are being reported，符合“过去被动事件+当前被动动作”的逻辑。",
+      "knowledgeExtension": "描述“事件发生时被目击/发现”的场景，常用一般过去时被动，强调“过去某一时刻的被动动作”。"
+    },
+    {
+      "id": "37-14",
+      "type": "判断题",
+      "question": "The film must have been direct by a famous director. Its shooting techniques and plot design are quite professional.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“一定被著名导演执导”，情态动词must的完成时被动应为must have been directed（direct的过去分词为directed）；第二空“拍摄技术和剧情设计专业”（正确），核心错误为过去分词形式误用。",
+      "knowledgeExtension": "以e结尾的动词，过去分词加d（direct→directed、love→loved）；以重读闭音节结尾的动词，双写尾字母加ed（stop→stopped、plan→planned）。"
+    },
+    {
+      "id": "37-15",
+      "type": "选择题",
+      "question": "The application ______ by millions of users since it was launched. It ______ regularly to fix bugs and add new features.",
+      "options": ["has been downloaded; is updated", "has downloaded; updates", "was downloaded; was updated", "is being downloaded; updates"],
+      "correctAnswer": "has been downloaded; is updated",
+      "explanation": "第一空“自推出以来被数百万用户下载”，现在完成时被动has been downloaded；第二空“定期被更新”，一般现在时被动is updated，符合“持续被动动作+常规被动动作”的逻辑。",
+      "knowledgeExtension": "一般现在时被动用于描述“常规性、习惯性的被动动作”，常与usually/regularly/often等标志词搭配。"
+    },
+    {
+      "id": "37-16",
+      "type": "判断题",
+      "question": "The thief has been arrested by the police, and he will be question tomorrow. The stolen property has been recovered and returned to the owner.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“小偷已被警察逮捕”，现在完成时被动has been arrested（正确）；第二空“明天将被审问”，一般将来时被动应为will be questioned（question的过去分词为questioned）；第三空“被盗财物已被追回”（正确），核心错误为过去分词形式误用。",
+      "knowledgeExtension": "规则动词过去分词变化：以t结尾的动词直接加ed（arrest→arrested、question→questioned），无需特殊变化。"
+    },
+    {
+      "id": "37-17",
+      "type": "选择题",
+      "question": "The lecture ______ by a renowned scholar next Friday. It ______ to students and staff only, so you need to register in advance.",
+      "options": ["will be given; is restricted", "gives; restricts", "has been given; restricted", "was given; is being restricted"],
+      "correctAnswer": "will be given; is restricted",
+      "explanation": "第一空“下周五将由著名学者主讲”，一般将来时被动will be given；第二空“仅对师生开放”，一般现在时被动is restricted，符合“未来被动事件+常规被动限制”的逻辑。",
+      "knowledgeExtension": "被动语态中，“by+动作执行者”可省略，若需强调执行者则保留（如will be given by a renowned scholar）。"
+    },
+    {
+      "id": "37-18",
+      "type": "判断题",
+      "question": "The project should be completed by the end of this month. All necessary resources have been provided by the company to support the team.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“本月底前应被完成”，情态动词should的被动语态should be completed（正确）；第二空“必要资源已被公司提供”，现在完成时被动has been provided（正确），逻辑连贯，符合“被动要求+被动支持”的场景。",
+      "knowledgeExtension": "“by+时间点”搭配被动语态时，表“截止到该时间点需被完成的动作”，常与情态动词或完成时连用。"
+    },
+    {
+      "id": "37-19",
+      "type": "选择题",
+      "question": "______ the meeting ______ because of the sudden power outage? The agenda ______ again once the power is restored.",
+      "options": ["Has; been cancelled; will be discussed", "Was; cancelled; discusses", "Is; being cancelled; discussed", "Had; cancelled; will discuss"],
+      "correctAnswer": "Has; been cancelled; will be discussed",
+      "explanation": "第一空“因突然停电会议已被取消吗”，现在完成时被动的疑问式Has been cancelled；第二空“电力恢复后议程将被重新讨论”，一般将来时被动will be discussed，符合“当前被动疑问+未来被动动作”的逻辑。",
+      "knowledgeExtension": "现在完成时被动的疑问式：Has/Have+主语+been+过去分词（如Has the meeting been cancelled?）。"
+    },
+    {
+      "id": "37-20",
+      "type": "判断题",
+      "question": "The ancient ruins have been protecting by the government for decades. They are an important part of the country’s cultural heritage.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“数十年来一直被政府保护”，现在完成时被动应为has been protected（protect的过去分词为protected）；第二空“是文化遗产的重要部分”（正确），核心错误为被动语态误用为主动态的现在完成进行时。",
+      "knowledgeExtension": "被动语态的核心是“be+过去分词”，主动态的进行时（have been protecting）与被动语态（have been protected）语义完全不同，需根据“动作执行者”判断语态。"
+    }
+  ]
+}

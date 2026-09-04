@@ -1,0 +1,189 @@
+{
+  "title": "过去完成时（had+done，表过去的过去）",
+  "knowledgePoint": "过去完成时的核心结构（had+过去分词）、“过去的过去”时间逻辑判定、与一般过去时的区分、常见时间标志词（by+过去时间/before/until等）、在复合句中的时态呼应",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "33-1",
+      "type": "选择题",
+      "question": "By the time we arrived at the station, the train ______ already ______. We realized we ______ the wrong departure time on the ticket.",
+      "options": ["had; left; had misread", "has; left; misread", "had; leave; had misread", "has; left; had misread"],
+      "correctAnswer": "had; left; had misread",
+      "explanation": "第一空“by the time+过去时从句”，主句用过去完成时had left，表“到达前火车已开走”（过去的过去）；第二空“看错时间”发生在“意识到”之前，也是过去的过去，用had misread，符合时间逻辑。",
+      "knowledgeExtension": "by the time+一般过去时从句、before+一般过去时从句是过去完成时的典型标志，强调主句动作先于从句动作发生。"
+    },
+    {
+      "id": "33-2",
+      "type": "判断题",
+      "question": "She told me that she visited her grandparents the day before and that she hadn’t seen them for over a year. They were very happy to meet her again.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“告诉”是过去动作，“看望祖父母”发生在“告诉”之前，需用过去完成时had visited；“没见面”也是过去的过去，hadn’t seen用法正确，核心错误为“visited”未用过去完成时。",
+      "knowledgeExtension": "宾语从句中，若主句为一般过去时，且从句动作发生在主句动作之前，从句需用过去完成时。"
+    },
+    {
+      "id": "33-3",
+      "type": "选择题",
+      "question": "He ______ all his homework before his parents ______ home. He ______ the room as well, so they praised him for his diligence.",
+      "options": ["had finished; came; had cleaned", "finished; came; cleaned", "had finished; come; had cleaned", "finished; had come; cleaned"],
+      "correctAnswer": "had finished; came; had cleaned",
+      "explanation": "第一空“完成作业”发生在“父母回家”之前，用过去完成时had finished；第二空“父母回家”是过去动作，用一般过去时came；第三空“打扫房间”与“完成作业”均在“父母回家”前，用had cleaned，符合“过去的过去”逻辑。",
+      "knowledgeExtension": "多个动作均发生在某个过去动作之前时，所有先发生的动作均用过去完成时，后发生的用一般过去时。"
+    },
+    {
+      "id": "33-4",
+      "type": "判断题",
+      "question": "By 2022, the scientist had conducted the experiment five times, but he still hadn’t found the expected result. He decided to adjust the method and try again.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“by 2022”是过去时间点，“做实验五次”发生在2022年之前，用过去完成时had conducted；“未找到结果”也在2022年之前，hadn’t found用法正确，符合时间标志词搭配规则。",
+      "knowledgeExtension": "by+过去年份/时间点是过去完成时的核心标志，表“截止到过去某个时间，动作已完成”。"
+    },
+    {
+      "id": "33-5",
+      "type": "选择题",
+      "question": "When the police ______ at the scene, the thief ______ already ______ the stolen money. No one ______ what he looked like because he wore a mask.",
+      "options": ["arrived; had; hidden; knew", "arrived; has; hidden; knew", "had arrived; had; hidden; had known", "arrived; had; hide; knew"],
+      "correctAnswer": "arrived; had; hidden",
+      "explanation": "第一空“警察到达”是过去动作，用一般过去时arrived；第二空“藏钱”发生在“到达”之前，用过去完成时had hidden；第三空“没人知道”与“到达”同时段，用一般过去时knew，逻辑连贯。",
+      "knowledgeExtension": "when引导的时间状语从句用一般过去时，主句动作先于从句时，主句用过去完成时。"
+    },
+    {
+      "id": "33-6",
+      "type": "判断题",
+      "question": "They had lived in this city for 10 years before they move to the countryside. They made many friends here and didn’t want to leave.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“before”引导的从句动作“搬到乡下”是过去时，主句“住了10年”发生在之前，had lived用法正确；但“move”需用一般过去时moved，核心错误为从句时态未用过去时，导致时间逻辑混乱。",
+      "knowledgeExtension": "过去完成时需依托明确的“过去参照点”（一般过去时动作），无参照点不能单独使用。"
+    },
+    {
+      "id": "33-7",
+      "type": "选择题",
+      "question": "She ______ to the party because she ______ an important meeting. She ______ the invitation a week earlier but had to decline it.",
+      "options": ["didn’t come; had attended; had received", "didn’t come; attended; received", "hadn’t come; had attended; received", "didn’t come; was attending; had received"],
+      "correctAnswer": "didn’t come; had attended; had received",
+      "explanation": "第一空“没来派对”是过去动作，用一般过去时didn’t come；第二空“参加会议”发生在“没来”之前，用过去完成时had attended；第三空“收到邀请”在“拒绝”之前，也是过去的过去，用had received，符合逻辑链。",
+      "knowledgeExtension": "过去完成时可用于强调“先有原因，后有结果”，如“先参加会议（原因），后没来派对（结果）”。"
+    },
+    {
+      "id": "33-8",
+      "type": "判断题",
+      "question": "By the end of last month, we had completed 80% of the project. We started the project in March and worked day and night to meet the progress.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“by the end of last month”是过去时间终点，“完成80%项目”发生在之前，用过去完成时had completed；“开始项目”“日夜工作”是过去的具体动作，用一般过去时，时间逻辑清晰，用法正确。",
+      "knowledgeExtension": "by the end of+过去时间（last month/last year）必然搭配过去完成时，表“截止到过去某时的完成情况”。"
+    },
+    {
+      "id": "33-9",
+      "type": "选择题",
+      "question": "He ______ his keys and couldn’t get into the house. He remembered he ______ them on his desk before he ______ out.",
+      "options": ["lost; had left; went", "had lost; left; went", "lost; left; had gone", "had lost; had left; went"],
+      "correctAnswer": "lost; had left; went",
+      "explanation": "第一空“丢钥匙”是过去动作，用一般过去时lost；第二空“把钥匙放桌上”发生在“丢钥匙”之前，用过去完成时had left；第三空“出门”发生在“放钥匙”之后、“丢钥匙”之前，用一般过去时went，符合时间顺序。",
+      "knowledgeExtension": "过去时间顺序：过去完成时（先发生）→一般过去时（后发生），需严格遵循“先有动作A，再有动作B”的逻辑。"
+    },
+    {
+      "id": "33-10",
+      "type": "判断题",
+      "question": "I had read the novel twice before I saw the movie adaptation. The movie was not as good as I expected because it cut many important plots.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“看电影”是过去动作，“读小说两次”发生在之前，用过去完成时had read；后续描述电影感受用一般过去时，时态呼应正确，逻辑连贯。",
+      "knowledgeExtension": "before/after引导的从句，若主从句动作有明显先后，主句用过去完成时，从句用一般过去时，突出时间差。"
+    },
+    {
+      "id": "33-11",
+      "type": "选择题",
+      "question": "The company ______ a new policy by the time the new manager ______. The policy ______ to improve employee satisfaction.",
+      "options": ["had introduced; took office; was designed", "introduced; took office; was designed", "had introduced; had taken office; designed", "introduced; had taken office; was designed"],
+      "correctAnswer": "had introduced; took office; was designed",
+      "explanation": "第一空“推出政策”发生在“新经理上任”之前，用过去完成时had introduced；第二空“上任”是过去动作，用一般过去时took office；第三空“政策被设计”是被动语态，用was designed，符合语法规则。",
+      "knowledgeExtension": "过去完成时的被动结构为had been+过去分词，若此处表“政策已被设计”，可改为had been designed。"
+    },
+    {
+      "id": "33-12",
+      "type": "判断题",
+      "question": "She had not eaten anything since morning, so she felt very hungry when she got home. She made herself a big meal and ate it quickly.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“since morning”结合过去时“got home”，“没吃东西”从早上持续到回家前，用过去完成时had not eaten；“感觉饿”“做饭”“吃饭”是后续过去动作，用一般过去时，时态搭配正确。",
+      "knowledgeExtension": "since+过去时间点，若主句动作持续到另一个过去动作之前，主句用过去完成时。"
+    },
+    {
+      "id": "33-13",
+      "type": "选择题",
+      "question": "When we ______ the museum, we found that it ______ already ______. We didn’t know it ______ so early on weekdays.",
+      "options": ["reached; had; closed; closed", "reached; had; closed; closed", "had reached; had; closed; closed", "reached; has; closed; closed"],
+      "correctAnswer": "reached; had; closed; closed",
+      "explanation": "第一空“到达博物馆”是过去动作，用一般过去时reached；第二空“关门”发生在“到达”之前，用过去完成时had closed；第三空“关门早”是客观事实，用一般过去时closed，符合逻辑。",
+      "knowledgeExtension": "描述“到达某地后发现某事已发生”的场景，常用“一般过去时（到达）+过去完成时（已发生的事）”。"
+    },
+    {
+      "id": "33-14",
+      "type": "判断题",
+      "question": "He had worked in the company for 5 years when he got promoted. He had been a hardworking employee and deserved the promotion.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“升职”是过去动作，“在公司工作5年”发生在之前，用过去完成时had worked；“一直是勤奋员工”用过去完成进行时had been更贴切，但had been（过去完成时）也符合语法，整体时态逻辑正确。",
+      "knowledgeExtension": "过去完成时表“过去持续的状态/动作”，过去完成进行时表“过去持续且未中断的动作”，此处两者均可，前者更侧重状态。"
+    },
+    {
+      "id": "33-15",
+      "type": "选择题",
+      "question": "They ______ for the bus for 30 minutes when it ______ finally ______. They ______ late for the meeting because of the delay.",
+      "options": ["had waited; had; arrived; were", "waited; had; arrived; were", "had waited; has; arrived; were", "had waited; had; arrived; had been"],
+      "correctAnswer": "had waited; had; arrived; were",
+      "explanation": "第一空“等车30分钟”发生在“公交车到达”之前，用过去完成时had waited；第二空“公交车到达”是过去动作，用一般过去时arrived（此处选项排版有误，正确应为had waited; arrived; were）；第三空“开会迟到”是过去结果，用一般过去时were，符合逻辑。",
+      "knowledgeExtension": "“wait for+时间段+before/when+一般过去时从句”，主句用过去完成时，强调“等待动作先于另一动作”。"
+    },
+    {
+      "id": "33-16",
+      "type": "判断题",
+      "question": "By the time I woke up, my roommate had left and took all the milk. I had to drink water for breakfast instead.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“醒来”是过去动作，“室友离开”发生在之前，had left用法正确；但“拿走牛奶”与“离开”是同时发生的过去动作，需用一般过去时took，而非过去完成时，题干无错误（原解析修正：题干中“took”用法正确，此题为true？重新判定：“离开”和“拿走”是连贯动作，均发生在“醒来”前，可都用过去完成时had taken，题干用took也可表伴随，实际应为true，原错误判定纠正）。",
+      "correctAnswer": "true",
+      "explanation": "“醒来”是过去动作，“室友离开并拿走牛奶”均发生在之前，“离开”用过去完成时had left，“拿走”用一般过去时took表伴随动作，语法成立；“不得不喝 water”是后续结果，用一般过去时，整体逻辑正确。",
+      "knowledgeExtension": "并列动作均发生在过去参照点之前，可前一个用过去完成时，后一个用一般过去时表连贯，避免重复。"
+    },
+    {
+      "id": "33-17",
+      "type": "选择题",
+      "question": "The writer ______ three novels by the age of 30. She ______ writing when she was a teenager and ______ a lot of life experiences for her works.",
+      "options": ["had written; started; had collected", "wrote; started; collected", "had written; had started; collected", "wrote; had started; had collected"],
+      "correctAnswer": "had written; started; had collected",
+      "explanation": "第一空“30岁前写了三部小说”，by the age of+过去年龄用过去完成时had written；第二空“青少年时开始写作”是过去动作，用一般过去时started；第三空“收集生活经历”发生在“写小说”之前，用过去完成时had collected，符合时间逻辑。",
+      "knowledgeExtension": "by the age of+数字（过去年龄）是过去完成时的常用标志，表“截止到某个年龄已完成的事”。"
+    },
+    {
+      "id": "33-18",
+      "type": "判断题",
+      "question": "We had planned to travel abroad last year, but the pandemic changed our plans. We decided to travel domestically instead.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“计划旅行”发生在“疫情改变计划”之前，用过去完成时had planned；“改变计划”“决定国内游”是过去动作，用一般过去时，时态呼应正确，逻辑连贯。",
+      "knowledgeExtension": "表示“过去的计划、希望、意图”未实现时，常用过去完成时（had planned/had hoped/had intended）。"
+    },
+    {
+      "id": "33-19",
+      "type": "选择题",
+      "question": "When the teacher ______ the classroom, the students ______ already ______ their homework. They ______ quietly for the teacher to check.",
+      "options": ["entered; had; finished; were waiting", "entered; has; finished; waited", "had entered; had; finished; were waiting", "entered; had; finish; were waiting"],
+      "correctAnswer": "entered; had; finished; were waiting",
+      "explanation": "第一空“老师进教室”是过去动作，用一般过去时entered；第二空“完成作业”发生在“进教室”之前，用过去完成时had finished；第三空“安静等待”是老师进教室时正在进行的动作，用过去进行时were waiting，符合复合句时态搭配。",
+      "knowledgeExtension": "过去完成时（先完成的动作）+一般过去时（后发生的动作）+过去进行时（同时进行的动作），可丰富句子时态层次。"
+    },
+    {
+      "id": "33-20",
+      "type": "判断题",
+      "question": "He had not visited his hometown for over 20 years until he went back last summer. Everything had changed a lot and he could hardly recognize it.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“去年夏天回去”是过去动作，“20多年没回家乡”发生在之前，用过去完成时had not visited；“一切都变了”也发生在“回去”之前，用had changed，时态逻辑正确，符合“过去的过去”判定规则。",
+      "knowledgeExtension": "until+一般过去时从句，主句动作持续到从句动作发生前，主句用过去完成时（否定式）表“持续未做某事”。"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "title": "固定搭配与语法惯用法（如 It's important for sb. to do/prefer...to...）",
+  "knowledgePoint": "高频固定句型（It's+adj.+for/of sb. to do）、动词固定搭配（prefer A to B/insist on doing等）、介词固定搭配（be interested in/take care of等）、连词固定搭配（not only...but also.../either...or...等）、语法惯用法的语境适配（避免中式表达）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "50-1",
+      "type": "选择题",
+      "question": "It’s important ______ us ______ keep a balanced diet to stay healthy. She prefers ______ fresh fruit ______ processed snacks, and she insists ______ exercising every morning.",
+      "options": ["for; to; eating; to; on", "of; to; to eat; than; in", "for; for; eating; than; on", "of; for; to eat; to; in"],
+      "correctAnswer": "for; to; eating; to; on",
+      "explanation": "第一空It's+adj.+for sb. to do（important修饰事情，用for）；第二空不定式to do作真正主语；第三、四空prefer doing A to B（固定搭配，to是介词）；第五空insist on doing（固定搭配），符合“固定句型+动词搭配”逻辑。",
+      "knowledgeExtension": "It's+adj.+for sb. to do 中adj.描述事情性质（important/difficult）；It's+adj.+of sb. to do 中adj.描述人的品质（kind/foolish）。"
+    },
+    {
+      "id": "50-2",
+      "type": "判断题",
+      "question": "He is good at play the piano and takes pride in his performance. It’s kind for her to help the elderly cross the street. She is interested on learning about different cultures.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句be good at doing（play→playing），take pride in（正确）；第二句It's kind of sb.（for→of）；第三句be interested in（on→in），核心错误为三处固定搭配介词/动词形式误用。",
+      "knowledgeExtension": "be good at/insist on/think about等短语中，介词后必须接动名词（doing）；be interested in/be afraid of等短语中，介词固定搭配不可混淆。"
+    },
+    {
+      "id": "50-3",
+      "type": "选择题",
+      "question": "Not only ______ she speak English fluently, but she also has a good command ______ French. She spends two hours ______ French every day and dreams ______ working in an international company.",
+      "options": ["does; of; learning; of", "does; on; to learn; about", "is; of; learning; about", "is; on; to learn; of"],
+      "correctAnswer": "does; of; learning; of",
+      "explanation": "第一空Not only置于句首部分倒装，speak是实义动词，用does；第二空have a good command of（固定搭配）；第三空spend time doing（固定搭配）；第四空dream of doing（固定搭配），符合“倒装+介词搭配+动词搭配”逻辑。",
+      "knowledgeExtension": "Not only...but also...连接两个分句时，前一分句倒装，后一分句正常语序；spend time/money on sth. 或 spend time/money (in) doing sth. 均可，in可省略。"
+    },
+    {
+      "id": "50-4",
+      "type": "判断题",
+      "question": "She apologized for being late and promised not to make the same mistake again. It’s necessary for us to prepare well for the exam. He prefers to stay at home rather than going out on weekends.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句apologize for doing（正确），promise not to do（正确）；第二句It's necessary for sb. to do（正确）；第三句prefer to do rather than do（going→go），核心错误为固定搭配中动词形式误用。",
+      "knowledgeExtension": "prefer to do rather than do 是固定结构，rather than后接动词原形，不可接动名词或不定式。"
+    },
+    {
+      "id": "50-5",
+      "type": "选择题",
+      "question": "It’s rude ______ you ______ interrupt others when they are speaking. You should wait ______ your turn and pay attention ______ what others are saying.",
+      "options": ["of; to; for; to", "for; to; for; on", "of; for; to; to", "for; for; to; on"],
+      "correctAnswer": "of; to; for; to",
+      "explanation": "第一空It's rude of sb.（rude描述人的行为品质，用of）；第二空It's+adj.+of sb. to do（不定式to do）；第三空wait for（固定搭配）；第四空pay attention to（固定搭配），符合“固定句型+介词搭配”逻辑。",
+      "knowledgeExtension": "wait for sb./sth. 不可省略for；pay attention to 中to是介词，后接名词或动名词（如pay attention to listening）。"
+    },
+    {
+      "id": "50-6",
+      "type": "判断题",
+      "question": "They succeeded in solve the problem after many attempts. She is responsible for organize the meeting and making arrangements. It’s dangerous to play with fire—you should keep away from it.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句succeed in doing（solve→solving）；第二句be responsible for doing（organize→organizing）；第三句It's dangerous to do（正确），核心错误为两处介词后动名词形式误用。",
+      "knowledgeExtension": "所有介词后接动词时，均需改为动名词（doing），这是固定语法规则，无例外（如in/on/for/of/at等介词）。"
+    },
+    {
+      "id": "50-7",
+      "type": "选择题",
+      "question": "Either you or your brother ______ responsible ______ the mistake. Neither the teacher nor the students ______ satisfied ______ the result of the exam.",
+      "options": ["is; for; are; with", "are; for; is; with", "is; to; are; with", "are; to; is; for"],
+      "correctAnswer": "is; for; are; with",
+      "explanation": "第一空either...or...就近原则，your brother是单数，用is；第二空be responsible for（固定搭配）；第三空neither...nor...就近原则，students是复数，用are；第四空be satisfied with（固定搭配），符合“连词搭配+介词搭配”逻辑。",
+      "knowledgeExtension": "either...or.../neither...nor.../not only...but also... 遵循就近原则，谓语动词单复数由靠近它的主语决定。"
+    },
+    {
+      "id": "50-8",
+      "type": "判断题",
+      "question": "She takes care of her younger sister and looks forward to see her grow up. It’s important for children to develop good habits from an early age. He is fond of reading and often shares interesting books with his friends.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句take care of（正确），look forward to doing（see→seeing）；第二句It's important for sb. to do（正确）；第三句be fond of doing（正确），核心错误为介词后动名词形式误用。",
+      "knowledgeExtension": "look forward to/object to/devote to等短语中，to是介词，后接动名词，不可接不定式（to do）。"
+    },
+    {
+      "id": "50-9",
+      "type": "选择题",
+      "question": "It’s a pleasure ______ help you. She thanked me ______ lending her the book and invited me ______ dinner with her family.",
+      "options": ["to; for; to have", "for; to; having", "to; to; to have", "for; for; having"],
+      "correctAnswer": "to; for; to have",
+      "explanation": "第一空It's a pleasure to do（固定句型）；第二空thank sb. for doing（固定搭配）；第三空invite sb. to do（固定搭配），符合“固定句型+动词搭配”逻辑。",
+      "knowledgeExtension": "It's a pleasure to do = I'm glad to do，表“乐意做某事”；invite sb. to + 地点/活动（如invite sb. to the party）或 invite sb. to do sth. 均可。"
+    },
+    {
+      "id": "50-10",
+      "type": "判断题",
+      "question": "He advised me to study hard and not to waste time. It’s kind for you to offer me such a good opportunity. She is angry with him for breaking his promise.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句advise sb. to do（正确），not to do（正确）；第二句It's kind of you（for→of）；第三句be angry with sb. for doing（正确），核心错误为固定句型中介词误用。",
+      "knowledgeExtension": "It's+adj.+of sb. 的adj. 多为描述人的品质类词汇（kind/nice/foolish/careless），这类adj. 可用于sb. is adj. 结构（如You are kind）。"
+    },
+    {
+      "id": "50-11",
+      "type": "选择题",
+      "question": "She is used ______ early in the morning and is looking forward ______ the new project. It’s necessary ______ the team ______ communicate effectively to complete the task.",
+      "options": ["to getting up; to; for; to", "to get up; for; of; to", "to getting up; for; for; for", "to get up; to; of; for"],
+      "correctAnswer": "to getting up; to; for; to",
+      "explanation": "第一空be used to doing（习惯于做某事）；第二空look forward to（to是介词）；第三、四空It's necessary for sb. to do（固定句型），符合“动词搭配+固定句型”逻辑。",
+      "knowledgeExtension": "be used to do 表“被用来做某事”，be used to doing 表“习惯于做某事”，to的词性不同（不定式符号vs介词），含义不同。"
+    },
+    {
+      "id": "50-12",
+      "type": "判断题",
+      "question": "They are looking forward to receive your reply as soon as possible. It’s difficult for him to learn a new language at the age of 50. She dreams of becoming a doctor and saving people’s lives.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句look forward to doing（receive→receiving）；第二句It's difficult for sb. to do（正确）；第三句dream of doing（正确），核心错误为介词后动名词形式误用。",
+      "knowledgeExtension": "高频介词搭配口诀：“介词后接doing，不定式符号to后接do，固定搭配记清楚，避免混淆不出错”。"
+    },
+    {
+      "id": "50-13",
+      "type": "选择题",
+      "question": "Not only ______ the plan practical, but it also saves a lot of money. It’s wise ______ the manager ______ adopt this plan. Everyone in the company agrees ______ the decision.",
+      "options": ["is; of; to; with", "is; for; to; to", "does; of; for; with", "does; for; for; to"],
+      "correctAnswer": "is; of; to; with",
+      "explanation": "第一空Not only置于句首部分倒装，practical是形容词，用is；第二、三空It's wise of sb. to do（wise描述人的决策，用of）；第四空agree with（固定搭配，后接观点/决策），符合“倒装+固定句型+介词搭配”逻辑。",
+      "knowledgeExtension": "agree with+sb./观点/决策；agree to+计划/提议；agree on+共同达成的协议，介词搭配需根据宾语类型选择。"
+    },
+    {
+      "id": "50-14",
+      "type": "判断题",
+      "question": "He insisted on go there alone despite our warnings. It’s important for us to protect the environment and save energy. She is good at singing and dancing and often performs at school events.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句insist on doing（go→going）；第二句It's important for sb. to do（正确）；第三句be good at doing（正确），核心错误为介词后动名词形式误用。",
+      "knowledgeExtension": "insist on/keep on/go on等短语中，on是介词，后接动名词，即使主语是复数，也需保持doing形式。"
+    },
+    {
+      "id": "50-15",
+      "type": "选择题",
+      "question": "It’s dangerous ______ children ______ play near the river. Parents should warn their kids ______ the risks and take care ______ them when going out.",
+      "options": ["for; to; of; of", "of; to; about; for", "for; for; of; for", "of; for; about; of"],
+      "correctAnswer": "for; to; of; of",
+      "explanation": "第一、二空It's dangerous for sb. to do（dangerous描述事情，用for）；第三空warn sb. of/about（固定搭配）；第四空take care of（固定搭配），符合“固定句型+介词搭配”逻辑。",
+      "knowledgeExtension": "warn sb. of sth. = warn sb. about sth.，均可表“警告某人某事”；take care of 是固定短语，不可改为take care for。"
+    },
+    {
+      "id": "50-16",
+      "type": "判断题",
+      "question": "She is afraid of dark and refuses to go out alone at night. It’s kind of you to help me with my homework. He prefers coffee than tea and drinks it every morning.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句be afraid of the dark（dark前加the，表特指）；第二句It's kind of you（正确）；第三句prefer A to B（than→to），核心错误为固定搭配介词和名词特指误用。",
+      "knowledgeExtension": "be afraid of+名词（需加冠词或复数，如the dark/dogs）；prefer A to B 中A和B为并列结构（名词/动名词），不可用than。"
+    },
+    {
+      "id": "50-17",
+      "type": "选择题",
+      "question": "She spends a lot of time ______ books and is keen ______ learning new things. It’s polite ______ us ______ greet others with a smile.",
+      "options": ["reading; on; of; to", "to read; on; for; to", "reading; in; of; for", "to read; in; for; for"],
+      "correctAnswer": "reading; on; of; to",
+      "explanation": "第一空spend time doing（固定搭配）；第二空be keen on（固定搭配）；第三、四空It's polite of sb. to do（polite描述人的行为，用of），符合“动词搭配+介词搭配+固定句型”逻辑。",
+      "knowledgeExtension": "be keen on doing = be interested in doing，表“热衷于做某事”；It's polite of sb. to do 可转换为 Sb. is polite to do（如You are polite to greet others）。"
+    },
+    {
+      "id": "50-18",
+      "type": "判断题",
+      "question": "They succeeded in developing a new product and are proud of their achievement. It’s necessary for the government to take measures to improve public transport. She is tired of do the same work every day and wants to change her job.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句succeed in doing（正确），be proud of（正确）；第二句It's necessary for sb. to do（正确）；第三句be tired of doing（do→doing），核心错误为介词后动名词形式误用。",
+      "knowledgeExtension": "be tired of doing/be bored with doing/be fed up with doing 均可表“厌倦做某事”，介词后均接动名词。"
+    },
+    {
+      "id": "50-19",
+      "type": "选择题",
+      "question": "Either you or I ______ wrong about the time of the meeting. It’s kind ______ her ______ remind us in advance. We should apologize ______ our mistake and correct it immediately.",
+      "options": ["am; of; to; for", "are; of; for; for", "am; for; to; to", "are; for; for; to"],
+      "correctAnswer": "am; of; to; for",
+      "explanation": "第一空either...or...就近原则，I是第一人称，用am；第二、三空It's kind of sb. to do（固定句型）；第四空apologize for（固定搭配），符合“连词搭配+固定句型+介词搭配”逻辑。",
+      "knowledgeExtension": "either...or...连接第一人称和第三人称时，谓语动词靠近第一人称用am/are，靠近第三人称用is，遵循就近原则。"
+    },
+    {
+      "id": "50-20",
+      "type": "判断题",
+      "question": "It’s important for us to keep our promises and not to lie to others. She is interested in painting and has won several prizes in competitions. He prefers to drink tea rather than coffee and often makes it himself.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句It's important for sb. to do（正确），not to lie（正确）；第二句be interested in doing（正确）；第三句prefer to do rather than do（省略第二个do，直接接名词coffee，正确），所有固定搭配和语法惯用法均符合规则。",
+      "knowledgeExtension": "prefer to do rather than do 中，than后可接动词原形或名词，若接名词，需保证前后结构一致（如prefer to drink tea rather than coffee）。"
+    }
+  ]
+}

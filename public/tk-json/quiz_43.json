@@ -1,0 +1,187 @@
+{
+  "title": "强调句（It is/was+被强调部分+that/who...）",
+  "knowledgePoint": "强调句的核心结构（It is/was+被强调部分+that/who/whom）、被强调部分（主语/宾语/状语）的适配、强调句与定语从句的区分、强调句的疑问式（一般疑问/特殊疑问）、强调句的否定式",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "43-1",
+      "type": "选择题",
+      "question": "______ was his dedication and hard work ______ helped him achieve great success in his career. We all admire the effort ______ he has put in over the years.",
+      "options": ["It; that; that", "What; that; which", "It; who; that", "What; which; which"],
+      "correctAnswer": "It; that; that",
+      "explanation": "第一空为强调句结构，It is/was+被强调部分（his dedication and hard work）+that，故第一空填It，第二空填that；第三空为定语从句，先行词effort作put in的宾语，用that/which均可，符合“强调句+定语从句”逻辑。",
+      "knowledgeExtension": "强调句中，被强调部分为物或人时，均可使用that；仅当被强调部分为人且作主语时，可用who替换that。"
+    },
+    {
+      "id": "43-2",
+      "type": "判断题",
+      "question": "It was in the small town where he spent his childhood that he met his first love. It is not money what brings true happiness but sincere relationships.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调地点状语in the small town，后接where引导的定语从句（正确）；第二句强调句否定式，被强调部分为not money，连接词应为that，“what”应改为that，核心错误为强调句连接词误用。",
+      "knowledgeExtension": "强调句的固定连接词为that/who/whom，不可用what/which/where等，这是与定语从句的核心区别。"
+    },
+    {
+      "id": "43-3",
+      "type": "选择题",
+      "question": "______ was not until she received the award ______ she realized her years of practice had paid off. Before that, she never thought ______ she could achieve such a great honor.",
+      "options": ["It; that; that", "What; that; which", "It; who; that", "What; which; that"],
+      "correctAnswer": "It; that; that",
+      "explanation": "第一空为强调句固定句型It was not until...that...（直到……才……），故第一空填It，第二空填that；第三空为宾语从句，陈述事实用that，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "强调not until引导的时间状语时，强调句结构为It is/was not until+被强调部分+that+主句，主句需用肯定式（无需否定）。"
+    },
+    {
+      "id": "43-4",
+      "type": "判断题",
+      "question": "It is the teacher who has been encouraging us to pursue our dreams. It was yesterday when we held the important meeting about the project. We all remember the day that we won the competition.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调主语the teacher，用who（正确）；第二句强调时间状语yesterday，连接词应为that，“when”应改为that（此处易误判为定语从句，需注意强调句结构）；第三句为定语从句，先行词day作时间状语，用when（正确），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "强调时间/地点状语时，强调句连接词仍用that，不能用when/where（定语从句才用），可通过“去掉It is/was和连接词，句子仍完整”判断是否为强调句。"
+    },
+    {
+      "id": "43-5",
+      "type": "选择题",
+      "question": "______ was his positive attitude ______ impressed the interviewers most. They asked him ______ he had maintained such an attitude for so many years.",
+      "options": ["It; that; how", "What; that; what", "It; who; how", "What; which; what"],
+      "correctAnswer": "It; that; how",
+      "explanation": "第一空为强调句结构，It is+被强调部分（his positive attitude）+that，故第一空填It，第二空填that；第三空为宾语从句，表“如何保持态度”，用how，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "强调句的被强调部分可为主语、宾语、状语（时间/地点/方式等），核心结构不变，仅被强调部分随语义变化。"
+    },
+    {
+      "id": "43-6",
+      "type": "判断题",
+      "question": "It is not only through hard work but also through wisdom that one can succeed. It was my best friend whom I turned to for help when I was in trouble. It is the book which I read last week that changed my perspective.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调并列状语，用that（正确）；第二句强调宾语my best friend，用whom（正确）；第三句强调宾语the book，连接词应为that，“which”应改为that（强调句中不可用which），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "强调句中，被强调部分为物时，只能用that，不能用which；被强调部分为人且作宾语时，可用whom/that，口语中可省略。"
+    },
+    {
+      "id": "43-7",
+      "type": "选择题",
+      "question": "______ was in 2010 ______ the two countries established diplomatic relations. Since then, the cooperation ______ they have carried out has been fruitful.",
+      "options": ["It; that; which", "What; that; that", "It; who; which", "What; which; that"],
+      "correctAnswer": "It; that; which",
+      "explanation": "第一空为强调时间状语in 2010，强调句结构It was+被强调部分+that，故第一空填It，第二空填that；第三空为定语从句，先行词cooperation作carried out的宾语，用which/that均可，符合“强调句+定语从句”逻辑。",
+      "knowledgeExtension": "区分强调句与定语从句的关键：强调句去掉It is/was和that后，句子语序调整后仍完整（如2010 the two countries established diplomatic relations）；定语从句去掉相关成分后句子不完整。"
+    },
+    {
+      "id": "43-8",
+      "type": "判断题",
+      "question": "It was I who was responsible for the project’s failure. It is the children’s safety that we should pay most attention to. It was from his teacher that he learned the valuable lesson.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句强调主语I，用who，谓语动词was与I一致（正确）；第二句强调宾语the children’s safety，用that，被动式结构正确（正确）；第三句强调状语from his teacher，用that（正确），所有强调句用法均符合规则。",
+      "knowledgeExtension": "强调句的主谓一致：被强调部分为主语时，谓语动词的单复数与被强调部分一致（如It is I who am.../It is he who is...）。"
+    },
+    {
+      "id": "43-9",
+      "type": "选择题",
+      "question": "______ was not until midnight ______ the meeting came to an end. We were all tired but satisfied with ______ we had achieved.",
+      "options": ["It; that; what", "What; that; which", "It; who; what", "What; which; which"],
+      "correctAnswer": "It; that; what",
+      "explanation": "第一空为强调句句型It was not until...that...，故第一空填It，第二空填that；第三空为宾语从句，表“所取得的成果”，用what，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "not until用于强调句时，主句无需再用否定式，原句“the meeting didn’t come to an end until midnight”强调后为“It was not until midnight that the meeting came to an end”。"
+    },
+    {
+      "id": "43-10",
+      "type": "判断题",
+      "question": "It is through communication that we can resolve conflicts. It was the place where we first met that we chose for our anniversary dinner. It is her kindness and generosity that makes her popular among friends.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调方式状语，用that（正确）；第二句强调地点状语the place，连接词应为that，“where”应改为that（后接定语从句需用where，但强调句连接词固定为that）；第三句强调并列主语，谓语动词用makes（正确），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "当被强调部分后接定语从句时，强调句连接词仍为that，定语从句需用相应引导词（如It was the place that we first met where we chose... 此处that为强调句连接词，where为定语从句引导词）。"
+    },
+    {
+      "id": "43-11",
+      "type": "选择题",
+      "question": "______ was my mother ______ taught me the importance of honesty. I will never forget the words ______ she said to me when I was a child.",
+      "options": ["It; who; that", "What; that; which", "It; that; what", "What; who; that"],
+      "correctAnswer": "It; who; that",
+      "explanation": "第一空为强调句，被强调部分my mother为人作主语，用who/that均可，故第一空填It，第二空填who；第三空为定语从句，先行词words作said的宾语，用that/which均可，符合“强调句+定语从句”逻辑。",
+      "knowledgeExtension": "被强调部分为人且作主语时，who和that可互换，口语中更常用who，正式语境中that更通用。"
+    },
+    {
+      "id": "43-12",
+      "type": "判断题",
+      "question": "It was not until she left that I realized how much I cared about her. It is the way he treats others that win people’s respect. It was last summer when we traveled to the coastal city together.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调not until状语，用that（正确）；第二句强调主语the way，谓语动词应改为wins（与the way一致）；第三句强调时间状语last summer，连接词应为that，“when”应改为that，核心错误为主谓不一致和连接词误用。",
+      "knowledgeExtension": "强调句中，若被强调部分为主语，谓语动词的单复数需严格与被强调部分保持一致，不可受形式主语It的影响。"
+    },
+    {
+      "id": "43-13",
+      "type": "选择题",
+      "question": "______ was the support from his family ______ gave him the courage to keep going. He often talks about ______ his parents encouraged him during difficult times.",
+      "options": ["It; that; how", "What; that; what", "It; who; how", "What; which; what"],
+      "correctAnswer": "It; that; how",
+      "explanation": "第一空为强调句，被强调部分the support from his family为物，用that，故第一空填It，第二空填that；第三空为宾语从句，表“父母如何鼓励他”，用how，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "强调句可强调介词短语作的主语/宾语/状语，结构不变，仅被强调部分为介词短语（如It is with the help of my teacher that I made progress）。"
+    },
+    {
+      "id": "43-14",
+      "type": "判断题",
+      "question": "It is not what you say but what you do that matters. It was the book whom my father gave me that inspired me to pursue writing. It was in this laboratory that the great invention was made.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调并列主语，用that（正确）；第二句强调宾语the book（物），连接词应为that，“whom”应改为that（whom仅用于指人）；第三句强调地点状语，用that（正确），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "whom仅用于被强调部分为人且作宾语的情况，指物时无论作主语还是宾语，均用that。"
+    },
+    {
+      "id": "43-15",
+      "type": "选择题",
+      "question": "______ was in the ancient castle ______ the movie was filmed. The scenes ______ were shot there are still vivid in my mind.",
+      "options": ["It; that; that", "What; that; which", "It; who; that", "What; which; which"],
+      "correctAnswer": "It; that; that",
+      "explanation": "第一空为强调地点状语in the ancient castle，强调句结构It was+被强调部分+that，故第一空填It，第二空填that；第三空为定语从句，先行词scenes作shot的宾语，用that/which均可，符合“强调句+定语从句”逻辑。",
+      "knowledgeExtension": "强调地点状语时，即使地点是具体名词（如castle），连接词仍用that，不能用where，可通过还原句子验证：The movie was filmed in the ancient castle（句子完整，故为强调句）。"
+    },
+    {
+      "id": "43-16",
+      "type": "判断题",
+      "question": "It is I that am to blame for the mistake. It was the advice from my mentor that I benefited a lot from. It was when he was young that he developed a passion for painting.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句强调主语I，谓语动词am与I一致（正确）；第二句强调宾语the advice，用that，定语从句省略引导词（正确）；第三句强调时间状语when he was young，用that（正确），所有强调句用法均符合规则。",
+      "knowledgeExtension": "强调句的宾语若为介词的宾语，介词可置于句末（如It was the advice that I benefited a lot from）或紧跟被强调部分（如It was from the advice that I benefited a lot），后者更正式。"
+    },
+    {
+      "id": "43-17",
+      "type": "选择题",
+      "question": "______ was not until the results were announced ______ she knew she had passed the exam. She called her family to share ______ she was feeling.",
+      "options": ["It; that; how", "What; that; what", "It; who; how", "What; which; what"],
+      "correctAnswer": "It; that; how",
+      "explanation": "第一空为强调句句型It was not until...that...，故第一空填It，第二空填that；第三空为宾语从句，表“她的感受如何”，用how，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "not until后的被强调部分若为从句，从句需用正常语序（如It was not until the results were announced that... 而非It was not until were the results announced that...）。"
+    },
+    {
+      "id": "43-18",
+      "type": "判断题",
+      "question": "It is the efforts we have made that will determine our future. It was the girl which helped me find my lost wallet that I want to thank. It is through continuous learning that we can keep up with the times.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调主语the efforts，后接定语从句（正确）；第二句强调宾语the girl（人），连接词应为that/who，“which”应改为that；第三句强调方式状语，用that（正确），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "强调句中，被强调部分为人时，连接词用that/who/whom；为物时只用that，不可用which，这是高频易错点。"
+    },
+    {
+      "id": "43-19",
+      "type": "选择题",
+      "question": "______ was his courage and determination ______ helped him overcome all difficulties. We all wonder ______ he managed to stay positive in such tough situations.",
+      "options": ["It; that; how", "What; that; what", "It; who; how", "What; which; what"],
+      "correctAnswer": "It; that; how",
+      "explanation": "第一空为强调句，被强调部分为并列名词短语（物），用that，故第一空填It，第二空填that；第三空为宾语从句，表“如何保持积极”，用how，符合“强调句+宾语从句”逻辑。",
+      "knowledgeExtension": "被强调部分为并列结构（人+人、物+物、人+物）时，连接词统一用that，无需根据并列成分调整。"
+    },
+    {
+      "id": "43-20",
+      "type": "判断题",
+      "question": "It was not until we practiced many times that we mastered the skill. It is the love and care from our parents that we should cherish most. It was the reason why he left that he refused to tell us.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句强调not until状语，用that（正确）；第二句强调宾语，用that（正确）；第三句强调主语the reason，连接词应为that，“why”应改为that（后接定语从句需用why，但强调句连接词固定为that），核心错误为强调句连接词误用。",
+      "knowledgeExtension": "当被强调部分为the reason时，强调句连接词仍为that，定语从句用why引导（如It was the reason that he refused to tell us why he left），避免混淆强调句连接词与定语从句引导词。"
+    }
+  ]
+}

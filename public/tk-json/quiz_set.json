@@ -1,0 +1,339 @@
+{
+  "grammarQuizSet": {
+    "title": "英语语法全体系专项训练题（1-50套）",
+    "totalSets": 50,
+    "difficultyLevel": ["简单", "中等偏上", "中等偏上", "中等偏上", "中等偏上"],
+    "moduleDivision": [
+      {
+        "moduleName": "基础入门（1-10套）",
+        "description": "语法基石，掌握句子基本构成",
+        "sets": [
+          {
+            "setId": 1,
+            "title": "名词单复数（规则变化+不规则变化+特殊形式）",
+            "knowledgePoint": "名词单复数（规则变化+不规则变化+特殊形式）",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 2,
+            "title": "人称代词主宾格与物主代词（形容词性+名词性）",
+            "knowledgePoint": "人称代词主宾格与物主代词（形容词性+名词性，如my/mine）、代词的格变化规则、代词在句中的成分搭配",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 3,
+            "title": "不定冠词a/an与定冠词the的基本用法",
+            "knowledgePoint": "不定冠词a/an的用法（元音音素/辅音音素开头）、定冠词the的基本限定用法、零冠词基础场景",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 4,
+            "title": "be动词（am/is/are）的时态搭配",
+            "knowledgePoint": "be动词在一般现在时/一般过去时的搭配规则、主谓一致基础、be动词的否定式与疑问式",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 5,
+            "title": "情态动词can/may/must的基础用法",
+            "knowledgePoint": "情态动词表能力（can）、许可（may）、义务（must）的基础用法、情态动词的否定式与疑问式",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 6,
+            "title": "形容词与副词的基本区别",
+            "knowledgePoint": "形容词与副词的修饰对象（名词/动词/形容词）、位置差异（如quick/quickly）、基础词性转换",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 7,
+            "title": "一般现在时（肯定/否定/疑问）",
+            "knowledgePoint": "一般现在时的时态结构、第三人称单数变化规则、表习惯性/客观事实的用法",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 8,
+            "title": "一般过去时（规则/不规则动词）",
+            "knowledgePoint": "一般过去时的时态结构、规则动词过去式变化、不规则动词表（如go→went）、表过去具体动作的用法",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 9,
+            "title": "可数名词与不可数名词的用法",
+            "knowledgePoint": "可数名词与不可数名词的区分、数量修饰词搭配（many/much/some/any）、主谓一致基础",
+            "difficulty": "简单"
+          },
+          {
+            "setId": 10,
+            "title": "祈使句（肯定/否定形式）",
+            "knowledgePoint": "祈使句的肯定形式（动词原形开头）、否定形式（Don't+动词原形）、基础语气表达",
+            "difficulty": "简单"
+          }
+        ]
+      },
+      {
+        "moduleName": "基础进阶（11-20套）",
+        "description": "句型拓展，掌握简单句式变化",
+        "sets": [
+          {
+            "setId": 11,
+            "title": "现在进行时（结构be+doing）",
+            "knowledgePoint": "现在进行时的核心结构（be+doing）、表正在进行的动作、现在分词变化规则",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 12,
+            "title": "名词所有格（'s/of结构）",
+            "knowledgePoint": "名词所有格's的用法、of结构的表达、复合名词所有格、两者共有的所有格形式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 13,
+            "title": "形容词比较级与最高级",
+            "knowledgePoint": "形容词比较级与最高级的规则变化、不规则变化（good→better→best）、than/as...as结构",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 14,
+            "title": "一般将来时（will/be going to）",
+            "knowledgePoint": "一般将来时的will/be going to结构、用法区别（计划/预测）、否定式与疑问式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 15,
+            "title": "特殊疑问句（who/what/where等）",
+            "knowledgePoint": "特殊疑问词的用法、疑问句语序规则、对不同成分的提问方式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 16,
+            "title": "选择疑问句（or连接）",
+            "knowledgePoint": "选择疑问句的结构（一般疑问句+or+选项）、语序规则、回答方式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 17,
+            "title": "反义疑问句（前肯后否/前否后肯）",
+            "knowledgePoint": "反义疑问句的构成规则、前肯后否/前否后肯的呼应、回答逻辑",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 18,
+            "title": "介词的基础搭配（时间/地点）",
+            "knowledgePoint": "时间介词in/on/at的搭配、地点介词in/on/at的用法、基础固定介词短语",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 19,
+            "title": "基数词与序数词",
+            "knowledgePoint": "基数词表数量、序数词表顺序（three→third）、序数词的构成规则、日期/顺序表达",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 20,
+            "title": "简单句五大基础句型",
+            "knowledgePoint": "S+Vi/S+Vlink+P/S+V+O/S+V+IO+DO/S+V+O+C五大句型、句子成分识别",
+            "difficulty": "中等偏上"
+          }
+        ]
+      },
+      {
+        "moduleName": "中级核心（21-35套）",
+        "description": "时态深化+句式复杂，适配日常应用",
+        "sets": [
+          {
+            "setId": 21,
+            "title": "过去进行时（was/were+doing）",
+            "knowledgePoint": "过去进行时的核心结构（was/were+doing）、表过去某时正在进行的动作、与一般过去时的区别",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 22,
+            "title": "现在完成时（have/has+done）",
+            "knowledgePoint": "现在完成时的核心结构（have/has+done）、表过去动作对现在的影响、时间标志词（since/for）",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 23,
+            "title": "情态动词的推测用法",
+            "knowledgePoint": "情态动词must/may/might/can't的推测用法、语气强弱差异、对现在/过去的推测",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 24,
+            "title": "被动语态（基础结构be+done）",
+            "knowledgePoint": "被动语态的基础结构（be+done）、一般现在时/一般过去时被动、主动与被动的转换",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 25,
+            "title": "不定式to do的基本用法",
+            "knowledgePoint": "不定式to do作主语/宾语/宾语补足语的基本用法、不定式的否定式、基础固定搭配",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 26,
+            "title": "动名词doing的基本用法",
+            "knowledgePoint": "动名词doing作主语/宾语/介词宾语的基本用法、基础固定搭配（enjoy/finish+doing）",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 27,
+            "title": "并列句（and/but/or/so连接）",
+            "knowledgePoint": "并列连词and/but/or/so的逻辑关系、并列句的结构、分句间的语义衔接",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 28,
+            "title": "定语从句（that/which/who引导）",
+            "knowledgePoint": "定语从句的基本结构、关系代词that/which/who的用法、修饰名词/代词的功能",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 29,
+            "title": "状语从句（时间/条件/原因）",
+            "knowledgePoint": "时间状语从句引导词（when/while）、条件状语从句（if）、原因状语从句（because）的基础用法",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 30,
+            "title": "代词进阶（some/any/many/much等）",
+            "knowledgePoint": "不定代词some/any/many/much/few/little的区别、用法搭配、主谓一致",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 31,
+            "title": "介词短语作状语",
+            "knowledgePoint": "介词短语作地点/方式/原因状语的用法、在句中的位置、常见介词短语搭配",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 32,
+            "title": "比较状语从句（as...as/not as...as/than）",
+            "knowledgePoint": "as...as/not as...as结构、than引导的比较状语从句、比较级的修饰词",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 33,
+            "title": "过去完成时（had+done）",
+            "knowledgePoint": "过去完成时的核心结构（had+done）、表过去的过去、与一般过去时的区分、时间标志词",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 34,
+            "title": "主谓一致（就近原则/就远原则）",
+            "knowledgePoint": "主谓一致三大原则（语法一致/就近一致/就远一致）、there be/with结构的主谓搭配、特殊主语的主谓一致",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 35,
+            "title": "祈使句的强调与委婉表达",
+            "knowledgePoint": "祈使句的强调形式（Please do/Do+动词原形）、委婉表达（Would you please do）、否定式的委婉表达",
+            "difficulty": "中等偏上"
+          }
+        ]
+      },
+      {
+        "moduleName": "中高级拓展（36-45套）",
+        "description": "特殊用法+语法难点，适配考试提升",
+        "sets": [
+          {
+            "setId": 36,
+            "title": "现在完成进行时（have/has been+doing）",
+            "knowledgePoint": "现在完成进行时的核心结构、表持续动作的用法、与现在完成时的区别、时间标志词",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 37,
+            "title": "被动语态进阶（情态动词被动/完成时被动）",
+            "knowledgePoint": "情态动词被动语态（情态动词+be+done）、完成时被动（have/has/had been+done）、否定式与疑问式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 38,
+            "title": "不定式与动名词的用法区别",
+            "knowledgePoint": "不定式与动名词作主语/宾语/表语的区别、固定搭配差异（like to do/like doing）、特殊动词的固定搭配",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 39,
+            "title": "定语从句进阶（whose/whom/非限制性）",
+            "knowledgePoint": "whose/whom引导的定语从句、非限制性定语从句的用法、介词+whom/which结构",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 40,
+            "title": "名词性从句（宾语从句/主语从句）",
+            "knowledgePoint": "宾语从句/主语从句的连接词（that/whether/what）、陈述语序、时态呼应、主谓一致",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 41,
+            "title": "虚拟语气（对现在/过去/将来的假设）",
+            "knowledgePoint": "虚拟语气在if条件句中的用法、核心结构、wish/as if/It's time that...句型的虚拟",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 42,
+            "title": "倒装句（部分倒装/完全倒装）",
+            "knowledgePoint": "部分倒装的触发条件、完全倒装的适用场景、特殊倒装句型（Only then/Here comes...）",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 43,
+            "title": "强调句（It is/was+被强调部分+that/who）",
+            "knowledgePoint": "强调句的核心结构、被强调部分（主语/宾语/状语）、与定语从句的区分、疑问式与否定式",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 44,
+            "title": "冠词的特殊用法（零冠词场景）",
+            "knowledgePoint": "零冠词的核心场景（球类/语言/学科/三餐等）、定冠词的特殊限定、冠词在固定短语中的差异",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 45,
+            "title": "连词进阶（although/though与but禁忌/while表对比）",
+            "knowledgePoint": "although/though与but的不可连用规则、while表对比的用法、让步连词的语气差异",
+            "difficulty": "中等偏上"
+          }
+        ]
+      },
+      {
+        "moduleName": "高级难点（46-50套）",
+        "description": "语法细节+特殊结构，适配深度应用",
+        "sets": [
+          {
+            "setId": 46,
+            "title": "非谓语动词进阶（分词作状语/独立主格）",
+            "knowledgePoint": "现在分词与过去分词作状语的区别、独立主格结构的构成、逻辑主语一致性、与状语从句的转换",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 47,
+            "title": "虚拟语气特殊句型（wish/as if/It's time that...）",
+            "knowledgePoint": "wish引导宾语从句的虚拟、as if/as though的虚拟用法、It's time that...的虚拟结构、真实与虚拟的区分",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 48,
+            "title": "主谓一致特殊情况（集合名词/单复同形名词）",
+            "knowledgePoint": "集合名词的单复数判定、单复同形名词的主谓搭配、特殊单数名词的用法、分数/百分数结构的主谓一致",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 49,
+            "title": "省略句与倒装句的结合应用",
+            "knowledgePoint": "省略句的核心条件、省略与倒装的叠加规则、状语从句的省略+倒装、分词作状语的省略与倒装结合",
+            "difficulty": "中等偏上"
+          },
+          {
+            "setId": 50,
+            "title": "固定搭配与语法惯用法",
+            "knowledgePoint": "高频固定句型（It's+adj.+for/of sb. to do）、动词/介词固定搭配、连词固定搭配、语法惯用法的语境适配",
+            "difficulty": "中等偏上"
+          }
+        ]
+      }
+    ]
+  }
+}

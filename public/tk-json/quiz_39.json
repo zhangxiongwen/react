@@ -1,0 +1,189 @@
+{
+  "title": "定语从句进阶（whose/whom引导，非限制性定语从句）",
+  "knowledgePoint": "whose引导定语从句（表人/物的所属关系）、whom引导定语从句（作宾语，指人）、非限制性定语从句的用法（逗号分隔、不能用that）、介词+whom/which的结构、定语从句的省略规则",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "39-1",
+      "type": "选择题",
+      "question": "The writer ______ novel won the national award is going to give a lecture in our school next week. We are all looking forward to meeting her, ______ works have inspired many young people.",
+      "options": ["whose; whose", "who; whom", "which; whose", "whose; whom"],
+      "correctAnswer": "whose; whose",
+      "explanation": "第一空表“作家的小说”，所属关系用whose引导定语从句，修饰先行词the writer；第二空表“她的作品”，非限制性定语从句中表所属，仍用whose，符合“所属关系+非限制性补充”的逻辑。",
+      "knowledgeExtension": "whose可修饰人或物，表“……的”，既可以引导限制性定语从句，也可引导非限制性定语从句，是唯一能表所属的定语从句引导词。"
+    },
+    {
+      "id": "39-2",
+      "type": "判断题",
+      "question": "The student whom we interviewed yesterday is the winner of the English competition. He is a hardworking boy, that we all admire very much.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空whom作interviewed的宾语，引导限制性定语从句（正确）；第二空非限制性定语从句不能用that，应改为whom（作admire的宾语），核心错误为非限制性定语从句误用that。",
+      "knowledgeExtension": "非限制性定语从句只能用which/who/whom/whose/as引导，不能用that，且从句与主句之间需用逗号分隔。"
+    },
+    {
+      "id": "39-3",
+      "type": "选择题",
+      "question": "The old building ______ windows are broken will be renovated next month. We visited the architect ______ designed the renovation plan, ______ impressed us a lot.",
+      "options": ["whose; who; which", "which; whom; that", "whose; whom; which", "which; who; that"],
+      "correctAnswer": "whose; who; which",
+      "explanation": "第一空表“建筑的窗户”，所属关系用whose；第二空先行词architect指人，作designed的主语，用who；第三空非限制性定语从句修饰plan，用which，符合“所属+主语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "先行词指人且在从句中作主语用who，作宾语用whom/who；先行词指物且在从句中作主语或宾语用which。"
+    },
+    {
+      "id": "39-4",
+      "type": "判断题",
+      "question": "She is the scientist whom the media have been interviewing recently. Her research, which focuses on environmental protection, has attracted widespread attention.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空whom作interviewing的宾语，引导限制性定语从句（正确）；第二空非限制性定语从句修饰research，which作focuses的主语（正确），逻辑连贯，语法无误。",
+      "knowledgeExtension": "whom在口语中可替换为who，但在正式语境或介词后只能用whom（如the person with whom I worked）。"
+    },
+    {
+      "id": "39-5",
+      "type": "选择题",
+      "question": "I met an old friend ______ I hadn’t seen for ten years. We talked about our childhood, ______ we spent together in the countryside. The place ______ we grew up has changed a lot.",
+      "options": ["whom; which; where", "who; that; which", "whom; that; where", "who; which; that"],
+      "correctAnswer": "whom; which; where",
+      "explanation": "第一空先行词friend指人，作seen的宾语，用whom；第二空非限制性定语从句修饰childhood，用which；第三空先行词place表地点，作grew up的状语，用where，符合“宾语+非限制性补充+地点状语”的逻辑。",
+      "knowledgeExtension": "先行词表地点且在从句中作状语用where，作主语或宾语用which/that（如the place which we visited 我们参观的地方）。"
+    },
+    {
+      "id": "39-6",
+      "type": "判断题",
+      "question": "The book, whose author is a famous historian, tells the story of ancient civilizations. I lent it to my classmate that is interested in history.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空非限制性定语从句用whose表“书的作者”（正确）；第二空先行词classmate指人，引导限制性定语从句可用who/whom，但若用that需注意，此处语法无误？重新判定：第二空that可引导限制性定语从句修饰人，题干无错误？修正：题干第二句为限制性定语从句，that可修饰人，语法正确，原判定错误。",
+      "correctAnswer": "true",
+      "explanation": "第一空非限制性定语从句用whose表“书的作者”（正确）；第二空先行词classmate指人，引导限制性定语从句用that（可替换who），语法正确，逻辑连贯。",
+      "knowledgeExtension": "限制性定语从句中，先行词指人时，that/who/whom均可使用（作宾语时that可省略）；非限制性定语从句中不能用that。"
+    },
+    {
+      "id": "39-7",
+      "type": "选择题",
+      "question": "The patient ______ the doctor operated on yesterday is recovering well. The hospital ______ he is staying provides excellent medical services, ______ is highly praised by the public.",
+      "options": ["whom; where; which", "who; which; that", "whom; which; which", "who; where; that"],
+      "correctAnswer": "whom; where; which",
+      "explanation": "第一空先行词patient指人，作operated on的宾语，用whom；第二空先行词hospital表地点，作staying的状语，用where；第三空非限制性定语从句修饰services，用which，符合“宾语+地点状语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "“介词+whom/which”结构可改写为“whom/which+介词”（如the patient whom the doctor operated on = the patient on whom the doctor operated），正式语境中更常用前者。"
+    },
+    {
+      "id": "39-8",
+      "type": "判断题",
+      "question": "The musician, whom we invited to the party, played several classic pieces. His performance, that was wonderful, won loud applause from the audience.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空非限制性定语从句用whom作invited的宾语（正确）；第二空非限制性定语从句不能用that，应改为which，核心错误为非限制性定语从句误用that。",
+      "knowledgeExtension": "非限制性定语从句的引导词which/who/whom/whose不能省略，且不能替换为that，这是与限制性定语从句的核心区别之一。"
+    },
+    {
+      "id": "39-9",
+      "type": "选择题",
+      "question": "We visited the village ______ name comes from a legendary hero. The villagers ______ we talked to shared many interesting stories about the hero, ______ has been celebrated for centuries.",
+      "options": ["whose; whom; who", "which; who; which", "whose; who; that", "which; whom; who"],
+      "correctAnswer": "whose; whom; who",
+      "explanation": "第一空表“村庄的名字”，所属关系用whose；第二空先行词villagers指人，作talked to的宾语，用whom；第三空非限制性定语从句修饰hero，用who，符合“所属+宾语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "whose修饰物时，可替换为“the+名词+of which”（如the village whose name = the village the name of which），但whose更简洁常用。"
+    },
+    {
+      "id": "39-10",
+      "type": "判断题",
+      "question": "The company whose products are popular overseas has opened a new branch in Shanghai. The manager whom we met at the opening ceremony is very experienced.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空whose修饰company，表“公司的产品”（正确）；第二空whom作met的宾语，引导限制性定语从句（正确），语法无误，逻辑连贯。",
+      "knowledgeExtension": "whose引导定语从句时，先行词既可以是人（如the man whose car），也可以是物（如the book whose cover），适用范围广泛。"
+    },
+    {
+      "id": "39-11",
+      "type": "选择题",
+      "question": "The film ______ we watched last night is based on a true story. The actress ______ plays the lead role is very talented, ______ we all know.",
+      "options": ["that; who; as", "which; whom; which", "that; whom; as", "which; who; that"],
+      "correctAnswer": "that; who; as",
+      "explanation": "第一空先行词film指物，作watched的宾语，用that；第二空先行词actress指人，作plays的主语，用who；第三空非限制性定语从句表“众所周知”，用as（固定搭配as we all know），符合“宾语+主语+固定搭配”的逻辑。",
+      "knowledgeExtension": "as可引导非限制性定语从句，常位于句首、句中或句末，表“正如……”（如as is known to all 众所周知），which无此用法。"
+    },
+    {
+      "id": "39-12",
+      "type": "判断题",
+      "question": "The professor with whom we discussed the project is an expert in artificial intelligence. His opinions, which are practical, have helped us solve many problems.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“介词+whom”结构（with whom），whom作discussed的宾语（正确）；第二空非限制性定语从句用which修饰opinions（正确），语法规范，逻辑连贯。",
+      "knowledgeExtension": "当介词位于引导词前时，指人用whom，指物用which，不能用that或who（如the house in which I live 我住的房子）。"
+    },
+    {
+      "id": "39-13",
+      "type": "选择题",
+      "question": "I received a letter from my pen pal ______ I haven’t heard from for a long time. The letter, ______ was written in English, mentioned her new life abroad. She told me about the city ______ she now lives.",
+      "options": ["whom; which; where", "who; that; which", "whom; that; where", "who; which; that"],
+      "correctAnswer": "whom; which; where",
+      "explanation": "第一空先行词pen pal指人，作heard from的宾语，用whom；第二空非限制性定语从句修饰letter，用which；第三空先行词city表地点，作lives的状语，用where，符合“宾语+非限制性补充+地点状语”的逻辑。",
+      "knowledgeExtension": "先行词表地点时，若从句中缺少宾语，用which/that（如the city which I visited）；若缺少状语，用where（如the city where I live），需根据从句成分判断。"
+    },
+    {
+      "id": "39-14",
+      "type": "判断题",
+      "question": "The dog whose owner is a policeman often helps catch criminals. It is a brave dog, that everyone in the neighborhood likes.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空whose表“狗的主人”（正确）；第二空非限制性定语从句不能用that，应改为which，核心错误为非限制性定语从句误用that。",
+      "knowledgeExtension": "非限制性定语从句的作用是补充说明先行词，去掉后不影响主句语义；限制性定语从句是限定先行词范围，去掉后主句语义不完整。"
+    },
+    {
+      "id": "39-15",
+      "type": "选择题",
+      "question": "The conference ______ theme is “Sustainable Development” will be held next month. We invited experts ______ have rich experience in this field, ______ will share their latest research findings.",
+      "options": ["whose; who; who", "which; whom; which", "whose; whom; which", "which; who; that"],
+      "correctAnswer": "whose; who; who",
+      "explanation": "第一空表“会议的主题”，所属关系用whose；第二空先行词experts指人，作have的主语，用who；第三空非限制性定语从句修饰experts，用who，符合“所属+主语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "非限制性定语从句修饰人时，可用who或whom（作宾语）；修饰物时用which，不能用that。"
+    },
+    {
+      "id": "39-16",
+      "type": "判断题",
+      "question": "The novel, which I bought last week, is very interesting. The writer whom it was written by is a young woman from Canada.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空非限制性定语从句用which修饰novel（正确）；第二空“whom it was written by”=“by whom it was written”，whom作written by的宾语（正确），语法无误，表达自然。",
+      "knowledgeExtension": "“介词+whom/which”结构可置于句末（如the person whom I worked with）或句中（如the person with whom I worked），前者更口语化，后者更正式。"
+    },
+    {
+      "id": "39-17",
+      "type": "选择题",
+      "question": "The student ______ homework was praised by the teacher is our monitor. She is a girl ______ we all respect, ______ sets a good example for us.",
+      "options": ["whose; whom; who", "who; who; which", "whose; who; that", "who; whom; who"],
+      "correctAnswer": "whose; whom; who",
+      "explanation": "第一空表“学生的作业”，所属关系用whose；第二空先行词girl指人，作respect的宾语，用whom；第三空非限制性定语从句修饰girl，作sets的主语，用who，符合“所属+宾语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "当定语从句中既有主语又有宾语时，需根据引导词在从句中的成分选择：作主语用who/which，作宾语用whom/which/that（可省略）。"
+    },
+    {
+      "id": "39-18",
+      "type": "判断题",
+      "question": "The bridge, that was built 100 years ago, is still in use. It connects two towns which are separated by a river.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空非限制性定语从句不能用that，应改为which；第二空限制性定语从句用which修饰towns（正确），核心错误为非限制性定语从句误用that。",
+      "knowledgeExtension": "非限制性定语从句的引导词which/who/whom/whose/as不能省略，而限制性定语从句中作宾语的引导词（that/which/whom）可省略（如the book I bought 我买的书）。"
+    },
+    {
+      "id": "39-19",
+      "type": "选择题",
+      "question": "We met the artist ______ paintings are on display at the museum. He told us about the inspiration ______ led him to create the works, ______ have won many awards.",
+      "options": ["whose; that; which", "who; which; that", "whose; which; that", "who; that; which"],
+      "correctAnswer": "whose; that; which",
+      "explanation": "第一空表“艺术家的画”，所属关系用whose；第二空先行词inspiration指物，作led的主语，用that；第三空非限制性定语从句修饰works，用which，符合“所属+主语+非限制性补充”的逻辑。",
+      "knowledgeExtension": "限制性定语从句中，先行词指物时，that和which可互换，但当先行词是不定代词、序数词、最高级等时，只能用that（如all that I know 我所知道的一切）。"
+    },
+    {
+      "id": "39-20",
+      "type": "判断题",
+      "question": "The teacher whom you met yesterday is in charge of the English club. Her teaching method, which is interactive, makes the classes very interesting.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空whom作met的宾语，引导限制性定语从句（正确）；第二空非限制性定语从句用which修饰method（正确），语法规范，语义清晰，符合定语从句进阶用法规则。",
+      "knowledgeExtension": "定语从句进阶学习的核心是区分限制性与非限制性从句的用法、掌握whose/whom的特殊功能，以及“介词+引导词”的固定结构，这些是高频考点。"
+    }
+  ]
+}

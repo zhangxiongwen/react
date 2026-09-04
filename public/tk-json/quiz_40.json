@@ -1,0 +1,187 @@
+{
+  "title": "名词性从句（宾语从句/主语从句，连接词 that/whether/what）",
+  "knowledgePoint": "宾语从句的连接词选择（that/if/whether/特殊疑问词）、主语从句的核心结构（It is+形容词/名词+that从句/疑问词引导主语从句）、连接词 that/whether/what 的用法区别、名词性从句的陈述语序、时态呼应规则",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "40-1",
+      "type": "选择题",
+      "question": "______ he will attend the international conference next month depends on his work schedule. We haven’t received confirmation ______ he has submitted the application form.",
+      "options": ["Whether; that", "If; that", "Whether; if", "If; whether"],
+      "correctAnswer": "Whether; that",
+      "explanation": "第一空引导主语从句，表“是否”，只能用Whether（If不能引导位于句首的主语从句）；第二空引导宾语从句，陈述事实“已提交申请表”，用that（可省略），符合“主语从句连接词+宾语从句连接词”逻辑。",
+      "knowledgeExtension": "Whether可引导主语从句、宾语从句、表语从句和同位语从句；If仅能引导宾语从句，且不能位于句首或与or not连用。"
+    },
+    {
+      "id": "40-2",
+      "type": "判断题",
+      "question": "It is important that we should finish the project on time. She asked me if I have any experience in team management. What he said at the meeting was very inspiring.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It is important that从句，用虚拟语气should+动词原形（用法正确）；第二空主句asked为过去时，宾语从句需时态呼应，“have”应改为had；第三空what引导主语从句（用法正确），核心错误为宾语从句时态未呼应。",
+      "knowledgeExtension": "主句为过去时（asked/said/told等），宾语从句需用相应过去时态（一般现在时→一般过去时、现在完成时→过去完成时）。"
+    },
+    {
+      "id": "40-3",
+      "type": "选择题",
+      "question": "She doesn’t know ______ the meeting will be postponed or not. ______ surprises us most is that no one informed us of the possible change.",
+      "options": ["whether; What", "if; That", "whether; That", "if; What"],
+      "correctAnswer": "whether; What",
+      "explanation": "第一空与or not连用，表“是否”，只能用whether（If不能与or not连用）；第二空引导主语从句，表“让我们最惊讶的事”，用what（在从句中作主语），符合“宾语从句连接词+主语从句连接词”逻辑。",
+      "knowledgeExtension": "whether...or not是固定搭配，可置于句末或中间（whether or not）；what引导名词性从句时，在从句中充当主语、宾语或表语，that仅起连接作用，不充当成分。"
+    },
+    {
+      "id": "40-4",
+      "type": "判断题",
+      "question": "It is a fact that the earth revolves around the sun. He told us that he had visited three foreign countries by the age of 25. I wonder what will the future be like in 50 years.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It is a fact that引导主语从句（用法正确）；第二空that引导宾语从句，时态呼应正确（用法正确）；第三空宾语从句需用陈述语序，“will the future be”应改为the future will be，核心错误为疑问句语序误用。",
+      "knowledgeExtension": "所有名词性从句（宾语从句、主语从句等）均需用陈述语序（主谓不倒装），这是核心语法规则。"
+    },
+    {
+      "id": "40-5",
+      "type": "选择题",
+      "question": "______ the team will win the championship remains unknown. However, we believe ______ their hard work will eventually pay off.",
+      "options": ["Whether; that", "If; that", "Whether; if", "If; whether"],
+      "correctAnswer": "Whether; that",
+      "explanation": "第一空引导主语从句，表“是否”，用Whether（If不能引导主语从句）；第二空引导宾语从句，陈述“努力会有回报”的事实，用that，符合“主语从句+宾语从句”的逻辑搭配。",
+      "knowledgeExtension": "当主语从句位于句首时，只能用Whether引导表“是否”；位于句末时，可与If互换（如It is uncertain whether/if he will come）。"
+    },
+    {
+      "id": "40-6",
+      "type": "判断题",
+      "question": "She asked me that I could help her with the translation. It is necessary that we should improve our communication skills. What they need most is more time and resources.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空表“是否能帮忙”，宾语从句需用whether/if引导，“that”应改为whether/if；第二空It is necessary that从句用虚拟语气（用法正确）；第三空what引导主语从句（用法正确），核心错误为宾语从句连接词误用。",
+      "knowledgeExtension": "宾语从句表“是否”时，用whether/if；表陈述事实时，用that（可省略），需根据语义选择连接词。"
+    },
+    {
+      "id": "40-7",
+      "type": "选择题",
+      "question": "______ he managed to solve the complex problem is still a mystery. We are curious ______ he used a new method or stuck to the traditional one.",
+      "options": ["How; whether", "What; if", "How; if", "What; whether"],
+      "correctAnswer": "How; whether",
+      "explanation": "第一空引导主语从句，表“如何解决问题”，用how（在从句中作方式状语）；第二空与or连用，表“是否”，用whether，符合“主语从句连接词+宾语从句连接词”逻辑。",
+      "knowledgeExtension": "how/why/when/where等特殊疑问词引导名词性从句时，在从句中充当状语，表“如何/为什么/何时/何地”；what/which等充当主语或宾语。"
+    },
+    {
+      "id": "40-8",
+      "type": "判断题",
+      "question": "It is reported that the number of online shoppers has increased rapidly. She told me that she will go abroad for further study next year. That he is always ready to help others is well-known.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It is reported that引导主语从句（用法正确）；第二空主句told为过去时，宾语从句需用过去将来时“will”应改为would；第三空that引导主语从句（用法正确），核心错误为宾语从句时态未呼应。",
+      "knowledgeExtension": "描述客观事实、科学真理时，名词性从句时态可不受主句限制（如第一句“网购人数增长”）；描述主观计划、动作时，需遵循时态呼应规则。"
+    },
+    {
+      "id": "40-9",
+      "type": "选择题",
+      "question": "I can’t remember ______ I put my passport. ______ worries me a lot is that I need it for tomorrow’s trip.",
+      "options": ["where; What", "that; That", "where; That", "that; What"],
+      "correctAnswer": "where; What",
+      "explanation": "第一空引导宾语从句，表“在哪里放护照”，用where（在从句中作地点状语）；第二空引导主语从句，表“让我担心的事”，用what（在从句中作主语），符合“宾语从句+主语从句”的逻辑。",
+      "knowledgeExtension": "当宾语从句缺少地点、时间、方式等状语时，用where/when/how等特殊疑问词；缺少主语、宾语时，用what/which等；不缺少成分时，用that/whether/if。"
+    },
+    {
+      "id": "40-10",
+      "type": "判断题",
+      "question": "He asked me whether I had seen his new laptop. It is strange that she didn’t attend the important meeting. I don’t know if will he come to the party tonight.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空whether引导宾语从句，时态呼应正确（用法正确）；第二空It is strange that从句（用法正确）；第三空宾语从句需用陈述语序，“will he come”应改为he will come，核心错误为疑问句语序误用。",
+      "knowledgeExtension": "即使名词性从句的连接词是特殊疑问词或whether/if，也需保持陈述语序（如when we will start 而非when will we start）。"
+    },
+    {
+      "id": "40-11",
+      "type": "选择题",
+      "question": "______ is certain is that we must take immediate action to protect the environment. No one can deny ______ climate change has become a global issue.",
+      "options": ["What; that", "That; that", "What; whether", "That; whether"],
+      "correctAnswer": "What; that",
+      "explanation": "第一空引导主语从句，表“确定的事”，用what（在从句中作主语）；第二空引导宾语从句，陈述“气候变化是全球问题”的事实，用that，符合“主语从句+宾语从句”的逻辑搭配。",
+      "knowledgeExtension": "“What is certain is that...”是固定句型，前一个what引导主语从句，后一个that引导表语从句，可用于强调观点。"
+    },
+    {
+      "id": "40-12",
+      "type": "判断题",
+      "question": "She wonders if the train will arrive on time. It is important that we should respect different cultures and traditions. What he said at the meeting surprised everyone present.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空if引导宾语从句，表“是否准时到达”（用法正确）；第二空It is important that从句用虚拟语气（用法正确）；第三空what引导主语从句，在从句中作宾语（用法正确），所有名词性从句用法均符合规则。",
+      "knowledgeExtension": "if引导宾语从句时，语气比whether更口语化；正式语境或与or not连用时，优先用whether。"
+    },
+    {
+      "id": "40-13",
+      "type": "选择题",
+      "question": "We haven’t decided ______ we will hold the company dinner. ______ makes the situation more complicated is that many employees have conflicting schedules.",
+      "options": ["when; What", "that; That", "when; That", "that; What"],
+      "correctAnswer": "when; What",
+      "explanation": "第一空引导宾语从句，表“何时举办公司晚宴”，用when（在从句中作时间状语）；第二空引导主语从句，表“让情况更复杂的事”，用what（在从句中作主语），符合“宾语从句+主语从句”的逻辑。",
+      "knowledgeExtension": "特殊疑问词引导名词性从句时，需根据从句语义选择：表时间用when、表地点用where、表原因用why、表方式用how。"
+    },
+    {
+      "id": "40-14",
+      "type": "判断题",
+      "question": "It is said that a new shopping mall will be built next year. He told us that he has lived in this city for 10 years. Whether we can succeed depends on our own efforts.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It is said that引导主语从句（用法正确）；第二空主句told为过去时，宾语从句需用过去完成时“has lived”应改为had lived；第三空whether引导主语从句（用法正确），核心错误为宾语从句时态未呼应。",
+      "knowledgeExtension": "“for+时间段”作状语时，若主句为过去时，宾语从句需用过去完成时（表“过去的过去”）；若主句为现在时，用现在完成时。"
+    },
+    {
+      "id": "40-15",
+      "type": "选择题",
+      "question": "______ she refused the job offer surprised all her friends. We want to know ______ her decision was based on personal reasons or professional considerations.",
+      "options": ["That; whether", "What; if", "That; if", "What; whether"],
+      "correctAnswer": "That; whether",
+      "explanation": "第一空引导主语从句，陈述“她拒绝工作机会”这一事实，用that（不充当成分，仅起连接作用）；第二空与or连用，表“是否”，用whether，符合“主语从句+宾语从句”的逻辑。",
+      "knowledgeExtension": "that引导主语从句时，常置于句末，用it作形式主语（如It surprised all her friends that she refused...），直接置于句首时语气更正式。"
+    },
+    {
+      "id": "40-16",
+      "type": "判断题",
+      "question": "I don’t know that he will come or not. It is necessary that we should prepare well for the exam. What they are talking about is none of our business.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空与or not连用，表“是否”，需用whether引导，“that”应改为whether；第二空It is necessary that从句用虚拟语气（用法正确）；第三空what引导主语从句（用法正确），核心错误为宾语从句连接词误用。",
+      "knowledgeExtension": "whether可与or not连用，if不可；“whether...or not”可省略为“whether or not”，但不能省略为“if or not”。"
+    },
+    {
+      "id": "40-17",
+      "type": "选择题",
+      "question": "______ we need most at the moment is sufficient funding. The manager hasn’t announced ______ the project will be approved.",
+      "options": ["What; whether", "That; if", "What; if", "That; whether"],
+      "correctAnswer": "What; whether",
+      "explanation": "第一空引导主语从句，表“此刻我们最需要的东西”，用what（在从句中作宾语）；第二空引导宾语从句，表“项目是否会被批准”，用whether（正式语境优先），符合“主语从句+宾语从句”的逻辑。",
+      "knowledgeExtension": "在正式书面语中，宾语从句表“是否”时，优先用whether；口语中可多用if，两者语义一致。"
+    },
+    {
+      "id": "40-18",
+      "type": "判断题",
+      "question": "It is a pity that you missed the wonderful concert. She asked me that where I had been during the weekend. What he suggested is worth considering carefully.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It is a pity that引导主语从句（用法正确）；第二空宾语从句中，that和where不能同时使用，应去掉that，用where引导；第三空what引导主语从句（用法正确），核心错误为宾语从句连接词重复。",
+      "knowledgeExtension": "名词性从句中，that与特殊疑问词、whether/if不能同时使用，需根据语义选择单一连接词。"
+    },
+    {
+      "id": "40-19",
+      "type": "选择题",
+      "question": "______ the experiment will succeed depends on the accuracy of the data. We are still discussing ______ we should adjust the parameters or not.",
+      "options": ["Whether; whether", "If; if", "Whether; if", "If; whether"],
+      "correctAnswer": "Whether; whether",
+      "explanation": "第一空引导主语从句，表“是否成功”，用Whether；第二空与or not连用，表“是否调整参数”，用whether，符合“主语从句+宾语从句”的逻辑搭配。",
+      "knowledgeExtension": "whether是唯一能同时引导主语从句、宾语从句且与or not连用的连接词，需重点记忆其多功能性。"
+    },
+    {
+      "id": "40-20",
+      "type": "判断题",
+      "question": "He told us that he would attend the training course next month. It is obvious that he has made great progress in his work. I wonder that who will be appointed as the new department manager.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空that引导宾语从句，时态呼应正确（用法正确）；第二空It is obvious that引导主语从句（用法正确）；第三空宾语从句中，that和who不能同时使用，应去掉that，用who引导，核心错误为连接词重复。",
+      "knowledgeExtension": "who/what/which等连接词引导名词性从句时，本身可充当成分，无需再加that；that仅用于不缺成分的陈述性从句。"
+    }
+  ]
+}

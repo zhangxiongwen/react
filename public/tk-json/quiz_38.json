@@ -1,0 +1,187 @@
+{
+  "title": "不定式与动名词的用法区别（如 like to do/like doing）",
+  "knowledgePoint": "不定式（to do）与动名词（doing）作主语/宾语/表语的区别、固定搭配差异（如 like to do 表具体动作/like doing 表习惯性动作）、不定式作宾语补足语的用法、动名词作介词宾语的规则、特殊动词的固定搭配（如 forget to do/forget doing）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "38-1",
+      "type": "选择题",
+      "question": "She likes ______ classical music in her free time, but today she wants ______ something different—she plans ______ to pop songs.",
+      "options": ["listening to; to listen; to listen", "to listen to; listening; listening", "listening; to listen; listening", "to listen; listening; to listen"],
+      "correctAnswer": "listening to; to listen; to listen",
+      "explanation": "第一空 like doing 表习惯性动作，“喜欢听古典乐”用 listening to（listen 为及物动词，需接 to）；第二空 want to do 是固定搭配，“想要听不同的”用 to listen；第三空 plan to do 表具体计划，用 to listen，符合“习惯+具体愿望+计划”的逻辑。",
+      "knowledgeExtension": "like doing 表长期习惯、兴趣爱好；like to do 表特定场合的具体愿望，两者可互换但语境侧重不同。"
+    },
+    {
+      "id": "38-2",
+      "type": "判断题",
+      "question": "He forgot closing the window before leaving the house. When he realized it, he hurried back to close it. He always remembers checking the windows before going out.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“忘记关窗”表“未做某事”，用 forget to close（forget doing 表“忘记做过某事”）；第三空“记得检查窗户”表“习惯性做某事”，用 remember to check（remember doing 表“记得做过某事”），核心错误为 forget/remember 后不定式与动名词混淆。",
+      "knowledgeExtension": "forget/remember/regret + to do 表“未做/要做某事”；+ doing 表“做过某事（已发生）”，语义完全不同。"
+    },
+    {
+      "id": "38-3",
+      "type": "选择题",
+      "question": "It’s important ______ enough sleep every day, and avoiding ______ late at night helps ______ healthy. She decides ______ a regular schedule.",
+      "options": ["to get; staying up; keep; to follow", "getting; to stay up; to keep; following", "to get; to stay up; keeping; following", "getting; staying up; keeping; to follow"],
+      "correctAnswer": "to get; staying up; keep; to follow",
+      "explanation": "第一空 It’s important to do 是固定句型，用 to get；第二空 avoid + doing 是固定搭配，“避免熬夜”用 staying up；第三空 help + 动词原形（或 to do），用 keep；第四空 decide to do 表“决定做某事”，用 to follow，符合语法搭配规则。",
+      "knowledgeExtension": "It’s + 形容词 + to do 是常用句型，表“做某事是……的”；avoid/finish/enjoy/mind 等动词后只能接动名词（doing）。"
+    },
+    {
+      "id": "38-4",
+      "type": "判断题",
+      "question": "She enjoys painting and often spends her weekends in the studio. She hopes to hold her own exhibition next year. Her friends encourage her to keep practicing and not to give up.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 enjoy doing 是固定搭配，“喜欢画画”用 painting（正确）；第二空 hope to do 表“希望做某事”，“举办展览”用 to hold（正确）；第三空 encourage sb. to do 表“鼓励某人做某事”，“坚持练习”“不放弃”用 to keep 和 not to give up（正确），所有搭配均符合规则。",
+      "knowledgeExtension": "encourage/ask/tell/want 等动词后接不定式作宾语补足语（sb. to do），否定式为 sb. not to do。"
+    },
+    {
+      "id": "38-5",
+      "type": "选择题",
+      "question": "He promised ______ on time for the meeting, but he ended up ______ late because he forgot ______ his keys and had to go back for them.",
+      "options": ["to arrive; being; to take", "arriving; to be; taking", "to arrive; to be; to take", "arriving; being; taking"],
+      "correctAnswer": "to arrive; being; to take",
+      "explanation": "第一空 promise to do 表“承诺做某事”，用 to arrive；第二空 end up doing 是固定搭配，“最终迟到”用 being late；第三空 forget to do 表“忘记做某事”，“忘记带钥匙”用 to take，符合“承诺+结果+原因”的逻辑。",
+      "knowledgeExtension": "promise/agree/decide 等动词后只能接不定式（to do）；end up/feel like/give up 等短语后只能接动名词（doing）。"
+    },
+    {
+      "id": "38-6",
+      "type": "判断题",
+      "question": "They plan visiting the museum tomorrow morning. They look forward to see the new exhibition of ancient artifacts. They discussed to go there by bus to save time.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 plan to do 是固定搭配，“计划参观”应为 to visit；第二空 look forward to + doing，“期待看到”应为 seeing（to 是介词）；第三空 discuss + doing，“讨论去那里”应为 going，核心错误为三处固定搭配误用。",
+      "knowledgeExtension": "look forward to、pay attention to、devote to 等短语中的 to 是介词，后接动名词（doing），而非不定式（to do）。"
+    },
+    {
+      "id": "38-7",
+      "type": "选择题",
+      "question": "______ English well requires a lot of practice. She suggests ______ for at least 30 minutes every day and advises us ______ not ______ afraid of making mistakes.",
+      "options": ["Learning; practicing; to; be", "To learn; to practice; not; to be", "Learning; to practice; to; be", "To learn; practicing; not; to be"],
+      "correctAnswer": "Learning; practicing; not; to be",
+      "explanation": "第一空动名词作主语，“学好英语”用 Learning（不定式作主语也可，但动名词更侧重过程）；第二空 suggest + doing，“建议练习”用 practicing；第三空 advise sb. not to do，“建议我们不要害怕”用 not to be，符合“主语+宾语+宾语补足语”的搭配规则。",
+      "knowledgeExtension": "suggest/advise/propose 等动词后接动名词作宾语，接不定式时需用“advise sb. to do”（不能直接接 to do）。"
+    },
+    {
+      "id": "38-8",
+      "type": "判断题",
+      "question": "I remember meeting her at the conference last year, but I forget to ask for her contact information. I regret not to exchange business cards with her.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 remember doing 表“记得做过某事”，用法正确；第二空 forget to ask 表“忘记要做某事”，用法正确；第三空 regret not doing 表“后悔没做某事”，“后悔没交换名片”应为 not exchanging，核心错误为 regret 后不定式误用。",
+      "knowledgeExtension": "regret + to do 表“遗憾要做某事”（如 regret to inform 遗憾通知）；+ doing 表“后悔做过/没做某事”，需根据语义选择。"
+    },
+    {
+      "id": "38-9",
+      "type": "选择题",
+      "question": "The teacher told the students ______ quiet and asked them ______ their textbooks. She also allowed them ______ notes while listening.",
+      "options": ["to be; to open; to take", "being; opening; taking", "to be; opening; to take", "being; to open; taking"],
+      "correctAnswer": "to be; to open; to take",
+      "explanation": "第一空 tell sb. to do，“告诉学生保持安静”用 to be quiet（quiet 为形容词，需接 be 动词）；第二空 ask sb. to do，“让他们打开课本”用 to open；第三空 allow sb. to do，“允许他们记笔记”用 to take，符合“动词+sb.+to do”的宾语补足语结构。",
+      "knowledgeExtension": "tell/ask/allow/order 等动词后接不定式作宾语补足语（sb. to do），否定式为 sb. not to do（如 tell sb. not to be late）。"
+    },
+    {
+      "id": "38-10",
+      "type": "判断题",
+      "question": "She prefers staying at home on weekends rather than to go out. She likes reading books and drinking tea. Sometimes she chooses watching a movie instead of to visit friends.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 prefer doing rather than do（rather than 后接动词原形），“宁愿待在家也不出去”应为 go out；第三空 instead of + doing，“选择看电影而不是拜访朋友”应为 visiting，核心错误为固定搭配中不定式与动名词混淆。",
+      "knowledgeExtension": "prefer doing A rather than do B、instead of doing、rather than do 是固定结构，需注意 rather than 后接动词原形，instead of 后接动名词。"
+    },
+    {
+      "id": "38-11",
+      "type": "选择题",
+      "question": "It’s a waste of time ______ such meaningless things. He decided ______ no more time on them and focused on ______ his work.",
+      "options": ["doing; to spend; finishing", "to do; spending; finish", "doing; spending; finishing", "to do; to spend; finish"],
+      "correctAnswer": "doing; to spend; finishing",
+      "explanation": "第一空 It’s a waste of time doing 是固定搭配，“做无意义的事是浪费时间”用 doing；第二空 decide to do，“决定不再花时间”用 to spend；第三空 focus on + doing，“专注完成工作”用 finishing，符合搭配规则。",
+      "knowledgeExtension": "It’s a waste of time/money doing 是常用句型，表“做某事是浪费时间/金钱”；focus on、insist on、depend on 等短语中 on 是介词，后接动名词。"
+    },
+    {
+      "id": "38-12",
+      "type": "判断题",
+      "question": "He tried to fix the broken computer, but he failed. He considered asking a professional for help. He hopes to solve the problem before tomorrow.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 try to do 表“努力做某事”，“努力修理电脑”用法正确；第二空 consider + doing，“考虑找专业人士”用法正确；第三空 hope to do，“希望明天前解决问题”用法正确，所有搭配均符合规则。",
+      "knowledgeExtension": "try to do 表“努力做（未成功）”；try doing 表“尝试做（试验方法）”，如 try turning off the computer 尝试关掉电脑。"
+    },
+    {
+      "id": "38-13",
+      "type": "选择题",
+      "question": "She avoids ______ sugar because she wants ______ weight. She suggests ______ more vegetables and fruits instead of sweet snacks.",
+      "options": ["eating; to lose; eating", "to eat; losing; to eat", "eating; losing; to eat", "to eat; to lose; eating"],
+      "correctAnswer": "eating; to lose; eating",
+      "explanation": "第一空 avoid + doing，“避免吃糖”用 eating；第二空 want to do，“想要减肥”用 to lose；第三空 suggest + doing，“建议多吃蔬菜水果”用 eating，符合“避免+愿望+建议”的逻辑。",
+      "knowledgeExtension": "lose weight 是固定短语（减肥），want to do + 动词原形，不能用 losing（动名词）；suggest 后接动名词，不能接不定式。"
+    },
+    {
+      "id": "38-14",
+      "type": "判断题",
+      "question": "They agreed to meet at the café at 3 o’clock. They discussed to travel to the countryside next weekend. They decided booking tickets in advance to avoid disappointment.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 agree to do，“同意在咖啡馆见面”用法正确；第二空 discuss + doing，“讨论下周末去乡下”应为 traveling；第三空 decide to do，“决定提前订票”应为 to book，核心错误为 discuss 和 decide 后的搭配误用。",
+      "knowledgeExtension": "agree/decide/refuse 等动词后接不定式（to do）；discuss/consider/finish 等动词后接动名词（doing），无例外情况。"
+    },
+    {
+      "id": "38-15",
+      "type": "选择题",
+      "question": "______ early in the morning is good for health. She likes ______ at 6 o’clock and enjoys ______ in the park after that.",
+      "options": ["Getting up; to get up; running", "To get up; getting up; to run", "Getting up; getting up; running", "To get up; to get up; to run"],
+      "correctAnswer": "Getting up; to get up; running",
+      "explanation": "第一空动名词作主语，“早起有益健康”用 Getting up；第二空 like to do 表具体习惯，“喜欢6点起床”用 to get up；第三空 enjoy + doing，“喜欢在公园跑步”用 running，符合“主语+习惯+兴趣”的逻辑。",
+      "knowledgeExtension": "动名词和不定式均可作主语，动名词更侧重“习惯性、普遍性”，不定式更侧重“具体性、一次性”，此处用动名词更贴合“早起”这一普遍习惯。"
+    },
+    {
+      "id": "38-16",
+      "type": "判断题",
+      "question": "I hope to see you again soon. I look forward to receive your email. Please remember to inform me of any changes.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 hope to do，“希望很快见到你”用法正确；第二空 look forward to + doing，“期待收到你的邮件”应为 receiving；第三空 remember to inform，“记得通知我”用法正确，核心错误为 look forward to 后不定式误用。",
+      "knowledgeExtension": "look forward to 中的 to 是介词，后接动名词，这是高频考点，需牢记“to + doing”的搭配。"
+    },
+    {
+      "id": "38-17",
+      "type": "选择题",
+      "question": "The doctor advised him ______ smoking and recommended ______ more exercise. He promised ______ his best to follow the advice.",
+      "options": ["to give up; doing; to try", "giving up; to do; trying", "to give up; to do; trying", "giving up; doing; to try"],
+      "correctAnswer": "to give up; doing; to try",
+      "explanation": "第一空 advise sb. to do，“建议他戒烟”用 to give up；第二空 recommend + doing，“建议多锻炼”用 doing；第三空 promise to do，“承诺尽力遵循建议”用 to try，符合固定搭配规则。",
+      "knowledgeExtension": "advise sb. to do = recommend doing（建议做某事），recommend 后也可接 sb. to do，但更常用 recommend doing。"
+    },
+    {
+      "id": "38-18",
+      "type": "判断题",
+      "question": "She stopped to talk to her friend when she saw her on the street. She had to stop working because she felt tired. She didn’t stop to rest until midnight.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空 stop to do 表“停下来去做另一件事”，“停下来和朋友说话”用法正确；第二空 stop doing 表“停止正在做的事”，“停止工作”用法正确；第三空 stop to rest 表“停下来休息”，用法正确，语义区分清晰。",
+      "knowledgeExtension": "stop to do 表“中断当前动作，去做另一件事”；stop doing 表“中断正在进行的动作”，是最易混淆的搭配之一，需结合语境判断。"
+    },
+    {
+      "id": "38-19",
+      "type": "选择题",
+      "question": "It’s dangerous ______ without a helmet. He warned us ______ the road when the traffic light is red. He also forbade us ______ in the restricted area.",
+      "options": ["to ride; not to cross; to smoke", "riding; not crossing; smoking", "to ride; not crossing; smoking", "riding; not to cross; to smoke"],
+      "correctAnswer": "to ride; not to cross; to smoke",
+      "explanation": "第一空 It’s dangerous to do 是固定句型，“不戴头盔骑车很危险”用 to ride；第二空 warn sb. not to do，“警告我们红灯时不要过马路”用 not to cross；第三空 forbid sb. to do，“禁止我们在禁区吸烟”用 to smoke，符合“警告+禁止”的搭配规则。",
+      "knowledgeExtension": "forbid 后可接 sb. to do 或 doing（forbid doing），但接“某人不要做某事”时，只能用 forbid sb. not to do。"
+    },
+    {
+      "id": "38-20",
+      "type": "判断题",
+      "question": "They succeeded in solving the problem after many attempts. They managed to finish the project on time. They thanked everyone for their help and appreciated to work with such a great team.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空 succeed in + doing，“成功解决问题”用法正确；第二空 manage to do，“设法按时完成项目”用法正确；第三空 appreciate + doing，“感谢和这么棒的团队合作”应为 working，核心错误为 appreciate 后不定式误用。",
+      "knowledgeExtension": "appreciate、enjoy、finish、avoid 等动词后只能接动名词（doing），不能接不定式（to do），这是固定规则。"
+    }
+  ]
+}

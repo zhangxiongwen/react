@@ -1,0 +1,187 @@
+{
+  "title": "并列句（and/but/or/so 连接，逻辑关系表达）",
+  "knowledgePoint": "并列句的核心结构（分句+并列连词+分句）、四大并列连词的逻辑适配（and顺承/but转折/or选择/so因果）、分句主谓一致与时态呼应、并列句与复合句的区别、并列连词的省略与替换",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "27-1",
+      "type": "选择题",
+      "question": "The team spent months researching the market, ______ they identified a gap in consumer needs, ______ they decided to develop a targeted product.",
+      "options": ["and; so", "but; and", "or; so", "so; but"],
+      "correctAnswer": "and; so",
+      "explanation": "第一空“研究市场”与“发现需求缺口”是顺承关系，用and连接；第二空“发现缺口”与“决定开发针对性产品”是因果关系，用so连接，符合逻辑递进规则。",
+      "knowledgeExtension": "and表“顺承、并列”，连接先后发生或相关的动作；so表“因果”，前因后果，不能与because同时使用（避免重复因果逻辑）。"
+    },
+    {
+      "id": "27-2",
+      "type": "判断题",
+      "question": "She is passionate about environmental protection, so she volunteers at a local nature reserve every weekend, but she also encourages her friends to reduce plastic use.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "前半句“热爱环保”与“周末做志愿者”是因果关系（so正确）；后半句“做志愿者”与“鼓励朋友减塑”是顺承关系，应用and连接，but表转折，逻辑矛盾，题干连词误用。",
+      "knowledgeExtension": "并列连词需严格匹配分句间逻辑：顺承用and，转折用but，选择用or，因果用so，避免逻辑混淆。"
+    },
+    {
+      "id": "27-3",
+      "type": "选择题",
+      "question": "You can submit the application online, ______ you can deliver it in person—______ way you choose, make sure it reaches us before the deadline.",
+      "options": ["or; whichever", "and; whatever", "but; however", "so; whenever"],
+      "correctAnswer": "or; whichever",
+      "explanation": "第一空“网上提交”与“亲自送达”是选择关系，用or连接；第二空“无论选择哪种方式”用whichever，指代前文两种选择，符合选择逻辑。",
+      "knowledgeExtension": "or表“选择”，可指“二选一”或“多选一”，常用于否定句中替代and（如I don’t like coffee or tea）。"
+    },
+    {
+      "id": "27-4",
+      "type": "判断题",
+      "question": "The experiment failed twice, but the researchers didn’t give up, and they analyzed the data carefully, so they found the root cause of the problem.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“实验失败两次”与“不放弃”是转折关系（but正确）；“不放弃”与“仔细分析数据”是顺承关系（and正确）；“分析数据”与“找到根本原因”是因果关系（so正确），逻辑链连贯，连词使用恰当。",
+      "knowledgeExtension": "多个并列分句可连续使用不同逻辑的并列连词，需确保每个连接点的逻辑准确，形成清晰的语义递进。"
+    },
+    {
+      "id": "27-5",
+      "type": "选择题",
+      "question": "The conference was postponed due to bad weather, ______ many participants had already arrived in the city, ______ the organizers arranged temporary accommodation for them.",
+      "options": ["but; so", "and; but", "or; and", "so; or"],
+      "correctAnswer": "but; so",
+      "explanation": "第一空“会议推迟”与“许多参与者已抵达”是转折关系（预期之外的情况），用but连接；第二空“参与者已抵达”与“安排临时住宿”是因果关系，用so连接，符合逻辑。",
+      "knowledgeExtension": "but表“转折”，可连接预期与实际不符的情况；so表“因果”，强调基于前一分句的客观结果。"
+    },
+    {
+      "id": "27-6",
+      "type": "判断题",
+      "question": "He studied hard for the exam, and he didn’t get a good grade because he made careless mistakes. He decided to be more careful next time.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“努力学习”与“没考好”是转折关系，应用but连接，and表顺承，逻辑矛盾；后半句“没考好”与“决定下次更细心”是因果关系（隐含so），但前半部分连词误用是核心错误。",
+      "knowledgeExtension": "当分句间存在“努力却未达预期”“看似相关实则相反”的关系时，必须用but表转折，不能用and。"
+    },
+    {
+      "id": "27-7",
+      "type": "选择题",
+      "question": "We can either start the project next Monday, ______ we can wait until the budget is approved—______ option we pick, we need to confirm it by the end of this week.",
+      "options": ["or; whichever", "and; whatever", "but; however", "so; whenever"],
+      "correctAnswer": "or; whichever",
+      "explanation": "第一空“下周一启动”与“等预算批准”是选择关系，either...or...是固定搭配，用or连接；第二空“无论选择哪种方案”用whichever，指代前文两种选择，符合选择逻辑。",
+      "knowledgeExtension": "either...or...是固定选择搭配，表“要么……要么……”，不能与and/but混用；neither...nor...表“既不……也不……”，同理。"
+    },
+    {
+      "id": "27-8",
+      "type": "判断题",
+      "question": "The book is well-written, and it provides practical advice, so it has become a bestseller in many countries. Readers praise it for its clarity and depth.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“写得好”与“提供实用建议”是顺承关系（and正确）；“写得好+实用”与“成为畅销书”是因果关系（so正确），逻辑连贯，连词使用恰当。",
+      "knowledgeExtension": "多个积极属性并列时用and，后续基于这些属性产生的结果用so，形成“属性并列→结果”的逻辑链，符合表达习惯。"
+    },
+    {
+      "id": "27-9",
+      "type": "选择题",
+      "question": "The company needs to cut costs, ______ it cannot reduce employee salaries, ______ that would lower morale and productivity.",
+      "options": ["but; for", "and; so", "or; because", "so; but"],
+      "correctAnswer": "but; for",
+      "explanation": "第一空“需要削减成本”与“不能降薪”是转折关系，用but连接；第二空“降薪会降低士气和生产力”是补充说明“不能降薪”的原因，for表“补充原因”（语气弱于because），符合逻辑。",
+      "knowledgeExtension": "for作并列连词时，表“补充说明的原因”，只能放在结果分句后，不能置于句首；because表“核心原因”，可置于句首或句中。"
+    },
+    {
+      "id": "27-10",
+      "type": "判断题",
+      "question": "She wanted to travel abroad during the holiday, but the flight tickets were too expensive, so she decided to take a road trip instead. She had a wonderful time.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“想出国旅行”与“机票太贵”是转折关系（but正确）；“机票太贵”与“决定公路旅行”是因果关系（so正确），逻辑连贯，连词使用恰当，符合“愿望→阻碍→替代方案”的表达逻辑。",
+      "knowledgeExtension": "描述“愿望与现实冲突→调整方案”的场景时，常用“but（转折阻碍）+so（因果调整）”的连词组合，语义更流畅。"
+    },
+    {
+      "id": "27-11",
+      "type": "选择题",
+      "question": "You must finish the safety training, ______ you will not be allowed to operate the equipment—this rule applies to all new employees, ______ their previous experience.",
+      "options": ["or; regardless of", "and; because of", "but; due to", "so; instead of"],
+      "correctAnswer": "or; regardless of",
+      "explanation": "第一空“完成安全培训”与“不允许操作设备”是选择关系（表“否则”），用or连接；第二空“无论先前经验如何”用regardless of，补充说明规则的通用性，符合逻辑。",
+      "knowledgeExtension": "or表“否则”时，隐含“如果不做前一分句的事，就会产生后一分句的结果”，常用于警告、规则说明等场景。"
+    },
+    {
+      "id": "27-12",
+      "type": "判断题",
+      "question": "The team worked day and night to meet the deadline, so they encountered unexpected technical problems, but they managed to solve them in time.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“日夜工作赶截止日期”与“遇到突发技术问题”是转折关系（努力却遇阻碍），应用but连接，so表因果，逻辑矛盾；“遇到问题”与“及时解决”是顺承关系（隐含and），前半部分连词误用是核心错误。",
+      "knowledgeExtension": "当分句间存在“努力过程中出现意外”的关系时，用but表转折，不能用so（so需前因后果，此处无因果关联）。"
+    },
+    {
+      "id": "27-13",
+      "type": "选择题",
+      "question": "The lecture was informative, ______ it was too long, ______ many attendees started to feel bored halfway through.",
+      "options": ["but; so", "and; but", "or; so", "so; and"],
+      "correctAnswer": "but; so",
+      "explanation": "第一空“内容丰富”与“时长过长”是转折关系，用but连接；第二空“时长过长”与“许多听众中途感到无聊”是因果关系，用so连接，符合“优点+缺点→结果”的逻辑。",
+      "knowledgeExtension": "描述事物“既有优点也有缺点”时，用but连接优缺点，后续基于缺点产生的结果用so，逻辑更完整。"
+    },
+    {
+      "id": "27-14",
+      "type": "判断题",
+      "question": "He didn’t have enough money to buy the laptop, or he didn’t want to spend all his savings, so he decided to borrow one from a friend.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“没钱买”与“不想花光积蓄”是选择关系（两种可能原因），用or连接；“两种原因”与“决定向朋友借”是因果关系（so正确），逻辑连贯，连词使用恰当。",
+      "knowledgeExtension": "or可连接多个并列的原因或可能性，表“要么……要么……”，后续基于这些可能性产生的结果用so，符合“多种原因→同一结果”的表达逻辑。"
+    },
+    {
+      "id": "27-15",
+      "type": "选择题",
+      "question": "We can go hiking this weekend, ______ we can visit the art exhibition—______ you prefer, I’ll arrange the transportation accordingly.",
+      "options": ["or; whichever", "and; whatever", "but; however", "so; whenever"],
+      "correctAnswer": "or; whichever",
+      "explanation": "第一空“周末徒步”与“参观艺术展”是选择关系，用or连接；第二空“无论你更喜欢哪种”用whichever，指代前文两种选择，符合选择逻辑，体现尊重对方意愿的语境。",
+      "knowledgeExtension": "在邀请、提议场景中，用or提供选择，后续用whichever/whatever呼应，语气更委婉礼貌，符合交际习惯。"
+    },
+    {
+      "id": "27-16",
+      "type": "判断题",
+      "question": "The movie received positive reviews from critics, and it didn’t attract many viewers, but the box office was disappointing.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“影评积极”与“观众不多”是转折关系，应用but连接，and表顺承，逻辑矛盾；“观众不多”与“票房惨淡”是因果关系（隐含so），前半部分连词误用是核心错误。",
+      "knowledgeExtension": "当“专业评价”与“市场表现”不一致时，用but表转折，不能用and，后续基于市场表现的结果用so，形成“评价与表现转折→结果”的逻辑。"
+    },
+    {
+      "id": "27-17",
+      "type": "选择题",
+      "question": "The new policy aims to promote innovation, ______ it provides financial support for startups, ______ many entrepreneurs have benefited from it.",
+      "options": ["and; so", "but; and", "or; so", "so; but"],
+      "correctAnswer": "and; so",
+      "explanation": "第一空“促进创新”与“为初创企业提供资金支持”是顺承关系（政策的具体措施），用and连接；第二空“提供资金支持”与“许多创业者受益”是因果关系，用so连接，符合“政策目标+具体措施→结果”的逻辑。",
+      "knowledgeExtension": "描述政策、计划等时，用and连接“目标与措施”，用so连接“措施与结果”，形成清晰的“目标→措施→结果”逻辑链。"
+    },
+    {
+      "id": "27-18",
+      "type": "判断题",
+      "question": "She speaks fluent English, and she knows a little French, so she can communicate with most international clients. Her language skills are a great asset to the company.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“英语流利”与“懂一点法语”是顺承关系（并列语言技能），用and连接；“语言技能好”与“能和大多数国际客户沟通”是因果关系，用so连接，逻辑连贯，连词使用恰当。",
+      "knowledgeExtension": "并列多个技能、属性时用and，后续基于这些技能/属性产生的优势用so，符合“能力并列→优势结果”的表达逻辑。"
+    },
+    {
+      "id": "27-19",
+      "type": "选择题",
+      "question": "You should either correct the mistake immediately, ______ you should explain the situation to your supervisor—______ you do, don’t try to hide it.",
+      "options": ["or; whatever", "and; whichever", "but; however", "so; whenever"],
+      "correctAnswer": "or; whatever",
+      "explanation": "第一空“立即纠正错误”与“向主管说明情况”是选择关系，either...or...固定搭配，用or连接；第二空“无论你做什么”用whatever，指代“纠正错误”或“说明情况”的任一行为，强调“不要隐瞒”的核心要求，符合逻辑。",
+      "knowledgeExtension": "either...or...连接两个具体行动选择，后续用whatever/whichever呼应，可强化“无论选择哪种行动，都需遵守某规则”的语气。"
+    },
+    {
+      "id": "27-20",
+      "type": "判断题",
+      "question": "The project was complex, but the team collaborated effectively, so they completed it ahead of schedule. The client was very satisfied with the result.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“项目复杂”与“团队有效协作”是转折关系（困难与应对），用but连接；“有效协作”与“提前完成项目”是因果关系，用so连接，逻辑连贯，符合“困难→积极应对→良好结果”的表达逻辑，连词使用恰当。",
+      "knowledgeExtension": "描述“克服困难取得成功”的场景时，常用“but（转折困难与应对）+so（因果应对与结果）”的组合，语义更具感染力。"
+    }
+  ]
+}

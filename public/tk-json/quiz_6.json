@@ -1,0 +1,267 @@
+{
+  "title": "形容词与副词的基本区别（修饰对象+位置，如quick/quickly）",
+  "knowledgePoint": "形容词与副词的核心区别、修饰对象与位置、基础级用法及易错点",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "6-1",
+      "type": "选择题",
+      "question": "The scientist presented her research findings in a ______ way, making even complex theories ______ to the audience.",
+      "options": [
+        "clear; clearly",
+        "clearly; clear",
+        "clear; clear",
+        "clearly; clearly"
+      ],
+      "correctAnswer": "clear; clear",
+      "explanation": "第一空修饰名词way，需用形容词clear（a clear way 清晰的方式）；第二空作宾语补足语，补充说明theories的状态，需用形容词clear（make sth. clear 使某物清晰），故答案为clear; clear。",
+      "knowledgeExtension": "形容词的核心功能：修饰名词/代词（作定语）、作表语、作宾语补足语；副词的核心功能：修饰动词/形容词/其他副词/句子（作状语），需根据修饰对象判断词性。"
+    },
+    {
+      "id": "6-2",
+      "type": "判断题",
+      "question": "He runs very quick in the morning to catch the early bus, and he always arrives at the office on time.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "run为动词，需用副词quickly修饰（修饰动词用副词），而非形容词quick，正确表达为runs very quickly，题干中quick用法错误。",
+      "knowledgeExtension": "形容词变副词的规则变化：1. 一般加ly（quick→quickly, slow→slowly）；2. 以y结尾且y前为辅音字母，变y为i加ly（happy→happily, easy→easily）；3. 以le结尾，去e加ly（simple→simply, gentle→gently）。"
+    },
+    {
+      "id": "6-3",
+      "type": "选择题",
+      "question": "The new policy has a ______ impact on environmental protection, and it has been ______ accepted by the public.",
+      "options": [
+        "significant; wide",
+        "significantly; widely",
+        "significant; widely",
+        "significantly; wide"
+      ],
+      "correctAnswer": "significant; widely",
+      "explanation": "第一空修饰名词impact，需用形容词significant（a significant impact 重大的影响）；第二空修饰动词accepted，需用副词widely（be widely accepted 被广泛接受），故答案为significant; widely。",
+      "knowledgeExtension": "易混淆的形容词与副词：wide（adj. 宽的）/widely（adv. 广泛地）、deep（adj. 深的）/deeply（adv. 深深地）、hard（adj. 难的/硬的）/hardly（adv. 几乎不）。"
+    },
+    {
+      "id": "6-4",
+      "type": "判断题",
+      "question": "The lecture was so interesting that all the students listened careful throughout the whole process.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "listen为动词，需用副词carefully修饰（listen carefully 认真听），而非形容词careful，题干中careful用法错误。",
+      "knowledgeExtension": "“so+形容词/副词+that从句”句型中，so后接形容词还是副词，取决于从句主语后的动词：若为系动词，so后接形容词（The movie is so interesting that I watched it twice）；若为实义动词，so后接副词（She runs so fast that no one can catch up）。"
+    },
+    {
+      "id": "6-5",
+      "type": "选择题",
+      "question": "As a ______ leader, she always makes ______ decisions and communicates ______ with her team members.",
+      "options": [
+        "wise; wise; effective",
+        "wisely; wisely; effectively",
+        "wise; wisely; effective",
+        "wise; wise; effectively"
+      ],
+      "correctAnswer": "wise; wise; effectively",
+      "explanation": "第一空修饰名词leader，需用形容词wise（a wise leader 明智的领导者）；第二空修饰名词decisions，需用形容词wise（wise decisions 明智的决定）；第三空修饰动词communicates，需用副词effectively（communicate effectively 有效沟通），故答案为wise; wise; effectively。",
+      "knowledgeExtension": "同一词根的形容词与副词搭配：wise（adj.）修饰人/物，wisely（adv.）修饰动作；effective（adj.）修饰事物，effectively（adv.）修饰动作，需根据语法功能选择。"
+    },
+    {
+      "id": "6-6",
+      "type": "判断题",
+      "question": "The cake smells well and tastes even better, so it sells very fast in the bakery.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "smell为系动词（感官动词），后接形容词作表语，well作形容词时表“健康的”，此处需用good（smell good 闻起来香），题干中well用法错误。",
+      "knowledgeExtension": "常见系动词（后接形容词作表语）：1. 感官动词（look, sound, smell, taste, feel）；2. 变化类动词（become, get, turn, grow）；3. 状态类动词（be, seem, appear, remain）。"
+    },
+    {
+      "id": "6-7",
+      "type": "选择题",
+      "question": "The team has made ______ progress in the project, and they are working ______ to meet the deadline.",
+      "options": [
+        "steady; steady",
+        "steadily; steadily",
+        "steady; steadily",
+        "steadily; steady"
+      ],
+      "correctAnswer": "steady; steadily",
+      "explanation": "第一空修饰名词progress，需用形容词steady（steady progress 稳步的进步）；第二空修饰动词working，需用副词steadily（work steadily 稳步工作），故答案为steady; steadily。",
+      "knowledgeExtension": "不可数名词（progress, information, advice等）常用形容词修饰（如great progress, useful information），副词不能直接修饰名词。"
+    },
+    {
+      "id": "6-8",
+      "type": "判断题",
+      "question": "She speaks English fluent and can communicate with foreign clients without any difficulty.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "speak为动词，需用副词fluently修饰（speak English fluently 英语说得流利），而非形容词fluent，题干中fluent用法错误。",
+      "knowledgeExtension": "“动词+宾语+副词”结构中，副词需放在宾语后（如speak English well）；若宾语较长，副词可放在动词与宾语之间（如speak clearly all the difficult points）。"
+    },
+    {
+      "id": "6-9",
+      "type": "选择题",
+      "question": "The ______ designed building not only looks ______ but also functions ______ for the residents.",
+      "options": [
+        "beautiful; beautiful; practical",
+        "beautifully; beautifully; practically",
+        "beautiful; beautifully; practically",
+        "beautifully; beautiful; practically"
+      ],
+      "correctAnswer": "beautifully; beautiful; practically",
+      "explanation": "第一空修饰过去分词designed（相当于形容词），需用副词beautifully（beautifully designed 设计精美的）；第二空作表语，需用形容词beautiful（look beautiful 看起来漂亮）；第三空修饰动词functions，需用副词practically（function practically 实用地发挥作用），故答案为beautifully; beautiful; practically。",
+      "knowledgeExtension": "副词可修饰形容词或过去分词（如a highly developed country 高度发达的国家，a well-known writer 著名的作家），此时副词需放在形容词/过去分词前。"
+    },
+    {
+      "id": "6-10",
+      "type": "判断题",
+      "question": "The weather becomes gradually cold as winter approaches, so people need to wear warm clothes.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "become为系动词，副词gradually需放在系动词后、形容词前（become cold gradually）或句首/句尾，修饰整个句子，正确表达为The weather gradually becomes cold，题干中gradually的位置错误。",
+      "knowledgeExtension": "副词修饰系动词时的位置：1. 放在系动词后、表语前（He seems quite happy）；2. 放在句首（Fortunately, he passed the exam）；3. 放在句尾（She is feeling better today）。"
+    },
+    {
+      "id": "6-11",
+      "type": "选择题",
+      "question": "It is ______ to finish the task in such a short time, but we will try our best to do it ______.",
+      "options": [
+        "difficult; difficultly",
+        "difficult; difficult",
+        "difficultly; difficult",
+        "difficultly; difficultly"
+      ],
+      "correctAnswer": "difficult; difficultly",
+      "explanation": "第一空为it作形式主语的句型（It is + 形容词 + to do sth.），需用形容词difficult（困难的）；第二空修饰动词do，需用副词difficultly（困难地），故答案为difficult; difficultly。",
+      "knowledgeExtension": "“It is + 形容词 + to do sth.”为固定句型，形容词作表语，说明不定式的性质/特征；副词不能用于该句型的表语位置（如不能说It is difficultly to do）。"
+    },
+    {
+      "id": "6-12",
+      "type": "判断题",
+      "question": "He is a hard worker who always studies hardly and never gives up easily.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "hardly为副词，表“几乎不”，此处需用hard（study hard 努力学习），hard作副词时表“努力地”，题干中hardly用词错误。",
+      "knowledgeExtension": "易混淆的副词辨析：hard（adv. 努力地/猛烈地）vs. hardly（adv. 几乎不）；late（adv. 晚/迟）vs. lately（adv. 最近）；close（adv. 靠近地）vs. closely（adv. 仔细地）。"
+    },
+    {
+      "id": "6-13",
+      "type": "选择题",
+      "question": "The ______ music played in the restaurant makes customers feel ______, and they stay ______ longer than usual.",
+      "options": [
+        "relaxing; relaxed; much",
+        "relaxed; relaxing; more",
+        "relaxing; relaxing; many",
+        "relaxed; relaxed; very"
+      ],
+      "correctAnswer": "relaxing; relaxed; much",
+      "explanation": "第一空修饰名词music，需用-ing形式形容词relaxing（令人放松的，修饰事物）；第二空修饰customers，需用-ed形式形容词relaxed（感到放松的，修饰人）；第三空修饰比较级longer，需用much（much+比较级 表示“……得多”），故答案为relaxing; relaxed; much。",
+      "knowledgeExtension": "-ing形容词与-ed形容词的区别：-ing形容词（exciting, interesting, relaxing）修饰事物，表“令人……的”；-ed形容词（excited, interested, relaxed）修饰人，表“感到……的”。"
+    },
+    {
+      "id": "6-14",
+      "type": "判断题",
+      "question": "The teacher explained the grammar rules clear so that all the students could understand them easily.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "explain为动词，需用副词clearly修饰（explain clearly 解释清楚），而非形容词clear，题干中clear用法错误。",
+      "knowledgeExtension": "副词的位置：修饰及物动词时，通常放在宾语后（explain the rules clearly）；若宾语较短，也可放在动词与宾语之间（explain clearly the rules），但前者更常用。"
+    },
+    {
+      "id": "6-15",
+      "type": "选择题",
+      "question": "The ______ report shows that the company’s profits have increased ______ compared with last quarter.",
+      "options": [
+        "recent; recent",
+        "recently; recently",
+        "recent; recently",
+        "recently; recent"
+      ],
+      "correctAnswer": "recent; recently",
+      "explanation": "第一空修饰名词report，需用形容词recent（a recent report 近期的报告）；第二空修饰动词increased，需用副词recently（increase recently 近期增长），故答案为recent; recently。",
+      "knowledgeExtension": "同一词根的形容词与副词：recent（adj. 近期的）修饰名词，recently（adv. 近期）修饰动词或整个句子（如Recently, the company’s profits increased）。"
+    },
+    {
+      "id": "6-16",
+      "type": "判断题",
+      "question": "She looks beautiful in the new dress, and she sings very beautiful too at the party.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "sing为动词，需用副词beautifully修饰（sings very beautifully 唱歌非常好听），而非形容词beautiful，题干中第二个beautiful用法错误。",
+      "knowledgeExtension": "感官动词（look, sound等）后接形容词作表语（She looks beautiful）；实义动词（sing, dance等）后接副词作状语（She sings beautifully），需区分动词类型判断词性。"
+    },
+    {
+      "id": "6-17",
+      "type": "选择题",
+      "question": "It is ______ important for us to learn ______ communication skills, as they help us interact ______ with others.",
+      "options": [
+        "high; effective; effective",
+        "highly; effective; effectively",
+        "high; effectively; effective",
+        "highly; effectively; effectively"
+      ],
+      "correctAnswer": "highly; effective; effectively",
+      "explanation": "第一空修饰形容词important，需用副词highly（highly important 非常重要的）；第二空修饰名词skills，需用形容词effective（effective communication skills 有效的沟通技巧）；第三空修饰动词interact，需用副词effectively（interact effectively 有效互动），故答案为highly; effective; effectively。",
+      "knowledgeExtension": "副词可修饰形容词（如very good, quite easy, highly important），此时副词需放在形容词前，起加强或减弱语气的作用。"
+    },
+    {
+      "id": "6-18",
+      "type": "判断题",
+      "question": "The water in the lake is clear enough to see the fish swimming in it.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "clear为形容词，作表语；enough修饰形容词时需放在形容词后（clear enough 足够清澈），符合“形容词+enough+to do sth.”句型，题干表述正确。",
+      "knowledgeExtension": "enough的用法：修饰形容词/副词时，放在被修饰词后（tall enough, run fast enough）；修饰名词时，放在名词前或后（enough time, time enough），前者更常用。"
+    },
+    {
+      "id": "6-19",
+      "type": "选择题",
+      "question": "The ______ child speaks ______ and behaves ______ in public, which impresses everyone around him.",
+      "options": [
+        "polite; polite; polite",
+        "politely; politely; politely",
+        "polite; politely; politely",
+        "politely; polite; polite"
+      ],
+      "correctAnswer": "polite; politely; politely",
+      "explanation": "第一空修饰名词child，需用形容词polite（a polite child 有礼貌的孩子）；第二空修饰动词speaks，第三空修饰动词behaves，均需用副词politely，故答案为polite; politely; politely。",
+      "knowledgeExtension": "形容词修饰名词时的位置：通常放在名词前（a polite child）；修饰不定代词（something, anything, someone等）时，放在不定代词后（something important, someone polite）。"
+    },
+    {
+      "id": "6-20",
+      "type": "判断题",
+      "question": "They worked very hardly on the project and finally achieved the desired results.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "hardly表“几乎不”，此处需用hard（work hard 努力工作），hard作副词时表“努力地”，题干中hardly用词错误，导致句意矛盾。",
+      "knowledgeExtension": "常见易混淆副词的语境运用：1. He works hard.（他努力工作。）2. He hardly works.（他几乎不工作。）3. She arrived late.（她来晚了。）4. She has been busy lately.（她最近很忙。）"
+    }
+  ]
+}

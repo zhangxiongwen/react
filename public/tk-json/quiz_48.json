@@ -1,0 +1,187 @@
+{
+  "title": "主谓一致特殊情况（集合名词/单复同形名词）",
+  "knowledgePoint": "集合名词（family/team/group等）的单复数判定（表整体vs表个体）、单复同形名词（sheep/fish/deer等）的主谓搭配、以-s结尾的“形式复数、实质单数”名词（news/maths等）的用法、不定代词（each/every/some等）修饰主语时的主谓一致、“分数/百分数+of+名词”结构的主谓一致规则",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "48-1",
+      "type": "选择题",
+      "question": "The family ______ having dinner together when the phone rang. All members of the family ______ agreed to spend the holiday in the countryside.",
+      "options": ["was; have", "were; have", "was; has", "were; has"],
+      "correctAnswer": "was; have",
+      "explanation": "第一空 family 表“家庭整体”，视为单数，用was；第二空 all members 强调“家庭成员个体”，谓语用复数have，符合“整体单数+个体复数”的集合名词用法逻辑。",
+      "knowledgeExtension": "集合名词（family/team/group/crowd）表“整体”时谓语用单数，表“个体成员”时用复数，需结合语境中是否强调“个体”判断。"
+    },
+    {
+      "id": "48-2",
+      "type": "判断题",
+      "question": "The team are made up of 12 players from different countries. Each player in the team have their own strengths and weaknesses. The team has won three consecutive matches this season.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 team 表“队员个体”，用are（正确）；第二句 each player 作主语，谓语需用单数has，“have”用法错误；第三句 team 表“整体”，用has（正确），核心错误为不定代词each修饰主语时主谓不一致。",
+      "knowledgeExtension": "each/every 修饰单数名词作主语时，无论后面是否接复数名词，谓语动词一律用单数（如each student has a book）。"
+    },
+    {
+      "id": "48-3",
+      "type": "选择题",
+      "question": "Some sheep ______ grazing on the hillside—look, there are three white ______ among them. The sheep ______ raised by local farmers for wool and meat.",
+      "options": ["are; sheep; are", "is; sheeps; is", "are; sheeps; are", "is; sheep; is"],
+      "correctAnswer": "are; sheep; are",
+      "explanation": "第一空 sheep 是单复同形名词，表“多只羊”用复数are；第二空复数形式仍为sheep，无sheeps；第三空主语为复数sheep，谓语用are，符合单复同形名词的主谓一致规则。",
+      "knowledgeExtension": "常见单复同形名词：sheep（羊）、deer（鹿）、fish（鱼，表种类时可加es）、means（方法）、species（物种），其谓语单复数由语境中“数量”决定。"
+    },
+    {
+      "id": "48-4",
+      "type": "判断题",
+      "question": "The fish in this lake is very delicious. I caught two big fish yesterday and shared them with my family. There are many different fish in the river nearby.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 fish 表“鱼肉”（不可数），用is（正确）；第二句 fish 表“两条鱼”（可数，单复同形），用法正确；第三句表“不同种类的鱼”，应用fishes，“fish”用法错误，核心错误为单复同形名词表“种类”时的复数形式误用。",
+      "knowledgeExtension": "fish 表“鱼的数量”时单复同形（one fish/two fish）；表“鱼的种类”时复数为fishes（different fishes 不同种类的鱼）。"
+    },
+    {
+      "id": "48-5",
+      "type": "选择题",
+      "question": "Maths ______ not an easy subject for many students, but it ______ very important in daily life. Half of the students in the class ______ struggling with maths problems.",
+      "options": ["is; is; are", "are; are; are", "is; are; is", "are; is; is"],
+      "correctAnswer": "is; is; are",
+      "explanation": "第一空 maths 是“形式复数、实质单数”的学科名词，用is；第二空 it 指代maths，仍用is；第三空 half of+复数名词students，谓语用复数are，符合“特殊单数名词+分数结构主谓一致”逻辑。",
+      "knowledgeExtension": "以-s结尾的学科名词（maths/physics/politics/economics）、新闻类名词（news），虽形式为复数，实质为单数，谓语一律用单数。"
+    },
+    {
+      "id": "48-6",
+      "type": "判断题",
+      "question": "The news about the new policy are spreading quickly. Three quarters of the population in this city are farmers. The United States are a developed country with advanced technology.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 news 是“形式复数、实质单数”名词，谓语需用is，“are”用法错误；第二句 population 表“人口中的一部分”，用are（正确）；第三句 The United States 是国家名称（单数概念），谓语需用is，“are”用法错误，核心错误为特殊单数名词和国家名称的主谓一致误用。",
+      "knowledgeExtension": "population 表“人口整体”时用单数（The population is large）；表“人口中的一部分”时用复数（Two thirds of the population are...）。"
+    },
+    {
+      "id": "48-7",
+      "type": "选择题",
+      "question": "The group ______ discussing the project plan in the meeting room now. Each member of the group ______ put forward practical suggestions. The group ______ to submit the plan next Monday.",
+      "options": ["are; has; plans", "is; have; plan", "are; have; plans", "is; has; plan"],
+      "correctAnswer": "are; has; plans",
+      "explanation": "第一句 group 表“成员个体”，用are；第二句 each member 作主语，用单数has；第三句 group 表“整体”，用单数plans，符合“集合名词整体与个体的切换+不定代词主谓一致”逻辑。",
+      "knowledgeExtension": "集合名词的单复数可根据语境灵活切换，同一语境中可先表个体再表整体，只需保证主谓一致即可。"
+    },
+    {
+      "id": "48-8",
+      "type": "判断题",
+      "question": "Two species of butterfly are found in this forest. Each species has unique wing patterns. The species of bird are becoming rare due to habitat loss.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 two species 表“两种蝴蝶”，用are（正确）；第二句 each species 作主语，用has（正确）；第三句 the species 表“某一类鸟”（单数），谓语需用is，“are”用法错误，核心错误为单复同形名词表“单一物种”时的主谓不一致。",
+      "knowledgeExtension": "species 是单复同形名词，表“一个物种”时用单数谓语，表“多个物种”时用复数谓语（如one species is/three species are）。"
+    },
+    {
+      "id": "48-9",
+      "type": "选择题",
+      "question": "Politics ______ his favorite subject at university—he dreams of becoming a diplomat. 70% of the books in his study ______ about politics and history. Each of these books ______ written by famous authors.",
+      "options": ["is; are; is", "are; are; is", "is; is; are", "are; is; are"],
+      "correctAnswer": "is; are; is",
+      "explanation": "第一句 politics 是学科名词（单数），用is；第二句 70% of+复数名词books，用are；第三句 each of+复数名词，谓语用单数is，符合“特殊单数名词+分数结构+each of 结构”的主谓一致规则。",
+      "knowledgeExtension": "“分数/百分数+of+名词”的主谓一致：由of后的名词单复数决定（名词单数→谓语单数，名词复数→谓语复数）。"
+    },
+    {
+      "id": "48-10",
+      "type": "判断题",
+      "question": "The cattle is grazing in the field. Three deer were seen near the river this morning. The police are investigating the accident that happened last night.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 cattle 是集体名词（无单数形式），谓语需用are，“is”用法错误；第二句 deer 是单复同形名词，表“三只鹿”用were（正确）；第三句 police 是集体名词（无单数形式），用are（正确），核心错误为集体名词的主谓一致误用。",
+      "knowledgeExtension": "常见无单数形式的集体名词：cattle（牛群）、people（人们）、poultry（家禽）、police（警察），作主语时谓语一律用复数。"
+    },
+    {
+      "id": "48-11",
+      "type": "选择题",
+      "question": "The family ______ a big one—there are five generations living together. All the family ______ looking forward to the Spring Festival reunion. A large family like this ______ not common in modern society.",
+      "options": ["is; are; is", "are; are; is", "is; is; are", "are; is; are"],
+      "correctAnswer": "is; are; is",
+      "explanation": "第一句 family 表“家庭整体”，用is；第二句 all the family 表“家庭成员”，用are；第三句 family 表“整体”，用is，符合“集合名词整体-个体-整体”的切换逻辑。",
+      "knowledgeExtension": "all the+集合名词（all the family/all the team）通常表“个体成员”，谓语用复数；the+集合名词单独使用时，可表整体或个体，需结合语境判断。"
+    },
+    {
+      "id": "48-12",
+      "type": "判断题",
+      "question": "The means of transportation have changed a lot over the past 100 years. Each means of communication has its own advantages. The means to solve the problem are still being discussed.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 means 表“多种交通方式”，用are（正确）；第二句 each means 作主语，用has（正确）；第三句 means 表“多种解决方法”，用are（正确），单复同形名词的主谓一致完全符合语境逻辑。",
+      "knowledgeExtension": "means 表“方法、手段”，单复同形，谓语单复数由语境中“数量”决定（one means is/two means are）。"
+    },
+    {
+      "id": "48-13",
+      "type": "选择题",
+      "question": "Economics ______ a complex subject that involves many mathematical models. 60% of the students in the economics class ______ girls. Each girl in the class ______ a strong interest in the subject.",
+      "options": ["is; are; has", "are; are; has", "is; is; have", "are; is; have"],
+      "correctAnswer": "is; are; has",
+      "explanation": "第一句 economics 是学科名词（单数），用is；第二句 60% of+复数名词students，用are；第三句 each girl 作主语，用has，符合“特殊单数名词+分数结构+each 修饰”的主谓一致规则。",
+      "knowledgeExtension": "以-ics结尾的学科名词（economics/physics/linguistics）均为单数，谓语用单数；以-ics结尾的非学科名词（statistics 统计数据）可为复数，谓语用复数。"
+    },
+    {
+      "id": "48-14",
+      "type": "判断题",
+      "question": "The fish in the aquarium is of different colors. I bought three fishes from the market yesterday. The species of fish in this area is under protection.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 fish 表“多条鱼”（数量），用are，“is”用法错误；第二句表“三条鱼”（数量），应用fish，“fishes”用法错误（fishes表种类）；第三句表“某一物种”，用is（正确），核心错误为fish的单复同形用法混淆。",
+      "knowledgeExtension": "fish 的复数形式：表“数量”用fish，表“种类”用fishes，不可混淆使用（如three fish 三条鱼/three fishes 三种鱼）。"
+    },
+    {
+      "id": "48-15",
+      "type": "选择题",
+      "question": "The crowd ______ cheering loudly when the team scored the winning goal. Most of the crowd ______ young people who are fans of the team. The crowd ______ dispersed after the match ended.",
+      "options": ["was; are; was", "were; are; were", "was; is; was", "were; is; were"],
+      "correctAnswer": "were; are; was",
+      "explanation": "第一句 crowd 表“人群个体”，用were；第二句 most of the crowd 表“部分个体”，用are；第三句 crowd 表“整体散开”，用was，符合“集合名词个体-部分-整体”的切换逻辑。",
+      "knowledgeExtension": "crowd 表“人群整体移动或状态”时用单数，表“人群中个体的动作（如欢呼、交谈）”时用复数。"
+    },
+    {
+      "id": "48-16",
+      "type": "判断题",
+      "question": "News are important for us to know what’s happening around the world. Half of the news on this channel is about international events. Each piece of news has a unique perspective.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 news 是“形式复数、实质单数”名词，谓语需用is，“are”用法错误；第二句 half of+不可数名词news，用is（正确）；第三句 each piece of news 作主语，用has（正确），核心错误为特殊单数名词的主谓一致误用。",
+      "knowledgeExtension": "不可数名词（news/information/knowledge）与分数/百分数连用时，谓语一律用单数（如30% of the information is...）。"
+    },
+    {
+      "id": "48-17",
+      "type": "选择题",
+      "question": "The team ______ a new coach to improve their performance. Each player in the team ______ ready to follow the coach’s instructions. The team ______ to start training next week.",
+      "options": ["has hired; is; plans", "have hired; are; plan", "has hired; are; plans", "have hired; is; plan"],
+      "correctAnswer": "has hired; is; plans",
+      "explanation": "第一句 team 表“整体”，用has hired；第二句 each player 作主语，用is；第三句 team 表“整体”，用plans，符合“集合名词整体+不定代词+整体”的主谓一致逻辑。",
+      "knowledgeExtension": "集合名词表“整体”时，谓语用单数，此时集合名词视为一个统一的单位；表“个体”时，视为多个独立的人或事物，谓语用复数。"
+    },
+    {
+      "id": "48-18",
+      "type": "判断题",
+      "question": "Two deer are drinking water by the stream. The deer is a gentle animal that feeds on grass. There are many deer in the national park.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句表“两只鹿”（数量），用are（正确）；第二句表“鹿这一物种”（单数），用is（正确）；第三句表“许多鹿”（数量），用are（正确），单复同形名词的主谓一致完全符合语境。",
+      "knowledgeExtension": "单复同形名词表“物种、类别”时，可视为单数，谓语用单数；表“具体数量”时，视为复数，谓语用复数。"
+    },
+    {
+      "id": "48-19",
+      "type": "选择题",
+      "question": "The family ______ lived in this house for over 20 years. Now some members of the family ______ to move to a bigger city. The family ______ a farewell party next weekend.",
+      "options": ["has; plan; will hold", "have; plans; will hold", "has; plans; hold", "have; plan; hold"],
+      "correctAnswer": "has; plan; will hold",
+      "explanation": "第一句 family 表“整体”，用has lived；第二句 some members 表“个体”，用plan；第三句 family 表“整体”，用will hold，符合“集合名词整体-个体-整体”的时态与主谓一致逻辑。",
+      "knowledgeExtension": "集合名词的主谓一致不受时态影响，仅由“整体/个体”的语义决定，过去时、现在时、将来时中规则一致。"
+    },
+    {
+      "id": "48-20",
+      "type": "判断题",
+      "question": "The police has arrested three suspects in connection with the theft. Three quarters of the land in this region is used for farming. The United Nations is an international organization founded in 1945.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 police 是集体名词（无单数形式），谓语需用have，“has”用法错误；第二句 land 是不可数名词，75% of+不可数名词用is（正确）；第三句 The United Nations 是机构名称（单数），用is（正确），核心错误为集体名词的主谓一致误用。",
+      "knowledgeExtension": "police/cattle/people 等集体名词无单数形式，无论数量多少，谓语一律用复数，不可用a/an修饰（如a police 错误，需说a policeman）。"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "title": "虚拟语气特殊句型（wish/as if/it's time that...）",
+  "knowledgePoint": "wish 引导宾语从句的虚拟用法（对现在/过去/将来的愿望）、as if/as though 引导从句的虚拟（非真实情况）、it's time that... 句型的虚拟结构（过去式/should+动词原形）、虚拟语气与真实语气的区分、特殊虚拟句型的固定搭配",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "47-1",
+      "type": "选择题",
+      "question": "I wish I ______ enough time to travel around the world now. She talks as if she ______ all the secrets of the universe. It’s high time we ______ action to protect the environment.",
+      "options": ["had; knew; took", "have; knows; take", "had; knows; took", "have; knew; take"],
+      "correctAnswer": "had; knew; took",
+      "explanation": "第一空 wish 对现在的愿望，用过去式 had；第二空 as if 表非真实情况，对现在虚拟用 knew；第三空 it's high time 后用过去式 took，符合“wish+as if+it's time”三类特殊虚拟句型逻辑。",
+      "knowledgeExtension": "wish 虚拟三规则：对现在用过去式，对过去用 had+过去分词，对将来用 would+动词原形；as if 虚拟与 wish 一致，真实情况用正常时态。"
+    },
+    {
+      "id": "47-2",
+      "type": "判断题",
+      "question": "He acts as though he were the boss of the company. I wish I didn’t make that mistake yesterday. It’s time that we should start the meeting before everyone arrives.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 as if 对现在虚拟用 were（正确）；第二句 wish 对过去的愿望，需用 had not made；第三句 it's time 后 should 不可省略，或直接用过去式 started，核心错误为 wish 过去虚拟结构误用。",
+      "knowledgeExtension": "wish 对过去的遗憾，从句必须用 had+过去分词（否定式 had not+过去分词），不能用一般过去时。"
+    },
+    {
+      "id": "47-3",
+      "type": "选择题",
+      "question": "She wishes she ______ the chance to study abroad when she was young. It seems as if the world ______ an end during the storm. It’s time that we ______ our differences and worked together.",
+      "options": ["had had; were coming to; put aside", "had; came to; put aside", "had had; came to; put aside", "had; were coming to; put aside"],
+      "correctAnswer": "had had; were coming to; put aside",
+      "explanation": "第一句 wish 对过去的愿望，用 had had；第二句 as if 表非真实场景，对过去虚拟用 were coming to；第三句 it's time 后用动词原形 put aside（should 省略），符合“过去愿望+非真实场景+虚拟建议”逻辑。",
+      "knowledgeExtension": "as if 对过去的虚拟用 had+过去分词或 were+doing，前者表完成动作，后者表持续动作，需结合语境选择。"
+    },
+    {
+      "id": "47-4",
+      "type": "判断题",
+      "question": "I wish I could speak French fluently in the future. It looks as if it is going to rain, so we’d better take an umbrella. It’s time that she realized her mistake and apologized.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 wish 对将来的愿望用 could speak（正确）；第二句 as if 表真实情况（即将下雨），用正常时态 is going to（正确）；第三句 it's time 后用过去式 realized（正确），原判定错误，实际应为 true。",
+      "correctAnswer": "true",
+      "explanation": "第一句 wish 对将来愿望用 would/could+动词原形（正确）；第二句 as if 描述真实趋势，用正常时态（正确）；第三句 it's time 后用过去式 realized（正确），所有虚拟与真实语气区分清晰，用法合规。",
+      "knowledgeExtension": "as if 既可用虚拟也可用真实语气：描述非真实情况用虚拟，描述真实可感知的情况用正常时态，需通过语境判断。"
+    },
+    {
+      "id": "47-5",
+      "type": "选择题",
+      "question": "It’s time that we ______ a break—we’ve been working for hours. He wishes he ______ the exam last week, but he didn’t prepare well. They talked as if they ______ each other for years.",
+      "options": ["took; had passed; had known", "take; passed; knew", "took; passed; had known", "take; had passed; knew"],
+      "correctAnswer": "took; had passed; had known",
+      "explanation": "第一句 it's time 后用过去式 took；第二句 wish 对过去的考试遗憾，用 had passed；第三句 as if 表“相识多年”的非真实情况，对过去虚拟用 had known，符合“虚拟建议+过去遗憾+非真实相识”逻辑。",
+      "knowledgeExtension": "it's time that... 句型中，过去式比 should+动词原形更常用，语气更自然；should 不可省略，且仅用于正式语境。"
+    },
+    {
+      "id": "47-6",
+      "type": "判断题",
+      "question": "She wishes she will be able to attend the concert tomorrow. It feels as if we had known each other all our lives. It’s time that the government takes measures to improve public transport.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 wish 对将来的愿望，需用 would be 而非 will be；第二句 as if 对过去虚拟用 had known（正确）；第三句 it's time 后需用 took 或 should take，takes 用法错误，核心错误为 wish 将来虚拟和 it's time 句型误用。",
+      "knowledgeExtension": "wish 引导的虚拟从句中，不可用 will/would 以外的情态动词表将来，且 will 需改为 would，避免与真实语气混淆。"
+    },
+    {
+      "id": "47-7",
+      "type": "选择题",
+      "question": "I wish I ______ that rude comment to my friend yesterday—I feel so guilty. The actor behaves as if he ______ on the stage all his life. It’s time we ______ goodbye and headed home.",
+      "options": ["hadn’t made; had been", "didn’t make; was", "hadn’t made; was", "didn’t make; had been"],
+      "correctAnswer": "hadn’t made; had been",
+      "explanation": "第一句 wish 对过去的否定愿望，用 hadn’t made；第二句 as if 表“一生都在舞台”的非真实情况，对过去虚拟用 had been；第三句 it's time 后用过去式 said（省略，与 headed 并列），符合“过去否定愿望+非真实经历+虚拟告别”逻辑。",
+      "knowledgeExtension": "wish 对过去的否定虚拟，结构为 had not+过去分词，表“后悔没做/不该做某事”，是高频考点。"
+    },
+    {
+      "id": "47-8",
+      "type": "判断题",
+      "question": "It’s time that we should face the problem bravely. She talks as if she has never made a mistake in her life. I wish the weather were better for our picnic tomorrow.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 it's time 后 should+动词原形 face（正确）；第二句 as if 表非真实情况，对现在虚拟需用 had never made；第三句 wish 对将来天气的愿望用 were（正确），核心错误为 as if 现在虚拟结构误用。",
+      "knowledgeExtension": "as if 对现在的虚拟，从句谓语动词用过去式（be 动词用 were），即使主语是第三人称单数，也不用 has/does 等真实时态。"
+    },
+    {
+      "id": "47-9",
+      "type": "选择题",
+      "question": "He wishes he ______ a better job, but he doesn’t have the right qualifications. It seems as if the project ______ completed on time without extra help. It’s high time we ______ planning for the coming holiday.",
+      "options": ["had; wouldn’t be; started", "had; won’t be; start", "had; wouldn’t be; start", "had; won’t be; started"],
+      "correctAnswer": "had; wouldn’t be; started",
+      "explanation": "第一句 wish 对现在的愿望用 had；第二句 as if 表非真实结果，对将来虚拟用 wouldn’t be；第三句 it's high time 后用过去式 started，符合“现在愿望+将来非真实结果+虚拟计划”逻辑。",
+      "knowledgeExtension": "as if 对将来的虚拟用 would+动词原形（否定式 wouldn’t+动词原形），表“看起来某事不会发生”的非真实预判。"
+    },
+    {
+      "id": "47-10",
+      "type": "判断题",
+      "question": "I wish I had visited my grandparents more often before they moved away. It sounds as if someone is knocking at the door—let’s check. It’s time that we should stop arguing and find a solution.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 wish 对过去的愿望用 had visited（正确）；第二句 as if 描述真实声音，用正常时态 is knocking（正确）；第三句 it's time 后 should+动词原形 stop（正确），虚拟与真实语气区分明确，用法合规。",
+      "knowledgeExtension": "当 as if 后接的情况可通过感官验证（如听到、看到），用真实时态；若为主观想象的非真实情况，用虚拟语气。"
+    },
+    {
+      "id": "47-11",
+      "type": "选择题",
+      "question": "She wishes she ______ the answer to the question now, but she hasn’t studied the material. They acted as if they ______ the decision long ago. It’s time we ______ advantage of the opportunity.",
+      "options": ["knew; had made; took", "knows; made; take", "knew; made; took", "knows; had made; take"],
+      "correctAnswer": "knew; had made; took",
+      "explanation": "第一句 wish 对现在的愿望用 knew；第二句 as if 表“很久以前做决定”的非真实情况，对过去虚拟用 had made；第三句 it's time 后用过去式 took，符合“现在愿望+过去非真实决定+虚拟行动”逻辑。",
+      "knowledgeExtension": "as if 后接 long ago、for years 等时间标志词时，通常用对过去的虚拟结构（had+过去分词），强调动作发生在过去且非真实。"
+    },
+    {
+      "id": "47-12",
+      "type": "判断题",
+      "question": "It’s time that he learns to take responsibility for his actions. I wish the train would arrive on time—I’m in a hurry. She looks as if she were tired after the long journey.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 it's time 后需用 learned 或 should learn，learns 用法错误；第二句 wish 对将来的愿望用 would arrive（正确）；第三句 as if 对现在虚拟用 were（正确），核心错误为 it's time 句型误用。",
+      "knowledgeExtension": "it's time that... 句型的虚拟语气核心是“时态倒退”，无论主语是第几人称，动词均用过去式，或 should+动词原形（should 不可省略）。"
+    },
+    {
+      "id": "47-13",
+      "type": "选择题",
+      "question": "I wish I ______ the courage to speak up at the meeting yesterday. It feels as if we ______ in a dream—everything is so perfect. It’s time we ______ the truth about what happened.",
+      "options": ["had had; were", "had; are", "had had; are", "had; were"],
+      "correctAnswer": "had had; were",
+      "explanation": "第一句 wish 对过去的愿望用 had had；第二句 as if 表“在梦中”的非真实感受，对现在虚拟用 were；第三句 it's time 后用过去式 told（省略），符合“过去愿望+现在非真实感受+虚拟揭露”逻辑。",
+      "knowledgeExtension": "wish 后接表“能力、勇气”等抽象名词时，对过去的愿望仍需用 had+过去分词，不可简化为一般过去时。"
+    },
+    {
+      "id": "47-14",
+      "type": "判断题",
+      "question": "He wishes he could have gone to the party last night, but he was ill. It seems as if the company will make a big profit this year. It’s time that we should prepare for the exam seriously.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 wish 对过去的愿望用 could have gone（正确）；第二句 as if 描述真实商业趋势，用正常时态 will make（正确）；第三句 it's time 后 should+动词原形 prepare（正确），所有用法均符合规则。",
+      "knowledgeExtension": "wish 对过去的愿望可叠加情态动词，结构为 could/would/might+have+过去分词，表“本可以/本会/本可能做某事”。"
+    },
+    {
+      "id": "47-15",
+      "type": "选择题",
+      "question": "She wishes she ______ more attention to her health when she was younger. They talked as if they ______ the famous star personally. It’s high time we ______ changes to our daily routine.",
+      "options": ["had paid; had met; made", "paid; met; make", "had paid; met; made", "paid; had met; make"],
+      "correctAnswer": "had paid; had met; made",
+      "explanation": "第一句 wish 对过去的愿望用 had paid；第二句 as if 表“亲自见过明星”的非真实情况，对过去虚拟用 had met；第三句 it's high time 后用过去式 made，符合“过去愿望+过去非真实经历+虚拟改变”逻辑。",
+      "knowledgeExtension": "as if 引导的从句主语与主句主语不一致时，虚拟结构不变，仅需确保时态符合“对现在/过去/将来”的虚拟规则。"
+    },
+    {
+      "id": "47-16",
+      "type": "判断题",
+      "question": "I wish the children would be quieter—I’m trying to work. It looks as if the bridge was built in the 19th century. It’s time that we take action before it’s too late.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 wish 对现在的愿望用 would be（正确）；第二句 as if 描述真实桥梁年代，用正常时态 was built（正确）；第三句 it's time 后需用 took 或 should take，take 用法错误，核心错误为 it's time 句型误用。",
+      "knowledgeExtension": "it's time that... 句型中，即使主句是现在时，从句动词也必须用过去式或 should+动词原形，这是固定语法规则，无例外。"
+    },
+    {
+      "id": "47-17",
+      "type": "选择题",
+      "question": "He wishes he ______ the chance to work with the famous director. It sounds as if the music ______ from another world. It’s time we ______ goodbye to the old and welcomed the new.",
+      "options": ["had; were coming", "has; is coming", "had; is coming", "has; were coming"],
+      "correctAnswer": "had; were coming",
+      "explanation": "第一句 wish 对现在的愿望用 had；第二句 as if 表“音乐来自另一个世界”的非真实感受，对现在虚拟用 were coming；第三句 it's time 后用过去式 said（省略），符合“现在愿望+现在非真实感受+虚拟告别”逻辑。",
+      "knowledgeExtension": "as if 后接现在进行时的虚拟结构为 were+doing，表“看起来正在发生”的非真实动作，比一般过去式更具画面感。"
+    },
+    {
+      "id": "47-18",
+      "type": "判断题",
+      "question": "I wish I hadn’t eaten so much—I feel sick now. It seems as if we were the only people in the park. It’s time that she should apologize for her rude behavior.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 wish 对过去的愿望用 hadn’t eaten（正确）；第二句 as if 对现在虚拟用 were（正确）；第三句 it's time 后 should+动词原形 apologize（正确），虚拟语气结构完整，逻辑连贯。",
+      "knowledgeExtension": "wish 对过去的愿望常与现在的结果关联（如过去吃太多导致现在不舒服），通过时态对比突出“遗憾”的因果关系。"
+    },
+    {
+      "id": "47-19",
+      "type": "选择题",
+      "question": "She wishes she ______ fluent in Spanish for her trip next month. They acted as if they ______ the whole story without being told. It’s high time we ______ planning our wedding.",
+      "options": ["were; had known; started", "is; knew; start", "were; knew; started", "is; had known; start"],
+      "correctAnswer": "were; had known; started",
+      "explanation": "第一句 wish 对将来的愿望用 were；第二句 as if 表“知道整个故事”的非真实情况，对过去虚拟用 had known；第三句 it's high time 后用过去式 started，符合“将来愿望+过去非真实经历+虚拟计划”逻辑。",
+      "knowledgeExtension": "wish 对将来的愿望，若表“具备某种状态”（如流利的语言、健康的身体），用 were+形容词/介词短语，而非 would+动词原形。"
+    },
+    {
+      "id": "47-20",
+      "type": "判断题",
+      "question": "It’s time that we should stop wasting time and focus on our goals. I wish the sun would come out tomorrow for the picnic. He talks as if he knows everything about the project, but he just joined the team.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 it's time 后 should+动词原形 stop（正确）；第二句 wish 对将来的愿望用 would come（正确）；第三句 as if 表非真实情况，对现在虚拟需用 knew，knows 用法错误，核心错误为 as if 虚拟结构误用。",
+      "knowledgeExtension": "即使 as if 从句描述的情况与事实反差明显（如刚加入团队却像什么都知道），也需用虚拟语气，不可用真实时态。"
+    }
+  ]
+}

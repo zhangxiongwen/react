@@ -1,0 +1,187 @@
+{
+  "title": "现在完成时（have/has+done，表过去动作对现在的影响）",
+  "knowledgePoint": "现在完成时的核心结构（have/has+过去分词）、时间状语搭配（since/for/already/yet/so far等）、与一般过去时的区别（影响持续vs动作完成）、否定句与疑问句形式、多场景应用（经历/持续/结果）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "22-1",
+      "type": "选择题",
+      "question": "The research team ______ significant progress in developing renewable energy technologies—their findings ______ published in top journals over the past three years.",
+      "options": ["made; were", "has made; have been", "made; have been", "has made; were"],
+      "correctAnswer": "has made; have been",
+      "explanation": "第一空“取得进展”强调对现在的影响（技术研发有成果），用现在完成时has made；第二空“over the past three years”是现在完成时标志，“研究结果被发表”用被动语态have been published，符合规则。",
+      "knowledgeExtension": "现在完成时的核心语义：过去动作持续到现在或对现在产生影响，常搭配for/since/over the past+时间段等状语。"
+    },
+    {
+      "id": "22-2",
+      "type": "判断题",
+      "question": "She has joined the company for five years and has been promoted twice—she is now a department manager.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "join是短暂性动词，不能与for+时间段搭配，需改为持续性动词be in/work in，即“She has been in the company for five years”，题干短暂性动词误用，语法错误。",
+      "knowledgeExtension": "常见短暂性动词转换：join→be in/be a member of；buy→have；leave→be away；die→be dead。"
+    },
+    {
+      "id": "22-3",
+      "type": "选择题",
+      "question": "— ______ you ______ the new policy announced by the government? — Yes, I ______ it this morning. It ______ a positive impact on small businesses.",
+      "options": ["Did; read; read; will have", "Have; read; read; will have", "Have; read; have read; has had", "Did; read; have read; has had"],
+      "correctAnswer": "Have; read; read; has had",
+      "explanation": "第一空询问“是否已阅读”（经历/对现在的了解），用现在完成时Have; read；第二空“今早阅读”是具体过去动作，用一般过去时read；第三空“产生积极影响”强调对现在的结果，用has had，符合时态逻辑。",
+      "knowledgeExtension": "现在完成时表“经历/结果”，一般过去时表“具体过去动作”，两者需根据语境区分。"
+    },
+    {
+      "id": "22-4",
+      "type": "判断题",
+      "question": "They have not finished the project yet, but they have made great efforts—they will submit it before the deadline next week.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“not...yet”是现在完成时否定式标志，表“尚未完成”；“made great efforts”强调过去努力对现在的影响（接近完成），语法正确，逻辑连贯。",
+      "knowledgeExtension": "yet常用于现在完成时否定句和疑问句末尾，表“还/尚未”；already常用于肯定句，表“已经”（可位于句中或句末）。"
+    },
+    {
+      "id": "22-5",
+      "type": "选择题",
+      "question": "The number of people using electric vehicles ______ sharply over the past decade—this ______ largely due to environmental awareness and policy support.",
+      "options": ["increased; is", "has increased; is", "increased; has been", "has increased; has been"],
+      "correctAnswer": "has increased; is",
+      "explanation": "第一空“over the past decade”是现在完成时标志，“数量增长”用has increased；第二空“原因是……”是客观事实，用一般现在时is，符合语境。",
+      "knowledgeExtension": "the number of+复数名词作主语时，谓语动词用单数；a number of+复数名词作主语时，谓语动词用复数。"
+    },
+    {
+      "id": "22-6",
+      "type": "判断题",
+      "question": "He has visited Paris three times—his first trip was in 2015, and he has gone there again last month.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "last month是明确过去时间状语，不能与现在完成时搭配，需改为一般过去时went，题干时态搭配错误。",
+      "knowledgeExtension": "明确过去时间状语（yesterday/last week/in 2020等）只能搭配一般过去时，不能搭配现在完成时。"
+    },
+    {
+      "id": "22-7",
+      "type": "选择题",
+      "question": "— How long ______ you ______ English? — For ten years. I ______ my first English class when I was six years old.",
+      "options": ["learn; learn; took", "have; learned; took", "have; learned; have taken", "learn; learned; have taken"],
+      "correctAnswer": "have; learned; took",
+      "explanation": "第一空“how long”搭配现在完成时have; learned，表“持续学习十年”；第二空“六岁时上第一节课”是具体过去动作，用一般过去时took，符合规则。",
+      "knowledgeExtension": "how long询问动作持续时间时，若动作持续到现在，用现在完成时；若动作已结束，用一般过去时。"
+    },
+    {
+      "id": "22-8",
+      "type": "判断题",
+      "question": "So far, the company has launched three new products this year—all of them have received positive feedback from consumers.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“so far”是现在完成时标志，表“到目前为止”；“launch products”和“receive feedback”均强调过去动作对现在的结果，时态使用正确。",
+      "knowledgeExtension": "常见现在完成时标志词：so far/up to now/until now/in the past+时间段/over the years等。"
+    },
+    {
+      "id": "22-9",
+      "type": "选择题",
+      "question": "She ______ as a doctor for 15 years—she ______ in this hospital since she graduated from medical school.",
+      "options": ["worked; has worked", "has worked; has worked", "worked; worked", "has worked; worked"],
+      "correctAnswer": "has worked; has worked",
+      "explanation": "第一空“15年医生经历”强调持续到现在，用has worked；第二空“since+过去从句”是现在完成时标志，用has worked，保持时态一致。",
+      "knowledgeExtension": "since引导的从句用一般过去时，主句用现在完成时，表“自从……以来一直做某事”。"
+    },
+    {
+      "id": "22-10",
+      "type": "判断题",
+      "question": "I have lost my keys—I can’t find them anywhere. I must have left them at the office this morning.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“丢钥匙”强调对现在的影响（找不到），用现在完成时have lost；“今早落在办公室”是具体过去推测，用一般过去时left，逻辑通顺，语法正确。",
+      "knowledgeExtension": "现在完成时表“过去动作导致现在结果”，常与can’t/needn’t等情态动词搭配，体现结果影响。"
+    },
+    {
+      "id": "22-11",
+      "type": "选择题",
+      "question": "— ______ the team ______ the championship yet? — No, the final match ______ next weekend. They ______ hard for months to prepare for it.",
+      "options": ["Did; win; will be held; trained", "Have; won; will be held; have been training", "Have; won; is held; have trained", "Did; win; is held; trained"],
+      "correctAnswer": "Have; won; will be held; have been training",
+      "explanation": "第一空“yet”提示用现在完成时Have; won；第二空“下周末决赛”用一般将来时被动will be held；第三空“数月来努力训练”强调持续到现在，用现在完成进行时have been training，符合时态逻辑。",
+      "knowledgeExtension": "现在完成时与现在完成进行时的区别：前者侧重结果/经历，后者侧重持续过程（如have trained表“已训练”，have been training表“一直在训练”）。"
+    },
+    {
+      "id": "22-12",
+      "type": "判断题",
+      "question": "We have known each other since we were in primary school—we have been good friends for more than 20 years.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“since+过去从句”搭配现在完成时have known，“for+时间段”搭配have been，均表“持续到现在的关系”，语法正确，语义连贯。",
+      "knowledgeExtension": "know是静态动词，无进行时，表“持续认识”用现在完成时have known。"
+    },
+    {
+      "id": "22-13",
+      "type": "选择题",
+      "question": "The environmental pollution ______ a serious problem in many cities. Governments ______ various measures to address it, but more work ______ needed.",
+      "options": ["became; took; is", "has become; have taken; is", "became; have taken; has been", "has become; took; has been"],
+      "correctAnswer": "has become; have taken; is",
+      "explanation": "第一空“污染成为严重问题”强调对现在的影响，用has become；第二空“政府采取措施”表过去动作持续到现在，用have taken；第三空“需要更多工作”是客观事实，用一般现在时is，符合语境。",
+      "knowledgeExtension": "现在完成时可用于描述社会现象、问题等，强调从过去到现在的发展变化。"
+    },
+    {
+      "id": "22-14",
+      "type": "判断题",
+      "question": "She has written three novels since 2018—her latest one has come out last month and sold well.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "last month是明确过去时间，“新书出版”需用一般过去时came out，题干用现在完成时，时态搭配错误。",
+      "knowledgeExtension": "come out（出版/发行）是短暂性动词，表具体时间发生的动作，用一般过去时；表“是否已出版”的结果，用现在完成时（如Has the book come out yet?）。"
+    },
+    {
+      "id": "22-15",
+      "type": "选择题",
+      "question": "— Why ______ you ______ to the meeting? — I ______ an urgent call from my client. I ______ no choice but to deal with it immediately.",
+      "options": ["didn’t; come; received; had", "haven’t; come; received; had", "haven’t; come; have received; have", "didn’t; come; have received; have"],
+      "correctAnswer": "haven’t; come",
+      "explanation": "第一空询问“为何没参会”（对现在的影响：会议可能已进行或结束），用现在完成时haven’t; come；第二空“接到紧急电话”是具体过去动作，用received；第三空“别无选择”是过去的状态，用had，符合逻辑。",
+      "knowledgeExtension": "现在完成时可用于询问“未做某事的原因”，强调动作未发生对现在的影响。"
+    },
+    {
+      "id": "22-16",
+      "type": "判断题",
+      "question": "Up to now, scientists have not found a cure for the disease, but they have made significant breakthroughs in research.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“up to now”是现在完成时标志，“未找到治愈方法”和“取得突破”均强调过去动作对现在的结果，时态使用正确。",
+      "knowledgeExtension": "现在完成时的否定式：have/has not+过去分词，表“过去动作未发生或持续未完成”。"
+    },
+    {
+      "id": "22-17",
+      "type": "选择题",
+      "question": "The city ______ a lot since I left it five years ago. Many new buildings ______ and the traffic ______ much better.",
+      "options": ["changed; were built; became", "has changed; have been built; has become", "changed; have been built; became", "has changed; were built; has become"],
+      "correctAnswer": "has changed; have been built; has become",
+      "explanation": "第一空“since+过去从句”用has changed，表“城市变化”；第二空“新建筑被建造”用现在完成时被动have been built；第三空“交通变好”用has become，均强调过去到现在的变化，符合时态规则。",
+      "knowledgeExtension": "描述“离开某地后发生的变化”，常用“since I left+现在完成时”的结构，突出变化的持续性。"
+    },
+    {
+      "id": "22-18",
+      "type": "判断题",
+      "question": "He has been to Beijing many times—he has gone there again last week to attend a conference.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "last week是明确过去时间，“去北京”需用一般过去时went，has gone表“去了未回”，且不能与过去时间搭配，题干时态和动词用法均错误。",
+      "knowledgeExtension": "have been to表“去过某地（已回）”，have gone to表“去了某地（未回）”，两者不可混淆，且均不能与明确过去时间搭配。"
+    },
+    {
+      "id": "22-19",
+      "type": "选择题",
+      "question": "— ______ you ______ the movie “Oppenheimer”? — Yes, I ______ it last month. I ______ it twice because it’s really impressive.",
+      "options": ["Did; see; saw; saw", "Have; seen; saw; have seen", "Have; seen; have seen; saw", "Did; see; have seen; have seen"],
+      "correctAnswer": "Have; seen; saw; have seen",
+      "explanation": "第一空询问“是否看过”（经历），用Have; seen；第二空“上个月看”是具体过去动作，用saw；第三空“看过两次”强调经历次数，用have seen，符合现在完成时表“经历”的用法。",
+      "knowledgeExtension": "现在完成时表“经历”时，常与次数（once/twice）、ever/never等搭配，不强调具体时间。"
+    },
+    {
+      "id": "22-20",
+      "type": "判断题",
+      "question": "They have been working on the experiment for three months—they have not achieved the expected result, but they will continue their efforts.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“for three months”搭配现在完成进行时have been working，表“持续进行的实验”；“未取得预期结果”用现在完成时have not achieved，强调对现在的影响，语法正确，逻辑连贯。",
+      "knowledgeExtension": "现在完成进行时更侧重“动作持续进行的过程”，现在完成时侧重“动作的结果或状态”，两者可在同一语境中搭配使用。"
+    }
+  ]
+}

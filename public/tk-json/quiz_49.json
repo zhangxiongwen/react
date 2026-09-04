@@ -1,0 +1,187 @@
+{
+  "title": "省略句与倒装句的结合应用（如 While reading, he fell asleep）",
+  "knowledgePoint": "省略句的核心条件（主语一致/主系表结构省略）、省略句与倒装句的叠加规则、时间/让步/条件状语从句的省略+倒装、分词作状语的省略与倒装结合、省略倒装结构的语义还原技巧",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "49-1",
+      "type": "选择题",
+      "question": "______ the report, she found several data errors. Rarely ______ such obvious mistakes in her previous work. ______ by the manager to revise it, she stayed late at the office.",
+      "options": ["While reading; had she made; Asked", "When read; she had made; Asking", "While reading; she had made; Asked", "When read; had she made; Asking"],
+      "correctAnswer": "While reading; had she made; Asked",
+      "explanation": "第一空“读报告”与主句主语she一致，省略从句主语和be动词，用While reading；第二空否定词Rarely置于句首，部分倒装，用had she made；第三空“被要求修改”与she是被动关系，省略从句主语和be动词，用Asked，符合“省略句+倒装句+省略句”结合逻辑。",
+      "knowledgeExtension": "时间/让步状语从句省略条件：主句与从句主语一致，且从句含be动词，可省略“主语+be”；否定词置于句首需部分倒装，与省略句结合时需先满足省略条件，再遵循倒装规则。"
+    },
+    {
+      "id": "49-2",
+      "type": "判断题",
+      "question": "Though tired, but he continued to work on the project. Only when finishing the task did he realize how exhausted he was. Seen from the top of the mountain, the city looks more beautiful.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句Though引导的省略句（=Though he was tired），不可与but连用，需去掉but；第二句Only+时间状语从句（省略主语和be动词when finishing=when he finished），部分倒装用法正确；第三句过去分词省略句用法正确，核心错误为省略句与but连用禁忌。",
+      "knowledgeExtension": "省略形式的让步从句（Though/Although/Even if+形容词/分词），仍遵循“不可与but连用”规则，仅省略“主语+be”，逻辑关系不变。"
+    },
+    {
+      "id": "49-3",
+      "type": "选择题",
+      "question": "______ in a hurry, she left her keys at home. No sooner ______ the office than she realized the mistake. ______ back to get them, she missed the morning meeting.",
+      "options": ["Being; had she left; Hurrying", "Been; she had left; Hurried", "Being; she had left; Hurrying", "Been; had she left; Hurried"],
+      "correctAnswer": "Being; had she left; Hurrying",
+      "explanation": "第一空“匆忙”与she一致，省略主语和be动词，用Being（=Because she was in a hurry）；第二空No sooner置于句首，部分倒装，用had she left；第三空“匆忙返回”与she是主动关系，省略从句主语，用Hurrying，符合“省略原因状语+倒装句+省略伴随状语”逻辑。",
+      "knowledgeExtension": "No sooner...than...句型中，No sooner后接部分倒装（had+主语+过去分词），与省略句结合时，倒装结构不受省略影响，仅需保证省略句的主语与主句一致。"
+    },
+    {
+      "id": "49-4",
+      "type": "判断题",
+      "question": "If not invited, you shouldn’t attend the private party. Under no circumstances should you disclose the secret. While waiting for the bus, a beautiful song caught her attention.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句If引导的省略条件句（=If you are not invited）用法正确；第二句否定短语置于句首，部分倒装用法正确；第三句While引导的省略句逻辑主语应为she，而非a beautiful song，逻辑主语不一致，核心错误为省略句悬垂问题。",
+      "knowledgeExtension": "省略句与倒装句结合时，需同时满足两个核心：省略句主语与主句一致；倒装句符合触发条件（否定词/Only+状语等），缺一不可。"
+    },
+    {
+      "id": "49-5",
+      "type": "选择题",
+      "question": "______ the complexity of the problem, we need to allocate more resources. Seldom ______ such a challenging task before. ______ by experts, the solution is expected to be effective.",
+      "options": ["Considering; have we faced; Recommended", "Considered; we have faced; Recommending", "Considering; we have faced; Recommended", "Considered; have we faced; Recommending"],
+      "correctAnswer": "Considering; have we faced; Recommended",
+      "explanation": "第一句Considering为独立分词省略（无需主语一致），作原因状语；第二句否定词Seldom置于句首，部分倒装，用have we faced；第三句“被专家推荐”与the solution是被动关系，省略从句主语和be动词，用Recommended，符合“独立省略分词+倒装句+被动省略句”逻辑。",
+      "knowledgeExtension": "独立分词（Considering/Given/Provided）作状语时，无需满足“主语一致”，可直接与倒装句结合，是省略与倒装结合的特殊场景。"
+    },
+    {
+      "id": "49-6",
+      "type": "判断题",
+      "question": "Though not understanding the theory, she tried her best to apply it. Only by practicing more can you master the skill. When arrived at the airport, he called his family immediately.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句Though引导的省略句（=Though she didn’t understand），主动关系用现在分词understanding（正确）；第二句Only+介词短语倒装用法正确；第三句When引导的省略句应为When arriving（=When he arrived），arrived是过去分词表被动，与主语he是主动关系，用法错误，核心错误为省略句分词形式误用。",
+      "knowledgeExtension": "省略句中，主动关系用现在分词，被动关系用过去分词，需根据主句主语与从句动作的关系判断，不可混淆。"
+    },
+    {
+      "id": "49-7",
+      "type": "选择题",
+      "question": "______ ill, she asked for a day’s leave. Never ______ she been so grateful for her colleagues’ help. ______ back to work, she brought gifts for everyone.",
+      "options": ["Being; has; Coming", "Been; has; Come", "Being; had; Coming", "Been; had; Come"],
+      "correctAnswer": "Being; had; Coming",
+      "explanation": "第一句“生病”与she一致，省略主语和be动词，用Being（=Because she was ill）；第二句否定词Never置于句首，部分倒装，结合语境用had（过去完成时）；第三句“返回工作”与she是主动关系，省略从句主语，用Coming，符合“省略原因状语+倒装句+省略时间状语”逻辑。",
+      "knowledgeExtension": "否定词置于句首的倒装句，时态由语境决定，需结合省略句的语义（如过去生病→过去感激）选择正确时态。"
+    },
+    {
+      "id": "49-8",
+      "type": "判断题",
+      "question": "If given more time, the task can be finished perfectly. So difficult was the exam that many students failed. While talked to the manager, he mentioned the new project plan.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句If引导的省略被动句（=If it is given more time）用法正确；第二句So+形容词倒装用法正确；第三句While引导的省略句应为While talking（=While he was talking），talked是过去分词表被动，与主语he是主动关系，用法错误，核心错误为省略句分词形式误用。",
+      "knowledgeExtension": "省略句的分词形式是高频易错点：主动动作→现在分词，被动动作→过去分词，需严格匹配主语与动作的逻辑关系。"
+    },
+    {
+      "id": "49-9",
+      "type": "选择题",
+      "question": "______ the traffic jam, we arrived late for the meeting. Hardly ______ we sat down when the meeting began. ______ by the chairperson to speak, he shared his opinions briefly.",
+      "options": ["Despite; had; Asked", "In spite of; had; Asking", "Despite; have; Asked", "In spite of; have; Asking"],
+      "correctAnswer": "Despite; had; Asked",
+      "explanation": "第一句Despite是介词，后接名词短语（无需省略句主语一致）；第二句Hardly...when...句型，部分倒装用had；第三句“被邀请发言”与he是被动关系，省略从句主语和be动词，用Asked，符合“介词短语+倒装句+省略被动句”逻辑。",
+      "knowledgeExtension": "Hardly/Scarcely/No sooner等引导的倒装句，需与过去完成时连用（had+过去分词），与省略句结合时，时态逻辑需保持一致。"
+    },
+    {
+      "id": "49-10",
+      "type": "判断题",
+      "question": "Though defeated, he didn’t give up his dream. Only when he apologized did she forgive him. When walking along the street, a friend of mine called me.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句Though引导的省略被动句（=Though he was defeated）用法正确；第二句Only+时间状语从句倒装用法正确；第三句When引导的省略句逻辑主语应为I，而非a friend of mine，逻辑主语不一致，核心错误为悬垂省略句。",
+      "knowledgeExtension": "避免悬垂省略句的关键：确保省略句的逻辑主语（隐含）与主句主语一致，若不一致，需补全从句主语或调整主句主语。"
+    },
+    {
+      "id": "49-11",
+      "type": "选择题",
+      "question": "______ by the beautiful scenery, they decided to stay for another day. Not until ______ the top of the mountain did they find the view breathtaking. ______ down the hill, they sang happily.",
+      "options": ["Attracted; reaching; Walking", "Attracting; reaching; Walked", "Attracted; reach; Walking", "Attracting; reach; Walked"],
+      "correctAnswer": "Attracted; reaching; Walking",
+      "explanation": "第一句“被美景吸引”与they是被动关系，省略从句主语和be动词，用Attracted；第二句Not until+动名词（省略主语they，reaching=they reached），部分倒装；第三句“下山”与they是主动关系，省略从句主语，用Walking，符合“被动省略句+倒装省略句+主动省略句”逻辑。",
+      "knowledgeExtension": "Not until后接分词时，需满足“主语一致”，即分词的逻辑主语与主句主语相同，否则需补全从句（Not until they reached...）。"
+    },
+    {
+      "id": "49-12",
+      "type": "判断题",
+      "question": "If working hard, you will achieve your goals. Such a moving story is it that I couldn’t hold back my tears. While waiting for the train, I read a magazine.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句If引导的省略主动句（=If you work hard）用法正确；第二句Such+a+名词倒装应为Such a moving story it is→Such a moving story is it（正确倒装结构），原句倒装错误；第三句While引导的省略句用法正确，核心错误为Such句型倒装结构误用。",
+      "knowledgeExtension": "Such+a+名词置于句首的倒装结构：Such+a/an+形容词+名词+助动词+主语，需将助动词提前，不可遗漏。"
+    },
+    {
+      "id": "49-13",
+      "type": "选择题",
+      "question": "______ his mistake, he apologized immediately. Little ______ he know that his apology would be accepted so quickly. ______ forgiven, he felt a great sense of relief.",
+      "options": ["Realizing; did; Being", "Realized; did; Been", "Realizing; does; Being", "Realized; does; Been"],
+      "correctAnswer": "Realizing; did; Being",
+      "explanation": "第一句“意识到错误”与he是主动关系，省略从句主语，用Realizing；第二句否定词Little置于句首，部分倒装，用did（一般过去时）；第三句“被原谅”与he是被动关系，省略从句主语和be动词，用Being，符合“主动省略句+倒装句+被动省略句”逻辑。",
+      "knowledgeExtension": "Little/Few等否定含义的词置于句首，需部分倒装，助动词根据时态选择（过去时用did，现在时用does/do）。"
+    },
+    {
+      "id": "49-14",
+      "type": "判断题",
+      "question": "Though not finished, the project has made great progress. Only in this way can we solve the problem. When listened to the lecture, I took a lot of notes.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句Though引导的省略被动句（=Though it is not finished）用法正确；第二句Only+介词短语倒装用法正确；第三句When引导的省略句应为When listening（=When I was listening），listened是过去分词表被动，与主语I是主动关系，用法错误，核心错误为省略句分词形式误用。",
+      "knowledgeExtension": "省略句中，即使从句是否定形式（not finished/not understanding），分词形式仍由主动/被动关系决定，not仅修饰分词，不改变分词类型。"
+    },
+    {
+      "id": "49-15",
+      "type": "选择题",
+      "question": "______ in the countryside, he is not used to city life. Never ______ the city changed so much in such a short time. ______ to adapt, he visits rural areas regularly.",
+      "options": ["Brought up; has; Trying", "Bringing up; has; Tried", "Brought up; have; Trying", "Bringing up; have; Tried"],
+      "correctAnswer": "Brought up; has; Trying",
+      "explanation": "第一句“在乡下被抚养”与he是被动关系，省略从句主语和be动词，用Brought up；第二句否定词Never置于句首，部分倒装，主语the city是单数，用has；第三句“努力适应”与he是主动关系，省略从句主语，用Trying，符合“被动省略句+倒装句+主动省略句”逻辑。",
+      "knowledgeExtension": "倒装句的主谓一致由主句主语决定（如the city→has），与省略句的分词形式无关，需单独判断。"
+    },
+    {
+      "id": "49-16",
+      "type": "判断题",
+      "question": "If not stopped, the fire will spread quickly. So fast does light travel that we can’t see its movement. While discussed the plan, they put forward many good ideas.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句If引导的省略被动句（=If it is not stopped）用法正确；第二句So+副词倒装用法正确；第三句While引导的省略句应为While discussing（=While they were discussing），discussed是过去分词表被动，与主语they是主动关系，用法错误，核心错误为省略句分词形式误用。",
+      "knowledgeExtension": "当省略句的主语是复数时，分词形式仍由主动/被动关系决定，与主语单复数无关（如they与discuss是主动关系→discussing）。"
+    },
+    {
+      "id": "49-17",
+      "type": "选择题",
+      "question": "______ the exam, she felt a great sense of relief. No sooner ______ she submitted the paper than the bell rang. ______ out of the classroom, she met her teacher.",
+      "options": ["Having passed; had; Walking", "Passed; had; Walked", "Having passed; has; Walking", "Passed; has; Walked"],
+      "correctAnswer": "Having passed; had; Walking",
+      "explanation": "第一句“通过考试”发生在“感到轻松”之前，用现在分词完成式Having passed（省略主语）；第二句No sooner置于句首，部分倒装用had；第三句“走出教室”与she是主动关系，省略从句主语，用Walking，符合“完成式省略句+倒装句+主动省略句”逻辑。",
+      "knowledgeExtension": "现在分词完成式（Having done）表“动作先于主句动作”，可与倒装句结合，突出时间先后顺序。"
+    },
+    {
+      "id": "49-18",
+      "type": "判断题",
+      "question": "Though having failed many times, he never gave up. It is not only he but also his friends who are willing to help. When crossing the street, you must be careful of the traffic.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句Though引导的完成式省略句（=Though he had failed many times）用法正确；第二句not only...but also...主谓一致（就近原则）用法正确；第三句When引导的省略句（=When you are crossing）用法正确，所有省略与倒装结合的用法均符合规则。",
+      "knowledgeExtension": "完成式省略句（Having done/Having been done）可与让步、时间等从句引导词结合，与倒装句叠加时，仅需保证各自的语法规则，互不冲突。"
+    },
+    {
+      "id": "49-19",
+      "type": "选择题",
+      "question": "______ by the storm, the power was cut off. Seldom ______ we experienced such a severe weather event. ______ the power restored, people resumed their daily lives.",
+      "options": ["Struck; have; With", "Striking; have; When", "Struck; had; With", "Striking; had; When"],
+      "correctAnswer": "Struck; have; With",
+      "explanation": "第一句“被暴风雨袭击”与the power是被动关系，省略从句主语和be动词，用Struck；第二句否定词Seldom置于句首，部分倒装，用have；第三句“电力恢复”用With独立主格（=When the power was restored），避免省略句逻辑主语不一致，符合“被动省略句+倒装句+独立主格”逻辑。",
+      "knowledgeExtension": "当省略句主语与主句主语不一致时，可改用独立主格结构，避免悬垂错误，同时与倒装句保持搭配。"
+    },
+    {
+      "id": "49-20",
+      "type": "判断题",
+      "question": "If not handled properly, the problem will become worse. Such is the power of love that it can overcome all difficulties. While talked with her friend, she heard the exciting news.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句If引导的省略被动句（=If it is not handled properly）用法正确；第二句Such置于句首倒装用法正确；第三句While引导的省略句应为While talking（=While she was talking），talked是过去分词表被动，与主语she是主动关系，用法错误，核心错误为省略句分词形式误用。",
+      "knowledgeExtension": "省略句与倒装句结合的核心是“各司其职”：省略句保证主语一致和分词形式正确，倒装句保证触发条件和语序正确，两者独立判断但需语义连贯。"
+    }
+  ]
+}

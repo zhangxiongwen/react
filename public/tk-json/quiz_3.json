@@ -1,0 +1,267 @@
+{
+  "title": "不定冠词(a/an)与定冠词the的基本用法",
+  "knowledgePoint": "不定冠词a/an的用法、定冠词the的基本用法、零冠词场景",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "3-1",
+      "type": "选择题",
+      "question": "______ university in our city has launched a new program to train ______ artificial intelligence specialists.",
+      "options": [
+        "A; the",
+        "An; /",
+        "A; /",
+        "An; the"
+      ],
+      "correctAnswer": "A; /",
+      "explanation": "第一空university以辅音音素/juː/开头，需用不定冠词A（a用于辅音音素开头的单词前），表“一所大学”；第二空artificial intelligence specialists为复数名词表泛指，不用冠词，故答案为A; /。",
+      "knowledgeExtension": "不定冠词a/an的核心区别：a用于辅音音素开头的单词前（a book, a European），an用于元音音素开头的单词前（an apple, an hour），需根据发音而非字母判断。"
+    },
+    {
+      "id": "3-2",
+      "type": "判断题",
+      "question": "The Earth revolves around the Sun, and the Moon revolves around the Earth.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "世界上独一无二的事物（Earth, Sun, Moon, Sky, World等）前需加定冠词the，题干中三处the的用法均符合规则，表述正确。",
+      "knowledgeExtension": "其他需加the的独一无二事物：the Pacific Ocean（太平洋）、the Himalayas（喜马拉雅山脉）、the Great Wall（长城）、the Universe（宇宙）。"
+    },
+    {
+      "id": "3-3",
+      "type": "选择题",
+      "question": "______ most students in our class have ______ good command of English, which helps them communicate with foreign teachers smoothly.",
+      "options": [
+        "The; a",
+        "A; a",
+        "The; /",
+        "A; /"
+      ],
+      "correctAnswer": "The; a",
+      "explanation": "第一空most students后有in our class限定，表“我们班的大多数学生”，为特指，需加the；第二空为固定搭配have a good command of（精通……），需用a，故答案为The; a。",
+      "knowledgeExtension": "most的用法：表“大多数”且无范围限定→零冠词（Most people like music）；表“某范围的大多数”且有定语限定→加the（Most of the students are here）。"
+    },
+    {
+      "id": "3-4",
+      "type": "判断题",
+      "question": "She plays piano very well and often performs at school concerts.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "演奏乐器前需加定冠词the（play the piano/guitar/violin），题干中play piano缺少the，用法错误。",
+      "knowledgeExtension": "球类、棋类运动前不加the（play football/basketball/chess）；乐器、西洋乐器前必须加the（play the erhu二胡，中国乐器前可加可不加，但习惯加the）。"
+    },
+    {
+      "id": "3-5",
+      "type": "选择题",
+      "question": "______ old man I met yesterday told me that he used to be ______ teacher in a remote village.",
+      "options": [
+        "An; a",
+        "The; a",
+        "An; the",
+        "The; the"
+      ],
+      "correctAnswer": "The; a",
+      "explanation": "第一空old man后有I met yesterday限定，表“我昨天遇到的那位老人”，为特指，需加the；第二空teacher以辅音音素开头，表“一名老师”，为泛指，需用a，故答案为The; a。",
+      "knowledgeExtension": "特指的三种情况：1. 上文提到过的人/物（I saw a cat. The cat was black）；2. 有定语限定的人/物（the book on the desk）；3. 双方都知道的人/物（Pass me the pen）。"
+    },
+    {
+      "id": "3-6",
+      "type": "判断题",
+      "question": "English is widely used as an international language in business and education.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "语言名称前通常不加冠词（English/Chinese/French），表泛指“英语”；an international language中an用于元音音素开头的单词前，用法正确，故题干正确。",
+      "knowledgeExtension": "例外情况：当语言名称后有language修饰时，可加the（the English language）；某些特定语言相关表达加the（the Chinese=中国人，the English=英国人）。"
+    },
+    {
+      "id": "3-7",
+      "type": "选择题",
+      "question": "______ useful advice our teacher gave us! It has helped us solve many practical problems.",
+      "options": [
+        "What a",
+        "What an",
+        "What",
+        "How"
+      ],
+      "correctAnswer": "What",
+      "explanation": "advice为不可数名词，不能用a/an修饰；此处为感叹句（What + 形容词 + 不可数名词 + 主语 + 谓语！），故答案为What。",
+      "knowledgeExtension": "感叹句中a/an的用法：What a + 形容词 + 可数名词单数（What a beautiful flower!）；What + 形容词 + 可数名词复数/不可数名词（What beautiful flowers! What good news!）；How + 形容词/副词（How beautiful the flower is!）。"
+    },
+    {
+      "id": "3-8",
+      "type": "判断题",
+      "question": "We usually have breakfast at 7 o’clock in the morning and then go to school by bus.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "三餐名称（breakfast/lunch/dinner）前通常不加冠词；by + 交通工具（by bus/by bike/by car）前也不加冠词，题干中两处零冠词用法均正确。",
+      "knowledgeExtension": "三餐前加the的情况：有定语限定表特指（I had the breakfast you prepared for me）；表“某一顿具体的餐”（The dinner was delicious）。"
+    },
+    {
+      "id": "3-9",
+      "type": "选择题",
+      "question": "______ number of visitors to the museum has increased by 30% compared with last year, which shows ______ growing interest in cultural heritage.",
+      "options": [
+        "A; a",
+        "The; a",
+        "A; the",
+        "The; the"
+      ],
+      "correctAnswer": "The; a",
+      "explanation": "第一空为固定搭配the number of（……的数量），需加the；第二空growing interest以辅音音素开头，表“一种日益增长的兴趣”，为泛指，需用a，故答案为The; a。",
+      "knowledgeExtension": "a number of（许多）后接可数名词复数，作主语时谓语动词用复数，前不加the；the number of后接可数名词复数，作主语时谓语动词用单数，前必须加the。"
+    },
+    {
+      "id": "3-10",
+      "type": "判断题",
+      "question": "He is planning to study the economics at a famous university in the United States.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "学科名称（economics/math/physics/history等）前通常不加冠词，题干中study the economics多了the，用法错误。",
+      "knowledgeExtension": "学科名称前加the的情况：表“某一门具体的课程”（I am taking the economics course this semester）；与of连用表“……的学问”（the economics of education）。"
+    },
+    {
+      "id": "3-11",
+      "type": "选择题",
+      "question": "______ elephant is ______ largest land animal on Earth, and it plays an important role in ______ ecosystem of Africa.",
+      "options": [
+        "An; the; the",
+        "A; a; /",
+        "The; the; an",
+        "An; a; the"
+      ],
+      "correctAnswer": "An; the",
+      "explanation": "第一空elephant以元音音素/e/开头，表“一头大象”（泛指某类动物），需用An；第二空largest为形容词最高级，前必须加the；第三空ecosystem后有of Africa限定，表“非洲的生态系统”，为特指，需加the，故答案为An; the; the。",
+      "knowledgeExtension": "形容词最高级、序数词前通常加the（the tallest building, the first day）；但序数词表“又一、再一”时不加the（a second chance再一次机会）。"
+    },
+    {
+      "id": "3-12",
+      "type": "判断题",
+      "question": "They visited the Great Wall, the Summer Palace and other famous scenic spots during their trip to Beijing.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "由普通名词构成的专有名词（如the Great Wall, the Summer Palace, the United States, the People’s Republic of China）前需加the，题干中用法正确。",
+      "knowledgeExtension": "无需加the的专有名词：人名（Tom, Li Ming）、地名（Beijing, Shanghai）、国名（China, Japan）、山脉名称（Mount Tai）、湖泊名称（West Lake）。"
+    },
+    {
+      "id": "3-13",
+      "type": "选择题",
+      "question": "I have ______ friend who works as ______ doctor in ______ hospital near my home. ______ doctor is very kind to patients.",
+      "options": [
+        "a; a; a; The",
+        "a; the; the; A",
+        "an; a; the; The",
+        "an; the; a; A"
+      ],
+      "correctAnswer": "a; a; a; The",
+      "explanation": "第一、二、三空均为泛指（一位朋友、一名医生、一家医院），friend/doctor/hospital均以辅音音素开头，需用a；第四空doctor为上文提到过的人，为特指，需加The，故答案为a; a; a; The。",
+      "knowledgeExtension": "第一次提到的人/物用不定冠词a/an（表泛指），再次提到时用定冠词the（表特指），这是the的核心用法之一。"
+    },
+    {
+      "id": "3-14",
+      "type": "判断题",
+      "question": "She goes to school by the bike every morning because it is convenient.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "by + 交通工具（bike/car/bus/train/plane等）前不加the，正确表达为by bike，题干中by the bike多了the，用法错误。",
+      "knowledgeExtension": "如果交通工具前有定语修饰，需用介词on/in，且加the/a（如on a blue bike, in my car, on the bus I took yesterday）。"
+    },
+    {
+      "id": "3-15",
+      "type": "选择题",
+      "question": "______ important thing we should remember is that ______ honesty is the best policy in interpersonal relationships.",
+      "options": [
+        "An; /",
+        "A; /",
+        "The; an",
+        "An; an"
+      ],
+      "correctAnswer": "An; /",
+      "explanation": "第一空important以元音音素开头，表“一件重要的事”，需用An；第二空honesty为不可数名词（抽象概念），表泛指“诚实”，前不加冠词，故答案为An; /。",
+      "knowledgeExtension": "抽象名词（honesty/kindness/love/truth等）表泛指时前不加冠词；表“某一种具体的品质/情况”时加a/an（a kindness一件善事，a great honesty一种非常诚实的品质）。"
+    },
+    {
+      "id": "3-16",
+      "type": "判断题",
+      "question": "The China is a great country with a long history and rich culture.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "国名China为专有名词，前通常不加the，题干中The China多了the，用法错误。",
+      "knowledgeExtension": "国名前加the的情况：由普通名词构成的国名（the United States, the United Kingdom, the Netherlands）；含复数形式的国名（the Philippines, the Maldives）。"
+    },
+    {
+      "id": "3-17",
+      "type": "选择题",
+      "question": "He spent ______ whole day reading ______ book about ______ history of ancient Rome.",
+      "options": [
+        "a; a; the",
+        "the; the; /",
+        "a; the; a",
+        "the; a; /"
+      ],
+      "correctAnswer": "a; a; the",
+      "explanation": "第一空为固定搭配spend a whole day（花费一整天），用a；第二空book以辅音音素开头，表“一本书”，用a；第三空history后有of ancient Rome限定，表“古罗马的历史”，为特指，用the，故答案为a; a; the。",
+      "knowledgeExtension": "whole的用法：a whole + 名词单数（a whole week一整周），the whole + 名词复数/不可数名词（the whole class全班同学，the whole water所有的水）。"
+    },
+    {
+      "id": "3-18",
+      "type": "判断题",
+      "question": "We watched a interesting movie last night, and the movie told a story about environmental protection.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "interesting以元音音素/ɪ/开头，前需用不定冠词an，而非a，正确表达为an interesting movie，题干中a interesting movie用法错误。",
+      "knowledgeExtension": "判断用a还是an，关键看单词的发音开头是否为元音音素，而非字母：an hour（/aʊ/元音音素）、a university（/juː/辅音音素）、an honest man（/ɒ/元音音素）。"
+    },
+    {
+      "id": "3-19",
+      "type": "选择题",
+      "question": "______ President of the United States will visit our country next month, and ______ visit is expected to promote bilateral cooperation.",
+      "options": [
+        "The; a",
+        "A; the",
+        "The; the",
+        "A; a"
+      ],
+      "correctAnswer": "The; the",
+      "explanation": "第一空President of the United States为独一无二的职位名称，前需加the；第二空visit为上文提到过的“访问”，为特指，需加the，故答案为The; the。",
+      "knowledgeExtension": "独一无二的职位、头衔前通常加the（the President, the Prime Minister, the Queen）；但若作表语、同位语时不加the（He was elected president of the company）。"
+    },
+    {
+      "id": "3-20",
+      "type": "判断题",
+      "question": "She has a great interest in the literature and often reads works by famous writers.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "literature为不可数名词，表泛指“文学”时前不加the，题干中the literature多了the，用法错误；若表“某一特定的文学领域”（如the literature of the Tang Dynasty），可加the。",
+      "knowledgeExtension": "类似的不可数名词（表泛指时零冠词）：science（科学）、art（艺术）、music（音乐）、history（历史）、nature（自然）。"
+    }
+  ]
+}

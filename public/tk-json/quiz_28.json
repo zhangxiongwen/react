@@ -1,0 +1,187 @@
+{
+  "title": "定语从句（that/which/who 引导，修饰名词/代词）",
+  "knowledgePoint": "定语从句的核心结构（先行词+关系词+从句）、关系词that/which/who的用法区别（修饰人/物）、关系词在从句中的成分（主语/宾语）、限定性与非限定性定语从句的初步区分、易混淆先行词的适配",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "28-1",
+      "type": "选择题",
+      "question": "The scientist ______ developed the new vaccine has dedicated her entire career to medical research, and the technology ______ she used has opened up new possibilities for treating infectious diseases.",
+      "options": ["who; that", "which; who", "that; which", "who; who"],
+      "correctAnswer": "who; that",
+      "explanation": "第一空先行词the scientist指人，关系词在从句中作主语，用who；第二空先行词the technology指物，关系词在从句中作宾语，that/which均可，符合“指人用who/that，指物用that/which”的规则。",
+      "knowledgeExtension": "关系词who仅用于指人，可作主语；that可指人或物，可作主语或宾语；which仅用于指物，可作主语或宾语。"
+    },
+    {
+      "id": "28-2",
+      "type": "判断题",
+      "question": "The book which I borrowed it from the library last week tells the story of a young entrepreneur who overcame numerous challenges to achieve success.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "关系词which在从句中作borrowed的宾语，从句中无需再加宾语it，应改为“The book which I borrowed from the library”；who修饰entrepreneur用法正确，题干存在宾语重复错误。",
+      "knowledgeExtension": "定语从句中，关系词已充当从句的主语或宾语时，从句中不能再出现重复的主语或宾语。"
+    },
+    {
+      "id": "28-3",
+      "type": "选择题",
+      "question": "The ancient city ______ ruins were discovered in southern China dates back to the Tang Dynasty, and it is a place ______ historians have been studying for decades.",
+      "options": ["whose; that", "which; who", "that; which", "who; whose"],
+      "correctAnswer": "whose; that",
+      "explanation": "第一空先行词the ancient city与ruins是所属关系，用whose（表“……的”）；第二空先行词a place指物，关系词在从句中作studying的宾语，that/which均可，符合所属关系与指物宾语的用法。",
+      "knowledgeExtension": "关系词whose可指人或物，表所属关系，后接名词（如the man whose car was stolen 车被偷的男人）。"
+    },
+    {
+      "id": "28-4",
+      "type": "判断题",
+      "question": "She is the only person who understand the complex algorithm that was designed by the research team last year. Her expertise has been crucial to the project.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "关系词who指代the only person（单数），从句谓语动词需用第三人称单数understands，题干用原形understand，主谓不一致；that修饰algorithm用法正确，核心错误为谓语动词形式。",
+      "knowledgeExtension": "定语从句的谓语动词需与先行词的单复数保持一致（如the students who are studying 正在学习的学生；the student who is studying 正在学习的学生）。"
+    },
+    {
+      "id": "28-5",
+      "type": "选择题",
+      "question": "The company ______ launched the innovative product won the industry award, and the team members ______ contributed to its development were praised by the CEO.",
+      "options": ["which; who", "who; that", "that; which", "whose; who"],
+      "correctAnswer": "which; who",
+      "explanation": "第一空先行词the company指物，关系词在从句中作主语，用which/that；第二空先行词the team members指人，关系词在从句中作主语，用who/that，选项中which与who的组合符合规则。",
+      "knowledgeExtension": "先行词为企业、机构等集体名词时，视为“物”，用which/that引导定语从句；先行词为复数人称时，用who/that。"
+    },
+    {
+      "id": "28-6",
+      "type": "判断题",
+      "question": "The film that we watched it last night is based on a true story which happened in a small town in the 1980s. It left a deep impression on all of us.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "关系词that在从句中作watched的宾语，从句中无需加it，应改为“The film that we watched last night”；which修饰a true story用法正确，题干存在宾语重复错误。",
+      "knowledgeExtension": "当关系词在从句中作宾语时，可省略（如The film we watched last night），但不能添加重复宾语。"
+    },
+    {
+      "id": "28-7",
+      "type": "选择题",
+      "question": "I met the writer ______ book has been on the bestseller list for three months, and she signed a copy for me ______ I will cherish forever.",
+      "options": ["whose; that", "who; which", "that; who", "which; whose"],
+      "correctAnswer": "whose; that",
+      "explanation": "第一空先行词the writer与book是所属关系，用whose；第二空先行词a copy指物，关系词在从句中作cherish的宾语，that/which均可，符合所属关系与指物宾语的用法。",
+      "knowledgeExtension": "whose引导定语从句时，可替换为“of which”（如the book whose cover is red = the book of which the cover is red），但whose更简洁。"
+    },
+    {
+      "id": "28-8",
+      "type": "判断题",
+      "question": "The building which stands at the corner of the street was designed by a famous architect who works in Paris now. It is one of the city’s landmarks.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空先行词the building指物，关系词which在从句中作主语；第二空先行词a famous architect指人，关系词who在从句中作主语，两者用法均正确，语法连贯。",
+      "knowledgeExtension": "关系词在从句中作主语时，不能省略，且谓语动词需与先行词单复数一致（此处building为单数，stands用第三人称单数）。"
+    },
+    {
+      "id": "28-9",
+      "type": "选择题",
+      "question": "The reason ______ he gave for being late was that his car broke down, and the mechanic ______ repaired it said it was a minor issue.",
+      "options": ["that; who", "why; which", "which; that", "who; why"],
+      "correctAnswer": "that; who",
+      "explanation": "第一空先行词the reason指物，关系词在从句中作gave的宾语，用that/which；第二空先行词the mechanic指人，关系词在从句中作主语，用who/that，符合“先行词为reason且作宾语用that/which”的规则。",
+      "knowledgeExtension": "先行词为reason时，若关系词在从句中作状语，用why；作主语或宾语时，用that/which（如the reason that he told me 他告诉我的原因）。"
+    },
+    {
+      "id": "28-10",
+      "type": "判断题",
+      "question": "We visited the museum where has a large collection of ancient artifacts that date back to the Stone Age. The guide who led the tour was very knowledgeable.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "先行词the museum指物，关系词在从句中作主语，应用that/which，where是关系副词（作状语），不能作主语，应改为“The museum that/which has a large collection”；that修饰artifacts、who修饰guide用法正确，核心错误为关系词误用。",
+      "knowledgeExtension": "关系副词where/when/why在从句中作状语，不能作主语或宾语；作主语/宾语需用关系代词that/which/who。"
+    },
+    {
+      "id": "28-11",
+      "type": "选择题",
+      "question": "The student ______ won the first prize in the English competition is my classmate, and the essay ______ she wrote impressed all the judges with its creativity.",
+      "options": ["who; that", "which; who", "that; which", "who; which"],
+      "correctAnswer": "who; that",
+      "explanation": "第一空先行词the student指人，关系词在从句中作主语，用who/that；第二空先行词the essay指物，关系词在从句中作wrote的宾语，that/which均可，符合指人主语与指物宾语的用法。",
+      "knowledgeExtension": "当先行词是人且作主语时，who比that更常用；作宾语时，that可省略（如the student I know 我认识的学生）。"
+    },
+    {
+      "id": "28-12",
+      "type": "判断题",
+      "question": "The dog who is playing in the park is mine; it’s a golden retriever that is very friendly to everyone. Many children like to play with it.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "先行词the dog指动物，关系词应用that/which，who仅用于指人，应改为“The dog that/which is playing in the park”；that修饰golden retriever用法正确，核心错误为指物用who。",
+      "knowledgeExtension": "关系词who仅适用于指人，指动物或物品需用that/which，即使动物是宠物，也不能用who（拟人化表达除外）。"
+    },
+    {
+      "id": "28-13",
+      "type": "选择题",
+      "question": "The project ______ we are working on requires close teamwork, and the leader ______ experience is rich in management will guide us through the challenges.",
+      "options": ["that; whose", "which; who", "who; that", "whose; which"],
+      "correctAnswer": "that; whose",
+      "explanation": "第一空先行词the project指物，关系词在从句中作working on的宾语，用that/which；第二空先行词the leader与experience是所属关系，用whose，符合指物宾语与所属关系的用法。",
+      "knowledgeExtension": "“介词+关系代词”结构中，指物用which，指人用whom（如the project on which we are working），但日常表达中更常用“关系代词+介词”（that we are working on）。"
+    },
+    {
+      "id": "28-14",
+      "type": "判断题",
+      "question": "The letter which was sent by my friend yesterday arrived this morning; it contains news that made me very happy. I will reply to it soon.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空先行词the letter指物，关系词which在从句中作主语；第二空先行词news指物，关系词that在从句中作made的主语，两者用法均正确，语法连贯。",
+      "knowledgeExtension": "先行词为抽象名词（如news/information/idea）时，常用that引导定语从句，且that在从句中作主语时不能省略。"
+    },
+    {
+      "id": "28-15",
+      "type": "选择题",
+      "question": "The hotel ______ we stayed during our trip was located by the sea, and the staff ______ served us were very warm and helpful.",
+      "options": ["where; who", "which; that", "that; who", "who; where"],
+      "correctAnswer": "where; who",
+      "explanation": "第一空先行词the hotel指地点，关系词在从句中作地点状语，用where；第二空先行词the staff指人，关系词在从句中作主语，用who/that，符合地点状语与指人主语的用法。",
+      "knowledgeExtension": "关系副词where=in/at which（如the hotel where we stayed = the hotel at which we stayed），用于先行词为地点且作状语的场景。"
+    },
+    {
+      "id": "28-16",
+      "type": "判断题",
+      "question": "The man which helped me carry the luggage to the car is a taxi driver who has been working in this city for 10 years. I thanked him sincerely.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "先行词the man指人，关系词应用who/that，which仅用于指物，应改为“The man who/that helped me”；who修饰taxi driver用法正确，核心错误为指人用which。",
+      "knowledgeExtension": "关系词which绝对不能用于指人，指人只能用who/that，这是定语从句的核心规则，避免混淆。"
+    },
+    {
+      "id": "28-17",
+      "type": "选择题",
+      "question": "The invention ______ changed the way we communicate is the Internet, and the scientist ______ first proposed the concept is widely respected.",
+      "options": ["that; who", "which; that", "who; which", "whose; that"],
+      "correctAnswer": "that; who",
+      "explanation": "第一空先行词the invention指物，关系词在从句中作主语，用that/which；第二空先行词the scientist指人，关系词在从句中作主语，用who/that，符合指物主语与指人主语的用法。",
+      "knowledgeExtension": "当先行词是物且作主语时，that和which可互换，但先行词为不定代词（如something/nothing）时，只能用that。"
+    },
+    {
+      "id": "28-18",
+      "type": "判断题",
+      "question": "The park that we visited last weekend has a lake which is surrounded by beautiful flowers. Many people go there to relax on weekends.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空先行词the park指物，关系词that在从句中作visited的宾语；第二空先行词a lake指物，关系词which在从句中作主语，两者用法均正确，语法连贯。",
+      "knowledgeExtension": "定语从句可嵌套使用（如本句中park的定语从句内嵌套lake的定语从句），需确保每个关系词都正确匹配先行词。"
+    },
+    {
+      "id": "28-19",
+      "type": "选择题",
+      "question": "The course ______ I enrolled in focuses on environmental protection, and the professor ______ teaches it has published many related papers.",
+      "options": ["that; who", "which; that", "who; which", "whose; who"],
+      "correctAnswer": "that; who",
+      "explanation": "第一空先行词the course指物，关系词在从句中作enrolled in的宾语，用that/which；第二空先行词the professor指人，关系词在从句中作teaches的主语，用who/that，符合指物宾语与指人主语的用法。",
+      "knowledgeExtension": "当关系词在从句中作介词宾语时，介词可提前（如the course in which I enrolled），但日常表达中更倾向于将介词后置（that I enrolled in）。"
+    },
+    {
+      "id": "28-20",
+      "type": "判断题",
+      "question": "The necklace which my mother gave it to me on my birthday is made of silver that was mined in a small town in Mexico. I treasure it very much.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "关系词which在从句中作gave的直接宾语，从句中无需加间接宾语it，应改为“The necklace which my mother gave to me”；that修饰silver用法正确，题干存在宾语重复错误。",
+      "knowledgeExtension": "“give sb. sth.”结构中，若关系词指代sth.，从句应为“which my mother gave me”（直接接间接宾语me），或“which my mother gave to me”（用介词to连接），均无需额外加it。"
+    }
+  ]
+}

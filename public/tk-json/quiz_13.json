@@ -1,0 +1,187 @@
+{
+  "title": "形容词比较级与最高级（规则变化+不规则，good→better→best）",
+  "knowledgePoint": "形容词比较级与最高级的规则变化（单音节/双音节/多音节）、不规则变化（good/bad/many/much/little/far）、比较级与最高级的语境适配（两者/三者及以上比较）、同级比较（as...as/not as...as）、特殊结构（the+比较级，the+比较级；比较级+and+比较级）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "13-1",
+      "type": "选择题",
+      "question": "Among all the natural disasters, earthquakes are often ______ to predict, and their aftermath can be ______ destructive than other hazards.",
+      "options": ["harder; more", "more hard; most", "hardest; more", "harder; most"],
+      "correctAnswer": "harder; more",
+      "explanation": "第一空表“更难预测”（两者以上比较的隐含对比），单音节形容词“hard”的比较级为“harder”；第二空“than”提示用比较级，多音节形容词“destructive”前加“more”。",
+      "knowledgeExtension": "单音节形容词的比较级直接加“-er”，多音节形容词需加“more”，需根据词的音节判断变化形式。"
+    },
+    {
+      "id": "13-2",
+      "type": "判断题",
+      "question": "The more we understand about marine ecosystems, the more we realize how fragile they are—overfishing is one of the most serious threats to ocean biodiversity.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“the+比较级，the+比较级”结构使用正确，“fragile”的比较级“more fragile”符合多音节词规则；“most serious”搭配范围“to ocean biodiversity”，最高级用法正确。",
+      "knowledgeExtension": "“the+比较级，the+比较级”结构中，前后比较级需对应，且多音节词需完整使用“more+原级”。"
+    },
+    {
+      "id": "13-3",
+      "type": "选择题",
+      "question": "When comparing the two poetry collections, Collection A is ______ in emotional depth, while Collection B is ______ in linguistic innovation.",
+      "options": ["richer; more", "more rich; most", "richer; more innovative", "more rich; more innovative"],
+      "correctAnswer": "richer; more innovative",
+      "explanation": "第一空单音节形容词“rich”的比较级为“richer”；第二空多音节形容词“innovative”的比较级为“more innovative”，与前文“richer”形成对应比较。",
+      "knowledgeExtension": "单音节形容词直接加“-er”，双音节及以上形容词加“more”，是比较级变化的核心规则。"
+    },
+    {
+      "id": "13-4",
+      "type": "判断题",
+      "question": "This is the more interesting novel I’ve read this year, as its plot is far more intricate than the others I’ve finished.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“I’ve read this year”是三者及以上的范围，需用最高级“most interesting”，题干误用比较级“more interesting”。",
+      "knowledgeExtension": "最高级需搭配明确的范围（如in/of/among/ever等），表“在……中最……”。"
+    },
+    {
+      "id": "13-5",
+      "type": "选择题",
+      "question": "The ______ the distance between two objects, the ______ the gravitational force between them—this is a key principle in Newtonian physics.",
+      "options": ["greater; weaker", "more great; more weak", "greatest; weakest", "greater; more weak"],
+      "correctAnswer": "greater; weaker",
+      "explanation": "“the+比较级，the+比较级”结构中，单音节形容词“great”“weak”的比较级直接加“-er”，表“距离越远，引力越弱”的物理规律。",
+      "knowledgeExtension": "单音节形容词以“辅音+元音+辅音”结尾时，比较级需双写尾字母（如big→bigger），但“great”“weak”不符合此规则，直接加“-er”。"
+    },
+    {
+      "id": "13-6",
+      "type": "判断题",
+      "question": "Though the new smartphone is not as lightweight as its predecessor, it has a more longer battery life and a higher-resolution display.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“longer”本身是比较级，不能再用“more”修饰；“higher-resolution”是复合形容词，比较级用法正确，题干存在“more+比较级”的冗余错误。",
+      "knowledgeExtension": "比较级前不能加“more”（多音节词除外），避免重复修饰。"
+    },
+    {
+      "id": "13-7",
+      "type": "选择题",
+      "question": "Of all the candidates applying for the scholarship, she has the ______ academic record and the ______ letters of recommendation.",
+      "options": ["strongest; most compelling", "more strong; more compelling", "strongest; compellingest", "more strong; compellingest"],
+      "correctAnswer": "strongest; most compelling",
+      "explanation": "“Of all the candidates”是最高级范围，单音节形容词“strong”的最高级为“strongest”；多音节形容词“compelling”的最高级为“most compelling”。",
+      "knowledgeExtension": "多音节形容词的最高级需加“most”，且前加“the”，是固定用法。"
+    },
+    {
+      "id": "13-8",
+      "type": "判断题",
+      "question": "The farther we travel from the city center, the less crowded the neighborhoods become, and the more affordable housing prices are.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“far”的比较级“farther”表距离，“little”的比较级“less”修饰不可数名词“crowdedness”（隐含），“affordable”的比较级“more affordable”符合多音节词规则，结构与逻辑均正确。",
+      "knowledgeExtension": "“far”的比较级“farther”表具体距离，“further”表抽象程度（如further study）。"
+    },
+    {
+      "id": "13-9",
+      "type": "选择题",
+      "question": "When evaluating historical events, a ______ perspective is ______ likely to account for multiple viewpoints than a narrow, one-sided approach.",
+      "options": ["broader; more", "more broad; most", "broader; most", "more broad; more"],
+      "correctAnswer": "broader; more",
+      "explanation": "第一空单音节形容词“broad”的比较级为“broader”；第二空“than”提示用比较级，多音节形容词“likely”前加“more”。",
+      "knowledgeExtension": "以“-d”结尾的单音节形容词，比较级直接加“-er”（如broad→broader）。"
+    },
+    {
+      "id": "13-10",
+      "type": "判断题",
+      "question": "This is the least practical solution to the problem, as it requires more time and resources than the other two options combined.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“little”的最高级“least”修饰形容词“practical”，表“最不实用”；“more time and resources than”表比较级，搭配“the other two options”，逻辑与语法均正确。",
+      "knowledgeExtension": "“least”是“little”的最高级，可修饰形容词或不可数名词，表“最不……”。"
+    },
+    {
+      "id": "13-11",
+      "type": "选择题",
+      "question": "Among the three art movements, Impressionism is ______ known to the general public, while Cubism is ______ understood due to its abstract nature.",
+      "options": ["better; less", "more well; less", "best; least", "better; least"],
+      "correctAnswer": "better; less",
+      "explanation": "第一空“well”的比较级为“better”，表“更知名”；第二空“little”的比较级为“less”，表“较难理解”，两者均为两者以上的隐含对比。",
+      "knowledgeExtension": "“well”的比较级是“better”，最高级是“best”，属于不规则变化。"
+    },
+    {
+      "id": "13-12",
+      "type": "判断题",
+      "question": "The more you invest in employee training, the more productive your team will be—this is why companies with the most comprehensive training programs often have the higher profit margins.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“the most comprehensive”是最高级，对应“companies”的范围，“higher”应改为“highest”，与前文最高级保持一致，题干存在比较级与最高级混用错误。",
+      "knowledgeExtension": "同一语境中，若前文用最高级，后文对应比较也需用最高级，保持逻辑一致。"
+    },
+    {
+      "id": "13-13",
+      "type": "选择题",
+      "question": "When comparing the two philosophical theories, Theory A is ______ in logical consistency, while Theory B is ______ in real-world applicability.",
+      "options": ["more consistent; more", "consistenter; more", "more consistent; most", "consistenter; most"],
+      "correctAnswer": "more consistent; more",
+      "explanation": "第一空多音节形容词“consistent”的比较级为“more consistent”；第二空多音节形容词“applicable”的比较级为“more applicable”（省略“applicable”以避免重复）。",
+      "knowledgeExtension": "多音节形容词（3个及以上音节）的比较级必须加“more”，不能直接加“-er”。"
+    },
+    {
+      "id": "13-14",
+      "type": "判断题",
+      "question": "She is the better of the two lawyers, as her track record of winning cases is far more impressive than her colleague’s.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“the+比较级+of the two”是两者比较的固定结构，“better”是“good”的比较级；“more impressive than”表比较级，搭配“her colleague’s”，逻辑与语法均正确。",
+      "knowledgeExtension": "两者比较时，比较级前加“the”表“两者中较……的一个”，是固定用法。"
+    },
+    {
+      "id": "13-15",
+      "type": "选择题",
+      "question": "The ______ the temperature of a gas, the ______ its volume will be—this is described by Charles’s Law in chemistry.",
+      "options": ["higher; larger", "more high; more large", "highest; largest", "higher; more large"],
+      "correctAnswer": "higher; larger",
+      "explanation": "“the+比较级，the+比较级”结构中，单音节形容词“high”“large”的比较级直接加“-er”，表“温度越高，体积越大”的化学定律。",
+      "knowledgeExtension": "单音节形容词的比较级变化是英语语法的基础规则，需熟练掌握常见词的变化形式。"
+    },
+    {
+      "id": "13-16",
+      "type": "判断题",
+      "question": "This is the most unique architectural design I’ve ever seen, as no other building combines traditional and modern elements in such a creative way.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“unique”（独特的）是绝对形容词，表极限状态，不能用最高级“most unique”修饰，题干存在语义矛盾。",
+      "knowledgeExtension": "绝对形容词（如unique/perfect/empty）本身无程度差异，不能用比较级/最高级修饰。"
+    },
+    {
+      "id": "13-17",
+      "type": "选择题",
+      "question": "Of all the renewable energy sources, solar power is becoming ______ accessible, and it is now one of the ______ viable alternatives to fossil fuels.",
+      "options": ["more; most", "accessibler; most", "more; viablest", "accessibler; viablest"],
+      "correctAnswer": "more; most",
+      "explanation": "第一空多音节形容词“accessible”的比较级为“more accessible”；第二空“one of the+最高级+复数名词”中，多音节形容词“viable”的最高级为“most viable”。",
+      "knowledgeExtension": "“one of the+最高级+复数名词”是表“最……之一”的固定结构，需加“the”。"
+    },
+    {
+      "id": "13-18",
+      "type": "判断题",
+      "question": "The more diverse a team is in terms of background and experience, the more creative their solutions to complex problems tend to be.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“diverse”的比较级“more diverse”符合多音节词规则；“creative”的比较级“more creative”同理，“the+比较级，the+比较级”结构使用正确，逻辑通顺。",
+      "knowledgeExtension": "多音节形容词在“the+比较级，the+比较级”结构中，需完整使用“more+原级”，不能省略“more”。"
+    },
+    {
+      "id": "13-19",
+      "type": "选择题",
+      "question": "When comparing the two economic policies, Policy X is ______ effective in reducing inflation, while Policy Y is ______ beneficial for long-term economic growth.",
+      "options": ["more; more", "effectiver; beneficialer", "more; most", "effectiver; more"],
+      "correctAnswer": "more; more",
+      "explanation": "两者比较中，多音节形容词“effective”“beneficial”的比较级均需加“more”，表“更有效”“更有益”。",
+      "knowledgeExtension": "双音节及以上形容词的比较级均需加“more”，是英语语法的核心规则之一。"
+    },
+    {
+      "id": "13-20",
+      "type": "判断题",
+      "question": "He is the most experienced doctor in the hospital, and his success rate in treating rare diseases is higher than any doctor in the region.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“higher than any doctor”包含自身（他是该地区医生之一），逻辑错误，需改为“higher than any other doctor”以排除自身。",
+      "knowledgeExtension": "同一范围内的比较需用“any other+单数名词”，不同范围用“any+单数名词”，避免逻辑矛盾。"
+    }
+  ]
+}

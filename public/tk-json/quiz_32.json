@@ -1,0 +1,187 @@
+{
+  "title": "比较状语从句（as...as/not as...as, than引导比较）",
+  "knowledgePoint": "原级比较（as+原级+as的肯定/否定用法）、比较级比较（than引导比较状语从句，从句的省略规则）、比较级的修饰词（much/a little/even等的搭配）、倍数比较（倍数+as...as/倍数+比较级+than）、比较状语从句的主谓一致",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "32-1",
+      "type": "选择题",
+      "question": "This restaurant is not ______ popular ______ the one downtown, but its food tastes ______ delicious ______ the latter. In fact, its steak is ______ tender than most other restaurants’.",
+      "options": ["as; as; as; as; more", "so; as; so; as; much", "as; as; so; as; more", "so; as; as; as; much"],
+      "correctAnswer": "as; as; as; as; more",
+      "explanation": "第一空否定原级比较用“not as+原级+as”；第二空肯定原级比较用“as+原级+as”；第三空比较级“tender”的比较级是“more tender”，符合原级比较和比较级的规则。",
+      "knowledgeExtension": "否定原级比较可用“not as...as”或“not so...as”，肯定原级比较只能用“as...as”。"
+    },
+    {
+      "id": "32-2",
+      "type": "判断题",
+      "question": "She runs more faster than her brother and jumps as higher as a professional athlete. She is the most athletic person in her family.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "比较级“faster”前不能加“more”（重复修饰）；原级比较“as...as”中间需用原级“high”，不能用比较级“higher”，核心错误为比较级和原级用法混淆。",
+      "knowledgeExtension": "单音节形容词/副词的比较级直接加“-er”，不能同时加“more”；“as...as”中间必须用原级。"
+    },
+    {
+      "id": "32-3",
+      "type": "选择题",
+      "question": "The new smartphone is ______ expensive ______ the old model, but it is ______ lightweight ______ 20% ______ the latter. Its battery life is also ______ longer than the old one.",
+      "options": ["as; as; as; as; than; much", "so; as; so; as; than; more", "as; as; so; as; than; much", "so; as; as; as; than; more"],
+      "correctAnswer": "as; as; as; as; than; much",
+      "explanation": "第一空肯定原级比较用“as...as”；第二空倍数比较“20% as...as”后接“than”表差异；第三空“longer”前用“much”修饰比较级，符合倍数比较和比较级修饰的规则。",
+      "knowledgeExtension": "倍数比较结构：“倍数+as+原级+as”或“倍数+比较级+than”，前者更侧重“达到几倍”，后者侧重“比……多几倍”。"
+    },
+    {
+      "id": "32-4",
+      "type": "判断题",
+      "question": "This book is as interesting as the one I read last month, and it is much thicker than that. I spend more time reading it than I did on the previous one.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "原级比较“as interesting as”用法正确；“much”修饰比较级“thicker”符合规则；比较状语从句“than I did”省略了重复的“spend time”，用法正确。",
+      "knowledgeExtension": "比较状语从句中，与主句重复的谓语部分可省略，仅保留主语和助动词（如“than I did”=“than I spent time”）。"
+    },
+    {
+      "id": "32-5",
+      "type": "选择题",
+      "question": "— Is your new apartment ______ spacious ______ your old one? — No, it’s ______ smaller, but it is ______ convenient ______ the city center ______ the old one.",
+      "options": ["as; as; a little; more; to; than", "so; as; much; more; to; as", "as; as; a little; so; to; than", "so; as; much; so; to; as"],
+      "correctAnswer": "as; as; a little; more; to; than",
+      "explanation": "第一空原级比较用“as...as”；第二空“a little”修饰比较级“smaller”；第三空“more convenient”后接“than”表比较，符合比较级修饰和比较状语从句的规则。",
+      "knowledgeExtension": "“a little/much/even”等词可修饰比较级，表程度差异；“convenient to...”是固定搭配，表“距离……便利”。"
+    },
+    {
+      "id": "32-6",
+      "type": "判断题",
+      "question": "He is not so tall as his father, but he is stronger than him. He lifts weights as heavier as his father does, even though he is younger.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“not so tall as”用法正确；“as...as”中间需用原级“heavy”，不能用比较级“heavier”，核心错误为原级比较误用比较级。",
+      "knowledgeExtension": "“as...as”的核心是“原级”，无论比较的程度如何，中间都不能用比较级或最高级。"
+    },
+    {
+      "id": "32-7",
+      "type": "选择题",
+      "question": "The population of this city is ______ twice ______ large ______ that of the neighboring city. Its GDP is also ______ three times ______ high ______ the latter, and it is growing ______ rapidly ______ the neighboring city.",
+      "options": ["as; as; as; as; as; more", "more; as; as; as; as; more", "as; as; as; so; as; more", "more; as; as; so; as; more"],
+      "correctAnswer": "as; as; as; as; as; more",
+      "explanation": "倍数原级比较用“twice as large as”；第二空“three times as high as”同理；第三空“more rapidly than”表比较级，符合倍数比较和比较级的规则。",
+      "knowledgeExtension": "倍数+as+原级+as”是倍数比较的常用结构，表“是……的几倍”；若表“比……多几倍”，用“倍数+比较级+than”。"
+    },
+    {
+      "id": "32-8",
+      "type": "判断题",
+      "question": "She speaks English as fluently as a native speaker. She practices much more often than her classmates, so her pronunciation is better than them.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“as fluently as”用法正确；“much more often”修饰比较级符合规则；但“better than them”应改为“better than theirs”（比较的是“pronunciation”，而非“classmates”），核心错误为比较对象不一致。",
+      "knowledgeExtension": "比较状语从句中，比较对象需一致（如“pronunciation”对应“pronunciation”，可用“theirs”代替）。"
+    },
+    {
+      "id": "32-9",
+      "type": "选择题",
+      "question": "This task is ______ difficult ______ we expected. We need ______ more time ______ we planned, and we have to work ______ carefully ______ we can to finish it on time.",
+      "options": ["more; than; much; than; as; as", "as; as; much; as; more; than", "more; than; so; as; as; as", "as; as; so; as; more; than"],
+      "correctAnswer": "more; than; much; than; as; as",
+      "explanation": "第一空比较级“more difficult than”表“比……难”；第二空“much more time than”表“比计划多的时间”；第三空“as carefully as we can”表“尽可能仔细”，符合比较级和原级比较的规则。",
+      "knowledgeExtension": "“as+原级+as one can”是固定结构，表“尽可能……”，相当于“as+原级+as possible”。"
+    },
+    {
+      "id": "32-10",
+      "type": "判断题",
+      "question": "The weather in spring is not as hot as summer. It is more comfortable than summer, so many people prefer to travel in spring.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "比较对象需一致，“weather in spring”应对应“weather in summer”，可改为“not as hot as that in summer”；第二空同理，“more comfortable than that in summer”，核心错误为比较对象不一致。",
+      "knowledgeExtension": "比较不同时间/地点的同一事物时，需用“that/those”代替重复的名词（如“weather”用“that”，“books”用“those”）。"
+    },
+    {
+      "id": "32-11",
+      "type": "选择题",
+      "question": "He studies ______ harder ______ any other student in his class. His grades are ______ better ______ most of his classmates, and he is ______ likely ______ get a scholarship ______ anyone else.",
+      "options": ["much; than; far; than; more; to; than", "so; as; far; than; more; to; as", "much; than; so; as; more; to; than", "so; as; so; as; more; to; as"],
+      "correctAnswer": "much; than; far; than; more; to; than",
+      "explanation": "第一空“much”修饰比较级“harder than”；第二空“far”修饰比较级“better than”；第三空“more likely to...than”表比较，符合比较级修饰和比较状语从句的规则。",
+      "knowledgeExtension": "“much/far/even”均可修饰比较级，表程度差异，其中“far”的语气比“much”更强。"
+    },
+    {
+      "id": "32-12",
+      "type": "判断题",
+      "question": "This movie is as exciting as the one we watched last week. It has a more interesting plot than that, and the actors perform as well as the previous cast.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“as exciting as”用法正确；“more interesting plot than that”中“that”代替“plot”，比较对象一致；“as well as”用法正确，所有比较结构均符合规则。",
+      "knowledgeExtension": "用“that/those”代替重复名词，可避免比较对象不一致的错误，使句子更简洁。"
+    },
+    {
+      "id": "32-13",
+      "type": "选择题",
+      "question": "The river is ______ three times ______ wide ______ it was ten years ago. It is also ______ deeper ______ it used to be, ______ the water quality is not ______ good ______ it was before.",
+      "options": ["as; as; as; much; than; but; as; as", "more; as; as; much; than; but; so; as", "as; as; as; so; than; but; as; as", "more; as; as; so; than; but; so; as"],
+      "correctAnswer": "as; as; as; much; than; but; as; as",
+      "explanation": "第一空倍数原级比较用“three times as wide as”；第二空“much deeper than”表比较级；第三空否定原级比较用“not as good as”，符合倍数比较和原级比较的规则。",
+      "knowledgeExtension": "比较状语从句中可加入转折连词（如but），连接不同维度的比较结果，使逻辑更完整。"
+    },
+    {
+      "id": "32-14",
+      "type": "判断题",
+      "question": "She is as young as her sister, but she is more mature than her. She makes decisions as wisely as her parents do, even though she is only 20.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“as young as”用法正确；“more mature than her”比较对象一致；“as wisely as her parents do”中“do”代替“make decisions”，省略重复谓语，所有比较结构均符合规则。",
+      "knowledgeExtension": "比较状语从句中，若主句和从句的谓语动词重复，可省略从句的谓语动词，仅保留助动词（如do/does/did）。"
+    },
+    {
+      "id": "32-15",
+      "type": "选择题",
+      "question": "— Is this dress ______ expensive ______ the one you tried on yesterday? — No, it’s ______ cheaper, but it is not ______ well-made ______ the latter. In fact, its fabric is ______ thinner than that of the other dress.",
+      "options": ["as; as; much; as; much", "so; as; much; so; much", "as; as; so; as; so", "so; as; so; so; so"],
+      "correctAnswer": "as; as; much; as; much",
+      "explanation": "第一空原级比较用“as...as”；第二空“much”修饰比较级“cheaper”；第三空否定原级比较用“not as well-made as”；第四空“much”修饰比较级“thinner”，符合原级比较和比较级修饰的规则。",
+      "knowledgeExtension": "“well-made”是复合形容词，其原级比较直接用“as well-made as”，比较级为“more well-made”。"
+    },
+    {
+      "id": "32-16",
+      "type": "判断题",
+      "question": "This park is more bigger than the one near my home. It has as more trees as a forest, so it is a popular place for people to relax.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "比较级“bigger”前不能加“more”（重复修饰）；“as...as”中间需用原级“many”（修饰“trees”），不能用“more”，核心错误为比较级和原级用法混淆。",
+      "knowledgeExtension": "双音节形容词“big”的比较级是“bigger”，不能加“more”；修饰可数名词复数用“many”，其原级比较用“as many as”。"
+    },
+    {
+      "id": "32-17",
+      "type": "选择题",
+      "question": "The temperature today is ______ lower ______ it was yesterday. It is ______ cold ______ we have to wear thick clothes. The wind is also blowing ______ strongly ______ it did last night.",
+      "options": ["much; than; so; that; as; as", "so; as; so; that; as; as", "much; than; as; as; as; as", "so; as; as; as; as; as"],
+      "correctAnswer": "much; than; so; that; as; as",
+      "explanation": "第一空“much”修饰比较级“lower than”；第二空“so...that”表结果（虽非比较，但搭配合理）；第三空原级比较用“as strongly as”，符合比较级和原级比较的规则。",
+      "knowledgeExtension": "“so...that”是结果状语从句，常与比较级连用，表“如此……以至于”，需注意与比较状语从句的区分。"
+    },
+    {
+      "id": "32-18",
+      "type": "判断题",
+      "question": "He earns twice as much money as his brother. He spends less money on entertainment than his brother does, so he saves more than him.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“twice as much money as”倍数原级比较用法正确；“less...than”“more than”比较对象一致，“does”省略重复谓语，所有比较结构均符合规则。",
+      "knowledgeExtension": "修饰不可数名词用“much”，其比较级为“more/less”；修饰可数名词复数用“many”，比较级为“more/fewer”。"
+    },
+    {
+      "id": "32-19",
+      "type": "选择题",
+      "question": "This novel is ______ interesting ______ the author’s previous works. It is ______ longer ______ most of his books, but it is ______ easy to follow ______ his other stories.",
+      "options": ["as; as; much; than; as; as", "so; as; much; than; so; as", "as; as; so; than; as; as", "so; as; so; than; so; as"],
+      "correctAnswer": "as; as; much; than; as; as",
+      "explanation": "第一空原级比较用“as interesting as”；第二空“much”修饰比较级“longer than”；第三空原级比较用“as easy to follow as”，符合原级比较和比较级修饰的规则。",
+      "knowledgeExtension": "“easy to follow”是形容词短语，其原级比较直接用“as easy to follow as”，无需改变结构。"
+    },
+    {
+      "id": "32-20",
+      "type": "判断题",
+      "question": "The new bridge is as long as 500 meters. It is more durable than the old bridge, and it can carry more cars than it did before.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“as long as 500 meters”是原级表具体长度，并非比较；“more durable than”用法正确；“carry more cars than it did before”中“it”指代“new bridge”，但“before”对应的是“old bridge”，比较对象混淆，应改为“than the old one did”，核心错误为比较对象不一致。",
+      "knowledgeExtension": "“as+原级+as+数字”是表具体程度的结构，并非比较状语从句；比较不同事物时，需明确比较对象。"
+    }
+  ]
+}

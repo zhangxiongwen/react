@@ -1,0 +1,187 @@
+{
+  "title": "反义疑问句（前肯后否/前否后肯，如He is tall, isn't he?）",
+  "knowledgePoint": "反义疑问句的核心规则（前肯后否/前否后肯）、主谓一致原则、否定词辨析（never/seldom/few等）、情态动词的反义疑问搭配、祈使句/特殊句式的反义疑问、回答逻辑（根据事实回应）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "17-1",
+      "type": "选择题",
+      "question": "The research team has made significant progress in developing the new material, ______?",
+      "options": ["hasn't it", "haven't they", "has it", "have they"],
+      "correctAnswer": "hasn't it",
+      "explanation": "前半句为肯定句，反义疑问用否定式；主语the research team为单数集体名词，用it指代，助动词与前文has一致，故用hasn't it。",
+      "knowledgeExtension": "单数集体名词（team/group/company等）作主语时，反义疑问用it指代；强调成员时可用they，但正式语境中优先用it。"
+    },
+    {
+      "id": "17-2",
+      "type": "判断题",
+      "question": "She seldom attends social events because she prefers quiet environments, doesn't she?",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "前半句含否定词seldom（很少），属于“前否后肯”结构，反义疑问应为does she，题干误用前肯后否，语法错误。",
+      "knowledgeExtension": "常见否定词：never/seldom/hardly/scarcely/few/little/rarely等，前半句含这些词时，反义疑问用肯定式。"
+    },
+    {
+      "id": "17-3",
+      "type": "选择题",
+      "question": "Few people realize the long-term impact of plastic pollution on marine ecosystems, ______?",
+      "options": ["do they", "don't they", "will they", "won't they"],
+      "correctAnswer": "do they",
+      "explanation": "前半句含否定词few（很少），反义疑问用肯定式；主语people为复数，助动词用do，故用do they。",
+      "knowledgeExtension": "few修饰可数名词复数、little修饰不可数名词，均表否定含义，反义疑问需用肯定式。"
+    },
+    {
+      "id": "17-4",
+      "type": "判断题",
+      "question": "The museum will open a new exhibition on ancient civilizations next month, won't it?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句为肯定的一般将来时，反义疑问用否定式won't it，主谓一致，符合“前肯后否”规则，表述正确。",
+      "knowledgeExtension": "一般将来时（will/be going to）的反义疑问：will对应won't，be going to对应aren't/isn't（如They are going to attend the meeting, aren't they?）。"
+    },
+    {
+      "id": "17-5",
+      "type": "选择题",
+      "question": "He must have finished the project ahead of schedule, ______? The deadline is still a week away.",
+      "options": ["mustn't he", "hasn't he", "didn't he", "isn't he"],
+      "correctAnswer": "hasn't he",
+      "explanation": "must have done表对过去的推测，且有明确语境（deadline is still a week away），反义疑问用助动词hasn't，与finished对应。",
+      "knowledgeExtension": "must表推测时，反义疑问的助动词根据must后的动词时态确定（对过去推测用have/has，对现在推测用be动词/实义动词助动词）。"
+    },
+    {
+      "id": "17-6",
+      "type": "判断题",
+      "question": "Don't forget to submit your application before midnight, will you? The system will close automatically after that.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "否定祈使句的反义疑问用will you，是固定用法；题干提醒“午夜前提交申请”，逻辑连贯，语法正确。",
+      "knowledgeExtension": "肯定祈使句的反义疑问用will you/won't you（如Please pass the salt, will you?）；否定祈使句只能用will you。"
+    },
+    {
+      "id": "17-7",
+      "type": "选择题",
+      "question": "This is the first time she has participated in an international competition, ______?",
+      "options": ["isn't it", "hasn't she", "is it", "has she"],
+      "correctAnswer": "isn't it",
+      "explanation": "前半句主语为this，反义疑问用it指代；谓语动词为is，前肯后否，故用isn't it，与后面的has participated无关（核心谓语是is）。",
+      "knowledgeExtension": "含定语从句/强调句的反义疑问，需根据主句的主谓确定，而非从句的主谓。"
+    },
+    {
+      "id": "17-8",
+      "type": "判断题",
+      "question": "They have little chance to win the championship, haven't they? Their main competitor is much stronger.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "前半句含否定词little（几乎没有），反义疑问需用肯定式have they，题干误用前肯后否，语法错误。",
+      "knowledgeExtension": "little（表数量）、a little（表肯定）的区别：little含否定含义，反义疑问用肯定；a little含肯定含义，反义疑问用否定（如They have a little time, don't they?）。"
+    },
+    {
+      "id": "17-9",
+      "type": "选择题",
+      "question": "You'd better adjust your schedule to avoid the rush hour, ______?",
+      "options": ["hadn't you", "wouldn't you", "didn't you", "don't you"],
+      "correctAnswer": "hadn't you",
+      "explanation": "You'd better=You had better，反义疑问用hadn't you，是固定搭配，与would无关。",
+      "knowledgeExtension": "常见情态动词短语的反义疑问：had better→hadn't you；would rather→wouldn't you；used to→didn't you/usedn't you。"
+    },
+    {
+      "id": "17-10",
+      "type": "判断题",
+      "question": "There are few effective measures to solve the problem immediately, are there?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句含否定词few，反义疑问用肯定式are there；there be句型的反义疑问仍用there，符合规则，表述正确。",
+      "knowledgeExtension": "there be句型的反义疑问结构：be动词+there（前肯后否/前否后肯）（如There is a park nearby, isn't there?）。"
+    },
+    {
+      "id": "17-11",
+      "type": "选择题",
+      "question": "He ought to apologize for his rude behavior during the meeting, ______?",
+      "options": ["oughtn't he", "shouldn't he", "ought he", "should he"],
+      "correctAnswer": "oughtn't he",
+      "explanation": "ought to表“应该”，反义疑问用oughtn't he或shouldn't he，选项中oughtn't he更贴合原情态动词，优先选择。",
+      "knowledgeExtension": "ought to的反义疑问有两种形式：oughtn't he/shouldn't he，正式语境中优先用与原词一致的oughtn't he。"
+    },
+    {
+      "id": "17-12",
+      "type": "判断题",
+      "question": "She has never been to South America, hasn't she? She often talks about her travel plans there.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "前半句含否定词never，反义疑问需用肯定式has she，题干误用前肯后否，语法错误。",
+      "knowledgeExtension": "never/ever/just/already/yet等词不影响反义疑问的肯否，仅否定词（never/seldom等）才触发“前否后肯”。"
+    },
+    {
+      "id": "17-13",
+      "type": "选择题",
+      "question": "The data collected from the experiment doesn't support the initial hypothesis, ______?",
+      "options": ["does it", "doesn't it", "is it", "isn't it"],
+      "correctAnswer": "does it",
+      "explanation": "前半句为否定句（doesn't support），反义疑问用肯定式；主语the data为不可数名词，用it指代，助动词与doesn't一致，故用does it。",
+      "knowledgeExtension": "不可数名词（data/information/knowledge等）作主语时，反义疑问用it指代，助动词用单数形式。"
+    },
+    {
+      "id": "17-14",
+      "type": "判断题",
+      "question": "Let's discuss the proposal in detail after the meeting, shall we?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "Let's（让我们）开头的祈使句，反义疑问用shall we，是固定用法；题干符合规则，表述正确。",
+      "knowledgeExtension": "Let us（请求对方允许）开头的祈使句，反义疑问用will you（如Let us leave early, will you?）；Let's（包含对方）用shall we。"
+    },
+    {
+      "id": "17-15",
+      "type": "选择题",
+      "question": "He used to work as a journalist for an international newspaper, ______?",
+      "options": ["didn't he", "usedn't he", "did he", "both A and B"],
+      "correctAnswer": "both A and B",
+      "explanation": "used to表“过去常常”，反义疑问可用didn't he或usedn't he，两者均符合语法规则，故选择both A and B。",
+      "knowledgeExtension": "used to的反义疑问有两种常见形式，日常交流中didn't he更常用，正式语境中usedn't he也可。"
+    },
+    {
+      "id": "17-16",
+      "type": "判断题",
+      "question": "The new policy must be implemented strictly to achieve the desired effect, mustn't it?",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "must表“必须”时，反义疑问用needn't（不必），而非mustn't（禁止），题干误用反义疑问词，语法错误。",
+      "knowledgeExtension": "must表“必须”时，反义疑问用needn't；表“推测”时，反义疑问根据must后的动词确定（如He must be at home, isn't he?）。"
+    },
+    {
+      "id": "17-17",
+      "type": "选择题",
+      "question": "Not only the manager but also the employees are satisfied with the new welfare system, ______?",
+      "options": ["aren't they", "isn't he", "are they", "is he"],
+      "correctAnswer": "aren't they",
+      "explanation": "前半句为肯定句，反义疑问用否定式；not only...but also...连接主语时，主谓一致遵循“就近原则”，靠近谓语的employees为复数，用they指代，助动词用are，故用aren't they。",
+      "knowledgeExtension": "就近原则适用于not only...but also.../either...or.../neither...nor.../there be等结构，反义疑问的主谓需与靠近的主语一致。"
+    },
+    {
+      "id": "17-18",
+      "type": "判断题",
+      "question": "He can hardly understand the technical terms in the report, can he?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句含否定词hardly（几乎不），反义疑问用肯定式can he；情态动词can的反义疑问仍用can，符合规则，表述正确。",
+      "knowledgeExtension": "情态动词（can/may/should/would等）的反义疑问，助动词与原情态动词一致（如She should arrive on time, shouldn't she?）。"
+    },
+    {
+      "id": "17-19",
+      "type": "选择题",
+      "question": "It is impossible to finish the task within such a short time, ______?",
+      "options": ["isn't it", "is it", "doesn't it", "does it"],
+      "correctAnswer": "isn't it",
+      "explanation": "前半句为肯定句（it is impossible），反义疑问用否定式；主语为形式主语it，助动词与is一致，故用isn't it（impossible是形容词，不改变句子肯否）。",
+      "knowledgeExtension": "形式主语it（it is+adj.+to do/that从句）的反义疑问，用it指代，助动词与is/was一致，与形容词是否表否定无关。"
+    },
+    {
+      "id": "17-20",
+      "type": "判断题",
+      "question": "— You haven't submitted the report yet, have you? — No, I haven't. I need two more days to polish it.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "反义疑问句的回答遵循“事实一致”原则：实际未提交（否定事实），用No+否定回答，逻辑通顺；题干问答符合规则，表述正确。",
+      "knowledgeExtension": "反义疑问句的回答不分“前肯后否/前否后肯”，仅根据实际事实：肯定事实用Yes+肯定回答，否定事实用No+否定回答。"
+    }
+  ]
+}

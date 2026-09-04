@@ -1,0 +1,187 @@
+{
+  "title": "情态动词的推测用法（must/may/might/can't，语气强弱）",
+  "knowledgePoint": "情态动词表推测的核心用法（must/may/might/can't/could的语气层级）、不同时态语境适配（现在/过去/正在进行的推测）、否定式与疑问式表达、易混淆情态动词辨析（如may not vs can't）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "23-1",
+      "type": "选择题",
+      "question": "The lights in the office are still on—she ______ be working late again. She ______ have forgotten to turn them off, but that’s unlikely because she’s very careful.",
+      "options": ["must; may", "may; must", "can't; might", "might; can't"],
+      "correctAnswer": "must; may",
+      "explanation": "第一空“灯还亮着”是明确依据，表“极有可能在加班”，用must（语气最强）；第二空“可能忘关灯”是较弱推测，用may，符合“强依据强推测，弱依据弱推测”的规则。",
+      "knowledgeExtension": "情态动词推测语气强度排序：must（一定）> may（可能）> might/could（或许）> can't（不可能，否定最强）。"
+    },
+    {
+      "id": "23-2",
+      "type": "判断题",
+      "question": "He hasn’t replied to the email yet—he may not have seen it, or he could be busy with the meeting. It can't be that he is ignoring you.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“may not have seen”表“可能没看到”（对过去的弱否定推测）；“could be busy”表“可能正在忙”（对现在的弱推测）；“can't be”表“不可能在忽视”（对现在的强否定推测），符合不同推测场景的语气适配，逻辑通顺。",
+      "knowledgeExtension": "对过去的推测结构：情态动词+have+过去分词；对现在/正在进行的推测：情态动词+be+doing/形容词/名词。"
+    },
+    {
+      "id": "23-3",
+      "type": "选择题",
+      "question": "The ancient ruins ______ date back to the Han Dynasty—archaeologists ______ found pottery and coins from that period. They ______ be from a later era, as the style is very distinct.",
+      "options": ["must; have; can't", "may; have; might", "can't; have; must", "might; had; may not"],
+      "correctAnswer": "must; have; can't",
+      "explanation": "第一空“有汉代陶器和钱币”是强依据，表“一定追溯到汉代”，用must；第二空“已发现文物”用have found（现在完成时）；第三空“风格独特”表“不可能来自后世”，用can't，符合推测逻辑。",
+      "knowledgeExtension": "must表推测仅用于肯定句，否定推测用can't，不用mustn't（mustn't表“禁止”）。"
+    },
+    {
+      "id": "23-4",
+      "type": "判断题",
+      "question": "She must be waiting for us at the station—we agreed to meet there at 3 p.m. She can't have missed the train, as she left home an hour earlier.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“约定3点见面”表“一定在等我们”（对现在的强推测）；“提前一小时出发”表“不可能错过火车”（对过去的强否定推测），结构和语气均正确。",
+      "knowledgeExtension": "对正在进行的推测：情态动词+be+doing（如must be waiting一定在等）；对过去动作的推测：情态动词+have+done（如can't have missed不可能错过）。"
+    },
+    {
+      "id": "23-5",
+      "type": "选择题",
+      "question": "— Who sent this anonymous gift? — It ______ be Mary—she knows my favorite brand. It ______ be Tom, though, as he mentioned he wanted to surprise me recently.",
+      "options": ["must; might", "may; can't", "can't; must", "might; must"],
+      "correctAnswer": "must; might",
+      "explanation": "第一空“知道我喜欢的品牌”是强依据，表“极可能是玛丽”，用must；第二空“提到想给我惊喜”是弱依据，表“或许是汤姆”，用might，符合语气层级。",
+      "knowledgeExtension": "同一语境中可根据依据强弱，搭配不同语气的情态动词，体现推测的不确定性差异。"
+    },
+    {
+      "id": "23-6",
+      "type": "判断题",
+      "question": "The project may not be completed on time—there have been several unexpected delays. However, the team could have overcome the difficulties if they had received more support.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“有意外延误”表“可能无法按时完成”（对现在的弱否定推测）；第二空“如果得到更多支持或许能克服困难”是虚拟语气，could have done表“本可以”，虽非推测但语法正确，整体逻辑连贯。",
+      "knowledgeExtension": "may not表“可能不”（弱否定推测），can't表“不可能”（强否定推测），两者语气差异显著。"
+    },
+    {
+      "id": "23-7",
+      "type": "选择题",
+      "question": "The witness’s description ______ be accurate—she ______ been under great stress during the interrogation. Her memory ______ have been affected by emotions, leading to inconsistencies.",
+      "options": ["may not; has; might", "must; has; can't", "can't; had; must", "might; have; may"],
+      "correctAnswer": "may not; has; might",
+      "explanation": "第一空“证词有矛盾”表“可能不准确”（弱否定推测），用may not；第二空“审讯期间压力大”用has been（现在完成时）；第三空“记忆可能受情绪影响”（弱推测），用might，符合语境。",
+      "knowledgeExtension": "推测时需结合语境判断依据强弱，避免强语气情态动词（must/can't）用于弱依据场景。"
+    },
+    {
+      "id": "23-8",
+      "type": "判断题",
+      "question": "He can't be in the office now—his car isn’t in the parking lot. He must have gone to the client’s company for a meeting, as he mentioned it yesterday.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“车不在停车场”表“不可能在办公室”（强否定推测）；“昨天提到要去客户公司”表“一定去开会了”（对过去的强推测），结构和逻辑均正确。",
+      "knowledgeExtension": "对现在状态的否定推测：can't+be+地点/形容词（如can't be in the office不可能在办公室）。"
+    },
+    {
+      "id": "23-9",
+      "type": "选择题",
+      "question": "The experimental results ______ be flawed—they ______ not match the theoretical predictions at all. The researchers ______ have made a mistake in data collection.",
+      "options": ["must; do; might", "may; does; must", "can't; did; may", "might; do; can't"],
+      "correctAnswer": "must; do; might",
+      "explanation": "第一空“完全不符合理论预测”是强依据，表“结果一定有缺陷”，用must；第二空“不匹配”用do not（一般现在时，主语为复数）；第三空“可能在数据收集时出错”（弱推测），用might，符合推测逻辑。",
+      "knowledgeExtension": "情态动词表推测时，其后的动词形式需根据推测对象的时态调整（现在用原形，过去用have+过去分词）。"
+    },
+    {
+      "id": "23-10",
+      "type": "判断题",
+      "question": "She might have missed the bus—she is usually on time, but today she hasn’t arrived yet. It mustn’t be that she forgot about the appointment, as I reminded her this morning.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“mustn’t be”用法错误，表“不可能”的强否定推测需用can't be，mustn't表“禁止”，不能用于推测，题干混淆了情态动词的功能。",
+      "knowledgeExtension": "情态动词表推测的否定形式：must→can't；may→may not；might→might not/could not，需严格区分功能。"
+    },
+    {
+      "id": "23-11",
+      "type": "选择题",
+      "question": "— Could this painting be a masterpiece by Van Gogh? — It ______ be— the brushstrokes and color palette are very similar. But it ______ be a copy, as there’s no signature on it.",
+      "options": ["may; might", "must; can't", "can't; must", "might; must"],
+      "correctAnswer": "may; might",
+      "explanation": "第一空“笔触和色调相似”是中等依据，表“可能是梵高的杰作”，用may；第二空“无签名”表“或许是仿品”，用might，均为弱-中等推测，符合“无明确证据”的语境。",
+      "knowledgeExtension": "could表推测时语气比may/might更弱，常用于疑问句或不确定场景（如Could it be...? 可能是……吗？）。"
+    },
+    {
+      "id": "23-12",
+      "type": "判断题",
+      "question": "The temperature has dropped sharply—they must be feeling cold without warm clothes. They might not have checked the weather forecast before going out.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“气温骤降”表“一定觉得冷”（对现在的强推测）；“没看天气预报”表“可能没看”（对过去的弱否定推测），结构和语气均正确。",
+      "knowledgeExtension": "对他人感受/状态的推测：情态动词+be+形容词（如must be feeling cold一定觉得冷）。"
+    },
+    {
+      "id": "23-13",
+      "type": "选择题",
+      "question": "The company’s profits ______ have increased by 20%—the market report shows strong demand for their products. They ______ have achieved such growth without the new policy, which boosted sales significantly.",
+      "options": ["must; can't", "may; might", "can't; must", "might; can't"],
+      "correctAnswer": "must; can't",
+      "explanation": "第一空“市场报告显示需求旺盛”是强依据，表“利润一定增长了20%”，用must；第二空“新政策推动销售”表“没有新政策不可能实现增长”，用can't，符合推测逻辑。",
+      "knowledgeExtension": "对过去结果的强推测：must have+过去分词；强否定推测：can't have+过去分词。"
+    },
+    {
+      "id": "23-14",
+      "type": "判断题",
+      "question": "He may be working from home today—his office door was locked when I passed by. He can't have taken a day off, as he has a tight schedule this week.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“办公室门锁着”表“可能在家工作”（对现在的弱推测）；“日程紧张”表“不可能请假”（对过去的强否定推测），语法和逻辑均正确。",
+      "knowledgeExtension": "推测时可结合间接证据（如门锁着、日程表），无需直接观察，体现情态动词的灵活应用。"
+    },
+    {
+      "id": "23-15",
+      "type": "选择题",
+      "question": "— Why isn’t she answering the phone? — She ______ be in a meeting—she usually doesn’t pick up during meetings. Or she ______ have left her phone at home, though that’s rare.",
+      "options": ["must; might", "may; can't", "can't; must", "might; may"],
+      "correctAnswer": "must; might",
+      "explanation": "第一空“开会时通常不接电话”是强依据，表“一定在开会”，用must；第二空“很少忘带手机”是弱依据，表“或许忘在家里”，用might，符合语气层级。",
+      "knowledgeExtension": "结合日常习惯进行推测时，常用must（强依据）或may/might（弱依据），使推测更贴合实际。"
+    },
+    {
+      "id": "23-16",
+      "type": "判断题",
+      "question": "The historical document might not have been written by the king himself—it could have been drafted by his ministers. There’s no direct evidence to prove its authorship.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“无直接证据”表“可能不是国王亲自写的”（弱否定推测）和“可能由大臣起草”（弱推测），might not have done和could have done的用法正确，逻辑连贯。",
+      "knowledgeExtension": "弱否定推测常用might not have done（可能没做），避免用can't have done（不可能没做），除非有强否定依据。"
+    },
+    {
+      "id": "23-17",
+      "type": "选择题",
+      "question": "The athlete ______ have trained extremely hard—she broke the world record by a large margin. She ______ have succeeded without her coach’s guidance, who helped her optimize her technique.",
+      "options": ["must; can't", "may; might", "can't; must", "might; can't"],
+      "correctAnswer": "must; can't",
+      "explanation": "第一空“大幅打破世界纪录”是强依据，表“一定训练得非常刻苦”，用must；第二空“教练帮助优化技术”表“没有教练不可能成功”，用can't，符合推测逻辑。",
+      "knowledgeExtension": "对过去动作的强推测需基于明确结果（如破纪录、获奖），弱推测基于不确定线索（如可能、或许）。"
+    },
+    {
+      "id": "23-18",
+      "type": "判断题",
+      "question": "It can't be raining outside—the sun is shining brightly. They mustn’t have brought umbrellas with them, so we don’t need to wait for them to pack.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“mustn’t have brought”用法错误，表“不可能带了雨伞”的强否定推测需用can't have brought，mustn't表“禁止”，不能用于对过去的推测，题干混淆了情态动词的功能。",
+      "knowledgeExtension": "对过去的否定推测只有“情态动词+have+过去分词”结构，mustn't无此用法，需严格区分。"
+    },
+    {
+      "id": "23-19",
+      "type": "选择题",
+      "question": "The student’s essay ______ be plagiarized—some paragraphs are identical to an online article. He ______ have done it intentionally, though—he might not have realized the consequences of copying.",
+      "options": ["must; may not", "may; must", "can't; might", "might; can't"],
+      "correctAnswer": "must; may not",
+      "explanation": "第一空“段落与网络文章完全一致”是强依据，表“论文一定是抄袭的”，用must；第二空“可能没意识到抄袭的后果”表“可能不是故意的”（弱否定推测），用may not，符合逻辑。",
+      "knowledgeExtension": "may not表“可能不”，用于否定推测时语气较弱，适合“无明确证据证明故意”的场景。"
+    },
+    {
+      "id": "23-20",
+      "type": "判断题",
+      "question": "She could be on her way to the airport—her flight leaves in two hours. She might have missed the earlier bus, so she’ll probably arrive a bit late for check-in.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“航班两小时后起飞”表“可能在去机场的路上”（对现在的弱推测）；“可能错过早班车”表“或许会晚点值机”（对过去的弱推测），could和might的用法正确，逻辑连贯。",
+      "knowledgeExtension": "could和might表推测时语气相近，可互换，均用于弱依据场景，体现推测的不确定性。"
+    }
+  ]
+}

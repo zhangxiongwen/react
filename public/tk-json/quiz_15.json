@@ -1,0 +1,187 @@
+{
+  "title": "特殊疑问句（who/what/where/when/how 引导，语序规则）",
+  "knowledgePoint": "特殊疑问句的核心语序（疑问词+一般疑问句/陈述句语序）、不同疑问词（who/what/where/when/how/why/which/whose）的用法、时态适配（一般现在/过去/将来时）、主谓一致、特殊疑问句的答句逻辑",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "15-1",
+      "type": "选择题",
+      "question": "______ designed the new campus library? Its unique architecture has attracted widespread attention from architectural experts.",
+      "options": ["Who", "Whom", "What", "Which"],
+      "correctAnswer": "Who",
+      "explanation": "疑问词在句中作主语，询问“谁设计了图书馆”，用主格“Who”；“Whom”是宾格，需作宾语，此处不符合；“What”询问事物，“Which”询问选择，均不匹配。",
+      "knowledgeExtension": "疑问词作主语时，特殊疑问句用“疑问词+陈述句语序”（无需助动词），如“Who broke the glass?”。"
+    },
+    {
+      "id": "15-2",
+      "type": "判断题",
+      "question": "How long has it taken you to complete the research project? The professor asked us to finish it within three months.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“How long”询问持续时间，后接现在完成时的一般疑问句语序（has it taken），语法正确；答句逻辑与问句一致，表述通顺。",
+      "knowledgeExtension": "询问“多久”用“How long”，搭配完成时或延续性动词的一般时态，如“How long have you lived here?”。"
+    },
+    {
+      "id": "15-3",
+      "type": "选择题",
+      "question": "______ did the company launch its new product line? I heard it was released shortly after the international trade fair.",
+      "options": ["When", "Where", "Why", "How"],
+      "correctAnswer": "When",
+      "explanation": "答句“在国际贸易博览会后不久发布”提示问句询问“时间”，用“When”；“Where”问地点，“Why”问原因，“How”问方式，均不匹配。",
+      "knowledgeExtension": "询问具体时间点或时间段的起点，用“When”；询问持续时间用“How long”，需注意区分。"
+    },
+    {
+      "id": "15-4",
+      "type": "判断题",
+      "question": "What kind of books are you interested in? I prefer historical novels that reflect real social backgrounds.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“What kind of”询问“何种类型”，后接一般疑问句语序（are you interested in），语法正确；答句回应问句的“书籍类型”，逻辑连贯。",
+      "knowledgeExtension": "询问“类型/种类”用“What kind of+名词”，如“What kind of music do you like?”。"
+    },
+    {
+      "id": "15-5",
+      "type": "选择题",
+      "question": "______ did the team overcome the technical difficulties in the experiment? Their perseverance and professional knowledge played a key role.",
+      "options": ["How", "Why", "What", "Which"],
+      "correctAnswer": "How",
+      "explanation": "答句“毅力和专业知识起关键作用”提示问句询问“方式/方法”，用“How”；“Why”问原因，“What”问事物，“Which”问选择，均不匹配。",
+      "knowledgeExtension": "询问“方式/方法”用“How”，答句需说明具体手段或过程，如“How did you solve the problem?”。"
+    },
+    {
+      "id": "15-6",
+      "type": "判断题",
+      "question": "Whose laptop is this left in the meeting room? Please contact the administrative department if it belongs to you.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "疑问词“Whose”后接名词“laptop”，语序应为“Whose laptop is this left in the meeting room?”，但“left”为过去分词作定语，应放在名词后，正确表达为“Whose laptop left in the meeting room is this?”或“Whose laptop is this that was left in the meeting room?”，题干语序混乱。",
+      "knowledgeExtension": "“Whose+名词”引导的特殊疑问句，定语需置于名词后，避免语序错误，如“Whose bag with a red strap is this?”。"
+    },
+    {
+      "id": "15-7",
+      "type": "选择题",
+      "question": "______ of the two research papers do you think is more valuable for our project? We need to select one for further analysis.",
+      "options": ["Which", "What", "Who", "Whom"],
+      "correctAnswer": "Which",
+      "explanation": "问句限定范围“two research papers”，询问“哪一个”，用“Which”；“What”无选择范围，“Who/Whom”询问人，均不符合。",
+      "knowledgeExtension": "限定选择范围（两者或三者及以上）时用“Which”，无范围时用“What”，如“Which color do you prefer, red or blue?”。"
+    },
+    {
+      "id": "15-8",
+      "type": "判断题",
+      "question": "Where will the international conference be held next year? It is reported that it will take place in Geneva, Switzerland.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“Where”询问地点，后接一般将来时的被动语态一般疑问句语序（will the international conference be held），语法正确；答句回应地点，逻辑通顺。",
+      "knowledgeExtension": "被动语态的特殊疑问句结构：疑问词+be动词/助动词+主语+过去分词，如“Where was the letter sent?”。"
+    },
+    {
+      "id": "15-9",
+      "type": "选择题",
+      "question": "______ do you think the government should prioritize to improve people’s quality of life? Education and healthcare are widely discussed.",
+      "options": ["What", "Which", "Who", "How"],
+      "correctAnswer": "What",
+      "explanation": "问句无明确选择范围，询问“政府应优先关注什么”，用“What”；“Which”需限定范围，“Who”询问人，“How”询问方式，均不匹配。",
+      "knowledgeExtension": "无选择范围时，询问“事物/内容”用“What”，如“What measures should we take?”。"
+    },
+    {
+      "id": "15-10",
+      "type": "判断题",
+      "question": "Why didn’t you attend the team meeting yesterday? I had to deal with an urgent client issue that couldn’t be postponed.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“Why”询问原因，后接一般过去时的否定疑问句语序（didn’t you attend），语法正确；答句说明未参会的原因，逻辑连贯。",
+      "knowledgeExtension": "询问原因用“Why”，否定式为“Why don’t/didn’t/won’t...?”，答句常用“Because...”引导。"
+    },
+    {
+      "id": "15-11",
+      "type": "选择题",
+      "question": "______ did the scientist spend conducting the experiment? It took her nearly five years to get the final results.",
+      "options": ["How long", "How often", "How soon", "How much"],
+      "correctAnswer": "How long",
+      "explanation": "答句“花了近五年”提示问句询问“持续时间”，用“How long”；“How often”问频率，“How soon”问“多久以后”，“How much”问数量/价格，均不匹配。",
+      "knowledgeExtension": "“How soon”后接一般将来时，答句用“in+时间段”，如“How soon will you be back? In three days.”。"
+    },
+    {
+      "id": "15-12",
+      "type": "判断题",
+      "question": "Which subject does your brother major in at university? He is studying computer science and technology.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“Which subject”询问“哪个专业/学科”，后接一般现在时的一般疑问句语序（does your brother major in），语法正确；答句回应专业，逻辑通顺。",
+      "knowledgeExtension": "询问“学科/专业/课程”用“Which subject/course”，如“Which course do you think is the most challenging?”。"
+    },
+    {
+      "id": "15-13",
+      "type": "选择题",
+      "question": "______ was the historical document discovered by the archaeologists? It was found in an ancient tomb in Henan Province.",
+      "options": ["Where", "When", "Why", "What"],
+      "correctAnswer": "Where",
+      "explanation": "答句“在河南一座古墓中发现”提示问句询问“地点”，用“Where”；“When”问时间，“Why”问原因，“What”问事物，均不匹配。",
+      "knowledgeExtension": "被动语态中询问地点，用“Where+be动词+主语+过去分词”，如“Where was the bridge built?”。"
+    },
+    {
+      "id": "15-14",
+      "type": "判断题",
+      "question": "How many employees has the company hired since last year? More than 200 new staff have joined the team.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“How many”询问可数名词复数数量，后接现在完成时的一般疑问句语序（has the company hired），语法正确；答句回应人数，逻辑连贯。",
+      "knowledgeExtension": "询问可数名词数量用“How many+复数名词”，询问不可数名词数量用“How much+不可数名词”，如“How much water do you need?”。"
+    },
+    {
+      "id": "15-15",
+      "type": "选择题",
+      "question": "______ do you visit your grandparents? I go to see them every other weekend.",
+      "options": ["How often", "How long", "How soon", "How far"],
+      "correctAnswer": "How often",
+      "explanation": "答句“每隔一周”提示问句询问“频率”，用“How often”；“How long”问时间，“How soon”问“多久以后”，“How far”问距离，均不匹配。",
+      "knowledgeExtension": "询问频率的常见答句：every day/week/month, once a week, twice a year 等。"
+    },
+    {
+      "id": "15-16",
+      "type": "判断题",
+      "question": "What did the manager emphasize in the meeting this morning? He stressed the importance of teamwork and punctuality.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“What”询问“经理强调了什么”，后接一般过去时的一般疑问句语序（did the manager emphasize），语法正确；答句回应强调的内容，逻辑通顺。",
+      "knowledgeExtension": "询问“某人说/强调/做了什么”，用“What+助动词+主语+动词原形”，如“What did she say in the speech?”。"
+    },
+    {
+      "id": "15-17",
+      "type": "选择题",
+      "question": "______ is the distance between the two cities? It’s about 500 kilometers by high-speed rail.",
+      "options": ["How far", "How long", "How much", "How many"],
+      "correctAnswer": "How far",
+      "explanation": "问句询问“两个城市之间的距离”，用“How far”；“How long”问时间或物体长度，“How much”问不可数名词数量，“How many”问可数名词数量，均不匹配。",
+      "knowledgeExtension": "询问距离用“How far”，答句常用“数字+长度单位”，如“How far is it from your home to school? About 2 kilometers.”。"
+    },
+    {
+      "id": "15-18",
+      "type": "判断题",
+      "question": "Whom are you going to collaborate with on the research project? I will work with Professor Wang from Peking University.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“Whom”作介词“with”的宾语，询问“与谁合作”，后接一般将来时的一般疑问句语序（are you going to collaborate with），语法正确；答句回应合作对象，逻辑通顺。",
+      "knowledgeExtension": "口语中“Whom”可替换为“Who”，但正式语境中“Whom”更规范，如“Whom did you talk to?”=“Who did you talk to?”。"
+    },
+    {
+      "id": "15-19",
+      "type": "选择题",
+      "question": "______ do you think will be responsible for organizing the company’s annual party? The administrative team has rich experience in such events.",
+      "options": ["Who", "What", "Which", "Whose"],
+      "correctAnswer": "Who",
+      "explanation": "疑问词在句中作主语，询问“谁将负责组织年会”，用“Who”；“What”问事物，“Which”问选择，“Whose”问所属，均不匹配。",
+      "knowledgeExtension": "插入语“do you think”不影响疑问句语序，需置于疑问词后、主语前，如“Who do you think will win the game?”。"
+    },
+    {
+      "id": "15-20",
+      "type": "判断题",
+      "question": "Why has the flight been delayed? The airport announced that it was due to bad weather conditions.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“Why”询问原因，后接现在完成时的被动语态一般疑问句语序（has the flight been delayed），语法正确；答句说明航班延误的原因，逻辑连贯。",
+      "knowledgeExtension": "现在完成时被动语态的特殊疑问句结构：疑问词+have/has+主语+been+过去分词，如“Why has the project been put off?”。"
+    }
+  ]
+}

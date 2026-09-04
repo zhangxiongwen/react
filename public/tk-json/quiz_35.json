@@ -1,0 +1,187 @@
+{
+  "title": "祈使句的强调与委婉表达（Please do/Would you please do）",
+  "knowledgePoint": "祈使句的强调形式（Please do/Do+动词原形）、委婉表达（Would you please do/Would you mind doing等）、否定式的委婉表达（Would you please not do/Don’t do）、祈使句的回应方式、不同场景（请求/建议/警告）的语气适配",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "35-1",
+      "type": "选择题",
+      "question": "______ close the window before you leave the room—it’s going to rain. ______ you please remind me to take an umbrella if I forget?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Would"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调祈使，用“Do+动词原形”（Do close），语气比单纯“Please close”更强；第二空委婉请求用“Would you please+动词原形”，符合“强调要求+委婉请求”的逻辑，Would比Will更礼貌。",
+      "knowledgeExtension": "Do+动词原形是祈使句强调的核心结构，语气坚定但不生硬；Would you please比Will you更委婉，适用于日常交际或需要客气表达的场景。"
+    },
+    {
+      "id": "35-2",
+      "type": "判断题",
+      "question": "Please not run in the hallway—there are many people walking around. Would you mind to turn down the music a little? It’s too loud.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空否定祈使句的委婉表达应为“Please don’t run”（not需放在don’t之后）；第二空“Would you mind+doing”，“to turn”应为“turning”，核心错误为否定式结构和mind后的动词形式误用。",
+      "knowledgeExtension": "祈使句否定式：Do not/Don’t+动词原形，委婉表达可加Please（Please don’t...）；Would you mind后必须接动名词（doing），表“介意做某事”。"
+    },
+    {
+      "id": "35-3",
+      "type": "选择题",
+      "question": "______ be late for the meeting—we need to start on time. ______ you please send the meeting agenda to all participants in advance?",
+      "options": ["Don’t; Would", "Not; Will", "Don’t; Could", "Not; Would"],
+      "correctAnswer": "Don’t; Would",
+      "explanation": "第一空否定祈使句表警告，用“Don’t+动词原形”（Don’t be late）；第二空委婉请求用“Would you please+动词原形”，符合“警告+请求”的逻辑，语气得体。",
+      "knowledgeExtension": "Don’t+动词原形是最常用的否定祈使句结构，表禁止、警告；Could you please也可表委婉请求，但Would you please语气更礼貌正式。"
+    },
+    {
+      "id": "35-4",
+      "type": "判断题",
+      "question": "Do pay attention to your spelling when writing the report. Would you please not interrupt others when they are speaking? It’s impolite.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“Do+pay attention”表强调祈使，用法正确；第二空“Would you please not+interrupt”是委婉否定请求，结构正确，符合“强调要求+委婉提醒”的语境，语法无误。",
+      "knowledgeExtension": "Would you please not+动词原形是委婉否定请求的核心结构，比“Don’t interrupt”更客气，适用于需要尊重对方的场景。"
+    },
+    {
+      "id": "35-5",
+      "type": "选择题",
+      "question": "______ take a break if you feel tired—working too hard is not good for your health. ______ you mind passing me a glass of water?",
+      "options": ["Please; Would", "Do; Will", "Please; Could", "Do; Would"],
+      "correctAnswer": "Please; Would",
+      "explanation": "第一空表委婉建议，用“Please+动词原形”（Please take），语气温和；第二空委婉请求用“Would you mind+doing”（passing），符合“建议+请求”的逻辑，Would比Could更礼貌。",
+      "knowledgeExtension": "Please+动词原形可表建议、请求，语气比Do+动词原形更温和；Would you mind比Could you更侧重“询问对方是否介意”，回应常用“Not at all”或“Of course not”。"
+    },
+    {
+      "id": "35-6",
+      "type": "判断题",
+      "question": "Do not to touch the hot stove—it’s dangerous. Would you please help me carry this box? It’s too heavy for me.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空否定强调祈使句应为“Do not touch”（Do not后接动词原形，不能加to）；第二空“Would you please+help”用法正确，核心错误为Do not后的不定式符号to误用。",
+      "knowledgeExtension": "Do not/Don’t后直接接动词原形，不能加to；祈使句的核心结构是“动词原形开头”，强调式也遵循这一规则。"
+    },
+    {
+      "id": "35-7",
+      "type": "选择题",
+      "question": "______ be careful when crossing the street—there are many cars. ______ you please tell me how to get to the nearest subway station?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Could"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调警告，用“Do+be careful”，语气坚定；第二空委婉问路用“Would you please+tell”，符合“警告+礼貌询问”的逻辑，适配出行场景。",
+      "knowledgeExtension": "交叉路口、危险场景等需要提醒注意时，常用“Do+be careful”强调语气，比单纯“Be careful”更能引起重视。"
+    },
+    {
+      "id": "35-8",
+      "type": "判断题",
+      "question": "Please do not forget to bring your ID card to the interview. Would you mind not smoke in the office? It’s against the company rules.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“Please do not forget”是强调委婉否定祈使，用法正确；第二空“Would you mind not+smoke”应为“smoking”（mind后接动名词），核心错误为mind后的动词形式误用。",
+      "knowledgeExtension": "Would you mind not+doing是委婉禁止的常用表达，比“Don’t smoke”更客气，适用于职场、公共场合等需要顾及对方感受的场景。"
+    },
+    {
+      "id": "35-9",
+      "type": "选择题",
+      "question": "______ finish your homework before watching TV—this is our family rule. ______ you please help me check my answers after I finish?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Would"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调规则，用“Do+finish”，语气坚定；第二空委婉请求帮助用“Would you please+help”，符合“规则要求+请求协助”的家庭场景逻辑。",
+      "knowledgeExtension": "表达家庭规则、学校纪律等硬性要求时，可用“Do+动词原形”强调严肃性，比单纯祈使句更有约束力。"
+    },
+    {
+      "id": "35-10",
+      "type": "判断题",
+      "question": "Do remember to call me when you arrive safely. Would you please not to be late for our appointment? I have a busy schedule.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“Do+remember”表强调提醒，用法正确；第二空“Would you please not+to be”应为“be”（not后接动词原形，不能加to），核心错误为不定式符号to误用。",
+      "knowledgeExtension": "Would you please not后直接接动词原形，无需加to，这是委婉否定请求的固定结构，需牢记“not+动词原形”的搭配。"
+    },
+    {
+      "id": "35-11",
+      "type": "选择题",
+      "question": "______ drink more water every day—it’s good for your skin. ______ you mind if I use your phone for a quick call?",
+      "options": ["Please; Would", "Do; Will", "Please; Could", "Do; Would"],
+      "correctAnswer": "Please; Would",
+      "explanation": "第一空表委婉健康建议，用“Please+drink”，语气温和；第二空委婉请求许可用“Would you mind if+从句”（I use），符合“建议+请求许可”的逻辑，Would比Could更礼貌。",
+      "knowledgeExtension": "Would you mind if+主语+动词原形，是另一种委婉请求许可的结构，与“Would you mind+doing”含义相近，可互换使用（如Would you mind if I use...=Would you mind me using...）。"
+    },
+    {
+      "id": "35-12",
+      "type": "判断题",
+      "question": "Do not open the door for strangers—it’s a safety precaution. Would you please pass the salt to me? Thank you very much.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“Do not open”是强调否定祈使，表安全警告，用法正确；第二空“Would you please+pass”是委婉请求，结构正确，逻辑连贯，符合“安全提醒+日常请求”的场景。",
+      "knowledgeExtension": "职场、家庭、公共场合的安全提示，常用“Do not+动词原形”强调禁止，语气严肃，能有效传递风险提示。"
+    },
+    {
+      "id": "35-13",
+      "type": "选择题",
+      "question": "______ be patient with the children—they are still learning. ______ you please read this story to them before bedtime?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Could"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调建议，用“Do+be patient”，语气真诚；第二空委婉请求用“Would you please+read”，符合“照顾孩子的建议+请求帮忙”的场景逻辑，Would比Could更温和。",
+      "knowledgeExtension": "与孩子、老人、服务对象等沟通时，用“Do+形容词（be patient/be kind）”强调态度建议，比单纯祈使句更具共情力。"
+    },
+    {
+      "id": "35-14",
+      "type": "判断题",
+      "question": "Please do take your time—there’s no hurry. Would you mind not to make so much noise? The baby is sleeping.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“Please do take”是强调委婉建议，用法正确；第二空“Would you mind not+to make”应为“making”（mind后接动名词），核心错误为mind后的动词形式误用。",
+      "knowledgeExtension": "mind后接动名词是固定规则，无论肯定还是否定，均需用doing形式（mind doing/mind not doing），需避免混淆不定式和动名词。"
+    },
+    {
+      "id": "35-15",
+      "type": "选择题",
+      "question": "______ turn off the lights when you leave the room—it saves energy. ______ you please remind me of the meeting at 3 o’clock?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Would"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调环保建议，用“Do+turn off”，语气坚定；第二空委婉请求提醒用“Would you please+remind”，符合“环保建议+请求提醒”的逻辑，适配办公或家庭场景。",
+      "knowledgeExtension": "节能、环保等公益类建议，常用“Do+动词原形”强调行动必要性，比单纯祈使句更有号召力。"
+    },
+    {
+      "id": "35-16",
+      "type": "判断题",
+      "question": "Do not speak loudly in the library—other people are studying. Would you please not to borrow my book without asking? I need it myself.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“Do not speak”是强调否定祈使，表公共场合规则，用法正确；第二空“Would you please not+to borrow”应为“borrow”（not后接动词原形，不能加to），核心错误为不定式符号to误用。",
+      "knowledgeExtension": "公共场合的规则提醒，常用“Do not+动词原形”，语气严肃且明确；委婉否定请求需严格遵循“Would you please not+动词原形”，避免多余的to。"
+    },
+    {
+      "id": "35-17",
+      "type": "选择题",
+      "question": "______ try this dish—it’s delicious. ______ you mind giving me a recipe for it if you have time?",
+      "options": ["Please; Would", "Do; Will", "Please; Could", "Do; Would"],
+      "correctAnswer": "Please; Would",
+      "explanation": "第一空表委婉推荐，用“Please+try”，语气亲切；第二空委婉请求用“Would you mind+giving”，符合“推荐+请求分享”的社交场景逻辑，Would比Could更客气。",
+      "knowledgeExtension": "社交场合中推荐食物、电影、书籍等时，用“Please+try/watch/read”语气亲切自然，不会给对方压力；后续请求相关信息用委婉表达，能提升沟通舒适度。"
+    },
+    {
+      "id": "35-18",
+      "type": "判断题",
+      "question": "Do check your bag before leaving the airport—you might have left something behind. Would you please help me find my passport if you see it?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“Do+check”是强调提醒，适配机场等出行场景，用法正确；第二空“Would you please+help”是委婉请求协助，结构正确，逻辑连贯，符合“出行提醒+请求帮忙”的场景。",
+      "knowledgeExtension": "机场、车站等人员流动大的场景，常用“Do+check/confirm”强调提醒，帮助他人规避遗漏物品、走错路线等问题，语气明确且实用。"
+    },
+    {
+      "id": "35-19",
+      "type": "选择题",
+      "question": "______ not worry too much about the exam—you have prepared well. ______ you please let me know your exam results later?",
+      "options": ["Do; Would", "Please; Will", "Do; Could", "Please; Would"],
+      "correctAnswer": "Do; Would",
+      "explanation": "第一空表强调安慰，用“Do not worry”（=Don’t worry），语气坚定且有安抚力；第二空委婉请求告知用“Would you please+let”，符合“安慰+请求告知”的考试场景逻辑。",
+      "knowledgeExtension": "安慰他人时，用“Do not+动词原形”（Do not worry/Do not be sad）比单纯祈使句更有力量，能传递坚定的支持态度。"
+    },
+    {
+      "id": "35-20",
+      "type": "判断题",
+      "question": "Please do not use your phone during the meeting—it’s disrespectful. Would you mind if I sit here? There are no other seats available.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“Please do not use”是强调委婉否定祈使，表职场礼仪，用法正确；第二空“Would you mind if+I sit”是委婉请求许可，结构正确，符合“职场规则+礼貌让座请求”的场景，语法和逻辑均无误。",
+      "knowledgeExtension": "职场会议、正式场合的礼仪要求，常用“Please do not+动词原形”，语气礼貌且严肃，既传递规则又不冒犯他人；委婉请求许可用“Would you mind if”，适配正式场合的沟通需求。"
+    }
+  ]
+}

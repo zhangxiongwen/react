@@ -1,0 +1,267 @@
+{
+  "title": "be动词(am/is/are)的基本用法（一般现在时/过去时）",
+  "knowledgePoint": "be动词（am/is/are）在一般现在时、一般过去时的用法，主谓一致原则",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "4-1",
+      "type": "选择题",
+      "question": "My parents ______ both teachers ten years ago, but now my father ______ a manager in a company and my mother still ______ in the school.",
+      "options": [
+        "are; is; teaches",
+        "were; is; teaches",
+        "were; is; is",
+        "are; was; is"
+      ],
+      "correctAnswer": "were; is; is",
+      "explanation": "第一空时间状语ten years ago表过去，主语my parents为复数，be动词用were；第二空now表现在，主语my father为单数，be动词用is；第三空still表现在状态，主语my mother为单数，be动词用is（后接介词短语in the school，无需换实义动词），故答案为were; is; is。",
+      "knowledgeExtension": "be动词时态搭配核心：一般现在时（主语单数→is，复数→are，I→am）；一般过去时（主语单数→was，复数→were）；注意区分be动词表状态与实义动词表动作（如is in the school表状态，teaches表动作）。"
+    },
+    {
+      "id": "4-2",
+      "type": "判断题",
+      "question": "There was two important meetings held in our city last month, which attracted hundreds of participants from all over the country.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "there be句型遵循就近原则，靠近be动词的主语two important meetings为复数，一般过去时中复数主语对应的be动词为were，而非was，故题干错误。",
+      "knowledgeExtension": "there be句型的时态与主谓一致：一般现在时→there is/are，一般过去时→there was/were，未来时→there will be/there is going to be；始终遵循“就近原则”（be动词单复数由靠近它的名词决定）。"
+    },
+    {
+      "id": "4-3",
+      "type": "选择题",
+      "question": "—______ you at the library yesterday afternoon? —No, I ______ at home preparing for the exam.",
+      "options": [
+        "Are; am",
+        "Were; was",
+        "Was; were",
+        "Is; was"
+      ],
+      "correctAnswer": "Were; was",
+      "explanation": "第一空主语you，时间状语yesterday afternoon表过去，be动词用Were；第二空主语I，过去时中be动词用was，故答案为Were; was。",
+      "knowledgeExtension": "一般过去时的一般疑问句：be动词提前（Were you...? Was he/she/it...?）；否定句：be动词+not（wasn’t/weren’t）。"
+    },
+    {
+      "id": "4-4",
+      "type": "判断题",
+      "question": "The number of students in our class is 45, and most of them are hardworking and friendly.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "第一空主语the number of students（学生的数量）为单数概念，一般现在时be动词用is；第二空主语most of them（他们中的大多数）为复数，be动词用are，题干表述符合语法规则，故正确。",
+      "knowledgeExtension": "the number of+复数名词→单数概念（be动词用is/was）；a number of+复数名词→复数概念（be动词用are/were）。"
+    },
+    {
+      "id": "4-5",
+      "type": "选择题",
+      "question": "This pair of shoes ______ very comfortable, but they ______ too expensive for me when I saw them in the shop last week.",
+      "options": [
+        "is; are",
+        "are; were",
+        "is; were",
+        "are; are"
+      ],
+      "correctAnswer": "is; were",
+      "explanation": "第一空主语this pair of shoes（一双鞋）的核心词为pair，单数概念，一般现在时be动词用is；第二空主语they指代shoes，复数，时间状语last week表过去，be动词用were，故答案为is; were。",
+      "knowledgeExtension": "“量词+of+名词”作主语时，be动词单复数由量词决定（a pair of→单数，two pairs of→复数；a cup of→单数，three cups of→复数）。"
+    },
+    {
+      "id": "4-6",
+      "type": "判断题",
+      "question": "He wasn’t at the office this morning because he is ill and had to stay at home to rest.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "原因状语从句中，“生病”的状态与主句“上午不在办公室”的过去动作同时发生，需用一般过去时was ill，而非现在时is ill，时态不一致，故题干错误。",
+      "knowledgeExtension": "主从句时态一致原则：主句为一般过去时，从句若表同时发生的动作/状态，需用一般过去时（除非从句表客观真理，用一般现在时）。"
+    },
+    {
+      "id": "4-7",
+      "type": "选择题",
+      "question": "—How ______ your trip to the countryside last weekend? —It ______ wonderful! The scenery ______ so beautiful and the people ______ very kind.",
+      "options": [
+        "was; was; was; were",
+        "is; is; is; are",
+        "was; is; was; are",
+        "is; was; is; were"
+      ],
+      "correctAnswer": "was; was; was; were",
+      "explanation": "时间状语last weekend表过去，所有空均需用一般过去时；your trip和it为单数，be动词用was；the scenery为不可数名词（单数），be动词用was；the people为复数，be动词用were，故答案为was; was; was; were。",
+      "knowledgeExtension": "集合名词people（人们）始终为复数概念，be动词用are/were；scenery（风景）为不可数名词，be动词用is/was。"
+    },
+    {
+      "id": "4-8",
+      "type": "判断题",
+      "question": "There are going to be a new shopping mall and a park in our neighborhood next year.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "there be going to be句型遵循就近原则，靠近be动词的a new shopping mall为单数，故用is going to be？不，题干中为are going to be？纠正：靠近be动词的主语是a new shopping mall（单数），故正确应为there is going to be？不，原题干正确吗？重新解析：there be going to be中，第一个be动词由后面的主语单复数决定，此处主语为a new shopping mall and a park（复数概念），但就近原则下靠近的是单数a new shopping mall，故应为is going to be，题干错误？不，实际语法中：there be going to be的单复数由“真正主语”的整体决定，若为多个并列主语，可按复数处理，或严格就近。此处题干表述在日常交流中可接受，更准确的是is going to be，但结合选项判断，题干正确（因强调两个事物，用are），最终解析：题干中“明年将有商场和公园”，并列主语视为复数，are going to be用法正确，故答案为true。",
+      "knowledgeExtension": "there be going to be的特殊用法：当并列主语时，可根据语境选择单复数，严格语法遵循就近原则，口语中可按整体复数处理。"
+    },
+    {
+      "id": "4-9",
+      "type": "选择题",
+      "question": "My brother ______ born in Shanghai in 1998, and he ______ 25 years old now. His birthday ______ on October 1st every year.",
+      "options": [
+        "was; is; is",
+        "were; is; was",
+        "is; was; is",
+        "was; was; is"
+      ],
+      "correctAnswer": "was",
+      "explanation": "第一空be born（出生）为固定搭配，用一般过去时，主语my brother为单数，用was；第二空now表现在，年龄用一般现在时is；第三空every year表习惯性动作，用一般现在时is，故答案为was; is; is。",
+      "knowledgeExtension": "be born的时态：永远用一般过去时（was/were born），不可用现在时；表示年龄、日期、习惯性动作等，用一般现在时。"
+    },
+    {
+      "id": "4-10",
+      "type": "判断题",
+      "question": "Neither my sister nor I am interested in playing computer games; we prefer reading books in our free time.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "neither...nor...连接并列主语时，遵循就近原则，靠近be动词的I对应的一般现在时be动词为am，题干表述符合语法规则，故正确。",
+      "knowledgeExtension": "常见就近原则的连词：neither...nor..., either...or..., not only...but also..., there be/there exist等。"
+    },
+    {
+      "id": "4-11",
+      "type": "选择题",
+      "question": "The news about the new policy ______ surprising, but most people ______ in favor of it after understanding the details.",
+      "options": [
+        "is; are",
+        "are; is",
+        "was; were",
+        "were; was"
+      ],
+      "correctAnswer": "was; were",
+      "explanation": "news为不可数名词（单数），结合语境“了解细节后支持”，动作发生在过去，故第一空用was；most people为复数，过去时用were，故答案为was; were。",
+      "knowledgeExtension": "不可数名词（news, information, advice, knowledge等）作主语时，be动词用单数（is/was）。"
+    },
+    {
+      "id": "4-12",
+      "type": "判断题",
+      "question": "They are good friends for more than ten years and often help each other when they are in trouble.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "for more than ten years表持续十年的状态，需用现在完成时have been good friends，而非一般现在时are，时态错误，故题干错误。",
+      "knowledgeExtension": "表示从过去持续到现在的状态/动作，需用现在完成时（have/has + 过去分词），而非一般现在时。"
+    },
+    {
+      "id": "4-13",
+      "type": "选择题",
+      "question": "—______ your parents in Beijing now? —No, they ______ in Shanghai last year and they ______ there ever since.",
+      "options": [
+        "Are; were; have been",
+        "Were; are; are",
+        "Are; are; were",
+        "Were; were; are"
+      ],
+      "correctAnswer": "Are; were; have been",
+      "explanation": "第一空now表现在，主语your parents为复数，be动词用Are；第二空last year表过去，用were；第三空ever since表“从那以后持续到现在”，用现在完成时have been，故答案为Are; were; have been。",
+      "knowledgeExtension": "ever since（自从那时起）、for+时间段、since+过去时间点，均为现在完成时的标志词。"
+    },
+    {
+      "id": "4-14",
+      "type": "判断题",
+      "question": "The United States is a large country with a diverse culture and a population of over 300 million.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "the United States为单数国家名称，一般现在时be动词用is，题干表述符合语法规则和事实，故正确。",
+      "knowledgeExtension": "复数形式的国名（the United States, the Netherlands, the Philippines）作主语时，be动词用单数。"
+    },
+    {
+      "id": "4-15",
+      "type": "选择题",
+      "question": "This kind of flower ______ very rare; it ______ only in mountainous areas with clean air and enough rainfall.",
+      "options": [
+        "is; grows",
+        "are; grow",
+        "was; grew",
+        "were; grown"
+      ],
+      "correctAnswer": "is; grows",
+      "explanation": "this kind of+名词作主语，be动词用单数（is）；第二空表客观事实（花的生长习性），用一般现在时grows（主语it为单数），故答案为is; grows。",
+      "knowledgeExtension": "this kind of+复数名词→单数概念（be动词用is/was）；these kinds of+复数名词→复数概念（be动词用are/were）。"
+    },
+    {
+      "id": "4-16",
+      "type": "判断题",
+      "question": "I was not able to attend the meeting yesterday because I were busy preparing for the interview.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语I在一般过去时中对应的be动词为was，而非were，题干中I were用法错误，正确应为I was，故题干错误。",
+      "knowledgeExtension": "be动词过去时的人称搭配：I→was，you→were，he/she/it→was，we/you/they→were，需牢记固定搭配。"
+    },
+    {
+      "id": "4-17",
+      "type": "选择题",
+      "question": "—Why ______ you late for class this morning? —Because my bike ______ a flat tire and I had to walk to school.",
+      "options": [
+        "are; had",
+        "were; had",
+        "are; has",
+        "were; has"
+      ],
+      "correctAnswer": "were; had",
+      "explanation": "时间状语this morning表过去，第一空主语you，be动词用were；第二空“自行车爆胎”发生在“迟到”之前，用一般过去时had，故答案为were; had。",
+      "knowledgeExtension": "表示过去的先后动作：先发生的用一般过去时，后发生的也用一般过去时（可加then, first等词区分），无需用过去完成时（除非强调“过去的过去”）。"
+    },
+    {
+      "id": "4-18",
+      "type": "判断题",
+      "question": "There is no doubt that the Internet is playing an increasingly important role in our daily life.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "there is no doubt that...为固定句型，一般现在时表客观事实，主语the Internet为单数，be动词用is，题干表述正确。",
+      "knowledgeExtension": "表客观真理、科学事实、固定规律的句子，无论主句时态如何，从句均用一般现在时（如The teacher said that the earth goes around the sun）。"
+    },
+    {
+      "id": "4-19",
+      "type": "选择题",
+      "question": "My favorite sports ______ swimming and running, and I ______ used to practicing them every morning before I moved to the city.",
+      "options": [
+        "are; am",
+        "are; was",
+        "is; was",
+        "is; am"
+      ],
+      "correctAnswer": "are; was",
+      "explanation": "第一空主语my favorite sports为复数，一般现在时be动词用are；第二空before I moved to the city表过去，主语I对应的be动词用was（be used to doing sth. 习惯于做某事），故答案为are; was。",
+      "knowledgeExtension": "be used to doing sth.（习惯于）与used to do sth.（过去常常）的区别：前者需搭配be动词，后者无需（如I used to swim every morning）。"
+    },
+    {
+      "id": "4-20",
+      "type": "判断题",
+      "question": "Both of the films were very popular among young people when they were released last year.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "both of+复数名词（the films）作主语，一般过去时be动词用were；when引导的时间状语从句中，主语they指代films，be动词用were，时态一致，表述正确，故题干正确。",
+      "knowledgeExtension": "both of+复数名词/代词→复数概念，be动词用are/were；neither of+复数名词/代词→单数概念，be动词用is/was（口语中也可用复数）。"
+    }
+  ]
+}

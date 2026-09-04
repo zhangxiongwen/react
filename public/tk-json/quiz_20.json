@@ -1,0 +1,187 @@
+{
+  "title": "简单句五大基础句型（S+Vi/S+Vlink+P/S+Vt+O等）",
+  "knowledgePoint": "简单句五大基础句型的核心结构（主谓/主谓表/主谓宾/主谓双宾/主谓宾补）、句型识别与判断、动词类型适配（不及物动词/系动词/及物动词）、句型转换与拓展、易混淆句型辨析",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "20-1",
+      "type": "选择题",
+      "question": "The research team ______ in the laboratory for three hours—their efforts ______ fruitful as new data emerged.",
+      "options": ["worked; proved", "worked; proved to be", "has worked; are", "has been working; were"],
+      "correctAnswer": "worked; proved",
+      "explanation": "第一空“团队在实验室工作”是主谓结构（S+Vi），worked为不及物动词；第二空“努力被证明是富有成效的”是主谓表结构（S+Vlink+P），proved为系动词，后接形容词fruitful作表语，符合句型规则。",
+      "knowledgeExtension": "常见系动词：be动词、感官动词（look/sound）、变化动词（become/get）、持续动词（keep/remain）、证明类动词（prove/turn out）。"
+    },
+    {
+      "id": "20-2",
+      "type": "判断题",
+      "question": "The company appointed her manager of the marketing department—this decision surprised most of her colleagues.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“公司任命她为市场部经理”是主谓宾补结构（S+Vt+O+C），manager of the marketing department补充说明宾语her的身份；后半句“这个决定让大多数同事惊讶”是主谓宾结构（S+Vt+O），符合句型规则，语义逻辑通顺。",
+      "knowledgeExtension": "主谓宾补结构中，宾语补足语可由名词、形容词、不定式、分词等充当，补充说明宾语的身份、状态或动作。"
+    },
+    {
+      "id": "20-3",
+      "type": "选择题",
+      "question": "The ancient castle ______ on a cliff overlooking the sea for centuries—it ______ a symbol of power and wealth in the region.",
+      "options": ["stands; is", "has stood; has been", "stood; was", "has been standing; is"],
+      "correctAnswer": "has stood; has been",
+      "explanation": "第一空“城堡矗立在悬崖上”是主谓结构（S+Vi），has stood用现在完成时表持续 centuries的状态；第二空“它是该地区权力和财富的象征”是主谓表结构（S+Vlink+P），has been表持续到现在的属性，符合语境。",
+      "knowledgeExtension": "不及物动词（stand/live/work等）构成主谓结构，不能直接接宾语；系动词后接表语，不能接宾语。"
+    },
+    {
+      "id": "20-4",
+      "type": "判断题",
+      "question": "She handed the director a detailed report about the project—this report provided valuable insights for future decisions.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“她给主任递交了一份详细的项目报告”是主谓双宾结构（S+Vt+IO+DO），间接宾语the director，直接宾语a detailed report；后半句“这份报告为未来决策提供了宝贵见解”是主谓宾结构（S+Vt+O），符合句型规则。",
+      "knowledgeExtension": "常见接双宾语的动词：give/hand/send/offer/tell/teach等，结构为“动词+间接宾语+直接宾语”或“动词+直接宾语+to/for+间接宾语”。"
+    },
+    {
+      "id": "20-5",
+      "type": "选择题",
+      "question": "The sudden storm ______ the entire city—strong winds ______ many trees and power lines, leaving thousands of residents without electricity.",
+      "options": ["hit; blew down", "hit; blew", "has hit; have blown down", "was hitting; were blowing"],
+      "correctAnswer": "hit; blew down",
+      "explanation": "第一空“暴风雨袭击了整座城市”是主谓宾结构（S+Vt+O），hit为及物动词，宾语the entire city；第二空“大风刮倒了许多树和电线”是主谓宾结构（S+Vt+O），blew down为及物动词短语，宾语many trees and power lines，符合句型。",
+      "knowledgeExtension": "及物动词短语（blow down/take off/put away等）可整体视为及物动词，后接宾语构成主谓宾结构。"
+    },
+    {
+      "id": "20-6",
+      "type": "判断题",
+      "question": "The teacher encouraged her students studying harder—only consistent effort can lead to progress.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "前半句应为“encouraged her students to study harder”，是主谓宾补结构（S+Vt+O+C），不定式to study harder作宾语补足语，题干误用现在分词studying，语法错误。",
+      "knowledgeExtension": "encourage/ask/tell/want等动词后接不定式（to do）作宾语补足语，即“动词+宾语+to do”结构。"
+    },
+    {
+      "id": "20-7",
+      "type": "选择题",
+      "question": "The new policy ______ beneficial to both individuals and enterprises—it ______ more opportunities for employment and innovation.",
+      "options": ["is; creates", "is; is creating", "has been; has created", "was; created"],
+      "correctAnswer": "is; creates",
+      "explanation": "第一空“新政策对个人和企业都有利”是主谓表结构（S+Vlink+P），is为系动词，beneficial为表语；第二空“它为就业和创新创造了更多机会”是主谓宾结构（S+Vt+O），creates为及物动词，符合句型。",
+      "knowledgeExtension": "主谓表结构侧重描述主语的属性、状态，主谓宾结构侧重主语的动作及作用对象。"
+    },
+    {
+      "id": "20-8",
+      "type": "判断题",
+      "question": "Birds sing loudly at dawn—their songs bring joy to people who live in the countryside.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“鸟儿在黎明时大声歌唱”是主谓结构（S+Vi），sing为不及物动词；后半句“它们的歌声给住在乡下的人带来欢乐”是主谓宾结构（S+Vt+O），bring为及物动词，符合句型规则，语义通顺。",
+      "knowledgeExtension": "不及物动词无需接宾语即可表达完整语义，若需接动作对象，需借助介词（如sing a song=sing，后者为不及物用法）。"
+    },
+    {
+      "id": "20-9",
+      "type": "选择题",
+      "question": "The professor ______ the students a fascinating lecture on artificial intelligence—he ______ complex concepts easy to understand with vivid examples.",
+      "options": ["gave; made", "gave; made it", "has given; has made", "was giving; was making"],
+      "correctAnswer": "gave; made",
+      "explanation": "第一空“教授给学生们做了一场关于人工智能的精彩讲座”是主谓双宾结构（S+Vt+IO+DO），间接宾语the students，直接宾语a fascinating lecture；第二空“他用生动的例子让复杂的概念变得易懂”是主谓宾补结构（S+Vt+O+C），easy to understand补充说明宾语complex concepts，符合句型。",
+      "knowledgeExtension": "make+宾语+形容词/不定式（省略to）是典型的宾补结构，如make the room clean（让房间干净）、make him do the work（让他做这项工作）。"
+    },
+    {
+      "id": "20-10",
+      "type": "判断题",
+      "question": "The child seems happy when his mother reads him stories—these stories teach him important life lessons.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“妈妈给孩子讲故事时，他看起来很开心”中，“the child seems happy”是主谓表结构，“reads him stories”是主谓双宾结构；后半句“这些故事教他重要的人生道理”是主谓双宾结构，符合句型规则，逻辑连贯。",
+      "knowledgeExtension": "同一语境中可混合不同基础句型，需准确识别每个分句的核心结构（主谓/主谓表/主谓宾等）。"
+    },
+    {
+      "id": "20-11",
+      "type": "选择题",
+      "question": "The old factory ______ empty for years until a group of young entrepreneurs ______ it into a creative hub.",
+      "options": ["lay; transformed", "laid; transformed", "has lain; has transformed", "was lying; was transforming"],
+      "correctAnswer": "lay; transformed",
+      "explanation": "第一空“老工厂空置了多年”是主谓表结构（S+Vlink+P），lay是系动词lie的过去式，empty为表语；第二空“一群年轻企业家将它改造成创意中心”是主谓宾结构（S+Vt+O），transformed为及物动词，符合句型。",
+      "knowledgeExtension": "lie（躺/处于某种状态）的过去式为lay，过去分词为lain，作系动词时后接表语；lay（放置）是及物动词，过去式为laid，需区分两者。"
+    },
+    {
+      "id": "20-12",
+      "type": "判断题",
+      "question": "He suggested us to start the project early—procrastination often causes unnecessary problems.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "suggest后不能接“宾语+to do”结构，应为“suggested that we start the project early”（宾语从句）或“suggested starting the project early”（动名词作宾语），题干句型错误，suggest不接宾补结构。",
+      "knowledgeExtension": "部分动词（suggest/advise/insist等）后接宾语从句或动名词，不接“宾语+不定式”的宾补结构。"
+    },
+    {
+      "id": "20-13",
+      "type": "选择题",
+      "question": "The sunset over the ocean ______ breathtaking—we ______ silent for a long time, enjoying the beautiful scenery.",
+      "options": ["was; remained", "was; kept", "is; stay", "has been; have stayed"],
+      "correctAnswer": "was; remained",
+      "explanation": "第一空“海上日落令人惊叹”是主谓表结构（S+Vlink+P），was为系动词，breathtaking为表语；第二空“我们保持沉默很久”是主谓表结构（S+Vlink+P），remained为系动词，silent为表语，符合语境。",
+      "knowledgeExtension": "remain/keep/stay等作系动词时，后接形容词作表语；作及物动词时，后接宾语（如keep the room clean，此时为宾补结构）。"
+    },
+    {
+      "id": "20-14",
+      "type": "判断题",
+      "question": "The company sent its employees a set of guidelines—these guidelines help them avoid mistakes in daily work.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“公司给员工发送了一套指导方针”是主谓双宾结构（S+Vt+IO+DO），间接宾语its employees，直接宾语a set of guidelines；后半句“这些指导方针帮助他们在日常工作中避免错误”是主谓宾结构（S+Vt+O），help后接“宾语+省略to的不定式”，符合句型规则。",
+      "knowledgeExtension": "help后可接“宾语+to do”或“宾语+do”，均为宾补结构，如help me (to) carry the box（帮我搬箱子）。"
+    },
+    {
+      "id": "20-15",
+      "type": "选择题",
+      "question": "The unexpected news ______ everyone—no one ______ that the project would be completed ahead of schedule.",
+      "options": ["surprised; expected", "surprised; had expected", "has surprised; expected", "was surprising; had expected"],
+      "correctAnswer": "surprised; had expected",
+      "explanation": "第一空“意外消息让所有人都很惊讶”是主谓宾结构（S+Vt+O），surprised为及物动词；第二空“没人预料到项目会提前完成”是主谓宾结构（S+Vt+O），had expected用过去完成时表“消息传来之前未预料到”，符合时态逻辑和句型规则。",
+      "knowledgeExtension": "主谓宾结构的时态需根据语境调整，重点关注动作发生的先后顺序，确保逻辑连贯。"
+    },
+    {
+      "id": "20-16",
+      "type": "判断题",
+      "question": "The music sounds beautiful—she feels relaxed when she listens to it after a long day’s work.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“音乐听起来很美”是主谓表结构（S+Vlink+P），sounds为感官系动词，beautiful为表语；后半句“她工作一整天后听音乐时感到放松”中，“she feels relaxed”是主谓表结构，“listens to it”是主谓宾结构，符合句型规则。",
+      "knowledgeExtension": "感官动词（look/sound/taste/smell/feel）作系动词时，后接形容词作表语；作及物动词时，后接宾语（如feel the texture触摸质地）。"
+    },
+    {
+      "id": "20-17",
+      "type": "选择题",
+      "question": "The teacher ______ the students that practice makes perfect—she always ______ them patient and confident in their abilities.",
+      "options": ["told; encourages", "told; makes", "has told; has encouraged", "was telling; was making"],
+      "correctAnswer": "told; makes",
+      "explanation": "第一空“老师告诉学生熟能生巧”是主谓双宾结构（S+Vt+IO+DO），间接宾语the students，直接宾语that从句；第二空“她总是让他们对自己的能力充满耐心和信心”是主谓宾补结构（S+Vt+O+C），patient and confident补充说明宾语them，符合句型。",
+      "knowledgeExtension": "tell后可接双宾语（tell sb. sth.），也可接宾语从句（tell sb. that...）；make后接形容词作宾补，表“使某人/某物处于某种状态”。"
+    },
+    {
+      "id": "20-18",
+      "type": "判断题",
+      "question": "He promised his friend to help with the move—this promise made his friend feels grateful.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "make后接宾语补足语时，需用动词原形（feel），而非第三人称单数feels，题干应为“made his friend feel grateful”，宾补结构错误。",
+      "knowledgeExtension": "make/let/have等使役动词后接“宾语+动词原形”作宾补，不能接动词的其他形式。"
+    },
+    {
+      "id": "20-19",
+      "type": "选择题",
+      "question": "The garden ______ with colorful flowers in spring—children ______ around happily, chasing butterflies and picking petals.",
+      "options": ["is filled; run", "fills; run", "is filled; are running", "filled; are running"],
+      "correctAnswer": "is filled; run",
+      "explanation": "第一空“春天花园里开满了五颜六色的花”是主谓表结构（S+Vlink+P），is filled为系表结构（filled为形容词）；第二空“孩子们开心地跑来跑去”是主谓结构（S+Vi），run为不及物动词，符合句型。",
+      "knowledgeExtension": "be filled with/be covered with等是固定系表结构，表“被……充满/覆盖”；不及物动词（run/jump/walk等）构成主谓结构，动作无直接对象。"
+    },
+    {
+      "id": "20-20",
+      "type": "判断题",
+      "question": "The scientist developed a new method to solve the problem—this method makes the process more efficient and cost-effective.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "前半句“科学家研发了一种解决该问题的新方法”是主谓宾结构（S+Vt+O），a new method为宾语，to solve the problem为定语；后半句“这种方法使流程更高效、更具成本效益”是主谓宾补结构（S+Vt+O+C），more efficient and cost-effective补充说明宾语the process，符合句型规则。",
+      "knowledgeExtension": "主谓宾结构中，宾语后可接定语（如不定式、介词短语）修饰，需与宾补区分：定语修饰宾语，宾补补充说明宾语的状态或动作。"
+    }
+  ]
+}

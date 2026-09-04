@@ -1,0 +1,162 @@
+.AuthDemo {
+  max-width: 720px;
+}
+
+.AuthDemo--center {
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.AuthDemo-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #5c6b63;
+}
+
+.AuthDemo-crumb a {
+  color: #2f6b4f;
+  text-decoration: none;
+}
+
+.AuthDemo-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e6ddd0;
+}
+
+.AuthDemo-header h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.AuthDemo-header p {
+  margin: 0 0 8px;
+  line-height: 1.7;
+  color: #3d4a43;
+}
+
+.AuthDemo-status {
+  padding: 10px 12px !important;
+  border-radius: 8px;
+  background: #eef6f1;
+  color: #2f6b4f !important;
+}
+
+.AuthDemo-linkish {
+  margin-left: 12px;
+  border: none;
+  background: none;
+  color: #c53030;
+  cursor: pointer;
+  text-decoration: underline;
+  font: inherit;
+}
+
+.AuthDemo-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.AuthDemo-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid #e0d6c8;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.AuthDemo-list a {
+  font-weight: 600;
+  color: #1f2a24;
+  text-decoration: none;
+}
+
+.AuthDemo-list span {
+  font-size: 13px;
+  color: #5c6b63;
+}
+
+.AuthDemo-panel {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e0d6c8;
+  background: #fff;
+  line-height: 1.7;
+}
+
+.AuthDemo-panel h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.AuthDemo-panel ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.AuthDemo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  max-width: 360px;
+}
+
+.AuthDemo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.AuthDemo-form input,
+.AuthDemo-form select {
+  padding: 8px 10px;
+  border: 1px solid #d9e0d8;
+  border-radius: 6px;
+}
+
+.AuthDemo-form button,
+.AuthDemo-panel button {
+  width: fit-content;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2f6b4f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.AuthDemo-code {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: #2f6b4f;
+}
+
+.AuthDemo-muted {
+  color: #5c6b63 !important;
+  font-size: 14px;
+}
+
+.AuthDemo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.AuthDemo-actions a {
+  color: #2f6b4f;
+}

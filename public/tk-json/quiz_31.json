@@ -1,0 +1,187 @@
+{
+  "title": "介词短语作状语（地点/方式/原因）",
+  "knowledgePoint": "介词短语作地点状语（in/on/at/under等搭配）、作方式状语（by/with/on等搭配）、作原因状语（because of/thanks to/due to等搭配）、介词短语在句中的位置（句首/句中/句末）、易混淆介词的场景适配（如in the park vs at the park）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "31-1",
+      "type": "选择题",
+      "question": "We had a picnic ______ the big tree ______ the river. We traveled there ______ bike, and we stayed ______ sunset because the weather was perfect.",
+      "options": ["under; by; by; until", "in; on; on; at", "under; on; by; at", "in; by; on; until"],
+      "correctAnswer": "under; by; by; until",
+      "explanation": "第一空“在大树下”用under the tree；第二空“在河边”用by the river；第三空“骑自行车”作方式状语用by bike；第四空“直到日落”用until sunset，符合介词短语作地点、方式、时间状语的搭配规则。",
+      "knowledgeExtension": "by+交通工具（零冠词）表方式（如by bus/by car）；under表“在……下方（垂直）”，by表“在……旁边”。"
+    },
+    {
+      "id": "31-2",
+      "type": "判断题",
+      "question": "She finished the report with a laptop in her office. She completed it due to her hard work, and she submitted it on email to her manager.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“通过邮件提交”应作方式状语用by email，而非on email；“with a laptop”（用笔记本电脑）、“in her office”（在办公室）、“due to her hard work”（由于努力）的介词搭配均正确，核心错误为方式状语介词误用。",
+      "knowledgeExtension": "表“通过某种媒介（邮件/电话）”用by+媒介（如by email/by phone），不用on。"
+    },
+    {
+      "id": "31-3",
+      "type": "选择题",
+      "question": "______ the heavy rain, the sports meeting was put off. The students were disappointed, but they decided to prepare better ______ the next time.",
+      "options": ["Because of; for", "Due to; on", "Thanks to; in", "Because; for"],
+      "correctAnswer": "Because of; for",
+      "explanation": "第一空“由于大雨”作原因状语，后接名词短语用Because of（because后接从句）；第二空“为下次做准备”用for，符合原因状语和目的状语的介词搭配规则。",
+      "knowledgeExtension": "because of/due to/thanks to后接名词/名词短语作原因状语；because后接从句，两者不可混用。"
+    },
+    {
+      "id": "31-4",
+      "type": "判断题",
+      "question": "They walked to the museum on foot and arrived there at 9 o’clock. They looked at the exhibits with great interest and learned a lot about history.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“步行去博物馆”可表述为walk to...或go...on foot（此处walked已表方式，on foot重复但语法无误）；“在9点到达”用at 9 o’clock；“带着浓厚兴趣”用with great interest，所有介词短语作状语的搭配均正确。",
+      "knowledgeExtension": "表“步行”可用walk+地点，也可用go to+地点+on foot，后者更强调方式。"
+    },
+    {
+      "id": "31-5",
+      "type": "选择题",
+      "question": "The children are playing games ______ the playground. They are talking ______ a low voice so as not to disturb others. They are happy ______ the nice weather.",
+      "options": ["on; in; because of", "in; with; due to", "at; in; thanks to", "on; with; because"],
+      "correctAnswer": "on; in; because of",
+      "explanation": "第一空“在操场”用on the playground；第二空“低声说话”用in a low voice；第三空“因为好天气”后接名词短语用because of，符合地点、方式、原因状语的介词搭配。",
+      "knowledgeExtension": "in+声音/语言（如in English/in a loud voice）表方式；on+大型平面场所（如playground/square）表地点。"
+    },
+    {
+      "id": "31-6",
+      "type": "判断题",
+      "question": "He solved the problem by a new method. He succeeded thanks to he asked for help from his teacher. His teacher explained the solution in detail for him.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“通过新方法”用by a new method（正确）；thanks to后接名词短语，“he asked for help”是从句，应改为thanks to asking for help；“为他详细解释”用for him（正确），核心错误为原因状语介词后接从句。",
+      "knowledgeExtension": "thanks to/due to/because of后只能接名词、代词或动名词短语，不能接从句。"
+    },
+    {
+      "id": "31-7",
+      "type": "选择题",
+      "question": "______ the help of my classmates, I finished the group project on time. We discussed the ideas ______ the phone and made the final decision ______ our classroom.",
+      "options": ["With; on; in", "Thanks to; by; on", "Due to; in; at", "With; by; in"],
+      "correctAnswer": "With; on; in",
+      "explanation": "第一空“在同学的帮助下”用With the help of；第二空“通过电话讨论”用on the phone；第三空“在教室”用in our classroom，符合原因、方式、地点状语的介词搭配。",
+      "knowledgeExtension": "With the help of sb.是固定短语表原因；on the phone/on the Internet表“通过某种通讯工具”。"
+    },
+    {
+      "id": "31-8",
+      "type": "判断题",
+      "question": "She went to work in her car this morning. She was late due to the traffic jam. She apologized to her boss for her lateness in a polite way.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“开车上班”用in her car（正确）；“由于交通堵塞”用due to the traffic jam（正确）；“礼貌地道歉”用in a polite way（正确），所有介词短语作方式、原因状语的搭配均正确。",
+      "knowledgeExtension": "in+交通工具（带所有格，如in my car）=by+交通工具（零冠词，如by car），均可表方式。"
+    },
+    {
+      "id": "31-9",
+      "type": "选择题",
+      "question": "They traveled ______ train ______ Beijing and stayed ______ a small hotel ______ the city center. They visited many scenic spots ______ foot.",
+      "options": ["by; to; at; in; on", "on; for; in; at; by", "by; for; in; on; on", "on; to; at; in; by"],
+      "correctAnswer": "by; to; at; in; on",
+      "explanation": "第一空“乘火车”用by train；第二空“去北京”用to Beijing；第三空“在小旅馆”用at a small hotel；第四空“在市中心”用in the city center；第五空“步行”用on foot，符合方式、地点状语的介词搭配。",
+      "knowledgeExtension": "at+小型场所（如hotel/restaurant）表地点；in+城市区域（如city center/district）表地点。"
+    },
+    {
+      "id": "31-10",
+      "type": "判断题",
+      "question": "He made the cake with milk, eggs and sugar. He did it by following the recipe. He was proud of his work because of it tasted delicious.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“用牛奶、鸡蛋和糖做蛋糕”用with（正确）；“按照食谱做”用by following（正确）；because of后接名词短语，“it tasted delicious”是从句，应改为because it tasted delicious，核心错误为原因状语介词后接从句。",
+      "knowledgeExtension": "with+材料表“用某种材料制作”；by+动名词表“通过某种方式做某事”。"
+    },
+    {
+      "id": "31-11",
+      "type": "选择题",
+      "question": "______ his carelessness, he made a mistake in the exam. He corrected the mistake ______ a red pen and handed the paper ______ the teacher ______ the end of the class.",
+      "options": ["Due to; with; to; at", "Because; by; to; in", "Thanks to; in; for; at", "Due to; by; for; in"],
+      "correctAnswer": "Due to; with; to; at",
+      "explanation": "第一空“由于粗心”用Due to；第二空“用红笔改正”用with a red pen；第三空“把试卷递给老师”用to the teacher；第四空“在下课的时候”用at the end of the class，符合原因、方式、对象、时间状语的介词搭配。",
+      "knowledgeExtension": "with+工具表“用某种工具做某事”；to表“动作的对象”（如hand sth. to sb.）。"
+    },
+    {
+      "id": "31-12",
+      "type": "判断题",
+      "question": "We held a party in the garden on my birthday. We sang and danced with joy. We enjoyed ourselves because of the wonderful time we had.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“在花园举办派对”用in the garden（正确）；“开心地唱歌跳舞”用with joy（正确）；“因为度过了美好时光”用because of the wonderful time（正确），所有介词短语作地点、方式、原因状语的搭配均正确。",
+      "knowledgeExtension": "with+情感名词（如joy/sadness）表“带着某种情感做某事”，作方式状语。"
+    },
+    {
+      "id": "31-13",
+      "type": "选择题",
+      "question": "The letter was sent ______ airmail and arrived ______ New York ______ three days. The receiver read it ______ surprise because the content was unexpected.",
+      "options": ["by; in; in; in", "on; at; after; with", "by; at; after; in", "on; in; in; with"],
+      "correctAnswer": "by; in; in; in",
+      "explanation": "第一空“通过航空邮件发送”用by airmail；第二空“到达纽约”用in New York；第三空“在三天内到达”用in three days；第四空“惊讶地读信”用in surprise，符合方式、地点、时间、方式状语的介词搭配。",
+      "knowledgeExtension": "in+大地点（如城市/国家）表地点；in+时间段表“在……之内”（用于将来时或完成时）。"
+    },
+    {
+      "id": "31-14",
+      "type": "判断题",
+      "question": "She learned to play the piano by practicing every day. She improved a lot thanks to her teacher’s guidance. She could play many songs in good skill now.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“通过每天练习学钢琴”用by practicing（正确）；“多亏老师的指导”用thanks to（正确）；“熟练地演奏”应作方式状语用with good skill，而非in good skill，核心错误为方式状语介词误用。",
+      "knowledgeExtension": "with+技能/能力（如with good skill/with great care）表“以某种技能/态度做某事”。"
+    },
+    {
+      "id": "31-15",
+      "type": "选择题",
+      "question": "______ the morning of June 1st, we gathered ______ the school gate and went ______ a picnic ______ the countryside. We had fun ______ playing games and flying kites.",
+      "options": ["On; at; for; in; by", "In; at; on; in; by", "On; in; for; at; in", "In; on; on; at; in"],
+      "correctAnswer": "On; at; for; in; by",
+      "explanation": "第一空“在6月1日上午”用On（具体某天的上午）；第二空“在学校门口”用at the school gate；第三空“去野餐”用for a picnic；第四空“在乡下”用in the countryside；第五空“通过玩游戏和放风筝”用by playing，符合时间、地点、目的、地点、方式状语的介词搭配。",
+      "knowledgeExtension": "on+具体某天的上午/下午/晚上（如on the morning of Monday）；at+小地点（如gate/door）。"
+    },
+    {
+      "id": "31-16",
+      "type": "判断题",
+      "question": "He passed the exam because of he studied hard. He told his parents the good news on a phone call. His parents were happy with his achievement.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "because of后接名词短语，“he studied hard”是从句，应改为because he studied hard；“通过电话告诉父母”用on a phone call（正确）；“对他的成就感到开心”用with his achievement（正确），核心错误为原因状语介词后接从句。",
+      "knowledgeExtension": "because后接从句表原因，because of后接名词短语，这是两者的核心区别。"
+    },
+    {
+      "id": "31-17",
+      "type": "选择题",
+      "question": "The meeting will be held ______ the conference room ______ 2 p.m. ______ Friday. We need to prepare the materials ______ the meeting and present them ______ PowerPoint.",
+      "options": ["in; at; on; for; with", "at; in; on; for; by", "in; on; at; to; with", "at; at; in; to; by"],
+      "correctAnswer": "in; at; on; for; with",
+      "explanation": "第一空“在会议室”用in the conference room；第二空“在下午2点”用at 2 p.m.；第三空“在周五”用on Friday；第四空“为会议准备材料”用for the meeting；第五空“用PowerPoint展示”用with PowerPoint，符合地点、时间、时间、目的、方式状语的介词搭配。",
+      "knowledgeExtension": "in+封闭空间（如room/office）表地点；at+具体时间点（如2 p.m./8 o’clock）表时间。"
+    },
+    {
+      "id": "31-18",
+      "type": "判断题",
+      "question": "They communicated with each other by email. They made a plan due to the discussion. They carried out the plan in a systematic way and achieved good results.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“通过邮件交流”用by email（正确）；“由于讨论制定计划”用due to the discussion（正确）；“系统地执行计划”用in a systematic way（正确），所有介词短语作方式、原因状语的搭配均正确。",
+      "knowledgeExtension": "in+方式名词（如way/manner）表“以某种方式做某事”，是常见的方式状语结构。"
+    },
+    {
+      "id": "31-19",
+      "type": "选择题",
+      "question": "______ the bad weather, the flight was delayed. The passengers waited ______ the airport ______ patience and got on the plane ______ midnight. They finally arrived ______ their destination ______ the next morning.",
+      "options": ["Because of; at; with; at; at; in", "Due to; in; with; at; in; on", "Because of; at; with; at; at; on", "Due to; at; in; in; in; in"],
+      "correctAnswer": "Because of; at; with; at; at; in",
+      "explanation": "第一空“由于恶劣天气”用Because of；第二空“在机场等待”用at the airport；第三空“耐心地等待”用with patience；第四空“在午夜登机”用at midnight；第五空“到达目的地”用at their destination；第六空“在第二天早上到达”用in the next morning，符合原因、地点、方式、时间、地点、时间状语的介词搭配。",
+      "knowledgeExtension": "with+抽象名词（如patience/care）表“带着某种品质做某事”；at+目的地（如destination）表“到达某地”。"
+    },
+    {
+      "id": "31-20",
+      "type": "判断题",
+      "question": "She wrote the article with a computer in her study. She finished it due to she worked very hard. She published it on a website and got many positive comments.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“用电脑在书房写文章”用with a computer/in her study（正确）；due to后接名词短语，“she worked very hard”是从句，应改为because she worked very hard；“在网站上发表”用on a website（正确），核心错误为原因状语介词后接从句。",
+      "knowledgeExtension": "区分“介词短语作状语”与“从句作状语”的核心是：介词后接名词/短语，从句由连词引导（如because/if/when）。"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "title": "一般现在时（肯定句/否定句，第三人称单数变化）",
+  "knowledgePoint": "一般现在时的用法（经常性动作/客观事实/真理）、主谓一致、否定句与疑问句结构、第三人称单数变化",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "7-1",
+      "type": "选择题",
+      "question": "Our team ______ a meeting every Monday morning to discuss weekly tasks, and each member ______ prepared with their progress reports.",
+      "options": [
+        "has; come",
+        "have; comes",
+        "has; comes",
+        "have; come"
+      ],
+      "correctAnswer": "has; comes",
+      "explanation": "第一空主语our team为集体名词，表“团队整体”时视为单数，谓语动词用has；第二空主语each member为第三人称单数，谓语动词需用comes（come的三单形式），故答案为has; comes。",
+      "knowledgeExtension": "集体名词（team, family, class, company等）作主语时，表“整体”用单数谓语，表“成员”用复数谓语（如Our team are arguing about the plan. 我们团队成员正在争论方案）。"
+    },
+    {
+      "id": "7-2",
+      "type": "判断题",
+      "question": "The Earth revolves around the Sun, and the Moon orbit around the Earth.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "后半句主语the Moon为第三人称单数，一般现在时表客观事实，谓语动词需用orbits（orbit的三单形式），题干中orbit用法错误。",
+      "knowledgeExtension": "一般现在时表客观事实、科学真理、自然规律时，无论主语单复数，谓语动词均用原形（主语为三单时用三单形式），不受时间状语限制（如Water boils at 100℃. 水在100摄氏度沸腾）。"
+    },
+    {
+      "id": "7-3",
+      "type": "选择题",
+      "question": "My colleague ______ in a multinational company and ______ English as her primary working language.",
+      "options": [
+        "work; use",
+        "works; uses",
+        "works; use",
+        "work; uses"
+      ],
+      "correctAnswer": "works; uses",
+      "explanation": "主语my colleague为第三人称单数，一般现在时表经常性工作状态，两个并列谓语动词均需用三单形式（work→works，use→uses），故答案为works; uses。",
+      "knowledgeExtension": "动词第三人称单数规则变化：1. 一般加s（work→works, use→uses）；2. 以s, x, sh, ch, o结尾加es（pass→passes, watch→watches, go→goes）；3. 以辅音+y结尾变y为i加es（study→studies, try→tries）。"
+    },
+    {
+      "id": "7-4",
+      "type": "判断题",
+      "question": "She do not like coffee because she thinks it is too bitter for her taste.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语she为第三人称单数，一般现在时否定句需用助动词doesn’t+动词原形，正确表达为She does not like（=She doesn’t like），题干中do not用法错误。",
+      "knowledgeExtension": "一般现在时否定句结构：1. 主语为非三单（I/you/we/they/复数名词）：don’t+动词原形；2. 主语为三单（he/she/it/单数名词）：doesn’t+动词原形（注意：doesn’t后动词需还原为原形）。"
+    },
+    {
+      "id": "7-5",
+      "type": "选择题",
+      "question": "______ your brother often ______ to the gym after work? He looks much healthier than before.",
+      "options": [
+        "Do; go",
+        "Does; go",
+        "Do; goes",
+        "Does; goes"
+      ],
+      "correctAnswer": "Does; go",
+      "explanation": "主语your brother为第三人称单数，一般现在时一般疑问句需用助动词Does开头，后面动词还原为原形go，故答案为Does; go。",
+      "knowledgeExtension": "一般现在时一般疑问句结构：1. 非三单主语：Do+主语+动词原形？；2. 三单主语：Does+主语+动词原形？（回答用Yes, 主语+do/does. 或No, 主语+don’t/doesn’t.）"
+    },
+    {
+      "id": "7-6",
+      "type": "判断题",
+      "question": "The library open from 9 a.m. to 6 p.m. on weekdays, and it closes early on weekends.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语the library为第三人称单数，一般现在时表经常性开放时间，谓语动词需用opens（open的三单形式），题干中open用法错误。",
+      "knowledgeExtension": "一般现在时表“按规定、时间表、习惯”的经常性动作或状态，常用时间状语：every day/week/month, on weekdays, usually, often, sometimes, always等。"
+    },
+    {
+      "id": "7-7",
+      "type": "选择题",
+      "question": "Mathematics ______ not an easy subject for many students, but with enough practice, anyone ______ it well.",
+      "options": [
+        "is; learn",
+        "are; learns",
+        "is; learns",
+        "are; learn"
+      ],
+      "correctAnswer": "is; learns",
+      "explanation": "第一空mathematics为学科名词，视为单数，谓语动词用is；第二空主语anyone为不定代词（视为三单），谓语动词用learns，故答案为is; learns。",
+      "knowledgeExtension": "视为单数的名词：1. 学科名词（math, physics, English, politics）；2. 形式为复数的单数名词（news, physics, athletics）；3. 不定代词（someone, anyone, everyone, something等）。"
+    },
+    {
+      "id": "7-8",
+      "type": "判断题",
+      "question": "They usually takes the subway to work because it is faster than driving in rush hour.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语they为非第三人称单数，一般现在时谓语动词需用原形take，题干中takes（三单形式）用法错误。",
+      "knowledgeExtension": "主谓一致核心规则：主语为第一人称（I/we）、第二人称（you）、复数名词或代词（they）时，一般现在时谓语动词用原形；主语为第三人称单数时用三单形式。"
+    },
+    {
+      "id": "7-9",
+      "type": "选择题",
+      "question": "My parents ______ in their hometown for over 20 years, and they ______ no plan to move to the city.",
+      "options": [
+        "live; have",
+        "lives; have",
+        "live; has",
+        "lives; has"
+      ],
+      "correctAnswer": "live; have",
+      "explanation": "主语my parents为复数，一般现在时表长期居住状态，两个谓语动词均用原形（live, have），故答案为live; have。",
+      "knowledgeExtension": "一般现在时可表长期存在的状态（如居住、职业、爱好等），常与for+时间段连用，但此时时间段需体现“持续的经常性”，而非“从过去到现在的持续”（后者用现在完成时）。"
+    },
+    {
+      "id": "7-10",
+      "type": "判断题",
+      "question": "Does your sister likes playing the piano? I heard she won a prize in a music competition.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "一般现在时一般疑问句中，助动词Does开头后，后面的动词需还原为原形like，正确表达为Does your sister like，题干中likes用法错误。",
+      "knowledgeExtension": "助动词do/does的核心作用：1. 构成否定句（don’t/doesn’t+动词原形）；2. 构成疑问句（Do/Does+主语+动词原形）；3. 用于简略回答（Yes, I do./No, she doesn’t.）。"
+    },
+    {
+      "id": "7-11",
+      "type": "选择题",
+      "question": "______ there any milk left in the fridge? I want to make a cup of coffee.",
+      "options": [
+        "Is",
+        "Are",
+        "Do",
+        "Does"
+      ],
+      "correctAnswer": "Is",
+      "explanation": "此处为there be句型的一般现在时疑问句，主语milk为不可数名词，视为单数，be动词用Is，故答案为Is。",
+      "knowledgeExtension": "there be句型的主谓一致（一般现在时）：1. 主语为单数/不可数名词：There is+主语；2. 主语为复数名词：There are+主语；3. 并列主语遵循“就近原则”（There is a book and two pens on the desk.）。"
+    },
+    {
+      "id": "7-12",
+      "type": "判断题",
+      "question": "Honesty always win people’s trust, and dishonesty never leads to long-term success.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语honesty为不可数名词（抽象概念），视为第三人称单数，一般现在时表真理，谓语动词需用wins（win的三单形式），题干中win用法错误。",
+      "knowledgeExtension": "抽象名词（honesty, kindness, success, happiness等）作主语时，视为单数，一般现在时谓语动词用三单形式（如Kindness makes the world warmer.）。"
+    },
+    {
+      "id": "7-13",
+      "type": "选择题",
+      "question": "Each of the students ______ a personal study plan, and they ______ it regularly to track progress.",
+      "options": [
+        "has; update",
+        "have; update",
+        "has; updates",
+        "have; updates"
+      ],
+      "correctAnswer": "has; update",
+      "explanation": "第一空each of+复数名词作主语，视为第三人称单数，谓语动词用has；第二空主语they为复数，谓语动词用原形update，故答案为has; update。",
+      "knowledgeExtension": "“each of+复数名词/代词”“every+单数名词”作主语时，视为三单，谓语动词用三单形式（如Every student has a book. Each of them knows the answer.）。"
+    },
+    {
+      "id": "7-14",
+      "type": "判断题",
+      "question": "He never late for work because he sets two alarms every night to make sure he gets up on time.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "late为形容词，句子缺少系动词，一般现在时表状态需用be动词，主语he为三单，正确表达为He is never late，题干中缺少is，结构不完整。",
+      "knowledgeExtension": "一般现在时表状态（如迟到、生病、在场等）需用“主语+be动词+表语”结构，而非直接用形容词作谓语（如She is ill. 她生病了；They are present. 他们在场）。"
+    },
+    {
+      "id": "7-15",
+      "type": "选择题",
+      "question": "The company ______ a new product every six months, and each new product ______ better than the previous one.",
+      "options": [
+        "releases; is",
+        "release; is",
+        "releases; are",
+        "release; are"
+      ],
+      "correctAnswer": "releases; is",
+      "explanation": "第一空主语the company为三单，一般现在时表经常性动作，谓语动词用releases；第二空主语each new product为三单，be动词用is，故答案为releases; is。",
+      "knowledgeExtension": "“every+时间段”是一般现在时的典型时间状语，表“每隔……”，强调动作的规律性（如He travels abroad every year. 他每年出国旅行一次）。"
+    },
+    {
+      "id": "7-16",
+      "type": "判断题",
+      "question": "We do not understand why he always avoids talking about his past experiences.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "主语we为非三单，一般现在时否定句用don’t+动词原形understand；avoid为实义动词，后接动名词talking（avoid doing sth. 避免做某事），题干语法结构正确，表述符合逻辑。",
+      "knowledgeExtension": "一般现在时中，实义动词后接宾语的规则：1. 接名词/代词（like English）；2. 接动名词（enjoy reading, practice speaking）；3. 接不定式（want to go, hope to succeed）。"
+    },
+    {
+      "id": "7-17",
+      "type": "选择题",
+      "question": "______ it often ______ in this region during summer? The local people say the rainfall is essential for crops.",
+      "options": [
+        "Do; rain",
+        "Does; rain",
+        "Do; rains",
+        "Does; rains"
+      ],
+      "correctAnswer": "Does; rain",
+      "explanation": "主语it为三单（指代天气），一般现在时一般疑问句用Does开头，动词还原为原形rain，故答案为Does; rain。",
+      "knowledgeExtension": "指代天气、时间、距离时，常用it作主语，一般现在时表经常性天气状况（如It snows a lot here in winter. 这里冬天经常下雪；It gets dark early in December. 12月天黑得早）。"
+    },
+    {
+      "id": "7-18",
+      "type": "判断题",
+      "question": "Some of the employees works from home on Fridays to balance work and personal life.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语some of the employees为复数，一般现在时谓语动词需用原形work，题干中works（三单形式）用法错误。",
+      "knowledgeExtension": "“some of+复数名词/代词”作主语时，视为复数，谓语动词用原形；“some of+不可数名词”作主语时，视为单数，谓语动词用三单形式（如Some of the water is polluted. 部分水被污染了）。"
+    },
+    {
+      "id": "7-19",
+      "type": "选择题",
+      "question": "My brother ______ as a software engineer in Shenzhen, and he ______ to work by subway every day.",
+      "options": [
+        "work; go",
+        "works; goes",
+        "works; go",
+        "work; goes"
+      ],
+      "correctAnswer": "works; goes",
+      "explanation": "主语my brother为三单，两个并列的谓语动词（work, go）均需用三单形式（work→works，go→goes），故答案为works; goes。",
+      "knowledgeExtension": "并列谓语的主谓一致：当主语为三单时，多个并列的实义动词均需用三单形式（如She sings and dances well. 她唱歌跳舞都很好；He reads books and writes articles in his free time. 他空闲时间看书写文章）。"
+    },
+    {
+      "id": "7-20",
+      "type": "判断题",
+      "question": "The number of people who speak Chinese as their mother tongue are more than 1.3 billion.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "主语为the number of+复数名词（the number of people），表“……的数量”，视为单数，谓语动词需用is，而非are，题干中are用法错误。",
+      "knowledgeExtension": "易混淆的主谓一致结构：1. the number of+复数名词→单数谓语（The number of students is 50.）；2. a number of+复数名词→复数谓语（A number of students are from China.）。"
+    }
+  ]
+}

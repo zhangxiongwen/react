@@ -1,0 +1,267 @@
+{
+  "title": "一般过去时（规则动词+不规则动词，如go→went）",
+  "knowledgePoint": "一般过去时的用法（过去发生的动作/状态）、规则动词过去式变化、不规则动词记忆、否定句与疑问句结构",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "8-1",
+      "type": "选择题",
+      "question": "The research team ______ three field trips last year and ______ valuable data that helped confirm their hypothesis.",
+      "options": [
+        "conduct; collect",
+        "conducted; collected",
+        "conducts; collects",
+        "conducting; collecting"
+      ],
+      "correctAnswer": "conducted; collected",
+      "explanation": "时间状语last year表明动作发生在过去，一般过去时中，规则动词需用过去式（conduct→conducted，collect→collected），两个并列谓语动词时态一致，故答案为conducted; collected。",
+      "knowledgeExtension": "规则动词过去式变化：1. 一般加ed（work→worked, play→played）；2. 以e结尾加d（live→lived, love→loved）；3. 以辅音字母+y结尾变y为i加ed（study→studied, try→tried）；4. 重读闭音节结尾（辅+元+辅）双写尾字母加ed（stop→stopped, plan→planned）。"
+    },
+    {
+      "id": "8-2",
+      "type": "判断题",
+      "question": "She spend two weeks in the countryside last summer, where she learned to grow vegetables and feed animals.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "时间状语last summer表明时态为一般过去时，spend为不规则动词，过去式为spent，而非原形spend，题干中spend用法错误。",
+      "knowledgeExtension": "常见不规则动词过去式（需重点记忆）：spend→spent, take→took, make→made, do→did, go→went, see→saw, eat→ate, drink→drank。"
+    },
+    {
+      "id": "8-3",
+      "type": "选择题",
+      "question": "When we ______ at the museum yesterday morning, the guide ______ us that the exhibition would close in three days.",
+      "options": [
+        "arrive; tell",
+        "arrived; told",
+        "arrives; tells",
+        "arriving; telling"
+      ],
+      "correctAnswer": "arrived; told",
+      "explanation": "时间状语yesterday morning表明动作发生在过去，arrive的过去式为arrived，tell的过去式为told（不规则变化），故答案为arrived; told。",
+      "knowledgeExtension": "一般过去时表“过去某个时间点发生的动作”，常用时间状语：yesterday, last week/month/year, ago（three days ago）, in 2023, at 9 o’clock yesterday morning等。"
+    },
+    {
+      "id": "8-4",
+      "type": "判断题",
+      "question": "The company did not announced the new policy until all employees had been informed of the changes.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "一般过去时否定句结构为“did not（didn’t）+动词原形”，announce需还原为原形，正确表达为did not announce，题干中announced用法错误。",
+      "knowledgeExtension": "一般过去时否定句规则：无论主语单复数，均用助动词did+not，后面动词必须还原为原形（如He didn’t go to school. They didn’t finish the work.）。"
+    },
+    {
+      "id": "8-5",
+      "type": "选择题",
+      "question": "______ you ______ the international conference held in Shanghai last month? It was widely reported in the media.",
+      "options": [
+        "Do; attend",
+        "Did; attend",
+        "Do; attended",
+        "Did; attended"
+      ],
+      "correctAnswer": "Did; attend",
+      "explanation": "时间状语last month表明时态为一般过去时，一般疑问句需用助动词Did开头，后面动词还原为原形attend，故答案为Did; attend。",
+      "knowledgeExtension": "一般过去时一般疑问句结构：Did+主语+动词原形？（回答用Yes, 主语+did. 或No, 主语+didn’t.），如Did she come? Yes, she did./No, she didn’t."
+    },
+    {
+      "id": "8-6",
+      "type": "判断题",
+      "question": "He write a letter to his grandparents every month when he was a college student, and they always replied within a week.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "时间状语when he was a college student表明动作发生在过去（过去的经常性动作），write的过去式为wrote（不规则变化），题干中write用法错误。",
+      "knowledgeExtension": "一般过去时也可表“过去的经常性、习惯性动作”，常与every day/week, usually, often等时间状语连用，区别于一般现在时（表现在的习惯）。"
+    },
+    {
+      "id": "8-7",
+      "type": "选择题",
+      "question": "The old building ______ in 1950 and ______ as a community center for over 30 years before it was renovated.",
+      "options": [
+        "build; serve",
+        "built; served",
+        "was built; served",
+        "was built; was served"
+      ],
+      "correctAnswer": "was built; served",
+      "explanation": "第一空主语the old building与build为被动关系（被建造），一般过去时被动语态为was built；第二空serve为主动动作（用作社区中心），过去式为served，故答案为was built; served。",
+      "knowledgeExtension": "一般过去时被动语态结构：主语+was/were+过去分词（规则动词过去分词与过去式一致，不规则动词需特殊记忆，如do→done, go→gone）。"
+    },
+    {
+      "id": "8-8",
+      "type": "判断题",
+      "question": "They planed to launch the new product in June, but they had to postpone it due to supply chain issues.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "plan为重读闭音节动词（辅+元+辅），过去式需双写尾字母加ed（planned），而非planed，题干中planed拼写错误。",
+      "knowledgeExtension": "重读闭音节动词判断标准：1. 单词末尾为“辅音字母+元音字母+辅音字母”（如stop, plan, fit）；2. 最后一个音节重读，此时过去式/过去分词需双写尾字母加ed。"
+    },
+    {
+      "id": "8-9",
+      "type": "选择题",
+      "question": "My aunt ______ a teacher for 10 years before she ______ to start her own business.",
+      "options": [
+        "is; decide",
+        "was; decided",
+        "has been; decides",
+        "had been; decided"
+      ],
+      "correctAnswer": "was; decided",
+      "explanation": "before引导的时间状语从句中，decide为过去动作，主句动作（be a teacher）发生在过去的过去，但若强调“过去持续的状态”且无明确对比，可用一般过去时was；decide的过去式为decided，故答案为was; decided。",
+      "knowledgeExtension": "若主句动作明确发生在从句动作之前（过去的过去），需用过去完成时（had been）；若仅陈述过去的状态和后续动作，一般过去时可简化表达（日常交流中更常用）。"
+    },
+    {
+      "id": "8-10",
+      "type": "判断题",
+      "question": "Did they find the missing documents during the meeting yesterday afternoon? I need to confirm the details.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "时间状语yesterday afternoon表明时态为一般过去时，一般疑问句用Did开头，动词find还原为原形，语法结构正确，题干表述符合逻辑。",
+      "knowledgeExtension": "不规则动词find的过去式为found，过去分词为found，需注意区分：一般过去时陈述句用found（They found the documents.），疑问句/否定句用did+find（Did they find...? They didn’t find...）。"
+    },
+    {
+      "id": "8-11",
+      "type": "选择题",
+      "question": "The concert ______ at 7:30 p.m. last night and ______ for over two hours because the audience asked for three encores.",
+      "options": [
+        "start; last",
+        "started; lasted",
+        "starts; lasts",
+        "starting; lasting"
+      ],
+      "correctAnswer": "started; lasted",
+      "explanation": "时间状语last night表明动作发生在过去，start的过去式为started（规则变化），last的过去式为lasted（规则变化，以t结尾直接加ed），故答案为started; lasted。",
+      "knowledgeExtension": "以t/d结尾的规则动词，过去式加ed后发音为/id/（如start→started /ˈstɑːtɪd/，decide→decided /dɪˈsaɪdɪd/），需注意发音规则辅助记忆。"
+    },
+    {
+      "id": "8-12",
+      "type": "判断题",
+      "question": "She buy a vintage camera at a flea market last weekend and spent the whole Sunday taking photos with it.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "时间状语last weekend表明时态为一般过去时，buy为不规则动词，过去式为bought，而非原形buy，题干中buy用法错误。",
+      "knowledgeExtension": "高频不规则动词过去式对照表（部分）：buy→bought, bring→brought, think→thought, catch→caught, fight→fought（均为“ought”结尾规律）。"
+    },
+    {
+      "id": "8-13",
+      "type": "选择题",
+      "question": "______ the manager ______ the meeting because of the sudden rainstorm? Many employees were late for the office.",
+      "options": [
+        "Did; cancel",
+        "Do; cancel",
+        "Did; canceled",
+        "Do; cancels"
+      ],
+      "correctAnswer": "Did; cancel",
+      "explanation": "语境中“sudden rainstorm”“were late”表明动作发生在过去，一般过去时一般疑问句用Did开头，动词还原为原形cancel，故答案为Did; cancel。",
+      "knowledgeExtension": "一般过去时的语境判断：若句中无明确时间状语，但有其他过去时态的动词（如were, was, went），可推断时态为一般过去时。"
+    },
+    {
+      "id": "8-14",
+      "type": "判断题",
+      "question": "The students didn’t finished their group project on time because some members failed to submit their parts.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "一般过去时否定句中，didn’t后需接动词原形，finished应还原为finish，题干中finished用法错误。",
+      "knowledgeExtension": "助动词did的核心作用（一般过去时）：1. 构成否定句（didn’t+动词原形）；2. 构成疑问句（Did+主语+动词原形）；3. 用于强调句（He did finish the work. 他确实完成了工作）。"
+    },
+    {
+      "id": "8-15",
+      "type": "选择题",
+      "question": "The scientist ______ his groundbreaking research in the 1990s, and his findings ______ the foundation for modern technology in the field.",
+      "options": [
+        "conduct; lay",
+        "conducted; laid",
+        "conducts; lays",
+        "conducting; laying"
+      ],
+      "correctAnswer": "conducted; laid",
+      "explanation": "时间状语in the 1990s表明动作发生在过去，conduct的过去式为conducted；lay（铺设、奠定）为不规则动词，过去式为laid，故答案为conducted; laid。",
+      "knowledgeExtension": "易混淆不规则动词：lay（放、铺设）→laid（过去式）→laid（过去分词）；lie（躺）→lay（过去式）→lain（过去分词）；lie（说谎）→lied（过去式）→lied（过去分词），需重点区分。"
+    },
+    {
+      "id": "8-16",
+      "type": "判断题",
+      "question": "We visited our former teacher when we went back to our hometown last Spring Festival.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "时间状语last Spring Festival表明动作发生在过去，visit的过去式为visited（规则变化），when引导的时间状语从句中went为go的过去式，时态一致，题干表述正确。",
+      "knowledgeExtension": "一般过去时中，when/while引导的时间状语从句，主从句均用过去式，表“过去某个动作发生时，另一个动作同时发生或先后发生”。"
+    },
+    {
+      "id": "8-17",
+      "type": "选择题",
+      "question": "The company ______ its annual revenue by 15% last year, which ______ beyond everyone’s expectations.",
+      "options": [
+        "increase; is",
+        "increased; was",
+        "increases; is",
+        "increasing; was"
+      ],
+      "correctAnswer": "increased; was",
+      "explanation": "时间状语last year表明动作发生在过去，increase的过去式为increased；which引导的定语从句指代前面的整个情况，be动词用was，故答案为increased; was。",
+      "knowledgeExtension": "一般过去时中，定语从句的时态需与主句一致（主句为过去时，从句也用过去时），除非从句表客观真理（此时用一般现在时）。"
+    },
+    {
+      "id": "8-18",
+      "type": "判断题",
+      "question": "He didn’t went to the party because he had to prepare for an important exam the next day.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "一般过去时否定句中，didn’t后需接动词原形，went应还原为go，正确表达为didn’t go，题干中went用法错误。",
+      "knowledgeExtension": "不规则动词的过去式不能用于否定句/疑问句的动词位置，需还原为原形，借助助动词did构成时态（如didn’t go, Did he go?）。"
+    },
+    {
+      "id": "8-19",
+      "type": "选择题",
+      "question": "When I ______ young, my grandfather often ______ me stories about his experiences during the war.",
+      "options": [
+        "am; tell",
+        "was; told",
+        "was; tell",
+        "am; told"
+      ],
+      "correctAnswer": "was; told",
+      "explanation": "when引导的时间状语从句表“过去的状态”，主语I对应的be动词过去式为was；主句中tell的过去式为told（不规则变化），故答案为was; told。",
+      "knowledgeExtension": "一般过去时表“过去的状态”时，常用be动词（was/were）+形容词/介词短语，如He was tall when he was young. They were in Beijing last year."
+    },
+    {
+      "id": "8-20",
+      "type": "判断题",
+      "question": "The meeting began at 10 a.m. and didn’t end until 3 p.m. because there were many important issues to discuss.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "begin的过去式为began（不规则变化），end的过去式为ended（规则变化）；否定句用didn’t+end（原形），时态一致，题干表述符合语法规则和逻辑。",
+      "knowledgeExtension": "一般过去时表“过去持续的动作”时，可与until, for+时间段等连用，但需注意：for+时间段表过去持续的时间（如He stayed there for 3 days.），区别于现在完成时（表从过去持续到现在）。"
+    }
+  ]
+}

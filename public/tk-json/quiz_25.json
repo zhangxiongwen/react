@@ -1,0 +1,187 @@
+{
+  "title": "不定式 to do 的基本用法（作主语/宾语/宾语补足语）",
+  "knowledgePoint": "不定式 to do 作主语的结构（直接作主语/it作形式主语）、作宾语的动词搭配（want/hope/decide等）、作宾语补足语的用法（ask/tell/encourage等+宾语+to do）、不定式的否定形式（not to do）、省略to的特殊情况",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "25-1",
+      "type": "选择题",
+      "question": "______ sustainable development goals requires global cooperation, and it is crucial ______ all countries to take practical actions.",
+      "options": ["Achieve; for", "To achieve; for", "Achieving; of", "To achieving; of"],
+      "correctAnswer": "To achieve; for",
+      "explanation": "第一空“实现可持续发展目标”作主语，用不定式To achieve（直接作主语）；第二空“it is crucial for sb. to do”是固定结构，it作形式主语，真正主语是to take practical actions，for表“对某人来说”，符合用法。",
+      "knowledgeExtension": "不定式作主语时，常用it作形式主语（it is+adj.+for/of sb. to do），避免句子头重脚轻；直接作主语多见于书面语，强调动作本身。"
+    },
+    {
+      "id": "25-2",
+      "type": "判断题",
+      "question": "The manager asked the team to submit the report before Friday and not delay the progress. Everyone promised to complete their tasks on time.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "不定式的否定形式需在to前加not，“not delay”应为“not to delay”，题干省略了to，语法错误；“asked sb. to do”和“promised to do”的用法正确，仅否定式有误。",
+      "knowledgeExtension": "不定式否定结构：not+to+动词原形（如tell sb. not to do 告诉某人不要做），否定词不能直接加在动词前。"
+    },
+    {
+      "id": "25-3",
+      "type": "选择题",
+      "question": "She hopes ______ a scholarship to study abroad, as she has been dreaming ______ in a world-class university since childhood.",
+      "options": ["to win; to study", "winning; studying", "to win; studying", "winning; to study"],
+      "correctAnswer": "to win; to study",
+      "explanation": "hope后接不定式to do作宾语（hope to win 希望赢得），不能接动名词；dream后可接of doing或to do，此处to study与前文hope to win结构一致，表“梦想去顶尖大学学习”，符合搭配。",
+      "knowledgeExtension": "常见接不定式作宾语的动词：hope/want/decide/plan/agree/offer等，需牢记固定搭配。"
+    },
+    {
+      "id": "25-4",
+      "type": "判断题",
+      "question": "It is important for young people to develop critical thinking skills—these skills help them to make wise decisions in daily life.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“it is important for sb. to do”是形式主语结构，不定式to develop作真正主语；第二空“help sb. (to) do”中to可省略，help them (to) make用法正确，语法连贯。",
+      "knowledgeExtension": "help后接宾语补足语时，不定式的to可省略（help sb. do），也可保留（help sb. to do），两者均符合语法规则。"
+    },
+    {
+      "id": "25-5",
+      "type": "选择题",
+      "question": "The teacher encouraged her students ______ their own opinions bravely and advised them ______ afraid of making mistakes.",
+      "options": ["to express; not to be", "expressing; not being", "to express; not being", "expressing; not to be"],
+      "correctAnswer": "to express; not to be",
+      "explanation": "encourage后接不定式作宾语补足语（encourage sb. to do 鼓励某人做）；advise后接不定式作宾语补足语（advise sb. not to do 建议某人不要做），not to be afraid符合否定式规则。",
+      "knowledgeExtension": "常见接“宾语+to do”作宾补的动词：encourage/ask/tell/order/invite/teach等，否定形式均为“宾语+not to do”。"
+    },
+    {
+      "id": "25-6",
+      "type": "判断题",
+      "question": "He decided to not attend the meeting because he had to deal with an urgent matter. His colleague agreed to take his place and convey his ideas.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "不定式否定词not需放在to前，“to not attend”应为“not to attend”，题干否定词位置错误；“decided to do”和“agreed to do”的用法正确，仅否定式有误。",
+      "knowledgeExtension": "不定式的否定词not必须置于to之前，形成“not to do”结构，不能写成“to not do”，这是核心语法规则。"
+    },
+    {
+      "id": "25-7",
+      "type": "选择题",
+      "question": "______ well in the interview, she spent a lot of time researching the company and practicing ______ professional questions.",
+      "options": ["To perform; answering", "Performing; to answer", "To perform; to answer", "Performing; answering"],
+      "correctAnswer": "To perform; answering",
+      "explanation": "第一空“为了在面试中表现好”作目的状语，用不定式To perform；第二空“practice后接动名词作宾语（practice doing 练习做），answering professional questions符合搭配。",
+      "knowledgeExtension": "不定式可作目的状语，表“为了……”；practice/finish/enjoy/avoid等动词后接动名词，不能接不定式。"
+    },
+    {
+      "id": "25-8",
+      "type": "判断题",
+      "question": "It is kind of her to help strangers in need—she often offers to share her knowledge and experience with others.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“it is kind of sb. to do”是固定结构，of用于修饰人的品质（kind/nice/foolish等）；“offers to share”中不定式作宾语，用法正确，语法连贯。",
+      "knowledgeExtension": "it is+adj.+for/of sb. to do 的区别：of修饰人的内在品质，for表动作对某人的影响（如it is important for you to study 对你来说学习很重要）。"
+    },
+    {
+      "id": "25-9",
+      "type": "选择题",
+      "question": "The company plans ______ a new branch in the south, and they expect ______ more job opportunities for local people.",
+      "options": ["to open; to create", "opening; creating", "to open; creating", "opening; to create"],
+      "correctAnswer": "to open; to create",
+      "explanation": "plan后接不定式作宾语（plan to open 计划开设）；expect后接不定式作宾语（expect to create 期望创造），均符合“动词+to do”的固定搭配。",
+      "knowledgeExtension": "部分动词后只能接不定式作宾语，不能接动名词，常见的有plan/expect/want/hope/decide等，需重点记忆。"
+    },
+    {
+      "id": "25-10",
+      "type": "判断题",
+      "question": "My parents told me to not stay up late and to keep a healthy lifestyle. I promised them to follow their advice strictly.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“told me to not stay up”应为“told me not to stay up”，不定式否定词not需放在to前，题干否定词位置错误；其余部分用法正确，仅否定式有误。",
+      "knowledgeExtension": "无论主语是第几人称，“动词+宾语+to do”的否定形式均为“动词+宾语+not to do”，否定词位置固定。"
+    },
+    {
+      "id": "25-11",
+      "type": "选择题",
+      "question": "______ the truth to the public is necessary, but it is difficult ______ people’s reactions in advance.",
+      "options": ["To tell; predicting", "Telling; to predict", "To tell; to predict", "Telling; predicting"],
+      "correctAnswer": "To tell; to predict",
+      "explanation": "第一空“向公众告知真相”作主语，用不定式To tell（直接作主语）；第二空“it is difficult to do”是形式主语结构，to predict作真正主语，符合用法。",
+      "knowledgeExtension": "不定式和动名词均可作主语，不定式更侧重“具体的、未发生的动作”，动名词更侧重“抽象的、习惯性的动作”，此处表具体动作，用不定式更合适。"
+    },
+    {
+      "id": "25-12",
+      "type": "判断题",
+      "question": "She agreed to help us prepare for the event and promised to bring all the necessary materials. We are grateful for her support.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“agreed to help”和“promised to bring”均为“动词+to do”作宾语，用法正确；“help us prepare”中省略to，符合help的宾补用法，语法连贯。",
+      "knowledgeExtension": "agree/promise/refuse等动词后只能接不定式作宾语，不能接动名词或“宾语+to do”，需区分“作宾语”与“作宾补”的不同场景。"
+    },
+    {
+      "id": "25-13",
+      "type": "选择题",
+      "question": "The doctor advised him ______ less sugar and ______ more exercise to improve his health. He decided ______ the advice seriously.",
+      "options": ["to eat; do; to follow", "eating; doing; following", "to eat; to do; to follow", "eating; to do; following"],
+      "correctAnswer": "to eat; to do; to follow",
+      "explanation": "advise后接“宾语+to do”作宾补（advise him to eat 建议他少吃）；第二空to do与to eat并列，省略advise him，避免重复；decide后接不定式作宾语（decide to follow 决定遵循），符合搭配。",
+      "knowledgeExtension": "多个不定式并列时，后续不定式的to可省略（如ask him to sit and wait 让他坐下等），但强调每个动作时可保留to。"
+    },
+    {
+      "id": "25-14",
+      "type": "判断题",
+      "question": "It is necessary for the government to take measures to protect the environment. Citizens also have a responsibility to contribute their efforts.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“it is necessary for sb. to do”是形式主语结构，to take measures作真正主语；第二空“have a responsibility to do”中不定式作定语，修饰responsibility，用法正确，语法连贯。",
+      "knowledgeExtension": "不定式可作定语，修饰名词（如a chance to go 去的机会、a responsibility to do 做某事的责任），表“做某事的……”。"
+    },
+    {
+      "id": "25-15",
+      "type": "选择题",
+      "question": "They invited her ______ the opening ceremony and requested her ______ a short speech on environmental protection.",
+      "options": ["to attend; to give", "attending; giving", "to attend; giving", "attending; to give"],
+      "correctAnswer": "to attend; to give",
+      "explanation": "invite后接“宾语+to do”作宾补（invite her to attend 邀请她参加）；request后接“宾语+to do”作宾补（request her to give 要求她发表），均符合固定搭配。",
+      "knowledgeExtension": "invite/request/order/command等动词后接“宾语+to do”，不能接动名词，否定形式为“宾语+not to do”。"
+    },
+    {
+      "id": "25-16",
+      "type": "判断题",
+      "question": "He wants to not only finish the project on time but also ensure its quality. His team is working hard to achieve this goal.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“wants to not only finish”应为“wants not only to finish”，not only...but also...连接不定式时，to需放在not only之后，题干语序错误；其余部分用法正确，仅语序有误。",
+      "knowledgeExtension": "not only...but also...连接并列不定式时，结构为“not only to do but also (to) do”，to需置于not only之后，后续to可省略。"
+    },
+    {
+      "id": "25-17",
+      "type": "选择题",
+      "question": "______ is important for children ______ independent thinking from an early age. Parents should allow them ______ their own choices.",
+      "options": ["It; to develop; to make", "That; developing; making", "It; developing; to make", "That; to develop; making"],
+      "correctAnswer": "It; to develop; to make",
+      "explanation": "第一空it作形式主语，真正主语是to develop independent thinking；第二空“allow sb. to do”作宾补（allow them to make 允许他们做），符合“it is+adj.+for sb. to do”和“allow+宾语+to do”的搭配规则。",
+      "knowledgeExtension": "allow后接“宾语+to do”，不能接动名词（如allow doing 允许做某事，无宾语时），需区分“接宾语”与“不接宾语”的用法。"
+    },
+    {
+      "id": "25-18",
+      "type": "判断题",
+      "question": "The boss ordered the employees to complete the task before the end of the month and not to make any mistakes. Everyone tried their best to meet the requirement.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“ordered the employees to complete”和“not to make”均符合“动词+宾语+to do”的肯定与否定形式；“tried their best to meet”中不定式作目的状语，用法正确，语法连贯。",
+      "knowledgeExtension": "order/command等命令类动词后接“宾语+to do”，否定形式为“宾语+not to do”，语气强硬，符合语境。"
+    },
+    {
+      "id": "25-19",
+      "type": "选择题",
+      "question": "She dreams ______ a famous writer and has been practicing ______ every day. Her teacher encourages her ______ her dream.",
+      "options": ["to be; writing; to pursue", "being; to write; pursuing", "to be; to write; to pursue", "being; writing; pursuing"],
+      "correctAnswer": "to be; writing; to pursue",
+      "explanation": "dream后接不定式to be作宾语（dream to be 梦想成为）；practice后接动名词writing作宾语（practice writing 练习写作）；encourage后接“宾语+to do”作宾补（encourage her to pursue 鼓励她追求），均符合搭配。",
+      "knowledgeExtension": "dream后可接to do或of doing，含义相近；practice/keep/continue等动词后只能接动名词，不能接不定式。"
+    },
+    {
+      "id": "25-20",
+      "type": "判断题",
+      "question": "It is foolish of him to ignore the warning and to take such a big risk. He will regret not to listen to others’ advice.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“regret not to listen”应为“regret not listening”，regret后接动名词表“后悔做过某事”，接不定式表“遗憾要做某事”，此处表“后悔没听建议”，需用动名词；“it is foolish of him to do”用法正确，仅regret后的结构有误。",
+      "knowledgeExtension": "regret/remember/forget等动词后接动名词表“已发生的动作”，接不定式表“未发生的动作”，需根据语境区分。"
+    }
+  ]
+}

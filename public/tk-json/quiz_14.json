@@ -1,0 +1,187 @@
+{
+  "title": "一般将来时（will/be going to 结构，用法区别）",
+  "knowledgePoint": "一般将来时的核心结构（will+动词原形/be going to+动词原形）、用法区别（计划安排/客观预测/临时决定/迹象暗示）、否定句与疑问句形式、时间状语搭配、与现在进行时表将来的差异",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "14-1",
+      "type": "选择题",
+      "question": "— Why are you packing your suitcase? — I ______ visit my grandparents in the countryside. They ______ be very happy to see me.",
+      "options": ["am going to; will", "will; am going to", "am going to; am going to", "will; will"],
+      "correctAnswer": "am going to; will",
+      "explanation": "第一空“收拾行李”暗示有明确计划，用“am going to”表“计划中的将来”；第二空表“客观上会发生的结果”，用“will”表预测，无计划含义。",
+      "knowledgeExtension": "be going to 表“有计划/有迹象的将来”，will 表“临时决定/客观预测/意愿”，是两者核心区别。"
+    },
+    {
+      "id": "14-2",
+      "type": "判断题",
+      "question": "The weather forecast says it will rain tomorrow, so we are going to cancel the outdoor picnic we planned last week.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“天气预报预测下雨”用 will 表客观预测；“取消提前计划的野餐”用 be going to 表计划变更，符合两者用法规则，逻辑连贯。",
+      "knowledgeExtension": "客观预测（如天气预报、科学规律）优先用 will，计划中的动作优先用 be going to。"
+    },
+    {
+      "id": "14-3",
+      "type": "选择题",
+      "question": "— I forgot to bring my umbrella. — Don’t worry. I ______ lend you mine. It ______ stop raining by noon, according to the forecast.",
+      "options": ["will; will", "am going to; will", "will; am going to", "am going to; am going to"],
+      "correctAnswer": "will; will",
+      "explanation": "第一空“临时决定借伞”用 will 表即时意愿；第二空“天气预报预测中午停雨”用 will 表客观预测，均无提前计划。",
+      "knowledgeExtension": "临时回应他人需求的决定，只能用 will，不能用 be going to。"
+    },
+    {
+      "id": "14-4",
+      "type": "判断题",
+      "question": "She is going to learn French next semester because she will study abroad in France next year.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“下学期学法语”是基于“明年去法国留学”的明确计划，应用 be going to；“明年留学”也是计划中的动作，应为“is going to study”，题干误用 will 表计划。",
+      "knowledgeExtension": "基于未来计划的后续安排，需用 be going to 保持一致，will 不适合表提前规划的动作。"
+    },
+    {
+      "id": "14-5",
+      "type": "选择题",
+      "question": "The government ______ launch a new environmental protection policy next month—official documents ______ be released this week to announce the details.",
+      "options": ["is going to; will", "will; is going to", "will; will", "is going to; is going to"],
+      "correctAnswer": "is going to; will",
+      "explanation": "第一空“政府下月推出政策”是官方提前计划，用 be going to；第二空“本周发布文件”是计划中的后续动作，但表“客观上会发生”，用 will 更正式。",
+      "knowledgeExtension": "官方计划、政策发布等可灵活搭配，但明确的提前规划优先用 be going to。"
+    },
+    {
+      "id": "14-6",
+      "type": "判断题",
+      "question": "Look at those dark clouds! It is going to rain heavily. We will not go hiking as planned.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“乌云密布”是下雨的明显迹象，用 be going to 表“有迹象的将来”；“取消计划的徒步”用 will 表临时决定，符合用法规则。",
+      "knowledgeExtension": "看到明显迹象（如乌云、迹象）预测即将发生的动作，用 be going to 更自然。"
+    },
+    {
+      "id": "14-7",
+      "type": "选择题",
+      "question": "— ______ you ______ attend the conference tomorrow? — Yes, I ______ present a report on our project’s progress. It’s a mandatory requirement.",
+      "options": ["Will; /; am going to", "Are; going to; will", "Will; /; will", "Are; going to; am going to"],
+      "correctAnswer": "Are; going to; am going to",
+      "explanation": "第一空询问“是否计划参会”，用 be going to 表提前安排；第二空“提交报告”是会议要求的计划内动作，也用 be going to，保持一致。",
+      "knowledgeExtension": "询问他人是否有提前计划，用 be going to 更贴合语境，will 侧重“是否愿意”。"
+    },
+    {
+      "id": "14-8",
+      "type": "判断题",
+      "question": "He will call you as soon as he arrives at the airport—he is going to take the 3 p.m. flight tomorrow.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“一到机场就打电话”是条件触发的客观动作，用 will；“明天乘下午3点的航班”是提前计划，用 be going to，搭配合理。",
+      "knowledgeExtension": "as soon as/when 等引导的时间状语从句中，主句用 will 表将来，从句用一般现在时表将来。"
+    },
+    {
+      "id": "14-9",
+      "type": "选择题",
+      "question": "I ______ not buy a new phone this year because I ______ save money for a house. It’s my long-term plan.",
+      "options": ["will; am going to", "am going to; will", "will; will", "am going to; am going to"],
+      "correctAnswer": "am going to; am going to",
+      "explanation": "“今年不买手机”和“存钱买房”均是长期计划，用 be going to 表提前规划，符合“long-term plan”的语境。",
+      "knowledgeExtension": "长期计划、个人规划等明确的提前安排，优先用 be going to。"
+    },
+    {
+      "id": "14-10",
+      "type": "判断题",
+      "question": "The company will hire 50 new employees next quarter because the market is expanding rapidly—this is not a planned decision but a response to demand.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“招聘新员工”是基于市场扩张的临时决策，非提前计划，用 will 表“应对需求的即时决定”，符合语境。",
+      "knowledgeExtension": "无提前计划、基于客观情况的即时决策，用 will 更合适。"
+    },
+    {
+      "id": "14-11",
+      "type": "选择题",
+      "question": "— What ______ you ______ do after graduation? — I ______ apply for a master’s program. My parents ______ support my decision.",
+      "options": ["will; /; am going to; will", "are; going to; will; am going to", "will; /; will; will", "are; going to; am going to; are going to"],
+      "correctAnswer": "are; going to; am going to; will",
+      "explanation": "第一空询问“毕业计划”，用 be going to；第二空“申请硕士”是明确计划，也用 be going to；第三空“父母会支持”是客观预测，用 will 表意愿。",
+      "knowledgeExtension": "询问他人未来计划用 be going to，陈述他人的支持/意愿用 will。"
+    },
+    {
+      "id": "14-12",
+      "type": "判断题",
+      "question": "They are going to get married next summer, and they will have a small wedding with only family and close friends.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“明年夏天结婚”是提前计划，用 be going to；“举办小型婚礼”是计划中的细节，用 will 表“客观上会如此”，搭配自然。",
+      "knowledgeExtension": "计划中的核心动作（如结婚、旅行）用 be going to，后续细节可用 will 表补充。"
+    },
+    {
+      "id": "14-13",
+      "type": "选择题",
+      "question": "The exam ______ be more difficult than last year, according to the teacher. We ______ start preparing early to pass it.",
+      "options": ["will; are going to", "are going to; will", "will; will", "are going to; are going to"],
+      "correctAnswer": "will; are going to",
+      "explanation": "第一空“老师预测考试更难”用 will 表他人预测；第二空“提前准备”是基于预测的计划，用 be going to。",
+      "knowledgeExtension": "他人的预测、观点用 will，基于预测的个人计划用 be going to。"
+    },
+    {
+      "id": "14-14",
+      "type": "判断题",
+      "question": "I will meet you at the station at 7 p.m.—I am going to finish my work by 6:30, so I will have enough time to get there.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“晚上7点在车站见面”是提前约定的计划，用 will 也可（口语中约定常用 will）；“6点半完成工作”是计划中的动作，用 be going to，逻辑通顺。",
+      "knowledgeExtension": "口语中约定见面、约会等，will 和 be going to 可互换，但 be going to 更强调“提前安排”。"
+    },
+    {
+      "id": "14-15",
+      "type": "选择题",
+      "question": "______ the team ______ win the championship this year? They ______ train harder than ever before, according to their coach.",
+      "options": ["Will; /; are going to", "Are; going to; will", "Will; /; will", "Are; going to; are going to"],
+      "correctAnswer": "Will; /; are going to",
+      "explanation": "第一空询问“是否会赢得冠军”，表预测，用 will；第二空“教练说会更努力训练”是球队的计划，用 be going to。",
+      "knowledgeExtension": "询问未来可能性、预测时用 will，陈述具体的训练、准备计划用 be going to。"
+    },
+    {
+      "id": "14-16",
+      "type": "判断题",
+      "question": "The price of gasoline is going to increase next month because of the global oil shortage—this will affect many people’s daily commute.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“油价上涨”是基于全球石油短缺的预测，且有明确迹象，用 be going to；“影响通勤”是客观上会发生的结果，用 will 表预测，符合用法。",
+      "knowledgeExtension": "基于客观因素（如短缺、政策）的预测，且有明显迹象，用 be going to 更贴切。"
+    },
+    {
+      "id": "14-17",
+      "type": "选择题",
+      "question": "I ______ help you with your homework this evening if I finish my own. I ______ not make any plans yet.",
+      "options": ["will; have", "am going to; have", "will; will", "am going to; will"],
+      "correctAnswer": "will; have",
+      "explanation": "第一空“如果完成自己的作业就帮忙”是条件触发的意愿，用 will；第二空“尚未做计划”用现在完成时“have not made”，表“到目前为止”，题干选项简化为“have”（符合语法逻辑）。",
+      "knowledgeExtension": "if 引导的条件从句中，主句用 will 表将来，从句用一般现在时；“尚未做计划”需用现在完成时，强调“至今未做”。"
+    },
+    {
+      "id": "14-18",
+      "type": "判断题",
+      "question": "She will not attend the party because she is going to visit her sick grandmother—she promised to go yesterday.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“不参加派对”是基于“看望生病的奶奶”的计划，用 will 表“不会做某事”；“看望奶奶”是提前承诺的计划，用 be going to，逻辑一致。",
+      "knowledgeExtension": "否定式中，will not（won’t）表“不会”，be going to not 表“不打算”，需根据语境选择。"
+    },
+    {
+      "id": "14-19",
+      "type": "选择题",
+      "question": "The new shopping mall ______ open to the public next week. It ______ become the largest mall in the city, attracting thousands of visitors daily.",
+      "options": ["is going to; will", "will; is going to", "will; will", "is going to; is going to"],
+      "correctAnswer": "is going to; will",
+      "explanation": "第一空“商场下周开业”是提前计划的事件，用 be going to；第二空“成为最大商场、吸引游客”是客观上会产生的结果，用 will 表预测。",
+      "knowledgeExtension": "计划中的开业、开幕等事件用 be going to，后续的影响、结果用 will 表预测。"
+    },
+    {
+      "id": "14-20",
+      "type": "判断题",
+      "question": "We are going to have a meeting tomorrow morning to discuss the project—will you bring the updated report?",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“明天早上开会”是提前计划，用 be going to；“你能带来更新的报告吗”用 will 表委婉请求，符合口语用法。",
+      "knowledgeExtension": "will 可用于委婉请求（Will you...?），be going to 无此用法，需注意功能差异。"
+    }
+  ]
+}

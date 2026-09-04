@@ -1,0 +1,187 @@
+{
+  "title": "名词所有格（’s/of结构，如Tom’s book/the door of the room）",
+  "knowledgePoint": "名词所有格的基本构成（’s/’/of结构）、共有关与各自有关的区别、无生命名词的所有格用法、复合名词与特殊名词的所有格规则、所有格的省略与指代用法",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "12-1",
+      "type": "选择题",
+      "question": "The ______ collaboration on the project led to a breakthrough—both ______ contributions were crucial to its success.",
+      "options": ["two scientists; scientist’s", "two scientists’; scientists’", "two scientist’s; scientists’", "two scientists’; scientist’s"],
+      "correctAnswer": "two scientists’; scientists’",
+      "explanation": "第一空“两位科学家的合作”是共有关，复数名词“scientists”后加“’”；第二空“两位科学家各自的贡献”是各自有关，复数名词后加“’s”（此处“scientists’”省略了重复的“contributions”）。",
+      "knowledgeExtension": "复数名词的所有格：以s结尾的复数名词加“’”，不以s结尾的加“’s”（如children’s books）。"
+    },
+    {
+      "id": "12-2",
+      "type": "判断题",
+      "question": "The museum displayed the ancient king’s crown and the queen’s jewelry—both were part of the royal family’s collection.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“king’s crown”“queen’s jewelry”是单数名词的所有格，“royal family’s collection”是复合名词的所有格，均符合“’s”结构规则，语义逻辑通顺。",
+      "knowledgeExtension": "复合名词的所有格：将“’s”加在最后一个词后（如father-in-law’s car）。"
+    },
+    {
+      "id": "12-3",
+      "type": "选择题",
+      "question": "The ______ roof was damaged in the storm, so we had to repair the ______ tiles immediately.",
+      "options": ["house; house", "house’s; house", "house’s; house’s", "house; house’s"],
+      "correctAnswer": "house’s; house",
+      "explanation": "第一空“房子的屋顶”是无生命名词的所有格，可用“’s”（口语化场景）；第二空“房瓦”是名词作定语，直接用“house tiles”（无需所有格）。",
+      "knowledgeExtension": "无生命名词的所有格：通常用“of结构”（如the roof of the house），但表时间、距离、地点的无生命名词可用“’s”（如today’s news）。"
+    },
+    {
+      "id": "12-4",
+      "type": "判断题",
+      "question": "I borrowed a book from the library yesterday—it’s the librarian’s recommended reading list for this month.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“librarian’s recommended reading list”逻辑矛盾，应为“the library’s recommended reading list”（图书馆的推荐清单），或“the librarian’s recommendation”（图书管理员的推荐）。",
+      "knowledgeExtension": "所有格的逻辑主语需与被修饰名词匹配，避免语义混淆。"
+    },
+    {
+      "id": "12-5",
+      "type": "选择题",
+      "question": "______ office is on the 5th floor, and ______ desks are placed next to each other to facilitate communication.",
+      "options": ["Tom and Jerry’s; their", "Tom’s and Jerry’s; their", "Tom and Jerry’s; theirs", "Tom’s and Jerry’s; theirs"],
+      "correctAnswer": "Tom and Jerry’s; their",
+      "explanation": "第一空“Tom和Jerry共有的办公室”是共有关，只在最后一个名词后加“’s”；第二空“他们的书桌”用形容词性物主代词“their”修饰“desks”。",
+      "knowledgeExtension": "共有关的所有格：A and B’s + 单数名词（表两人共有）；各自有关：A’s and B’s + 复数名词（表两人各自拥有）。"
+    },
+    {
+      "id": "12-6",
+      "type": "判断题",
+      "question": "The two boys’ bicycles were stolen last night—one was a mountain bike, and the other was a road bike.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“two boys’ bicycles”是复数名词的所有格（以s结尾加“’”），表“两个男孩的自行车”（各自拥有），与后文“one...the other”逻辑一致。",
+      "knowledgeExtension": "复数名词所有格后接复数名词，通常表“各自拥有”；接单数名词表“共有”（如the students’ classroom 学生们的教室）。"
+    },
+    {
+      "id": "12-7",
+      "type": "选择题",
+      "question": "The ______ cover was torn, so I had to replace it with a new one to protect the ______ pages.",
+      "options": ["book; book’s", "book’s; book", "book; book", "book’s; book’s"],
+      "correctAnswer": "book’s; book",
+      "explanation": "第一空“书的封面”用“book’s cover”（无生命名词的所有格，口语化用法）；第二空“书页”是名词作定语，直接用“book pages”。",
+      "knowledgeExtension": "名词作定语时，通常用单数形式（如shoe store 鞋店），无需所有格。"
+    },
+    {
+      "id": "12-8",
+      "type": "判断题",
+      "question": "We visited the old fisherman’s cottage by the sea—it was filled with the fisherman’s tools and the sea’s sounds.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“the sea’s sounds”应为“the sounds of the sea”（无生命名词的所有格通常用of结构），“sea”是无生命名词，不宜用“’s”结构。",
+      "knowledgeExtension": "无生命名词的所有格优先用“of结构”，表时间、距离、价格的无生命名词除外（如a day’s work）。"
+    },
+    {
+      "id": "12-9",
+      "type": "选择题",
+      "question": "______ performance in the competition was outstanding—both ______ scores ranked in the top 3.",
+      "options": ["Mary and Jane’s; their", "Mary’s and Jane’s; their", "Mary and Jane’s; theirs", "Mary’s and Jane’s; theirs"],
+      "correctAnswer": "Mary’s and Jane’s; their",
+      "explanation": "第一空“Mary和Jane各自的表现”是各自有关，需在每个名词后加“’s”；第二空“他们的分数”用形容词性物主代词“their”修饰“scores”。",
+      "knowledgeExtension": "各自有关的所有格：当被修饰名词是复数时，需在每个名词后加“’s”，表“两人各自的事物”。"
+    },
+    {
+      "id": "12-10",
+      "type": "判断题",
+      "question": "The company’s new policy aims to improve employees’ working conditions and increase the company’s profit margin.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“company’s new policy”“employees’ working conditions”“company’s profit margin”均符合所有格规则：单数名词加“’s”，复数名词（employees）加“’”，语义逻辑通顺。",
+      "knowledgeExtension": "集体名词（如company/team）的所有格用“’s”，表“集体的事物”。"
+    },
+    {
+      "id": "12-11",
+      "type": "选择题",
+      "question": "The ______ design won the award, as it combined ______ aesthetic appeal with practical functionality.",
+      "options": ["architect; the design’s", "architect’s; the design’s", "architect; the design", "architect’s; the design"],
+      "correctAnswer": "architect’s; the design’s",
+      "explanation": "第一空“建筑师的设计”用“architect’s design”；第二空“设计的美学吸引力”用“the design’s aesthetic appeal”，均为单数名词的所有格。",
+      "knowledgeExtension": "所有格可链式使用（如the teacher’s student’s book 老师的学生的书），但需避免歧义。"
+    },
+    {
+      "id": "12-12",
+      "type": "判断题",
+      "question": "My sister-in-law’s car broke down on the way to the doctor’s, so she had to call a tow truck.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“sister-in-law’s car”是复合名词的所有格（加在最后一个词后），“the doctor’s”是所有格的省略用法（表“医生的诊所”），均符合规则。",
+      "knowledgeExtension": "所有格后可省略上文提到的名词（如at the baker’s=at the baker’s shop），表“场所”。"
+    },
+    {
+      "id": "12-13",
+      "type": "选择题",
+      "question": "The ______ arrival was delayed due to bad weather, which affected the ______ schedule of the entire event.",
+      "options": ["guests; event’s", "guests’; event’s", "guests; event", "guests’; event"],
+      "correctAnswer": "guests’; event’s",
+      "explanation": "第一空“客人们的到达”是复数名词的所有格，加“’”；第二空“活动的日程”是单数名词的所有格，加“’s”。",
+      "knowledgeExtension": "表“到达、离开”等抽象名词的所有格，可用复数名词的“’”结构（如the visitors’ departure 游客们的离开）。"
+    },
+    {
+      "id": "12-14",
+      "type": "判断题",
+      "question": "The childrens’ toys were scattered all over the floor, so their mother asked them to clean up the childrens’ room.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“children”是不规则复数名词，所有格需加“’s”（children’s），题干误用为“childrens’”。",
+      "knowledgeExtension": "不规则复数名词（如men/women/children）的所有格，加“’s”（如men’s shoes）。"
+    },
+    {
+      "id": "12-15",
+      "type": "选择题",
+      "question": "______ research paper was published in a top journal, and ______ findings have attracted widespread attention.",
+      "options": ["Professor Lee; the paper’s", "Professor Lee’s; the paper’s", "Professor Lee; the paper", "Professor Lee’s; the paper"],
+      "correctAnswer": "Professor Lee’s; the paper’s",
+      "explanation": "第一空“李教授的研究论文”用“Professor Lee’s research paper”；第二空“论文的发现”用“the paper’s findings”，均为单数名词的所有格。",
+      "knowledgeExtension": "人名的所有格：单数人名加“’s”（如Tom’s book），复数人名加“’”（如the Smiths’ house）。"
+    },
+    {
+      "id": "12-16",
+      "type": "判断题",
+      "question": "The city’s population has grown rapidly, and the city’s infrastructure is struggling to keep up with the increasing demand.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“city’s population”“city’s infrastructure”均为单数名词的所有格，表“城市的人口”“城市的基础设施”，语义逻辑通顺。",
+      "knowledgeExtension": "表地点的无生命名词（如city/country），可用“’s”结构表所有格（如the country’s economy）。"
+    },
+    {
+      "id": "12-17",
+      "type": "选择题",
+      "question": "The ______ meeting was postponed, so we had to reschedule all the ______ appointments.",
+      "options": ["committee; committee’s", "committee’s; committee’s", "committee; committee", "committee’s; committee"],
+      "correctAnswer": "committee’s; committee’s",
+      "explanation": "第一空“委员会的会议”用“committee’s meeting”；第二空“委员会的预约”用“committee’s appointments”，均为集体名词的所有格。",
+      "knowledgeExtension": "集体名词（如committee/family）的所有格用“’s”，表“集体的事物”。"
+    },
+    {
+      "id": "12-18",
+      "type": "判断题",
+      "question": "I found a wallet on the street—it contained a driver’s license and some cash, so I took it to the police’s station.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“police’s station”应为“police station”（名词作定语，表“警察局”），无需所有格；“driver’s license”是正确的所有格用法。",
+      "knowledgeExtension": "表“机构、场所”的名词短语，通常用名词作定语（如train station），不用所有格。"
+    },
+    {
+      "id": "12-19",
+      "type": "选择题",
+      "question": "The ______ relationship has improved, thanks to the ______ efforts to resolve their differences.",
+      "options": ["two countries; countries’", "two countries’; countries’", "two country’s; countries’", "two countries’; country’s"],
+      "correctAnswer": "two countries’; countries’",
+      "explanation": "第一空“两国的关系”是复数名词的所有格，加“’”；第二空“两国的努力”同理，用“countries’ efforts”。",
+      "knowledgeExtension": "复数名词（以s结尾）的所有格，直接加“’”，表“多个事物的……”。"
+    },
+    {
+      "id": "12-20",
+      "type": "判断题",
+      "question": "The dog’s leash broke, and the dog ran into the neighbor’s garden, damaging some of the neighbor’s plants.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“dog’s leash”“neighbor’s garden”“neighbor’s plants”均为单数名词的所有格，符合“’s”结构规则，语义逻辑通顺。",
+      "knowledgeExtension": "动物名词的所有格用“’s”，表“动物的事物”（如the cat’s food）。"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 浏览器标签页图标 -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16.png" />
+    <!-- 适配移动端视口宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 移动端浏览器主题色 -->
+    <meta name="theme-color" content="#2f6b4f" />
+    <!-- 页面描述，用于 SEO / 分享摘要 -->
+    <meta
+      name="description"
+      content="知趣集 - 由浅入深的 React 入门笔记与实用资源"
+    />
+    <!-- iOS 添加到主屏幕时使用的图标 -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json 提供把 Web App 安装到手机或桌面时的元数据。
+      详见：https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      上方标签中的 %PUBLIC_URL% 会在构建时替换为 public 文件夹的实际 URL。
+      只有 public 目录下的文件才能这样引用。
+
+      与 "/favicon.ico" 或 "favicon.ico" 不同，"%PUBLIC_URL%/favicon.ico"
+      在使用客户端路由或非根路径部署时也能正确工作。
+      了解如何配置非根路径，可运行 npm run build 查看说明。
+    -->
+    <title>知趣集</title>
+  </head>
+  <body>
+    <!-- 浏览器禁用 JavaScript 时显示的提示 -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- React 应用挂载点：index.js 会把组件渲染到这里 -->
+    <div id="root"></div>
+    <!--
+      本 HTML 是页面模板。
+      如果直接在浏览器中打开本文件，会看到空白页。
+
+      可以在此添加网页字体、meta 标签或统计脚本。
+      构建时打包后的 JS 会自动注入到 <body> 中。
+
+      开始开发：运行 npm start 或 yarn start。
+      生成生产包：运行 npm run build 或 yarn build。
+    -->
+  </body>
+</html>

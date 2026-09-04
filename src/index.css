@@ -1,0 +1,47 @@
+/* 全局样式与设计令牌（CSS 变量） */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg: #fffaf3;
+  --color-text: #1f2a24;
+  --color-muted: #5c6b63;
+  --color-accent: #2f6b4f;
+  --color-border: #e6ddd0;
+  --font-sans: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-serif: "Fraunces", "Songti SC", serif;
+  --font-mono: "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* 仅正文里的行内 code 有浅底；代码块里的 code 不要背景 */
+:not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: #edf3ef;
+  color: #9b3a2f;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}

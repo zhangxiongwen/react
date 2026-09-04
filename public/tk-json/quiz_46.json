@@ -1,0 +1,187 @@
+{
+  "title": "非谓语动词进阶（分词作状语/独立主格结构）",
+  "knowledgePoint": "现在分词（doing）与过去分词（done）作状语的区别（主动vs被动、进行vs完成）、分词作时间/原因/条件/伴随状语的用法、独立主格结构的构成（逻辑主语+分词/形容词/介词短语）、分词作状语的逻辑主语与主句主语一致性、独立主格与状语从句的转换",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "46-1",
+      "type": "选择题",
+      "question": "______ the data carefully, we found some interesting patterns. ______ by the results, we decided to conduct further research. ______ more time, we could verify the conclusion more accurately.",
+      "options": ["Analyzing; Inspired; Given", "Analyzed; Inspiring; Giving", "Analyzing; Inspiring; Given", "Analyzed; Inspired; Giving"],
+      "correctAnswer": "Analyzing; Inspired; Given",
+      "explanation": "第一空“分析数据”与主句主语we是主动关系，用现在分词Analyzing作时间状语；第二空“被结果启发”与主句主语we是被动关系，用过去分词Inspired作原因状语；第三空“被给予更多时间”是独立主格的省略形式（逻辑主语为we，被动关系），用Given，符合“主动+被动+被动条件”逻辑。",
+      "knowledgeExtension": "分词作状语时，逻辑主语需与主句主语一致：主动关系用现在分词，被动关系用过去分词；Given/Provided（假设/给予）可独立作状语，无需考虑逻辑主语一致。"
+    },
+    {
+      "id": "46-2",
+      "type": "判断题",
+      "question": "Seen from the top of the mountain, the city looks more beautiful. Having finished his homework, the TV was turned on to relax. The meeting being over, everyone left the room quietly.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“从山顶看”与city是被动关系，过去分词Seen用法正确；第二句“完成作业”的逻辑主语应为he，而非TV，逻辑主语不一致，需改为Having finished his homework, he turned on the TV；第三句独立主格The meeting being over用法正确，核心错误为分词作状语逻辑主语不一致。",
+      "knowledgeExtension": "分词作状语的核心规则：逻辑主语必须与主句主语一致，否则需改为独立主格或状语从句，避免“悬垂分词”错误。"
+    },
+    {
+      "id": "46-3",
+      "type": "选择题",
+      "question": "______ for the bus, she spent the time reading a magazine. ______ that the flight was delayed, we made arrangements for an extra night’s stay. The problem ______ , the team could focus on the next task.",
+      "options": ["Waiting; Having been informed; solved", "Waited; Informing; being solved", "Waiting; Informing; solved", "Waited; Having been informed; being solved"],
+      "correctAnswer": "Waiting; Having been informed; solved",
+      "explanation": "第一空“等公交”与she是主动关系，用现在分词Waiting作伴随状语；第二空“被通知航班延误”与we是被动关系，且动作发生在“安排住宿”之前，用现在分词完成被动式Having been informed；第三空独立主格“问题被解决”，用过去分词solved（逻辑主语the problem与solve是被动关系），符合“主动伴随+被动完成+独立主格被动”逻辑。",
+      "knowledgeExtension": "现在分词完成式（Having done/Having been done）表“动作发生在主句动作之前”，强调时间先后顺序。"
+    },
+    {
+      "id": "46-4",
+      "type": "判断题",
+      "question": "Walking along the street, a beautiful shop window caught her eye. Being a rainy day, we decided to stay at home and watch movies. All things considered, it is a good choice to postpone the project.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“走路”的逻辑主语应为she，而非shop window，逻辑主语不一致，需改为Walking along the street, she noticed a beautiful shop window；第二句独立主格应为It being a rainy day（逻辑主语it不可省略）；第三句独立主格All things considered用法正确，核心错误为悬垂分词和独立主格逻辑主语缺失。",
+      "knowledgeExtension": "表天气、时间等的独立主格，逻辑主语it不可省略（如It being dark, we went home），避免语义模糊。"
+    },
+    {
+      "id": "46-5",
+      "type": "选择题",
+      "question": "______ the complexity of the project, we need to allocate more resources. ______ hard all these years, he has finally achieved his career goals. The plan ______ , they started to implement it immediately.",
+      "options": ["Considering; Having worked; approved", "Considered; Working; approving", "Considering; Working; approved", "Considered; Having worked; approving"],
+      "correctAnswer": "Considering; Having worked; approved",
+      "explanation": "第一句Considering（考虑到）是独立分词，无需逻辑主语一致，作原因状语；第二句“这些年努力工作”与he是主动关系，且动作持续到“实现目标”，用现在分词完成式Having worked；第三句独立主格“计划被批准”，用过去分词approved，符合“独立分词+主动完成+独立主格被动”逻辑。",
+      "knowledgeExtension": "常见独立分词（Considering/Given/Provided/Supposing）可直接作状语，不受逻辑主语一致规则限制，表“考虑到/假设/如果”。"
+    },
+    {
+      "id": "46-6",
+      "type": "判断题",
+      "question": "Having been told many times, he still made the same mistake. The temperature dropping sharply, the plants were covered with frost. Invited to the party, her friend was very happy to accept the invitation.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句现在分词完成被动式Having been told用法正确；第二句独立主格The temperature dropping用法正确；第三句“被邀请”的逻辑主语应为her friend，而非invited的逻辑主语缺失，需改为Invited to the party, she was very happy to accept（或Her friend, invited to the party, was...），核心错误为分词作状语逻辑主语不一致。",
+      "knowledgeExtension": "当分词修饰名词作定语时，需置于名词前后（单个分词前置，短语后置）；作状语时必须保证逻辑主语与主句主语一致。"
+    },
+    {
+      "id": "46-7",
+      "type": "选择题",
+      "question": "______ in the countryside, he is not used to the busy city life. ______ the report, she submitted it to the manager immediately. Time ______ , we have to end the meeting now.",
+      "options": ["Brought up; Having completed; permitting", "Bringing up; Completing; permitted", "Brought up; Completing; permitting", "Bringing up; Having completed; permitted"],
+      "correctAnswer": "Brought up; Having completed; permitting",
+      "explanation": "第一句“在乡下被抚养”与he是被动关系，用过去分词Brought up作原因状语；第二句“完成报告”与she是主动关系，且动作发生在“提交”之前，用现在分词完成式Having completed；第三句独立主格“时间允许”，Time与permit是主动关系，用现在分词permitting，符合“被动原因+主动完成+独立主格主动”逻辑。",
+      "knowledgeExtension": "独立主格结构中，逻辑主语与分词是主动关系用现在分词，被动关系用过去分词（如The task finished=When the task was finished）。"
+    },
+    {
+      "id": "46-8",
+      "type": "判断题",
+      "question": "Reading the letter, tears came to her eyes. Being ill, she asked for a day’s leave. The work done, they went to the restaurant to celebrate.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“读信”的逻辑主语应为she，而非tears，逻辑主语不一致，需改为Reading the letter, she burst into tears；第二句过去分词Being ill（=Because she was ill）用法正确；第三句独立主格The work done用法正确，核心错误为悬垂分词。",
+      "knowledgeExtension": "悬垂分词是高频错误，需牢记：分词作状语时，主句主语必须是分词动作的执行者或承受者。"
+    },
+    {
+      "id": "46-9",
+      "type": "选择题",
+      "question": "______ the traffic jam, we arrived at the airport just in time. ______ his attention on the phone, he didn’t notice the passing car. The children ______ , the mother could have a rest.",
+      "options": ["Despite; Fixing; asleep", "In spite of; Fixed; sleeping", "Despite; Fixing; sleeping", "In spite of; Fixed; asleep"],
+      "correctAnswer": "Despite; Fixing; asleep",
+      "explanation": "第一句Despite（尽管）是介词，后接名词短语the traffic jam，作让步状语；第二句“注意力集中在手机上”与he是主动关系（fix one’s attention on），用现在分词Fixing；第三句独立主格“孩子们睡着了”，用形容词asleep作补足语（The children asleep=When the children were asleep），符合“介词让步+主动伴随+独立主格形容词补足”逻辑。",
+      "knowledgeExtension": "独立主格结构可由“逻辑主语+分词/形容词/介词短语/副词”构成，作时间、原因、条件等状语，相当于省略连词的状语从句。"
+    },
+    {
+      "id": "46-10",
+      "type": "判断题",
+      "question": "Given more time, the task can be finished perfectly. Having lived abroad for 10 years, his Chinese has become a little rusty. The meeting being held, no one is allowed to enter the conference room.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句Given more time（=If given more time）用法正确；第二句“在国外生活10年”的逻辑主语应为he，而非his Chinese，逻辑主语不一致，需改为Having lived abroad for 10 years, he has a little rusty Chinese；第三句独立主格The meeting being held（=While the meeting is being held）用法正确，核心错误为悬垂分词。",
+      "knowledgeExtension": "当分词动作的执行者与主句主语不一致时，必须使用独立主格结构（如His Chinese being a little rusty, he...），而非直接用分词作状语。"
+    },
+    {
+      "id": "46-11",
+      "type": "选择题",
+      "question": "______ by his courage, many people volunteered to help. ______ the morning news, a big storm is coming this weekend. The door ______ , the thief sneaked into the house.",
+      "options": ["Inspired; According to; unlocked", "Inspiring; Listening to; unlocking", "Inspired; Listening to; unlocked", "Inspiring; According to; unlocking"],
+      "correctAnswer": "Inspired; According to; unlocked",
+      "explanation": "第一句“被他的勇气鼓舞”与many people是被动关系，用过去分词Inspired作原因状语；第二句According to（根据）是介词短语，作状语（避免逻辑主语问题）；第三句独立主格“门没锁”，door与unlock是被动关系，用过去分词unlocked，符合“被动原因+介词状语+独立主格被动”逻辑。",
+      "knowledgeExtension": "当需要引用信息、观点时，用According to/As stated in等介词短语，比分词作状语更安全，避免逻辑主语错误。"
+    },
+    {
+      "id": "46-12",
+      "type": "判断题",
+      "question": "Washed by the rain, the air feels fresh and clean. Having prepared everything, the party began on time. The sun rising, the birds started to sing in the trees.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“被雨水冲刷”与air是被动关系，过去分词Washed用法正确；第二句“准备好一切”的逻辑主语应为we/they，而非the party，逻辑主语不一致，需改为Having prepared everything, we started the party on time；第三句独立主格The sun rising用法正确，核心错误为悬垂分词。",
+      "knowledgeExtension": "事件、事物（如party/meeting）不能作为“准备、组织”等动作的逻辑主语，需明确人作为执行者。"
+    },
+    {
+      "id": "46-13",
+      "type": "选择题",
+      "question": "______ his mistake, he apologized to his colleague immediately. ______ for hours, the workers stopped to have a rest. The machine ______ , the production line was shut down temporarily.",
+      "options": ["Realizing; Having worked; broken down", "Realized; Working; breaking down", "Realizing; Working; broken down", "Realized; Having worked; breaking down"],
+      "correctAnswer": "Realizing; Having worked; broken down",
+      "explanation": "第一句“意识到错误”与he是主动关系，用现在分词Realizing作时间状语；第二句“工作数小时”与workers是主动关系，且动作持续到“休息”，用现在分词完成式Having worked；第三句独立主格“机器出故障”，machine与break down是主动关系（不及物动词短语），用过去分词broken down（表完成状态），符合“主动时间+主动完成+独立主格状态”逻辑。",
+      "knowledgeExtension": "不及物动词的过去分词表“完成/状态”（如broken down=having broken down），不可用于被动含义；及物动词的过去分词表“被动+完成”。"
+    },
+    {
+      "id": "46-14",
+      "type": "判断题",
+      "question": "Written in simple English, the book is easy for beginners to understand. Watching the sunset, the couple talked about their future plans. The problem being discussed, we need to keep quiet.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句“用简单英语写”与book是被动关系，过去分词Written用法正确；第二句“看日落”与couple是主动关系，现在分词Watching用法正确；第三句独立主格The problem being discussed（=While the problem is being discussed）用法正确，所有非谓语动词用法均符合规则。",
+      "knowledgeExtension": "分词作定语时，单个过去分词前置（written book），分词短语后置（the book written in simple English）；作状语时需关注逻辑主语一致。"
+    },
+    {
+      "id": "46-15",
+      "type": "选择题",
+      "question": "______ the fact that he is young, he has a lot of work experience. ______ the exam, she felt a great sense of relief. All the tickets ______ , we had to wait for the next show.",
+      "options": ["Considering; Having passed; sold out", "Considered; Passing; selling out", "Considering; Passing; sold out", "Considered; Having passed; selling out"],
+      "correctAnswer": "Considering; Having passed; sold out",
+      "explanation": "第一句Considering（考虑到）作让步状语，无需逻辑主语一致；第二句“通过考试”与she是主动关系，且动作发生在“感到轻松”之前，用现在分词完成式Having passed；第三句独立主格“所有票售罄”，tickets与sell out是被动关系，用过去分词sold out，符合“独立分词+主动完成+独立主格被动”逻辑。",
+      "knowledgeExtension": "现在分词完成式与一般式的区别：完成式表“动作先于主句动作”，一般式表“动作与主句动作同时发生”。"
+    },
+    {
+      "id": "46-16",
+      "type": "判断题",
+      "question": "Having been criticized by the teacher, his attitude improved a lot. The wind blowing strongly, we had to hold onto our hats. Translating the article, some new words are hard to understand.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“被老师批评”的逻辑主语应为he，而非his attitude，逻辑主语不一致，需改为Having been criticized by the teacher, he improved his attitude；第二句独立主格The wind blowing用法正确；第三句“翻译文章”的逻辑主语应为I/we，而非some new words，逻辑主语不一致，需改为Translating the article, I find some new words hard to understand，核心错误为两处悬垂分词。",
+      "knowledgeExtension": "名词所有格（his attitude）、复数名词（some new words）不能作为分词动作的执行者，需用人称代词作主句主语。"
+    },
+    {
+      "id": "46-17",
+      "type": "选择题",
+      "question": "______ in a hurry, she left her keys at home. ______ the necessary skills, he applied for the job confidently. The project ______ on time, the team received a lot of praise.",
+      "options": ["Being; Mastering; completed", "Been; Mastered; completing", "Being; Mastered; completed", "Been; Mastering; completing"],
+      "correctAnswer": "Being; Mastering; completed",
+      "explanation": "第一句“匆忙”与she是主动关系，用现在分词Being（=Because she was in a hurry）作原因状语；第二句“掌握必要技能”与he是主动关系，用现在分词Mastering作原因状语；第三句独立主格“项目按时完成”，project与complete是被动关系，用过去分词completed，符合“主动原因+主动原因+独立主格被动”逻辑。",
+      "knowledgeExtension": "Being+形容词/介词短语可作原因状语（如Being ill=Because he was ill），比直接用形容词更简洁。"
+    },
+    {
+      "id": "46-18",
+      "type": "判断题",
+      "question": "Seen from space, the earth is a blue planet. Having spent all his money, he had to borrow some from his friend. The letter being posted, she waited for a reply anxiously.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句“从太空看”与earth是被动关系，过去分词Seen用法正确；第二句现在分词完成式Having spent用法正确（逻辑主语he与spend是主动关系）；第三句独立主格The letter being posted（=After the letter was posted）用法正确，所有非谓语动词用法均符合规则。",
+      "knowledgeExtension": "独立主格的being可省略（如The letter posted=The letter being posted），省略后更简洁，语义不变。"
+    },
+    {
+      "id": "46-19",
+      "type": "选择题",
+      "question": "______ by the beautiful scenery, they decided to stay for another day. ______ the meeting, please send the minutes to all participants. The children ______ , the teacher began the class.",
+      "options": ["Attracted; Having finished; seated", "Attracting; Finishing; seating", "Attracted; Finishing; seated", "Attracting; Having finished; seating"],
+      "correctAnswer": "Attracted; Having finished; seated",
+      "explanation": "第一句“被美景吸引”与they是被动关系，用过去分词Attracted作原因状语；第二句“完成会议”与you（隐含主语）是主动关系，且动作发生在“发纪要”之前，用现在分词完成式Having finished；第三句独立主格“孩子们就座”，seated是形容词（表状态），The children seated=When the children were seated，符合“被动原因+主动完成+独立主格形容词”逻辑。",
+      "knowledgeExtension": "seat是及物动词（seat sb.），常用过去分词seated表“就座的状态”；sit是不及物动词，用现在分词sitting表“正在坐”（如The children sitting down=When the children sat down）。"
+    },
+    {
+      "id": "46-20",
+      "type": "判断题",
+      "question": "Having read the book, the characters are deeply impressed on my mind. The snow having stopped, we went out to make a snowman. Taught by a famous pianist, her piano skills have improved greatly.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句“读这本书”的逻辑主语应为I，而非the characters，逻辑主语不一致，需改为Having read the book, I am deeply impressed by the characters；第二句独立主格The snow having stopped用法正确；第三句“被著名钢琴家教导”与her piano skills是被动关系，过去分词Taught用法正确，核心错误为悬垂分词。",
+      "knowledgeExtension": "被动语态的主句（I am impressed）与分词作状语的逻辑主语一致时，可正常使用；若主句是主动语态（the characters impress），需确保分词逻辑主语与主句主语一致。"
+    }
+  ]
+}

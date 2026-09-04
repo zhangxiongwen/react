@@ -1,0 +1,187 @@
+{
+  "title": "动名词 doing 的基本用法（作主语/宾语/介词宾语）",
+  "knowledgePoint": "动名词 doing 作主语的结构（直接作主语/it作形式主语）、作宾语的动词搭配（enjoy/avoid/practice等）、作介词宾语的核心规则（介词+doing）、动名词的否定形式（not doing）、动名词与不定式的易混淆场景",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "26-1",
+      "type": "选择题",
+      "question": "______ regularly is essential for physical health, and most doctors suggest ______ at least 30 minutes of moderate exercise every day.",
+      "options": ["Exercise; doing", "Exercising; doing", "To exercise; to do", "Exercising; to do"],
+      "correctAnswer": "Exercising; doing",
+      "explanation": "第一空“规律锻炼”作主语，用动名词Exercising（表抽象习惯性动作）；第二空suggest后接动名词作宾语（suggest doing 建议做），符合固定搭配规则。",
+      "knowledgeExtension": "动名词作主语侧重“抽象、习惯性动作”，不定式作主语侧重“具体、一次性动作”，此处表健康习惯，用动名词更贴合。"
+    },
+    {
+      "id": "26-2",
+      "type": "判断题",
+      "question": "She avoids to eat junk food and insists on drinking plenty of water—these habits help her maintain a healthy lifestyle.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "avoid后接动名词作宾语，“to eat”应为“eating”；insist on后接动名词（drinking）用法正确，题干前半部分动名词搭配错误。",
+      "knowledgeExtension": "常见接动名词作宾语的动词：avoid/enjoy/practice/finish/mind/insist on/give up等，需牢记“动词+doing”的固定搭配。"
+    },
+    {
+      "id": "26-3",
+      "type": "选择题",
+      "question": "He is looking forward to ______ his friends in Paris, as he hasn’t seen them for over two years. They plan on ______ a trip around the city together.",
+      "options": ["meet; take", "meeting; taking", "meet; taking", "meeting; take"],
+      "correctAnswer": "meeting; taking",
+      "explanation": "look forward to中to是介词，后接动名词meeting（期待见面）；plan on中on是介词，后接动名词taking（计划旅行），符合“介词+doing”的核心规则。",
+      "knowledgeExtension": "带介词的固定短语后均接动名词，常见的有look forward to/be used to/devote to/insist on/think about等。"
+    },
+    {
+      "id": "26-4",
+      "type": "判断题",
+      "question": "It is no use complaining about the situation—we should focus on finding a solution. Everyone should play a part in solving the problem.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“it is no use doing”是固定结构，动名词complaining作真正主语；focus on和play a part in后均接动名词（finding/solving），符合“介词+doing”规则，语法连贯。",
+      "knowledgeExtension": "类似固定结构：it is no good doing（做某事没用）、it is useless doing（做某事无意义），均用动名词作主语。"
+    },
+    {
+      "id": "26-5",
+      "type": "选择题",
+      "question": "The company prohibits ______ during working hours and discourages employees from ______ personal calls unless it’s an emergency.",
+      "options": ["smoke; answer", "to smoke; to answer", "smoking; answering", "smoking; to answer"],
+      "correctAnswer": "smoking; answering",
+      "explanation": "prohibit后接动名词作宾语（prohibit smoking 禁止吸烟）；discourage from中from是介词，后接动名词answering（不鼓励接私人电话），符合搭配规则。",
+      "knowledgeExtension": "prohibit/forbid等动词后接动名词作宾语，也可接“sb. from doing”，但不能接不定式（如forbid sb. to do 是错误用法，应为forbid sb. from doing）。"
+    },
+    {
+      "id": "26-6",
+      "type": "判断题",
+      "question": "He apologized for not attend the meeting and promised to make up for the missed information. His colleagues accepted his apology.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "apologize for中for是介词，后接动名词，“not attend”应为“not attending”，动名词的否定形式需在doing前加not，题干否定式结构错误。",
+      "knowledgeExtension": "动名词的否定结构：not+doing（如avoid not doing 避免不做、apologize for not doing 为没做某事道歉），否定词必须置于动名词前。"
+    },
+    {
+      "id": "26-7",
+      "type": "选择题",
+      "question": "______ new skills can enrich our lives, and we should not be afraid of ______ mistakes during the learning process.",
+      "options": ["Learning; making", "To learn; to make", "Learning; to make", "To learn; making"],
+      "correctAnswer": "Learning; making",
+      "explanation": "第一空“学习新技能”作主语，用动名词Learning（表抽象动作）；第二空be afraid of中of是介词，后接动名词making（不怕犯错），符合规则。",
+      "knowledgeExtension": "be afraid of doing表“害怕发生某事”，be afraid to do表“不敢做某事”，此处表“不怕犯错”，用of doing更贴合语境。"
+    },
+    {
+      "id": "26-8",
+      "type": "判断题",
+      "question": "She enjoys painting in her spare time and often talks about improving her skills. She has no interest in joining any art classes.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "enjoy后接动名词painting（喜欢画画）；talk about中about是介词，后接动名词improving（谈论提升技能）；be interested in中in是介词，后接动名词joining（对参加兴趣班没兴趣），所有动名词搭配均正确。",
+      "knowledgeExtension": "interest相关搭配：be interested in doing（对做某事感兴趣）、have interest in doing（对做某事有兴趣），均需接动名词。"
+    },
+    {
+      "id": "26-9",
+      "type": "选择题",
+      "question": "The manager suggested ______ the meeting till next week and advised the team ______ more data to support their proposal.",
+      "options": ["putting off; collecting", "to put off; to collect", "putting off; to collect", "to put off; collecting"],
+      "correctAnswer": "putting off; collecting",
+      "explanation": "suggest后接动名词putting off（建议推迟会议）；advise后接动名词collecting（建议收集更多数据），也可接“sb. to do”，但此处无宾语，直接接动名词更符合语境。",
+      "knowledgeExtension": "suggest/advise后接动名词作宾语，或接宾语从句（suggest that sb. should do），但不能直接接不定式（如advise to do 是错误用法）。"
+    },
+    {
+      "id": "26-10",
+      "type": "判断题",
+      "question": "It is a waste of time to argue with him—he is not open to accept different opinions. We should give up trying to convince him.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "be open to中to是介词，后接动名词，“accept”应为“accepting”；give up后接动名词trying（放弃说服他）用法正确，题干前半部分介词搭配错误。",
+      "knowledgeExtension": "be open to doing表“愿意接受做某事”，to是介词，需接动名词，不能接不定式。"
+    },
+    {
+      "id": "26-11",
+      "type": "选择题",
+      "question": "______ without preparation is risky, so we spent a lot of time on ______ the details of the project. We succeeded in ______ the client’s trust.",
+      "options": ["Act; plan; win", "To act; planning; winning", "Acting; planning; winning", "Acting; to plan; to win"],
+      "correctAnswer": "Acting; planning; winning",
+      "explanation": "第一空“毫无准备地行动”作主语，用动名词Acting；第二空spend time on中on是介词，后接动名词planning（花时间规划细节）；第三空succeed in中in是介词，后接动名词winning（成功赢得信任），符合“介词+doing”规则。",
+      "knowledgeExtension": "spend time/money on doing 表“花费时间/金钱做某事”，on不能省略，后续必须接动名词。"
+    },
+    {
+      "id": "26-12",
+      "type": "判断题",
+      "question": "He quit smoking last year and has been focusing on keeping fit. He credits his success to having a strong will.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "quit后接动名词smoking（戒烟）；focus on后接动名词keeping（专注健身）；credit to中to是介词，后接动名词having（把成功归功于坚强的意志），所有动名词搭配均正确。",
+      "knowledgeExtension": "quit/stop后接动名词表“停止做某事”，接不定式表“停下来去做另一件事”（如stop to rest 停下来休息），需根据语境区分。"
+    },
+    {
+      "id": "26-13",
+      "type": "选择题",
+      "question": "She is tired of ______ the same work every day and is considering ______ a career change. Her family supports her in ______ what she likes.",
+      "options": ["do; make; pursue", "doing; making; pursuing", "doing; to make; to pursue", "to do; making; pursuing"],
+      "correctAnswer": "doing; making; pursuing",
+      "explanation": "be tired of中of是介词，后接动名词doing（厌倦做同样的工作）；consider后接动名词making（考虑转行）；support in中in是介词，后接动名词pursuing（支持她追求喜欢的事），符合搭配。",
+      "knowledgeExtension": "consider后接动名词作宾语，不能接不定式（如consider to do 是错误用法，应为consider doing）。"
+    },
+    {
+      "id": "26-14",
+      "type": "判断题",
+      "question": "The key to solving the problem lies in understanding the root cause. We should concentrate on analyzing the data carefully.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "the key to中to是介词，后接动名词solving（解决问题的关键）；lie in中in是介词，后接动名词understanding（在于理解根本原因）；concentrate on中on是介词，后接动名词analyzing（专注分析数据），所有“介词+doing”搭配均正确。",
+      "knowledgeExtension": "the key to/way to/approach to中to均为介词，后接动名词（如the way to improving 提升的方法），不能接不定式。"
+    },
+    {
+      "id": "26-15",
+      "type": "选择题",
+      "question": "They delayed ______ the decision until they finished ______ all the relevant reports. The boss insisted on ______ the final call personally.",
+      "options": ["to make; to review; to make", "making; reviewing; making", "making; to review; making", "to make; reviewing; to make"],
+      "correctAnswer": "making; reviewing; making",
+      "explanation": "delay后接动名词making（推迟做决定）；finish后接动名词reviewing（完成审阅所有报告）；insist on后接动名词making（坚持亲自做最终决定），均符合“动词+doing”的固定搭配。",
+      "knowledgeExtension": "delay/finish/complete等动词后只能接动名词作宾语，不能接不定式，这是核心语法规则。"
+    },
+    {
+      "id": "26-16",
+      "type": "判断题",
+      "question": "He admitted to not tell the whole truth and expressed regret for hurting her feelings. He promised to be more honest in the future.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "admit to中to是介词，后接动名词，“not tell”应为“not telling”；regret for中for是介词，后接动名词hurting（后悔伤害她的感情）用法正确，题干前半部分否定式结构错误。",
+      "knowledgeExtension": "admit后可直接接动名词（admit doing），也可接to doing（admit to doing），两种形式均可，否定式均为not doing。"
+    },
+    {
+      "id": "26-17",
+      "type": "选择题",
+      "question": "______ is a good way to relax, and many people find ______ calming to listen to soft music while ______.",
+      "options": ["Meditate; it; work", "Meditating; it; working", "To meditate; that; working", "Meditating; that; work"],
+      "correctAnswer": "Meditating; it; working",
+      "explanation": "第一空“冥想”作主语，用动名词Meditating；第二空it作形式宾语，真正宾语是to listen to soft music；第三空while后接动名词working（while working=while they are working），符合省略规则。",
+      "knowledgeExtension": "while/when等连词后若主语与主句一致，可省略主语和be动词，直接接动名词（如while cooking=while I am cooking）。"
+    },
+    {
+      "id": "26-18",
+      "type": "判断题",
+      "question": "She is used to getting up early and drinking a cup of coffee before starting her work. This routine helps her stay focused throughout the day.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "be used to中to是介词，后接动名词getting up（习惯早起）；before是介词，后接动名词starting（开始工作前），符合“介词+doing”规则，语法连贯。",
+      "knowledgeExtension": "be used to doing表“习惯做某事”，used to do表“过去常常做某事”（后接动词原形），两者不可混淆。"
+    },
+    {
+      "id": "26-19",
+      "type": "选择题",
+      "question": "The teacher discouraged students from ______ their homework and emphasized the importance of ______ independently. She warned them against ______ in exams.",
+      "options": ["copy; study; cheat", "copying; studying; cheating", "to copy; to study; to cheat", "copying; to study; cheating"],
+      "correctAnswer": "copying; studying; cheating",
+      "explanation": "discourage from中from是介词，后接动名词copying（不鼓励抄作业）；emphasize the importance of中of是介词，后接动名词studying（强调独立学习的重要性）；warn against中against是介词，后接动名词cheating（警告不要考试作弊），符合搭配。",
+      "knowledgeExtension": "warn against doing表“警告不要做某事”，相当于warn sb. not to do，是固定搭配。"
+    },
+    {
+      "id": "26-20",
+      "type": "判断题",
+      "question": "It is worth trying every possible method to solve the problem. We should not give up easily without making enough efforts.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“it is worth doing”是固定结构，动名词trying作宾语（值得尝试所有可能的方法）；without是介词，后接动名词making（没有付出足够努力），用法正确，语法连贯。",
+      "knowledgeExtension": "be worth doing表“值得做某事”，动名词用主动形式表被动含义（如the book is worth reading 这本书值得读），不能用被动形式（is worth being read 是错误用法）。"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "title": "虚拟语气（对现在/过去/将来的假设，如 if I were you...）",
+  "knowledgePoint": "虚拟语气在if条件句中的用法（对现在/过去/将来的假设）、虚拟语气的核心结构（现在：did/were+would do；过去：had done+would have done；将来：should do/were to do+would do）、wish/as if 引导的虚拟语气、虚拟语气在建议/命令类从句中的用法（should+动词原形）、特殊虚拟句型（It’s time that...）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "41-1",
+      "type": "选择题",
+      "question": "If I ______ you, I ______ that risky investment. Unfortunately, he didn’t follow the advice, and now he ______ sorry for his decision.",
+      "options": ["were; wouldn’t make; feels", "was; wouldn’t make; felt", "were; wouldn’t have made; feels", "was; wouldn’t have made; felt"],
+      "correctAnswer": "were; wouldn’t make; feels",
+      "explanation": "第一空对现在的虚拟，if从句用were（主语I也需用were）；第二空主句用wouldn’t make，表“不会做风险投资”；第三空“现在感到后悔”是真实情况，用一般现在时feels，符合“虚拟假设+真实结果”的逻辑。",
+      "knowledgeExtension": "对现在的虚拟：if从句谓语用过去式（be动词统一用were），主句用“would/should/could/might+动词原形”。"
+    },
+    {
+      "id": "41-2",
+      "type": "判断题",
+      "question": "If she had studied harder, she would pass the exam easily. She regrets not spending more time on her lessons and wishes she had listened to her teacher’s advice.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空对过去的虚拟，if从句用had studied（正确），主句应改为would have passed（表“本会通过”）；第二空wish后对过去的虚拟用had listened（正确），核心错误为过去虚拟的主句结构误用。",
+      "knowledgeExtension": "对过去的虚拟：if从句谓语用“had+过去分词”，主句用“would/should/could/might+have+过去分词”，强调“过去本可发生但未发生”。"
+    },
+    {
+      "id": "41-3",
+      "type": "选择题",
+      "question": "They ______ the project on time if the supplier ______ the materials as promised. Now they have to ask for an extension, which they ______ not want to do.",
+      "options": ["would have finished; had delivered; do", "would finish; delivered; did", "would have finished; delivered; do", "would finish; had delivered; did"],
+      "correctAnswer": "would have finished; had delivered; do",
+      "explanation": "第一空对过去的虚拟，主句用would have finished；第二空if从句用had delivered，表“供应商本应按承诺送货”；第三空“现在不想延期”是真实情况，用do，符合“过去虚拟+真实现状”的逻辑。",
+      "knowledgeExtension": "对过去的虚拟常用来表达“因过去某动作未发生导致的遗憾”，从句和主句的时态需严格遵循“had done+would have done”结构。"
+    },
+    {
+      "id": "41-4",
+      "type": "判断题",
+      "question": "If it should rain tomorrow, we would cancel the outdoor picnic. We have prepared all the food and drinks, so we hope the weather will be fine.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空对将来的虚拟，if从句用should rain（也可用were to rain/rained），主句用would cancel（正确）；第二空“真实希望天气好转”用一般将来时（正确），符合“将来虚拟假设+真实期待”的逻辑。",
+      "knowledgeExtension": "对将来的虚拟：if从句可用“should+动词原形”“were to+动词原形”或过去式，主句用“would/should/could/might+动词原形”，表“对将来不确定情况的假设”。"
+    },
+    {
+      "id": "41-5",
+      "type": "选择题",
+      "question": "I wish I ______ more time to travel when I was young. Now I’m too busy with work, and I often think about what I ______ if I had the chance.",
+      "options": ["had had; would do", "had; would have done", "had had; would have done", "had; would do"],
+      "correctAnswer": "had had; would do",
+      "explanation": "第一空wish后对过去的虚拟，用had had，表“年轻时本应有更多时间旅行”；第二空“现在想如果有机会会做什么”，对现在的虚拟，用would do，符合“过去遗憾+现在假设”的逻辑。",
+      "knowledgeExtension": "wish引导的虚拟语气：对现在的愿望用过去式，对过去的愿望用“had+过去分词”，对将来的愿望用“would+动词原形”。"
+    },
+    {
+      "id": "41-6",
+      "type": "判断题",
+      "question": "It’s time that we take action to protect the environment. If everyone cared about nature, the world would be a better place to live in.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空It’s time that从句用虚拟语气，谓语用过去式took（或should take，should不可省略），“take”应改为took；第二空对现在的虚拟（正确），核心错误为It’s time句型的虚拟用法误用。",
+      "knowledgeExtension": "It’s time that...句型中，虚拟语气谓语用过去式或“should+动词原形”，表“是时候该做某事了”，隐含“早该做却未做”的含义。"
+    },
+    {
+      "id": "41-7",
+      "type": "选择题",
+      "question": "If he ______ the meeting tomorrow, he ______ the important announcement. We suggest that he ______ his schedule to attend.",
+      "options": ["were to miss; would miss; adjust", "misses; would miss; adjusts", "were to miss; will miss; adjust", "misses; will miss; adjusts"],
+      "correctAnswer": "were to miss; would miss; adjust",
+      "explanation": "第一空对将来的虚拟，if从句用were to miss；第二空主句用would miss；第三空suggest后的宾语从句用虚拟语气，谓语用动词原形adjust（should可省略），符合“将来虚拟+建议类虚拟”的逻辑。",
+      "knowledgeExtension": "suggest/advise/order/require等表“建议/命令/要求”的动词后，宾语从句虚拟语气用“should+动词原形”，should可省略。"
+    },
+    {
+      "id": "41-8",
+      "type": "判断题",
+      "question": "She talks as if she knew everything about the project. In fact, she had just joined the team and hasn’t been informed of the details yet.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空as if引导对现在的虚拟，用knew（正确），表“她说话的样子好像什么都知道”；第二空“真实情况是刚加入团队”用现在完成时（正确），逻辑连贯，符合虚拟语气表“非真实状态”的用法。",
+      "knowledgeExtension": "as if/as though引导的虚拟语气：对现在的非真实情况用过去式，对过去的非真实情况用“had+过去分词”，若描述真实情况则用相应时态。"
+    },
+    {
+      "id": "41-9",
+      "type": "选择题",
+      "question": "If we ______ the traffic jam yesterday, we ______ the airport on time. Unfortunately, we missed the flight and had to reschedule it.",
+      "options": ["had avoided; would have reached", "avoided; would reach", "had avoided; would reach", "avoided; would have reached"],
+      "correctAnswer": "had avoided; would have reached",
+      "explanation": "第一空对过去的虚拟，if从句用had avoided，表“昨天本可避开堵车”；第二空主句用would have reached，表“本可准时到机场”；后续“错过航班”是真实结果，符合“过去虚拟遗憾+真实后果”的逻辑。",
+      "knowledgeExtension": "对过去的虚拟中，if从句的“had+过去分词”不能省略had，主句的“would have+过去分词”不能遗漏have，否则会导致时态逻辑混乱。"
+    },
+    {
+      "id": "41-10",
+      "type": "判断题",
+      "question": "I wish I could speak French fluently. If I have the chance, I would take a French course next year. It’s important that I practice as much as possible.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空wish后对现在的虚拟用could speak（正确）；第二空对将来的虚拟，if从句应改为had（或should have/were to have），“have”用法错误；第三空真实建议用一般现在时（正确），核心错误为将来虚拟的从句结构误用。",
+      "knowledgeExtension": "对将来的虚拟从句，谓语不能用原形have，需用过去式、should+原形或were to+原形，保持与主句虚拟语气的一致性。"
+    },
+    {
+      "id": "41-11",
+      "type": "选择题",
+      "question": "The manager demanded that all employees ______ the report by Friday. If anyone ______ to meet the deadline, they ______ a warning.",
+      "options": ["submit; failed; would receive", "submitted; failed; would receive", "submit; fails; will receive", "submitted; fails; will receive"],
+      "correctAnswer": "submit; failed; would receive",
+      "explanation": "第一空demand后的宾语从句用虚拟语气，谓语用submit（should可省略）；第二空对将来的虚拟，if从句用failed；第三空主句用would receive，符合“命令类虚拟+将来虚拟假设”的逻辑。",
+      "knowledgeExtension": "demand/require/insist/order等动词后，宾语从句虚拟语气均用“should+动词原形”，should可省略，这是固定语法规则。"
+    },
+    {
+      "id": "41-12",
+      "type": "判断题",
+      "question": "If the technology had been more advanced, the project could have been completed earlier. We are glad that we finally succeeded after overcoming many difficulties.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空对过去的虚拟，被动语态结构“had been+过去分词”（正确），主句“could have been completed”（正确）；第二空“真实成功”用一般现在时（正确），逻辑连贯，符合“过去虚拟假设+真实成果”的场景。",
+      "knowledgeExtension": "虚拟语气的被动语态：从句用“had been+过去分词”（过去虚拟）、“were+过去分词”（现在虚拟），主句用“would have been+过去分词”（过去虚拟）、“would be+过去分词”（现在虚拟）。"
+    },
+    {
+      "id": "41-13",
+      "type": "选择题",
+      "question": "It’s high time that we ______ attention to the problem of waste pollution. If we ______ now, it ______ too late to reverse the damage in the future.",
+      "options": ["paid; didn’t act; would be", "pay; don’t act; will be", "paid; don’t act; will be", "pay; didn’t act; would be"],
+      "correctAnswer": "paid; didn’t act; would be",
+      "explanation": "第一空It’s high time后用虚拟语气，谓语用paid；第二空对现在的虚拟，if从句用didn’t act；第三空主句用would be，表“现在不行动，将来就太晚了”，符合“虚拟建议+现在虚拟假设”的逻辑。",
+      "knowledgeExtension": "It’s high time比It’s time语气更强，虚拟语气同样用过去式或“should+动词原形”，强调“迫切需要做某事”。"
+    },
+    {
+      "id": "41-14",
+      "type": "判断题",
+      "question": "He acted as if he had never seen her before. In reality, they had been classmates in high school and hadn’t met for over 10 years.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空as if引导对过去的虚拟，用had never seen（正确），表“他表现得好像以前从没见过她”；第二空“真实情况是高中同学”用过去完成时（正确），虚拟与真实对比清晰，语法无误。",
+      "knowledgeExtension": "as if引导的虚拟语气，若描述的是过去的非真实情况，从句谓语用“had+过去分词”，需与真实的过去时态区分开。"
+    },
+    {
+      "id": "41-15",
+      "type": "选择题",
+      "question": "If I ______ enough money, I ______ a house by the sea. But for now, I ______ in a small apartment in the city center.",
+      "options": ["had; would buy; live", "have; will buy; live", "had; would have bought; lived", "have; would buy; lived"],
+      "correctAnswer": "had; would buy; live",
+      "explanation": "第一空对现在的虚拟，if从句用had；第二空主句用would buy，表“现在有钱就买海景房”；第三空“现在住市中心公寓”是真实情况，用live，符合“现在虚拟+真实现状”的逻辑。",
+      "knowledgeExtension": "对现在的虚拟常用来表达“当前未实现的愿望”，从句和主句的时态与真实时态形成对比，突出“遗憾”或“期待”。"
+    },
+    {
+      "id": "41-16",
+      "type": "判断题",
+      "question": "We suggest that the meeting should be postponed to next week. If we hold it tomorrow, many key members wouldn’t be able to attend.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空suggest后的宾语从句用虚拟语气，should be postponed（正确）；第二空对将来的虚拟，if从句应改为held（或should hold/were to hold），“hold”用法错误，核心错误为将来虚拟的从句结构误用。",
+      "knowledgeExtension": "对将来的虚拟从句，谓语不能用原形hold，需用过去式、should+原形或were to+原形，与主句的would+原形保持虚拟语气一致。"
+    },
+    {
+      "id": "41-17",
+      "type": "选择题",
+      "question": "She regrets that she ______ the opportunity to study abroad. If she ______ it, she ______ a different life now.",
+      "options": ["missed; had taken; would live", "had missed; took; would live", "missed; took; would have lived", "had missed; had taken; would have lived"],
+      "correctAnswer": "missed; had taken; would live",
+      "explanation": "第一空“后悔错过机会”是真实过去动作，用missed；第二空对过去的虚拟，if从句用had taken；第三空对现在的虚拟结果，用would live，表“如果当时抓住机会，现在生活会不同”，符合“真实过去+过去虚拟+现在虚拟结果”的混合虚拟逻辑。",
+      "knowledgeExtension": "混合虚拟语气：从句表过去，主句表现在，结构为“if从句（had done）+主句（would do）”，用于表达“过去的动作对现在的虚拟影响”。"
+    },
+    {
+      "id": "41-18",
+      "type": "判断题",
+      "question": "If I were to win the lottery, I would donate half of the money to charity. I hope my dream will come true someday.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空对将来的虚拟，if从句用were to win（正确），主句用would donate（正确）；第二空“真实希望梦想成真”用一般将来时（正确），虚拟假设与真实期待结合自然，语法规范。",
+      "knowledgeExtension": "were to+动词原形是对将来虚拟的正式表达，语气比过去式更强烈，强调“可能性极低的假设”。"
+    },
+    {
+      "id": "41-19",
+      "type": "选择题",
+      "question": "The teacher insisted that the students ______ their homework before class. If they ______ it on time, they ______ extra practice.",
+      "options": ["finish; didn’t hand in; would have to do", "finished; didn’t hand in; would have to do", "finish; don’t hand in; will have to do", "finished; don’t hand in; will have to do"],
+      "correctAnswer": "finish; didn’t hand in; would have to do",
+      "explanation": "第一空insist后的宾语从句用虚拟语气，谓语用finish（should可省略）；第二空对现在的虚拟，if从句用didn’t hand in；第三空主句用would have to do，表“如果不交作业，就必须做额外练习”，符合“坚持类虚拟+现在虚拟假设”的逻辑。",
+      "knowledgeExtension": "insist表“坚持要求”时，宾语从句用虚拟语气；表“坚持认为”（陈述事实）时，用真实时态（如He insisted he was innocent 他坚持说自己是无辜的）。"
+    },
+    {
+      "id": "41-20",
+      "type": "判断题",
+      "question": "I wish I had known the truth earlier. If I knew it, I wouldn’t make such a big mistake. It’s time that I face the consequences of my actions.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空wish后对过去的虚拟用had known（正确）；第二空对过去的虚拟结果，主句应改为wouldn’t have made；第三空It’s time后虚拟语气用faced（或should face），“face”用法错误，核心错误为过去虚拟主句和It’s time句型用法误用。",
+      "knowledgeExtension": "虚拟语气的核心是“时态倒退”：对现在虚拟退到过去，对过去虚拟退到过去完成时，需严格遵循结构规则，避免时态混淆。"
+    }
+  ]
+}

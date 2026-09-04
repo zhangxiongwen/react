@@ -1,0 +1,187 @@
+{
+  "title": "主谓一致（就近原则/就远原则，如 there be/with 结构）",
+  "knowledgePoint": "主谓一致三大原则（语法一致/就近一致/就远一致）、there be 句型的主谓搭配、with/together with 等短语的主谓判定、集合名词（family/team等）的单复数用法、单复数同形名词（sheep/fish等）的主谓一致",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "34-1",
+      "type": "选择题",
+      "question": "There ______ a book and three pens on the desk. Neither the book nor the pens ______ mine—they belong to my classmate.",
+      "options": ["is; are", "are; is", "is; is", "are; are"],
+      "correctAnswer": "is; are",
+      "explanation": "第一空 there be 句型遵循就近原则，靠近be动词的a book是单数，故用is；第二空 neither...nor... 遵循就近原则，靠近谓语的pens是复数，故用are，符合就近一致规则。",
+      "knowledgeExtension": "就近原则常见连词：there be/here be、neither...nor...、either...or...、not only...but also...，谓语动词单复数由靠近它的主语决定。"
+    },
+    {
+      "id": "34-2",
+      "type": "判断题",
+      "question": "Tom together with his parents often visit their grandparents on weekends. The family are very close and share everything with each other.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 together with 是就远原则短语，真正主语是Tom（单数），谓语动词应改为visits；第二句 family 表“家庭成员”时视为复数，are用法正确，核心错误为就远原则下谓语动词误用复数。",
+      "knowledgeExtension": "就远原则常见短语：together with、as well as、along with、except、besides等，谓语动词单复数由前面的核心主语决定。"
+    },
+    {
+      "id": "34-3",
+      "type": "选择题",
+      "question": "Not only the teacher but also the students ______ looking forward to the holiday. All of them ______ made plans for their trips.",
+      "options": ["are; have", "is; has", "are; has", "is; have"],
+      "correctAnswer": "are; have",
+      "explanation": "第一空 not only...but also... 遵循就近原则，靠近谓语的students是复数，故用are；第二空 all of them 作主语，谓语动词用复数have，符合主谓一致规则。",
+      "knowledgeExtension": "not only...but also... 连接两个主语时，若靠近谓语的主语是复数，谓语用复数；若为单数，谓语用单数（如Not only the students but also the teacher is...）。"
+    },
+    {
+      "id": "34-4",
+      "type": "判断题",
+      "question": "The team are training hard for the upcoming match. Each member of the team has a clear goal and tries their best to achieve it.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 team 表“队员们”（集合名词表个体），视为复数，are training用法正确；第二句 each member 作主语，谓语动词用单数has/tries，符合“整体→个体”的主谓一致逻辑。",
+      "knowledgeExtension": "集合名词（family/team/group/crowd）表“整体”时谓语用单数，表“个体成员”时谓语用复数，需结合语境判断。"
+    },
+    {
+      "id": "34-5",
+      "type": "选择题",
+      "question": "A number of students ______ absent from class yesterday because of the heavy rain. The number of absent students ______ more than 20.",
+      "options": ["were; was", "was; were", "were; were", "was; was"],
+      "correctAnswer": "were; was",
+      "explanation": "第一空 a number of 后接可数名词复数，表“许多”，谓语动词用复数were；第二空 the number of 表“……的数量”，中心词是number（单数），谓语用was，符合固定搭配的主谓一致规则。",
+      "knowledgeExtension": "a number of + 复数名词 → 复数谓语；the number of + 复数名词 → 单数谓语，这是高频考点，需重点记忆。"
+    },
+    {
+      "id": "34-6",
+      "type": "判断题",
+      "question": "There is two apples and a banana in the fruit bowl. Neither the apples nor the banana are fresh—they have been there for three days.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 there be 遵循就近原则，靠近be动词的two apples是复数，应改为are；第二句 neither...nor... 遵循就近原则，靠近谓语的banana是单数，应改为is，核心错误为两次就近原则误用。",
+      "knowledgeExtension": "there be 句型中，若多个主语并列，be动词单复数由最靠近它的主语决定，与主语顺序无关。"
+    },
+    {
+      "id": "34-7",
+      "type": "选择题",
+      "question": "My family ______ a big dinner together every Spring Festival. Everyone in the family ______ this traditional custom.",
+      "options": ["has; values", "have; value", "has; value", "have; values"],
+      "correctAnswer": "has; values",
+      "explanation": "第一句 family 表“家庭整体”，视为单数，谓语用has；第二句 everyone 作主语，谓语动词用单数values，符合语法一致原则。",
+      "knowledgeExtension": "不定代词（everyone/everybody/someone/nobody/everything等）作主语时，谓语动词一律用单数，这是语法一致原则的核心应用。"
+    },
+    {
+      "id": "34-8",
+      "type": "判断题",
+      "question": "Sheep is grazing on the grassland. A flock of sheep are moving slowly towards the river. They look very peaceful.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 sheep 是单复数同形名词，此处表“羊群”（复数），谓语应改为are；第二句 a flock of 后接复数名词，表“一群”，谓语用are（也可视为单数，此处用法正确），核心错误为单复数同形名词的主谓一致误用。",
+      "knowledgeExtension": "单复数同形名词（sheep/deer/fish/means）作主语时，谓语单复数由语境决定，表“单数个体”用单数，表“复数群体”用复数。"
+    },
+    {
+      "id": "34-9",
+      "type": "选择题",
+      "question": "Either you or your brother ______ responsible for the mistake. Neither of you ______ escaped the blame.",
+      "options": ["is; has", "are; have", "is; have", "are; has"],
+      "correctAnswer": "is; has",
+      "explanation": "第一句 either...or... 遵循就近原则，靠近谓语的your brother是单数，故用is；第二句 neither of 后接复数代词，谓语动词可用单数（更正式）或复数，此处用has（单数）符合语法规范，符合就近一致和语法一致原则。",
+      "knowledgeExtension": "either...or.../neither...nor... 连接两个主语时，谓语单复数完全由靠近它的主语决定，无例外情况。"
+    },
+    {
+      "id": "34-10",
+      "type": "判断题",
+      "question": "The news about the new policy are spreading quickly among the public. Most people support the policy because it is beneficial to their lives.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "news 是不可数名词（形式为复数，实质为单数），谓语动词应改为is；第二句 most people 作主语，谓语用复数support（正确），核心错误为不可数名词的主谓一致误用。",
+      "knowledgeExtension": "常见“形式复数、实质单数”的名词：news（新闻）、maths（数学）、physics（物理）、politics（政治），谓语均用单数。"
+    },
+    {
+      "id": "34-11",
+      "type": "选择题",
+      "question": "No one except my parents ______ where I hid the birthday gift. Both my parents ______ to keep the secret for me.",
+      "options": ["knows; agree", "know; agrees", "knows; agrees", "know; agree"],
+      "correctAnswer": "knows; agree",
+      "explanation": "第一句 except 是就远原则短语，核心主语是no one（不定代词，单数），谓语用knows；第二句 both my parents 作主语，谓语用复数agree，符合就远原则和语法一致原则。",
+      "knowledgeExtension": "就远原则中，核心主语若为不定代词（no one/nobody/everyone等），谓语动词需遵循不定代词的单数规则。"
+    },
+    {
+      "id": "34-12",
+      "type": "判断题",
+      "question": "Here comes the bus and the passengers. Everyone on the bus are eager to reach their destination. The journey has taken longer than expected.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 here be/here come 遵循就近原则，靠近动词的the bus是单数，comes用法正确；第二句 everyone 作主语，谓语应改为is，核心错误为不定代词主谓一致误用。",
+      "knowledgeExtension": "here/there 开头的倒装句，谓语动词单复数由后面的主语决定（就近原则），如Here are your books（靠近的books是复数）。"
+    },
+    {
+      "id": "34-13",
+      "type": "选择题",
+      "question": "The group of scientists ______ a breakthrough in their research after years of hard work. Each member of the group ______ proud of this achievement.",
+      "options": ["has made; is", "have made; are", "has made; are", "have made; is"],
+      "correctAnswer": "has made; is",
+      "explanation": "第一句 group 表“研究团队整体”，视为单数，谓语用has made；第二句 each member 作主语，谓语用单数is，符合“整体→个体”的主谓一致逻辑。",
+      "knowledgeExtension": "“a group of + 复数名词”作主语时，谓语单复数由group（整体）决定（单数），若强调个体成员，可视为复数（较少用）。"
+    },
+    {
+      "id": "34-14",
+      "type": "判断题",
+      "question": "Not only my friends but also I am looking forward to the concert. All of us has bought tickets in advance to avoid missing it.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 not only...but also... 遵循就近原则，靠近谓语的I是第一人称，am用法正确；第二句 all of us 作主语，谓语应改为have，核心错误为复数主语误用单数谓语。",
+      "knowledgeExtension": "all of + 复数代词（us/them/you）作主语时，谓语用复数；all of + 不可数名词（water/money）作主语时，谓语用单数。"
+    },
+    {
+      "id": "34-15",
+      "type": "选择题",
+      "question": "There ______ no milk left in the fridge. You need to buy some if you want to drink it. None of the stores nearby ______ open at this late hour.",
+      "options": ["is; are", "are; is", "is; is", "are; are"],
+      "correctAnswer": "is; are",
+      "explanation": "第一句 milk 是不可数名词，there be 用is；第二句 none of 后接复数名词stores，谓语动词可用复数are（更常用），符合不可数名词和none的主谓一致规则。",
+      "knowledgeExtension": "none 作主语时，谓语单复数由指代对象决定：指代不可数名词用单数，指代可数名词复数可用单数或复数（复数更口语化）。"
+    },
+    {
+      "id": "34-16",
+      "type": "判断题",
+      "question": "The United States are a developed country with advanced technology. Many people from all over the world come to study and work here.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "The United States 是国家名称（单数概念），谓语动词应改为is；第二句 many people 作主语，谓语用复数come（正确），核心错误为集合名词（国家名称）的主谓一致误用。",
+      "knowledgeExtension": "表示国家、机构、球队等的集合名词（如The United Nations、The Beatles），通常视为单数，谓语用单数。"
+    },
+    {
+      "id": "34-17",
+      "type": "选择题",
+      "question": "One of my favorite hobbies ______ reading. Reading ______ me relax and broaden my horizons.",
+      "options": ["is; helps", "are; help", "is; help", "are; helps"],
+      "correctAnswer": "is; helps",
+      "explanation": "第一句 one of + 复数名词作主语，中心词是one（单数），谓语用is；第二句 reading 是动名词作主语，谓语用单数helps，符合语法一致原则。",
+      "knowledgeExtension": "one of + 复数名词 → 单数谓语；动名词/不定式作主语 → 单数谓语（除非指多个动作，如Reading and writing are...）。"
+    },
+    {
+      "id": "34-18",
+      "type": "判断题",
+      "question": "A pair of scissors are on the desk. You can use them to cut the paper. The scissors is very sharp, so be careful when using them.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 a pair of + 复数名词（scissors）作主语，中心词是pair（单数），谓语应改为is；第二句 the scissors 是复数形式名词，谓语应改为are，核心错误为“a pair of+复数名词”和复数形式名词的主谓一致误用。",
+      "knowledgeExtension": "“a pair of + 复数名词”（scissors/trousers/glasses）作主语，谓语由pair决定（单数）；单独的复数形式名词作主语，谓语用复数。"
+    },
+    {
+      "id": "34-19",
+      "type": "选择题",
+      "question": "Beside my sister, my brother ______ also good at playing the piano. Neither my sister nor my brother ______ won any prizes in piano competitions, though.",
+      "options": ["is; has", "are; have", "is; have", "are; has"],
+      "correctAnswer": "is; has",
+      "explanation": "第一句 beside 是就远原则短语，核心主语是my brother（单数），谓语用is；第二句 neither...nor... 遵循就近原则，靠近谓语的my brother是单数，谓语用has，符合就远原则和就近原则。",
+      "knowledgeExtension": "beside/except/but 等介词连接的附加成分不影响核心主语的单复数，谓语仅由核心主语决定。"
+    },
+    {
+      "id": "34-20",
+      "type": "判断题",
+      "question": "What he said are very meaningful. Everyone present agrees with his opinions. The ideas he put forward is worth considering carefully.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 what 引导的主语从句表“他说的话”（单数概念），谓语应改为is；第二句 everyone 作主语，agrees用法正确；第三句 the ideas 是复数，谓语应改为are，核心错误为主语从句和复数名词的主谓一致误用。",
+      "knowledgeExtension": "what 引导的主语从句，谓语单复数由从句表达的含义决定：表单数概念（一件事）用单数，表复数概念（多件事）用复数。"
+    }
+  ]
+}

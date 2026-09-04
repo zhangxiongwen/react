@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "小明",
+      "email": "xiaoming@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "小红",
+      "email": "xiaohong@example.com",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "小刚",
+      "email": "xiaogang@example.com",
+      "role": "user"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "React 入门笔记",
+      "body": "这是一篇关于 React 入门的文章",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "axios 实战",
+      "body": "如何用 axios 请求接口",
+      "userId": 2
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "text": "学习 JSX",
+      "done": true
+    },
+    {
+      "id": 2,
+      "text": "练习 useState",
+      "done": false
+    },
+    {
+      "id": 3,
+      "text": "用 json-server 练接口",
+      "done": false
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+.Header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 252, 247, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e6ddd0;
+}
+
+.Header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header-brand {
+  font-family: "Fraunces", "Songti SC", serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1f2a24;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.Header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.Header-link {
+  font-size: 14px;
+  color: #5c6b63;
+  text-decoration: none;
+}
+
+.Header-link:hover {
+  color: #1f2a24;
+}
+
+.Header-user {
+  font-size: 13px;
+  color: #2f6b4f;
+}
+
+.Header-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}

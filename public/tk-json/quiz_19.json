@@ -1,0 +1,187 @@
+{
+  "title": "基数词与序数词（表达数量与顺序，如three→third）",
+  "knowledgePoint": "基数词的用法（数量表达、时间/年龄/数字组合）、序数词的构成（规则变化+不规则变化）、基数词与序数词的语境适配（数量vs顺序）、分数/倍数/日期的表达规则、易混淆数词的辨析（如twelve→twelfth）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "19-1",
+      "type": "选择题",
+      "question": "The company recruited ______ new employees last quarter, and the ______ employee to join the team won the “Best Newcomer” award for her outstanding performance.",
+      "options": ["thirty; twelfth", "thirteen; twelve", "thirtieth; twelve", "thirteen; twelfth"],
+      "correctAnswer": "thirteen; twelfth",
+      "explanation": "第一空表“数量”用基数词thirteen（十三名员工）；第二空表“顺序”用序数词twelfth（第十二名员工），thirty（三十）、thirtieth（第三十）不符合语境，twelve是基数词，不能表顺序。",
+      "knowledgeExtension": "基数词表“多少”，后接可数名词复数；序数词表“第几”，前需加the（特殊语境除外），后接可数名词单数。"
+    },
+    {
+      "id": "19-2",
+      "type": "判断题",
+      "question": "Today is the twenty-one birthday of my cousin—she invited twenty-one friends to her party at the city’s fifth restaurant.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“第二十一个生日”需用序数词twenty-first（基数词twenty-one变序数词，个位变序数）；“第五家餐厅”用序数词fifth正确，但前半句序数词错误，题干存在一处语法错误。",
+      "knowledgeExtension": "几十几的序数词构成：基数词的十位不变，个位变序数（如thirty-two→thirty-second，forty-five→forty-fifth）。"
+    },
+    {
+      "id": "19-3",
+      "type": "选择题",
+      "question": "______ of the students in the class have submitted their essays, and the ______ essay received the highest score because of its creative structure.",
+      "options": ["Two third; nine", "Two thirds; ninth", "Two thirds; nine", "Two third; ninth"],
+      "correctAnswer": "Two thirds; ninth",
+      "explanation": "分数表达中，分子用基数词，分母用序数词，分子大于1时分母加s，故“三分之二”用Two thirds；第二空表“第九篇作文”用序数词ninth，nine是基数词，不能表顺序。",
+      "knowledgeExtension": "分数表达口诀：分子基数，分母序数，分子大于1，分母加s（如one fourth四分之一，three fifths五分之三）。"
+    },
+    {
+      "id": "19-4",
+      "type": "判断题",
+      "question": "The meeting will be held on March the eighth, which is International Women’s Day. We need to prepare eight copies of the report for the participants.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "日期表达中，“三月八日”用March the eighth（序数词eighth表顺序）；“八份报告”用基数词eight表数量，两者用法正确，语义逻辑通顺。",
+      "knowledgeExtension": "日期的两种表达：March 8th（美式）/the 8th of March（英式），序数词前可加the也可省略（正式语境加the）。"
+    },
+    {
+      "id": "19-5",
+      "type": "选择题",
+      "question": "The project will take ______ months to complete, and the ______ month will be focused on testing and optimization.",
+      "options": ["five; five", "fifth; five", "five; fifth", "fifth; fifth"],
+      "correctAnswer": "five; fifth",
+      "explanation": "第一空表“五个月”（数量）用基数词five；第二空表“第五个月”（顺序）用序数词fifth，符合“数量+顺序”的语境逻辑。",
+      "knowledgeExtension": "基数词与序数词的核心区别：基数词回答“how many”（多少），序数词回答“which one”（第几）。"
+    },
+    {
+      "id": "19-6",
+      "type": "判断题",
+      "question": "He bought three dozens eggs and two loafs of bread for the picnic. The third store he visited offered the best price.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“三打鸡蛋”中dozen前有具体数字three时，用单数dozen（three dozen eggs），不能加s；“两条面包”中loaf的复数是loaves（two loaves of bread），题干存在两处名词复数错误，数词用法正确但搭配名词错误。",
+      "knowledgeExtension": "dozen（打）、score（二十）前有具体数字时，用单数形式（如two dozen apples）；无具体数字时加s并接of（如dozens of apples）。"
+    },
+    {
+      "id": "19-7",
+      "type": "选择题",
+      "question": "______ people attended the charity event, and the ______ speaker shared inspiring stories about helping rural children access education.",
+      "options": ["Hundred; four", "Hundreds; fourth", "Hundred; fourth", "Hundreds; four"],
+      "correctAnswer": "Hundreds; fourth",
+      "explanation": "“数百人”表不确定数量，用Hundreds of（hundred前无具体数字时加s并接of）；第二空表“第四位演讲者”用序数词fourth，four是基数词，不能表顺序。",
+      "knowledgeExtension": "hundred/thousand/million等数词：前有具体数字用单数（如five hundred）；表不确定数量用复数+of（如thousands of）。"
+    },
+    {
+      "id": "19-8",
+      "type": "判断题",
+      "question": "The city’s population has increased by two times in the past ten years, and the second bridge across the river will open next year.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“增加两倍”用two times表数量倍数；“第二座桥”用序数词second表顺序，两者用法正确，语义逻辑通顺。",
+      "knowledgeExtension": "倍数表达：A is+倍数+as big as B（A是B的几倍大），A is+倍数+bigger than B（A比B大几倍）。"
+    },
+    {
+      "id": "19-9",
+      "type": "选择题",
+      "question": "She is ______ years old, and she ranked ______ in the national English competition—she is the ______ person in her family to win such an award.",
+      "options": ["sixteen; third; first", "sixteenth; three; one", "sixteen; three; first", "sixteenth; third; one"],
+      "correctAnswer": "sixteen; third; first",
+      "explanation": "“十六岁”表年龄用基数词sixteen；“排名第三”表顺序用third；“第一个获奖的人”表顺序用first，sixteenth（第十六）、three（三）、one（一）均不符合语境。",
+      "knowledgeExtension": "年龄、数量用基数词；排名、顺序用序数词，需根据语境明确表达意图。"
+    },
+    {
+      "id": "19-10",
+      "type": "判断题",
+      "question": "There are fifty-two weeks in a year, and the fifty-two week of 2024 will start on December 23rd. It’s the last week of the year.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“第五十二周”表顺序用序数词fifty-second（基数词fifty-two变序数词，个位变second），题干用基数词fifty-two修饰week，语法错误。",
+      "knowledgeExtension": "几十几的序数词构成核心：十位保留基数词形式，仅个位变为序数词（如twenty-three→twenty-third）。"
+    },
+    {
+      "id": "19-11",
+      "type": "选择题",
+      "question": "______ percent of the funding will be used for research and development, and the remaining ______ percent will be allocated to marketing. The ______ phase of the project will start next month.",
+      "options": ["Sixty; forty; second", "Sixty; forty; two", "Sixtieth; fortieth; second", "Sixtieth; fortieth; two"],
+      "correctAnswer": "Sixty; forty; second",
+      "explanation": "“百分之六十”“百分之四十”表百分比用基数词Sixty、forty；“第二阶段”表顺序用序数词second，序数词Sixtieth（第六十）、fortieth（第四十）不符合百分比语境，two是基数词不能表顺序。",
+      "knowledgeExtension": "百分比表达：基数词+percent（无复数）+of+名词（如thirty percent of the water）。"
+    },
+    {
+      "id": "19-12",
+      "type": "判断题",
+      "question": "He finished the race in two minute and thirty seconds, ranking ninth among all participants. It’s his first time to join an international race.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“两分钟三十秒”中minute前有two，用复数minutes（two minutes and thirty seconds），题干用单数minute，语法错误，数词用法正确但搭配名词错误。",
+      "knowledgeExtension": "时间表达中，分钟、小时等名词前有基数词大于1时，需用复数形式（如three hours/five minutes）。"
+    },
+    {
+      "id": "19-13",
+      "type": "选择题",
+      "question": "The library has ______ floors, and the ______ floor is dedicated to rare books. You need to get a special pass to enter the ______ room there.",
+      "options": ["eight; eight; three", "eight; eighth; third", "eighth; eight; third", "eighth; eighth; three"],
+      "correctAnswer": "eight; eighth; third",
+      "explanation": "“八层楼”表数量用基数词eight；“第八层”表顺序用eighth；“第三个房间”表顺序用third，eighth（第八）、three（三）不符合语境。",
+      "knowledgeExtension": "描述建筑物楼层时，基数词表总层数，序数词表具体楼层（如a ten-story building一栋十层楼，the tenth floor第十层）。"
+    },
+    {
+      "id": "19-14",
+      "type": "判断题",
+      "question": "The team won their four victory in a row, and the coach praised the eleven players for their hard work. The first player to score a goal was only nineteen years old.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“第四次胜利”表顺序用序数词fourth（基数词four不能表顺序）；“十一名球员”用基数词eleven表数量，“十九岁”用基数词nineteen表年龄，题干第一处序数词误用。",
+      "knowledgeExtension": "“连续几次胜利”“第几次某事”需用序数词，如the third win第三次胜利，a third time第三次（无the表“又一次”）。"
+    },
+    {
+      "id": "19-15",
+      "type": "选择题",
+      "question": "______ of the land in this region is covered with forests, and the ______ largest forest here is a popular tourist attraction. It attracts ______ visitors every year.",
+      "options": ["One fifth; second; millions", "One fifth; two; million", "One fifths; second; millions", "One fifths; two; million"],
+      "correctAnswer": "One fifth; second; millions",
+      "explanation": "分数“五分之一”分子为1，分母用序数词fifth（One fifth）；“第二大森林”表顺序用second；“数百万游客”表不确定数量用millions of，two（二）、million（百万，前无具体数字需加s）不符合语境。",
+      "knowledgeExtension": "million/billion等数词：前有具体数字用单数（如five million）；表不确定数量用复数+of（如billions of）。"
+    },
+    {
+      "id": "19-16",
+      "type": "判断题",
+      "question": "Today is my brother’s twelfth birthday—he received twelve gifts from his friends. The twelfth gift he opened was a book about space exploration.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“第十二个生日”用序数词twelfth表顺序；“十二份礼物”用基数词twelve表数量；“第十二份礼物”用序数词twelfth表顺序，三者用法正确，语义逻辑通顺。",
+      "knowledgeExtension": "生日、纪念日等场景中，序数词表“第几个”，基数词表“收到多少礼物”，需区分明确。"
+    },
+    {
+      "id": "19-17",
+      "type": "选择题",
+      "question": "The train will depart at ______ o’clock sharp, and it will arrive at the ______ station at ______ in the afternoon. Please arrive ten minutes early.",
+      "options": ["nine; fourth; three", "ninth; four; third", "nine; four; three", "ninth; fourth; third"],
+      "correctAnswer": "nine; fourth; three",
+      "explanation": "“九点整”表时间用基数词nine；“第四站”表顺序用fourth；“下午三点”表时间用基数词three，ninth（第九）、four（四）、third（第三）不符合语境。",
+      "knowledgeExtension": "时间表达中，具体时刻用基数词（如eight o’clock八点），车站、航班顺序用序数词（如the third flight第三趟航班）。"
+    },
+    {
+      "id": "19-18",
+      "type": "判断题",
+      "question": "She has read three hundreds books this year, and the three hundredth book is her favorite. It tells a story about a girl’s journey to find her dreams.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“三百本书”中hundred前有具体数字three，用单数hundred（three hundred books），不能加s，题干第一处数词用法错误。",
+      "knowledgeExtension": "hundred/thousand等数词的核心规则：前有具体数字用单数，无具体数字用复数+of，不可混淆。"
+    },
+    {
+      "id": "19-19",
+      "type": "选择题",
+      "question": "The ______ chapter of the book introduces the history of the company, and the author mentions that the company was founded in the ______ century. It has a history of over ______ years.",
+      "options": ["five; twenty-first; one hundred", "fifth; twenty-one; one hundreds", "five; twenty-one; one hundred", "fifth; twenty-first; one hundreds"],
+      "correctAnswer": "five; twenty-first; one hundred",
+      "explanation": "“第五章”表顺序可用基数词five（章节、页码可直接用基数词）或fifth；“二十一世纪”表顺序用twenty-first（序数词）；“一百年”表数量用one hundred（hundred前有one用单数），twenty-one（二十一，基数词不能表世纪）、one hundreds（错误）不符合语境。",
+      "knowledgeExtension": "世纪表达：the+序数词+century（如the twentieth century二十世纪）；章节、页码可灵活用基数词或序数词（Chapter Five=the fifth chapter）。"
+    },
+    {
+      "id": "19-20",
+      "type": "判断题",
+      "question": "There are twenty-four hours in a day, and the twenty-fourth hour is midnight. The first hour of the day is from midnight to one o’clock in the morning.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“二十四小时”用基数词twenty-four表数量；“第二十四小时”用序数词twenty-fourth表顺序；“第一小时”用序数词first表顺序，三者用法正确，语义逻辑通顺。",
+      "knowledgeExtension": "24小时制中，时间点用基数词（如18:00 eighteen o’clock），但“第几个小时”需用序数词。"
+    }
+  ]
+}

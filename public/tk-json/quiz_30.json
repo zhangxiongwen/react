@@ -1,0 +1,187 @@
+{
+  "title": "代词进阶（不定代词 some/any/many/much/few/little 的区别）",
+  "knowledgePoint": "不定代词 some/any 的用法差异（肯定/否定/疑问）、many/much 的可数与不可数适配、few/little 的否定含义与 a few/a little 的肯定含义、不定代词的主谓一致、复合不定代词（something/anything等）的搭配规则",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "30-1",
+      "type": "选择题",
+      "question": "We need ______ more data to support the conclusion, but we don’t have ______ time left to collect it. However, there are ______ relevant studies we can refer to for supplementary information.",
+      "options": ["much; many; some", "many; much; any", "much; much; some", "many; many; any"],
+      "correctAnswer": "much; much; some",
+      "explanation": "第一空 data 为不可数名词，用 much 修饰；第二空 time 为不可数名词，否定句中用 much 表“没有太多时间”；第三空肯定句中用 some 修饰可数名词复数 studies，符合“不可数用 much，肯定句用 some”的规则。",
+      "knowledgeExtension": "much 修饰不可数名词，可用于肯定、否定和疑问；many 修饰可数名词复数，用法同理；some 多用于肯定句，any 多用于否定和疑问句。"
+    },
+    {
+      "id": "30-2",
+      "type": "判断题",
+      "question": "There are few mistakes in her report, so it requires little revisions before submission. She has spent much time refining every detail.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "little 修饰不可数名词，revisions 为可数名词复数，需用 few 修饰（little revisions 错误）；few 表“几乎没有”（否定）、little 表“几乎没有”（否定），much 修饰不可数名词 time 用法正确，核心错误为可数名词误用 little。",
+      "knowledgeExtension": "few/a few 修饰可数名词复数，little/a little 修饰不可数名词，需严格根据名词可数性选择。"
+    },
+    {
+      "id": "30-3",
+      "type": "选择题",
+      "question": "— Did you find ______ useful in the article? — Yes, there are ______ key points that helped me understand the topic better. I also have ______ questions to ask the author.",
+      "options": ["anything; some; a few", "something; any; few", "anything; any; a little", "something; some; little"],
+      "correctAnswer": "anything; some; a few",
+      "explanation": "第一空疑问句中用 anything 表“任何有用的东西”；第二空肯定句中用 some 修饰可数名词复数 key points；第三空 questions 为可数名词复数，a few 表“有几个问题”（肯定），符合“疑问用 anything，肯定用 some，可数用 a few”的规则。",
+      "knowledgeExtension": "some 可用于希望得到肯定回答的疑问句（如 Would you like some tea?），但普通疑问用 any。"
+    },
+    {
+      "id": "30-4",
+      "type": "判断题",
+      "question": "He has much experience in project management, so he can offer a little practical advice to the team. There are few challenges he hasn’t faced before.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "experience 表“经验”为不可数名词，用 much 修饰；advice 为不可数名词，a little 表“一些建议”（肯定）；challenges 为可数名词复数，few 表“几乎没有挑战”（否定），用法均正确，逻辑连贯。",
+      "knowledgeExtension": "experience 表“经历”时为可数名词（many experiences），表“经验”时为不可数名词（much experience），需根据语义区分。"
+    },
+    {
+      "id": "30-5",
+      "type": "选择题",
+      "question": "The company doesn’t have ______ funds to invest in new technology, but it has ______ talented employees who can develop solutions with ______ resources.",
+      "options": ["many; some; few", "much; many; a little", "much; some; little", "many; many; a few"],
+      "correctAnswer": "much; many; a little",
+      "explanation": "第一空 funds 为不可数名词（表“资金”），否定句中用 much 修饰；第二空 employees 为可数名词复数，用 many/some 修饰均可；第三空 resources 为不可数名词（表“资源总量”），a little 表“少量资源”（肯定），符合“不可数用 much/a little，可数用 many”的规则。",
+      "knowledgeExtension": "funds 表“资金”时常用不可数形式，表“具体款项”时可可数（a few funds），需结合语境判断。"
+    },
+    {
+      "id": "30-6",
+      "type": "判断题",
+      "question": "There is a little milk left in the fridge, so we don’t need to buy some today. We can use it to make coffee for the guests.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "否定句中用 any 替代 some，“don’t need to buy some”应为“don’t need to buy any”；a little 修饰不可数名词 milk 用法正确，核心错误为否定句误用 some。",
+      "knowledgeExtension": "some 仅用于肯定句和希望得到肯定回答的疑问句，否定句和普通疑问句必须用 any。"
+    },
+    {
+      "id": "30-7",
+      "type": "选择题",
+      "question": "— Are there ______ volunteers willing to help with the charity event? — Yes, ______ people have signed up, but we still need ______ more to meet the demand.",
+      "options": ["any; some; a few", "some; any; few", "any; many; much", "some; some; a little"],
+      "correctAnswer": "any; some; a few",
+      "explanation": "第一空疑问句中用 any 修饰可数名词复数 volunteers；第二空肯定句中用 some 表“一些人”；第三空 more 指代 volunteers（可数），a few 表“再需要几个”，符合“疑问用 any，可数用 a few”的规则。",
+      "knowledgeExtension": "“a few more+可数名词复数”“a little more+不可数名词”表“再一些……”，是固定表达（如 a little more water 再一点水）。"
+    },
+    {
+      "id": "30-8",
+      "type": "判断题",
+      "question": "She has few friends in the new city, so she feels a little lonely sometimes. However, she has much in common with her colleagues, which helps her fit in.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "friends 为可数名词复数，few 表“几乎没有朋友”（否定）；lonely 为形容词，a little 表“有点孤独”（修饰形容词）；much 表“很多共同之处”（不可数），用法均正确，逻辑连贯。",
+      "knowledgeExtension": "a little/few 可修饰形容词或副词（如 a little tired 有点累），此时不涉及名词可数性，仅表程度。"
+    },
+    {
+      "id": "30-9",
+      "type": "选择题",
+      "question": "The research team has collected ______ data over the past year, but there is still ______ work to be done. ______ of the data needs to be verified again.",
+      "options": ["much; many; Some", "many; much; Any", "much; much; Some", "many; many; None"],
+      "correctAnswer": "much; much; Some",
+      "explanation": "第一空 data 为不可数名词，用 much 修饰；第二空 work 为不可数名词，用 much 修饰；第三空肯定句中用 Some 指代部分不可数数据，符合“不可数用 much，部分指代用 Some”的规则。",
+      "knowledgeExtension": "some/any 可指代不可数名词（some water 一些水）或可数名词复数（some books 一些书），主谓一致根据指代对象判断（some data is 部分数据是）。"
+    },
+    {
+      "id": "30-10",
+      "type": "判断题",
+      "question": "There are a few apples in the basket, but there is little oranges left. We should buy some more fruits when we go to the supermarket.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "oranges 为可数名词复数，little 修饰不可数名词，需用 few 修饰（little oranges 错误）；a few 修饰 apples、some 修饰 fruits 用法正确，核心错误为可数名词误用 little。",
+      "knowledgeExtension": "可数名词复数前必须用 few/a few，不可数名词前必须用 little/a little，这是区分的核心依据，不能混淆。"
+    },
+    {
+      "id": "30-11",
+      "type": "选择题",
+      "question": "— Do you have ______ idea about how to solve the problem? — Yes, I have ______ suggestions that might work. However, ______ of them is guaranteed to be effective.",
+      "options": ["any; some; none", "some; any; neither", "any; many; all", "some; some; none"],
+      "correctAnswer": "any; some; none",
+      "explanation": "第一空疑问句中用 any 修饰可数名词单数 idea；第二空肯定句中用 some 修饰可数名词复数 suggestions；第三空 none 表“没有一个”（指代 suggestions），符合“疑问用 any，肯定用 some，否定指代用 none”的规则。",
+      "knowledgeExtension": "none 可指代可数名词复数或不可数名词，主谓一致可单可复（none of the suggestions is/are）；neither 仅指代两者，需明确范围。"
+    },
+    {
+      "id": "30-12",
+      "type": "判断题",
+      "question": "He spent much time preparing for the interview, so he answered most questions confidently. There were few questions he couldn’t respond to.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "time 为不可数名词，用 much 修饰；questions 为可数名词复数，few 表“几乎没有回答不上的问题”（否定），用法均正确，逻辑连贯，符合“努力准备→回答自信→几乎无难题”的语境。",
+      "knowledgeExtension": "most 可修饰可数名词复数或不可数名词（most students 大多数学生、most water 大部分水），表“多数”，与 few 形成语义对比。"
+    },
+    {
+      "id": "30-13",
+      "type": "选择题",
+      "question": "The garden needs ______ care during the winter, as ______ plants can survive freezing temperatures without ______ protection.",
+      "options": ["much; few; a little", "many; some; much", "much; a few; little", "many; few; a little"],
+      "correctAnswer": "much; few; a little",
+      "explanation": "第一空 care 为不可数名词，用 much 修饰；第二空 plants 为可数名词复数，few 表“几乎没有植物”（否定）；第三空 protection 为不可数名词，a little 表“少量保护”（肯定），符合“不可数用 much/a little，可数用 few”的规则。",
+      "knowledgeExtension": "few 表否定时隐含“需要采取措施”（如 few plants survive→需保暖），a little 表肯定时隐含“足够基础需求”（如 a little protection→够基本防护）。"
+    },
+    {
+      "id": "30-14",
+      "type": "判断题",
+      "question": "There is some bread and a few eggs in the kitchen. We can make some sandwiches for breakfast since we have little time to cook.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "bread 为不可数名词，用 some 修饰；eggs 为可数名词复数，用 a few 修饰；time 为不可数名词，用 little 表“几乎没有时间”（否定），用法均正确，逻辑连贯，符合“现有食材→做三明治→时间紧张”的语境。",
+      "knowledgeExtension": "some 可同时修饰不可数名词和可数名词复数（some bread and eggs），是日常表达中常用的灵活用法。"
+    },
+    {
+      "id": "30-15",
+      "type": "选择题",
+      "question": "— Have you got ______ information about the upcoming conference? — No, I haven’t received ______ details yet. But I know ______ experts will attend it.",
+      "options": ["any; any; some", "some; any; many", "any; some; much", "some; some; many"],
+      "correctAnswer": "any; any; some",
+      "explanation": "第一空疑问句中用 any 修饰不可数名词 information；第二空否定句中用 any 修饰可数名词复数 details；第三空肯定句中用 some 修饰可数名词复数 experts，符合“疑问/否定用 any，肯定用 some”的规则。",
+      "knowledgeExtension": "information 为绝对不可数名词，无复数形式，只能用 much/some/any 修饰，不能用 many。"
+    },
+    {
+      "id": "30-16",
+      "type": "判断题",
+      "question": "She has a little cousins living in London, so she visits them every year. They have much in common and often spend some time traveling together.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "cousins 为可数名词复数，a little 修饰不可数名词，需用 a few 修饰（a little cousins 错误）；much 表“很多共同之处”、some 修饰 time 用法正确，核心错误为可数名词误用 a little。",
+      "knowledgeExtension": "a little 与 a few 的区别仅在于修饰对象的可数性，表“少量、一些”的肯定含义，需严格匹配名词类型。"
+    },
+    {
+      "id": "30-17",
+      "type": "选择题",
+      "question": "The project requires ______ teamwork, and ______ members have contributed ______ efforts to make it a success.",
+      "options": ["much; many; many", "many; some; much", "much; some; much", "many; many; a little"],
+      "correctAnswer": "much; some; much",
+      "explanation": "第一空 teamwork 为不可数名词，用 much 修饰；第二空 members 为可数名词复数，用 some 修饰；第三空 efforts 为不可数名词（表“努力总量”），用 much 修饰，符合“不可数用 much，可数用 some”的规则。",
+      "knowledgeExtension": "efforts 表“具体努力的行为”时可可数（a few efforts），表“努力的总量”时不可数（much effort），需结合语境判断。"
+    },
+    {
+      "id": "30-18",
+      "type": "判断题",
+      "question": "There are many reasons to support the new policy, and few people oppose it. The government has provided much evidence to prove its feasibility.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "reasons 为可数名词复数，用 many 修饰；people 为可数名词复数，few 表“几乎没有人反对”（否定）；evidence 为不可数名词，用 much 修饰，用法均正确，逻辑连贯，符合“政策有诸多理由→几乎无反对→有充分证据”的语境。",
+      "knowledgeExtension": "people 是集合名词，视为可数名词复数，可用 many/few/a few 修饰（many people 很多人），不能用 much。"
+    },
+    {
+      "id": "30-19",
+      "type": "选择题",
+      "question": "— Can you lend me ______ money? I need to buy ______ books for my course. — Sorry, I have ______ cash with me now, but I can transfer some to you later.",
+      "options": ["some; a few; little", "any; some; much", "some; many; a little", "any; many; little"],
+      "correctAnswer": "some; a few; little",
+      "explanation": "第一空希望得到肯定回答的疑问句中用 some 修饰不可数名词 money；第二空 books 为可数名词复数，a few 表“几本教材”；第三空 little 表“几乎没有现金”（否定），符合“请求用 some，可数用 a few，否定用 little”的规则。",
+      "knowledgeExtension": "请求、建议、邀请等场景的疑问句中，用 some 替代 any，表委婉语气（如 Could you give me some help?）。"
+    },
+    {
+      "id": "30-20",
+      "type": "判断题",
+      "question": "He has little interest in sports, so he spends few time playing them. Instead, he devotes much time to reading and researching.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "time 为不可数名词，few 修饰可数名词复数，需用 little 修饰（few time 错误）；little 修饰不可数名词 interest、much 修饰 time 用法正确，核心错误为不可数名词误用 few。",
+      "knowledgeExtension": "time 为不可数名词，只能用 much/little/a little 修饰，不能用 many/few/a few，即使表“少量时间”也需用 a little time。"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "title": "连词进阶（although/though 与 but 的用法禁忌，while 表对比）",
+  "knowledgePoint": "although/though 与 but 的不可连用规则、while 表“对比”的核心用法、让步连词（although/though/even if）的语气差异、并列连词与让步连词的逻辑搭配、while 与 when 的用法区分",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "45-1",
+      "type": "选择题",
+      "question": "______ the task was very difficult, the team managed to complete it on time. They didn’t give up ______ they faced many challenges, and their efforts paid off in the end.",
+      "options": ["Although; though", "Though; but", "Although; but", "Though; and"],
+      "correctAnswer": "Although; though",
+      "explanation": "第一空用 Although 引导让步状语从句，表“尽管任务难”；第二空用 though 补充让步含义，符合“although/though 与 but 不可连用”规则，though 可置于句中表轻微让步，逻辑连贯。",
+      "knowledgeExtension": "although/though 是让步连词，but 是并列连词，两者不可同时使用，需用逗号分隔主句和从句，或用其他连词衔接。"
+    },
+    {
+      "id": "45-2",
+      "type": "判断题",
+      "question": "Though he is young, but he has rich work experience. While his colleagues focus on details, he pays more attention to the overall plan.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句违反“though 与 but 不可连用”规则，需去掉 but；第二句 while 表“对比”，用法正确，核心错误为让步连词与 but 误用。",
+      "knowledgeExtension": "though/although 引导的让步从句，主句前不可加 but，可加 yet/still（如 Though he is young, yet he is experienced）。"
+    },
+    {
+      "id": "45-3",
+      "type": "选择题",
+      "question": "She is good at English, ______ her brother excels in math. ______ they have different strengths, they often help each other with their studies.",
+      "options": ["while; Although", "but; Though", "while; But", "but; Although"],
+      "correctAnswer": "while; Although",
+      "explanation": "第一空 while 表“对比”，突出“她擅长英语，哥哥擅长数学”的差异；第二空 Although 引导让步从句，表“尽管优势不同”，符合“对比+让步”逻辑，且未违反连词连用禁忌。",
+      "knowledgeExtension": "while 表对比时，连接两个语义相反或相对的分句，语气比 but 更侧重“对照”，而非“转折”。"
+    },
+    {
+      "id": "45-4",
+      "type": "判断题",
+      "question": "Although the weather was bad, we still decided to go hiking. While she likes to stay at home on weekends, her friends prefer to go out for activities.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 although 引导让步从句，主句用 still 衔接（正确）；第二句 while 表“对比”，区分“她”与“朋友”的周末习惯（正确），所有连词用法均符合规则。",
+      "knowledgeExtension": "although 比 though 语气更正式，两者可互换；while 表对比时，分句多为“主谓宾”完整结构，且主语通常不同。"
+    },
+    {
+      "id": "45-5",
+      "type": "选择题",
+      "question": "______ he has lived abroad for many years, he still keeps his Chinese traditions. His sister, ______ , has adopted many local customs and habits.",
+      "options": ["Though; however", "Although; but", "Though; but", "Although; and"],
+      "correctAnswer": "Though; however",
+      "explanation": "第一空 Though 引导让步从句，表“尽管在国外多年”；第二空 however 表转折，符合“让步+转折”逻辑，且避免了 but 与 though 连用的错误。",
+      "knowledgeExtension": "however 是副词，可与 although/though 连用（需用逗号分隔），而 but 是连词，不可连用，这是关键区别。"
+    },
+    {
+      "id": "45-6",
+      "type": "判断题",
+      "question": "Even if it rains tomorrow, we will not cancel the picnic. While the plan is practical, but it lacks flexibility. We need to make some adjustments.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句 even if 引导让步从句（正确）；第二句违反“while 与 but 不可连用”规则，while 表让步时，主句前不可加 but，需去掉 but，核心错误为连词连用禁忌。",
+      "knowledgeExtension": "while 可引导让步从句（相当于 although），此时仍遵循“不可与 but 连用”规则，表对比时同理。"
+    },
+    {
+      "id": "45-7",
+      "type": "选择题",
+      "question": "______ the company offers a high salary, many employees are not satisfied with the working hours. ______ some complain about the pressure, others appreciate the career development opportunities.",
+      "options": ["Although; While", "Though; But", "Although; But", "Though; And"],
+      "correctAnswer": "Although; While",
+      "explanation": "第一空 Although 引导让步从句，表“尽管薪水高”；第二空 While 表“对比”，区分“部分员工抱怨”与“部分员工认可”的差异，逻辑连贯且符合规则。",
+      "knowledgeExtension": "while 表对比时，常与 some...others... 搭配，突出不同对象的差异，语气客观中立。"
+    },
+    {
+      "id": "45-8",
+      "type": "判断题",
+      "question": "Though she studied very hard, she didn’t pass the exam. While he is not good at speaking, his writing skills are excellent.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 though 引导让步从句，主句无 but（正确）；第二句 while 表“对比”，突出“口语差但写作好”的差异（正确），所有连词用法均符合规则。",
+      "knowledgeExtension": "though 引导的让步从句可置于句首或句末（如 She didn’t pass the exam, though she studied hard），语气更灵活。"
+    },
+    {
+      "id": "45-9",
+      "type": "选择题",
+      "question": "______ we have made great progress, we should not be complacent. ______ our competitors are developing rapidly, we need to keep innovating to stay ahead.",
+      "options": ["Although; While", "Though; But", "Although; But", "Though; And"],
+      "correctAnswer": "Although; While",
+      "explanation": "第一空 Although 引导让步从句，表“尽管有进步”；第二空 While 表“对比”，强调“竞争对手快速发展”与“我们需创新”的关联，符合“让步+对比”逻辑。",
+      "knowledgeExtension": "while 表对比时，分句时态通常一致（如均为现在进行时/一般现在时），保持对比的对称性。"
+    },
+    {
+      "id": "45-10",
+      "type": "判断题",
+      "question": "Although the project was time-consuming, but it was very rewarding. While I prefer tea, my husband likes coffee. We respect each other’s preferences.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句违反“although 与 but 不可连用”规则，需去掉 but；第二句 while 表“对比”（正确），核心错误为让步连词与 but 误用。",
+      "knowledgeExtension": "所有让步连词（although/though/even though/even if）均不可与 but 连用，这是语法硬性规则，无例外。"
+    },
+    {
+      "id": "45-11",
+      "type": "选择题",
+      "question": "She didn’t attend the meeting, ______ she was ill. ______ her absence caused some inconvenience, the team still completed the discussion smoothly.",
+      "options": ["because; Although", "because; But", "so; Though", "so; Although"],
+      "correctAnswer": "because; Although",
+      "explanation": "第一空 because 表原因，解释“缺席会议”的理由；第二空 Although 引导让步从句，表“尽管造成不便”，符合“原因+让步”逻辑，避免了 but 与让步连词连用。",
+      "knowledgeExtension": "原因连词（because/since/as）可与让步连词（although/though）连用，逻辑上“先因后果+让步转折”，不违反语法规则。"
+    },
+    {
+      "id": "45-12",
+      "type": "判断题",
+      "question": "While the movie has a simple plot, it is very touching. Though he is rich, yet he lives a simple life. He never shows off his wealth.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 while 表“对比”，突出“情节简单但感人”（正确）；第二句 though 与 yet 连用（正确），yet 是副词，可与让步连词搭配，不违反规则，逻辑连贯。",
+      "knowledgeExtension": "though/although 可与 yet/still/nevertheless 等副词连用，增强让步语气，且语法合规（如 Although it was late, still we continued working）。"
+    },
+    {
+      "id": "45-13",
+      "type": "选择题",
+      "question": "______ the book is thick, it is easy to read. ______ the author uses simple language, complex ideas are explained clearly.",
+      "options": ["Though; While", "Although; But", "Though; But", "Although; And"],
+      "correctAnswer": "Though; While",
+      "explanation": "第一空 Though 引导让步从句，表“尽管书厚”；第二空 While 表“对比”，突出“语言简单但思想深刻”的差异，符合“让步+对比”逻辑。",
+      "knowledgeExtension": "while 表对比时，可连接两个存在反差的分句，不仅限于“人”，也可用于“事物”的属性对比。"
+    },
+    {
+      "id": "45-14",
+      "type": "判断题",
+      "question": "Even though she is over 60, she still works hard every day. While my brother likes sports, my sister is interested in art. They have different hobbies but get along well.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 even though 引导让步从句（语气比 though 更强，正确）；第二句 while 表“对比”，区分“兄弟爱运动、姐妹爱艺术”（正确），所有连词用法均符合规则。",
+      "knowledgeExtension": "even though 与 although 语气相近，均比 though 正式，侧重“尽管存在不利条件，仍……”。"
+    },
+    {
+      "id": "45-15",
+      "type": "选择题",
+      "question": "______ he is not good at singing, he volunteered to perform at the party. ______ his performance was not perfect, it won warm applause from the audience.",
+      "options": ["Although; Though", "Though; But", "Although; But", "Though; And"],
+      "correctAnswer": "Although; Though",
+      "explanation": "第一空 Although 引导让步从句，表“尽管不擅长唱歌”；第二空 Though 补充让步含义，表“尽管表演不完美”，符合“递进式让步”逻辑，且未违反连用规则。",
+      "knowledgeExtension": "although/though 可在同一句中分别引导两个让步从句，形成“双重让步”，增强语气，语法合规。"
+    },
+    {
+      "id": "45-16",
+      "type": "判断题",
+      "question": "While the new policy has many advantages, but it also has some drawbacks. We need to weigh the pros and cons carefully. Though it may take time, we will find a balanced solution.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句违反“while 与 but 不可连用”规则，while 表让步时需去掉 but；第二、三句用法正确，核心错误为连词连用禁忌。",
+      "knowledgeExtension": "while 引导的让步从句与 although 功能一致，仅语气更委婉，连用规则完全相同。"
+    },
+    {
+      "id": "45-17",
+      "type": "选择题",
+      "question": "______ the distance is far, they still visit their grandparents every month. ______ most people choose to drive, they prefer to take the train to enjoy the scenery.",
+      "options": ["Though; While", "Although; But", "Though; But", "Although; And"],
+      "correctAnswer": "Though; While",
+      "explanation": "第一句 Though 引导让步从句，表“尽管距离远”；第二句 While 表“对比”，区分“多数人开车”与“他们坐火车”的差异，逻辑连贯且符合规则。",
+      "knowledgeExtension": "while 表对比时，常隐含“出乎意料”的意味（如“多数人开车，而他们却坐火车”），比 but 更具语境张力。"
+    },
+    {
+      "id": "45-18",
+      "type": "判断题",
+      "question": "Although he failed many times, he never gave up his dream. While the task is challenging, it is also a good opportunity to improve ourselves.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一句 although 引导让步从句，主句无 but（正确）；第二句 while 表“对比”，突出“任务有挑战但也有机会”（正确），所有连词用法均符合规则。",
+      "knowledgeExtension": "while 表“对比”与“让步”的区别：表对比时，分句语义相对；表让步时，分句语义转折（相当于 although），需结合语境判断。"
+    },
+    {
+      "id": "45-19",
+      "type": "选择题",
+      "question": "______ she has a busy schedule, she always finds time to read. ______ her friends spend much time on social media, she devotes herself to self-improvement.",
+      "options": ["Although; While", "Though; But", "Although; But", "Though; And"],
+      "correctAnswer": "Although; While",
+      "explanation": "第一空 Although 引导让步从句，表“尽管日程忙”；第二空 While 表“对比”，区分“她”与“朋友”的时间分配差异，符合“让步+对比”逻辑。",
+      "knowledgeExtension": "while 表对比时，时态多为一般现在时，表习惯性、经常性的行为对比，使逻辑更严谨。"
+    },
+    {
+      "id": "45-20",
+      "type": "判断题",
+      "question": "Though the weather is cold, but we still enjoy the outdoor activity. While he is young, he has a strong sense of responsibility. Everyone in the team trusts him.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一句违反“though 与 but 不可连用”规则，需去掉 but；第二句 while 表“对比”（正确），核心错误为让步连词与 but 误用。",
+      "knowledgeExtension": "连词进阶的核心是掌握“让步连词不可与 but 连用”，同时区分 while 的“对比”与“让步”功能，避免语义混淆。"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "title": "现在完成进行时（have/has been+doing，表持续动作）",
+  "knowledgePoint": "现在完成进行时的核心结构（have/has been+现在分词）、表“从过去持续到现在的动作”的语境、与现在完成时的区别（强调持续 vs 强调结果）、常见时间标志词（since/for/all day等）、主谓一致要求",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "36-1",
+      "type": "选择题",
+      "question": "She ______ for the exam all week—she looks exhausted. I think she ______ enough preparation and will pass easily.",
+      "options": ["has been studying; has done", "has studied; has been doing", "studied; did", "is studying; does"],
+      "correctAnswer": "has been studying; has done",
+      "explanation": "第一空“整周都在备考”表从过去持续到现在的动作，用现在完成进行时has been studying；第二空“做了足够准备”表动作结果，用现在完成时has done，符合“持续动作+结果”的逻辑。",
+      "knowledgeExtension": "现在完成进行时强调动作的持续过程，现在完成时强调动作的结果或完成状态，两者常搭配使用，突出“过程→结果”。"
+    },
+    {
+      "id": "36-2",
+      "type": "判断题",
+      "question": "They have been build a new bridge across the river for six months. So far, they have completed half of the project.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的结构为“have/has been+现在分词”，“build”应改为“building”；第二空“完成一半项目”用现在完成时has completed（正确），核心错误为现在分词形式误用。",
+      "knowledgeExtension": "现在完成进行时的现在分词需遵循动词-ing变化规则：原形动词结尾e去e加ing（take→taking）、重读闭音节双写尾字母加ing（run→running）。"
+    },
+    {
+      "id": "36-3",
+      "type": "选择题",
+      "question": "— How long ______ you ______ on this project? — For nearly a month. I ______ day and night to meet the deadline.",
+      "options": ["have; been working; have been working", "have; worked; worked", "did; work; was working", "are; working; work"],
+      "correctAnswer": "have; been working; have been working",
+      "explanation": "第一空“做项目多久了”表持续时间，用现在完成进行时have been working；第二空“日夜赶工”延续持续动作，仍用现在完成进行时，符合“持续动作+持续状态”的逻辑。",
+      "knowledgeExtension": "how long提问持续时间时，若强调动作仍在进行，优先用现在完成进行时；若强调动作已完成，用现在完成时。"
+    },
+    {
+      "id": "36-4",
+      "type": "判断题",
+      "question": "He has been learning English since he was 5 years old. Now he can speak it fluently and has passed several international exams.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“since he was 5 years old”是现在完成进行时的标志，表“从5岁持续到现在学英语”，用法正确；“能流利说”“通过考试”是持续学习的结果，用一般现在时和现在完成时（正确），逻辑连贯。",
+      "knowledgeExtension": "since+过去时间点/从句是现在完成进行时的核心标志，强调动作从过去某时开始，持续到现在且可能继续。"
+    },
+    {
+      "id": "36-5",
+      "type": "选择题",
+      "question": "The baby ______ all night—she must be hungry. Her mother ______ to calm her down but failed.",
+      "options": ["has been crying; has been trying", "has cried; tried", "cried; was trying", "is crying; tries"],
+      "correctAnswer": "has been crying; has been trying",
+      "explanation": "第一空“哭了一整晚”表持续动作，用现在完成进行时has been crying；第二空“一直试图安抚”也是持续动作，用has been trying，符合“持续哭闹+持续安抚”的逻辑。",
+      "knowledgeExtension": "现在完成进行时可用于描述持续的状态或动作，尤其适用于哭闹、下雨、工作等具有持续性的场景，语气比现在完成时更强调“不间断”。"
+    },
+    {
+      "id": "36-6",
+      "type": "判断题",
+      "question": "It has been rain heavily all day. The streets are flooded and many people have been trapped in their cars.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的现在分词形式错误，“rain”应改为“raining”；第二空“被困在车里”用现在完成时的被动形式have been trapped（正确），核心错误为现在分词误用。",
+      "knowledgeExtension": "不及物动词（如rain/cry/work）的现在完成进行时直接用“have/has been+doing”；及物动词的被动含义需用现在完成时的被动（have/has been+done），不可混淆。"
+    },
+    {
+      "id": "36-7",
+      "type": "选择题",
+      "question": "My brother ______ to find a new job for three months. He ______ more than 20 companies but hasn’t received any offers yet.",
+      "options": ["has been trying; has applied to", "has tried; applied to", "tried; applied to", "is trying; applies to"],
+      "correctAnswer": "has been trying; has applied to",
+      "explanation": "第一空“三个月来一直找工作”表持续动作，用现在完成进行时has been trying；第二空“申请20多家公司”表动作结果，用现在完成时has applied to，符合“持续尝试+结果”的逻辑。",
+      "knowledgeExtension": "现在完成进行时强调“持续的努力或尝试”，现在完成时强调“尝试的次数或结果”，两者搭配可完整描述“努力→成果”的过程。"
+    },
+    {
+      "id": "36-8",
+      "type": "判断题",
+      "question": "She has been practicing the piano for two hours. Her fingers are sore, but she has been made great progress.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "第一空“练钢琴两小时”用现在完成进行时has been practicing（正确）；第二空“取得进步”是主动动作，“has been made”应改为has made，核心错误为被动语态误用。",
+      "knowledgeExtension": "现在完成进行时无被动形式，表“持续做某事并取得进步”时，进步部分用主动态的现在完成时（has made progress）。"
+    },
+    {
+      "id": "36-9",
+      "type": "选择题",
+      "question": "— Why is your clothes wet? — I ______ the garden all morning. It ______ on and off, so I didn’t notice the rain.",
+      "options": ["have been watering; has been raining", "watered; rained", "have watered; has rained", "am watering; is raining"],
+      "correctAnswer": "have been watering; has been raining",
+      "explanation": "第一空“一早上都在浇花园”表持续动作，用现在完成进行时have been watering；第二空“断断续续下雨”也是持续状态，用has been raining，符合“持续浇花+持续下雨”的逻辑。",
+      "knowledgeExtension": "现在完成进行时可描述“断断续续但整体持续”的动作，如rain on and off（断断续续下雨）、work in fits and starts（时断时续地工作）。"
+    },
+    {
+      "id": "36-10",
+      "type": "判断题",
+      "question": "They have been travel around Europe for a month. They have visited France, Germany and Italy so far.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的现在分词形式错误，“travel”应改为“traveling”；第二空“参观多个国家”用现在完成时has visited（正确），核心错误为现在分词误用。",
+      "knowledgeExtension": "以重读闭音节结尾且末尾只有一个辅音字母的动词，现在分词需双写尾字母（如run→running、sit→sitting）；travel等动词可双写或直接加ing（traveling/travelling），两种形式均正确。"
+    },
+    {
+      "id": "36-11",
+      "type": "选择题",
+      "question": "The team ______ on the new software since last September. They ______ several versions and are now testing the final one.",
+      "options": ["has been working; have developed", "has worked; developed", "worked; developed", "is working; develops"],
+      "correctAnswer": "has been working; have developed",
+      "explanation": "第一空“从去年9月开始开发软件”表持续动作，用现在完成进行时has been working；第二空“开发多个版本”表动作结果，用现在完成时have developed，符合“持续开发+成果输出”的逻辑。",
+      "knowledgeExtension": "描述项目、研发、创作等长期工作时，常用现在完成进行时强调“持续投入”，用现在完成时说明“阶段性成果”，逻辑更清晰。"
+    },
+    {
+      "id": "36-12",
+      "type": "判断题",
+      "question": "He has been teaching in this school for 15 years. He has been loved by his students because of his kindness and patience.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“教了15年书”表持续动作，用现在完成进行时has been teaching（正确）；第二空“被学生喜爱”用现在完成时的被动形式has been loved（正确），符合“持续教学+被动受欢迎”的逻辑。",
+      "knowledgeExtension": "表“持续从事某职业”时，现在完成进行时（has been teaching）比现在完成时（has taught）更强调“持续的状态和热情”，语气更生动。"
+    },
+    {
+      "id": "36-13",
+      "type": "选择题",
+      "question": "I ______ to reach you all day—your phone was always busy. What ______ you ______?",
+      "options": ["have been trying; have; been doing", "tried; did; do", "have tried; have; done", "am trying; are; doing"],
+      "correctAnswer": "have been trying; have; been doing",
+      "explanation": "第一空“一整天都在试图联系你”表持续动作，用现在完成进行时have been trying；第二空“你一直在做什么”也是持续动作，用现在完成进行时have been doing，符合“持续联系+询问持续动作”的逻辑。",
+      "knowledgeExtension": "现在完成进行时可用于询问对方“一直以来在做什么”，比现在完成时更侧重“动作的持续性”，而非“结果”。"
+    },
+    {
+      "id": "36-14",
+      "type": "判断题",
+      "question": "She has been write a novel for two years. She hasn’t finished it yet but says it will be published next year.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的现在分词形式错误，“write”应改为“writing”；第二空“未完成但将出版”的描述（正确），核心错误为现在分词误用。",
+      "knowledgeExtension": "write/read/study等动词的现在完成进行时，强调“持续进行的创作/学习过程”，即使未完成，也需用“have/has been+doing”。"
+    },
+    {
+      "id": "36-15",
+      "type": "选择题",
+      "question": "The company ______ to reduce pollution since 2020. It ______ a lot of money on green technology and has seen positive results.",
+      "options": ["has been trying; has spent", "tried; spent", "has tried; spent", "is trying; spends"],
+      "correctAnswer": "has been trying; has spent",
+      "explanation": "第一空“从2020年开始一直努力减排”表持续动作，用现在完成进行时has been trying；第二空“在绿色技术上花钱”表动作结果，用现在完成时has spent，符合“持续努力+投入成果”的逻辑。",
+      "knowledgeExtension": "描述企业、政府等的长期举措时，用现在完成进行时强调“持续的努力和投入”，用现在完成时说明“投入的资源或取得的成效”，适配正式场景。"
+    },
+    {
+      "id": "36-16",
+      "type": "判断题",
+      "question": "We have been wait for the bus for 40 minutes. It should have arrived 20 minutes ago. Maybe there was a traffic jam.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的现在分词形式错误，“wait”应改为“waiting”；后续“本该到达”“可能堵车”的描述（正确），核心错误为现在分词误用。",
+      "knowledgeExtension": "以不发音的e结尾的动词，现在分词需去e加ing（如write→writing、take→taking）；wait等动词直接加ing，需牢记基础变化规则。"
+    },
+    {
+      "id": "36-17",
+      "type": "选择题",
+      "question": "My sister ______ to learn painting since she retired. She ______ three exhibitions and has won several awards.",
+      "options": ["has been learning; has held", "learned; held", "has learned; held", "is learning; holds"],
+      "correctAnswer": "has been learning; has held",
+      "explanation": "第一空“退休后一直学画画”表持续动作，用现在完成进行时has been learning；第二空“举办三次展览”表动作结果，用现在完成时has held，符合“持续学习+成果”的逻辑。",
+      "knowledgeExtension": "现在完成进行时可用于描述退休后、毕业后等阶段的持续爱好或学习，突出“长期坚持”，现在完成时则用于展示该过程中的具体成果。"
+    },
+    {
+      "id": "36-18",
+      "type": "判断题",
+      "question": "It has been snowing since last night. The ground is covered with thick snow, and children have been playing outside happily.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "第一空“从昨晚开始一直下雪”用现在完成进行时has been snowing（正确）；第二空“孩子们一直在外面玩”也用现在完成进行时has been playing（正确），符合“持续下雪+持续玩耍”的场景，逻辑连贯。",
+      "knowledgeExtension": "描述天气变化及其引发的持续活动时，常用现在完成进行时，能生动体现“天气持续+活动持续”的关联性。"
+    },
+    {
+      "id": "36-19",
+      "type": "选择题",
+      "question": "— How long ______ the chef ______ this dish? — For nearly an hour. He ______ to perfect the flavor and finally succeeded.",
+      "options": ["has; been cooking; has been trying", "did; cook; tried", "has; cooked; has tried", "is; cooking; tries"],
+      "correctAnswer": "has; been cooking; has been trying",
+      "explanation": "第一空“厨师做这道菜多久了”表持续动作，用现在完成进行时has been cooking；第二空“一直试图完善口味”也是持续动作，用has been trying，符合“持续烹饪+持续调味”的逻辑。",
+      "knowledgeExtension": "描述烹饪、实验、创作等需要反复调整的动作时，用现在完成进行时强调“持续的操作和尝试”，比现在完成时更能体现“过程的细致性”。"
+    },
+    {
+      "id": "36-20",
+      "type": "判断题",
+      "question": "They have been discuss the project plan for three hours. They haven’t reached an agreement yet but will continue tomorrow.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "现在完成进行时的现在分词形式错误，“discuss”应改为“discussing”；后续“未达成协议”“明天继续”的描述（正确），核心错误为现在分词误用。",
+      "knowledgeExtension": "以s结尾的动词、双音节动词（如discuss/visit/study），现在分词直接加ing，无需特殊变化，需避免遗漏ing后缀。"
+    }
+  ]
+}

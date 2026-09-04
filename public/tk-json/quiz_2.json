@@ -1,0 +1,267 @@
+{
+  "title": "人称代词主要格与物主代词（形容性+名词性，如mine/mine）",
+  "knowledgePoint": "人称代词主宾格、形容词性物主代词、名词性物主代词的用法与区别",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "2-1",
+      "type": "选择题",
+      "question": "My sister and ______ will attend the international conference next month, and the organizer has sent the invitation letters to ______.",
+      "options": [
+        "I; we",
+        "me; us",
+        "I; us",
+        "me; we"
+      ],
+      "correctAnswer": "I; us",
+      "explanation": "第一空作主语，需用人称代词主格I（my sister and I为并列主语）；第二空作介词to的宾语，需用宾格us，故答案为I; us。",
+      "knowledgeExtension": "人称代词主格（I/you/he/she/it/we/they）用于作主语；宾格（me/you/him/her/it/us/them）用于作宾语（动词宾语或介词宾语）。"
+    },
+    {
+      "id": "2-2",
+      "type": "判断题",
+      "question": "This is not my book. It must be her, because she lost one yesterday.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "第二句中be动词后需用名词性物主代词hers（=her book），而非宾格her（her作宾格时表“她”，作形容词性物主代词时后需接名词），故题干错误。",
+      "knowledgeExtension": "名词性物主代词（mine/yours/his/hers/its/ours/theirs）可单独使用，相当于“形容词性物主代词+名词”；形容词性物主代词（my/your/his/her/its/our/their）后必须接名词。"
+    },
+    {
+      "id": "2-3",
+      "type": "选择题",
+      "question": "The research team consists of three experts, and ______ have published dozens of papers in top academic journals.",
+      "options": [
+        "they",
+        "them",
+        "their",
+        "theirs"
+      ],
+      "correctAnswer": "they",
+      "explanation": "空格处作后半句主语，需用人称代词主格they（指代three experts）；them为宾格，their为形容词性物主代词（后接名词），theirs为名词性物主代词，均不符合主语用法，故答案为they。",
+      "knowledgeExtension": "并列句中，后一句主语需用主格代词指代前一句的名词，保持句子逻辑连贯（如The students are hardworking, and they often stay late to study）。"
+    },
+    {
+      "id": "2-4",
+      "type": "判断题",
+      "question": "Our classroom is bigger than theirs, but theirs is brighter than ours.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "theirs=their classroom，ours=our classroom，名词性物主代词在此处单独使用，避免重复，句子结构对称，语法表达正确，故题干正确。",
+      "knowledgeExtension": "比较句中常用名词性物主代词简化表达，避免重复名词（如My bag is heavier than yours=My bag is heavier than your bag）。"
+    },
+    {
+      "id": "2-5",
+      "type": "选择题",
+      "question": "The teacher asked Tom and ______ to prepare the presentation together, and ______ finished it ahead of schedule.",
+      "options": [
+        "I; we",
+        "me; us",
+        "I; us",
+        "me; we"
+      ],
+      "correctAnswer": "me; we",
+      "explanation": "第一空作asked的宾语（ask sb. to do sth.），需用宾格me；第二空作主语，需用主格we（指代Tom and me），故答案为me; we。",
+      "knowledgeExtension": "并列宾语中，人称代词需用宾格（如He invited you and me to the party）；并列主语中需用主格（如You and I are good friends）。"
+    },
+    {
+      "id": "2-6",
+      "type": "判断题",
+      "question": "She lent her dictionary to me, and I promised to return it to her tomorrow.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "her为形容词性物主代词，后接名词dictionary（her dictionary她的字典）；me和her均为宾格，分别作介词to的宾语，句子语法结构正确，表述符合逻辑，故正确。",
+      "knowledgeExtension": "lend sth. to sb.（把某物借给某人）和return sth. to sb.（把某物还给某人）中，sb.需用宾格形式。"
+    },
+    {
+      "id": "2-7",
+      "type": "选择题",
+      "question": "______ is well-known that the Great Wall is one of the most famous cultural relics in the world.",
+      "options": [
+        "It",
+        "This",
+        "That",
+        "He"
+      ],
+      "correctAnswer": "It",
+      "explanation": "此处为it作形式主语的句型（It is well-known that…），真正主语为后面的that从句，避免句子头重脚轻；this/that/he均不能作形式主语，故答案为It。",
+      "knowledgeExtension": "常见it作形式主语的句型：It is important that…（重要的是……）、It is necessary that…（有必要……）、It is said that…（据说……）。"
+    },
+    {
+      "id": "2-8",
+      "type": "判断题",
+      "question": "These books are not ours; they must be their, because their names are on the covers.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "第二空后无名词，需用名词性物主代词theirs（=their books），而非形容词性物主代词their（their后需接名词），故题干错误。",
+      "knowledgeExtension": "形容词性物主代词与名词性物主代词的核心区别：形容词性物主代词+名词（my book），名词性物主代词单独使用（mine）。"
+    },
+    {
+      "id": "2-9",
+      "type": "选择题",
+      "question": "The manager praised ______ for ______ hard work on the project, and ______ was very grateful for the recognition.",
+      "options": [
+        "we; our; us",
+        "us; our; we",
+        "us; ours; we",
+        "we; ours; us"
+      ],
+      "correctAnswer": "us; our; we",
+      "explanation": "第一空作praised的宾语，需用宾格us；第二空修饰名词hard work，需用形容词性物主代词our；第三空作主语，需用主格we，故答案为us; our; we。",
+      "knowledgeExtension": "同一语境中可能出现不同形式的代词，需根据语法功能选择：宾语→宾格，修饰名词→形容词性物主代词，主语→主格。"
+    },
+    {
+      "id": "2-10",
+      "type": "判断题",
+      "question": "He found a wallet on the street and returned it to its owner immediately.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "its为形容词性物主代词，修饰名词owner（its owner它的主人，指代钱包的主人）；it作宾语指代wallet，句子语法正确、逻辑连贯，故正确。",
+      "knowledgeExtension": "注意区分its（它的，形容词性/名词性物主代词）与it’s（it is/it has的缩写），如It’s a dog（它是一只狗），Its tail is short（它的尾巴很短）。"
+    },
+    {
+      "id": "2-11",
+      "type": "选择题",
+      "question": "______ and ______ sister will go hiking this weekend, and ______ have prepared all the necessary supplies.",
+      "options": [
+        "She; her; they",
+        "Her; she; them",
+        "She; hers; they",
+        "Her; her; them"
+      ],
+      "correctAnswer": "She; her; they",
+      "explanation": "第一空作主语，需用主格She；第二空修饰名词sister，需用形容词性物主代词her；第三空作主语，需用主格they（指代She and her sister），故答案为She; her; they。",
+      "knowledgeExtension": "物主代词的选择需看后面是否有名词：有名词→形容词性物主代词（her sister），无名词→名词性物主代词（hers=her sister）。"
+    },
+    {
+      "id": "2-12",
+      "type": "判断题",
+      "question": "The plan proposed by him is more practical than the one proposed by we.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "by为介词，后接宾语需用宾格形式，we的宾格为us，故应改为by us；题干中by we用法错误。",
+      "knowledgeExtension": "介词（in/on/at/by/with/for等）后接人称代词时，必须用宾格形式（如play with him，talk to her，learn from them）。"
+    },
+    {
+      "id": "2-13",
+      "type": "选择题",
+      "question": "The results of the experiment are consistent with ______ predicted in our research proposal.",
+      "options": [
+        "we",
+        "us",
+        "our",
+        "ours"
+      ],
+      "correctAnswer": "ours",
+      "explanation": "空格后无名词，需用名词性物主代词ours（=our predictions），指代“我们研究提案中预测的结果”；we为主格，us为宾格，our为形容词性物主代词（后需接名词），均不符合，故答案为ours。",
+      "knowledgeExtension": "名词性物主代词可用于指代前文提到的名词，避免重复（如My ideas are different from yours=My ideas are different from your ideas）。"
+    },
+    {
+      "id": "2-14",
+      "type": "判断题",
+      "question": "Me and my brother often help each other with our homework after school.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "并列主语中，人称代词需用主格形式，且第一人称I应放在后面（以示礼貌），正确表达为My brother and I，故题干错误。",
+      "knowledgeExtension": "并列主语的人称代词顺序：第二人称→第三人称→第一人称（You, he and I are classmates）；承认错误时第一人称在前（I and he are wrong）。"
+    },
+    {
+      "id": "2-15",
+      "type": "选择题",
+      "question": "The teacher asked ______ to explain ______ reasoning for choosing this research topic.",
+      "options": [
+        "she; her",
+        "her; she",
+        "her; her",
+        "she; she"
+      ],
+      "correctAnswer": "her; her",
+      "explanation": "第一空作asked的宾语，需用宾格her；第二空修饰名词reasoning，需用形容词性物主代词her，故答案为her; her。",
+      "knowledgeExtension": "同一人称代词的不同形式：作宾语用宾格，修饰名词用形容词性物主代词，单独使用用名词性物主代词（如She loves her dog, and the dog is hers）。"
+    },
+    {
+      "id": "2-16",
+      "type": "判断题",
+      "question": "Their opinions are similar to ours, but there are some minor differences between us.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "their为形容词性物主代词（修饰opinions），ours为名词性物主代词（=our opinions），us为宾格（作between的宾语），句子语法结构正确，逻辑清晰，故正确。",
+      "knowledgeExtension": "between为介词，后接宾格代词（between you and me，between us and them）；similar to后可接名词性物主代词（similar to yours）。"
+    },
+    {
+      "id": "2-17",
+      "type": "选择题",
+      "question": "______ is no doubt that the new technology will revolutionize the way we work and live.",
+      "options": [
+        "It",
+        "This",
+        "That",
+        "There"
+      ],
+      "correctAnswer": "There",
+      "explanation": "此处为固定句型There is no doubt that…（毫无疑问……），there be句型表“存在”；it作形式主语的句型为It is no doubt that…（较少用），但更规范的表达为There is no doubt that…，故答案为There。",
+      "knowledgeExtension": "常见there be句型的固定搭配：There is no need to do…（没必要做……）、There is a possibility that…（有可能……）、There is no point in doing…（做……没意义）。"
+    },
+    {
+      "id": "2-18",
+      "type": "判断题",
+      "question": "I lent my bike to him, and he promised to give it back to I tomorrow.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "第二空作介词to的宾语，需用宾格me，而非主格I，正确表达为give it back to me，故题干错误。",
+      "knowledgeExtension": "动词短语give back的用法：give sth. back to sb.（把某物还给某人），sb.需用宾格形式（如give the book back to her）。"
+    },
+    {
+      "id": "2-19",
+      "type": "选择题",
+      "question": "The success of the project depends on ______ team’s cooperation and ______ ability to solve problems efficiently.",
+      "options": [
+        "we; our",
+        "us; our",
+        "our; us",
+        "we; us"
+      ],
+      "correctAnswer": "our; our",
+      "explanation": "两空均修饰名词（第一空修饰team，第二空修饰ability），需用形容词性物主代词our；we为主格（作主语），us为宾格（作宾语），均不符合，故答案为our; our。",
+      "knowledgeExtension": "形容词性物主代词的核心功能是修饰名词，作定语，不能单独使用（如our country，our dreams，our efforts）。"
+    },
+    {
+      "id": "2-20",
+      "type": "判断题",
+      "question": "It was her who suggested organizing a workshop to share professional knowledge with colleagues.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "此处为强调句（It is/was + 被强调部分 + that/who…），被强调部分为人称代词时，需用主格形式（she），而非宾格her，正确表达为It was she who…，故题干错误。",
+      "knowledgeExtension": "强调句中被强调部分的代词形式：作主语用主格（It is he who helped me），作宾语用宾格（It is him that I met yesterday）。"
+    }
+  ]
+}

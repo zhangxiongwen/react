@@ -1,0 +1,267 @@
+{
+  "title": "祈使句（肯定/否定形式，如Open the door/Don't run）",
+  "knowledgePoint": "祈使句的肯定/否定形式、委婉表达、强调结构、反义疑问句、祈使句与并列句/从句的结合",
+  "difficulty": "简单",
+  "questions": [
+    {
+      "id": "10-1",
+      "type": "选择题",
+      "question": "______ the data carefully before submitting the report, as even a small mistake may affect the final decision.",
+      "options": [
+        "Check",
+        "To check",
+        "Checking",
+        "Checked"
+      ],
+      "correctAnswer": "Check",
+      "explanation": "此处为肯定祈使句，以动词原形开头表“命令/建议”，强调提交报告前的必要动作；To check（不定式）、Checking（动名词）、Checked（过去式）均不能用于祈使句开头，故答案为Check。",
+      "knowledgeExtension": "祈使句的核心结构：肯定式（动词原形+宾语/状语），如Open the door. Be careful.；否定式（Don’t+动词原形），如Don’t smoke here. 需注意：Be动词开头的祈使句，否定式为Don’t be+形容词（Don’t be late.）。"
+    },
+    {
+      "id": "10-2",
+      "type": "判断题",
+      "question": "Don’t to forget to send the meeting minutes to all participants before 5 p.m. today.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "否定祈使句结构为“Don’t+动词原形”，to forget需去掉to，还原为forget，正确表达为Don’t forget，题干中to forget用法错误。",
+      "knowledgeExtension": "祈使句中需用动词原形，不能加to（不定式符号），即使是固定搭配“forget to do”，在祈使句中也需保留原形forget（Don’t forget to do）。"
+    },
+    {
+      "id": "10-3",
+      "type": "选择题",
+      "question": "______ you please provide a detailed explanation of the project timeline? We need to adjust our work plan accordingly.",
+      "options": [
+        "Could",
+        "Do",
+        "Will",
+        "Shall"
+      ],
+      "correctAnswer": "Could",
+      "explanation": "此处为委婉请求的祈使句，Could you please+动词原形表“能否请你……”，语气礼貌且正式，适配职场沟通场景；Do you please用法不规范，Will/Shall语气较直接，故答案为Could。",
+      "knowledgeExtension": "祈使句的委婉表达：1. Could/Would you please+动词原形？（最礼貌）；2. Would you mind+动名词？（Would you mind opening the window?）；3. Please+动词原形（Please pass the salt.）。"
+    },
+    {
+      "id": "10-4",
+      "type": "判断题",
+      "question": "Be not afraid to ask for help when you encounter difficulties in the task; the team is always ready to support you.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "Be动词开头的祈使句，否定式需将not放在Be后（Don’t be+形容词），正确表达为Don’t be afraid，题干中Be not afraid用法错误。",
+      "knowledgeExtension": "祈使句否定式的特殊规则：1. 实义动词开头→Don’t+动词原形（Don’t run.）；2. Be动词开头→Don’t be+表语（Don’t be sad.）；3. 情态动词开头→Never+动词原形（Never give up.）。"
+    },
+    {
+      "id": "10-5",
+      "type": "选择题",
+      "question": "______ strict adherence to the safety regulations in the laboratory, otherwise you may put yourself and others at risk.",
+      "options": [
+        "Ensure",
+        "To ensure",
+        "Ensuring",
+        "Ensures"
+      ],
+      "correctAnswer": "Ensure",
+      "explanation": "此处为肯定祈使句，以动词原形Ensure开头表“确保”，强调实验室安全的必要性；otherwise连接前后句，表“否则”，符合祈使句+并列句的逻辑结构，故答案为Ensure。",
+      "knowledgeExtension": "祈使句与并列句的结合：常用and（表顺承）、or/otherwise（表转折/后果）连接，如Work hard, and you will succeed.（努力工作，你就会成功）；Hurry up, or you will be late.（快点，否则你会迟到）。"
+    },
+    {
+      "id": "10-6",
+      "type": "判断题",
+      "question": "Let’s discuss the problem together and find a solution that satisfies everyone, shall we?",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "Let’s（让我们）开头的祈使句，反义疑问句用shall we，表“征求意见”；句子结构为“Let’s+动词原形+and+动词原形”，符合并列祈使句规则，题干表述正确。",
+      "knowledgeExtension": "祈使句反义疑问句规则：1. Let’s...→shall we？（Let’s go, shall we?）；2. Let us...→will you？（Let us help you, will you?）；3. 普通祈使句→will you？（Open the door, will you?）。"
+    },
+    {
+      "id": "10-7",
+      "type": "选择题",
+      "question": "______ not make any changes to the design without obtaining the client’s approval; it may lead to contract disputes.",
+      "options": [
+        "Do",
+        "Does",
+        "Be",
+        "Never"
+      ],
+      "correctAnswer": "Do",
+      "explanation": "此处为强调否定的祈使句，Do not+动词原形表“千万不要”，语气比Don’t更强烈，适配职场合规场景；Never后直接接动词原形（Never make），无需加not，故答案为Do。",
+      "knowledgeExtension": "祈使句的强调结构：1. 肯定强调→Do+动词原形（Do come early. 一定要早点来）；2. 否定强调→Do not+动词原形（Do not touch it. 千万不要碰它）或Never+动词原形（Never lie. 永远不要撒谎）。"
+    },
+    {
+      "id": "10-8",
+      "type": "判断题",
+      "question": "Please to fill in the application form with accurate information and submit it before the deadline.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "Please开头的祈使句，后面需接动词原形fill，不能加to，正确表达为Please fill in，题干中to fill用法错误。",
+      "knowledgeExtension": "Please的位置：可放在祈使句开头（Please open the door）或结尾（Open the door, please），语气后者更委婉，但无论位置如何，后面均接动词原形。"
+    },
+    {
+      "id": "10-9",
+      "type": "选择题",
+      "question": "______ your voice down during the meeting; some participants are taking notes and need a quiet environment.",
+      "options": [
+        "Keep",
+        "To keep",
+        "Keeping",
+        "Kept"
+      ],
+      "correctAnswer": "Keep",
+      "explanation": "此处为肯定祈使句，Keep+宾语+形容词（Keep your voice down）表“让声音小一点”，符合“动词+宾语+宾语补足语”的祈使句结构；分号后解释原因，逻辑连贯，故答案为Keep。",
+      "knowledgeExtension": "祈使句的复合结构：1. 动词+宾语+形容词（Make the room clean.）；2. 动词+宾语+介词短语（Put the book on the desk.）；3. 动词+宾语+不定式（Ask him to come.）。"
+    },
+    {
+      "id": "10-10",
+      "type": "判断题",
+      "question": "Don’t smoking in the non-smoking area, as there are surveillance cameras and fines will be imposed.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "否定祈使句中，Don’t后需接动词原形smoke，而非动名词smoking，正确表达为Don’t smoke，题干中smoking用法错误。",
+      "knowledgeExtension": "祈使句中动词必须用原形，即使是“smoke”这类可作动名词的词，在祈使句中也不能变形式（如Don’t smoke=No smoking，后者为标语式祈使句）。"
+    },
+    {
+      "id": "10-11",
+      "type": "选择题",
+      "question": "______ it rain tomorrow, please postpone the outdoor activity and inform all participants in advance.",
+      "options": [
+        "Should",
+        "Would",
+        "Will",
+        "Shall"
+      ],
+      "correctAnswer": "Should",
+      "explanation": "此处为虚拟语气的祈使句，Should it rain=If it should rain（万一明天下雨），表“假设性建议”，适配不确定场景的指令；Would/Will/Shall无此虚拟用法，故答案为Should。",
+      "knowledgeExtension": "祈使句与虚拟语气的结合：Should+主语+动词原形（倒装结构），表“万一/倘若”，如Should you need help, call me.（万一你需要帮助，给我打电话）。"
+    },
+    {
+      "id": "10-12",
+      "type": "判断题",
+      "question": "Let him finish the speech first, will you? Interrupting others is impolite in formal occasions.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "Let him/her/it开头的祈使句，反义疑问句用will you，表“请求对方允许”；句子逻辑为“让他先完成演讲，好吗？”，符合礼仪场景，题干表述正确。",
+      "knowledgeExtension": "Let类祈使句反义疑问句区分：1. Let’s（包含说话人）→shall we？；2. Let us/Let him/her/it（不包含说话人）→will you？。"
+    },
+    {
+      "id": "10-13",
+      "type": "选择题",
+      "question": "______ sure to back up all important files before upgrading the system, as data loss may occur unexpectedly.",
+      "options": [
+        "Be",
+        "To be",
+        "Being",
+        "Are"
+      ],
+      "correctAnswer": "Be",
+      "explanation": "此处为Be动词开头的祈使句，Be sure to do sth.表“务必做某事”，强调系统升级前的重要操作；To be/Being/Are均不能用于祈使句开头，故答案为Be。",
+      "knowledgeExtension": "Be动词祈使句的常见搭配：Be careful!（小心！）、Be quiet!（安静！）、Be patient!（耐心点！）、Be sure to do!（务必做！），均以Be原形开头。"
+    },
+    {
+      "id": "10-14",
+      "type": "判断题",
+      "question": "Do not to hesitate to contact the customer service if you have any questions about the product’s usage.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "否定强调祈使句Do not后需接动词原形hesitate，不能加to，正确表达为Do not hesitate，题干中to hesitate用法错误。",
+      "knowledgeExtension": "“hesitate to do”为固定搭配，但在祈使句中，hesitate需用原形，to do部分保留（Do not hesitate to contact=Don’t hesitate to contact）。"
+    },
+    {
+      "id": "10-15",
+      "type": "选择题",
+      "question": "______ no one disturb the meeting room during the negotiation; it is a confidential discussion between the two parties.",
+      "options": [
+        "Let",
+        "Make",
+        "Ensure",
+        "Allow"
+      ],
+      "correctAnswer": "Let",
+      "explanation": "此处为Let+宾语+动词原形的祈使句，Let no one disturb表“让没有人打扰”，强调会议的保密性；Make/Ensure/Allow后接宾语时需用不定式（Make no one disturb错误，应为Make no one disturb=Ensure that no one disturbs），故答案为Let。",
+      "knowledgeExtension": "Let+宾语+动词原形的结构：表“让某人/某物做某事”，如Let the children play.（让孩子们玩）；Let the door open.（让门开着），区别于Make+宾语+动词原形（表“迫使”）。"
+    },
+    {
+      "id": "10-16",
+      "type": "判断题",
+      "question": "Work together with your teammates, and you will complete the task more efficiently than working alone.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "祈使句+and+陈述句的结构，表“做某事就会产生某种结果”，Work together为祈使句（动词原形开头），and连接的后半句用一般将来时表结果，逻辑通顺，题干表述正确。",
+      "knowledgeExtension": "该结构的同义转换：If you work together with your teammates, you will complete...（条件状语从句），祈使句形式更简洁有力，常用于鼓励或指令场景。"
+    },
+    {
+      "id": "10-17",
+      "type": "选择题",
+      "question": "______ never compromise on quality for the sake of speed; long-term success depends on reliable products.",
+      "options": [
+        "Do",
+        "Be",
+        "Never",
+        "Always"
+      ],
+      "correctAnswer": "Do",
+      "explanation": "此处为双重强调的祈使句，Do never+动词原形表“绝对不要”，语气比Never更强烈，适配企业经营的核心指令；Be后需接形容词（Be never late错误），Never/Always后直接接动词原形（无需加Do），但此处需强化语气，故答案为Do。",
+      "knowledgeExtension": "祈使句的语气强化：1. 肯定强化→Do+always+动词原形（Do always keep your promise. 一定要信守承诺）；2. 否定强化→Do+never+动词原形（Do never cheat. 绝对不要作弊）。"
+    },
+    {
+      "id": "10-18",
+      "type": "判断题",
+      "question": "Would you mind to pass me the document on the desk? I need to check the key data immediately.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "false",
+      "explanation": "Would you mind后需接动名词，pass应改为passing，正确表达为Would you mind passing，题干中to pass用法错误。",
+      "knowledgeExtension": "Would you mind+动名词的结构：表“你介意做某事吗？”，动名词前可加your（Would you mind your passing），但常用省略形式，核心是不能接不定式to do。"
+    },
+    {
+      "id": "10-19",
+      "type": "选择题",
+      "question": "______ the meeting to order, please; all participants have arrived and the agenda needs to be followed strictly.",
+      "options": [
+        "Call",
+        "To call",
+        "Calling",
+        "Called"
+      ],
+      "correctAnswer": "Call",
+      "explanation": "此处为固定搭配的祈使句，Call the meeting to order表“宣布会议开始”，为职场正式场景的常用指令；To call/Calling/Called均不能用于祈使句开头，故答案为Call。",
+      "knowledgeExtension": "祈使句中的固定短语：Call...to order（宣布开始）、Take notes（记笔记）、Follow the agenda（遵循议程）、Submit the report（提交报告），这类短语需整体记忆，保持动词原形开头。"
+    },
+    {
+      "id": "10-20",
+      "type": "判断题",
+      "question": "Don’t be worried about the budget; we have already prepared sufficient funds for the project.",
+      "options": [
+        "true",
+        "false"
+      ],
+      "correctAnswer": "true",
+      "explanation": "否定祈使句Don’t be+形容词（worried）表“不要担心”，worried为形容词（be worried about=worry about），符合“Don’t be+表语”的结构，题干表述正确。",
+      "knowledgeExtension": "形容词化的过去分词可用于Be动词祈使句中，如Don’t be disappointed.（不要失望）、Don’t be discouraged.（不要气馁），这类词需注意与动词原形的区别（Don’t worry=Don’t be worried）。"
+    }
+  ]
+}

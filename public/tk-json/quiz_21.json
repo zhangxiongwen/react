@@ -1,0 +1,187 @@
+{
+  "title": "过去进行时（结构 was/were+doing，表过去某时正在进行）",
+  "knowledgePoint": "过去进行时的核心结构（was/were+doing）、时间状语搭配（when/while/as/at that moment/this time last week等）、与一般过去时的区别（持续动作vs短暂动作）、否定句与疑问句形式、多场景应用（描述过去场景背景、同时进行的动作、解释过去动作原因）",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "21-1",
+      "type": "选择题",
+      "question": "— What ______ you ______ at 10 p.m. last night? — I ______ a video call with my friend who lives abroad. We ______ about our recent lives for over an hour.",
+      "options": ["did; do; had; talked", "were; doing; was having; talked", "were; doing; was having; were talking", "did; do; was having; were talking"],
+      "correctAnswer": "were; doing; was having; were talking",
+      "explanation": "第一空“at 10 p.m. last night”是过去具体时刻，用过去进行时were doing表“当时正在做”；第二空“视频通话”是持续动作，用was having；第三空“聊天”是与视频通话同步进行的持续动作，用were talking，符合“同时进行的持续动作”规则。",
+      "knowledgeExtension": "两个持续动作同时发生时，均用过去进行时；短暂动作发生时，持续动作常用过去进行时（如When the phone rang, I was reading）。"
+    },
+    {
+      "id": "21-2",
+      "type": "判断题",
+      "question": "While the construction workers were building the bridge, a sudden storm hit the area—they had to stop working immediately to ensure safety.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "while引导持续动作（were building），主句用一般过去时（hit）表短暂动作，符合“持续动作进行时，短暂动作发生”的搭配规则，语义逻辑通顺。",
+      "knowledgeExtension": "while从句常接过去进行时（持续动作），主句接一般过去时（短暂动作）；when从句可接短暂动作（一般过去时）或持续动作（过去进行时）。"
+    },
+    {
+      "id": "21-3",
+      "type": "选择题",
+      "question": "She ______ not ______ TV when her parents came back—she ______ her homework carefully in her room.",
+      "options": ["was; watching; did", "did; watch; was doing", "was; watching; was doing", "did; watch; did"],
+      "correctAnswer": "was; watching; was doing",
+      "explanation": "第一空“父母回来时没在看电视”，用过去进行时的否定式was not watching；第二空“当时正在做作业”，用was doing，均表“过去某时正在进行的动作”，符合语境。",
+      "knowledgeExtension": "过去进行时的否定结构：wasn’t/weren’t+doing，用于否定“过去某时正在进行的动作”。"
+    },
+    {
+      "id": "21-4",
+      "type": "判断题",
+      "question": "This time last month, we traveled in Yunnan—we visited Lijiang and Dali, and enjoyed the beautiful scenery there.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“this time last month”是过去进行时的标志，表“上个月此时正在做”，需用were traveling；题干用一般过去时traveled表“已完成的动作”，语法错误。",
+      "knowledgeExtension": "this time last week/month/year、at that moment等时间状语，通常搭配过去进行时，表“过去某一时刻/时间段正在进行的动作”。"
+    },
+    {
+      "id": "21-5",
+      "type": "选择题",
+      "question": "— Why ______ you ______ to my call at 9 a.m. yesterday? — Sorry, I ______ in a meeting and didn’t hear the phone. The meeting ______ for nearly two hours.",
+      "options": ["didn’t; answer; was; lasted", "weren’t; answering; was; was lasting", "didn’t; answer; was; was lasting", "weren’t; answering; was; lasted"],
+      "correctAnswer": "didn’t; answer; was; lasted",
+      "explanation": "第一空“没接电话”是短暂动作，用一般过去时didn’t answer；第二空“当时正在开会”是持续动作，用was in a meeting（be动词表状态，等效于was having a meeting）；第三空“会议持续两小时”是持续的结果，用一般过去时lasted（last为状态动词，不用于进行时）。",
+      "knowledgeExtension": "状态动词（last/have/know等）不用于进行时，表“过去持续的状态”直接用一般过去时。"
+    },
+    {
+      "id": "21-6",
+      "type": "判断题",
+      "question": "When I passed the classroom, the students were having a discussion—they were talking about the novel they had read the week before.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "when引导短暂动作（passed），主句用过去进行时（were having）表持续动作；后半句“正在讨论”是同步进行的持续动作，用were talking，符合“过去进行时表同步持续动作”的规则。",
+      "knowledgeExtension": "过去进行时可用于描述过去某一场景中同时进行的多个持续动作，让语境更生动。"
+    },
+    {
+      "id": "21-7",
+      "type": "选择题",
+      "question": "The writer ______ a new book when he ______ the award for his previous work. He ______ the book for six months by then.",
+      "options": ["wrote; won; had written", "was writing; won; had been writing", "was writing; was winning; had written", "wrote; was winning; had been writing"],
+      "correctAnswer": "was writing; won; had been writing",
+      "explanation": "第一空“获奖时正在写新书”，用was writing表持续动作；第二空“获奖”是短暂动作，用won；第三空“到那时已写了六个月”，用过去完成进行时had been writing表“过去的过去持续的动作”，符合时态逻辑。",
+      "knowledgeExtension": "过去进行时与过去完成进行时的区别：过去进行时表“过去某时正在进行”，过去完成进行时表“过去某动作之前持续进行”。"
+    },
+    {
+      "id": "21-8",
+      "type": "判断题",
+      "question": "They were not planning the trip when I met them—they were talking about their work projects instead.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "过去进行时的否定式were not planning表“当时没在计划旅行”，后半句were talking表“当时正在谈论工作”，符合“同一时间点进行不同持续动作”的语境，语法正确。",
+      "knowledgeExtension": "同一主语在同一过去时刻，可通过过去进行时的肯定与否定，对比“正在做”与“没在做”的动作。"
+    },
+    {
+      "id": "21-9",
+      "type": "选择题",
+      "question": "— ______ your brother ______ basketball with his friends at 3 p.m. yesterday? — No, he ______ at home. He ______ his computer at that time.",
+      "options": ["Was; playing; stayed; fixed", "Did; play; was staying; was fixing", "Was; playing; was staying; was fixing", "Did; play; stayed; was fixing"],
+      "correctAnswer": "Was; playing; was staying; was fixing",
+      "explanation": "第一空“at 3 p.m. yesterday”用过去进行时的疑问句Was; playing；第二空“当时在家”是持续状态，用was staying；第三空“当时正在修电脑”是持续动作，用was fixing，均符合过去进行时的用法。",
+      "knowledgeExtension": "过去进行时的一般疑问句结构：Was/Were+主语+doing+其他？（如Were they singing when you arrived?）"
+    },
+    {
+      "id": "21-10",
+      "type": "判断题",
+      "question": "At 8 o’clock last Sunday morning, my family was preparing breakfast together—my mother cooked, my father fried eggs, and I made coffee.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "“At 8 o’clock last Sunday morning”表过去具体时刻，全家同步进行的持续动作均需用过去进行时，应为my mother was cooking, my father was frying eggs, and I was making coffee，题干用一般过去时，语法错误。",
+      "knowledgeExtension": "描述过去某一时刻全家、团队等同步进行的多个持续动作，均需用过去进行时，保持时态一致。"
+    },
+    {
+      "id": "21-11",
+      "type": "选择题",
+      "question": "While the band ______ on stage, the audience ______ and cheering loudly. The concert ______ a great success.",
+      "options": ["played; clapped; was", "was playing; were clapping; was", "was playing; clapped; was", "played; were clapping; was"],
+      "correctAnswer": "was playing; were clapping; was",
+      "explanation": "while引导持续动作（was playing），主句“观众鼓掌欢呼”是同步持续动作，用were clapping；第三空“音乐会很成功”是状态，用was，符合“持续动作+同步持续动作”的搭配。",
+      "knowledgeExtension": "集体名词（audience/team/family等）作主语时，过去进行时的be动词用were（表成员个体动作）或was（表集体整体），此处表观众个体鼓掌，用were。"
+    },
+    {
+      "id": "21-12",
+      "type": "判断题",
+      "question": "She was reading a newspaper when she was seeing a familiar face in the crowd—she put down the paper and went to say hello.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "see是短暂性感官动词，不用于进行时，“看到熟悉的人”需用一般过去时saw，题干用was seeing，语法错误。",
+      "knowledgeExtension": "短暂性动词（see/hear/arrive/leave等）不用于进行时，表“过去某时发生的短暂动作”直接用一般过去时。"
+    },
+    {
+      "id": "21-13",
+      "type": "选择题",
+      "question": "— What ______ happening when you ______ at the scene? — A group of volunteers ______ food and water to the homeless people. They ______ for hours before we arrived.",
+      "options": ["was; arrived; gave; worked", "was; arrived; were giving; had been working", "were; arrived; were giving; had worked", "were; arrived; gave; had been working"],
+      "correctAnswer": "was; arrived; were giving; had been working",
+      "explanation": "第一空“what was happening”表“当时正在发生什么”；第二空“到达”是短暂动作，用arrived；第三空“分发食物”是持续动作，用were giving；第四空“到达前已工作数小时”，用过去完成进行时had been working，符合时态逻辑。",
+      "knowledgeExtension": "过去完成进行时用于强调“在过去某动作之前持续进行的动作”，常与before/when引导的一般过去时从句搭配。"
+    },
+    {
+      "id": "21-14",
+      "type": "判断题",
+      "question": "This time last year, I was studying abroad in Spain—I was taking Spanish classes and traveling around the country on weekends.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "“this time last year”搭配过去进行时was studying，表“去年此时正在留学”；“上课”“旅行”是留学期间持续进行的动作，用was taking和traveling（省略was，避免重复），语法正确，语义连贯。",
+      "knowledgeExtension": "过去进行时可用于描述过去某一时间段内持续进行的动作或状态，常搭配“for+时间段”“this time+过去时间”等状语。"
+    },
+    {
+      "id": "21-15",
+      "type": "选择题",
+      "question": "He ______ his bike to work when it ______ to rain. He ______ his raincoat, but it was too late—he got wet all over.",
+      "options": ["rode; started; was looking for", "was riding; started; looked for", "was riding; started; was looking for", "rode; was starting; looked for"],
+      "correctAnswer": "was riding; started; was looking for",
+      "explanation": "第一空“骑自行车上班”是持续动作，用was riding；第二空“开始下雨”是短暂动作，用started；第三空“当时正在找雨衣”是持续动作，用was looking for，符合“持续动作进行时，短暂动作发生，同时进行另一持续动作”的逻辑。",
+      "knowledgeExtension": "多个动作叠加时，持续动作多用过去进行时，短暂动作多用一般过去时，清晰区分动作类型。"
+    },
+    {
+      "id": "21-16",
+      "type": "判断题",
+      "question": "Were you listening to the teacher carefully when she was explaining the key points? Most students were taking notes at that time.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "过去进行时的一般疑问句Were you listening，搭配when引导的持续动作was explaining，后半句were taking notes表同步持续动作，符合句型规则和语境。",
+      "knowledgeExtension": "when引导的从句若为持续动作（过去进行时），主句也可用过去进行时，表“两个动作同步持续”。"
+    },
+    {
+      "id": "21-17",
+      "type": "选择题",
+      "question": "The police ______ the area when they ______ a suspicious car. The driver ______ when they approached, so they stopped to question him.",
+      "options": ["patrolled; found; wasn’t moving", "were patrolling; found; wasn’t moving", "were patrolling; were finding; didn’t move", "patrolled; were finding; wasn’t moving"],
+      "correctAnswer": "were patrolling; found; wasn’t moving",
+      "explanation": "第一空“巡逻”是持续动作，用were patrolling；第二空“发现可疑车辆”是短暂动作，用found；第三空“当时没在动”是持续状态，用wasn’t moving，符合动作类型区分规则。",
+      "knowledgeExtension": "find/see/hear等短暂性感官动词，不用于进行时，表“过去发现/看到/听到”直接用一般过去时。"
+    },
+    {
+      "id": "21-18",
+      "type": "判断题",
+      "question": "I was not watching TV last night—I was studying for the exam all evening. I had a lot of material to review.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "过去进行时的否定式was not watching，搭配“all evening”表“整晚没在看电视”，后半句was studying表“整晚一直在学习”，符合“过去某时间段持续进行的动作”的用法，逻辑通顺。",
+      "knowledgeExtension": "“all+时间段”（all morning/all night）搭配过去进行时，可强调“整个时间段内一直在做某事”。"
+    },
+    {
+      "id": "21-19",
+      "type": "选择题",
+      "question": "— ______ your parents ______ when you got home yesterday? — Yes, my mother ______ dinner and my father ______ the news on TV.",
+      "options": ["Were; busy; cooked; watched", "Were; doing; was cooking; was watching", "Did; do; cooked; watched", "Did; busy; was cooking; was watching"],
+      "correctAnswer": "Were; doing; was cooking; was watching",
+      "explanation": "第一空询问“当时正在做什么”，用Were; doing；第二空“做饭”、第三空“看新闻”是同步持续动作，用was cooking和was watching，符合过去进行时的用法。",
+      "knowledgeExtension": "询问过去某时正在做什么，优先用过去进行时的疑问句（Were you doing...?），而非一般过去时（Did you do...?）。"
+    },
+    {
+      "id": "21-20",
+      "type": "判断题",
+      "question": "When the fire broke out, the residents were sleeping—they were woken up by the alarm and escaped safely.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "when引导短暂动作（broke out），主句用过去进行时were sleeping表“当时正在睡觉”，符合“突发短暂动作发生时，人们正在进行的持续动作”的语境，语法正确。",
+      "knowledgeExtension": "描述突发事故、灾害等场景时，常用“when+短暂动作（一般过去时），主句+持续动作（过去进行时）”的结构，突出场景的突发性。"
+    }
+  ]
+}

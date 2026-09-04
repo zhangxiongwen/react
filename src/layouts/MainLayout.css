@@ -1,0 +1,17 @@
+.MainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, #d9ebe1 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, #f3e6d4 0%, transparent 50%),
+    #fffaf3;
+}
+
+.MainLayout-main {
+  flex: 1;
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}

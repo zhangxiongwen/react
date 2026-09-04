@@ -1,0 +1,187 @@
+{
+  "title": "状语从句（时间when/while，条件if，原因because）",
+  "knowledgePoint": "时间状语从句（when/while的用法区别）、条件状语从句（if的时态规则）、原因状语从句（because的逻辑适配）、状语从句的主谓一致、主句与从句的时态呼应",
+  "difficulty": "中等偏上",
+  "questions": [
+    {
+      "id": "29-1",
+      "type": "选择题",
+      "question": "______ the research team was analyzing the experimental data, a sudden power outage occurred; ______ they had no backup, they had to restart the analysis the next day. ______ the delay was unexpected, it gave them time to refine their methodology.",
+      "options": ["While; Because; Though", "When; If; Because", "While; If; Though", "When; Because; Because"],
+      "correctAnswer": "While; Because; Though",
+      "explanation": "第一空“分析数据”是持续动作，用While引导时间状语从句；第二空“无备份”是“重启分析”的原因，用Because引导原因状语从句；第三空“延迟意外”与“优化方法”是转折关系，用Though（补充逻辑），符合从句功能适配规则。",
+      "knowledgeExtension": "While引导持续动作，When可引导持续或短暂动作；Because表核心原因，不能与so同时使用。"
+    },
+    {
+      "id": "29-2",
+      "type": "判断题",
+      "question": "If you will practice speaking English every day, you will make great progress. Because consistent effort is the key to language learning.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "if引导的条件状语从句中，主句用一般将来时，从句需用一般现在时表将来，“will practice”应为“practice”；Because引导原因状语从句用法正确，核心错误为从句时态误用。",
+      "knowledgeExtension": "条件状语从句“主将从现”规则：主句用will/be going to+动词原形，从句用一般现在时（如If it rains, we will stay at home）。"
+    },
+    {
+      "id": "29-3",
+      "type": "选择题",
+      "question": "She was working on her thesis ______ she received a call from her supervisor; ______ the feedback was positive, she felt more confident about her work. ______ she finishes the final revision, she will submit it to the journal.",
+      "options": ["when; Because; When", "while; If; While", "when; If; Because", "while; Because; If"],
+      "correctAnswer": "when; Because; When",
+      "explanation": "第一空“接电话”是短暂动作，用When引导时间状语从句；第二空“反馈积极”是“更自信”的原因，用Because引导原因状语从句；第三空“完成修订”是“提交期刊”的时间触发点，用When引导，符合动作类型与逻辑适配。",
+      "knowledgeExtension": "When可引导短暂动作（如receive a call），While仅引导持续动作（如work on thesis），需根据动作持续性选择连词。"
+    },
+    {
+      "id": "29-4",
+      "type": "判断题",
+      "question": "While he was driving to the airport, he listened to a podcast about artificial intelligence. Because he wanted to learn more about the field, he took notes during the journey.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "While引导持续动作（driving），时态为过去进行时，符合用法；Because引导“听播客”的原因（想学习），逻辑连贯，从句时态与主句一致，语法正确。",
+      "knowledgeExtension": "While引导的时间状语从句与主句动作同时进行时，主句常用一般过去时，从句用过去进行时，强调“持续动作中发生另一动作”。"
+    },
+    {
+      "id": "29-5",
+      "type": "选择题",
+      "question": "______ the weather is fine tomorrow, we will go hiking in the mountains; ______ it rains, we will visit the art exhibition instead. We have prepared both plans ______ we don’t want to waste the weekend.",
+      "options": ["If; If; because", "When; While; because", "If; When; though", "While; If; though"],
+      "correctAnswer": "If; If; because",
+      "explanation": "第一空“天气好”是“去徒步”的条件，用If引导；第二空“下雨”是“参观艺术展”的条件，用If引导；第三空“准备两套方案”的原因是“不想浪费周末”，用because引导，符合条件与原因逻辑。",
+      "knowledgeExtension": "多个if条件从句可并列，分别对应不同结果；because引导的原因状语从句可置于句末，补充说明主句动作的目的或缘由。"
+    },
+    {
+      "id": "29-6",
+      "type": "判断题",
+      "question": "Because he has a lot of work to do, he will not attend the party tonight. When he finishes his work, he will call to apologize to the host.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "Because引导“不参加派对”的原因（工作多），时态为现在完成时表“现有状态”；When引导“完成工作”的时间点，遵循“主将从现”（主句will call，从句finishes），逻辑与语法均正确。",
+      "knowledgeExtension": "原因状语从句的时态可根据实际语境调整，若原因是“当前存在的状态”，用现在完成时或一般现在时；时间状语从句需严格遵循“主将从现”。"
+    },
+    {
+      "id": "29-7",
+      "type": "选择题",
+      "question": "______ I was reading the novel, I suddenly realized the solution to the problem; ______ the plot was complex, it inspired me to think differently. I will recommend the book to others ______ it offers valuable insights.",
+      "options": ["While; Though; because", "When; Because; though", "While; Because; when", "When; Though; because"],
+      "correctAnswer": "While; Though; because",
+      "explanation": "第一空“阅读小说”是持续动作，用While引导；第二空“情节复杂”与“启发思考”是转折关系，用Though（补充逻辑）；第三空“推荐书籍”的原因是“提供宝贵见解”，用because引导，符合动作类型与逻辑适配。",
+      "knowledgeExtension": "Though表转折，可与but语义替换，但不能同时使用（如Though it is hard, I will try 不能说Though it is hard, but I will try）。"
+    },
+    {
+      "id": "29-8",
+      "type": "判断题",
+      "question": "If you study hard, you will pass the exam easily. When you receive the results, please share them with me as soon as possible.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "if条件从句遵循“主将从现”（主句will pass，从句study）；When引导时间状语从句，“as soon as possible”强化时间紧迫性，逻辑连贯，语法正确。",
+      "knowledgeExtension": "“as soon as”可替代When引导时间状语从句，表“一……就……”（如As soon as he arrives, we will start），语气更急切。"
+    },
+    {
+      "id": "29-9",
+      "type": "选择题",
+      "question": "______ the company launches the new product, it will invest heavily in marketing; ______ consumer demand is high, the product is expected to sell well. ______ there are some potential risks, the team is confident in its success.",
+      "options": ["When; Because; Though", "If; When; Because", "While; Because; If", "When; If; Though"],
+      "correctAnswer": "When; Because; Though",
+      "explanation": "第一空“推出新产品”是“投入营销”的时间点，用When引导；第二空“需求高”是“销量好”的原因，用Because引导；第三空“有潜在风险”与“有信心成功”是转折关系，用Though引导，符合逻辑链。",
+      "knowledgeExtension": "多个状语从句并列时，需按“时间→原因→转折”的逻辑顺序排列，使语义更流畅，符合表达习惯。"
+    },
+    {
+      "id": "29-10",
+      "type": "判断题",
+      "question": "While they were preparing for the conference, they encountered several technical issues. If they can’t solve them in time, they will have to postpone the event.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "While引导持续动作（preparing），时态为过去进行时；If条件从句遵循“主将从现”（主句will postpone，从句can’t solve），逻辑连贯，语法正确，符合“准备过程中遇问题→可能推迟”的语境。",
+      "knowledgeExtension": "条件状语从句中，若主句是将来时，从句可用一般现在时或情态动词（can/will），但核心是“从句表将来，用现在时”。"
+    },
+    {
+      "id": "29-11",
+      "type": "选择题",
+      "question": "______ I met her at the conference last year, we have kept in touch regularly; ______ she is an expert in her field, I often ask her for advice. ______ she is very busy, she always responds to my messages promptly.",
+      "options": ["Since; Because; Though", "When; If; Because", "Since; If; Though", "When; Because; If"],
+      "correctAnswer": "Since; Because; Though",
+      "explanation": "第一空“去年见面”是“保持联系”的时间起点，用Since引导（表“自从……以来”）；第二空“是专家”是“请教她”的原因，用Because引导；第三空“很忙”与“及时回复”是转折关系，用Though引导，符合逻辑。",
+      "knowledgeExtension": "Since引导时间状语从句时，主句常用现在完成时（如Since we met, we have kept in touch），强调动作持续到现在。"
+    },
+    {
+      "id": "29-12",
+      "type": "判断题",
+      "question": "Because the traffic was heavy, he arrived late for the meeting. While he was explaining the reason, the manager interrupted him politely.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "Because引导“迟到”的原因（交通拥堵），时态为一般过去时；While引导持续动作（explaining），主句用一般过去时（interrupted），符合“持续动作中发生另一动作”的用法，语法正确。",
+      "knowledgeExtension": "原因状语从句描述过去的原因时，用一般过去时；While引导的过去进行时从句，常与一般过去时主句搭配，突出动作的同时性。"
+    },
+    {
+      "id": "29-13",
+      "type": "选择题",
+      "question": "______ you don’t submit the application before the deadline, you will miss the opportunity; ______ this is your last chance, you should double-check all the details. I will help you ______ I have some free time this afternoon.",
+      "options": ["If; Because; when", "When; If; because", "If; When; though", "While; Because; if"],
+      "correctAnswer": "If; Because; when",
+      "explanation": "第一空“不按时提交”是“错过机会”的条件，用If引导；第二空“最后机会”是“仔细核对”的原因，用Because引导；第三空“有空闲”是“提供帮助”的时间点，用when引导，符合条件→原因→时间的逻辑。",
+      "knowledgeExtension": "if引导否定条件从句时，主句常用will+动词原形表“负面结果”；when引导的时间状语从句，可置于句末，补充说明动作发生的具体场景。"
+    },
+    {
+      "id": "29-14",
+      "type": "判断题",
+      "question": "When the rain stopped, we went out for a walk. Because the air was fresh, we decided to walk to the park instead of taking a bus.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "When引导短暂动作（rain stopped），主句用一般过去时（went out）；Because引导“步行去公园”的原因（空气清新），逻辑连贯，时态一致，语法正确。",
+      "knowledgeExtension": "When引导短暂动作的时间状语从句，主句与从句均用一般过去时，强调“动作一结束，另一动作立即发生”。"
+    },
+    {
+      "id": "29-15",
+      "type": "选择题",
+      "question": "______ the team was brainstorming ideas, one member proposed a creative solution; ______ the solution was feasible, they decided to adopt it immediately. They worked day and night ______ they could finish the project on time.",
+      "options": ["While; Because; so that", "When; If; because", "While; If; so that", "When; Because; because"],
+      "correctAnswer": "While; Because; so that",
+      "explanation": "第一空“头脑风暴”是持续动作，用While引导；第二空“方案可行”是“采纳”的原因，用Because引导；第三空“日夜工作”的目的是“按时完成项目”，用so that引导目的状语从句（补充逻辑），符合语境。",
+      "knowledgeExtension": "so that表“为了……”，常与can/could搭配（如work hard so that we could succeed），可视为原因状语从句的延伸，强调“动作的目的”。"
+    },
+    {
+      "id": "29-16",
+      "type": "判断题",
+      "question": "If she will accept the job offer, she will move to Beijing next month. Because the company offered her a good salary and benefits.",
+      "options": ["true", "false"],
+      "correctAnswer": "false",
+      "explanation": "if条件从句遵循“主将从现”，“will accept”应为“accept”；Because引导原因状语从句（薪资福利好）用法正确，但条件从句时态错误是核心问题。",
+      "knowledgeExtension": "if引导的条件从句中，无论主句是否为将来时，从句都不能用will，需用一般现在时表将来，这是不可突破的语法规则。"
+    },
+    {
+      "id": "29-17",
+      "type": "选择题",
+      "question": "______ I was traveling in Europe, I visited many historical sites; ______ I was interested in art, I spent a lot of time in museums. ______ the trip was tiring, it was one of the most memorable experiences of my life.",
+      "options": ["While; Because; Though", "When; If; Because", "While; If; Though", "When; Because; If"],
+      "correctAnswer": "While; Because; Though",
+      "explanation": "第一空“欧洲旅行”是持续动作，用While引导；第二空“对艺术感兴趣”是“花时间在博物馆”的原因，用Because引导；第三空“旅行累”与“难忘”是转折关系，用Though引导，符合逻辑链。",
+      "knowledgeExtension": "While引导的时间状语从句可涵盖整个持续过程（如traveling in Europe），主句可描述过程中的多个动作（visited sites/spent time in museums）。"
+    },
+    {
+      "id": "29-18",
+      "type": "判断题",
+      "question": "Because he didn’t study for the exam, he failed it. When he realized his mistake, he promised to study harder next time.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "Because引导“考试失败”的原因（没复习），时态为一般过去时；When引导“意识到错误”的时间点，主句用一般过去时（promised），逻辑连贯，语法正确，符合“犯错→反思”的语境。",
+      "knowledgeExtension": "原因状语从句描述过去的负面原因时，主句常用一般过去时表“负面结果”，时间状语从句承接后续的“反思或行动”。"
+    },
+    {
+      "id": "29-19",
+      "type": "选择题",
+      "question": "______ the temperature drops below zero, the water will freeze; ______ this is a natural phenomenon, it is widely used in many fields. Scientists are researching new ways to use it ______ it can benefit humanity more.",
+      "options": ["When; Because; so that", "If; When; because", "When; If; so that", "If; Because; because"],
+      "correctAnswer": "When; Because; so that",
+      "explanation": "第一空“温度低于零度”是“水结冰”的时间/条件触发点，用When引导；第二空“自然现象”是“广泛应用”的原因，用Because引导；第三空“研究新方法”的目的是“更多造福人类”，用so that引导目的状语从句，符合逻辑。",
+      "knowledgeExtension": "When可兼表“时间”与“条件”（如When it rains, the ground gets wet），此时与if语义相近，但更侧重“自然发生的触发条件”。"
+    },
+    {
+      "id": "29-20",
+      "type": "判断题",
+      "question": "While she was learning to play the piano, she practiced for two hours every day. If she keeps practicing, she will become a good pianist in the future.",
+      "options": ["true", "false"],
+      "correctAnswer": "true",
+      "explanation": "While引导持续动作（learning to play the piano），主句用一般过去时（practiced）表“过去的习惯”；If条件从句遵循“主将从现”（主句will become，从句keeps），逻辑连贯，语法正确，符合“学习过程→未来预期”的语境。",
+      "knowledgeExtension": "While引导的时间状语从句描述过去的学习、工作等持续过程时，主句常用“一般过去时+for+时间段”表“过去的持续动作”。"
+    }
+  ]
+}
