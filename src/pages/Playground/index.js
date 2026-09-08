@@ -48,8 +48,9 @@ function Playground() {
         <div className="Playground-sidebarHead">
           <h1 className="Playground-sidebarTitle">代码演练台</h1>
           <p className="Playground-sidebarDesc">
-            共 {playgroundDemos.length} 个布局练习，从基础到聊天 / Tab /
-            轮播 / 拖拽。点选即可填入编辑器，支持 HTML / CSS / JS。
+            共 {playgroundDemos.length} 个练习，从基础布局到聊天 / Tab / 轮播 /
+            拖拽，以及伪类与伪元素实战。点选即可填入编辑器，支持 HTML / CSS /
+            JS。
           </p>
           <label className="Playground-searchLabel">
             <span className="Playground-srOnly">搜索 Demo</span>

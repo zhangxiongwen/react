@@ -15,8 +15,11 @@ function buildSrcDoc(code) {
     return `<!DOCTYPE html><html><body style="margin:16px;font:14px/1.6 system-ui;color:#7a8a80;">（暂无内容，在左侧开始编写）</body></html>`
   }
 
-  const looksComplete =
-    /<!DOCTYPE/i.test(trimmed) || /<html[\s>]/i.test(trimmed)
+  // 判断是不是「整篇文档」：跳过开头的空白与 HTML 注释后，看首个标签
+  // 不能在全文里搜 <html，否则代码注释里提到 <html> 也会被当成完整文档，
+  // 于是跳过下面的包装外壳、丢掉基础样式
+  const firstTag = trimmed.replace(/^(?:\s|<!--[\s\S]*?-->)+/, '')
+  const looksComplete = /^<!DOCTYPE/i.test(firstTag) || /^<html[\s>]/i.test(firstTag)
 
   if (looksComplete) return trimmed
 
@@ -135,6 +138,9 @@ function CodePlayground({
     isFirstDebounceRef.current = true
     setCode(starter)
     setPreviewCode(starter)
+    // 必须强制重载 iframe：用户可能只在预览里点过按钮（代码没变），
+    // 这时 srcDoc 不变、iframe 不会重载，点重置就会像「没反应」
+    setPreviewKey((k) => k + 1)
   }
 
   function handleKeyDown(event) {

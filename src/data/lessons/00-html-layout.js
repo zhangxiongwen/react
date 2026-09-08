@@ -1102,6 +1102,928 @@ img[alt] { outline: 1px dashed #ccc; }`,
       },
     },
     {
+      id: 'css-pseudo',
+      title: 'CSS 伪类与伪元素详解（重点）',
+      summary:
+        '状态类 / 位置类 / 表单类伪类逐个讲透；nth-child 公式、:not/:is/:has；::before/::after 与 content；10 个可编辑 Demo',
+      content: {
+        sections: [
+          {
+            type: 'tip',
+            title: '一句话记住',
+            body: '**伪类（单冒号 `:`）= 选中「处于某种状态或某个位置」的真实元素**，比如 `:hover`（鼠标悬停）、`:nth-child(2)`（第 2 个孩子）。\n\n**伪元素（双冒号 `::`）= 凭空造一个 HTML 里不存在的虚拟节点**，比如 `::before`、`::after`，必须写 `content` 才会出现。\n\n它们的价值：不写一行 JS、不多写一个标签，就能做出交互反馈和装饰效果。',
+          },
+          {
+            type: 'text',
+            title: '1. 是什么：普通选择器不够用的时候',
+            body: '普通选择器（`div`、`.card`、`#app`）只能按「标签名 / class / id」来选人——这些信息写死在 HTML 里，页面加载后就不变了。\n\n但真实页面里有大量**动态状态**和**位置关系**：\n• 鼠标正停在这个按钮上（状态）\n• 输入框刚刚被 Tab 键聚焦（状态）\n• 复选框现在是勾选的（状态）\n• 这一行是列表里的第 3 行（位置）\n• 这是列表最后一项，不该再画分割线（位置）\n\n这些「加载后才知道、还会变来变去」的情况，HTML 里没有对应的 class 可以选。伪类就是浏览器替你维护的一批**虚拟 class**：状态一变，样式自动跟着变。\n\n伪元素解决另一个问题：有些内容纯粹是装饰（分隔符 `/`、必填星号 `*`、装饰短线），为它们在 HTML 里写一堆 `<span>` 既啰嗦又污染语义。伪元素让你在 CSS 里「就地生成」这些装饰。',
+          },
+          {
+            type: 'text',
+            title: '2. 为什么是一个冒号 / 两个冒号',
+            body: '这是**历史遗留**，不是规则冲突：\n\nCSS2 时代，伪类和伪元素都写一个冒号（`:hover`、`:before`）。CSS3 为了区分「选状态」和「造节点」，规定**伪元素改用两个冒号**（`::before`）。\n\n所以今天的约定是：\n• 伪类 → 一个冒号：`:hover`、`:focus`、`:nth-child()`、`:checked`、`:not()`\n• 伪元素 → 两个冒号：`::before`、`::after`、`::first-letter`、`::placeholder`、`::marker`\n\n为了兼容老页面，浏览器至今仍认识 `:before` 这种老写法，但**新代码一律写 `::before`**，一眼就能看出「这是在造虚拟节点」。\n\n新增的伪元素（如 `::placeholder`、`::marker`）**只支持双冒号**，写成单冒号无效。',
+          },
+          {
+            type: 'text',
+            title: '3. 伪类分三大类（先建立地图）',
+            body: '几十个伪类不用死记，按用途分成三类就清楚了：\n\n**① 状态 / 交互类** —— 跟着用户操作变\n`:hover` 悬停、`:active` 按下、`:focus` 聚焦、`:focus-visible` 键盘聚焦、`:focus-within` 内部有元素聚焦、`:link` 未访问链接、`:visited` 已访问链接、`:target` URL 锚点指向的元素\n\n**② 结构 / 位置类** —— 看它在父元素里排第几\n`:first-child` 第一个孩子、`:last-child` 最后一个孩子、`:only-child` 独生子、`:nth-child()` 第 n 个孩子、`:nth-last-child()` 倒数第 n 个、`:nth-of-type()` 同标签里第 n 个、`:empty` 内容为空\n\n**③ 表单 / 逻辑类** —— 表单控件的状态，以及逻辑组合\n`:checked` 已勾选、`:disabled` 禁用、`:enabled` 可用、`:required` 必填、`:optional` 选填、`:valid` 校验通过、`:invalid` 校验失败、`:placeholder-shown` 正在显示占位文字、`:not()` 取反、`:is()` 任选其一、`:where()` 同 `:is()` 但不计优先级、`:has()` 「包含某元素的父级」',
+          },
+          {
+            type: 'table',
+            title: '最常用伪类速查（背这一张就够开工）',
+            headers: ['伪类', '什么时候命中', '典型用途'],
+            rows: [
+              ['`:hover`', '鼠标停在元素上', '按钮变色、链接加下划线'],
+              ['`:active`', '鼠标按下还没松开', '按下时下沉 1px，做「按到了」的手感'],
+              ['`:focus`', '元素获得焦点（点击或 Tab）', '输入框描边'],
+              [
+                '`:focus-visible`',
+                '**键盘**导致的聚焦',
+                '只给键盘用户显示焦点框，鼠标点击不显示',
+              ],
+              ['`:focus-within`', '自己或内部任意元素聚焦', '整个表单项高亮'],
+              ['`:first-child`', '是父元素的第一个孩子', '首项去掉上边距'],
+              ['`:last-child`', '是父元素的最后一个孩子', '末项去掉分割线'],
+              [
+                '`:nth-child(odd)`',
+                '排在奇数位（1、3、5…）',
+                '表格斑马纹',
+              ],
+              ['`:not(.x)`', '不匹配括号里的选择器', '除了某几项之外都加样式'],
+              ['`:checked`', '复选框 / 单选框被勾选', '纯 CSS 开关、折叠面板'],
+              ['`:disabled`', '控件带 disabled 属性', '灰掉按钮、禁止光标'],
+              [
+                '`:placeholder-shown`',
+                '输入框还空着（在显示占位文字）',
+                '浮动标签、只在填过后才报错',
+              ],
+              ['`:has(.x)`', '内部包含匹配的元素', '「父选择器」，按内容改父级样式'],
+            ],
+            note: '优先级记分上：**伪类和 class 同一档**（`:hover` 算 1 个 class 分）；**伪元素和标签同一档**（`::before` 算 1 个标签分）。',
+          },
+          {
+            type: 'text',
+            title: '4. 状态类实战：一个按钮的四种样子',
+            body: '一个「手感好」的按钮，至少要写四个状态，缺一个就会显得廉价：\n\n• **默认**：静止时长什么样\n• **`:hover`**：鼠标靠近 → 底色变浅，告诉用户「我能点」\n• **`:active`**：按下瞬间 → 位置下沉或颜色加深，模拟真实按键\n• **`:focus-visible`**：用键盘 Tab 过来 → 显示清晰的焦点圈（无障碍必需）\n• **`:disabled`**：不可用时 → 半透明 + `cursor: not-allowed`\n\n为什么用 `:focus-visible` 而不是 `:focus`：`:focus` 在**鼠标点击**时也会触发，会留下一圈很丑的框；`:focus-visible` 由浏览器判断「这次聚焦是不是键盘引起的」，只在键盘操作时才显示——既好看又不牺牲无障碍。\n\n易错：写了 `:hover` 却不写 `transition`，颜色会「跳变」；加一句 `transition: background .15s` 就顺滑了。',
+          },
+          {
+            type: 'code',
+            title: 'Demo①：按钮的 hover / active / focus-visible / disabled',
+            language: 'html',
+            live: true,
+            body: `<style>
+  /* 关于 body：本 Demo 没有手写 <html>/<body> 标签，
+     预览器会自动把下面的代码包进一个完整 HTML 文档的 <body> 里，
+     所以这里的 body { ... } 依然能生效。 */
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* 默认状态：静止时的样子 */
+  .btn {
+    padding: 10px 18px;
+    border: 1px solid #2f6b4f;
+    border-radius: 8px;
+    background: #fff;
+    color: #2f6b4f;
+    font: inherit;               /* 继承页面字体，否则按钮会用浏览器默认小字 */
+    cursor: pointer;             /* 小手光标，暗示可点击 */
+    transition: background 0.15s, transform 0.05s; /* 让状态切换有过渡，不生硬 */
+  }
+
+  /* :hover 伪类 —— 鼠标悬停在按钮上时命中 */
+  .btn:hover { background: #eef6f1; }
+
+  /* :active 伪类 —— 鼠标按下、还没松开的那一瞬间 */
+  .btn:active {
+    background: #d9ebe1;
+    transform: translateY(1px);  /* 向下移 1px，模拟按键被压下去 */
+  }
+
+  /* :focus-visible 伪类 —— 只有「键盘」导致的聚焦才命中（请按 Tab 键试试）
+     用它代替 :focus，鼠标点击就不会留下丑丑的焦点框 */
+  .btn:focus-visible {
+    outline: 3px solid #9bd3b0;  /* 焦点圈 */
+    outline-offset: 2px;         /* 焦点圈和按钮之间留 2px 缝 */
+  }
+
+  /* :disabled 伪类 —— 元素带 disabled 属性时命中 */
+  .btn:disabled {
+    opacity: 0.45;               /* 半透明表示不可用 */
+    cursor: not-allowed;         /* 禁止光标 */
+    border-color: #9bb5a6;
+    color: #5c6b62;
+  }
+  /* 注意：被 disabled 的按钮不会触发 :hover 效果，
+     因为浏览器根本不把鼠标事件派发给它 */
+
+  .tip { margin: 14px 0 0; font-size: 12px; color: #5c6b62; }
+</style>
+
+<div class="row">
+  <!-- 普通按钮：可以悬停、按下、Tab 聚焦 -->
+  <button type="button" class="btn">正常按钮</button>
+  <!-- disabled 属性：让按钮不可用，:disabled 伪类因此命中 -->
+  <button type="button" class="btn" disabled>禁用按钮</button>
+</div>
+
+<p class="tip">试三件事：① 鼠标悬停 ② 按住不放 ③ 点一下预览区空白处，再按 Tab 键——只有第 ③ 种会出现焦点圈。</p>`,
+          },
+          {
+            type: 'text',
+            title: '5. 链接的四个状态与 LVHA 顺序陷阱',
+            body: '链接 `<a>` 有四个专属状态伪类：\n\n• `:link` —— 还没访问过的链接\n• `:visited` —— 访问过的链接\n• `:hover` —— 鼠标悬停\n• `:active` —— 正在被按下\n\n**顺序必须是 L → V → H → A**（口诀：**L**o**V**e **HA**te，爱恨），否则后面的会被前面的盖掉。\n\n为什么：这四个伪类特异性完全相同（都算 1 个 class 分）。既然分数一样，**就只能靠书写顺序决胜**。如果把 `:hover` 写在 `:visited` 前面，那么访问过的链接在悬停时会继续显示 `:visited` 的颜色——因为 `:visited` 写在后面赢了。\n\n**隐私限制**：为了防止网站偷偷探测你的浏览历史，`:visited` 只允许改极少数属性（主要是 `color`、`background-color`、`border-color`），改 `font-size`、`display` 一律无效，用 JS 也读不到真实的计算样式。',
+          },
+          {
+            type: 'code',
+            title: 'Demo②：链接四态与 LVHA 顺序',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.8 system-ui, sans-serif; color: #1f2a24; }
+
+  /* ===== 正确顺序：L → V → H → A（Love / Hate）===== */
+
+  /* :link —— 未访问过的链接 */
+  .demo a:link { color: #2f6b4f; }
+  /* :visited —— 访问过的链接（只能改颜色类属性，这是浏览器的隐私限制） */
+  .demo a:visited { color: #7a5cc4; }
+  /* :hover —— 鼠标悬停；写在 :visited 之后，才能盖住它 */
+  .demo a:hover { color: #c53030; text-decoration: underline; }
+  /* :active —— 按下的瞬间；写在最后，优先级最高（同分靠顺序赢） */
+  .demo a:active { color: #f0a500; }
+
+  /* ===== 错误顺序示范：把 hover 写在 visited 前面 ===== */
+  .bad a:link { color: #2f6b4f; }
+  .bad a:hover { color: #c53030; }    /* 先写 hover */
+  .bad a:visited { color: #7a5cc4; }  /* 后写 visited，同分靠顺序赢
+                                         → 访问过的链接悬停时不会变红 */
+
+  .box {
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+  }
+  .box h4 { margin: 0 0 6px; font-size: 13px; }
+  .ok h4 { color: #2f6b4f; }
+  .bad h4 { color: #c53030; }
+  .tip { margin: 0; font-size: 12px; color: #5c6b62; }
+</style>
+
+<!-- target="_blank" 让链接在新标签打开，不会刷掉这个预览 -->
+<div class="box demo ok">
+  <h4>✓ 正确顺序 L-V-H-A</h4>
+  <a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">悬停我会变红</a>
+</div>
+
+<div class="box bad">
+  <h4>✗ 错误顺序（hover 写在 visited 前）</h4>
+  <a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">访问过之后，悬停就不变色了</a>
+</div>
+
+<p class="tip">口诀：LoVe（:link、:visited）HAte（:hover、:active）。四者同分，顺序写错就等于没写。</p>`,
+          },
+          {
+            type: 'text',
+            title: '6. 位置类伪类：:nth-child() 公式讲透',
+            body: '`:nth-child(公式)` 是最强也最容易懵的一个。它的含义是：**这个元素在父元素的所有孩子里排第几**。\n\n括号里可以写四种东西：\n\n**① 具体数字** —— `:nth-child(3)` 就是第 3 个。\n\n**② 关键字** —— `odd` 奇数位（1、3、5…）、`even` 偶数位（2、4、6…）。表格斑马纹就靠它。\n\n**③ `an + b` 公式** —— 这是重点。浏览器会把 `n` 依次代入 **0、1、2、3…**，算出的每个结果（只保留 ≥1 的整数）都会命中：\n• `2n` → 0、2、4、6…（等于 even）\n• `2n+1` → 1、3、5、7…（等于 odd）\n• `3n` → 3、6、9…（每 3 个命中 1 个）\n• `3n+1` → 1、4、7…（每组的第一个，做 3 列网格时很有用）\n• `n+3` → 3、4、5…（**从第 3 个开始，之后全中**）\n• `-n+3` → 3、2、1（**只命中前 3 个**，因为 n 再大结果就 ≤0 了）\n\n**④ `of` 语法（较新）** —— `:nth-child(2 of .item)` 表示「在 .item 里排第 2 个」。\n\n记忆技巧：`b` 决定**起点**，`a` 决定**步长**；负号 `-n` 表示**反过来数，只取前面几个**。',
+          },
+          {
+            type: 'table',
+            title: 'nth-child 公式对照表',
+            intro: '假设父元素里有 8 个孩子，编号 1~8。',
+            headers: ['写法', '命中第几个', '常见用途'],
+            rows: [
+              ['`:nth-child(1)`', '1', '等价于 `:first-child`'],
+              ['`:nth-child(odd)` / `2n+1`', '1、3、5、7', '斑马纹（浅色行）'],
+              ['`:nth-child(even)` / `2n`', '2、4、6、8', '斑马纹（深色行）'],
+              ['`:nth-child(3n)`', '3、6', '每 3 个加一条分组线'],
+              ['`:nth-child(3n+1)`', '1、4、7', '三列网格里每行的第一个'],
+              ['`:nth-child(n+3)`', '3、4、5、6、7、8', '「第 3 个及以后」全部隐藏 / 淡化'],
+              ['`:nth-child(-n+3)`', '1、2、3', '只强调前 3 名'],
+              ['`:nth-child(n+2):nth-child(-n+4)`', '2、3、4', '取一个区间（两个条件叠加）'],
+              ['`:nth-last-child(1)`', '8', '等价于 `:last-child`'],
+              ['`:nth-last-child(2)`', '7', '倒数第 2 个'],
+            ],
+            note: '公式里的 `n` 从 **0** 开始代入，算出 ≤0 的结果直接忽略。两个伪类**连写**（中间不加空格）表示「同时满足」。',
+          },
+          {
+            type: 'code',
+            title: 'Demo③：斑马纹 + nth-child 各种公式对照',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .list {
+    list-style: none;   /* 去掉 ul 默认的圆点 */
+    margin: 0 0 18px;   /* 清掉默认外边距，只留底部间隔 */
+    padding: 0;         /* 清掉默认左内边距 */
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+    overflow: hidden;   /* 让子项的背景色被圆角裁切，不会溢出圆角 */
+  }
+  .list li {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* ① :nth-child(odd) —— 奇数位（1、3、5、7），最经典的斑马纹 */
+  .zebra li:nth-child(odd) { background: #f1f7f3; }
+
+  /* ② :nth-child(3n) —— n 取 0,1,2… 得 0,3,6 → 命中第 3、6 个
+        用途：每 3 项画一条分组线 */
+  .every3 li:nth-child(3n) {
+    border-bottom: 2px solid #2f6b4f;
+    font-weight: 700;
+  }
+
+  /* ③ :nth-child(-n+3) —— n 取 0,1,2 得 3,2,1 → 只命中前 3 个
+        n 再往大取，结果就 ≤0 被忽略。用途：只高亮前三名 */
+  .top3 li:nth-child(-n+3) {
+    background: #2f6b4f;
+    color: #fff;
+  }
+
+  /* ④ :nth-child(n+5) —— n 取 0,1,2… 得 5,6,7… → 第 5 个及以后全中
+        用途：列表「只显示前 4 条」，其余淡化或隐藏 */
+  .after5 li:nth-child(n+5) {
+    opacity: 0.35;
+  }
+
+  /* ⑤ 两个伪类连写（中间无空格）= 同时满足 → 命中第 2~4 个 */
+  .range li:nth-child(n+2):nth-child(-n+4) {
+    background: #fdf3d6;
+    font-weight: 600;
+  }
+
+  h4 { margin: 0 0 6px; font-size: 13px; color: #2f6b4f; }
+</style>
+
+<h4>① odd 斑马纹</h4>
+<ul class="list zebra">
+  <li>第 1 项</li><li>第 2 项</li><li>第 3 项</li><li>第 4 项</li>
+  <li>第 5 项</li><li>第 6 项</li><li>第 7 项</li>
+</ul>
+
+<h4>② 3n：每 3 项一条分组线</h4>
+<ul class="list every3">
+  <li>第 1 项</li><li>第 2 项</li><li>第 3 项</li><li>第 4 项</li>
+  <li>第 5 项</li><li>第 6 项</li><li>第 7 项</li>
+</ul>
+
+<h4>③ -n+3：只命中前 3 个</h4>
+<ul class="list top3">
+  <li>第 1 项</li><li>第 2 项</li><li>第 3 项</li><li>第 4 项</li>
+  <li>第 5 项</li><li>第 6 项</li><li>第 7 项</li>
+</ul>
+
+<h4>④ n+5：第 5 个及以后全部淡化</h4>
+<ul class="list after5">
+  <li>第 1 项</li><li>第 2 项</li><li>第 3 项</li><li>第 4 项</li>
+  <li>第 5 项</li><li>第 6 项</li><li>第 7 项</li>
+</ul>
+
+<h4>⑤ n+2 与 -n+4 连写：取第 2~4 个区间</h4>
+<ul class="list range">
+  <li>第 1 项</li><li>第 2 项</li><li>第 3 项</li><li>第 4 项</li>
+  <li>第 5 项</li><li>第 6 项</li><li>第 7 项</li>
+</ul>`,
+          },
+          {
+            type: 'text',
+            title: '7. 易错重点：:nth-child 与 :nth-of-type 的区别',
+            body: '这是面试和实战里都高频踩的坑。\n\n• **`p:nth-child(2)`** 读作：「**先看父元素的第 2 个孩子，它恰好是 `<p>` 吗？**」是 `<p>` 才命中，不是就一个都不选。\n• **`p:nth-of-type(2)`** 读作：「**父元素里所有 `<p>` 中的第 2 个**」——数数时会跳过其它标签。\n\n举例：父元素里依次是 `<h3>`、`<p>A</p>`、`<p>B</p>`\n• `p:nth-child(2)` → 命中 **A**（因为第 2 个孩子正好是 p）\n• `p:nth-child(1)` → **什么都不中**（第 1 个孩子是 h3，不是 p）\n• `p:nth-of-type(1)` → 命中 **A**（p 里的第 1 个）\n• `p:nth-of-type(2)` → 命中 **B**\n\n同理 `:first-child` vs `:first-of-type`、`:last-child` vs `:last-of-type`。\n\n**怎么选**：列表里所有孩子都是同一种标签（比如全是 `<li>`）时，两者结果一样，用 `:nth-child` 更短；只要孩子标签混杂，就要想清楚你要的是「第几个孩子」还是「第几个同类标签」。',
+          },
+          {
+            type: 'code',
+            title: 'Demo④：nth-child 与 nth-of-type 对比',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .box {
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+  }
+  .box h3 { margin: 0 0 8px; font-size: 14px; color: #5c6b62; }
+  .box p { margin: 0 0 6px; padding: 6px 8px; border-radius: 6px; background: #f7faf8; }
+  .label { font-size: 12px; color: #5c6b62; margin: 0; }
+
+  /* A 组：p:nth-child(2)
+     含义是「父元素的第 2 个孩子，并且它得是 p」。
+     这里第 1 个孩子是 h3、第 2 个才是 p，所以命中「段落 A」 */
+  .a p:nth-child(2) { background: #2f6b4f; color: #fff; }
+
+  /* B 组：p:nth-of-type(2)
+     含义是「父元素里所有 p 中的第 2 个」，数数时会跳过 h3，
+     所以命中「段落 B」 */
+  .b p:nth-of-type(2) { background: #2f6b4f; color: #fff; }
+
+  /* C 组：p:nth-child(1)
+     第 1 个孩子是 h3 而不是 p，所以这条规则一个元素都选不中——
+     全部段落保持原色，这正是新手最常见的「为什么我的样式没生效」 */
+  .c p:nth-child(1) { background: #c53030; color: #fff; }
+</style>
+
+<div class="box a">
+  <h3>A 组：p:nth-child(2) → 选中「段落 A」</h3>
+  <p>段落 A（父元素的第 2 个孩子）</p>
+  <p>段落 B（父元素的第 3 个孩子）</p>
+  <p class="label">数数时把 h3 也算进去了。</p>
+</div>
+
+<div class="box b">
+  <h3>B 组：p:nth-of-type(2) → 选中「段落 B」</h3>
+  <p>段落 A（p 里的第 1 个）</p>
+  <p>段落 B（p 里的第 2 个）</p>
+  <p class="label">数数时只数 p，跳过了 h3。</p>
+</div>
+
+<div class="box c">
+  <h3>C 组：p:nth-child(1) → 一个都选不中</h3>
+  <p>段落 A</p>
+  <p>段落 B</p>
+  <p class="label">因为第 1 个孩子是 h3，不是 p。</p>
+</div>`,
+          },
+          {
+            type: 'text',
+            title: '8. 逻辑类伪类：:not() / :is() / :where() / :has()',
+            body: '**`:not(选择器)`** —— 取反，「不是这个的才要」。最经典用法：`.cell:not(:last-child) { border-bottom: 1px solid #eee }`，给列表每项加分割线但**放过最后一项**。比「先全加、再用 `:last-child` 去掉」更直接。\n\n**`:is(a, b, c)`** —— 任选其一，用来合并冗长的选择器。\n`.card :is(h1, h2, h3)` 等价于 `.card h1, .card h2, .card h3`，少写很多重复前缀。\n\n**`:where(a, b, c)`** —— 写法和 `:is()` 完全一样，**唯一区别是它的优先级永远是 0**。写通用基础样式时用 `:where()`，后续用一个普通 class 就能轻松覆盖，不会打优先级仗。\n\n**`:has(选择器)`** —— 期待多年的「**父选择器**」。`.card:has(img)` 表示「内部含有 `<img>` 的 .card」；`label:has(input:checked)` 表示「里面的勾选框被选中了的 label」。它让 CSS 第一次能**根据子孙的状态反过来改父级样式**，很多以前必须写 JS 的效果现在纯 CSS 就能做。\n\n**优先级细节**（容易被问到）：\n• `:not()` 和 `:is()` 取**括号里分数最高**的那个参数当自己的分数\n• `:where()` 恒为 0 分\n• `:has()` 同样取括号里最高分',
+          },
+          {
+            type: 'code',
+            title: 'Demo⑤：:not() 去掉末项分割线 + :is() 合并写法',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .cells {
+    max-width: 320px;
+    margin-bottom: 18px;
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* :not(:last-child) —— 「不是最后一个孩子」的才画下边线。
+     这样列表内部有分割线，但最后一条不会多出一根贴着圆角的线。
+     对比写法（更啰嗦）：先给所有 .cell 加线，再写 .cell:last-child 把线去掉 */
+  .cell:not(:last-child) {
+    border-bottom: 1px solid #eef6f1;
+  }
+  .cell { padding: 10px 14px; }
+
+  /* :is(h1, h2, h3) —— 任选其一，等价于写三遍 .article h1 / h2 / h3。
+     注意它取括号里分数最高的参数当自己的分数（这里三个都是标签，1 分） */
+  .article :is(h1, h2, h3) {
+    margin: 0 0 6px;
+    color: #2f6b4f;
+    font-size: 15px;
+  }
+
+  /* :where(p, li) —— 和 :is 用法相同，但优先级恒为 0。
+     所以下面那条只有一个 class 的 .lead 能轻松覆盖它的颜色 */
+  .article :where(p, li) { color: #8a968f; }
+  .lead { color: #1f2a24; font-weight: 600; }
+
+  .article {
+    max-width: 320px;
+    padding: 12px 14px;
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+  }
+</style>
+
+<div class="cells">
+  <div class="cell">支付</div>
+  <div class="cell">收藏</div>
+  <div class="cell">相册</div>
+  <div class="cell">最后一项（下面没有多余的线）</div>
+</div>
+
+<div class="article">
+  <h2>标题（被 :is 命中）</h2>
+  <!-- 这段被 :where(p, li) 染成浅灰 -->
+  <p>普通段落：被 :where 染成浅灰色。</p>
+  <!-- .lead 只有一个 class（1 分），却能盖过 :where（0 分） -->
+  <p class="lead">导语段落：一个 class 就盖过了 :where。</p>
+</div>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo⑥：表单伪类（:checked / :placeholder-shown / :invalid / :required）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .field { margin-bottom: 18px; max-width: 340px; }
+  .field > label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; }
+
+  /* ===== ① :checked —— 纯 CSS 开关，一行 JS 都不用 ===== */
+
+  /* 把真正的 checkbox 藏起来（但保留它的可聚焦与可勾选能力） */
+  .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+  /* 这个 span 是我们画出来的「轨道」 */
+  .switch .track {
+    display: inline-block;
+    width: 46px; height: 26px;
+    background: #cbd5ce;
+    border-radius: 999px;      /* 大圆角 = 胶囊形 */
+    position: relative;        /* 给里面的圆点当定位参照物 */
+    transition: background 0.18s;
+    vertical-align: middle;
+  }
+  /* ::before 伪元素当作滑动的白色圆点（HTML 里并不存在这个节点） */
+  .switch .track::before {
+    content: '';               /* 伪元素必须写 content，哪怕是空字符串 */
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 20px; height: 20px;
+    background: #fff;
+    border-radius: 50%;        /* 正圆 */
+    transition: left 0.18s;    /* 让圆点滑动而不是跳过去 */
+  }
+  /* 关键一行：input:checked + .track
+     :checked 是伪类（勾选时命中），+ 是相邻兄弟选择器
+     整句含义是「当勾选框被选中时，紧跟它后面的 .track」*/
+  .switch input:checked + .track { background: #2f6b4f; }
+  .switch input:checked + .track::before { left: 23px; } /* 圆点滑到右边 */
+  /* :focus-visible 也能穿透到兄弟身上，键盘用户才看得到焦点圈 */
+  .switch input:focus-visible + .track { outline: 3px solid #9bd3b0; outline-offset: 2px; }
+  .switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+
+  /* ===== ② :required / :placeholder-shown / :invalid ===== */
+
+  .input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #cbd5ce;
+    border-radius: 8px;
+    font: inherit;
+  }
+  /* :required —— 带 required 属性的输入框，左侧加一条竖条提示「必填」 */
+  .input:required { border-left: 3px solid #2f6b4f; }
+
+  /* :placeholder-shown —— 输入框还空着（正在显示占位文字）时命中 */
+  .input:placeholder-shown { background: #f7faf8; }
+
+  /* :invalid 单独用会「一进页面就报红」，体验很差。
+     配合 :not(:placeholder-shown) 表示「已经填了内容，但格式不对」才报红 */
+  .input:invalid:not(:placeholder-shown) {
+    border-color: #c53030;
+    background: #fff5f5;
+  }
+  /* :valid + 已填过 → 绿色边框，正向反馈 */
+  .input:valid:not(:placeholder-shown) { border-color: #2f6b4f; }
+
+  /* 错误提示默认隐藏，只有「填了且不合法」时才出现（用兄弟选择器联动） */
+  .err { display: none; margin: 6px 0 0; font-size: 12px; color: #c53030; }
+  .input:invalid:not(:placeholder-shown) ~ .err { display: block; }
+
+  .hint { font-size: 12px; color: #5c6b62; margin: 4px 0 0; }
+</style>
+
+<div class="field">
+  <label>① :checked 做纯 CSS 开关</label>
+  <!-- label 包住 input，点文字也能切换；input 藏起来，视觉全靠 .track -->
+  <label class="switch">
+    <input type="checkbox" />
+    <span class="track"></span>
+    <span>深色模式</span>
+  </label>
+  <p class="hint">点一下试试：没有任何 JS，全靠 input:checked + .track。</p>
+</div>
+
+<div class="field">
+  <label for="mail">② 邮箱（必填 + 格式校验）</label>
+  <!-- type="email" 让浏览器自带格式校验；required 触发 :required；
+       placeholder 让 :placeholder-shown 在空着时命中 -->
+  <input id="mail" class="input" type="email" required placeholder="you@example.com" />
+  <p class="err">邮箱格式不对，需要包含 @ 符号</p>
+  <p class="hint">先随便输几个字母 → 变红；补成完整邮箱 → 变绿；清空 → 恢复。</p>
+</div>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo⑦：:has() 父选择器（按内容改父级样式）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .todo { list-style: none; margin: 0 0 16px; padding: 0; max-width: 340px; }
+  .todo li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid #d9e0d8;
+    border-radius: 10px;
+    background: #fff;
+    transition: background 0.15s, opacity 0.15s;
+  }
+
+  /* :has() 是「父选择器」：
+     li:has(input:checked) 读作「内部含有一个被勾选的 input 的 li」。
+     以前这件事必须写 JS 给父级加 class，现在纯 CSS 就能做到 */
+  .todo li:has(input:checked) {
+    background: #f1f7f3;
+    border-color: #9bd3b0;
+    opacity: 0.7;
+  }
+  /* 配合后代选择器，把勾掉的文字加删除线 */
+  .todo li:has(input:checked) .text {
+    text-decoration: line-through;
+    color: #5c6b62;
+  }
+
+  /* 另一个例子：卡片里有没有图片，内边距不一样 */
+  .card {
+    max-width: 340px;
+    padding: 14px;
+    border: 1px solid #d9e0d8;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  /* .card:has(img) —— 只命中「内部含 img」的卡片 */
+  .card:has(img) { padding: 0; overflow: hidden; }
+  .card:has(img) .body { padding: 14px; }
+  .card img { display: block; width: 100%; height: 90px; object-fit: cover; }
+  .card h4 { margin: 0 0 4px; font-size: 14px; }
+  .card p { margin: 0; font-size: 12px; color: #5c6b62; }
+  .hint { font-size: 12px; color: #5c6b62; }
+</style>
+
+<ul class="todo">
+  <!-- 勾选任意一项，整个 li 的背景、边框、文字样式都会变 -->
+  <li><input type="checkbox" /><span class="text">学 Flex 布局</span></li>
+  <li><input type="checkbox" checked /><span class="text">学盒模型</span></li>
+  <li><input type="checkbox" /><span class="text">学伪类与伪元素</span></li>
+</ul>
+
+<div class="card">
+  <div class="body">
+    <h4>无图卡片</h4>
+    <p>没有 img，所以 :has(img) 不命中，保留 14px 内边距。</p>
+  </div>
+</div>
+
+<div class="card">
+  <!-- 这张卡里有 img，:has(img) 命中 → 内边距归零、图片顶到边 -->
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='120'><rect width='400' height='120' fill='%232f6b4f'/></svg>" alt="示意图" />
+  <div class="body">
+    <h4>有图卡片</h4>
+    <p>:has(img) 命中，图片自动贴满顶部。</p>
+  </div>
+</div>
+
+<p class="hint">:has() 是 2023 年才被各浏览器全面支持的新特性，很老的浏览器里不生效。</p>`,
+          },
+          {
+            type: 'text',
+            title: '9. 伪元素：::before / ::after 与必填的 content',
+            body: '`::before` 和 `::after` 会在目标元素**内容的最前面 / 最后面**插一个虚拟节点。它是「元素内部的第一个 / 最后一个孩子」，不是元素的前后兄弟——这点常被记反。\n\n**三条铁律**：\n\n**① 必须写 `content`。** 不写 `content`，伪元素根本不会被创建，什么都看不到。只想画个色块时就写 `content: ""`（空字符串）。\n\n**② 默认是行内（inline）。** 想设宽高，得加 `display: block` / `inline-block`，或者用 `position: absolute`（绝对定位会自动块化）。\n\n**③ 自闭合标签用不了。** `<img>`、`<input>`、`<br>`、`<hr>` 没有「内容区」，塞不进虚拟孩子，所以给 `input::before` 写样式无效。想给输入框加图标，要么给外层容器加伪元素，要么用背景图。\n\n**`content` 能写什么**：\n• 字符串：`content: "→ "`\n• 空串（纯装饰块）：`content: ""`\n• 读取属性：`content: attr(data-tip)` —— 把 HTML 上的 `data-tip` 值显示出来，做纯 CSS 气泡提示\n• 计数器：`content: counter(step)` —— 配合 `counter-reset` / `counter-increment` 做自动编号\n• 图片：`content: url(icon.png)`\n\n**注意**：伪元素里的文字是「装饰性」的，屏幕阅读器可能读不到，也不能被鼠标选中复制，所以**不要把正文内容放进 `content`**。',
+          },
+          {
+            type: 'code',
+            title: 'Demo⑧：面包屑分隔符（li + li::before 逐层拆解）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .crumb {
+    display: flex;          /* 各层级横排 */
+    flex-wrap: wrap;        /* 路径长了允许折行 */
+    align-items: center;
+    list-style: none;       /* 去掉 ol 默认的 1. 2. 3. */
+    margin: 0 0 20px;
+    padding: 0;             /* 去掉 ol 默认左内边距 */
+    font-size: 13px;
+  }
+  .crumb a { color: #2f6b4f; text-decoration: none; }
+  /* :hover 伪类：只在鼠标停在这个 a 上时命中，给文字补下划线做点击反馈 */
+  .crumb a:hover { text-decoration: underline; }
+
+  /* ★ 本 Demo 的核心，拆成三步理解：
+     ① li + li 是「相邻兄弟选择器」，加号意思是「紧跟在另一个 li 之后的 li」，
+        因此它命中第 2、3、4… 项，第一项永远不会被选中；
+     ② ::before 是伪元素，在被命中元素的内容最前面插一个虚拟节点；
+     ③ content 是伪元素的必填项，不写 content 就什么都不会出现。
+     合起来的效果：除第一项外，每项前面自动加一个斜杠分隔符。
+     好处是 HTML 里完全不用手写斜杠，将来增删层级也不会漏改。 */
+  .crumb li + li::before {
+    content: '/';           /* 要插入的字符 */
+    margin: 0 6px;          /* 上下 0、左右 6px，让斜杠两侧留缝 */
+    color: #9bb5a6;         /* 浅色，弱化分隔符本身 */
+  }
+
+  /* 当前页：灰色不可点，表示「你已经在这里了」 */
+  .crumb .current { color: #5c6b62; }
+
+  /* 对比组：换个分隔符，并且改用 :not(:first-child)
+     :not(:first-child) 表示「不是第一个孩子的」，
+     在这个全是 li 的列表里，它和 li + li 效果相同，但读起来更直白 */
+  .crumb2 { display: flex; list-style: none; margin: 0 0 20px; padding: 0; font-size: 13px; }
+  .crumb2 li:not(:first-child)::before {
+    content: '›';           /* 换成右尖括号 */
+    margin: 0 8px;
+    color: #9bb5a6;
+  }
+
+  h4 { margin: 0 0 8px; font-size: 13px; color: #2f6b4f; }
+  .tip { font-size: 12px; color: #5c6b62; }
+</style>
+
+<h4>① li + li::before 插入 / 分隔符</h4>
+<!-- ol 是有序列表，语义上正好表示「有层级顺序的路径」 -->
+<ol class="crumb">
+  <li><a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">首页</a></li>
+  <li><a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">课程</a></li>
+  <li><a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">前端基础</a></li>
+  <!-- aria-current="page" 告诉屏幕阅读器「这是当前页」 -->
+  <li class="current" aria-current="page">伪类与伪元素</li>
+</ol>
+
+<h4>② :not(:first-child)::before 插入 › 分隔符</h4>
+<ol class="crumb2">
+  <li>首页</li>
+  <li>课程</li>
+  <li>前端基础</li>
+  <li>伪类与伪元素</li>
+</ol>
+
+<p class="tip">试着删掉 CSS 里的 content 那一行——分隔符会整个消失，因为没有 content 的伪元素不会被创建。</p>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo⑨：::before / ::after 常见装饰（星号、角标、装饰线、attr 提示）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  .block { margin-bottom: 22px; }
+  h4 { margin: 0 0 8px; font-size: 13px; color: #2f6b4f; }
+
+  /* ① 必填星号：给 label 的文字后面补一个红星
+     好处：HTML 里只加一个 class，不用手写 <span>*</span> */
+  .required::after {
+    content: ' *';
+    color: #c53030;
+    font-weight: 700;
+  }
+
+  /* ② 角标：::before 造一个绝对定位的小圆点
+     父级必须有 position: relative，否则圆点会跑到更外层的参照物上去 */
+  .badge-wrap { position: relative; display: inline-block; }
+  .badge-wrap::before {
+    content: '';              /* 纯装饰，用空字符串就行 */
+    position: absolute;       /* 绝对定位会自动块化，可以直接设宽高 */
+    top: -4px; right: -4px;
+    width: 10px; height: 10px;
+    background: #c53030;
+    border: 2px solid #fff;   /* 白边把圆点和底下的图标隔开 */
+    border-radius: 50%;
+  }
+  .icon-btn {
+    padding: 8px 12px;
+    border: 1px solid #d9e0d8;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  /* ③ 标题两侧装饰线：用 flex + 两个伪元素各占一半剩余空间 */
+  .fancy {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 15px;
+  }
+  .fancy::before,
+  .fancy::after {
+    content: '';
+    flex: 1;                  /* 两条线平分左右剩余宽度，标题自然居中 */
+    height: 1px;
+    background: #d9e0d8;
+  }
+
+  /* ④ attr()：把 HTML 上的 data-tip 属性值读出来当提示内容 */
+  .tipbox { position: relative; display: inline-block; border-bottom: 1px dashed #9bb5a6; cursor: help; }
+  .tipbox::after {
+    content: attr(data-tip);  /* 动态读取属性，不用为每个提示写一条 CSS */
+    position: absolute;
+    left: 0; bottom: 130%;
+    white-space: nowrap;      /* 提示文字不换行 */
+    padding: 6px 10px;
+    background: #1f2a24;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 6px;
+    opacity: 0;               /* 默认透明（不是 display:none，才能做淡入动画） */
+    pointer-events: none;     /* 透明时不挡鼠标 */
+    transition: opacity 0.15s;
+  }
+  /* 悬停时让提示淡入 */
+  .tipbox:hover::after { opacity: 1; }
+
+  /* ⑤ 自动编号：counter-reset 建计数器，counter-increment 每项加一，
+     content: counter() 把数字显示出来 */
+  .steps { counter-reset: step; list-style: none; margin: 0; padding: 0; max-width: 340px; }
+  .steps li {
+    counter-increment: step;  /* 每遇到一个 li，计数器加 1 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+  }
+  .steps li::before {
+    content: counter(step);   /* 显示当前计数值 */
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2f6b4f;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+  }
+</style>
+
+<div class="block">
+  <h4>① ::after 加必填星号</h4>
+  <label class="required">用户名</label>
+</div>
+
+<div class="block">
+  <h4>② ::before 做未读角标</h4>
+  <span class="badge-wrap">
+    <button type="button" class="icon-btn">消息</button>
+  </span>
+</div>
+
+<div class="block">
+  <h4>③ ::before + ::after 做标题装饰线</h4>
+  <p class="fancy">章节小标题</p>
+</div>
+
+<div class="block">
+  <h4>④ content: attr() 做纯 CSS 悬停提示</h4>
+  <!-- data-tip 是自定义属性，值被 CSS 的 attr() 读走当提示文字 -->
+  <span class="tipbox" data-tip="伪元素不会出现在 HTML 结构里">悬停看提示</span>
+</div>
+
+<div class="block">
+  <h4>⑤ counter() 自动编号</h4>
+  <ol class="steps">
+    <li>写 HTML 结构</li>
+    <li>加 CSS 样式</li>
+    <li>调伪类交互</li>
+  </ol>
+</div>`,
+          },
+          {
+            type: 'text',
+            title: '10. 其它常用伪元素',
+            body: '除了 `::before` / `::after`，还有几个「改浏览器默认样式」的伪元素很实用：\n\n• **`::first-letter`** —— 段落第一个字。做杂志风格的首字下沉。\n• **`::first-line`** —— 段落第一行（注意：随容器宽度变化，第一行的内容会跟着变）。\n• **`::placeholder`** —— 输入框的占位文字。默认灰色太深或太浅时用它改。\n• **`::selection`** —— 用户用鼠标选中文字时的高亮配色。\n• **`::marker`** —— 列表项前面的圆点或编号。以前想换颜色只能把 `list-style` 去掉再用 `::before` 伪造，现在直接改就行。\n\n这些伪元素**只允许改一小部分属性**（主要是颜色、字体、背景一类），改 `position`、`display` 之类的布局属性通常无效——因为它们是浏览器内部渲染出来的东西，不是完整的盒子。',
+          },
+          {
+            type: 'code',
+            title: 'Demo⑩：::first-letter / ::marker / ::placeholder / ::selection',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { margin: 16px; font: 14px/1.7 system-ui, sans-serif; color: #1f2a24; }
+
+  h4 { margin: 0 0 6px; font-size: 13px; color: #2f6b4f; }
+  .block { margin-bottom: 22px; max-width: 380px; }
+
+  /* ① ::first-letter —— 段落的第一个字，做首字下沉 */
+  .drop::first-letter {
+    float: left;              /* 让首字浮到左边，后面文字绕排 */
+    font-size: 42px;
+    line-height: 1;
+    padding: 2px 8px 0 0;
+    color: #2f6b4f;
+    font-weight: 700;
+  }
+
+  /* ② ::first-line —— 段落第一行（把预览拉宽窄，命中的字会跟着变） */
+  .lead::first-line {
+    font-weight: 700;
+    color: #2f6b4f;
+  }
+
+  /* ③ ::marker —— 列表项前面的圆点/编号，可以直接改颜色和字号 */
+  .marked { padding-left: 22px; }
+  .marked li::marker {
+    color: #2f6b4f;
+    font-size: 18px;
+  }
+  .marked li { margin-bottom: 4px; }
+
+  /* ④ ::placeholder —— 输入框占位文字的样式 */
+  .input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #cbd5ce;
+    border-radius: 8px;
+    font: inherit;
+  }
+  .input::placeholder {
+    color: #9bb5a6;
+    font-style: italic;       /* 斜体，和真正输入的文字区分开 */
+  }
+
+  /* ⑤ ::selection —— 鼠标选中文字时的高亮配色 */
+  .pick::selection {
+    background: #2f6b4f;
+    color: #fff;
+  }
+</style>
+
+<div class="block">
+  <h4>① ::first-letter 首字下沉</h4>
+  <p class="drop">伪元素让我们不必为纯装饰的内容额外写标签，首字下沉就是最经典的例子，整段只多了一条 CSS 规则。</p>
+</div>
+
+<div class="block">
+  <h4>② ::first-line 第一行加粗</h4>
+  <p class="lead">这一段的第一行会被加粗变绿，剩下的行保持原样。它命中的是「渲染后的第一行」，所以把窗口拉窄，被加粗的字数会跟着变化。</p>
+</div>
+
+<div class="block">
+  <h4>③ ::marker 改列表标记</h4>
+  <ul class="marked">
+    <li>圆点变成主题绿</li>
+    <li>字号也能单独调</li>
+  </ul>
+</div>
+
+<div class="block">
+  <h4>④ ::placeholder 改占位文字</h4>
+  <input class="input" type="text" placeholder="我是斜体浅绿的占位文字" />
+</div>
+
+<div class="block">
+  <h4>⑤ ::selection 改选中高亮</h4>
+  <p class="pick">用鼠标把这句话划选一下，看看高亮颜色变成了深绿底白字。</p>
+</div>`,
+          },
+          {
+            type: 'table',
+            title: '伪类 vs 伪元素 对比',
+            headers: ['对比项', '伪类 `:hover`', '伪元素 `::before`'],
+            rows: [
+              ['冒号数量', '一个 `:`', '两个 `::`'],
+              ['作用', '选中「处于某状态/位置」的真实元素', '创造一个 HTML 里不存在的虚拟节点'],
+              ['是否改 DOM', '不改，只是换套样式', '不改 DOM 树，但会多渲染一个盒子'],
+              ['必需属性', '无', '**必须写 `content`**，否则不出现'],
+              ['优先级记分', '和 class 同档（1 个 class 分）', '和标签同档（1 个标签分）'],
+              ['一个元素能用几个', '可以叠很多个（`a:hover:focus`）', '`::before` 和 `::after` 各一个'],
+              ['JS 能选中吗', '元素本身能选中', '选不到，只能用 `getComputedStyle(el, "::before")` 读样式'],
+            ],
+          },
+          {
+            type: 'list',
+            title: '易错清单（踩过一次就记住了）',
+            ordered: true,
+            items: [
+              '**伪元素忘写 `content`** → 什么都不显示。纯装饰块写 `content: ""`。',
+              '**`::before` 是「内部第一个孩子」**，不是元素前面的兄弟；它会被父元素的 `overflow: hidden` 裁掉。',
+              '**给 `img` / `input` 写 `::before` 无效** —— 自闭合标签没有内容区，改用外层容器或背景图。',
+              '**链接四态顺序写反** → `:hover` 失效。记住 LoVe HAte：`:link` → `:visited` → `:hover` → `:active`。',
+              '**`p:nth-child(1)` 选不中东西** —— 它要求「第 1 个孩子恰好是 p」；想要「第 1 个 p」得用 `:nth-of-type(1)`。',
+              '**`:nth-child(2n)` 里的 n 从 0 开始**，不是从 1 开始；`-n+3` 才是「只要前 3 个」。',
+              '**伪元素默认 inline，设宽高不生效** → 加 `display: block` 或 `position: absolute`。',
+              '**绝对定位的伪元素跑偏** → 父元素忘了写 `position: relative`。',
+              '**`:invalid` 一进页面就报红** → 配合 `:not(:placeholder-shown)`，等用户填过再校验。',
+              '**用 `content` 放正文** → 无法被选中复制，屏幕阅读器也可能读不到；正文永远写在 HTML 里。',
+            ],
+          },
+          {
+            type: 'tip',
+            title: '一句话记忆',
+            body: '**伪类选状态**（`:hover` 悬停、`:checked` 勾选、`:nth-child(odd)` 奇数行、`:not(:last-child)` 除末项），**伪元素造装饰**（`::before` / `::after` + 必填 `content`）。\n\n链接顺序背 **LoVe HAte**；`nth-child` 里 **n 从 0 数起**，`b` 定起点、`a` 定步长；`:nth-child` 数「所有孩子」而 `:nth-of-type` 只数「同类标签」；想按内容改父级样式就用 `:has()`。',
+          },
+        ],
+      },
+    },
+    {
       id: 'flex-full-guide',
       title: 'Flex 入门：先开启，再谈主轴 / 交叉轴',
       summary: 'flex 与 inline-flex 区别；为什么必须先 display:flex；主轴交叉轴是什么',
