@@ -54,46 +54,46 @@ const hooks = {
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
 
+// useEffect：在「渲染完成之后」执行副作用（请求、改 title、订阅等）
 function UserDetail({ userId }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // ===== Effect 1：空依赖 [] — 挂载时改页面标题，卸载时还原 =====
+  // ===== Effect 1：依赖 [] —— 只在组件挂载时执行一次 =====
   useEffect(() => {
     const prevTitle = document.title
     document.title = '用户详情 - My App'
 
+    // return 清理函数：卸载时（或 effect 重跑前）执行
     return () => {
-      document.title = prevTitle // 清理：离开页面时还原
+      document.title = prevTitle // 离开页面时还原原标题
     }
-  }, [])
+  }, []) // 空数组 = 不依赖任何值，只挂载跑一次
 
-  // ===== Effect 2：有依赖 [userId] — id 变就重新拉数据 =====
+  // ===== Effect 2：依赖 [userId] —— userId 变化时重新拉数据 =====
   useEffect(() => {
-    // 没有 userId 时不请求
     if (!userId) {
       setUser(null)
       setLoading(false)
-      return
+      return // 早退：没有 id 就不发请求
     }
 
-    let cancelled = false // 标记：防止过期请求覆盖新数据
+    let cancelled = false // 竞态处理：旧请求返回时不再 setState
 
     async function loadUser() {
       setLoading(true)
       setError('')
 
       try {
-        // 模拟 API（真实项目换成 fetch/axios）
-        await new Promise((r) => setTimeout(r, 800))
+        await new Promise((r) => setTimeout(r, 800)) // 模拟网络延迟
         const mockData = {
           1: { id: 1, name: '小明', city: '上海' },
           2: { id: 2, name: '小红', city: '北京' },
         }
         const data = mockData[userId]
 
-        if (!cancelled) {
+        if (!cancelled) { // 只有「未被取消」的请求才更新 state
           if (data) {
             setUser(data)
           } else {
@@ -107,14 +107,14 @@ function UserDetail({ userId }) {
       }
     }
 
-    loadUser()
+    loadUser() // 在 effect 里调用 async 函数（不要直接把 effect 写成 async）
 
-    // 清理：userId 变化或组件卸载时，忽略这次请求的结果
     return () => {
-      cancelled = true
+      cancelled = true // userId 变或卸载时标记取消，忽略过期响应
     }
-  }, [userId]) // userId 变了 → 清掉旧 effect → 跑新 effect
+  }, [userId]) // userId 变了 → 先跑 cleanup → 再跑新 effect
 
+  // 条件渲染：根据 loading / error / user 决定显示什么
   if (loading) return <p>加载中...</p>
   if (error) return <p style={{ color: 'crimson' }}>{error}</p>
   if (!user) return <p>请选择用户</p>
@@ -127,7 +127,7 @@ function UserDetail({ userId }) {
   )
 }
 
-// 父组件：切换 userId 测试 effect 重新执行
+// 父组件切换 userId，观察 effect 如何重新执行
 function App() {
   const [userId, setUserId] = useState(1)
 
@@ -163,17 +163,17 @@ function Clock() {
   const [time, setTime] = useState(new Date())
   const [width, setWidth] = useState(window.innerWidth)
 
-  // 定时器：每秒更新
+  // 副作用：定时器 —— 必须在 useEffect 里创建，不能写在组件顶层
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date())
+      setTime(new Date()) // 每秒更新 time，触发重渲染
     }, 1000)
 
-    // ✅ 清理：卸载时清除定时器
+    // ✅ 清理：组件卸载时必须 clearInterval，否则内存泄漏 + setState 警告
     return () => clearInterval(timer)
-  }, [])
+  }, []) // [] = 只挂载时启动一次定时器
 
-  // 窗口 resize 监听
+  // 副作用：window resize 事件监听
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth)
@@ -181,7 +181,7 @@ function Clock() {
 
     window.addEventListener('resize', handleResize)
 
-    // ✅ 清理：卸载时移除监听
+    // ✅ 清理：卸载时移除监听，避免重复绑定
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
@@ -205,19 +205,19 @@ function Clock() {
             body: `function SearchResults({ keyword }) {
   const [results, setResults] = useState([])
 
-  // ❌ 漏依赖 keyword：keyword 变了不会重新搜索
+  // ❌ 漏依赖 keyword：keyword 变了 effect 不会重跑，搜索结果是旧的
   // useEffect(() => {
   //   fetch(\`/api/search?q=\${keyword}\`).then(...)
   // }, [])
 
-  // ✅ 正确：keyword 进依赖
+  // ✅ 正确：effect 里用到的 props/state 都要放进依赖数组
   useEffect(() => {
     if (!keyword.trim()) {
       setResults([])
       return
     }
 
-    let cancelled = false
+    let cancelled = false // 快速输入时，忽略过期的搜索结果
 
     fetch(\`/api/search?q=\${encodeURIComponent(keyword)}\`)
       .then((r) => r.json())
@@ -226,7 +226,7 @@ function Clock() {
       })
 
     return () => { cancelled = true }
-  }, [keyword]) // ← keyword 必须在这里
+  }, [keyword]) // ← keyword 必须在这里，否则闭包抓到旧 keyword
 
   return (/* 渲染 results */)
 }`,
@@ -236,15 +236,16 @@ function Clock() {
             title: 'localStorage 同步（常见 effect 场景）',
             language: 'jsx',
             body: `function ThemeApp() {
+  // 惰性初始化：只在首次渲染时读 localStorage，避免每次 render 都读
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
 
-  // theme 变化时写入 localStorage
+  // theme 变化时同步到 localStorage 和 DOM 属性 —— 典型 effect 场景
   useEffect(() => {
     localStorage.setItem('theme', theme)
     document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
+  }, [theme]) // theme 变才重跑，不是每次 render 都写
 
   return (
     <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
@@ -340,17 +341,18 @@ function Clock() {
             language: 'jsx',
             body: `import { useEffect, useRef } from 'react'
 
+// useRef 用途一：获取真实 DOM 节点，调用 focus / scroll 等原生 API
 function SearchBox() {
-  const inputRef = useRef(null)
-  const resultRef = useRef(null)
+  const inputRef = useRef(null)   // 绑定到 input
+  const resultRef = useRef(null)  // 绑定到结果区域
 
-  // 挂载后自动聚焦
+  // DOM 挂载后才能 focus —— 放在 useEffect([], ...) 里，不要写在 render 期间
   useEffect(() => {
-    inputRef.current?.focus()
+    inputRef.current?.focus() // ?. 安全调用：挂载前 current 是 null
   }, [])
 
   function handleSelectAll() {
-    inputRef.current?.select()
+    inputRef.current?.select() // 选中输入框全部文字
   }
 
   function handleClear() {
@@ -367,6 +369,7 @@ function SearchBox() {
   return (
     <div style={{ padding: 20 }}>
       <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+        {/* ref={inputRef}：React 会把真实 DOM 节点挂到 inputRef.current */}
         <input
           ref={inputRef}
           type="text"
@@ -408,16 +411,17 @@ function SearchBox() {
             language: 'jsx',
             body: `import { useEffect, useRef, useState } from 'react'
 
+// useRef 用途二：存 timer id 等「不需要显示在 UI 上」的可变值
 function Stopwatch() {
-  const [seconds, setSeconds] = useState(0)
+  const [seconds, setSeconds] = useState(0)   // 要显示 → useState
   const [running, setRunning] = useState(false)
-  const timerRef = useRef(null) // 存 setInterval 返回的 id
+  const timerRef = useRef(null) // 定时器 id 不必驱动 UI → useRef
 
   function start() {
-    if (timerRef.current) return // 防止重复 start
+    if (timerRef.current) return // 防止重复 start 创建多个定时器
 
     timerRef.current = setInterval(() => {
-      setSeconds((s) => s + 1) // 显示的数字用 state
+      setSeconds((s) => s + 1) // 函数式更新，不依赖闭包里的旧 seconds
     }, 1000)
     setRunning(true)
   }
@@ -425,7 +429,7 @@ function Stopwatch() {
   function pause() {
     if (timerRef.current) {
       clearInterval(timerRef.current)
-      timerRef.current = null
+      timerRef.current = null // 清空 ref，允许再次 start
     }
     setRunning(false)
   }
@@ -435,7 +439,7 @@ function Stopwatch() {
     setSeconds(0)
   }
 
-  // 组件卸载时清理定时器
+  // 卸载时清理定时器 —— 和 useEffect 定时器 demo 同一规则
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current)
@@ -467,17 +471,18 @@ function Stopwatch() {
             language: 'jsx',
             body: `import { useEffect, useRef, useState } from 'react'
 
+// 自定义 Hook：用 ref 存「上一次渲染」的值（进阶但实用）
 function usePrevious(value) {
   const ref = useRef()
   useEffect(() => {
-    ref.current = value // 渲染完成后更新为当前值
+    ref.current = value // 本次渲染完成后，才把当前 value 写入 ref
   }, [value])
-  return ref.current   // 返回的是「上一次渲染」的值
+  return ref.current   // 返回的是「上一次」的值（本次 render 期间还没更新）
 }
 
 function Counter() {
   const [count, setCount] = useState(0)
-  const prevCount = usePrevious(count)
+  const prevCount = usePrevious(count) // 点 +1 后，prevCount 是点击前的数字
 
   return (
     <div style={{ padding: 20 }}>
@@ -492,12 +497,12 @@ function Counter() {
             type: 'code',
             title: 'useRef vs useState 对照',
             language: 'jsx',
-            body: `// 场景：渲染次数
+            body: `// useRef vs useState：改 ref 不重渲染，改 state 会重渲染
 function RenderCount() {
-  const [count, setCount] = useState(0)
-  const renderRef = useRef(0)
+  const [count, setCount] = useState(0)      // 要显示在 UI 上
+  const renderRef = useRef(0)                // 只内部计数，不必显示
 
-  renderRef.current += 1 // 每次渲染 +1，不触发额外渲染
+  renderRef.current += 1 // 每次组件函数执行（渲染）时 +1，不触发额外渲染
 
   return (
     <div>
@@ -508,9 +513,9 @@ function RenderCount() {
   )
 }
 
-// 选择：
-// 要显示在 UI 上 → useState
-// 只是内部计数/存 id/DOM → useRef`,
+// 选择口诀：
+// 要出现在 JSX 里 → useState
+// 只是内部计数 / 存 timer id / 存 DOM 引用 → useRef`,
           },
           {
             type: 'table',
@@ -599,8 +604,10 @@ function RenderCount() {
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
 
-// ========== hooks/useLocalStorage.js ==========
+// ========== 自定义 Hook：封装 localStorage 读写逻辑 ==========
+// 规则：函数名以 use 开头；内部可调用其他 Hook；每个组件调用有独立 state
 function useLocalStorage(key, initialValue) {
+  // 惰性初始化：首次渲染读 localStorage，刷新后恢复上次保存的值
   const [value, setValue] = useState(() => {
     try {
       const raw = localStorage.getItem(key)
@@ -610,6 +617,7 @@ function useLocalStorage(key, initialValue) {
     }
   })
 
+  // value 变化时写入 localStorage —— 副作用放 useEffect
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(value))
@@ -618,10 +626,11 @@ function useLocalStorage(key, initialValue) {
     }
   }, [key, value])
 
+  // 返回和 useState 一样的 [value, setValue]，调用方无感
   return [value, setValue]
 }
 
-// ========== 使用：ThemeSwitch ==========
+// ========== 使用：ThemeSwitch —— 主题持久化 ==========
 function ThemeSwitch() {
   const [theme, setTheme] = useLocalStorage('app-theme', 'light')
 
@@ -651,7 +660,7 @@ function ThemeSwitch() {
   )
 }
 
-// ========== 另一个组件也用同一个 Hook ==========
+// ========== 另一个组件也用同一 Hook —— 但 state 各自独立 ==========
 function UserGreeting() {
   const [name, setName] = useLocalStorage('user-name', '游客')
 
@@ -678,12 +687,13 @@ function UserGreeting() {
             language: 'jsx',
             body: `import { useCallback, useEffect, useState } from 'react'
 
-// ========== hooks/useFetch.js ==========
+// ========== 自定义 Hook：封装 fetch + loading + error 三态 ==========
 function useFetch(url) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
+  // useCallback 稳定 refetch 函数引用，供「重试」按钮使用
   const fetchData = useCallback(async () => {
     setLoading(true)
     setError('')
@@ -701,6 +711,7 @@ function useFetch(url) {
     }
   }, [url])
 
+  // url 变化时自动重新请求；卸载时用 cancelled 忽略过期响应
   useEffect(() => {
     let cancelled = false
 
@@ -723,14 +734,13 @@ function useFetch(url) {
     })()
 
     return () => { cancelled = true }
-  }, [url])
+  }, [url]) // url 进依赖：换地址就重新拉
 
   return { data, loading, error, refetch: fetchData }
 }
 
-// ========== 使用：UserListPage（组件非常干净）==========
+// ========== 使用：页面组件只剩条件渲染 + 列表 map ==========
 function UserListPage() {
-  // 真实项目换成真实 API；这里用 JSONPlaceholder 演示
   const { data, loading, error, refetch } = useFetch(
     'https://jsonplaceholder.typicode.com/users'
   )
@@ -780,9 +790,11 @@ function UserListPage() {
             language: 'jsx',
             body: `import { useState, useCallback } from 'react'
 
+// 简单自定义 Hook：封装布尔开关逻辑，避免每个组件重复写 useState + toggle
 function useToggle(initial = false) {
   const [on, setOn] = useState(initial)
 
+  // useCallback 让 toggle/setTrue/setFalse 引用稳定（传给 memo 子组件时有用）
   const toggle = useCallback(() => setOn((v) => !v), [])
   const setTrue = useCallback(() => setOn(true), [])
   const setFalse = useCallback(() => setOn(false), [])
@@ -791,12 +803,13 @@ function useToggle(initial = false) {
 }
 
 function ModalDemo() {
-  const modal = useToggle(false)
+  const modal = useToggle(false) // 每个组件调用 useToggle 都有独立的 on 状态
 
   return (
     <div style={{ padding: 20 }}>
       <button type="button" onClick={modal.setTrue}>打开弹窗</button>
 
+      {/* modal.on 为 true 时渲染遮罩层 —— && 条件渲染 */}
       {modal.on && (
         <div
           style={{
@@ -807,11 +820,11 @@ function ModalDemo() {
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          onClick={modal.setFalse}
+          onClick={modal.setFalse} // 点遮罩关闭
         >
           <div
             style={{ background: 'white', padding: 24, borderRadius: 8 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()} // 阻止冒泡，点内容区不关闭
           >
             <h3>弹窗内容</h3>
             <button type="button" onClick={modal.toggle}>切换</button>

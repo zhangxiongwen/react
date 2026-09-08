@@ -51,10 +51,12 @@ const components = {
             title: '完整 Demo：从创建 Button 到在 App 里使用',
             language: 'jsx',
             body: `// ========== src/components/Button.js ==========
+// 【定义组件】函数名首字母必须大写，React 才会把它当「自定义组件」而不是 HTML 标签
 function Button() {
+  // 【return JSX】组件的返回值就是要在页面上显示的 UI 结构
   return (
     <button
-      type="button"
+      type="button"  // 普通按钮，避免在 form 里误触提交
       style={{
         padding: '8px 16px',
         background: '#1677ff',
@@ -69,17 +71,22 @@ function Button() {
   )
 }
 
+// 【默认导出】一个文件通常只 export default 一个主组件，别的文件 import 时名字可自定
 export default Button
 
 // ========== src/App.js ==========
+// 【导入组件】路径相对当前文件；import 的名字建议和组件名一致（Button）
 import Button from './components/Button'
 
+// App 也是组件，它是页面的「根组件」
 function App() {
   return (
     <div style={{ padding: 24 }}>
       <h1>组件使用示例</h1>
+      {/* 【使用组件】写 <Button /> 等价于 React 在内部调用 Button() 并渲染返回值 */}
       <Button />
-      <Button />   {/* 同一组件可以用多次 */}
+      {/* 同一组件可以复用多次，每次渲染都是独立的按钮 */}
+      <Button />
     </div>
   )
 }
@@ -115,13 +122,16 @@ export default App`,
 function Avatar() {
   return <span style={{ fontSize: 32 }}>👤</span>
 }
+// export default：这个文件对外只暴露 Avatar 一个主组件
 export default Avatar
 
-// 使用：import Avatar from './Avatar'
-// 或：import MyAvatar from './Avatar'  ← 名字可以自定
+// 使用方式：
+// import Avatar from './Avatar'        ← 名字建议和组件一致
+// import MyAvatar from './Avatar'      ← default 导入时名字可以自定
 
 
 // ========== icons.js：具名导出（一个文件多个小组件）==========
+// export function：每个函数单独导出，适合「图标库」这种一文件多小组件
 export function IconHome() {
   return <span title="首页">🏠</span>
 }
@@ -132,23 +142,27 @@ export function IconSetting() {
   return <span title="设置">⚙️</span>
 }
 
-// 使用：
-import { IconHome, IconUser } from './icons'
-// 或：import { IconHome as HomeIcon } from './icons'
+// 具名导入：花括号 {} 里的名字必须和导出时一致
+// import { IconHome, IconUser } from './icons'
+// import { IconHome as HomeIcon } from './icons'  ← 可用 as 重命名避免冲突
 
 
 // ========== Page.js：同文件内部组件（不 export）==========
+// 【Props 解构】{ text } 从父组件传入的 props 里直接取出 text 字段
 function PageTitle({ text }) {
   return <h2 style={{ marginBottom: 16 }}>{text}</h2>
 }
 
+// 内部辅助组件：只在当前文件使用，不 export 则外部无法 import
 function PageFooter() {
   return <footer style={{ marginTop: 24, color: '#999' }}>© 2026</footer>
 }
 
+// 主组件组合内部小组件，形成「组件树」
 function Page() {
   return (
     <article>
+      {/* 传 prop：text="关于我们" → PageTitle 收到 props.text */}
       <PageTitle text="关于我们" />
       <p>页面正文内容...</p>
       <PageFooter />
@@ -156,7 +170,8 @@ function Page() {
   )
 }
 
-export default Page  // 只导出 Page，Title/Footer 外部看不到`,
+// 只导出 Page；PageTitle / PageFooter 是封装细节，外部看不到
+export default Page`,
           },
           {
             type: 'text',
@@ -180,10 +195,11 @@ export default Page  // 只导出 Page，Title/Footer 外部看不到`,
             title: '完整大 Demo：从「一团 JSX」拆成清晰组件树',
             language: 'jsx',
             body: `// ========== 拆之前：App.js 200 行，又长又乱 ==========
-// 下面展示「拆之后」的目标结构
+// 下面展示「拆之后」的目标结构：每个组件一个职责，像积木一样组合
 
-// --- Avatar.js ---
+// --- Avatar.js：只负责显示圆形头像 ---
 function Avatar({ src, name, size = 48 }) {
+  // props：src 图片地址、name 替代文字、size 默认 48（父组件不传时用默认值）
   return (
     <img
       src={src}
@@ -196,8 +212,9 @@ function Avatar({ src, name, size = 48 }) {
 }
 export default Avatar
 
-// --- Badge.js ---
+// --- Badge.js：只负责小标签样式 ---
 function Badge({ children, color = '#1677ff' }) {
+  // children：标签之间的内容（如「VIP」文字）会通过 props.children 传入
   return (
     <span
       style={{
@@ -214,11 +231,12 @@ function Badge({ children, color = '#1677ff' }) {
 }
 export default Badge
 
-// --- UserCard.js：组合 Avatar + Badge ---
+// --- UserCard.js：组合 Avatar + Badge，展示一个用户 ---
 import Avatar from './Avatar'
 import Badge from './Badge'
 
 function UserCard({ user }) {
+  // user 是一个对象 prop，包含 name、bio、city、avatar、isVip 等字段
   return (
     <div
       style={{
@@ -230,10 +248,12 @@ function UserCard({ user }) {
         maxWidth: 360,
       }}
     >
+      {/* 把 user 对象的字段拆成多个 props 传给子组件 */}
       <Avatar src={user.avatar} name={user.name} />
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <strong>{user.name}</strong>
+          {/* 条件渲染：只有 VIP 用户才显示 Badge */}
           {user.isVip && <Badge color="#faad14">VIP</Badge>}
         </div>
         <p style={{ color: '#666', margin: '4px 0' }}>{user.bio}</p>
@@ -244,10 +264,11 @@ function UserCard({ user }) {
 }
 export default UserCard
 
-// --- App.js：只负责组装数据和顶层布局 ---
+// --- App.js：只负责数据（users 数组）和列表布局 ---
 import UserCard from './components/UserCard'
 
 function App() {
+  // 数据在父组件 App 里；UserCard 只负责「怎么展示」，不负责「数据从哪来」
   const users = [
     {
       name: '小明',
@@ -268,6 +289,7 @@ function App() {
   return (
     <div style={{ padding: 24 }}>
       <h1>用户列表</h1>
+      {/* map 遍历数组，每个 user 渲染一张 UserCard；key 帮助 React 识别列表项 */}
       {users.map((user) => (
         <UserCard key={user.name} user={user} />
       ))}
@@ -289,23 +311,24 @@ export default App`,
 function button() {
   return <button>错</button>
 }
-// 使用 <button /> 渲染的是原生 HTML button，不是你写的函数
+// 使用时写 <button /> 只会渲染浏览器原生 button，不会调用上面的 button() 函数
 
-// ❌ 错误 2：组件名小写使用
+// ❌ 错误 2：定义大写、使用小写
 function MyButton() {
   return <button>对</button>
 }
-// 写 <mybutton /> → 报错或渲染异常
+// 写 <mybutton /> → React 找不到对应组件，报错或渲染异常
 
-// ✅ 正确：函数名大写 + 使用也大写
+// ✅ 正确：定义和使用都用 PascalCase（首字母大写）
 function MyButton() {
   return <button type="button">确定</button>
 }
-// 使用 <MyButton />
+// 使用 <MyButton /> → React 会调用 MyButton() 并渲染返回值
 
 // ❌ 错误 3：忘记 export / import
-// Button.js 写了 function 但没 export default
-// App.js import Button from './Button' → Module not found 或 undefined`,
+// Button.js 只写了 function Button() {} 但没有 export default
+// App.js 写 import Button from './Button' → 得到 undefined，页面报错
+// 修复：Button.js 末尾加 export default Button；App.js 顶部加 import`,
           },
           {
             type: 'table',
@@ -392,17 +415,21 @@ function MyButton() {
             type: 'code',
             title: '完整 Demo：Greeting 组件各种传参方式',
             language: 'jsx',
-            body: `// 写法 A：props 对象
+            body: `// ========== 写法 A：用 props 对象接收 ==========
+// props 是父组件传入的所有属性的集合，像普通函数的「参数对象」
 function GreetingA(props) {
   return (
     <p>
+      {/* 用 props.xxx 访问每个传入的字段 */}
       你好，{props.name}！你 {props.age} 岁了。
+      {/* && 短路：isStudent 为 true 时才显示后面的文字 */}
       {props.isStudent && '（学生）'}
     </p>
   )
 }
 
-// 写法 B：解构（更常用）
+// ========== 写法 B：解构 props（更常用、更简洁）==========
+// { name, age, isStudent = false } 直接从 props 里取出字段；isStudent 默认 false
 function GreetingB({ name, age, isStudent = false }) {
   return (
     <p>
@@ -415,19 +442,20 @@ function GreetingB({ name, age, isStudent = false }) {
 function App() {
   return (
     <div style={{ padding: 20 }}>
-      {/* 字符串：引号或花括号都行 */}
+      {/* 字符串 prop：引号或花括号都可以 */}
       <GreetingB name="小明" age={18} isStudent={true} />
       <GreetingB name={'小红'} age={20} />
 
-      {/* 数字、布尔必须用 {} */}
+      {/* 数字、布尔必须用 {} 包起来，否则会被当成字符串 */}
       <GreetingB name="小刚" age={25} isStudent={false} />
 
-      {/* 传对象：用 {} 包一层 */}
+      {/* 传对象 prop：外层 {} 表示「JS 表达式」，内层 {} 是对象字面量 */}
       <UserBadge user={{ id: 1, name: '小李', level: 5 }} />
     </div>
   )
 }
 
+// 子组件接收对象 prop，再访问对象的属性
 function UserBadge({ user }) {
   return (
     <div style={{ marginTop: 8 }}>
@@ -459,14 +487,16 @@ function UserBadge({ user }) {
             type: 'code',
             title: '完整 Demo：通用 Button 组件（默认值 + 多种 props）',
             language: 'jsx',
-            body: `function Button({
-  type = 'button',       // 默认普通按钮，不是 submit
-  variant = 'primary',   // primary | danger | ghost
-  size = 'medium',       // small | medium | large
-  disabled = false,
-  onClick,
-  children = '按钮',     // 默认文字
+            body: `// 通用 Button 组件：演示 props 解构 + 默认值 + 回调函数
+function Button({
+  type = 'button',       // HTML button 的 type，默认普通按钮
+  variant = 'primary',   // 视觉风格：primary | danger | ghost
+  size = 'medium',       // 尺寸：small | medium | large
+  disabled = false,      // 是否禁用
+  onClick,               // 点击回调（函数 prop，父组件传入）
+  children = '按钮',     // 按钮文字，默认「按钮」
 }) {
+  // 根据 size prop 查表得到对应样式
   const sizeMap = {
     small: { padding: '4px 8px', fontSize: 12 },
     medium: { padding: '8px 16px', fontSize: 14 },
@@ -486,9 +516,9 @@ function UserBadge({ user }) {
     <button
       type={type}
       disabled={disabled}
-      onClick={onClick}
+      onClick={onClick}  // 把父组件传入的函数绑到原生 click 事件
       style={{
-        ...s,
+        ...s,            // 展开 size 样式
         background: c.bg,
         color: c.color,
         border: c.border || 'none',
@@ -497,7 +527,7 @@ function UserBadge({ user }) {
         opacity: disabled ? 0.5 : 1,
       }}
     >
-      {children}
+      {children}  {/* 显示标签之间的内容，如 <Button>保存</Button> 里的「保存」 */}
     </button>
   )
 }
@@ -505,11 +535,12 @@ function UserBadge({ user }) {
 function App() {
   return (
     <div style={{ padding: 20, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <Button>保存</Button>                          {/* 全部用默认值 */}
+      <Button>保存</Button>  {/* 不传 props → 全部用默认值 */}
       <Button size="large">大按钮</Button>
       <Button variant="danger">删除</Button>
       <Button variant="ghost" size="small">取消</Button>
       <Button disabled>禁用</Button>
+      {/* onClick 传箭头函数：点击时才执行，不是渲染时执行 */}
       <Button onClick={() => alert('点了！')}>点我</Button>
     </div>
   )
@@ -526,7 +557,10 @@ function App() {
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// ========== 子组件 TodoItem：只负责展示一条 todo，不持有列表 state ==========
 function TodoItem({ todo, onToggle, onRemove }) {
+  // todo：对象 prop（含 id、text、done）
+  // onToggle / onRemove：回调 prop，子组件通过它们「通知父组件」去改数据
   return (
     <li
       style={{
@@ -537,6 +571,7 @@ function TodoItem({ todo, onToggle, onRemove }) {
         borderBottom: '1px solid #eee',
       }}
     >
+      {/* 受控 checkbox：checked 来自 props，变化时调用父组件的 onToggle */}
       <input
         type="checkbox"
         checked={todo.done}
@@ -558,18 +593,21 @@ function TodoItem({ todo, onToggle, onRemove }) {
   )
 }
 
+// ========== 父组件 TodoList：持有 todos state，负责增删改 ==========
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: '学习 Props', done: false },
     { id: 2, text: '学习 State', done: true },
   ])
 
+  // 切换完成状态：用 map 生成新数组（不可变更新）
   function handleToggle(id) {
     setTodos((prev) =>
       prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
     )
   }
 
+  // 删除：用 filter 过滤掉指定 id
   function handleRemove(id) {
     setTodos((prev) => prev.filter((t) => t.id !== id))
   }
@@ -579,8 +617,8 @@ function TodoList() {
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          todo={todo}                    // 传对象
-          onToggle={handleToggle}        // 传函数
+          todo={todo}              // 传对象 prop
+          onToggle={handleToggle}  // 传函数 prop（回调）
           onRemove={handleRemove}
         />
       ))}
@@ -588,12 +626,13 @@ function TodoList() {
   )
 }
 
-// 展开 props 示例
+// ========== 展开 props 示例：批量透传 HTML 属性 ==========
 function Box(props) {
   const boxDefaults = { className: 'box', 'data-testid': 'box' }
+  // {...boxDefaults} 先展开默认属性，{...props} 再展开父组件传入的，后者可覆盖前者
   return <div {...boxDefaults} {...props}>内容</div>
 }
-// <Box style={{ color: 'red' }}>  → className、data-testid、style 都有`,
+// 使用 <Box style={{ color: 'red' }}> → 同时有 className、data-testid、style`,
           },
           {
             type: 'text',
@@ -606,10 +645,10 @@ function Box(props) {
             language: 'jsx',
             body: `import { useState } from 'react'
 
-// ❌ 错误：在子组件里直接改 props
+// ❌ 错误：在子组件里直接修改 props（违反单向数据流）
 function BadEditor({ user }) {
   function rename() {
-    user.name = '被篡改的名字'  // 直接 mutate props！
+    user.name = '被篡改的名字'  // 直接 mutate props 对象！React 可能不刷新界面
   }
   return (
     <div>
@@ -619,11 +658,12 @@ function BadEditor({ user }) {
   )
 }
 
-// ✅ 正确：通过回调通知父组件
+// ✅ 正确：子组件通过回调 prop 通知父组件，由父组件用 setState 更新
 function GoodEditor({ user, onRename }) {
   return (
     <div>
       <p>当前：{user.name}</p>
+      {/* 点击时调用 onRename，把新名字传给父组件 */}
       <button type="button" onClick={() => onRename('新名字')}>
         改名（正确方式）
       </button>
@@ -631,13 +671,14 @@ function GoodEditor({ user, onRename }) {
   )
 }
 
+// 父组件持有 user state，是唯一可以改数据的地方
 function Parent() {
   const [user, setUser] = useState({ id: 1, name: '小明' })
 
   return (
     <GoodEditor
-      user={user}
-      onRename={(name) => setUser({ ...user, name })}
+      user={user}  // 只读：把当前 user 传给子组件展示
+      onRename={(name) => setUser({ ...user, name })}  // 父组件收到回调后更新 state
     />
   )
 }`,
@@ -719,7 +760,10 @@ function Parent() {
             type: 'code',
             title: '完整 Demo：Card + Layout 基础 children',
             language: 'jsx',
-            body: `function Card({ title, children }) {
+            body: `// Card 组件：固定外壳（边框、标题区），正文由 children 自定义
+function Card({ title, children }) {
+  // title：普通 prop，可选
+  // children：标签之间的内容会自动变成 props.children
   return (
     <section
       style={{
@@ -730,6 +774,7 @@ function Parent() {
         maxWidth: 480,
       }}
     >
+      {/* title 有值时才渲染标题区 */}
       {title && (
         <header
           style={{
@@ -742,6 +787,7 @@ function Parent() {
           {title}
         </header>
       )}
+      {/* children 渲染在开闭标签之间传入的任意内容 */}
       <div style={{ padding: 16 }}>{children}</div>
     </section>
   )
@@ -750,17 +796,19 @@ function Parent() {
 function App() {
   return (
     <div style={{ padding: 24 }}>
+      {/* children 可以是多个 JSX 元素 */}
       <Card title="今日任务">
         <p>1. 学习 Props</p>
         <p>2. 学习 children</p>
         <button type="button">标记完成</button>
       </Card>
 
+      {/* children 也可以是纯文字 */}
       <Card title="公告">
         纯文字也可以作为 children，不一定要标签包裹。
       </Card>
 
-      {/* 自闭合组件没有 children */}
+      {/* 自闭合 <Card /> 没有 children，props.children 为 undefined */}
       <Card title="空内容" />
     </div>
   )
@@ -775,7 +823,8 @@ function App() {
             type: 'code',
             title: '完整 Demo：MainLayout + 页面组合（仿 react-demo）',
             language: 'jsx',
-            body: `function Header() {
+            body: `// Header / Footer：布局的固定部分，每页都一样
+function Header() {
   return (
     <header
       style={{
@@ -801,10 +850,12 @@ function Footer() {
   )
 }
 
+// MainLayout：典型 children 用法——壳子固定，中间内容由外部传入
 function MainLayout({ children }) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
+      {/* children 就是每个页面的具体内容，路由切换时只换这里 */}
       <main style={{ flex: 1, padding: 24 }}>{children}</main>
       <Footer />
     </div>
@@ -830,10 +881,11 @@ function AboutPage() {
 }
 
 function App() {
-  const page = 'home' // 实际项目用 Router 切换
+  const page = 'home' // 实际项目用 React Router 切换 page
 
   return (
     <MainLayout>
+      {/* children 可以是表达式：根据 page 渲染不同页面组件 */}
       {page === 'home' ? <HomePage /> : <AboutPage />}
     </MainLayout>
   )
@@ -850,8 +902,9 @@ function App() {
             language: 'jsx',
             body: `import { useState } from 'react'
 
-// 具名插槽：header / footer / children
+// ========== Panel：具名插槽（header / footer / children）==========
 function Panel({ header, footer, children }) {
+  // header、footer 也是 props，只是传的是 JSX 而不是简单字符串
   return (
     <div
       style={{
@@ -879,9 +932,9 @@ function Panel({ header, footer, children }) {
   )
 }
 
-// Modal：children 是弹窗内容，onClose 是回调 prop
+// ========== Modal：open/title/onClose 是 prop，弹窗正文用 children ==========
 function Modal({ open, title, onClose, children }) {
-  if (!open) return null
+  if (!open) return null  // 未打开时不渲染任何 DOM
 
   return (
     <div
@@ -893,7 +946,7 @@ function Modal({ open, title, onClose, children }) {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      onClick={onClose}
+      onClick={onClose}  // 点击遮罩关闭
     >
       <div
         style={{
@@ -902,7 +955,7 @@ function Modal({ open, title, onClose, children }) {
           minWidth: 320,
           maxWidth: '90vw',
         }}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}  // 阻止冒泡，点弹窗内部不关闭
       >
         <div
           style={{
@@ -965,7 +1018,7 @@ function App() {
             type: 'code',
             title: 'children 还可以是函数吗？（了解 render props）',
             language: 'jsx',
-            body: `// 进阶模式：children 是一个函数，把内部数据「反向」传给外部
+            body: `// 【进阶】render props：children 可以是一个函数，组件把内部数据「反向」传给外部
 function DataLoader({ url, children }) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -976,18 +1029,18 @@ function DataLoader({ url, children }) {
       .then((d) => { setData(d); setLoading(false) })
   }, [url])
 
-  // children 是函数 → 调用它，传入 data 和 loading
+  // children 是函数 → 调用它并传入 { data, loading }，由外部决定怎么渲染
   return children({ data, loading })
 }
 
-// 使用
+// 使用：标签之间的函数会作为 props.children 传入
 <DataLoader url="/api/user">
   {({ data, loading }) =>
     loading ? <p>加载中...</p> : <p>{data.name}</p>
   }
 </DataLoader>
 
-// 初学先掌握「JSX 作为 children」即可，函数 children 后面遇到再深入`,
+// 初学先掌握「JSX 作为 children」即可；函数 children 遇到再深入`,
           },
           {
             type: 'list',

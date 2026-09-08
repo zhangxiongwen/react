@@ -2,6 +2,7 @@ import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home/index'
 import LessonDetail from '../pages/LessonDetail/index'
 import JsonServerDemo from '../pages/JsonServerDemo/index'
+import Playground from '../pages/Playground/index'
 import AuthDemoHome from '../pages/AuthDemo/index'
 import LoginPage from '../pages/AuthDemo/LoginPage'
 import ProfilePage from '../pages/AuthDemo/ProfilePage'
@@ -29,6 +30,7 @@ const routes = [
     children: [
       { index: true, element: <Home /> },
       { path: 'lesson/:categoryId/:itemId', element: <LessonDetail /> },
+      { path: 'playground', element: <Playground /> },
       { path: 'demo/json-server', element: <JsonServerDemo /> },
 
       // ---------- 路由守卫演示 ----------

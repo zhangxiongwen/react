@@ -138,27 +138,33 @@ const redux = {
             type: 'code',
             title: '4）三个词串起来（伪代码，对应本项目 counter）',
             language: 'javascript',
-            body: `// state（当前）
+            body: `// ========== Redux 三核心词串起来（伪代码，对应本项目 counter） ==========
+
+// ① state —— 仓库里「现在有什么数据」
 const state = { counter: { value: 0 } }
+// counter 是 configureStore 里 reducer 的 key
+// value 是 counterSlice 里 initialState 的字段
 
-// action（用户点了 +5）
+// ② action —— 描述「想做什么改动」的普通对象（本身不改数据）
 const action = { type: 'counter/incrementByAmount', payload: 5 }
+// type：哪种操作（createSlice 自动生成，格式 slice名/reducer名）
+// payload：附加数据（dispatch(incrementByAmount(5)) 时传入）
 
-// reducer（管理员算账）
+// ③ reducer —— 纯函数：(旧 state, action) => 新 state
 function counterReducer(state, action) {
   if (action.type === 'counter/incrementByAmount') {
+    // 不可变更新：展开旧对象，覆盖 value 字段
     return { ...state, value: state.value + action.payload }
   }
-  return state
+  return state  // 不认识的 action 原样返回
 }
 
-// 新 state
-// { counter: { value: 5 } }
+// 新 state：{ counter: { value: 5 } }
 
-// React 里你不手写上面这些——createSlice 全包了；
+// ========== React 里你不手写上面这些 —— createSlice 全包了 ==========
 // 组件里只做两件事：
-//   const value = useSelector(s => s.counter.value)
-//   dispatch(incrementByAmount(5))`,
+//   const value = useSelector(s => s.counter.value)  // 读
+//   dispatch(incrementByAmount(5))                   // 写`,
           },
           {
             type: 'table',
@@ -221,12 +227,21 @@ function counterReducer(state, action) {
             type: 'code',
             title: '3）安装命令（本项目已安装，了解即可）',
             language: 'bash',
-            body: `npm install @reduxjs/toolkit react-redux
+            body: `# 安装 Redux 现代写法需要的两个包
+npm install @reduxjs/toolkit react-redux
 
-# 装完后典型文件结构（本项目）：
-# src/store/slices/counterSlice.js   ← createSlice
-# src/store/index.js                 ← configureStore
-# src/index.js                       ← <Provider store={store}>`,
+# @reduxjs/toolkit（RTK）：写 store 和 slice 的推荐工具
+#   - createSlice：定义 state + reducers + 自动生成 action
+#   - configureStore：创建 store，默认开启 DevTools
+#
+# react-redux：把 store 接到 React 的桥梁
+#   - Provider：注入 store 到组件树
+#   - useSelector / useDispatch：组件读写 store 的 Hook
+#
+# 装完后本项目典型文件结构：
+# src/store/slices/counterSlice.js   ← createSlice 定义业务
+# src/store/index.js                 ← configureStore 创建 store
+# src/index.js                       ← <Provider store={store}> 包住 App`,
           },
           {
             type: 'list',
@@ -283,26 +298,30 @@ function counterReducer(state, action) {
             type: 'code',
             title: '5）完整 counterSlice.js（与项目源码一致，逐段注释）',
             language: 'javascript',
-            body: `import { createSlice } from '@reduxjs/toolkit'
+            body: `// createSlice：Redux Toolkit 核心 API，一块业务 = 一个 slice 文件
+import { createSlice } from '@reduxjs/toolkit'
 
 const counterSlice = createSlice({
-  // name：action type 前缀 → 'counter/increment'
+  // name：action type 的前缀 → 自动生成 'counter/increment'、'counter/decrement' 等
+  // 注意：name 不等于 state 路径，state 路径由 configureStore 的 key 决定
   name: 'counter',
 
-  // initialState：这块 slice 的初始数据
+  // initialState：应用首次加载时，这块 slice 的初始数据
   initialState: {
     value: 0,
   },
 
-  // reducers：每种改法一个函数
+  // reducers：所有「合法改法」写在这里，键名 = action 名
   reducers: {
+    // 无参数 action：dispatch(increment())
     increment(state) {
+      // RTK 内置 Immer：看起来像直接改 state，实际会 produce 新对象
       state.value += 1
     },
     decrement(state) {
       state.value -= 1
     },
-    // 带参数：dispatch(incrementByAmount(5)) → payload 为 5
+    // 带参数：dispatch(incrementByAmount(5)) → action.payload === 5
     incrementByAmount(state, action) {
       state.value += action.payload
     },
@@ -312,11 +331,12 @@ const counterSlice = createSlice({
   },
 })
 
-// 解构出 action 创建函数，给组件 dispatch 用
+// counterSlice.actions：自动生成的 action 创建函数
+// 组件 import 这些去 dispatch，不要 import reducer 去 dispatch
 export const { increment, decrement, incrementByAmount, reset } =
   counterSlice.actions
 
-// 默认导出 reducer，给 configureStore 注册
+// counterSlice.reducer：纯 reducer 函数，给 configureStore 注册用
 export default counterSlice.reducer`,
           },
           {
@@ -328,16 +348,20 @@ export default counterSlice.reducer`,
             type: 'code',
             title: '7）dispatch 时 action 长什么样（帮助理解 DevTools）',
             language: 'javascript',
-            body: `import { increment, incrementByAmount } from './store/slices/counterSlice'
+            body: `// action creator 调用后返回的 plain object —— DevTools 里看到的就是这些
+import { increment, incrementByAmount } from './store/slices/counterSlice'
 
 // increment() 返回：
 // { type: 'counter/increment' }
+// type 格式 = slice.name + '/' + reducer 键名
 
 // incrementByAmount(5) 返回：
 // { type: 'counter/incrementByAmount', payload: 5 }
+// payload 就是传入的参数
 
-// 组件里写 dispatch(increment()) 等价于：
-// dispatch({ type: 'counter/increment' })`,
+// 组件里写 dispatch(increment()) 完全等价于：
+// dispatch({ type: 'counter/increment' })
+// 但用 action creator 更安全：不会拼错 type 字符串`,
           },
           {
             type: 'tip',
@@ -378,17 +402,25 @@ export default counterSlice.reducer`,
             type: 'code',
             title: '4）本项目 src/store/index.js',
             language: 'javascript',
-            body: `import { configureStore } from '@reduxjs/toolkit'
+            body: `// configureStore：创建全局 store 实例，全应用通常只调用一次
+import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
 
 export const store = configureStore({
   reducer: {
-    // ★ key 'counter' → state.counter
+    // ★ key 'counter' 决定 state 路径 → state.counter
+    // 这个 key 必须和 useSelector(s => s.counter.value) 里的 counter 一致
     counter: counterReducer,
   },
 })
 
-// 以后加 user、cart：
+// configureStore 默认帮你做了：
+//   - 组合多个 reducer
+//   - 开启 Redux DevTools
+//   - 加入 thunk 中间件（支持异步 dispatch）
+//   - 开发环境检查 accidental mutation
+
+// 以后加 user、cart slice：
 // import userReducer from './slices/userSlice'
 // reducer: { counter: counterReducer, user: userReducer }`,
           },
@@ -396,7 +428,9 @@ export const store = configureStore({
             type: 'code',
             title: '5）合并后 state 树长什么样',
             language: 'javascript',
-            body: `// 只有 counter 一个 slice 时：
+            body: `// 合并多个 slice 后，根 state 树的长什么样
+
+// 只有 counter 一个 slice 时：
 {
   counter: {
     value: 0
@@ -407,7 +441,12 @@ export const store = configureStore({
 {
   counter: { value: 0 },
   user: { name: '', loggedIn: false }
-}`,
+}
+
+// useSelector 路径规则：
+//   state.counter.value  → configureStore 里 key 是 counter
+//   state.user.name      → configureStore 里 key 是 user
+// key 写错 → useSelector 得到 undefined`,
           },
           {
             type: 'tip',
@@ -443,7 +482,8 @@ export const store = configureStore({
             type: 'code',
             title: '3）本项目 src/index.js（已配置好）',
             language: 'jsx',
-            body: `import React from 'react'
+            body: `// Provider：react-redux 提供的组件，把 store 注入 React Context
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -454,13 +494,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
+    {/* ★ Provider 必须包住所有要用 useSelector / useDispatch 的组件 */}
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
-)`,
+)
+
+// 缺 Provider 时报错：
+//   could not find react-redux context value
+// Provider 和 BrowserRouter 谁先谁后通常都可以，App 同时在两者内部即可`,
           },
           {
             type: 'text',
@@ -536,16 +581,23 @@ root.render(
             type: 'code',
             title: '4）标准用法模板',
             language: 'jsx',
-            body: `import { useDispatch, useSelector } from 'react-redux'
+            body: `// useSelector + useDispatch 标准用法模板
+import { useDispatch, useSelector } from 'react-redux'
 import { increment, decrement } from '../store/slices/counterSlice'
 
 function CounterPanel() {
+  // useSelector：从 store 里「挑选」你关心的数据片段
+  // selector 函数接收整个根 state，返回 value
+  // 返回值变化时组件重渲染，不变则不渲染
   const value = useSelector((state) => state.counter.value)
+
+  // useDispatch：拿到 dispatch 函数，用来发送 action
   const dispatch = useDispatch()
 
   return (
     <div>
       <p>{value}</p>
+      {/* onClick 里 dispatch action creator 的返回值 */}
       <button type="button" onClick={() => dispatch(increment())}>+1</button>
       <button type="button" onClick={() => dispatch(decrement())}>-1</button>
     </div>
@@ -576,23 +628,25 @@ function CounterPanel() {
             type: 'code',
             title: '9）易错 vs 正确（汇总）',
             language: 'jsx',
-            body: `// ❌ 路径错
+            body: `// ========== useSelector / useDispatch 常见错误 vs 正确写法 ==========
+
+// ❌ 路径错：configureStore 里没有 counterSlice 这个 key
 useSelector((s) => s.counterSlice.value)
 
-// ✅
+// ✅ 路径第一段 = configureStore reducer 的 key
 useSelector((s) => s.counter.value)
 
-// ❌ 每次新对象
+// ❌ selector 每次返回新对象 {} → === 永远不相等 → 多余重渲染
 useSelector((s) => ({ v: s.counter.value }))
 
-// ✅
+// ✅ 返回 primitive（number/string/boolean）或稳定引用
 useSelector((s) => s.counter.value)
 
-// ❌ 直接改
+// ❌ 直接修改 useSelector 拿到的对象 —— 违反 Redux 规则
 const c = useSelector((s) => s.counter)
 c.value = 99
 
-// ✅
+// ✅ 通过 dispatch action 改 state
 dispatch(incrementByAmount(99))`,
           },
           {
@@ -624,7 +678,8 @@ dispatch(incrementByAmount(99))`,
             type: 'code',
             title: '2）完整 CounterPanel 组件',
             language: 'jsx',
-            body: `import { useDispatch, useSelector } from 'react-redux'
+            body: `// 完整 CounterPanel —— Redux 读写标准范例（对照 src/store/slices/counterSlice.js）
+import { useDispatch, useSelector } from 'react-redux'
 import {
   increment,
   decrement,
@@ -633,15 +688,16 @@ import {
 } from '../store/slices/counterSlice'
 
 function CounterPanel() {
-  // 读：订阅 state.counter.value
+  // 读：订阅 state.counter.value，值变时自动重渲染
   const value = useSelector((state) => state.counter.value)
-  // 写：拿到 dispatch
+  // 写：dispatch 是稳定引用，不会导致多余渲染
   const dispatch = useDispatch()
 
   return (
     <div>
       <p>当前值：{value}</p>
 
+      {/* 每个按钮 dispatch 一个 action creator */}
       <button type="button" onClick={() => dispatch(increment())}>
         +1
       </button>
@@ -658,7 +714,9 @@ function CounterPanel() {
   )
 }
 
-export default CounterPanel`,
+export default CounterPanel
+
+// 数据流：点击 → dispatch(action) → reducer 算新 state → useSelector 触发重渲染`,
           },
           {
             type: 'text',
@@ -669,19 +727,23 @@ export default CounterPanel`,
             type: 'code',
             title: '4）数据流示意图（文字版）',
             language: 'text',
-            body: `UI 点击 +5
+            body: `# Redux 单向数据流（文字版示意图）
+
+UI 点击 +5 按钮
     ↓
-dispatch(incrementByAmount(5))
+dispatch(incrementByAmount(5))     ← useDispatch 返回的函数
     ↓
 action { type: 'counter/incrementByAmount', payload: 5 }
     ↓
-counterReducer(旧 state, action) → 新 state
+counterReducer(旧 state, action) → 新 state   ← createSlice 生成的 reducer
     ↓
-store.state.counter.value 更新
+store.state.counter.value 更新     ← configureStore 创建的 store
     ↓
 useSelector 订阅触发 → CounterPanel 重渲染
     ↓
-<p> 显示新数字`,
+<p> 显示新数字
+
+# 核心原则：组件只读（useSelector）和 dispatch，不直接改 store 里的对象`,
           },
           {
             type: 'text',
@@ -733,22 +795,28 @@ useSelector 订阅触发 → CounterPanel 重渲染
             type: 'code',
             title: '3）同一逻辑：手写不可变 vs RTK Immer 写法',
             language: 'javascript',
-            body: `// 老式纯 Redux（无 Immer）—— 必须返回新对象
+            body: `// ========== 不可变更新：老式纯 Redux vs RTK + Immer ==========
+
+// 老式纯 Redux（无 Immer）—— 必须返回新对象，不能直接改 state
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {
     case 'increment':
+      // 展开运算符复制旧 state，覆盖 value
       return { ...state, value: state.value + 1 }
     default:
-      return state
+      return state  // 不认识的 action 必须原样返回
   }
 }
 
-// RTK createSlice 里 —— Immer 允许「突变式」写法
+// RTK createSlice 里 —— Immer 允许「看起来像直接改」的写法
 reducers: {
   increment(state) {
-    state.value += 1  // 实际 produce 了新 state
+    state.value += 1  // Immer 在底层 produce 新 state，满足不可变要求
   },
-}`,
+}
+
+// ★ Immer 只在 createSlice 的 reducer 回调里生效
+// 组件里 useSelector 拿到的 state 仍然只读，不能直接 counter.value++`,
           },
           {
             type: 'text',
@@ -789,20 +857,22 @@ reducers: {
             type: 'code',
             title: '2）configureStore 注册多个 reducer',
             language: 'javascript',
-            body: `import { configureStore } from '@reduxjs/toolkit'
+            body: `// 多 slice 模式：按业务域拆分，在 configureStore 里合并注册
+import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
 import userReducer from './slices/userSlice'
 import cartReducer from './slices/cartSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    user: userReducer,
-    cart: cartReducer,
+    // 每个 key 对应 state 树的一层
+    counter: counterReducer,  // → state.counter
+    user: userReducer,        // → state.user
+    cart: cartReducer,        // → state.cart
   },
 })
 
-// 根 state 形状：
+// 合并后根 state 形状：
 // {
 //   counter: { value: 0 },
 //   user: { name: '', loggedIn: false },
@@ -813,7 +883,11 @@ export const store = configureStore({
             type: 'code',
             title: '3）组件里读不同 slice',
             language: 'jsx',
-            body: `function Header() {
+            body: `// 多个 slice 的数据可以在同一组件里分别 useSelector 读取
+import { useSelector } from 'react-redux'
+
+function Header() {
+  // 每个 selector 只订阅自己关心的片段，互不干扰
   const userName = useSelector((s) => s.user.name)
   const cartCount = useSelector((s) => s.cart.items.length)
   const counterValue = useSelector((s) => s.counter.value)
@@ -823,7 +897,9 @@ export const store = configureStore({
       {userName} | 购物车 {cartCount} 件 | 计数 {counterValue}
     </header>
   )
-}`,
+}
+
+// 路径规则：s.user.name → configureStore 里 key 是 user，user slice 里有 name 字段`,
           },
           {
             type: 'text',
@@ -875,31 +951,35 @@ export const store = configureStore({
             type: 'code',
             title: '3）极简示意（不必现在抄进项目）',
             language: 'javascript',
-            body: `import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+            body: `// createAsyncThunk：处理异步逻辑（fetch/axios），入门了解即可
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-// 异步 thunk：里面可以 await fetch / axios
+// 第一个参数：action type 前缀 'user/fetch'
+// 第二个参数：异步函数，返回值会成为 fulfilled action 的 payload
 export const fetchUser = createAsyncThunk('user/fetch', async (userId) => {
   const res = await fetch(\`/api/users/\${userId}\`)
-  return res.json()
+  return res.json()  // 自动包装进 action.payload
 })
 
 const userSlice = createSlice({
   name: 'user',
   initialState: { data: null, loading: false },
-  reducers: {},
+  reducers: {},  // 同步改法仍写 reducers
+  // extraReducers：监听「外部 action」（如 thunk 自动生成的 pending/fulfilled）
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
-        state.loading = true
+        state.loading = true   // 请求开始
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false
-        state.data = action.payload
+        state.data = action.payload  // 请求成功，写入数据
       })
   },
 })
 
-// 组件：dispatch(fetchUser(123))`,
+// 组件里触发：dispatch(fetchUser(123))
+// configureStore 默认已加 thunk 中间件，支持 dispatch 异步函数`,
           },
           {
             type: 'text',
@@ -992,20 +1072,31 @@ const userSlice = createSlice({
             type: 'code',
             title: '4）最小模板（复制骨架用）',
             language: 'javascript',
-            body: `// slice
+            body: `// ========== Redux Toolkit 最小骨架（复制起步用） ==========
+
+// --- 1. slice 文件 store/slices/xSlice.js ---
 import { createSlice } from '@reduxjs/toolkit'
-const slice = createSlice({ name: 'x', initialState: {}, reducers: {} })
-export const { /* actions */ } = slice.actions
-export default slice.reducer
+const slice = createSlice({
+  name: 'x',              // action type 前缀
+  initialState: {},       // 初始数据
+  reducers: {},           // 同步改法
+})
+export const { /* actions */ } = slice.actions  // 给组件 dispatch
+export default slice.reducer                    // 给 store 注册
 
-// store
+// --- 2. store 文件 store/index.js ---
 import { configureStore } from '@reduxjs/toolkit'
-export const store = configureStore({ reducer: { x: sliceReducer } })
+export const store = configureStore({
+  reducer: { x: sliceReducer },  // key 'x' → state.x
+})
 
-// 组件
-const v = useSelector(s => s.x.field)
+// --- 3. 入口 index.js ---
+// <Provider store={store}><App /></Provider>
+
+// --- 4. 组件里 ---
+const v = useSelector(s => s.x.field)  // 读：路径 = reducer key + 字段
 const dispatch = useDispatch()
-dispatch(someAction())`,
+dispatch(someAction())                 // 写：dispatch action creator`,
           },
           {
             type: 'list',

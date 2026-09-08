@@ -52,14 +52,15 @@ const jsx = {
             type: 'code',
             title: '完整 Demo：根节点三种写法（复制运行对照）',
             language: 'jsx',
-            body: `// ===== 写法 1：单个根元素（最简单）=====
+            body: `// ===== 写法 1：单个根元素（最简单，return 只能有一个顶层节点）=====
 function Hello() {
   return <h1>你好，React</h1>
 }
 
-// ===== 写法 2：div 包裹多个子元素 =====
+// ===== 写法 2：用 div 包裹多个子元素（满足「单一根节点」规则）=====
 function Article() {
   return (
+    // className 挂 CSS 类（JSX 里不能写 class）
     <div className="article">
       <h1>文章标题</h1>
       <p>第一段正文。</p>
@@ -68,7 +69,7 @@ function Article() {
   )
 }
 
-// ===== 写法 3：Fragment 短语法（不增加多余 DOM 节点）=====
+// ===== 写法 3：Fragment 短语法 <>...</>（不增加多余 DOM 节点）=====
 function ArticleWithFragment() {
   return (
     <>
@@ -79,12 +80,12 @@ function ArticleWithFragment() {
   )
 }
 
-// ===== 返回 null：表示「什么都不渲染」=====
+// ===== return null：表示「故意不渲染任何内容」=====
 function Empty() {
   return null
 }
 
-// ===== ❌ 错误：两个并列根节点，编译直接报错 =====
+// ===== ❌ 错误：两个并列根节点，Babel 编译直接报错 =====
 function Bad() {
   return (
     <h1>标题</h1>
@@ -92,10 +93,11 @@ function Bad() {
   )
 }
 
-// ===== App.js 里测试 =====
+// ===== 在 App.js 里组合多个组件测试 =====
 function App() {
   return (
     <div style={{ padding: 20 }}>
+      {/* 像 HTML 标签一样使用自定义组件 */}
       <Hello />
       <Article />
       <ArticleWithFragment />
@@ -114,9 +116,10 @@ export default App`,
             type: 'code',
             title: 'Fragment 完整 Demo：含 map + key 场景',
             language: 'jsx',
-            body: `import { Fragment } from 'react'
+            body: `// Fragment 必须从 react 导入；map 里需要 key 时不能用短语法 <>
+import { Fragment } from 'react'
 
-// 场景：渲染「定义列表」，每项有 dt + dd 两个标签，不想外面套 div
+// 数据数组：每项有唯一 id，后面 map 渲染时用作 key
 const glossary = [
   { id: 'jsx', term: 'JSX', def: '在 JS 里写界面语法' },
   { id: 'props', term: 'Props', def: '父组件传给子组件的数据' },
@@ -125,9 +128,11 @@ const glossary = [
 
 function Glossary() {
   return (
+    // dl 是 HTML 定义列表；dt=术语，dd=解释
     <dl>
+      {/* map 把数组每一项变成 JSX；外层 {} 表示这是 JS 表达式 */}
       {glossary.map((item) => (
-        // map 里 Fragment 需要 key → 必须用完整写法
+        // map 里 Fragment 必须写 key → 只能用 <Fragment key=...>，不能用 <>
         <Fragment key={item.id}>
           <dt>{item.term}</dt>
           <dd>{item.def}</dd>
@@ -137,12 +142,12 @@ function Glossary() {
   )
 }
 
-// 对比：如果不用 Fragment，只能套 div，语义不对
+// 对比：套 div 会破坏 dl 的 HTML 语义（dl 里不应出现 div）
 function GlossaryWithDiv() {
   return (
     <dl>
       {glossary.map((item) => (
-        <div key={item.id}>  {/* ❌ div 在 dl 里语义不对 */}
+        <div key={item.id}>  {/* ❌ div 在 dl 里语义不正确 */}
           <dt>{item.term}</dt>
           <dd>{item.def}</dd>
         </div>
@@ -163,23 +168,25 @@ function GlossaryWithDiv() {
             body: `function FormSnippet() {
   return (
     <form>
-      {/* ✅ 自闭合标签 */}
+      {/* ✅ JSX 要求所有标签闭合：void 元素也要写 /> */}
+      {/* img：src 图片地址，alt 无障碍替代文字（必写），width/height 用 {} 传数字 */}
       <img src="/logo.png" alt="Logo" width={48} height={48} />
-      <br />
-      <input type="text" placeholder="姓名" />
-      <hr />
+      <br />       {/* 换行，自闭合 */}
+      <input type="text" placeholder="姓名" />   {/* 单行输入框 */}
+      <hr />       {/* 水平分割线 */}
 
-      {/* ✅ 有内容的标签：成对写 */}
+      {/* ✅ 有子内容的标签：成对写开始和结束标签 */}
       <label>
         邮箱
-        <input type="email" />
+        <input type="email" />   {/* label 包住 input，点击文字也能聚焦（更好再配 htmlFor+id） */}
       </label>
 
+      {/* type="submit"：提交表单；button 默认 type 在 form 里可能是 submit */}
       <button type="submit">提交</button>
 
-      {/* ❌ 以下写法在 JSX 里会报错 */}
-      {/* <img src="x.png">           缺少 /> */}
-      {/* <input type="text">         缺少 /> */}
+      {/* ❌ 以下在 JSX 里会报语法错误（注释掉仅供对照） */}
+      {/* <img src="x.png">           缺少 />，必须写成 <img ... /> */}
+      {/* <input type="text">         同上，必须自闭合 */}
     </form>
   )
 }`,
@@ -194,21 +201,21 @@ function GlossaryWithDiv() {
             title: '注释正确 vs 错误写法',
             language: 'jsx',
             body: `function CommentDemo() {
-  // ✅ 这行注释在 JSX 外面，普通 JS 注释，没问题
+  // ✅ JSX 外面的普通 JavaScript 区域：可以用 // 单行注释
   return (
     <div>
-      {/* ✅ JSX 内部必须用这种注释 */}
-      {/* 可以写多行
-          注释内容 */}
+      {/* ✅ JSX 内部必须用「花括号 + 块注释」形式，写法见下一行 */}
+      {/* 注释可以跨多行
+          写说明文字 */}
 
       <p>可见内容</p>
 
-      {/* ❌ 错误：不能在标签属性位置写 //
+      {/* ❌ 错误：不能在标签属性中间写 //
       <p // 这样不行
       >
 
-      ❌ 错误：HTML 注释在 JSX 里无效
-      <!-- 这不是 JSX 注释 -->
+      ❌ 错误：HTML 注释 <!-- --> 在 JSX 里无效，可能显示在页面上
+      <!-- 这不是 JSX 注释 --> */}
     </div>
   )
 }`,
@@ -289,16 +296,19 @@ function GlossaryWithDiv() {
             title: '完整 Demo：Profile 卡片（变量 + 运算 + 函数）',
             language: 'jsx',
             body: `function ProfileCard() {
+  // 普通变量：在 return 之前定义，后面 JSX 里用 {变量名} 插入
   const name = '小明'
   const age = 18
   const score = 86
   const tags = ['React', 'CSS', 'JavaScript']
-  const now = new Date()
+  const now = new Date()   // 当前时间对象
 
+  // 工具函数：返回字符串，在 JSX 里 {formatScore(score)} 调用
   function formatScore(n) {
     return n >= 60 ? \`\${n} 分（及格）\` : \`\${n} 分（不及格）\`
   }
 
+  // 复杂逻辑可以写在函数里，JSX 的 {} 里只放表达式
   function getGrade(n) {
     if (n >= 90) return 'A'
     if (n >= 80) return 'B'
@@ -308,13 +318,13 @@ function GlossaryWithDiv() {
 
   return (
     <div style={{ padding: 20, border: '1px solid #ddd', borderRadius: 8 }}>
-      <h2>{name}</h2>
+      <h2>{name}</h2>                    {/* 插入变量 */}
       <p>年龄：{age} 岁</p>
-      <p>明年年龄：{age + 1}</p>
-      <p>{formatScore(score)}</p>
+      <p>明年年龄：{age + 1}</p>         {/* {} 里可以写运算表达式 */}
+      <p>{formatScore(score)}</p>        {/* 函数调用也是表达式 */}
       <p>等级：{getGrade(score)}</p>
-      <p>今天：{now.toLocaleDateString('zh-CN')}</p>
-      <p>标签数量：{tags.length}</p>
+      <p>今天：{now.toLocaleDateString('zh-CN')}</p>  {/* 对象方法调用 */}
+      <p>标签数量：{tags.length}</p>     {/* 数组的 length 属性 */}
     </div>
   )
 }
@@ -330,8 +340,9 @@ export default ProfileCard`,
             type: 'code',
             title: '完整 Demo：条件显示（三元 + && + 提前 return）',
             language: 'jsx',
-            body: `function StatusPanel({ loading, error, user }) {
-  // 方式 1：提前 return（分支多、逻辑复杂时最清晰）
+            body: `// StatusPanel 接收 props：loading、error、user（父组件传入的数据）
+function StatusPanel({ loading, error, user }) {
+  // 方式 1：提前 return —— 多个互斥分支时最清晰，下面代码不会执行
   if (loading) {
     return <p>加载中...</p>
   }
@@ -342,7 +353,7 @@ export default ProfileCard`,
     return <p>请先登录</p>
   }
 
-  // 方式 2：三元（二选一）
+  // 方式 2：三元运算符 —— 简单二选一，结果存变量再在 JSX 里用
   const roleLabel = user.role === 'admin' ? '管理员' : '普通用户'
 
   return (
@@ -350,12 +361,12 @@ export default ProfileCard`,
       <h3>欢迎，{user.name}</h3>
       <p>身份：{roleLabel}</p>
 
-      {/* 方式 3：&& （有就显示） */}
+      {/* 方式 3：&& 短路 —— 条件为真才渲染右侧 JSX */}
       {user.role === 'admin' && (
         <button type="button">进入后台</button>
       )}
 
-      {/* 安全写法：避免 count 为 0 时渲染出 0 */}
+      {/* 安全写法：count 为 0 时，{count && ...} 会在页面上显示数字 0 */}
       {user.unreadCount > 0 && (
         <span>你有 {user.unreadCount} 条未读消息</span>
       )}
@@ -363,7 +374,7 @@ export default ProfileCard`,
   )
 }
 
-// 测试用法
+// 测试：传不同 props 看不同分支效果
 function App() {
   return (
     <>
@@ -393,6 +404,7 @@ function App() {
             title: '完整 Demo：Todo 列表用 map 渲染',
             language: 'jsx',
             body: `function TodoList() {
+  // 静态数组数据；真实项目里可能来自 props 或 useState / 接口请求
   const todos = [
     { id: 1, text: '学习 JSX 花括号', done: true },
     { id: 2, text: '学习 Props', done: false },
@@ -401,15 +413,18 @@ function App() {
 
   return (
     <ul style={{ listStyle: 'none', padding: 0 }}>
+      {/* map：遍历数组，每一项 return 一段 JSX，组成列表 */}
       {todos.map((todo) => (
         <li
-          key={todo.id}
+          key={todo.id}   // key 必须：帮助 React 识别哪一项变了（用唯一 id，别用 index）
           style={{
+            // style 是对象：键名驼峰；根据 done 动态改样式
             textDecoration: todo.done ? 'line-through' : 'none',
             color: todo.done ? '#999' : '#333',
             padding: '8px 0',
           }}
         >
+          {/* 三元：done 为 true 显示 ✅，否则 ⬜ */}
           {todo.done ? '✅' : '⬜'} {todo.text}
         </li>
       ))}
@@ -427,26 +442,26 @@ function App() {
             title: '错误 vs 正确完整对照',
             language: 'jsx',
             body: `function ErrorVsCorrect({ ok, user }) {
-  // ✅ 变量声明写在 return 之前
+  // ✅ const/let 声明必须写在 return 之前，不能写在 JSX 标签中间
   const message = ok ? '成功' : '失败'
 
-  // ❌ 错误：{} 里不能写 if 语句
+  // ❌ 错误：{} 里不能写 if 语句（if 是语句，不是表达式）
   // return <div>{ if (ok) { return 'yes' } }</div>
 
-  // ❌ 错误：对象不能直接当子节点
+  // ❌ 错误：整个对象 {{ name: '小明' }} 不能直接当 React 子节点渲染
   // return <div>{{ name: '小明' }}</div>
 
-  // ✅ 正确：渲染对象的某个字段
+  // ✅ 正确：渲染对象的某个字段，或 JSON.stringify 调试用
   return (
     <div>
       <p>{message}</p>
       <p>{user.name}</p>
-      <p>{JSON.stringify(user)}</p>  {/* 调试时把对象转字符串 */}
+      <p>{JSON.stringify(user)}</p>  {/* 调试时把对象转成字符串显示 */}
     </div>
   )
 }
 
-// ✅ 正确：复杂条件在 return 之前用 if
+// ✅ 复杂 if/else 放在 return 之前，每个分支 return 不同 JSX
 function Box({ ok }) {
   if (!ok) {
     return <div>暂无数据</div>
@@ -526,39 +541,40 @@ function Box({ ok }) {
             type: 'code',
             title: '完整 Demo：Button 组件动态 className',
             language: 'jsx',
-            body: `// 假设 CSS 里有：
+            body: `// 假设在 CSS 文件里已定义以下类（此处仅注释说明）：
 // .btn { padding: 8px 16px; border: none; cursor: pointer; }
 // .btn-primary { background: #1677ff; color: white; }
 // .btn-danger { background: #ff4d4f; color: white; }
 // .btn-disabled { opacity: 0.5; cursor: not-allowed; }
 
+// Button 组件：variant 控制样式变体，disabled 控制是否禁用，children 是按钮文字
 function Button({ variant = 'primary', disabled = false, children }) {
-  // 方式 1：三元拼接（字段少时够用）
-  let className = 'btn'
+  // 方式 1：用 if 拼接 className 字符串（字段少时够用）
+  let className = 'btn'   // 基础类名
   if (variant === 'primary') className += ' btn-primary'
   if (variant === 'danger') className += ' btn-danger'
   if (disabled) className += ' btn-disabled'
 
   return (
     <button
-      type="button"
-      className={className}
-      disabled={disabled}
+      type="button"           // 非提交按钮建议写 type="button"
+      className={className}   // 动态 className 用 {} 传变量
+      disabled={disabled}     // 布尔属性：true 时按钮不可点
     >
-      {children}
+      {children}              {/* 显示「主要按钮」「删除」等文字 */}
     </button>
   )
 }
 
-// 方式 2：数组 filter + join（多个条件时更清晰）
+// 方式 2：数组 filter(Boolean) + join(' ') —— 条件多时更清晰
 function Tab({ label, active }) {
   const className = [
     'tab',
     active ? 'tab-active' : '',
     active ? 'tab-highlight' : '',
   ]
-    .filter(Boolean)
-    .join(' ')
+    .filter(Boolean)   // 去掉空字符串
+    .join(' ')         // 拼成 "tab tab-active tab-highlight"
 
   return <div className={className}>{label}</div>
 }
@@ -585,11 +601,11 @@ function App() {
             title: '完整 Demo：Card 组件 style 对象写法',
             language: 'jsx',
             body: `function Card({ title, highlight = false, children }) {
-  // 方式 1：先定义对象，再传给 style
+  // 方式 1：style 对象写在 return 外，可读性更好
   const cardStyle = {
-    backgroundColor: highlight ? '#fff7e6' : '#f5f5f5',
-    padding: 16,                    // 数字 → 自动加 px
-    marginTop: '12px',              // 带单位用字符串
+    backgroundColor: highlight ? '#fff7e6' : '#f5f5f5',  // 驼峰键名
+    padding: 16,                    // 纯数字 → React 自动加 px（16px）
+    marginTop: '12px',              // 带单位必须写字符串
     borderRadius: 8,
     border: '1px solid #e8e8e8',
     boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
@@ -603,8 +619,10 @@ function App() {
   }
 
   return (
+    // style={cardStyle}：把整个对象传给 style 属性
     <div style={cardStyle}>
       <h3 style={titleStyle}>{title}</h3>
+      {/* 也可以 inline 写对象：外层 {} 是 JSX 表达式，内层 {} 是对象字面量 */}
       <div style={{ color: '#666', lineHeight: 1.6 }}>{children}</div>
     </div>
   )
@@ -616,6 +634,7 @@ function App() {
       <Card title="普通卡片">
         <p>这是卡片内容，style 对象写在 JSX 外面更清晰。</p>
       </Card>
+      {/* highlight 不写值等价于 highlight={true}，布尔 prop 简写 */}
       <Card title="高亮卡片" highlight>
         <p>highlight 为 true 时背景变黄。</p>
       </Card>
@@ -630,21 +649,21 @@ function App() {
             body: `function StyleMistakes() {
   return (
     <div>
-      {/* ❌ 错误：HTML 字符串写法 */}
+      {/* ❌ 错误：HTML 字符串写法，JSX 的 style 必须是对象 */}
       {/* <p style="color: red">不行</p> */}
 
-      {/* ❌ 错误：键名带横线 */}
+      {/* ❌ 错误：CSS 键名带横线 font-size，JS 对象键名不能这样写 */}
       {/* <p style={{ font-size: 14 }}>不行</p> */}
 
-      {/* ❌ 错误：少包一层 {} */}
+      {/* ❌ 错误：少包一层 {}，style={ color: 'red' } 是语法错误 */}
       {/* <p style={ color: 'red' }>不行</p> */}
 
-      {/* ✅ 正确 */}
+      {/* ✅ 正确：双花括号 style={{ 驼峰键: 值 }} */}
       <p style={{ color: 'crimson', fontSize: 14, marginTop: '8px' }}>
         正确的行内样式
       </p>
 
-      {/* ✅ 动态 style：根据 props 变化 */}
+      {/* ✅ 动态 style：表达式结果作为属性值 */}
       <span style={{ color: true ? 'green' : 'gray' }}>状态文字</span>
     </div>
   )
@@ -674,15 +693,15 @@ function App() {
             body: `function SignUpForm() {
   return (
     <form style={{ padding: 20, maxWidth: 360 }}>
-      {/* htmlFor 对应 input 的 id，点击 label 会聚焦 input */}
+      {/* htmlFor 必须和 input 的 id 一致：点击 label 文字会自动聚焦 input */}
       <div style={{ marginBottom: 12 }}>
         <label htmlFor="email">邮箱</label>
         <input
-          id="email"
-          name="email"
-          type="email"
+          id="email"              // 和 htmlFor="email" 配对
+          name="email"            // 表单字段名，提交时会带上
+          type="email"            // 浏览器会做邮箱格式校验
           placeholder="you@example.com"
-          autoComplete="email"
+          autoComplete="email"    // 提示浏览器自动填充
           style={{ display: 'block', width: '100%', marginTop: 4, padding: 8 }}
         />
       </div>
@@ -692,21 +711,22 @@ function App() {
         <input
           id="password"
           name="password"
-          type="password"
+          type="password"         // 输入内容显示为圆点
           placeholder="至少 6 位"
           autoComplete="new-password"
           style={{ display: 'block', width: '100%', marginTop: 4, padding: 8 }}
         />
       </div>
 
+      {/* label 包住 checkbox：点击文字也能勾选 */}
       <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <input type="checkbox" defaultChecked />
+        <input type="checkbox" defaultChecked />   {/* defaultChecked：非受控组件初始勾选 */}
         同意用户协议
       </label>
 
       <button
-        type="submit"
-        data-testid="submit-btn"
+        type="submit"             // 提交表单
+        data-testid="submit-btn"  // 给测试工具定位元素，不影响样式
         style={{ marginTop: 16, padding: '8px 24px' }}
       >
         注册
@@ -725,26 +745,27 @@ function App() {
             title: '展开属性 Demo',
             language: 'jsx',
             body: `function SpreadPropsDemo() {
+  // 把多个属性先存进对象，后面用 {...obj} 批量展开到 JSX 标签上
   const linkProps = {
-    href: 'https://react.dev',
-    target: '_blank',
-    rel: 'noopener noreferrer',
+    href: 'https://react.dev',       // 链接地址
+    target: '_blank',                // 新标签页打开
+    rel: 'noopener noreferrer',      // 安全属性，配合 target="_blank" 使用
     className: 'doc-link',
   }
 
   const inputProps = {
     type: 'text',
     placeholder: '搜索...',
-    'aria-label': '搜索框',
+    'aria-label': '搜索框',          // 无障碍：读屏软件读到的名称
   }
 
   return (
     <div>
-      {/* 展开：等价于逐个写属性 */}
+      {/* {...linkProps} 等价于 href="..." target="..." rel="..." className="..." */}
       <a {...linkProps}>React 官方文档</a>
       <input {...inputProps} />
 
-      {/* 展开 + 覆盖：后面的属性优先 */}
+      {/* 展开后还可以覆盖：后面的 placeholder 会覆盖对象里的同名属性 */}
       <input {...inputProps} placeholder="覆盖后的占位符" />
     </div>
   )

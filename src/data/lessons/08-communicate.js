@@ -54,10 +54,11 @@ const communicate = {
             body: `import { useState } from 'react'
 
 /**
- * 子组件：只接收 props，负责展示
- * - title：卡片标题（字符串）
- * - user：用户对象（对象）
- * - highlight：是否高亮（布尔）
+ * 子组件 UserCard：只接收 props，负责展示
+ * props 是只读的 —— 子组件不能改 props，只能用来渲染
+ * - title：字符串 props
+ * - user：对象 props（传的是引用）
+ * - highlight：布尔 props
  */
 function UserCard({ title, user, highlight }) {
   return (
@@ -66,7 +67,7 @@ function UserCard({ title, user, highlight }) {
         padding: 16,
         border: '1px solid #ddd',
         borderRadius: 8,
-        background: highlight ? '#f0fdf4' : '#fff',
+        background: highlight ? '#f0fdf4' : '#fff', // 根据 props 决定样式
       }}
     >
       <h3>{title}</h3>
@@ -78,10 +79,11 @@ function UserCard({ title, user, highlight }) {
 }
 
 /**
- * 父组件：拥有数据，决定传给子组件什么
+ * 父组件 UserPage：拥有 state，决定传给子组件什么 props
+ * 单向数据流：数据从父 → 子，通过 props 传递
  */
 function UserPage() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0) // 父拥有「当前索引」这份 state
 
   const users = [
     { id: 1, name: '小明', email: 'ming@demo.com', role: '前端' },
@@ -89,13 +91,13 @@ function UserPage() {
     { id: 3, name: '小刚', email: 'gang@demo.com', role: '测试' },
   ]
 
-  const currentUser = users[currentIndex]
+  const currentUser = users[currentIndex] // 派生：从数组 + 索引算出当前用户
 
   return (
     <div>
       <h2>父传子 props 演示</h2>
 
-      {/* 传字符串、对象、布尔值 */}
+      {/* 传字符串用引号；传变量/对象/布尔必须加 {} */}
       <UserCard
         title="当前选中用户"
         user={currentUser}
@@ -106,7 +108,7 @@ function UserPage() {
         <button
           type="button"
           onClick={() =>
-            setCurrentIndex((i) => (i + 1) % users.length)
+            setCurrentIndex((i) => (i + 1) % users.length) // 父改 state → props 变 → 子重渲染
           }
         >
           切换下一个用户
@@ -114,7 +116,7 @@ function UserPage() {
         <p>当前索引：{currentIndex}</p>
       </div>
 
-      {/* 同一个子组件，传不同 props，渲染不同内容 */}
+      {/* 同一子组件，不同 props → 渲染不同内容 */}
       <UserCard
         title="列表第一个（只读展示）"
         user={users[0]}
@@ -132,11 +134,12 @@ export default UserPage`,
             language: 'jsx',
             body: `import { useState } from 'react'
 
-// 子组件：接收 count 和 onAdd，自己不存 count
+// 子组件：只展示 count，不自己存 count（避免和父不同步）
 function CounterDisplay({ count, onAdd, label }) {
   return (
     <div>
       <p>{label}：{count}</p>
+      {/* onAdd 是父传下来的函数 —— 子只负责在点击时调用 */}
       <button type="button" onClick={onAdd}>
         +1
       </button>
@@ -144,17 +147,18 @@ function CounterDisplay({ count, onAdd, label }) {
   )
 }
 
+// 父组件：count 的「唯一数据源」在这里
 function Parent() {
   const [count, setCount] = useState(0)
 
   return (
     <div>
       <h2>计数器</h2>
-      {/* 父把数据和「怎么加」的逻辑都传下去 */}
+      {/* 父传数据 count + 传行为 onAdd（回调 props 的雏形） */}
       <CounterDisplay
         label="当前计数"
         count={count}
-        onAdd={() => setCount((c) => c + 1)}
+        onAdd={() => setCount((c) => c + 1)} // 函数也是 props，必须加 {}
       />
       {/* 父也可以直接操作同一份 state */}
       <button type="button" onClick={() => setCount(0)}>
@@ -247,18 +251,18 @@ export default Parent`,
             body: `import { useState } from 'react'
 
 /**
- * 子组件 SearchBar：
- * - keyword：当前关键词（父的 state，受控输入）
- * - onKeywordChange：输入变化时通知父
- * - onSearch：点搜索或回车时通知父
+ * 子组件 SearchBar —— 受控输入 + 回调通知父
+ * - keyword：来自父的 state（受控 value）
+ * - onKeywordChange：输入变化时「打电话」给父
+ * - onSearch：点击搜索或回车时通知父
  */
 function SearchBar({ keyword, onKeywordChange, onSearch }) {
   return (
     <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
       <input
-        value={keyword}
+        value={keyword} // 受控：value 完全由父的 state 决定
         placeholder="输入关键词"
-        onChange={(e) => onKeywordChange(e.target.value)}
+        onChange={(e) => onKeywordChange(e.target.value)} // 子 → 父：把新值传上去
         onKeyDown={(e) => {
           if (e.key === 'Enter') onSearch()
         }}
@@ -270,9 +274,7 @@ function SearchBar({ keyword, onKeywordChange, onSearch }) {
   )
 }
 
-/**
- * 子组件 ResultList：只负责展示，不负责请求
- */
+/** 子组件 ResultList：纯展示，所有 state 都在父 */
 function ResultList({ loading, error, items }) {
   if (loading) return <p>搜索中...</p>
   if (error) return <p style={{ color: 'red' }}>{error}</p>
@@ -288,7 +290,8 @@ function ResultList({ loading, error, items }) {
 }
 
 /**
- * 父组件 Page：拥有 keyword、result、loading 等所有 state
+ * 父组件 SearchPage：拥有全部 state 和业务逻辑
+ * 子传父 = 父传 onXxx 回调，子在事件里调用
  */
 function SearchPage() {
   const [keyword, setKeyword] = useState('')
@@ -296,7 +299,6 @@ function SearchPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // 模拟搜索 API
   const mockDatabase = [
     { id: 1, name: 'React 入门' },
     { id: 2, name: 'React Router 实战' },
@@ -315,8 +317,7 @@ function SearchPage() {
     setError('')
 
     try {
-      // 真实项目里这里换成 await http.get('/search', { params: { q } })
-      await new Promise((r) => setTimeout(r, 500))
+      await new Promise((r) => setTimeout(r, 500)) // 模拟 API 延迟
       const filtered = mockDatabase.filter((item) =>
         item.name.toLowerCase().includes(q.toLowerCase())
       )
@@ -332,7 +333,7 @@ function SearchPage() {
     <div>
       <h2>子传父：搜索 demo</h2>
 
-      {/* 子组件通过回调把「输入变化」和「点击搜索」传给父 */}
+      {/* setKeyword 可直接当 onKeywordChange —— setState 本身接收新值 */}
       <SearchBar
         keyword={keyword}
         onKeywordChange={setKeyword}
@@ -352,17 +353,19 @@ export default SearchPage`,
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// 子组件 TodoItem：通过 onToggle / onRemove 把「操作哪一条」通知给父
 function TodoItem({ todo, onToggle, onRemove }) {
   return (
     <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
       <input
         type="checkbox"
-        checked={todo.done}
-        onChange={() => onToggle(todo.id)}
+        checked={todo.done} // 展示数据来自 props.todo
+        onChange={() => onToggle(todo.id)} // 子 → 父：传 id 告诉父切换哪条
       />
       <span style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>
         {todo.text}
       </span>
+      {/* 列表传参：onClick={() => onRemove(todo.id)}，不能写 onRemove(todo.id) */}
       <button type="button" onClick={() => onRemove(todo.id)}>
         删除
       </button>
@@ -370,6 +373,7 @@ function TodoItem({ todo, onToggle, onRemove }) {
   )
 }
 
+// 父组件 TodoList：todos 数组的唯一 owner
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: '学 props', done: false },
@@ -377,6 +381,7 @@ function TodoList() {
   ])
 
   function handleToggle(id) {
+    // 不可变更新：map 返回新数组，只改匹配 id 的那一项
     setTodos((prev) =>
       prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
     )
@@ -392,7 +397,7 @@ function TodoList() {
         <TodoItem
           key={todo.id}
           todo={todo}
-          onToggle={handleToggle}
+          onToggle={handleToggle}   // 传函数引用，不是 handleToggle()
           onRemove={handleRemove}
         />
       ))}
@@ -485,8 +490,8 @@ export default TodoList`,
             body: `import { useState, useMemo } from 'react'
 
 /**
- * 兄弟 A：筛选输入框
- * 只负责 UI，keyword 存在父组件
+ * 兄弟 A：FilterBar —— 只负责输入 UI
+ * keyword 存在父组件，这里通过 value + onChange 受控
  */
 function FilterBar({ value, onChange, total, visibleCount }) {
   return (
@@ -494,7 +499,7 @@ function FilterBar({ value, onChange, total, visibleCount }) {
       <input
         value={value}
         placeholder="输入关键词过滤..."
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)} // 修改请求发给父
         style={{ width: 280, padding: 8 }}
       />
       <p style={{ fontSize: 14, color: '#666' }}>
@@ -505,8 +510,8 @@ function FilterBar({ value, onChange, total, visibleCount }) {
 }
 
 /**
- * 兄弟 B：列表展示
- * 接收已过滤的数据，自己不存 keyword
+ * 兄弟 B：ItemList —— 只负责展示已过滤的数据
+ * 自己不存 keyword，只接收父算好的 items
  */
 function ItemList({ items, keyword }) {
   if (items.length === 0) {
@@ -527,10 +532,11 @@ function ItemList({ items, keyword }) {
 }
 
 /**
- * 共同父组件：拥有 keyword，协调两个兄弟
+ * 状态提升（Lifting State Up）：
+ * keyword 提到共同父 CatalogPage，两个兄弟通过 props 共享
  */
 function CatalogPage() {
-  const [keyword, setKeyword] = useState('')
+  const [keyword, setKeyword] = useState('') // ★ 共享 state 住在父组件
 
   const allItems = [
     'React 基础',
@@ -541,7 +547,7 @@ function CatalogPage() {
     'CSS 样式方案',
   ]
 
-  // 派生数据：根据 keyword 算出可见列表
+  // 派生数据：用 useMemo 根据 keyword 算出可见列表，避免重复计算
   const visibleItems = useMemo(() => {
     const q = keyword.trim().toLowerCase()
     if (!q) return allItems
@@ -554,7 +560,7 @@ function CatalogPage() {
 
       <FilterBar
         value={keyword}
-        onChange={setKeyword}
+        onChange={setKeyword}           // 父 → 子：传值
         total={allItems.length}
         visibleCount={visibleItems.length}
       />
@@ -572,6 +578,7 @@ export default CatalogPage`,
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// 兄弟 A：输入摄氏温度，通过 onChange 通知父
 function CelsiusInput({ value, onChange }) {
   return (
     <label>
@@ -585,13 +592,14 @@ function CelsiusInput({ value, onChange }) {
   )
 }
 
+// 兄弟 B：根据父传来的 celsius 派生显示华氏温度（只读展示）
 function FahrenheitDisplay({ celsius }) {
-  const fahrenheit = (celsius * 9) / 5 + 32
+  const fahrenheit = (celsius * 9) / 5 + 32 // 派生值，不必单独 useState
   return <p>华氏温度：{fahrenheit.toFixed(1)} °F</p>
 }
 
 function TemperatureConverter() {
-  // ★ 状态提升：摄氏温度存在父组件，两个兄弟共用
+  // ★ 状态提升：摄氏温度存在父组件，两个兄弟共用同一份数据
   const [celsius, setCelsius] = useState(0)
 
   return (
@@ -686,10 +694,10 @@ export default TemperatureConverter`,
             language: 'jsx',
             body: `import { createContext, useContext, useState, useMemo } from 'react'
 
-// ========== 1. 创建 Context ==========
-const ThemeContext = createContext(null)
+// ========== 1. createContext：创建一条「数据管道」 ==========
+const ThemeContext = createContext(null) // null 是默认值（未包 Provider 时使用）
 
-// 主题对应的样式配置
+// 主题配置对象：light / dark 两套颜色
 const themes = {
   light: {
     bg: '#ffffff',
@@ -705,11 +713,11 @@ const themes = {
   },
 }
 
-// ========== 2. Provider：拥有 theme state ==========
+// ========== 2. Provider：在子树顶层注入 theme state ==========
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light')
 
-  // useMemo 避免每次 render 都生成新对象导致无意义重渲染
+  // useMemo：避免每次 render 新建 value 对象 → 导致所有消费者无意义重渲染
   const value = useMemo(
     () => ({
       theme,
@@ -727,7 +735,7 @@ function ThemeProvider({ children }) {
   )
 }
 
-// ========== 3. 自定义 Hook ==========
+// ========== 3. 自定义 Hook：封装 useContext + 错误检查（项目标配） ==========
 function useTheme() {
   const ctx = useContext(ThemeContext)
   if (!ctx) {
@@ -736,9 +744,9 @@ function useTheme() {
   return ctx
 }
 
-// ========== 4. 深层子组件：直接用 useTheme，无需 props ==========
+// ========== 4. 深层子组件：直接 useTheme，无需 props drilling ==========
 function ThemeToggleButton() {
-  const { theme, toggle, colors } = useTheme()
+  const { theme, toggle, colors } = useTheme() // 跨层读取 Context
 
   return (
     <button
@@ -758,7 +766,7 @@ function ThemeToggleButton() {
   )
 }
 
-// 中间层组件：完全不传 theme props，只是「路过」
+// 中间层：完全不传 theme props —— 解决 props drilling 的关键
 function MiddleLayer() {
   return (
     <div>
@@ -808,7 +816,7 @@ function ThemedApp() {
   )
 }
 
-// ========== 5. 入口：包 Provider ==========
+// ========== 5. 入口：最外层包 Provider，所有消费者必须在子树内 ==========
 function App() {
   return (
     <ThemeProvider>
@@ -823,14 +831,15 @@ export default App`,
             type: 'code',
             title: '对照：不用 Context 时 props 要穿 3 层（props drilling）',
             language: 'jsx',
-            body: `// ❌ 没有 Context：中间组件被迫传递不用的 props
+            body: `// ❌ 没有 Context：props drilling（属性钻取）
+// 中间组件 Layout / Child 根本不用 theme，却被迫当「搬运工」
 function App() {
   const [theme, setTheme] = useState('light')
   return <Layout theme={theme} setTheme={setTheme} />
 }
 
 function Layout({ theme, setTheme }) {
-  // Layout 根本不用 theme，只是传给 Child
+  // Layout 自己不用 theme，只是往下传 —— 这就是 drilling 的问题
   return <Child theme={theme} setTheme={setTheme} />
 }
 
@@ -838,21 +847,21 @@ function Child({ theme, setTheme }) {
   return <button onClick={() => setTheme('dark')}>{theme}</button>
 }
 
-// ✅ 有 Context：中间层零 props
+// ✅ 有 Context：中间层零 props，深层直接 useContext
 function App() {
   return (
     <ThemeProvider>
-      <Layout />
+      <Layout /> {/* 干净：不传 theme */}
     </ThemeProvider>
   )
 }
 
 function Layout() {
-  return <Child /> // 干净
+  return <Child /> // 中间层完全不知道 theme 的存在
 }
 
 function Child() {
-  const { theme, toggle } = useTheme()
+  const { theme, toggle } = useTheme() // 深层直接读取 Context
   return <button onClick={toggle}>{theme}</button>
 }`,
           },

@@ -78,29 +78,35 @@ const router = {
             type: 'code',
             title: '第 1 步：安装命令',
             language: 'bash',
-            body: `npm install react-router-dom
+            body: `# 安装 react-router-dom（React 官方路由库，v6 是当前主流版本）
+npm install react-router-dom
 
-# 装完后 package.json 里会有 "react-router-dom": "^6.x"
-# 本项目已装好，可直接对照源码学习`,
+# 装完后 package.json 里会出现类似：
+#   "react-router-dom": "^6.x"
+# 本项目已装好，可直接打开 src/index.js、src/routes/index.js 对照学习`,
           },
           {
             type: 'code',
             title: '第 2 步：入口 src/index.js（对照本项目）',
             language: 'jsx',
-            body: `import React from 'react'
+            body: `// 入口文件：React 应用从这里挂载到 #root
+import React from 'react'
 import ReactDOM from 'react-dom/client'
+// BrowserRouter：启用 HTML5 History 路由，URL 形如 /home（没有 #）
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import './index.css'
 import App from './App'
 
+// createRoot 是 React 18 的挂载方式（替代旧的 ReactDOM.render）
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
-    {/* Redux Provider 和 BrowserRouter 都包在最外层 */}
+    {/* Provider：把 Redux store 注入整棵组件树 */}
     <Provider store={store}>
+      {/* ★ BrowserRouter 必须包住 App，子组件才能用 Link / useNavigate / useParams */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
@@ -108,44 +114,46 @@ root.render(
   </React.StrictMode>
 )
 
-// ★ 没有 BrowserRouter，下面都会报错：
-// useNavigate() may be used only in the context of a Router
-// Link 点击无效`,
+// ★ 常见报错：没有 BrowserRouter 时
+//   useNavigate() may be used only in the context of a Router
+//   Link 点击后整页刷新或无效`,
           },
           {
             type: 'code',
             title: '第 3 步：路由表 src/routes/index.js（本项目完整配置）',
             language: 'jsx',
-            body: `import { Navigate } from 'react-router-dom'
+            body: `// Navigate：路由重定向组件，匹配到就自动跳转到 to 指定的路径
+import { Navigate } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home/index'
 import LessonDetail from '../pages/LessonDetail/index'
 
 /**
- * 路由表 —— 商业项目常见做法：集中管理
+ * 路由表（数组）—— 商业项目常见做法：集中管理全站路径
  *
  * 路径说明：
  *   /                              → 知识目录首页（Home）
  *   /lesson/:categoryId/:itemId    → 知识点详情（LessonDetail）
- *   *                              → 未知路径，重定向回首页
+ *   *                              → 兜底：前面都没匹配上时触发
  */
 const routes = [
   {
-    path: '/',
-    element: <MainLayout />,   // 父路由：布局壳
-    children: [
+    path: '/',                    // 根路径
+    element: <MainLayout />,     // 父路由：布局壳（顶栏 + Outlet 插槽）
+    children: [                   // 子路由：渲染在 MainLayout 的 <Outlet /> 里
       {
-        index: true,             // 访问 / 时渲染 Home（不需要写 path: ''）
+        index: true,              // index: true = 访问父路径 / 时的默认子页（等价 path: ''）
         element: <Home />,
       },
       {
-        // :categoryId 和 :itemId 是动态段，后面用 useParams 读取
-        path: 'lesson/:categoryId/:itemId',
+        // 动态段 :categoryId :itemId —— 页面里用 useParams() 读取，值永远是字符串
+        path: 'lesson/:categoryId/:itemId',  // 子 path 不要写开头 /，会相对父 path 拼接
         element: <LessonDetail />,
       },
       {
-        // 404：任何没匹配到的路径
+        // path: '*' 匹配「本层 children 里前面都没匹配上」的任意路径（404 兜底）
         path: '*',
+        // replace：替换当前历史记录，避免用户点返回又回到无效页
         element: <Navigate to="/" replace />,
       },
     ],
@@ -158,17 +166,19 @@ export default routes`,
             type: 'code',
             title: '第 4 步：App.js 用 useRoutes',
             language: 'jsx',
-            body: `import { useRoutes } from 'react-router-dom'
+            body: `// useRoutes：把路由配置数组「渲染」成当前 URL 对应的组件树
+import { useRoutes } from 'react-router-dom'
 import routes from './routes'
 
 function App() {
+  // 根据浏览器地址栏路径，从 routes 数组里匹配规则，算出该渲染哪个 element
   const element = useRoutes(routes)
-  return element
+  return element  // 可能是 MainLayout+Home，也可能是 MainLayout+LessonDetail
 }
 
 export default App
 
-// useRoutes 等价于手写：
+// ★ useRoutes 和下面 JSX 写法能力完全等价，只是配置形式不同：
 // <Routes>
 //   <Route path="/" element={<MainLayout />}>
 //     <Route index element={<Home />} />
@@ -181,20 +191,24 @@ export default App
             type: 'code',
             title: '第 5 步：布局 MainLayout.js + Outlet',
             language: 'jsx',
-            body: `import { Outlet } from 'react-router-dom'
+            body: `// Outlet：嵌套路由的「插槽」—— 匹配的子路由 element 会渲染在这里
+import { Outlet } from 'react-router-dom'
 import Header from '../components/Header'
 import './MainLayout.css'
 
 /**
- * 主布局：顶栏固定，中间内容区随路由变化
- * Outlet = 「子路由渲染的插槽」
+ * 主布局组件：顶栏固定不变，中间内容区随 URL 切换
+ *
+ * 嵌套路由原理：
+ *   访问 /           → MainLayout 渲染，Outlet 里是 Home
+ *   访问 /lesson/... → MainLayout 渲染，Outlet 里是 LessonDetail
  */
 function MainLayout() {
   return (
     <div className="MainLayout">
-      <Header />
+      <Header />  {/* 顶栏：所有子页共享，不会随路由卸载 */}
       <main className="MainLayout-main">
-        {/* Home、LessonDetail 等子页面渲染在这里 */}
+        {/* ★ 没有 Outlet，子路由页面无处渲染，屏幕会是空白 */}
         <Outlet />
       </main>
     </div>
@@ -278,18 +292,25 @@ export default MainLayout`,
             type: 'code',
             title: '写法 A：JSX 路由（网上最常见）',
             language: 'jsx',
-            body: `import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+            body: `// 写法 A：JSX 声明式路由 —— 网上教程最常见，打开 App.js 就能看到全部路由
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import LessonDetail from './pages/LessonDetail'
 
 function App() {
   return (
+    // BrowserRouter 也可以写在 index.js，这里演示「包在 App 里」的写法
     <BrowserRouter>
+      {/* Routes：路由容器，内部放多条 Route 匹配规则 */}
       <Routes>
+        {/* 父 Route：path 匹配 / 时渲染 MainLayout */}
         <Route path="/" element={<MainLayout />}>
+          {/* index：访问 / 时的默认子页，不需要写 path="" */}
           <Route index element={<Home />} />
+          {/* 子 path 相对父 path 拼接 → 实际 URL 是 /lesson/:categoryId/:itemId */}
           <Route path="lesson/:categoryId/:itemId" element={<LessonDetail />} />
+          {/* path="*" 兜底 404，应放在同级 children 最后 */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
@@ -299,22 +320,23 @@ function App() {
 
 export default App
 
-// 优点：一眼能看懂；跟着官方文档好抄
-// 缺点：路由一多，App.js 又长又乱；不好按模块拆分、不好做权限动态路由`,
+// 优点：结构直观，跟官方文档一致，适合 demo
+// 缺点：路由多了 App.js 又长又乱；不好按模块拆分、不好做权限 filter`,
           },
           {
             type: 'code',
             title: '写法 B：useRoutes（本项目）',
             language: 'jsx',
             body: `// ---------- src/routes/index.js ----------
+// 路由表：用 JS 对象数组描述 path / element / children 结构
 const routes = [
   {
     path: '/',
-    element: <MainLayout />,
+    element: <MainLayout />,   // 父路由：布局壳
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home /> },  // 访问 / 时默认页
       { path: 'lesson/:categoryId/:itemId', element: <LessonDetail /> },
-      { path: '*', element: <Navigate to="/" replace /> },
+      { path: '*', element: <Navigate to="/" replace /> },  // 404 兜底
     ],
   },
 ]
@@ -325,22 +347,25 @@ import { useRoutes } from 'react-router-dom'
 import routes from './routes'
 
 function App() {
-  // useRoutes：根据当前地址栏，算出该渲染哪棵组件树
+  // useRoutes：根据当前地址栏 URL，从 routes 数组匹配并返回要渲染的 element
   const element = useRoutes(routes)
   return element
 }
 
 // ---------- src/index.js ----------
+// 入口只包一层 BrowserRouter，App 里不再重复包：
 // <BrowserRouter><App /></BrowserRouter>
 
-// 优点：路由集中、App 干净、以后可按权限 filter 路由表
+// 优点：路由集中管理、App 干净、以后可按权限 filter 路由表
 // 缺点：初学要多跳一个文件；要习惯「对象配置」而不是纯 JSX`,
           },
           {
             type: 'code',
             title: '对照：其实是一回事',
             language: 'text',
-            body: `JSX 写法                         useRoutes 写法
+            body: `# 两种写法一一对应关系（能力完全相同，只是语法皮肤不同）
+
+JSX 写法                         useRoutes 写法
 ────────────────────────────────────────────────────
 <Routes>                         useRoutes([ ... ])
   <Route path="/" element={A}>     { path:'/', element:A,
@@ -349,30 +374,34 @@ function App() {
   </Route>                             { path:'x', element:C },
 </Routes>                            ]}
 
-匹配规则、嵌套、Outlet、params 完全相同
-选哪个 = 项目风格 + 路由规模，不是谁更「高级」`,
+# 匹配规则、嵌套、Outlet、useParams 完全相同
+# 选哪个 = 项目规模 + 团队习惯，不是谁更「高级」`,
           },
           {
             type: 'code',
             title: '写法 C：数据路由（了解即可）',
             language: 'jsx',
-            body: `import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+            body: `// 写法 C：数据路由 API —— 支持 loader/action 预加载，SSR 友好（了解即可）
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+// createBrowserRouter：创建带数据能力的 router 实例（不是普通对象数组）
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
     children: [
       { index: true, element: <Home /> },
+      // 进阶：可在这里加 loader 在渲染前预取数据
     ],
   },
 ])
 
 function App() {
+  // RouterProvider 接管路由，内部已包含 history 管理
   return <RouterProvider router={router} />
 }
 
-// 注意：用了 RouterProvider，就不要再包 BrowserRouter`,
+// ★ 注意：用了 RouterProvider 就不要再包 BrowserRouter，两者二选一`,
           },
           {
             type: 'text',
@@ -383,7 +412,7 @@ function App() {
             type: 'code',
             title: '把本项目改成 JSX 写法会长这样（等价）',
             language: 'jsx',
-            body: `// 仅演示等价性；本仓库仍保持 useRoutes
+            body: `// 仅演示 JSX Routes 与 useRoutes 的等价性；本仓库仍保持 useRoutes 写法
 function App() {
   return (
     <Routes>
@@ -391,6 +420,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="lesson/:categoryId/:itemId" element={<LessonDetail />} />
         <Route path="demo/json-server" element={<JsonServerDemo />} />
+        {/* path="*" 必须放最后，匹配所有未命中路径 */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
@@ -471,15 +501,23 @@ function App() {
             type: 'code',
             title: '案例 1：RequireAuth（src/components/auth/RequireAuth.js）',
             language: 'jsx',
-            body: `import { Navigate, Outlet, useLocation } from 'react-router-dom'
+            body: `// 路由守卫三件套：Navigate（重定向）、Outlet（放行子路由）、useLocation（读当前 URL）
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { isLoggedIn } from '../../utils/auth'
 
+/**
+ * RequireAuth：登录守卫
+ * - 未登录 → 重定向到登录页，并记住原地址（state.from）
+ * - 已登录 → 渲染 <Outlet />，继续显示受保护的子路由页面
+ */
 function RequireAuth() {
+  // useLocation：拿到当前 URL 信息（pathname、search、state 等）
   const location = useLocation()
 
   if (!isLoggedIn()) {
-    // replace：避免返回键又回到受保护页造成死循环
-    // state.from：登录成功后跳回原地址
+    // Navigate：不渲染页面，直接改 URL 跳走
+    // replace：替换历史记录，避免用户点返回又回到受保护页造成死循环
+    // state.from：把「用户本来想去哪」传给登录页，登录成功后可以跳回
     return (
       <Navigate
         to="/demo/auth/login"
@@ -489,7 +527,7 @@ function RequireAuth() {
     )
   }
 
-  // 已登录：继续渲染子路由页面
+  // 已登录：Outlet 是子路由的插槽，ProfilePage 等会渲染在这里
   return <Outlet />
 }
 
@@ -499,12 +537,13 @@ export default RequireAuth`,
             type: 'code',
             title: '路由表怎么挂 RequireAuth（节选）',
             language: 'jsx',
-            body: `{
-  element: <RequireAuth />,
+            body: `// 路由表里「无 path 的父路由」= 纯守卫层，只负责检查，不参与 URL 匹配
+{
+  element: <RequireAuth />,  // 没有 path：作为包裹层，检查通过才渲染 children
   children: [
+    // 未登录访问 /demo/auth/profile → RequireAuth 拦截 → 自动去登录页
     { path: 'demo/auth/profile', element: <ProfilePage /> },
     { path: 'demo/auth/unsaved', element: <UnsavedFormPage /> },
-    // 未登录访问 /demo/auth/profile → 自动去登录页
   ],
 }`,
           },
@@ -512,31 +551,40 @@ export default RequireAuth`,
             type: 'code',
             title: '案例 2：LoginPage 登录回跳（本项目已实现）',
             language: 'jsx',
-            body: `const location = useLocation()
-const navigate = useNavigate()
-// 守卫传来的原地址；没有就去 /demo/auth
+            body: `// LoginPage 登录回跳核心逻辑（摘自本项目 LoginPage）
+const location = useLocation()   // 读路由 state（RequireAuth 传来的 from）
+const navigate = useNavigate()   // 编程式跳转 API
+
+// 守卫 Navigate 时带的 state.from；没有则默认去演示首页
 const from = location.state?.from?.pathname || '/demo/auth'
 
 function handleSubmit(e) {
   e.preventDefault()
-  login({ name, role })          // 写入 localStorage
-  navigate(from, { replace: true }) // 回到个人中心等原目标
+  login({ name, role })              // 写入 localStorage，标记已登录
+  // replace: true → 登录页不留在历史栈，用户点返回不会回到登录表单
+  navigate(from, { replace: true })  // 回到个人中心等原目标页
 }`,
           },
           {
             type: 'code',
             title: '案例 3：GuestOnly 反向守卫（本项目已实现）',
             language: 'jsx',
-            body: `function GuestOnly() {
+            body: `/**
+ * GuestOnly：反向守卫 —— 已登录用户不应再看到登录页
+ * 典型场景：用户已登录还访问 /login → 踢回首页或仪表盘
+ */
+function GuestOnly() {
   if (isLoggedIn()) {
+    // 已登录：不让进登录页，重定向到演示首页
     return <Navigate to="/demo/auth" replace />
   }
+  // 未登录：正常渲染子路由（LoginPage）
   return <Outlet />
 }
 
-// 路由：
+// 路由配置：GuestOnly 包裹登录页
 {
-  element: <GuestOnly />,
+  element: <GuestOnly />,  // 无 path，纯守卫层
   children: [
     { path: 'demo/auth/login', element: <LoginPage /> },
   ],
@@ -546,21 +594,26 @@ function handleSubmit(e) {
             type: 'code',
             title: '案例 4：RequireRole + 嵌套（admin → 403）',
             language: 'jsx',
-            body: `function RequireRole({ allow = [] }) {
-  const role = getRole() // 'user' | 'admin'
+            body: `/**
+ * RequireRole：角色守卫 —— 登录了但权限不够 → 403
+ * allow：允许访问的角色数组，如 ['admin']
+ */
+function RequireRole({ allow = [] }) {
+  const role = getRole() // 从 localStorage 读：'user' | 'admin'
   if (!allow.includes(role)) {
+    // 角色不在白名单 → 跳 403 说明页（不是 404，路径存在但没权限）
     return <Navigate to="/demo/auth/403" replace />
   }
-  return <Outlet />
+  return <Outlet />  // 角色 OK → 继续渲染子路由（AdminPage）
 }
 
-// 路由嵌套：
+// 守卫嵌套：先 RequireAuth（登录）再 RequireRole（角色）
 {
-  element: <RequireAuth />,
+  element: <RequireAuth />,  // 第一层：必须登录
   children: [
     { path: 'demo/auth/profile', element: <ProfilePage /> },
     {
-      element: <RequireRole allow={['admin']} />,
+      element: <RequireRole allow={['admin']} />,  // 第二层：必须 admin
       children: [
         { path: 'demo/auth/admin', element: <AdminPage /> },
       ],
@@ -572,18 +625,20 @@ function handleSubmit(e) {
             type: 'code',
             title: '403 页面（公开，谁都能看说明）',
             language: 'jsx',
-            body: `function ForbiddenPage() {
+            body: `// 403 页面：公开路由，谁都能打开看说明（不需要 RequireAuth）
+function ForbiddenPage() {
   return (
     <div>
       <h1>403 没有权限</h1>
       <p>你的角色不能访问该页面。</p>
+      {/* Link：声明式跳转，不刷新整页 */}
       <Link to="/demo/auth/login">换账号登录</Link>
       <Link to="/">回首页</Link>
     </div>
   )
 }
 
-// 路由（公开，谁都能打开说明页）：
+// 路由（公开，不包在 RequireAuth 里）：
 { path: 'demo/auth/403', element: <ForbiddenPage /> }`,
           },
           {
@@ -632,23 +687,26 @@ function handleSubmit(e) {
             type: 'code',
             title: 'NotFound 页面（本项目 src/pages/NotFound）',
             language: 'jsx',
-            body: `import { Link, useLocation } from 'react-router-dom'
+            body: `// NotFound 404 页面：用户访问不存在的路径时展示友好提示
+import { Link, useLocation } from 'react-router-dom'
 
 function NotFoundPage() {
+  // useLocation().pathname：当前 URL 路径，如 /this-page-does-not-exist
   const location = useLocation()
   return (
     <div>
       <h1>404 页面不存在</h1>
+      {/* 告诉用户具体哪个路径没匹配到，比静默跳首页体验好 */}
       <p>没有匹配到：{location.pathname}</p>
       <Link to="/">回首页</Link>
     </div>
   )
 }
 
-// routes 里（放在 children 最后）：
+// routes 里（必须放在 children 最后，否则会过早拦截其他路由）：
 { path: '*', element: <NotFoundPage /> }
 
-// ❌ 不推荐（用户没反馈）：
+// ❌ 不推荐：静默 Navigate 回首页，用户不知道自己输错了 URL
 // { path: '*', element: <Navigate to="/" replace /> }`,
           },
           {
@@ -660,19 +718,24 @@ function NotFoundPage() {
             type: 'code',
             title: 'beforeunload 核心（本项目 UnsavedFormPage）',
             language: 'jsx',
-            body: `const [dirty, setDirty] = useState(false)
+            body: `// 脏表单拦截：用户有未保存修改时，关标签页/刷新应弹出浏览器原生提示
+const [dirty, setDirty] = useState(false)  // dirty=true 表示表单有未保存改动
 
 useEffect(() => {
+  // beforeunload：浏览器「即将离开页面」事件（关标签、刷新、输入新 URL）
   function onBeforeUnload(e) {
-    if (!dirty) return
+    if (!dirty) return  // 没有未保存改动，不拦截
     e.preventDefault()
-    e.returnValue = '' // 触发浏览器原生提示
+    // 现代浏览器忽略自定义文案，设空字符串即可触发系统默认提示
+    e.returnValue = ''
   }
   window.addEventListener('beforeunload', onBeforeUnload)
+  // 清理：组件卸载时移除监听，避免内存泄漏
   return () => window.removeEventListener('beforeunload', onBeforeUnload)
-}, [dirty])
+}, [dirty])  // dirty 变化时重新绑定
 
-// 输入时 setDirty(true)；保存成功 setDirty(false)`,
+// 用户输入时 setDirty(true)；保存成功 setDirty(false)
+// 注意：beforeunload 拦不住 SPA 内 Link 跳转，完整方案需 useBlocker（进阶）`,
           },
           {
             type: 'table',
@@ -697,30 +760,34 @@ useEffect(() => {
             type: 'code',
             title: '本项目完整路由结构（精简注释版）',
             language: 'jsx',
-            body: `const routes = [
+            body: `// 本项目完整路由结构（精简注释版）—— 建议对照 src/routes/index.js 阅读
+const routes = [
   {
     path: '/',
-    element: <MainLayout />,
+    element: <MainLayout />,  // 全站共享布局
     children: [
       { index: true, element: <Home /> },
       { path: 'lesson/:categoryId/:itemId', element: <LessonDetail /> },
       { path: 'demo/json-server', element: <JsonServerDemo /> },
-      { path: 'demo/auth', element: <AuthDemoHome /> },
-      { path: 'demo/auth/403', element: <ForbiddenPage /> },
+      { path: 'demo/auth', element: <AuthDemoHome /> },       // 公开：演示首页
+      { path: 'demo/auth/403', element: <ForbiddenPage /> }, // 公开：403 说明
 
+      // GuestOnly：已登录用户不能进登录页
       { element: <GuestOnly />, children: [
           { path: 'demo/auth/login', element: <LoginPage /> },
       ]},
 
+      // RequireAuth：未登录不能进 profile / unsaved / admin
       { element: <RequireAuth />, children: [
           { path: 'demo/auth/profile', element: <ProfilePage /> },
           { path: 'demo/auth/unsaved', element: <UnsavedFormPage /> },
+          // 嵌套 RequireRole：admin 才能进后台
           { element: <RequireRole allow={['admin']} />, children: [
               { path: 'demo/auth/admin', element: <AdminPage /> },
           ]},
       ]},
 
-      { path: '*', element: <NotFoundPage /> },
+      { path: '*', element: <NotFoundPage /> },  // 404 兜底，放最后
     ],
   },
 ]`,
@@ -791,12 +858,16 @@ useEffect(() => {
             type: 'code',
             title: '完整可抄 demo：Link + NavLink 导航栏',
             language: 'jsx',
-            body: `import { Link, NavLink } from 'react-router-dom'
+            body: `// Link / NavLink：声明式导航 —— 用户能点的链接，拦截点击后只换组件不刷新整页
+import { Link, NavLink } from 'react-router-dom'
 
 /**
- * 顶部导航：Link 做品牌链接，NavLink 做带高亮的菜单
+ * 顶部导航 Demo
+ * - Link：普通跳转，无「当前页高亮」
+ * - NavLink：当前 URL 匹配 to 时 isActive=true，适合 Tab / 侧边栏
  */
 function SiteNav() {
+  // NavLink 的 style 可接收函数：{ isActive } 表示当前项是否激活
   const linkStyle = ({ isActive }) => ({
     padding: '8px 12px',
     textDecoration: 'none',
@@ -807,13 +878,13 @@ function SiteNav() {
 
   return (
     <header style={{ display: 'flex', gap: 16, padding: 16, borderBottom: '1px solid #eee' }}>
-      {/* Link：不需要高亮，只是跳转 */}
+      {/* Link：品牌 logo 一般不需要 active 高亮 */}
       <Link to="/" style={{ fontWeight: 700, textDecoration: 'none', color: '#111' }}>
         我的站点
       </Link>
 
       <nav style={{ display: 'flex', gap: 8 }}>
-        {/* NavLink：当前路径匹配时 isActive 为 true */}
+        {/* NavLink + end：end 表示「精确匹配」—— 避免 / 误匹配 /about 等子路径 */}
         <NavLink to="/" style={linkStyle} end>
           首页
         </NavLink>
@@ -828,7 +899,7 @@ function SiteNav() {
   )
 }
 
-// 带动态参数的 Link
+// 带动态路径参数的 Link —— to 可以是模板字符串
 function LessonLink({ categoryId, itemId, title }) {
   return (
     <Link to={\`/lesson/\${categoryId}/\${itemId}\`}>
@@ -837,7 +908,7 @@ function LessonLink({ categoryId, itemId, title }) {
   )
 }
 
-// 带查询参数的 Link
+// 带查询参数的 Link —— to 也可以是对象 { pathname, search }
 function SearchLink({ keyword }) {
   return (
     <Link to={{ pathname: '/search', search: \`?q=\${encodeURIComponent(keyword)}\` }}>
@@ -852,20 +923,23 @@ export { SiteNav, LessonLink, SearchLink }`,
             type: 'code',
             title: '完整可抄 demo：useNavigate 四种常见场景',
             language: 'jsx',
-            body: `import { useNavigate } from 'react-router-dom'
+            body: `// useNavigate：命令式导航 —— 在事件处理函数里「代码触发」跳转（登录成功、提交后等）
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 function LoginPage() {
+  // useNavigate() 返回 navigate 函数，必须在 BrowserRouter 内调用
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
 
-  // 场景 1：登录成功后跳首页，replace 避免返回键回到登录页
+  // 场景 1：登录成功后跳首页
   async function handleLogin() {
     setLoading(true)
     try {
       // await http.post('/login', { account, password })
-      await new Promise((r) => setTimeout(r, 800))
+      await new Promise((r) => setTimeout(r, 800))  // 模拟网络延迟
       localStorage.setItem('token', 'demo-token')
+      // replace: true → 替换历史记录，用户点返回不会回到登录页
       navigate('/', { replace: true })
     } catch (e) {
       alert(e.message)
@@ -874,7 +948,7 @@ function LoginPage() {
     }
   }
 
-  // 场景 2：取消 / 返回上一页
+  // 场景 2：取消 / 返回上一页（等同浏览器后退按钮）
   function handleCancel() {
     navigate(-1)
   }
@@ -896,14 +970,15 @@ function CreatePostPage() {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
 
-  // 场景 3：创建成功后跳详情页
+  // 场景 3：创建成功后跳详情页，并带隐式 state
   async function handleSubmit(e) {
     e.preventDefault()
     // const post = await http.post('/posts', { title })
     const fakeId = Date.now()
     navigate(\`/posts/\${fakeId}\`, {
       replace: true,
-      state: { message: '创建成功' }, // 隐式传参，详情页用 useLocation 读
+      // state：隐式传参，下一页用 useLocation().state 读（刷新会丢！）
+      state: { message: '创建成功' },
     })
   }
 
@@ -919,10 +994,10 @@ function ProtectedPage() {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
 
-  // 场景 4：未登录时立刻重定向（也可写在路由 loader 或包装组件里）
+  // 场景 4：组件内即时重定向（也可写在路由守卫 RequireAuth 里）
   if (!token) {
     navigate('/login', { replace: true, state: { from: '/protected' } })
-    return null
+    return null  // 跳转中不渲染内容，避免闪一下
   }
 
   return <div>受保护的内容</div>
@@ -934,7 +1009,7 @@ export { LoginPage, CreatePostPage, ProtectedPage }`,
             type: 'code',
             title: '对照本项目：Header 里的 Link',
             language: 'jsx',
-            body: `// src/components/Header/index.js
+            body: `// src/components/Header/index.js —— 本项目顶栏，对照源码阅读
 import { Link } from 'react-router-dom'
 import { APP_NAME } from '../../utils/constants'
 import './Header.css'
@@ -943,7 +1018,7 @@ function Header() {
   return (
     <header className="Header">
       <div className="Header-inner">
-        {/* 点品牌名回首页，不刷新整页 */}
+        {/* Link to="/"：点品牌名回首页，React Router 拦截点击，不整页刷新 */}
         <Link to="/" className="Header-brand">
           {APP_NAME}
         </Link>
@@ -957,7 +1032,9 @@ function Header() {
   )
 }
 
-export default Header`,
+export default Header
+
+// ★ 站内跳转用 Link，不要用 <a href="/"> —— 后者会整页刷新丢失 SPA 状态`,
           },
           {
             type: 'list',
@@ -1029,19 +1106,20 @@ export default Header`,
             type: 'code',
             title: '完整可抄 demo：用户详情页（useParams + 请求）',
             language: 'jsx',
-            body: `import { useEffect, useState } from 'react'
+            body: `// useParams：读取 URL 路径里的动态段（:userId 等），值永远是字符串
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 // 路由配置：{ path: 'users/:userId', element: <UserDetail /> }
 
 function UserDetail() {
-  const { userId } = useParams() // 字符串，例如 "1"
+  const { userId } = useParams() // 例如 URL /users/42 → userId === "42"（字符串！）
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController()  // 用于取消进行中的请求
 
     async function loadUser() {
       setLoading(true)
@@ -1049,12 +1127,12 @@ function UserDetail() {
       try {
         const res = await fetch(
           \`https://jsonplaceholder.typicode.com/users/\${userId}\`,
-          { signal: controller.signal }
+          { signal: controller.signal }  // 组件卸载或 userId 变化时 abort
         )
         if (!res.ok) throw new Error('用户不存在')
         setUser(await res.json())
       } catch (e) {
-        if (e.name === 'AbortError') return
+        if (e.name === 'AbortError') return  // 主动取消，不算错误
         setError(e.message)
         setUser(null)
       } finally {
@@ -1063,8 +1141,8 @@ function UserDetail() {
     }
 
     loadUser()
-    return () => controller.abort()
-  }, [userId]) // ★ userId 变了要重新请求
+    return () => controller.abort()  // 清理：防止「旧请求覆盖新数据」
+  }, [userId]) // ★ 从用户 A 切到用户 B，同一组件实例不卸载，必须依赖 userId 重新请求
 
   if (loading) return <p>加载用户 {userId}...</p>
   if (error) return <p>错误：{error}</p>
@@ -1086,19 +1164,22 @@ export default UserDetail`,
             type: 'code',
             title: '对照本项目：LessonDetail 读 categoryId + itemId',
             language: 'jsx',
-            body: `// src/pages/LessonDetail/index.js（核心逻辑）
+            body: `// src/pages/LessonDetail/index.js（核心逻辑）—— 本项目动态路由标准范例
 import { Link, useParams } from 'react-router-dom'
 import lessons from '../../data/lessons'
 import { findLesson, getLessonPath } from '../../utils/helpers'
 
 function LessonDetail() {
-  // URL：/lesson/router/link-navigate-full
+  // useParams：从 URL 路径提取动态段
+  // URL 示例：/lesson/router/link-navigate-full
   const { categoryId, itemId } = useParams()
-  // categoryId === 'router'
-  // itemId === 'link-navigate-full'
+  // categoryId === 'router'（字符串）
+  // itemId === 'link-navigate-full'（字符串）
 
+  // 用 params 查本地数据（真实项目可能是 fetch API）
   const { category, item } = findLesson(lessons, categoryId, itemId)
 
+  // 找不到数据时友好提示，别白屏
   if (!category || !item) {
     return (
       <div>
@@ -1121,7 +1202,7 @@ function LessonDetail() {
   )
 }
 
-// helpers.js 里生成路径：
+// helpers.js 里生成路径的工具函数：
 // getLessonPath('router', 'link-navigate-full')
 // → '/lesson/router/link-navigate-full'`,
           },
@@ -1129,7 +1210,8 @@ function LessonDetail() {
             type: 'code',
             title: '完整可抄 demo：搜索页（useSearchParams 读写）',
             language: 'jsx',
-            body: `import { useSearchParams, Link } from 'react-router-dom'
+            body: `// useSearchParams：读写 URL 问号后面的查询参数 ?q=react&page=2
+import { useSearchParams, Link } from 'react-router-dom'
 import { useMemo } from 'react'
 
 const ALL_ITEMS = [
@@ -1140,15 +1222,16 @@ const ALL_ITEMS = [
 ]
 
 function SearchPage() {
+  // 返回 [URLSearchParams 对象, setParams 函数]，类似 useState
   const [params, setParams] = useSearchParams()
 
-  // 从 URL 读参数（刷新页面、分享链接都能恢复状态）
-  const q = params.get('q') || ''
-  const tag = params.get('tag') || ''
-  const page = Number(params.get('page') || '1')
+  // 从 URL 读参数（刷新页面、分享链接都能恢复筛选状态）
+  const q = params.get('q') || ''           // 关键词，没有则空字符串
+  const tag = params.get('tag') || ''       // 标签筛选
+  const page = Number(params.get('page') || '1')  // 页码，get 返回字符串需转数字
   const pageSize = 2
 
-  // 根据 URL 参数过滤
+  // useMemo：q/tag 变化时才重新过滤，避免每次 render 都算
   const filtered = useMemo(() => {
     return ALL_ITEMS.filter((item) => {
       const matchQ = !q || item.name.toLowerCase().includes(q.toLowerCase())
@@ -1158,26 +1241,27 @@ function SearchPage() {
   }, [q, tag])
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize))
-  const safePage = Math.min(page, totalPages)
+  const safePage = Math.min(page, totalPages)  // 防止 page 超出范围
   const pageItems = filtered.slice(
     (safePage - 1) * pageSize,
     safePage * pageSize
   )
 
+  // 更新部分参数，保留其他 key（避免 setParams 覆盖掉别的筛选）
   function updateParams(partial) {
-    const next = new URLSearchParams(params)
+    const next = new URLSearchParams(params)  // 复制现有参数
     Object.entries(partial).forEach(([key, val]) => {
       if (val === '' || val === null || val === undefined) {
-        next.delete(key)
+        next.delete(key)  // 空值则从 URL 移除该参数
       } else {
         next.set(key, String(val))
       }
     })
-    setParams(next)
+    setParams(next)  // 更新 URL，不刷新页面，组件不卸载
   }
 
   function handleSearch(keyword) {
-    updateParams({ q: keyword, page: '1' })
+    updateParams({ q: keyword, page: '1' })  // 换关键词时重置到第 1 页
   }
 
   function handleTagChange(newTag) {
@@ -1236,7 +1320,7 @@ function SearchPage() {
         </button>
       </div>
 
-      {/* 带查询参数的链接，别人打开能看到同样筛选 */}
+      {/* 带查询参数的链接：别人打开能看到同样筛选 */}
       <p>
         <Link to={\`/search?q=\${encodeURIComponent(q)}&tag=\${tag}&page=\${safePage}\`}>
           复制当前筛选链接

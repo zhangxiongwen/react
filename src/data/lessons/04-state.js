@@ -51,11 +51,13 @@ const state = {
             body: `import { useState } from 'react'
 
 function Counter() {
+  // useState 返回 [当前值, 更新函数]；0 是 count 的初始值
   const [count, setCount] = useState(0)
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(1)  // 步长也是 state，改步长会触发重渲染
 
+  // 事件处理函数：点击时调用 setCount 更新 state，React 会重新渲染界面
   function handleAdd() {
-    setCount(count + step)
+    setCount(count + step)  // 基于当前 count 和 step 计算新值
   }
 
   function handleSub() {
@@ -63,17 +65,19 @@ function Counter() {
   }
 
   function handleReset() {
-    setCount(0)
+    setCount(0)  // 直接设为固定值，不依赖旧 state
   }
 
   return (
     <div style={{ padding: 24, fontFamily: 'sans-serif' }}>
       <h2>计数器</h2>
+      {/* 界面显示的是「当前这次渲染」的 count 快照 */}
       <p style={{ fontSize: 48, margin: '16px 0' }}>{count}</p>
 
       <div style={{ marginBottom: 12 }}>
         <label>
           步长：
+          {/* 受控 input：value 绑定 step state，onChange 更新 step */}
           <input
             type="number"
             value={step}
@@ -107,10 +111,11 @@ export default Counter`,
   const [count, setCount] = useState(0)
 
   function handleClick() {
-    console.log('点击前 count:', count)  // 0
-    setCount(count + 1)
+    console.log('点击前 count:', count)  // 例如 0
+    setCount(count + 1)  // 「预约」下次渲染时 count 变为 1
+    // setState 不是立刻改变量！同一函数里下面读到的仍是旧值
     console.log('setState 后立刻读 count:', count)  // 还是 0！不是 1
-    // 界面会在下一次渲染时显示 1
+    // 界面会在「下一次渲染」时显示 1
   }
 
   return (
@@ -135,15 +140,16 @@ export default Counter`,
 function AddThreeDemo() {
   const [count, setCount] = useState(0)
 
-  // ❌ 错误：三次都基于「同一次渲染里的旧 count」
+  // ❌ 错误：三次都基于「同一次渲染里的旧 count」（闭包陷阱）
   function addThreeWrong() {
     setCount(count + 1)  // 假设 count=0，预约设为 1
     setCount(count + 1)  // 还是基于 0，又预约设为 1
     setCount(count + 1)  // 还是基于 0，又预约设为 1
-    // 结果：只 +1，不是 +3
+    // React 合并后结果：只 +1，不是 +3
   }
 
-  // ✅ 正确：函数式更新，每次基于「排队中的最新值」
+  // ✅ 正确：函数式更新 setCount(c => c + 1)
+  // 参数 c 是「排队中该 state 的最新值」，每次 +1 都基于最新值
   function addThreeRight() {
     setCount((c) => c + 1)
     setCount((c) => c + 1)
@@ -175,14 +181,14 @@ function TimerTrap() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      // ❌ 闭包抓到的是挂载时的 count（一直是 0），每秒 setCount(1)
-      // setCount(count + 1)
+      // ❌ 闭包陷阱：回调里抓到的 count 永远是挂载时的 0
+      // setCount(count + 1)  → 每秒都是 setCount(1)
 
-      // ✅ 函数式更新，永远基于最新值
+      // ✅ 函数式更新：不依赖闭包里的 count，永远基于最新 state
       setCount((c) => c + 1)
     }, 1000)
-    return () => clearInterval(id)
-  }, []) // 空依赖只挂载一次
+    return () => clearInterval(id)  // 组件卸载时清除定时器
+  }, []) // 空依赖 []：只在首次挂载时执行一次
 
   return <p>自动计数：{count}</p>
 }`,
@@ -209,10 +215,10 @@ function TimerTrap() {
             title: '惰性初始化 Demo',
             language: 'jsx',
             body: `function ExpensiveInit() {
-  // ❌ 每次渲染都执行 readFromStorage()，浪费
+  // ❌ 每次组件重渲染都会执行 readFromStorage()，浪费性能
   // const [user, setUser] = useState(readFromStorage())
 
-  // ✅ 函数形式，只在首次渲染执行
+  // ✅ 惰性初始化：传入函数，React 只在「首次挂载」时调用一次
   const [user, setUser] = useState(() => {
     const raw = localStorage.getItem('user')
     return raw ? JSON.parse(raw) : { name: '游客' }
@@ -226,12 +232,13 @@ function TimerTrap() {
             title: 'useState 可以存任何类型',
             language: 'jsx',
             body: `function AllTypes() {
-  const [name, setName] = useState('')           // 字符串
+  // useState 可以存任意 JavaScript 类型，初值类型决定后续怎么用
+  const [name, setName] = useState('')           // 字符串，表单常用
   const [age, setAge] = useState(0)              // 数字
-  const [ok, setOk] = useState(false)            // 布尔
-  const [user, setUser] = useState(null)         // null / 对象
-  const [list, setList] = useState([])           // 数组
-  const [map, setMap] = useState(new Map())      // 少见，一般用对象/数组
+  const [ok, setOk] = useState(false)            // 布尔，开关/checkbox
+  const [user, setUser] = useState(null)         // null 或对象
+  const [list, setList] = useState([])           // 数组，列表数据
+  const [map, setMap] = useState(new Map())      // 少见，一般用对象/数组即可
 
   return <div>各种类型都可以作为 state</div>
 }`,
@@ -312,6 +319,7 @@ function TimerTrap() {
             body: `import { useState } from 'react'
 
 function UserForm() {
+  // 对象 state：多个表单字段放在一个对象里，方便整体提交/重置
   const [form, setForm] = useState({
     name: '',
     age: 18,
@@ -319,10 +327,11 @@ function UserForm() {
     bio: '',
   })
 
-  // 通用更新函数：改任意字段
+  // 通用更新函数：改任意字段，避免每个 input 写重复的 setForm
   function updateField(key, value) {
+    // 函数式更新 + 展开运算符：复制旧对象，只覆盖要改的 [key]
     setForm((prev) => ({ ...prev, [key]: value }))
-    // 用函数式 + 展开 prev，避免闭包旧 form
+    // [key] 是计算属性名，key='name' 时等价于 { ...prev, name: value }
   }
 
   function handleReset() {
@@ -335,6 +344,7 @@ function UserForm() {
 
       <div style={{ marginBottom: 8 }}>
         <label>姓名：</label>
+        {/* 受控组件：value 来自 state，onChange 更新 state */}
         <input
           value={form.name}
           onChange={(e) => updateField('name', e.target.value)}
@@ -375,6 +385,7 @@ function UserForm() {
 
       <button type="button" onClick={handleReset}>重置</button>
 
+      {/* 实时预览：受控表单的好处，state 始终和界面同步 */}
       <pre style={{ background: '#f5f5f5', padding: 12, marginTop: 16 }}>
         {JSON.stringify(form, null, 2)}
       </pre>
@@ -388,16 +399,18 @@ function UserForm() {
             language: 'jsx',
             body: `const [form, setForm] = useState({ name: '', age: 18 })
 
-// ❌ 错误：直接改原对象
+// ❌ 错误：直接修改原对象（mutate），引用没变，React 可能不重新渲染
 form.name = '小明'
-setForm(form)  // 引用没变，可能不渲染
+setForm(form)  // 还是同一个对象引用
 
-// ❌ 错误：只传部分字段，其它字段丢失
-setForm({ name: '小明' })  // age 没了！
+// ❌ 错误：只传部分字段，没展开的字段会丢失
+setForm({ name: '小明' })  // age 字段没了！
 
-// ✅ 正确：展开旧对象 + 覆盖
+// ✅ 正确：展开旧对象 + 覆盖要改的字段，得到新对象
 setForm({ ...form, name: '小明' })
-setForm((prev) => ({ ...prev, name: '小明' }))  // 更推荐`,
+
+// ✅ 更推荐：函数式更新，避免闭包里的 form 是旧快照
+setForm((prev) => ({ ...prev, name: '小明' }))`,
           },
           {
             type: 'text',
@@ -411,14 +424,15 @@ setForm((prev) => ({ ...prev, name: '小明' }))  // 更推荐`,
             body: `import { useState } from 'react'
 
 function TodoApp() {
+  // todos：数组 state，每项是对象 { id, text, done }
   const [todos, setTodos] = useState([
     { id: 1, text: '学习 JSX', done: true },
     { id: 2, text: '学习 State', done: false },
   ])
-  const [input, setInput] = useState('')
-  const [nextId, setNextId] = useState(3)
+  const [input, setInput] = useState('')      // 输入框文字
+  const [nextId, setNextId] = useState(3)     // 自增 id
 
-  // 新增
+  // 【新增】末尾追加：用 [...prev, 新项]，禁止 push 后 set 原数组
   function handleAdd() {
     const text = input.trim()
     if (!text) return
@@ -427,12 +441,12 @@ function TodoApp() {
     setInput('')
   }
 
-  // 删除
+  // 【删除】filter 返回不含指定 id 的新数组
   function handleRemove(id) {
     setTodos((prev) => prev.filter((t) => t.id !== id))
   }
 
-  // 切换完成状态
+  // 【修改】map 找到目标项，展开后改 done 字段
   function handleToggle(id) {
     setTodos((prev) =>
       prev.map((t) =>
@@ -441,11 +455,12 @@ function TodoApp() {
     )
   }
 
-  // 全部标记完成
+  // 【批量修改】全部标记完成
   function handleCompleteAll() {
     setTodos((prev) => prev.map((t) => ({ ...t, done: true })))
   }
 
+  // 派生值：从 todos 计算，不需要单独 useState
   const doneCount = todos.filter((t) => t.done).length
 
   return (
@@ -524,11 +539,11 @@ function TodoApp() {
             language: 'jsx',
             body: `const [user, setUser] = useState({
   name: '小明',
-  profile: { city: '上海', score: 80 },
-  tags: ['React', 'CSS'],
+  profile: { city: '上海', score: 80 },  // 嵌套对象
+  tags: ['React', 'CSS'],                 // 嵌套数组
 })
 
-// 只改 profile.score
+// 只改 profile.score：外层 user、内层 profile 都要 ...展开复制
 setUser((prev) => ({
   ...prev,
   profile: {
@@ -537,13 +552,13 @@ setUser((prev) => ({
   },
 }))
 
-// 给 tags 数组追加一项
+// 给 tags 数组追加一项：[...旧数组, 新项]
 setUser((prev) => ({
   ...prev,
   tags: [...prev.tags, 'Node'],
 }))
 
-// 改 tags 里某一项（按 index）
+// 改 tags 里某一项（按 index）：用 map
 setUser((prev) => ({
   ...prev,
   tags: prev.tags.map((tag, i) => (i === 0 ? 'React 19' : tag)),
@@ -617,15 +632,15 @@ setUser((prev) => ({
             type: 'code',
             title: '两种方案对照',
             language: 'jsx',
-            body: `// 方案 A：分散（2～3 个简单字段）
+            body: `// 方案 A：分散 state（2～3 个互不相关的简单字段）
 function SearchBar() {
-  const [keyword, setKeyword] = useState('')
-  const [isOpen, setIsOpen] = useState(false)  // 和 keyword 无关
+  const [keyword, setKeyword] = useState('')   // 搜索关键词
+  const [isOpen, setIsOpen] = useState(false)    // 下拉是否展开，和 keyword 无关
 
-  // 清晰：各管各的
+  // 优点：各管各的，改 keyword 不会误触 isOpen 的逻辑
 }
 
-// 方案 B：对象（字段多、整体提交）
+// 方案 B：对象 state（字段多、要整体提交/重置的表单）
 function RegisterForm() {
   const [form, setForm] = useState({
     username: '',
@@ -634,6 +649,7 @@ function RegisterForm() {
     agree: false,
   })
 
+  // 统一更新入口：一个函数改任意字段
   function updateField(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
@@ -654,12 +670,12 @@ function RegisterForm() {
     { id: 2, name: '鼠标', price: 99, qty: 2 },
   ])
 
-  // ✅ 派生值：每次渲染计算，不存 state
+  // ✅ 派生值：每次渲染时从 items 计算，不要再用 useState 存一份
   const total = items.reduce((sum, i) => sum + i.price * i.qty, 0)
   const count = items.reduce((sum, i) => sum + i.qty, 0)
   const isEmpty = items.length === 0
 
-  // ❌ 错误：再存一份 total 的 state，每次改 items 还要手动 sync total
+  // ❌ 错误：再存 total 的 state，改 items 时还要手动 sync total，容易不同步
 
   return (
     <div>
@@ -693,6 +709,7 @@ function RegisterForm() {
             body: `import { useState } from 'react'
 
 function RegisterForm() {
+  // form：所有输入字段存在一个对象里
   const [form, setForm] = useState({
     username: '',
     email: '',
@@ -700,13 +717,13 @@ function RegisterForm() {
     confirmPassword: '',
     agree: false,
   })
-  const [errors, setErrors] = useState({})
-  const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [errors, setErrors] = useState({})       // 各字段校验错误，和 form 分离
+  const [submitting, setSubmitting] = useState(false)  // 是否正在提交（loading）
+  const [success, setSuccess] = useState(false)    // 是否提交成功
 
   function updateField(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }))
-    // 输入时清掉该字段错误
+    // 用户重新输入时，清掉该字段的旧错误提示
     if (errors[key]) {
       setErrors((prev) => ({ ...prev, [key]: '' }))
     }
@@ -739,20 +756,20 @@ function RegisterForm() {
     }
 
     setErrors(next)
-    return Object.keys(next).length === 0
+    return Object.keys(next).length === 0  // 无错误返回 true
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault()  // 阻止浏览器默认刷新
     if (!validate()) return
 
     setSubmitting(true)
     try {
-      await new Promise((r) => setTimeout(r, 1000)) // 模拟请求
+      await new Promise((r) => setTimeout(r, 1000)) // 模拟网络请求
       setSuccess(true)
       console.log('注册成功', form)
     } finally {
-      setSubmitting(false)
+      setSubmitting(false)  // 无论成功失败都复位 loading
     }
   }
 
@@ -768,7 +785,7 @@ function RegisterForm() {
     setSuccess(false)
   }
 
-  // 派生值：能否提交（可选，用于 disabled）
+  // 派生值：能从现有 state 算出来，不必单独 useState
   const canSubmit = form.agree && !submitting
 
   if (success) {
@@ -789,6 +806,7 @@ function RegisterForm() {
     >
       <h3>用户注册</h3>
 
+      {/* Field 子组件无 state，纯展示 + 通过 props 回调通知父组件 */}
       <Field
         label="用户名"
         value={form.username}
@@ -840,6 +858,7 @@ function RegisterForm() {
   )
 }
 
+// 可复用字段组件：通过 props 接收 value、error、onChange
 function Field({ label, type = 'text', value, error, onChange }) {
   return (
     <div style={{ marginBottom: 12 }}>

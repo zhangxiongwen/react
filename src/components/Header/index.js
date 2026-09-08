@@ -36,6 +36,9 @@ function Header() {
           <Link to="/" className="Header-link">
             知识目录
           </Link>
+          <Link to="/playground" className="Header-link">
+            代码演练
+          </Link>
           <Link to="/demo/json-server" className="Header-link">
             API 演示
           </Link>

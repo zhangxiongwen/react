@@ -52,14 +52,16 @@ const events = {
             body: `import { useState } from 'react'
 
 function EventDemo() {
-  const [log, setLog] = useState([])
+  const [log, setLog] = useState([])  // 用数组 state 存事件日志
 
   function addLog(msg) {
+    // 函数式更新 + 展开：在旧数组末尾追加一条新日志
     setLog((prev) => [...prev, \`\${new Date().toLocaleTimeString()} - \${msg}\`])
   }
 
+  // 事件处理函数：React 会在用户操作时调用，并传入合成事件对象 e
   function handleClick(e) {
-    // e 是合成事件，用法接近原生 Event
+    // e 是 SyntheticEvent，用法接近原生 Event（clientX、preventDefault 等）
     addLog(\`单击位置：(\${e.clientX}, \${e.clientY})\`)
   }
 
@@ -73,6 +75,7 @@ function EventDemo() {
 
   return (
     <div style={{ padding: 20 }}>
+      {/* onXxx={函数}：传函数引用，不是 onClick={handleClick()} */}
       <div
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
@@ -121,8 +124,9 @@ function TagList() {
     { id: 3, name: 'CSS', color: '#264de4' },
   ])
 
+  // 删除标签：需要 id 参数 + 事件对象 e（用于阻止冒泡）
   function handleRemove(id, e) {
-    e.stopPropagation() // 阻止冒泡到父级
+    e.stopPropagation()  // 阻止事件冒泡到父级 div，避免误触 handlePanelClick
     setTags((prev) => prev.filter((t) => t.id !== id))
   }
 
@@ -150,7 +154,7 @@ function TagList() {
             }}
           >
             {tag.name}
-            {/* ✅ 传参：箭头函数包一层 */}
+            {/* ✅ 传参正确写法：箭头函数包一层，点击时才执行 handleRemove(tag.id, e) */}
             <button
               type="button"
               onClick={(e) => handleRemove(tag.id, e)}
@@ -185,19 +189,19 @@ function TagList() {
 
   return (
     <div>
-      {/* ✅ 正确：传函数引用，点击时执行 */}
+      {/* ✅ 正确：传函数引用，用户点击时才执行 */}
       <button type="button" onClick={handleClick}>正确</button>
 
-      {/* ✅ 正确：箭头函数，点击时执行 */}
+      {/* ✅ 正确：箭头函数包裹，点击时才调用 handleClick() */}
       <button type="button" onClick={() => handleClick()}>也正确</button>
 
-      {/* ✅ 正确：传参 */}
+      {/* ✅ 正确：需要传参时用箭头函数 */}
       <button type="button" onClick={() => handleClick()}>传参</button>
 
-      {/* ❌ 错误：渲染时就执行，页面一加载就 alert */}
+      {/* ❌ 错误：handleClick() 带括号 → 渲染阶段立刻执行，不是等点击 */}
       {/* <button onClick={handleClick()}>错</button> */}
 
-      {/* ❌ 错误：传参写法错，渲染时就执行 */}
+      {/* ❌ 错误：handleClick(123) 同样在渲染时就执行了 */}
       {/* <button onClick={handleClick(123)}>错</button> */}
     </div>
   )
@@ -232,18 +236,19 @@ function SearchBox({ onSearch }) {
 
   function handleSubmit() {
     const q = keyword.trim()
-    if (q) onSearch?.(q)
+    if (q) onSearch?.(q)  // 可选链：父组件没传 onSearch 也不报错
   }
 
   function handleKeyDown(e) {
     if (e.key === 'Enter') {
-      e.preventDefault()
+      e.preventDefault()  // 阻止 form 内回车触发表格默认提交
       handleSubmit()
     }
   }
 
   return (
     <div style={{ display: 'flex', gap: 8, padding: 20 }}>
+      {/* onChange：每次输入更新 keyword state（受控组件） */}
       <input
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
@@ -261,6 +266,7 @@ function App() {
 
   return (
     <>
+      {/* onSearch 是回调 prop：子组件搜索完成后通知父组件 */}
       <SearchBox onSearch={(q) => setResult(\`搜索：\${q}\`)} />
       {result && <p style={{ padding: '0 20px' }}>{result}</p>}
     </>
@@ -277,17 +283,18 @@ function App() {
             title: 'onSubmit 标准模板',
             language: 'jsx',
             body: `function MyForm() {
+  // 表单提交处理函数：e 是合成事件对象
   function handleSubmit(e) {
-    e.preventDefault() // ← 必须！否则页面刷新，state 全丢
+    e.preventDefault() // ← 必须！否则浏览器会刷新整页，React state 全丢
     console.log('安全地处理提交逻辑')
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input name="title" />
-      {/* type="submit" 或回车都会触发 onSubmit */}
+      {/* type="submit" 或 form 内回车 → 触发 onSubmit */}
       <button type="submit">提交</button>
-      {/* type="button" 不会触发表单提交 */}
+      {/* type="button" 不会触发表单提交，适合「取消」 */}
       <button type="button">取消</button>
     </form>
   )
@@ -371,20 +378,23 @@ function App() {
             body: `import { useState } from 'react'
 
 function PreferenceForm() {
+  // 一个 form 对象存所有字段，受控组件的统一模式
   const [form, setForm] = useState({
     name: '',
     bio: '',
     city: 'shanghai',
     agree: false,
     gender: 'female',
-    skills: [],        // 多选 checkbox 存数组
-    level: 'beginner', // radio
+    skills: [],        // 多选 checkbox 用数组
+    level: 'beginner',
   })
 
+  // 通用更新：改单个字段
   function update(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
 
+  // 多选 checkbox：在数组里 toggle 某项
   function toggleSkill(skill) {
     setForm((prev) => ({
       ...prev,
@@ -400,7 +410,7 @@ function PreferenceForm() {
     <form style={{ padding: 20, maxWidth: 480 }}>
       <h3>用户偏好（受控表单全家桶）</h3>
 
-      {/* 1. 单行文本 input */}
+      {/* 1. 单行文本：value + onChange(e.target.value) */}
       <div style={{ marginBottom: 12 }}>
         <label>姓名：</label>
         <input
@@ -412,7 +422,7 @@ function PreferenceForm() {
         />
       </div>
 
-      {/* 2. 多行文本 textarea */}
+      {/* 2. 多行文本 textarea：同样用 value */}
       <div style={{ marginBottom: 12 }}>
         <label>简介：</label>
         <textarea
@@ -424,7 +434,7 @@ function PreferenceForm() {
         />
       </div>
 
-      {/* 3. 下拉 select */}
+      {/* 3. 下拉 select：value 绑定 state，option 的 value 要对应 */}
       <div style={{ marginBottom: 12 }}>
         <label>城市：</label>
         <select
@@ -438,7 +448,7 @@ function PreferenceForm() {
         </select>
       </div>
 
-      {/* 4. 单个 checkbox → checked + e.target.checked */}
+      {/* 4. 单个 checkbox：用 checked + e.target.checked（不是 value） */}
       <div style={{ marginBottom: 12 }}>
         <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <input
@@ -450,7 +460,7 @@ function PreferenceForm() {
         </label>
       </div>
 
-      {/* 5. 多个 checkbox（多选）→ 数组 state */}
+      {/* 5. 多个 checkbox：checked={数组.includes(项)} + toggle 函数 */}
       <div style={{ marginBottom: 12 }}>
         <p>技能（多选）：</p>
         {skillOptions.map((skill) => (
@@ -465,7 +475,7 @@ function PreferenceForm() {
         ))}
       </div>
 
-      {/* 6. radio 单选 → 同一组 name，checked 比较 value */}
+      {/* 6. radio 单选：checked={state === '选项值'}，onChange 设 state */}
       <div style={{ marginBottom: 12 }}>
         <p>性别：</p>
         <label style={{ marginRight: 16 }}>
@@ -488,7 +498,7 @@ function PreferenceForm() {
         </label>
       </div>
 
-      {/* 7. radio 另一组：水平 */}
+      {/* 7. radio 用 map 渲染一组选项 */}
       <div style={{ marginBottom: 12 }}>
         <p>水平：</p>
         {['beginner', 'intermediate', 'advanced'].map((lv) => (
@@ -504,7 +514,7 @@ function PreferenceForm() {
         ))}
       </div>
 
-      {/* 实时预览：受控的好处——随时能读到最新值 */}
+      {/* 受控表单好处：state 和界面始终同步，可随时预览 */}
       <pre
         style={{
           background: '#f5f5f5',
@@ -537,12 +547,25 @@ function PreferenceForm() {
             type: 'code',
             title: '各控件 value 来源对照表（代码速查）',
             language: 'jsx',
-            body: `// input[type=text|email|password|number]  → value + e.target.value
-// textarea                                  → value + e.target.value
-// select                                    → value + e.target.value
-// input[type=checkbox] 单个                 → checked + e.target.checked
-// input[type=checkbox] 多个                 → checked={arr.includes(x)} + 手动 toggle 数组
-// input[type=radio]                         → checked={state === 'value'} + onChange 设 state`,
+            body: `// ========== 受控组件速查：每种控件绑什么属性、onChange 取什么 ==========
+
+// input[type=text|email|password|number]
+//   → value={state} + onChange={(e) => setState(e.target.value)}
+
+// textarea
+//   → value={state} + onChange={(e) => setState(e.target.value)}
+
+// select
+//   → value={state} + onChange={(e) => setState(e.target.value)}
+
+// input[type=checkbox] 单个
+//   → checked={state} + onChange={(e) => setState(e.target.checked)}
+
+// input[type=checkbox] 多个（多选）
+//   → checked={arr.includes(项)} + 手动 toggle 数组
+
+// input[type=radio]
+//   → checked={state === '选项值'} + onChange 里 setState 为选项值`,
           },
           {
             type: 'text',
@@ -555,14 +578,14 @@ function PreferenceForm() {
             language: 'jsx',
             body: `// 控制台警告：A component is changing an uncontrolled input to be controlled
 
-// ❌ 原因：初始值是 undefined，后来变成字符串
-const [name, setName] = useState()  // undefined
-<input value={name} onChange={...} />
+// ❌ 原因：初始值 undefined → 第一次渲染「非受控」；后来变成字符串 → 变「受控」
+const [name, setName] = useState()  // undefined，没有明确初值
+// <input value={name} onChange={...} />
 
-// ✅ 修复：给明确初始类型
-const [name, setName] = useState('')       // 文本
-const [agree, setAgree] = useState(false)  // 复选
-const [city, setCity] = useState('shanghai') // 下拉要有默认 option 值`,
+// ✅ 修复：给明确初始类型，从第一次渲染就是受控组件
+const [name, setName] = useState('')       // 文本用空字符串
+const [agree, setAgree] = useState(false)  // 复选框用 false
+const [city, setCity] = useState('shanghai') // 下拉要有默认 option 值对应`,
           },
           {
             type: 'text',
@@ -642,19 +665,20 @@ const [city, setCity] = useState('shanghai') // 下拉要有默认 option 值`,
             body: `import { useState } from 'react'
 
 function LoginForm({ onSuccess }) {
+  // form state：账号、密码、记住我
   const [form, setForm] = useState({
     account: '',
     password: '',
     remember: false,
   })
-  const [errors, setErrors] = useState({})
-  const [submitting, setSubmitting] = useState(false)
+  const [errors, setErrors] = useState({})           // 字段级校验错误
+  const [submitting, setSubmitting] = useState(false) // 提交中 loading
   const [showPassword, setShowPassword] = useState(false)
-  const [formError, setFormError] = useState('') // 整表单错误（如账号密码不匹配）
+  const [formError, setFormError] = useState('')     // 整表单错误（如接口返回）
 
+  // 统一更新 form，并清掉对应错误（改善 UX）
   function update(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }))
-    // 用户重新输入时，清掉该字段错误和整表单错误
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: '' }))
     if (formError) setFormError('')
   }
@@ -680,17 +704,16 @@ function LoginForm({ onSuccess }) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault()  // 阻止页面刷新
     setFormError('')
 
-    if (!validate()) return
+    if (!validate()) return  // 校验失败不发请求
 
     setSubmitting(true)
     try {
       // 模拟 API 请求
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // 模拟：账号 admin / 密码 123456 登录成功
           if (form.account === 'admin' && form.password === '123456') {
             resolve({ token: 'fake-token', name: '管理员' })
           } else {
@@ -701,11 +724,11 @@ function LoginForm({ onSuccess }) {
 
       const result = { token: 'fake-token', name: '管理员' }
       console.log('登录成功', { ...form, password: '***' })
-      onSuccess?.(result)
+      onSuccess?.(result)  // 回调 prop 通知父组件
     } catch (err) {
       setFormError(err.message || '登录失败，请稍后重试')
     } finally {
-      setSubmitting(false)
+      setSubmitting(false)  // 无论成功失败都结束 loading
     }
   }
 
@@ -732,7 +755,7 @@ function LoginForm({ onSuccess }) {
       </p>
 
       <form onSubmit={handleSubmit} noValidate>
-        {/* 整表单错误 */}
+        {/* 整表单错误：接口/业务失败时显示在顶部 */}
         {formError && (
           <div
             style={{
@@ -749,7 +772,7 @@ function LoginForm({ onSuccess }) {
           </div>
         )}
 
-        {/* 账号 */}
+        {/* 账号：受控 input */}
         <div style={{ marginBottom: 16 }}>
           <label style={{ display: 'block', marginBottom: 4, fontWeight: 500 }}>
             账号
@@ -774,7 +797,7 @@ function LoginForm({ onSuccess }) {
           )}
         </div>
 
-        {/* 密码 */}
+        {/* 密码：type 随 showPassword 切换 text/password */}
         <div style={{ marginBottom: 16 }}>
           <label style={{ display: 'block', marginBottom: 4, fontWeight: 500 }}>
             密码
@@ -809,7 +832,7 @@ function LoginForm({ onSuccess }) {
           )}
         </div>
 
-        {/* 记住我 */}
+        {/* 记住我：checkbox 用 checked */}
         <label
           style={{
             display: 'flex',
@@ -828,7 +851,6 @@ function LoginForm({ onSuccess }) {
           记住我
         </label>
 
-        {/* 按钮组 */}
         <div style={{ display: 'flex', gap: 8 }}>
           <button
             type="submit"
@@ -860,7 +882,7 @@ function LoginForm({ onSuccess }) {
   )
 }
 
-// 使用示例
+// 使用示例：onSuccess 是回调 prop
 function App() {
   return (
     <LoginForm
@@ -879,12 +901,12 @@ function App() {
             title: '接入真实 API 时只需改 handleSubmit 里 try 块',
             language: 'jsx',
             body: `async function handleSubmit(e) {
-  e.preventDefault()
-  if (!validate()) return
+  e.preventDefault()       // 第一步：阻止浏览器默认提交
+  if (!validate()) return  // 第二步：校验失败直接 return
 
   setSubmitting(true)
   try {
-    // 换成真实请求
+    // 第三步：换成真实 fetch 请求
     const res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -901,11 +923,11 @@ function App() {
 
     const data = await res.json()
     localStorage.setItem('token', data.token)
-    onSuccess?.(data)
+    onSuccess?.(data)  // 第四步：成功回调
   } catch (err) {
-    setFormError(err.message)
+    setFormError(err.message)  // 接口错误显示在表单顶部
   } finally {
-    setSubmitting(false)
+    setSubmitting(false)  // 第五步：无论成败都复位 loading
   }
 }`,
           },

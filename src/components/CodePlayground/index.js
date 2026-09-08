@@ -1,21 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import './LiveDemo.css'
+import './CodePlayground.css'
 
-/** 两侧共用的等宽字体度量，避免光标/选区错位 */
 const EDITOR_FONT =
   'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace'
 const EDITOR_FONT_SIZE = 13
-const EDITOR_LINE_HEIGHT = 21 // 固定 px，禁止用 1.65 这种两边算出来不一致的值
+const EDITOR_LINE_HEIGHT = 21
 
-/**
- * 把片段 HTML 包成完整文档，便于 iframe 预览
- */
+/** 允许脚本：演练台需要跑 JS；与课程 LiveDemo 共用同一套包装逻辑 */
 function buildSrcDoc(code) {
   const trimmed = String(code ?? '').trim()
   if (!trimmed) {
-    return `<!DOCTYPE html><html><body style="margin:16px;font:14px/1.6 system-ui;color:#7a8a80;">（暂无内容）</body></html>`
+    return `<!DOCTYPE html><html><body style="margin:16px;font:14px/1.6 system-ui;color:#7a8a80;">（暂无内容，在左侧开始编写）</body></html>`
   }
 
   const looksComplete =
@@ -45,22 +42,6 @@ ${trimmed}
 </html>`
 }
 
-function resolveLanguage(language = 'html') {
-  const map = {
-    js: 'javascript',
-    javascript: 'javascript',
-    jsx: 'jsx',
-    css: 'css',
-    html: 'markup',
-    markup: 'markup',
-    text: 'text',
-  }
-  return map[String(language).toLowerCase()] || 'markup'
-}
-
-/**
- * 去掉 theme 里会改变字形度量的样式（粗体/斜体会导致越往下越错位）
- */
 function buildHighlightStyle(theme) {
   const next = { ...theme }
   Object.keys(next).forEach((key) => {
@@ -83,19 +64,28 @@ function buildHighlightStyle(theme) {
 const highlightStyle = buildHighlightStyle(oneLight)
 
 /**
- * 左侧可编辑代码（语法高亮）+ 右侧实时渲染
+ * 全屏级代码演练：左编辑（高亮）右预览（支持 JS）
+ *
+ * 预览策略：
+ * - 普通编辑：只更新 srcDoc（浏览器会重载文档并执行 script），不额外改 iframe key，避免闪烁
+ * - 「立即运行」：在代码未变时也强制 remount，方便重跑 JS
  */
-function LiveDemo({ title, language = 'html', initialCode = '' }) {
+function CodePlayground({
+  initialCode = '',
+  title = '代码演练',
+  onCodeChange,
+}) {
   const starter = useMemo(
     () => String(initialCode ?? '').replace(/^\n/, '').replace(/\n$/, ''),
     [initialCode]
   )
   const [code, setCode] = useState(starter)
   const [previewCode, setPreviewCode] = useState(starter)
-  const [iframeHeight, setIframeHeight] = useState(160)
+  const [previewKey, setPreviewKey] = useState(0)
 
   const editorRef = useRef(null)
   const highlightRef = useRef(null)
+  // 挂载后第一次 debounce 与 starter 同步时，若内容没变就不要触发预览更新
   const isFirstDebounceRef = useRef(true)
   const previewCodeRef = useRef(previewCode)
   previewCodeRef.current = previewCode
@@ -104,21 +94,25 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
     setCode(starter)
     setPreviewCode(starter)
     isFirstDebounceRef.current = true
+    // 不在这里 bump previewKey：父级切换 Demo 已用 key remount；再 bump 会连闪两次
   }, [starter])
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (isFirstDebounceRef.current) {
         isFirstDebounceRef.current = false
-        if (code === previewCodeRef.current) return
+        // 首帧 code 往往等于 previewCode，跳过，避免选中 Demo 后 400ms 再闪一下
+        if (code === previewCodeRef.current) {
+          onCodeChange?.(code)
+          return
+        }
       }
-      // 内容没变就别 setState，避免无意义重绘 / 闪烁
       setPreviewCode((prev) => (prev === code ? prev : code))
-    }, 280)
+      onCodeChange?.(code)
+    }, 400)
     return () => window.clearTimeout(timer)
-  }, [code])
+  }, [code, onCodeChange])
 
-  // 高亮层内容变化后，重新对齐一次滚动位置
   useEffect(() => {
     const editor = editorRef.current
     const highlight = highlightRef.current
@@ -128,7 +122,6 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
   }, [code])
 
   const srcDoc = useMemo(() => buildSrcDoc(previewCode), [previewCode])
-  const prismLang = resolveLanguage(language)
 
   function syncHighlightScroll() {
     const editor = editorRef.current
@@ -138,18 +131,8 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
     highlight.scrollLeft = editor.scrollLeft
   }
 
-  function handleIframeLoad(event) {
-    try {
-      const doc = event.currentTarget.contentDocument
-      if (!doc?.body) return
-      const next = Math.max(120, Math.min(doc.body.scrollHeight + 28, 520))
-      setIframeHeight(next)
-    } catch {
-      setIframeHeight(200)
-    }
-  }
-
   function handleReset() {
+    isFirstDebounceRef.current = true
     setCode(starter)
     setPreviewCode(starter)
   }
@@ -167,32 +150,44 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
     })
   }
 
+  function handleRunNow() {
+    // 强制重载 iframe，便于在「代码没改」时重新执行 script
+    setPreviewCode(code)
+    setPreviewKey((k) => k + 1)
+  }
+
   return (
-    <figure className="LiveDemo">
-      <figcaption className="LiveDemo-meta">
-        <div className="LiveDemo-metaMain">
-          {title && <span className="LiveDemo-title">{title}</span>}
-          <span className="LiveDemo-badge">可编辑 · 实时预览</span>
+    <div className="CodePlayground">
+      <div className="CodePlayground-toolbar">
+        <div className="CodePlayground-toolbarMain">
+          <span className="CodePlayground-title">{title}</span>
+          <span className="CodePlayground-badge">HTML · CSS · JS</span>
         </div>
-        <div className="LiveDemo-metaActions">
-          {language && <span className="LiveDemo-lang">{language}</span>}
-          <button type="button" className="LiveDemo-reset" onClick={handleReset}>
-            重置
+        <div className="CodePlayground-toolbarActions">
+          <button type="button" className="CodePlayground-btn" onClick={handleRunNow}>
+            立即运行
+          </button>
+          <button
+            type="button"
+            className="CodePlayground-btn CodePlayground-btn--ghost"
+            onClick={handleReset}
+          >
+            重置当前
           </button>
         </div>
-      </figcaption>
+      </div>
 
-      <div className="LiveDemo-grid">
-        <div className="LiveDemo-pane LiveDemo-pane--code">
-          <div className="LiveDemo-paneLabel">代码</div>
-          <div className="LiveDemo-editorShell">
+      <div className="CodePlayground-grid">
+        <div className="CodePlayground-pane CodePlayground-pane--code">
+          <div className="CodePlayground-paneLabel">代码（可编辑）</div>
+          <div className="CodePlayground-editorShell">
             <div
               ref={highlightRef}
-              className="LiveDemo-highlight"
+              className="CodePlayground-highlight"
               aria-hidden="true"
             >
               <SyntaxHighlighter
-                language={prismLang}
+                language="markup"
                 style={highlightStyle}
                 PreTag="pre"
                 CodeTag="code"
@@ -207,10 +202,6 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
                   fontSize: EDITOR_FONT_SIZE,
                   lineHeight: `${EDITOR_LINE_HEIGHT}px`,
                   fontWeight: 400,
-                  fontStyle: 'normal',
-                  letterSpacing: 'normal',
-                  wordSpacing: 'normal',
-                  tabSize: 2,
                   overflow: 'visible',
                   whiteSpace: 'pre',
                 }}
@@ -220,12 +211,8 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
                     fontSize: EDITOR_FONT_SIZE,
                     lineHeight: `${EDITOR_LINE_HEIGHT}px`,
                     fontWeight: 400,
-                    fontStyle: 'normal',
-                    letterSpacing: 'normal',
-                    wordSpacing: 'normal',
                     background: 'transparent',
                     display: 'block',
-                    tabSize: 2,
                     whiteSpace: 'pre',
                   },
                 }}
@@ -235,7 +222,7 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
             </div>
             <textarea
               ref={editorRef}
-              className="LiveDemo-editor"
+              className="CodePlayground-editor"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               onScroll={syncHighlightScroll}
@@ -244,27 +231,26 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
               autoCapitalize="off"
               autoCorrect="off"
               autoComplete="off"
-              aria-label={title ? `${title} 代码编辑` : '代码编辑'}
+              aria-label="代码编辑"
             />
           </div>
         </div>
 
-        <div className="LiveDemo-pane LiveDemo-pane--preview">
-          <div className="LiveDemo-paneLabel">渲染效果</div>
-          <div className="LiveDemo-previewFrame">
+        <div className="CodePlayground-pane CodePlayground-pane--preview">
+          <div className="CodePlayground-paneLabel">实时预览（支持 JS）</div>
+          <div className="CodePlayground-previewFrame">
             <iframe
-              title={title ? `${title} 预览` : '代码预览'}
-              className="LiveDemo-iframe"
+              key={previewKey}
+              title="代码实时预览"
+              className="CodePlayground-iframe"
               srcDoc={srcDoc}
               sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-              onLoad={handleIframeLoad}
-              style={{ height: iframeHeight }}
             />
           </div>
         </div>
       </div>
-    </figure>
+    </div>
   )
 }
 
-export default LiveDemo
+export default CodePlayground

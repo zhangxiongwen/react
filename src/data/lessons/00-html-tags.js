@@ -45,15 +45,24 @@ const htmlTags = {
             title: '动手改：改 title 和 body 里的文字，看右侧变化',
             language: 'html',
             live: true,
-            body: `<!DOCTYPE html>
+            body: `<!-- DOCTYPE：告诉浏览器「这是 HTML5 文档」，必须写在第一行 -->
+<!DOCTYPE html>
+<!-- html：整页根元素；lang="zh-CN" 表示主要语言是简体中文，利于读屏和 SEO -->
 <html lang="zh-CN">
+<!-- head：放「用户看不见」的元信息，如编码、标题、引入 CSS/JS -->
 <head>
+  <!-- charset：字符编码 UTF-8，防止中文乱码 -->
   <meta charset="UTF-8" />
+  <!-- viewport：让手机按屏幕宽度缩放，移动端必写 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- title：浏览器标签页上显示的名字 -->
   <title>我的第一页</title>
 </head>
+<!-- body：用户真正看到的所有内容都写在这里 -->
 <body>
+  <!-- h1：一级标题，通常一页只有一个主标题 -->
   <h1>你好，HTML</h1>
+  <!-- p：段落，包住一整段文字 -->
   <p>把这段文字改掉，右侧会跟着变。</p>
 </body>
 </html>`,
@@ -100,12 +109,16 @@ const htmlTags = {
             title: '标题层级：改文字，观察大小与结构',
             language: 'html',
             live: true,
-            body: `<h1>一级标题：页面主标题</h1>
+            body: `<!-- h1：最高级别标题，数字越小级别越高，默认显示越大 -->
+<h1>一级标题：页面主标题</h1>
+<!-- h2：大章节标题，应嵌套在 h1 之下 -->
 <h2>二级标题：章节</h2>
+<!-- h3：小节标题 -->
 <h3>三级标题：小节</h3>
 <h4>四级标题</h4>
 <h5>五级标题</h5>
 <h6>六级标题</h6>
+<!-- p：普通段落，浏览器默认会在段前段后留间距 -->
 <p>这是普通段落，比标题矮一截。</p>`,
           },
           {
@@ -123,14 +136,17 @@ const htmlTags = {
             title: 'p / br / hr 对比：自己改几行试试',
             language: 'html',
             live: true,
-            body: `<p>这是第一段。里面可以很长，浏览器会自动折行。</p>
+            body: `<!-- p：每个 p 表示一个独立段落，段与段之间会有默认间距 -->
+<p>这是第一段。里面可以很长，浏览器会自动折行。</p>
 
+<!-- 同一段落内需要「硬换行」时用 br（自闭合标签，没有结束标签） -->
 <p>
   第二段里用 br 强制换行：<br />
   北京市某某区<br />
   某某路 88 号
 </p>
 
+<!-- hr：水平分割线，表示上下内容主题不同（不只是装饰线） -->
 <hr />
 
 <p>分割线下面是另一个主题的段落。</p>`,
@@ -176,28 +192,41 @@ const htmlTags = {
             title: '行内标签大杂烩：改文字观察效果',
             language: 'html',
             live: true,
-            body: `<p>
+            body: `<!-- 行内标签嵌在 p 段落里，不会独自占一整行 -->
+<p>
   普通文字，
+  <!-- strong：语义「重要」，默认粗体 -->
   <strong>strong 很重要</strong>，
+  <!-- em：语义「语气强调」，默认斜体 -->
   <em>em 强调语气</em>，
+  <!-- b：纯视觉粗体，无语义 -->
   <b>b 粗体</b>，
+  <!-- i：纯视觉斜体 -->
   <i>i 斜体</i>，
+  <!-- u：下划线，别和链接混淆 -->
   <u>u 下划线</u>，
+  <!-- s：删除线，表示内容已废弃 -->
   <s>s 删除线</s>，
+  <!-- mark：高亮标记，像荧光笔 -->
   <mark>mark 高亮</mark>，
+  <!-- small：附属说明、版权等次要文字 -->
   <small>small 附属说明</small>。
 </p>
 
+<!-- sub 下标 / sup 上标：化学式、数学幂次 -->
 <p>水分子：H<sub>2</sub>O；面积：12<sup>2</sup> = 144。</p>
 
+<!-- code：行内代码片段，保持等宽字体 -->
 <p>行内代码：<code>const x = 1</code></p>
 
+<!-- pre 保留空格和换行；里面再套 code 展示多行代码 -->
 <pre><code>// pre 会保留换行和缩进
 function hello() {
   console.log('hi')
 }
 </code></pre>
 
+<!-- span：无语义「钩子」，常配合 style 或 class 做局部样式 -->
 <p>用 span 局部染色：<span style="color:#2f6b4f;font-weight:700;">这段是 span</span></p>`,
           },
           {
@@ -238,14 +267,17 @@ function hello() {
             title: '链接示例（可改文字和 href）',
             language: 'html',
             live: true,
-            body: `<p>
+            body: `<!-- a 链接：href 是目标地址，标签中间是用户看到的文字 -->
+<p>
   <a href="https://developer.mozilla.org/zh-CN/">去 MDN 学 HTML</a>
 </p>
 
+<!-- href="#id名"：页内锚点，跳到同页带该 id 的元素 -->
 <p>
   <a href="#bottom">跳到本页底部锚点</a>
 </p>
 
+<!-- target="_blank" 新标签打开；rel="noopener noreferrer" 防止安全风险 -->
 <p>
   <a
     href="https://example.com"
@@ -254,12 +286,14 @@ function hello() {
   >新标签页打开（带安全 rel）</a>
 </p>
 
+<!-- mailto: 唤起邮件客户端；tel: 移动端可一键拨号 -->
 <p>
   <a href="mailto:hello@example.com">发邮件</a>
   ·
   <a href="tel:10086">拨打电话</a>
 </p>
 
+<!-- id="bottom"：页内唯一标识，供锚点 #bottom 跳转；style 是行内 CSS -->
 <p id="bottom" style="margin-top:48px;padding:8px;background:#eef6f1;">
   这里是 id="bottom" 的锚点目标
 </p>`,
@@ -275,6 +309,7 @@ function hello() {
             language: 'html',
             live: true,
             body: `<p>有意义的图，必须写清 alt：</p>
+<!-- img 是自闭合标签：src 图片地址，alt 替代文字（无障碍必写） -->
 <img
   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120'%3E%3Crect width='240' height='120' fill='%232f6b4f'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='18' text-anchor='middle' dy='.35em'%3EDemo Image%3C/text%3E%3C/svg%3E"
   alt="绿色背景上写着 Demo Image 的示意图"
@@ -284,6 +319,7 @@ function hello() {
 />
 
 <p style="margin-top:16px;">下面故意写错 src，你会看到破图，但 alt 仍可读：</p>
+<!-- src 写错时浏览器显示破图图标，但 alt 文字仍会显示 -->
 <img src="./not-found.png" alt="一只橙色的猫坐在窗台上" width="200" height="100" />`,
           },
           {
@@ -322,9 +358,12 @@ function hello() {
             language: 'html',
             live: true,
             body: `<p>购物清单：</p>
+<!-- ul：无序列表，条目之间没有先后顺序 -->
 <ul>
+  <!-- li：列表中的每一项，必须直接放在 ul/ol 里面 -->
   <li>鸡蛋</li>
   <li>牛奶</li>
+  <!-- li 里可以再嵌套 ul，做多级子列表 -->
   <li>
     水果
     <ul>
@@ -345,6 +384,7 @@ function hello() {
             language: 'html',
             live: true,
             body: `<p>做番茄炒蛋：</p>
+<!-- ol：有序列表，默认显示 1、2、3… 编号 -->
 <ol>
   <li>打蛋加盐搅匀</li>
   <li>热锅倒油</li>
@@ -353,6 +393,7 @@ function hello() {
 </ol>
 
 <p>从第 3 步继续的补丁说明：</p>
+<!-- start="3" 从第 3 号开始编；type="A" 用大写字母 A、B、C… -->
 <ol start="3" type="A">
   <li>这一项会显示为 C（因为 start=3 且 type=A）</li>
   <li>下一项</li>
@@ -368,8 +409,11 @@ function hello() {
             title: '定义列表示例',
             language: 'html',
             live: true,
-            body: `<dl>
+            body: `<!-- dl：定义列表，适合「术语 → 解释」结构 -->
+<dl>
+  <!-- dt：词条名（description term） -->
   <dt>HTML</dt>
+  <!-- dd：对词条的说明（description details） -->
   <dd>负责页面结构和内容语义。</dd>
 
   <dt>CSS</dt>
@@ -410,24 +454,36 @@ function hello() {
             language: 'html',
             live: true,
             body: `<style>
+  /* 合并相邻单元格边框，表格看起来更整洁 */
   table { border-collapse: collapse; width: 100%; }
+  /* th 表头格、td 数据格：边框 + 内边距 + 左对齐 */
   th, td { border: 1px solid #9bb5a6; padding: 8px 10px; text-align: left; }
+  /* thead 表头区背景色 */
   thead { background: #eef6f1; }
+  /* caption 表格标题放在表格上方 */
   caption { caption-side: top; text-align: left; margin-bottom: 8px; font-weight: 700; }
 </style>
 
+<!-- table：整张表格的容器 -->
 <table>
+  <!-- caption：表格标题，读屏软件会先读它 -->
   <caption>本周学习打卡</caption>
+  <!-- thead：表头区域 -->
   <thead>
+    <!-- tr：一行 -->
     <tr>
+      <!-- th：表头单元格；scope="col" 表示这是「列」标题 -->
       <th scope="col">日期</th>
       <th scope="col">主题</th>
       <th scope="col">时长</th>
     </tr>
   </thead>
+  <!-- tbody：表体，放数据行 -->
   <tbody>
     <tr>
+      <!-- scope="row" 表示这是「行」标题 -->
       <th scope="row">周一</th>
+      <!-- td：普通数据单元格 -->
       <td>HTML 标签</td>
       <td>2 小时</td>
     </tr>
@@ -437,6 +493,7 @@ function hello() {
       <td>1.5 小时</td>
     </tr>
     <tr>
+      <!-- colspan="2"：横向合并 2 列，被占掉的格子不要再写 -->
       <td colspan="2">本周合计</td>
       <td>3.5 小时</td>
     </tr>
@@ -499,7 +556,9 @@ function hello() {
             language: 'html',
             live: true,
             body: `<style>
+  /* label 独占一行，加粗，和输入框拉开间距 */
   label { display: block; margin: 10px 0 4px; font-weight: 600; }
+  /* 表单控件继承字体，统一内边距 */
   input, textarea, select, button {
     font: inherit; padding: 6px 8px; max-width: 100%;
   }
@@ -507,27 +566,35 @@ function hello() {
   .hint { color: #5c6b62; font-size: 12px; }
 </style>
 
+<!-- form：表单容器；action 提交地址，method 提交方式（post 放请求体） -->
 <form action="#" method="post">
+  <!-- label 的 for 和 input 的 id 对应，点文字也能聚焦输入框 -->
   <label for="username">用户名</label>
   <input id="username" name="username" type="text"
          placeholder="请输入用户名" required maxlength="20" />
 
   <label for="pwd">密码</label>
+  <!-- type="password" 输入时显示圆点；minlength 最少 6 位 -->
   <input id="pwd" name="password" type="password" required minlength="6" />
 
   <label for="mail">邮箱</label>
+  <!-- type="email" 浏览器会做简单格式校验 -->
   <input id="mail" name="email" type="email" placeholder="you@example.com" />
 
   <label for="age">年龄</label>
+  <!-- type="number" 数字框；min/max/step 限制范围和步长 -->
   <input id="age" name="age" type="number" min="1" max="120" step="1" />
 
   <p class="row">
+    <!-- 把控件包在 label 里，点文字也能勾选 -->
     <label>
+      <!-- checkbox 多选；name 是提交字段名，value 是选中时的值 -->
       <input type="checkbox" name="agree" value="yes" required />
       我已阅读用户协议（必勾）
     </label>
   </p>
 
+  <!-- radio 单选：同一组必须写相同的 name，只能选一个 -->
   <p class="row">性别：
     <label><input type="radio" name="gender" value="female" checked /> 女</label>
     <label><input type="radio" name="gender" value="male" /> 男</label>
@@ -535,19 +602,23 @@ function hello() {
   </p>
 
   <label for="city">城市</label>
+  <!-- select 下拉框；option 的 value 是提交值，标签中间是显示文字 -->
   <select id="city" name="city">
     <option value="">请选择</option>
     <option value="bj">北京</option>
+    <!-- selected 表示默认选中项 -->
     <option value="sh" selected>上海</option>
     <option value="gz">广州</option>
   </select>
 
   <label for="bio">简介</label>
+  <!-- textarea 多行文本；rows/cols 控制可见行列数 -->
   <textarea id="bio" name="bio" rows="4" cols="30"
             placeholder="多行文本用 textarea"></textarea>
 
   <p class="hint">下面点「提交」只会触发浏览器自带校验，预览区不会真的跳转。</p>
   <p class="row">
+    <!-- type="submit" 提交表单；type="reset" 重置；type="button" 不提交 -->
     <button type="submit">提交</button>
     <button type="reset">重置</button>
     <button type="button">普通按钮（不提交）</button>
@@ -601,9 +672,12 @@ function hello() {
             language: 'html',
             live: true,
             body: `<style>
+  /* 页面基础：去掉默认外边距，设置字体 */
   body { margin: 0; font-family: system-ui, sans-serif; }
+  /* header/footer 页头页脚：深色背景 + 白字 + 内边距 */
   header, footer { background: #2f6b4f; color: #fff; padding: 12px 16px; }
   nav a { color: #fff; margin-right: 12px; }
+  /* flex 布局：主内容和侧栏并排 */
   .layout { display: flex; gap: 12px; padding: 12px; }
   main { flex: 1; }
   aside { width: 140px; background: #eef6f1; padding: 10px; }
@@ -611,8 +685,10 @@ function hello() {
   figcaption { font-size: 12px; color: #5c6b62; }
 </style>
 
+<!-- header：页头，可放 Logo 和导航 -->
 <header>
   <strong>学习站 Logo</strong>
+  <!-- nav：导航链接集合 -->
   <nav>
     <a href="#">首页</a>
     <a href="#">课程</a>
@@ -620,29 +696,36 @@ function hello() {
   </nav>
 </header>
 
+<!-- div 无语义容器，这里用来包 flex 布局 -->
 <div class="layout">
+  <!-- main：页面核心内容，一页通常只有一个 -->
   <main>
+    <!-- article：可独立成篇的内容（如一篇博文） -->
     <article>
       <h2>如何记住语义化标签</h2>
       <p>把页面当成报纸：报头、栏目、正文、边栏、页脚，各有名字。</p>
+      <!-- figure 插图 + figcaption 图注 -->
       <figure>
         <div style="height:60px;background:#d9ebe1;display:flex;align-items:center;justify-content:center;">示意图</div>
         <figcaption>图：页面区域示意</figcaption>
       </figure>
     </article>
 
+    <!-- section：有明确主题的内容区块 -->
     <section>
       <h2>本节练习</h2>
       <p>试着把某个 div 改成 section，看看结构是否更清晰。</p>
     </section>
   </main>
 
+  <!-- aside：侧栏，放补充信息 -->
   <aside>
     <h3>相关链接</h3>
     <p>侧栏放补充信息。</p>
   </aside>
 </div>
 
+<!-- footer：页脚，版权、备案等 -->
 <footer>© 2026 学习站 · footer 页脚</footer>`,
           },
           {
@@ -686,6 +769,7 @@ function hello() {
             language: 'html',
             live: true,
             body: `<p>视频标签结构（可改属性）：</p>
+<!-- video：视频播放器；controls 显示播放按钮等控件 -->
 <video
   width="320"
   height="180"
@@ -693,6 +777,7 @@ function hello() {
   poster=""
   style="background:#d9ebe1;"
 >
+  <!-- 标签中间的文字：浏览器不支持 video 时显示 -->
   你的浏览器不支持 video。
   <!-- 真实项目写：
   <source src="/movies/demo.mp4" type="video/mp4" />
@@ -700,6 +785,7 @@ function hello() {
 </video>
 
 <p style="margin-top:16px;">音频：</p>
+<!-- audio：音频播放器，属性与 video 类似，没有画面 -->
 <audio controls>
   你的浏览器不支持 audio。
   <!-- <source src="/audio/demo.mp3" type="audio/mpeg" /> -->
@@ -720,11 +806,14 @@ function hello() {
             title: 'details 折叠面板',
             language: 'html',
             live: true,
-            body: `<details open>
+            body: `<!-- details：原生折叠面板；open 属性表示默认展开 -->
+<details open>
+  <!-- summary：折叠标题，点击可展开/收起下面的内容 -->
   <summary>什么是 HTML？</summary>
   <p>HTML 用标签描述内容结构。点上面的标题可以折叠/展开。</p>
 </details>
 
+<!-- 没有 open 属性时，默认是折叠状态 -->
 <details>
   <summary>什么是 CSS？</summary>
   <p>CSS 负责外观：颜色、间距、布局。</p>
@@ -747,16 +836,19 @@ function hello() {
             live: true,
             body: `<p>
   课程进度：
+  <!-- progress：进度条；value 当前值，max 最大值 -->
   <progress value="70" max="100">70%</progress>
 </p>
 
 <p>
   满意度：
+  <!-- meter：度量仪，表示已知范围内的值（如评分） -->
   <meter min="0" max="5" value="4.2">4.2 / 5</meter>
 </p>
 
 <p>
   我们在学
+  <!-- abbr：缩写；title 悬停时显示全称 -->
   <abbr title="HyperText Markup Language">HTML</abbr>
   与
   <abbr title="Cascading Style Sheets">CSS</abbr>。
@@ -764,6 +856,7 @@ function hello() {
 
 <p>
   发布于
+  <!-- time：机器可读时间；datetime 是标准格式，标签中间是人类可读文字 -->
   <time datetime="2026-09-04">2026 年 9 月 4 日</time>
 </p>`,
           },
@@ -793,9 +886,12 @@ function hello() {
             language: 'html',
             live: true,
             body: `<form>
+  <!-- fieldset：把相关表单控件圈成一组 -->
   <fieldset>
+    <!-- legend：这一组的标题，会显示在边框上 -->
     <legend>账号信息</legend>
     <p>
+      <!-- 把控件直接包在 label 里，可不写 for/id -->
       <label>用户名
         <input name="user" type="text" />
       </label>
@@ -823,14 +919,20 @@ function hello() {
             title: '文本语义标签',
             language: 'html',
             live: true,
-            body: `<p>保存文件请按 <kbd>Ctrl</kbd> + <kbd>S</kbd>。</p>
+            body: `<!-- kbd：表示键盘按键 -->
+<p>保存文件请按 <kbd>Ctrl</kbd> + <kbd>S</kbd>。</p>
+<!-- samp：程序输出样例 -->
 <p>终端输出：<samp>Build succeeded.</samp></p>
+<!-- var：变量名（数学或程序语境） -->
 <p>公式里变量 <var>x</var> 表示宽度。</p>
 <p>
+  <!-- del：被删除的内容；ins：新插入的内容 -->
   原价 <del>99</del>
   现价 <ins>79</ins> 元。
 </p>
+<!-- cite：作品标题引用（书名、文章名等） -->
 <p>推荐阅读：<cite>《MDN HTML 指南》</cite></p>
+<!-- address：联系信息块，默认斜体 -->
 <address>
   作者：小明<br />
   邮箱：demo@example.com
@@ -846,13 +948,14 @@ function hello() {
             title: 'picture 结构（示意）',
             language: 'html',
             live: true,
-            body: `<picture>
-  <!-- 宽屏用这张 -->
+            body: `<!-- picture：响应式图片容器，浏览器按条件选最合适的 source -->
+<picture>
+  <!-- 宽屏（≥700px）用这张；media 是 CSS 媒体查询条件 -->
   <source
     media="(min-width: 700px)"
     srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='100'%3E%3Crect fill='%232f6b4f' width='100%25' height='100%25'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='16'%3EWide%3C/text%3E%3C/svg%3E"
   />
-  <!-- 默认 / 窄屏 -->
+  <!-- img 是兜底：上面 source 都不匹配时用这张 -->
   <img
     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Crect fill='%23c47d3a' width='100%25' height='100%25'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='16'%3ENarrow%3C/text%3E%3C/svg%3E"
     alt="根据屏幕宽度切换的示意图片"
@@ -872,9 +975,11 @@ function hello() {
             title: 'dialog 外观（open 演示）',
             language: 'html',
             live: true,
-            body: `<dialog open>
+            body: `<!-- dialog：原生对话框；open 属性让它直接显示（演示用） -->
+<dialog open>
   <strong>提示</strong>
   <p>这是原生 dialog。真实项目里常用 JS：dialog.showModal()</p>
+  <!-- method="dialog" 的 form 里，button 点击会关闭对话框 -->
   <form method="dialog">
     <button>关闭</button>
   </form>
@@ -891,7 +996,8 @@ function hello() {
             title: 'datalist + optgroup + colgroup',
             language: 'html',
             live: true,
-            body: `<label>
+            body: `<!-- datalist 给 input 提供建议选项；input 的 list 指向 datalist 的 id -->
+<label>
   浏览器：
   <input list="browsers" name="browser" placeholder="可输入或点选" />
 </label>
@@ -905,6 +1011,7 @@ function hello() {
 <p style="margin-top:14px;">
   <label>
     课程：
+    <!-- optgroup 给 select 里的 option 分组 -->
     <select>
       <optgroup label="基础">
         <option>HTML</option>
@@ -923,6 +1030,7 @@ function hello() {
   th, td { border: 1px solid #9bb5a6; padding: 6px 8px; }
 </style>
 <table>
+  <!-- colgroup + col：给整列统一设样式，写在 tr 之前 -->
   <colgroup>
     <col style="width: 30%; background: #eef6f1;" />
     <col style="width: 70%;" />
@@ -991,6 +1099,7 @@ function hello() {
             language: 'html',
             live: true,
             body: `<style>
+  /* .card 名片容器：最大宽度、圆角边框、内边距 */
   .card {
     max-width: 360px;
     border: 1px solid #9bb5a6;
@@ -999,6 +1108,7 @@ function hello() {
     font-family: system-ui, sans-serif;
   }
   .card h1 { margin: 0 0 8px; font-size: 20px; }
+  /* .tag 标签样式：inline-block 让 span 可以设宽高和内边距 */
   .tag {
     display: inline-block;
     padding: 2px 8px;
@@ -1012,10 +1122,12 @@ function hello() {
   dd { margin: 0 0 8px; color: #33443b; }
 </style>
 
+<!-- article.card：可独立成篇的名片，class 用于挂 CSS 样式 -->
 <article class="card">
   <header>
     <h1>张三</h1>
     <p>
+      <!-- span.tag：无语义钩子，配合 class 做标签样式 -->
       <span class="tag">前端学员</span>
       <span class="tag">HTML</span>
     </p>
@@ -1023,6 +1135,7 @@ function hello() {
 
   <p>正在学习 <strong>HTML 常用标签</strong>，下一站是 CSS 布局。</p>
 
+  <!-- dl 定义列表：展示键值对信息 -->
   <dl>
     <dt>邮箱</dt>
     <dd><a href="mailto:demo@example.com">demo@example.com</a></dd>
@@ -1031,6 +1144,7 @@ function hello() {
   </dl>
 
   <footer>
+    <!-- time 的 datetime 供机器读取，标签中间是人类可读日期 -->
     <small>更新于 <time datetime="2026-09-04">2026-09-04</time></small>
   </footer>
 </article>`,

@@ -48,8 +48,11 @@ const render = {
             type: 'code',
             title: '完整 Demo：Dashboard 页面（加载/错误/未登录/正常）',
             language: 'jsx',
-            body: `function Dashboard({ loading, error, user, messages }) {
-  // ===== 提前 return：处理「非正常」状态 =====
+            body: `// 条件渲染：根据 props 决定显示什么 UI
+// 父组件通过 props 传入 loading / error / user / messages
+function Dashboard({ loading, error, user, messages }) {
+  // ===== 方式一：提前 return —— 多分支互斥时首选 =====
+  // 加载中：直接 return 加载 UI，后面的代码不会执行
   if (loading) {
     return (
       <div style={{ padding: 40, textAlign: 'center' }}>
@@ -58,6 +61,7 @@ const render = {
     )
   }
 
+  // 出错：提前 return 错误页，主界面不会渲染
   if (error) {
     return (
       <div style={{ padding: 40, textAlign: 'center', color: 'crimson' }}>
@@ -69,6 +73,7 @@ const render = {
     )
   }
 
+  // 未登录：!user 为 true 时进入此分支
   if (!user) {
     return (
       <div style={{ padding: 40, textAlign: 'center' }}>
@@ -78,7 +83,8 @@ const render = {
     )
   }
 
-  // ===== 正常状态：主界面 =====
+  // ===== 走到这里说明：已加载、无错误、已登录 —— 正常主界面 =====
+  // 对象映射：用 role 当 key 查中文名，比嵌套三元更清晰
   const roleText = {
     admin: '管理员',
     editor: '编辑',
@@ -90,18 +96,19 @@ const render = {
       <h1>你好，{user.name}</h1>
       <p>身份：{roleText}</p>
 
-      {/* 管理员才显示 */}
+      {/* 方式三：&& 短路 —— 条件为真才渲染右边 */}
       {user.role === 'admin' && (
         <button type="button" style={{ marginBottom: 16 }}>
           进入后台
         </button>
       )}
 
-      {/* 消息区域 */}
+      {/* 方式二：三元 ? : —— 二选一（有消息 / 空状态） */}
       {messages.length > 0 ? (
         <div>
           <p>你有 {messages.length} 条消息</p>
           <ul>
+            {/* 列表渲染：map 把数组变成 JSX 数组；key 帮助 React 认项 */}
             {messages.map((m) => (
               <li key={m.id}>{m.title}</li>
             ))}
@@ -114,7 +121,7 @@ const render = {
   )
 }
 
-// 测试不同状态
+// 父组件：传不同 props 测试各种条件分支
 function App() {
   return (
     <>
@@ -139,8 +146,10 @@ function App() {
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// Demo 1：三元运算符 —— 登录 / 未登录二选一
 function AuthHeader() {
-  const [user, setUser] = useState(null) // null 表示未登录
+  // user 为 null 表示未登录；登录后存 { name: '...' }
+  const [user, setUser] = useState(null)
 
   return (
     <header
@@ -154,13 +163,13 @@ function AuthHeader() {
     >
       <strong>My App</strong>
 
-      {/* 三元：二选一 */}
+      {/* 三元：condition ? 真时UI : 假时UI */}
       {user ? (
         <span>
           欢迎，{user.name}
           <button
             type="button"
-            onClick={() => setUser(null)}
+            onClick={() => setUser(null)} // 退出 = 把 user 设回 null
             style={{ marginLeft: 12 }}
           >
             退出
@@ -175,14 +184,15 @@ function AuthHeader() {
   )
 }
 
+// Demo 2：三元控制展开/收起 —— open 为 true 显示答案
 function FAQItem({ question, answer }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false) // false = 默认收起
 
   return (
     <div style={{ borderBottom: '1px solid #eee', padding: '12px 0' }}>
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(!open)} // 点击切换 true/false
         style={{
           width: '100%',
           textAlign: 'left',
@@ -192,8 +202,10 @@ function FAQItem({ question, answer }) {
           fontWeight: 'bold',
         }}
       >
+        {/* 箭头图标也随 open 变化 —— 小处用三元很合适 */}
         {open ? '▼' : '▶'} {question}
       </button>
+      {/* open 为 true 显示答案，false 时 : null 什么都不渲染 */}
       {open ? (
         <p style={{ color: '#666', margin: '8px 0 0 24px' }}>{answer}</p>
       ) : null}
@@ -210,15 +222,17 @@ function FAQItem({ question, answer }) {
             type: 'code',
             title: '经典坑：count 为 0 时会渲染出数字 0',
             language: 'jsx',
-            body: `function NotificationBadge({ count }) {
+            body: `// && 短路经典坑：count 为 0 时会把数字 0 渲染到页面上
+function NotificationBadge({ count }) {
   return (
     <div>
       <span>消息</span>
 
-      {/* ❌ count=0 时，页面会显示一个 0（因为 0 是假值但 React 会渲染它） */}
+      {/* ❌ 错误写法：0 && JSX 的结果是 0，React 会渲染数字 0 */}
+      {/* JS 规则：假值 && 右边 → 返回假值本身，0 是合法 React 子节点 */}
       {/* {count && <span className="badge">{count}</span>} */}
 
-      {/* ✅ 修复方式 1：显式比较 */}
+      {/* ✅ 修复 1：显式比较，保证左边是 true/false，不是 0 */}
       {count > 0 && (
         <span
           style={{
@@ -234,18 +248,18 @@ function FAQItem({ question, answer }) {
         </span>
       )}
 
-      {/* ✅ 修复方式 2：转布尔 */}
+      {/* ✅ 修复 2：Boolean() 把 0 转成 false，不会漏出 0 */}
       {Boolean(count) && <span>...</span>}
 
-      {/* ✅ 修复方式 3：三元 */}
+      {/* ✅ 修复 3：三元 —— 最明确，适合初学者 */}
       {count > 0 ? <span>{count}</span> : null}
     </div>
   )
 }
 
-// 测试
-<NotificationBadge count={0} />   // 不应显示 badge
-<NotificationBadge count={5} />  // 应显示 5`,
+// 测试：count=0 不应显示红 badge；count=5 应显示
+<NotificationBadge count={0} />
+<NotificationBadge count={5} />`,
           },
           {
             type: 'table',
@@ -270,7 +284,9 @@ function FAQItem({ question, answer }) {
             type: 'code',
             title: '完整 Demo：订单状态多分支 + 空状态组件',
             language: 'jsx',
-            body: `function OrderStatus({ status }) {
+            body: `// 方式四：对象映射 —— 3+ 固定枚举状态时用，比嵌套三元清晰
+function OrderStatus({ status }) {
+  // status 是 'pending' | 'paid' | 'shipped' | 'cancelled' 等枚举值
   const config = {
     pending: { color: '#faad14', text: '待支付', icon: '⏳' },
     paid: { color: '#52c41a', text: '已支付', icon: '✅' },
@@ -278,6 +294,7 @@ function FAQItem({ question, answer }) {
     cancelled: { color: '#999', text: '已取消', icon: '❌' },
   }
 
+  // 查不到时用 || 给默认值，避免 undefined 报错
   const item = config[status] || { color: '#999', text: '未知', icon: '❓' }
 
   return (
@@ -287,6 +304,7 @@ function FAQItem({ question, answer }) {
   )
 }
 
+// 空状态组件：列表无数据时的占位 UI，可复用
 function EmptyState({ title = '暂无数据', description, action }) {
   return (
     <div
@@ -298,6 +316,7 @@ function EmptyState({ title = '暂无数据', description, action }) {
     >
       <p style={{ fontSize: 48, margin: 0 }}>📭</p>
       <h3 style={{ color: '#666' }}>{title}</h3>
+      {/* &&：有 description / action 才渲染对应区块 */}
       {description && <p>{description}</p>}
       {action && <div style={{ marginTop: 16 }}>{action}</div>}
     </div>
@@ -305,6 +324,7 @@ function EmptyState({ title = '暂无数据', description, action }) {
 }
 
 function OrderList({ orders }) {
+  // 提前 return：空数组时整页显示 EmptyState，不进入下面的 map
   if (orders.length === 0) {
     return (
       <EmptyState
@@ -319,7 +339,7 @@ function OrderList({ orders }) {
     <ul style={{ listStyle: 'none', padding: 0 }}>
       {orders.map((order) => (
         <li
-          key={order.id}
+          key={order.id} // 稳定 id 作 key，列表增删时 React 才能正确复用 DOM
           style={{
             padding: 16,
             border: '1px solid #eee',
@@ -396,36 +416,37 @@ function OrderList({ orders }) {
             type: 'code',
             title: 'key 正确 vs 错误对照',
             language: 'jsx',
-            body: `const list = [
+            body: `// key 对照：React 用 key 在兄弟节点间识别「哪一项是哪一项」
+const list = [
   { id: 'a1', name: '苹果' },
   { id: 'b2', name: '香蕉' },
   { id: 'c3', name: '橙子' },
 ]
 
-// ✅ 最好：后端/数据里稳定的唯一 id
+// ✅ 最佳：数据里稳定的唯一 id（数据库 id / uuid）
 {list.map((item) => (
   <div key={item.id}>{item.name}</div>
 ))}
 
-// ⚠️ 凑合：业务上唯一的字段（如 email、sku）
+// ⚠️ 凑合：业务上唯一且不变的字段
 {list.map((item) => (
   <div key={item.email}>{item.name}</div>
 ))}
 
-// ❌ 避免：用 index 当 key（列表会增删排序时）
+// ❌ 列表会增删排序时禁用 index 作 key
 {list.map((item, index) => (
   <div key={index}>{item.name}</div>
 ))}
-// 删除第一项后，原来 index=1 的项变成 index=0，React 以为没换，DOM 复用出错
+// 删第一项后，原 index=1 变成 index=0，React 误以为同一项，DOM/state 会窜行
 
-// ❌ 错误：key 写在内部，不是 map 直接返回的元素上
+// ❌ key 写在内部元素上无效 —— 必须写在 map 直接返回的最外层
 {list.map((item) => (
   <Wrapper>
-    <div key={item.id}>{item.name}</div>  {/* 无效！ */}
+    <div key={item.id}>{item.name}</div>  {/* 无效！key 在 Wrapper 里面 */}
   </Wrapper>
 ))}
 
-// ✅ 正确：key 在 map 返回的最外层
+// ✅ key 写在 map 返回的最外层标签/组件上
 {list.map((item) => (
   <Wrapper key={item.id}>
     <div>{item.name}</div>
@@ -455,6 +476,7 @@ function OrderList({ orders }) {
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// 静态数据源（真实项目可能来自 API）
 const ALL_PRODUCTS = [
   { id: 1, name: '机械键盘', category: 'digital', price: 399, stock: 10 },
   { id: 2, name: '无线鼠标', category: 'digital', price: 99, stock: 0 },
@@ -471,15 +493,16 @@ const CATEGORY_MAP = {
 }
 
 function ProductList() {
+  // 只存「用户输入的筛选条件」—— 不另存 filteredList（派生值原则）
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('all')
   const [onlyInStock, setOnlyInStock] = useState(false)
   const [sortBy, setSortBy] = useState('default') // default | price-asc | price-desc
 
-  // ===== 派生列表：不存 state，每次渲染计算 =====
+  // ===== 派生列表 visible：每次渲染根据条件重新计算 =====
   let visible = ALL_PRODUCTS
 
-  // 1. 关键词搜索（不区分大小写）
+  // 1. 关键词搜索（trim 去空格，toLowerCase 不区分大小写）
   if (keyword.trim()) {
     const q = keyword.trim().toLowerCase()
     visible = visible.filter((p) => p.name.toLowerCase().includes(q))
@@ -495,7 +518,7 @@ function ProductList() {
     visible = visible.filter((p) => p.stock > 0)
   }
 
-  // 4. 排序（复制再 sort，不要 mutate 原数组）
+  // 4. 排序：先 [...visible] 复制，避免 .sort() 修改原数组（mutate）
   visible = [...visible]
   if (sortBy === 'price-asc') {
     visible.sort((a, b) => a.price - b.price)
@@ -503,14 +526,14 @@ function ProductList() {
     visible.sort((a, b) => b.price - a.price)
   }
 
-  // 派生统计
+  // 派生统计：从 visible 算出，不必单独 useState
   const totalCount = visible.length
 
   return (
     <div style={{ padding: 24, maxWidth: 640 }}>
       <h2>商品列表</h2>
 
-      {/* 搜索 + 筛选栏 */}
+      {/* 筛选栏：受控组件 —— value 来自 state，onChange 更新 state */}
       <div
         style={{
           display: 'flex',
@@ -534,6 +557,7 @@ function ProductList() {
           onChange={(e) => setCategory(e.target.value)}
           style={{ padding: 8 }}
         >
+          {/* option 列表也要 map + key，规则和商品列表一样 */}
           {Object.entries(CATEGORY_MAP).map(([key, label]) => (
             <option key={key} value={key}>{label}</option>
           ))}
@@ -564,7 +588,7 @@ function ProductList() {
         {keyword && \` · 搜索「\${keyword}」\`}
       </p>
 
-      {/* 列表 or 空状态 */}
+      {/* 条件渲染：有结果 map 列表，无结果显示空状态 */}
       {visible.length === 0 ? (
         <div style={{ padding: 48, textAlign: 'center', color: '#999' }}>
           <p style={{ fontSize: 40 }}>🔍</p>
@@ -572,6 +596,7 @@ function ProductList() {
           <button
             type="button"
             onClick={() => {
+              // 一键重置所有筛选条件
               setKeyword('')
               setCategory('all')
               setOnlyInStock(false)
@@ -591,6 +616,7 @@ function ProductList() {
   )
 }
 
+// 列表项拆成子组件：父负责 map + 筛选，子负责单行 UI
 function ProductRow({ product }) {
   return (
     <li
@@ -633,19 +659,22 @@ function ProductRow({ product }) {
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// 动态列表：state 是数组，增删改都要「不可变更新」
 function DynamicList() {
   const [items, setItems] = useState([
     { id: 1, text: '第一项' },
     { id: 2, text: '第二项' },
   ])
-  const [nextId, setNextId] = useState(3)
+  const [nextId, setNextId] = useState(3) // 自增 id，保证每项 key 稳定唯一
 
   function handleAdd() {
+    // 函数式更新 + 展开：prev 是旧数组，末尾追加新项，不 mutate 原数组
     setItems((prev) => [...prev, { id: nextId, text: \`第 \${nextId} 项\` }])
     setNextId((id) => id + 1)
   }
 
   function handleRemove(id) {
+    // filter 返回新数组，去掉 id 匹配的那一项
     setItems((prev) => prev.filter((item) => item.id !== id))
   }
 
@@ -654,8 +683,9 @@ function DynamicList() {
       <button type="button" onClick={handleAdd}>添加</button>
       <ul>
         {items.map((item) => (
-          <li key={item.id}>
+          <li key={item.id}> {/* 用 id 作 key，删中间项不会窜行 */}
             {item.text}
+            {/* 箭头函数包一层，把 item.id 传给 handleRemove */}
             <button type="button" onClick={() => handleRemove(item.id)}>
               删除
             </button>
@@ -664,8 +694,7 @@ function DynamicList() {
       </ul>
     </div>
   )
-}
-// 这里用 id 做 key，不用 index，删除中间项不会窜行`,
+}`,
           },
           {
             type: 'list',

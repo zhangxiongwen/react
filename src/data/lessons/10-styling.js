@@ -49,25 +49,25 @@ const styling = {
             type: 'code',
             title: '完整可抄 demo：全局 index.css',
             language: 'css',
-            body: `/* src/index.css —— 全站基础，在 index.js 里 import */
+            body: `/* src/index.css —— 全站基础样式，在 src/index.js 里 import 一次即可 */
 
-/* 1. CSS 变量：改主题色只改这里 */
+/* 1. CSS 变量（自定义属性）：全站颜色/间距集中定义，改主题只改这里 */
 :root {
-  --color-text: #1f2a24;
-  --color-text-muted: #5c6b62;
-  --color-bg: #faf9f6;
-  --color-surface: #ffffff;
-  --color-accent: #2f6b4f;
-  --color-accent-hover: #245a42;
-  --color-border: #e5e7eb;
-  --radius-md: 8px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
+  --color-text: #1f2a24;           /* 正文颜色 */
+  --color-text-muted: #5c6b62;     /* 次要文字 */
+  --color-bg: #faf9f6;             /* 页面背景 */
+  --color-surface: #ffffff;        /* 卡片/面板背景 */
+  --color-accent: #2f6b4f;         /* 强调色（链接、按钮） */
+  --color-accent-hover: #245a42;   /* 强调色 hover 态 */
+  --color-border: #e5e7eb;         /* 边框色 */
+  --radius-md: 8px;                /* 圆角 */
+  --space-sm: 8px;                 /* 小间距 */
+  --space-md: 16px;                /* 中间距 */
+  --space-lg: 24px;                /* 大间距 */
   --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
-/* 2. 基础重置 */
+/* 2. 盒模型重置：border-box 让 padding 不会撑大元素总宽度 */
 *,
 *::before,
 *::after {
@@ -75,17 +75,17 @@ const styling = {
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-sans);
+  margin: 0;                       /* 去掉浏览器默认 8px 外边距 */
+  font-family: var(--font-sans);   /* 引用上面定义的变量 */
   color: var(--color-text);
   background: var(--color-bg);
-  line-height: 1.6;
+  line-height: 1.6;                /* 行高，提升可读性 */
 }
 
-/* 3. 全局元素默认 */
+/* 3. 全局元素默认样式（所有页面共享） */
 a {
   color: var(--color-accent);
-  text-decoration: none;
+  text-decoration: none;         /* 去掉下划线，hover 再加 */
 }
 
 a:hover {
@@ -93,14 +93,14 @@ a:hover {
 }
 
 button {
-  font-family: inherit;
+  font-family: inherit;            /* 继承 body 字体，避免按钮字体不一致 */
   cursor: pointer;
 }
 
-/* 4. 可选：通用容器 */
+/* 4. 可选：通用布局容器，多个页面复用 */
 .App-container {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 0 auto;                  /* 水平居中 */
   padding: var(--space-lg);
 }`,
           },
@@ -109,27 +109,29 @@ button {
             title: '完整可抄 demo：Button 组件 + Button.css',
             language: 'jsx',
             body: `// ========== Button.js ==========
+// import CSS：打包工具会把样式注入页面（普通 import = 全局生效）
 import './Button.css'
 
 /**
- * 通用按钮组件
- * - primary：是否主按钮样式
- * - disabled：禁用
- * - children：按钮文字
+ * 通用按钮组件 —— 演示「组件名前缀」class 命名（BEM 风格）
+ * - primary：是否主按钮样式（绿色背景）
+ * - disabled：禁用态
+ * - children：按钮文字（JSX 子节点）
  */
 function Button({ children, primary = false, disabled = false, onClick, type = 'button' }) {
+  // 动态 className：根据 props 拼接多个 class，filter 去掉空字符串
   const classNames = [
-    'Button',
-    primary ? 'Button--primary' : 'Button--default',
+    'Button',                                      // 基础 class
+    primary ? 'Button--primary' : 'Button--default', // 修饰符：主按钮 / 默认按钮
     disabled ? 'Button--disabled' : '',
   ]
-    .filter(Boolean)
-    .join(' ')
+    .filter(Boolean)   // 去掉 falsy 值（''、false）
+    .join(' ')         // 拼成 "Button Button--primary" 字符串
 
   return (
     <button
       type={type}
-      className={classNames}
+      className={classNames}  // ★ JSX 里写 className，不是 HTML 的 class
       disabled={disabled}
       onClick={onClick}
     >
@@ -147,10 +149,10 @@ export default Button
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-md);      引用 index.css 里的 CSS 变量
   border: 1px solid var(--color-border);
   font-size: 14px;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s;  过渡动画
 }
 
 .Button--default {
@@ -159,7 +161,7 @@ export default Button
 }
 
 .Button--default:hover:not(.Button--disabled) {
-  background: #f3f4f6;
+  background: #f3f4f6;                  :hover 伪类只能在 CSS 里写
 }
 
 .Button--primary {
@@ -182,16 +184,17 @@ export default Button
             type: 'code',
             title: '完整可抄 demo：Card 页面组件（对照本项目结构）',
             language: 'jsx',
-            body: `// src/components/ProductCard/index.js
+            body: `// src/components/ProductCard/index.js —— 组件 + 同名 CSS 的典型结构
 import './ProductCard.css'
 
 function ProductCard({ product, onAddToCart }) {
   return (
+    // className 前缀 ProductCard- 避免和其他组件的 .title、.btn 冲突
     <article className="ProductCard">
       <img
         className="ProductCard-image"
         src={product.image}
-        alt={product.name}
+        alt={product.name}  // 无障碍：图片描述
       />
       <div className="ProductCard-body">
         <h3 className="ProductCard-title">{product.name}</h3>
@@ -213,16 +216,16 @@ export default ProductCard
 // src/components/ProductCard/ProductCard.css
 /*
 .ProductCard {
-  background: var(--color-surface);
+  background: var(--color-surface);   卡片白底
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow: hidden;                     图片圆角不溢出
 }
 
 .ProductCard-image {
   width: 100%;
   height: 160px;
-  object-fit: cover;
+  object-fit: cover;                    裁剪填充，不变形
 }
 
 .ProductCard-body {
@@ -274,22 +277,25 @@ function Shop() {
             type: 'code',
             title: '对照本项目：Header 的 CSS 组织',
             language: 'css',
-            body: `/* src/components/Header/Header.css —— 打开源码对照 */
+            body: `/* src/components/Header/Header.css —— 对照本项目源码阅读 */
 
+/* 块：Header 组件根元素 */
 .Header {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
 
+/* 元素：Header 内部容器，限制宽度 + flex 布局 */
 .Header-inner {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 0 auto;              /* 水平居中 */
   padding: var(--space-md) var(--space-lg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex;               /* 品牌名和导航横排 */
+  align-items: center;         /* 垂直居中 */
+  justify-content: space-between;  /* 两端对齐 */
 }
 
+/* 元素：品牌 logo 链接 */
 .Header-brand {
   font-size: 18px;
   font-weight: 700;
@@ -298,15 +304,17 @@ function Shop() {
 }
 
 .Header-brand:hover {
-  text-decoration: none;
+  text-decoration: none;     /* 覆盖全局 a:hover 的下划线 */
   color: var(--color-accent);
 }
 
+/* 元素：导航区域 */
 .Header-nav {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-md);        /* flex 子项间距（现代 CSS） */
 }
 
+/* 元素：单个导航链接 */
 .Header-link {
   color: var(--color-text-muted);
   font-size: 14px;
@@ -364,7 +372,7 @@ function Shop() {
           {
             type: 'tip',
             title: '一句话记住',
-            body: '大部分样式（颜色、布局、hover、动画）写在 CSS 文件里，用 className 切换不同 class。只有运行时才知道的具体数值（进度条宽度 37%、拖拽 left: 120px）才用 style={{ width: \'37%\' }}。style 里属性名用驼峰：backgroundColor 不是 background-color。',
+            body: '大部分样式写在 CSS 文件里，用 className 切换。运行时数值才用 style={{}}。\n\n单位对照（极易混）：`.css` 里 `top:10` ❌ 必须 `top:10px`（只有 `0` 可省略单位）；React `style={{ top: 10 }}` ✅ 数字会自动当成 px。百分比始终写字符串：`width: \'50%\'`。',
           },
           {
             type: 'text',
@@ -391,7 +399,74 @@ function Shop() {
           },
           {
             type: 'text',
-            title: '4）怎么用：拼接 className 的三种写法',
+            title: '4）单位铁律：CSS 文件 vs React style={{}}（必看）',
+            body: '这是初学最容易踩的坑，和布局章「盒子模型」里的单位规则对照着记。\n\n**① 写在 `.css` / `<style>` 里：**\n- 距离类属性（`width`/`height`/`margin`/`padding`/`top`/`left`/`gap`…）**数字必须带单位**\n- ✅ `top: 10px;`　❌ `top: 10;`（常被浏览器直接忽略）\n- ✅ **只有 `0` 可以省略单位**：`margin: 0;`\n- `%` 相对父容器：`width: 50%;`\n\n**② 写在 React `style={{ }}` 里：**\n- 属性名用**驼峰**：`marginTop`、`paddingLeft`、`backgroundColor`（不是 `margin-top`）\n- 值可以是**数字或字符串**\n- **数字会自动翻译成 px**：`style={{ top: 10 }}` 等价于 `style={{ top: \'10px\' }}`\n- 所以 React 里写 `margin: 16`、`width: 200` 是合法且常见的\n- **百分比、或其它单位必须用字符串**：`style={{ width: \'50%\' }}`、`style={{ marginTop: \'1.5rem\' }}`\n- `0` 写数字 `0` 即可：`style={{ margin: 0 }}`\n\n口诀：**CSS 文件手写 px；React 数字自动 px；百分号永远加引号。**',
+          },
+          {
+            type: 'table',
+            title: '同一意图：CSS vs React 怎么写',
+            headers: ['意图', '.css 写法', 'React style={{}}'],
+            rows: [
+              ['上偏移 10px', 'top: 10px;', "style={{ top: 10 }} 或 top: '10px'"],
+              ['上偏移漏单位', 'top: 10; ❌ 无效', 'style={{ top: 10 }} ✅ 自动当 px'],
+              ['四边 margin 16px', 'margin: 16px;', 'style={{ margin: 16 }}'],
+              ['上下 8、左右 16', 'padding: 8px 16px;', "style={{ padding: '8px 16px' }}"],
+              ['宽一半', 'width: 50%;', "style={{ width: '50%' }}"],
+              ['清零', 'margin: 0;', 'style={{ margin: 0 }}'],
+              ['动态进度', '（不便）', 'style={{ width: `${percent}%` }}'],
+            ],
+            note: '简写多值（如 8px 16px）在 style 里通常写成一个字符串，不能写成两个裸数字。',
+          },
+          {
+            type: 'code',
+            title: '对照 demo：CSS 必须带 px；React 数字 = px',
+            language: 'jsx',
+            body: `/**
+ * 单位对照（教学示意）
+ * - 真正项目里：固定样式仍优先写 .css + className
+ * - 这里用 style 演示「数字自动变 px」
+ */
+function UnitDemo({ percent = 40 }) {
+  return (
+    <div>
+      {/* ✅ 数字 10 → 浏览器收到 top: 10px */}
+      <div style={{ position: 'relative', top: 10, marginBottom: 16 }}>
+        style 里 top: 10（自动 px）
+      </div>
+
+      {/* ✅ 字符串显式写单位，和上面等价 */}
+      <div style={{ position: 'relative', top: '10px', marginBottom: 16 }}>
+        style 里 top: \'10px\'（手动字符串）
+      </div>
+
+      {/* ✅ 百分比必须是字符串，数字 50 会变成 50px 而不是 50% */}
+      <div
+        style={{
+          width: \`\${percent}%\`, // 动态百分比
+          height: 12,
+          background: '#2f6b4f',
+          borderRadius: 6, // 数字 → 6px
+        }}
+      />
+
+      {/*
+        若写成 width: percent（纯数字），会变成 width: 40px，不是 40%！
+        这是 style 数字自动加 px 时最容易踩的坑。
+      */}
+
+      {/* margin / padding 简写：多值请用字符串 */}
+      <div style={{ margin: '12px 24px', padding: 8 }}>
+        margin: \'12px 24px\'；padding: 8 → 8px
+      </div>
+    </div>
+  )
+}
+
+export default UnitDemo`,
+          },
+          {
+            type: 'text',
+            title: '5）怎么用：拼接 className 的三种写法',
             body: '写法 1——三元表达式（最常见）：\n\nclassName={active ? \'Tab Tab--active\' : \'Tab\'}\n\n写法 2——数组 filter join（多 class 推荐）：\n\n[\'Tab\', active && \'Tab--active\', disabled && \'Tab--disabled\'].filter(Boolean).join(\' \')\n\n写法 3——模板字符串：\n\n`Tab ${active ? \'Tab--active\' : \'\'}`\n\nstyle 写法：\n\nstyle={{ width: `${percent}%`, backgroundColor: isError ? \'red\' : \'#ccc\' }}\n\n注意：style 的值是对象，外层 {} 是 JSX 表达式，内层 {} 是 JS 对象。属性名驼峰：fontSize、zIndex、backgroundColor。',
           },
           {
@@ -401,10 +476,14 @@ function Shop() {
             body: `import { useState } from 'react'
 import './Tabs.css'
 
+/**
+ * 单个 Tab 按钮 —— 演示「状态切换 className」
+ * active=true 时加 Tab--active class，具体样式写在 CSS 文件里
+ */
 function Tab({ active, children, onClick }) {
   const className = [
-    'Tab',
-    active ? 'Tab--active' : '',
+    'Tab',                        // 基础样式
+    active ? 'Tab--active' : '',  // 激活态：条件拼接 class
   ]
     .filter(Boolean)
     .join(' ')
@@ -417,7 +496,7 @@ function Tab({ active, children, onClick }) {
 }
 
 function Tabs() {
-  const [activeKey, setActiveKey] = useState('intro')
+  const [activeKey, setActiveKey] = useState('intro')  // 当前选中的 tab key
 
   const tabs = [
     { key: 'intro', label: '介绍' },
@@ -431,7 +510,7 @@ function Tabs() {
         {tabs.map((tab) => (
           <Tab
             key={tab.key}
-            active={activeKey === tab.key}
+            active={activeKey === tab.key}  // 当前 tab 是否激活
             onClick={() => setActiveKey(tab.key)}
           >
             {tab.label}
@@ -439,6 +518,7 @@ function Tabs() {
         ))}
       </div>
       <div className="Tabs-panel">
+        {/* 条件渲染：只显示当前 tab 对应的内容 */}
         {activeKey === 'intro' && <p>这是介绍内容</p>}
         {activeKey === 'code' && <pre>const x = 1</pre>}
         {activeKey === 'tip' && <p>记得保存文件</p>}
@@ -447,7 +527,7 @@ function Tabs() {
   )
 }
 
-/* Tabs.css
+/* Tabs.css —— hover、边框等放 CSS，不放 JS
 .Tab {
   padding: 8px 16px;
   border: none;
@@ -479,11 +559,14 @@ export default Tabs`,
             language: 'jsx',
             body: `import { useState } from 'react'
 
+/**
+ * 表单输入框 —— 演示「多 class 组合」：基础 + 错误态 + 有内容态
+ */
 function TextField({ label, value, onChange, error }) {
   const inputClass = [
     'TextField-input',
-    error ? 'TextField-input--error' : '',
-    value ? 'TextField-input--filled' : '',
+    error ? 'TextField-input--error' : '',      // 校验失败：红框
+    value ? 'TextField-input--filled' : '',     // 有内容：略深边框
   ]
     .filter(Boolean)
     .join(' ')
@@ -513,7 +596,7 @@ function SignupForm() {
 
   function handleEmailChange(val) {
     setEmail(val)
-    setEmailError(validateEmail(val))
+    setEmailError(validateEmail(val))  // 实时校验，动态切换 --error class
   }
 
   return (
@@ -531,7 +614,7 @@ function SignupForm() {
   )
 }
 
-/* CSS 片段
+/* CSS 片段 —— 错误态样式放 CSS，JS 只负责加不加 class
 .TextField-input {
   border: 1px solid #d1d5db;
   padding: 8px 12px;
@@ -542,7 +625,7 @@ function SignupForm() {
   background: #fef2f2;
 }
 .TextField-input--filled {
-  /* 有内容时略深边框 */
+  有内容时略深边框
 }
 .TextField-error {
   color: #ef4444;
@@ -559,8 +642,12 @@ export default SignupForm`,
             language: 'jsx',
             body: `import { useState, useEffect } from 'react'
 
+/**
+ * 进度条 —— 演示「运行时数值用 style」
+ * 宽度百分比只有渲染时才知道，不适合写死在 CSS class 里
+ */
 function ProgressBar({ percent, label }) {
-  const safe = Math.min(100, Math.max(0, percent))
+  const safe = Math.min(100, Math.max(0, percent))  // 限制 0~100
 
   return (
     <div className="Progress">
@@ -568,10 +655,10 @@ function ProgressBar({ percent, label }) {
         {label}：{safe}%
       </div>
       <div className="Progress-track">
-        {/* 宽度是运行时才知道的 → 用 style */}
+        {/* style={{ width: '37%' }} —— 外层 {} 是 JSX 表达式，内层 {} 是 JS 对象 */}
         <div
           className="Progress-bar"
-          style={{ width: \`\${safe}%\` }}
+          style={{ width: \`\${safe}%\` }}  // 动态宽度，必须带 % 单位
         />
       </div>
     </div>
@@ -588,9 +675,9 @@ function StarRating({ score, max = 5 }) {
             key={i}
             className={filled ? 'StarRating-star--filled' : 'StarRating-star'}
             style={{
-              // 也可以纯 CSS，这里演示 style 覆盖颜色
+              // style 属性名用驼峰：backgroundColor 不是 background-color
               color: filled ? '#f59e0b' : '#d1d5db',
-              fontSize: 24,
+              fontSize: 24,  // 数字会自动加 px
             }}
           >
             ★
@@ -608,7 +695,7 @@ function DynamicStyleDemo() {
     const timer = setInterval(() => {
       setProgress((p) => (p >= 100 ? 0 : p + 10))
     }, 500)
-    return () => clearInterval(timer)
+    return () => clearInterval(timer)  // 清理定时器
   }, [])
 
   return (
@@ -620,7 +707,7 @@ function DynamicStyleDemo() {
   )
 }
 
-/* Progress.css
+/* Progress.css —— 静态样式放 CSS，动态 width 放 style
 .Progress-track {
   height: 8px;
   background: #e5e7eb;
@@ -630,7 +717,7 @@ function DynamicStyleDemo() {
 .Progress-bar {
   height: 100%;
   background: #2563eb;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease;   CSS transition 让宽度变化有动画
 }
 */
 
@@ -644,13 +731,17 @@ export default DynamicStyleDemo`,
 import './ThemeBox.css'
 
 /**
- * 在根元素切换 class，CSS 变量跟着变
- * 比每个元素写 style 更易维护
+ * 主题切换 Demo —— CSS 变量 + 根 class 切换
+ *
+ * 原理：在根 div 切换 ThemeBox--dark class，
+ * CSS 里 .ThemeBox--dark 重新定义 --tb-bg 等变量，
+ * 子元素用 var(--tb-bg) 引用，全部跟着变色
  */
 function ThemeBox() {
   const [dark, setDark] = useState(false)
 
   return (
+    // 根据 state 拼接 class：浅色只有 ThemeBox，深色加 ThemeBox--dark
     <div className={dark ? 'ThemeBox ThemeBox--dark' : 'ThemeBox'}>
       <h3>主题切换（CSS 变量）</h3>
       <p>当前：{dark ? '深色' : '浅色'}</p>
@@ -666,17 +757,17 @@ function ThemeBox() {
 
 /* ThemeBox.css
 .ThemeBox {
-  --tb-bg: #ffffff;
+  --tb-bg: #ffffff;        局部 CSS 变量，只在这个组件 subtree 生效
   --tb-text: #111827;
   --tb-card: #f3f4f6;
   padding: 24px;
   background: var(--tb-bg);
   color: var(--tb-text);
   min-height: 200px;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;   主题切换过渡动画
 }
 .ThemeBox--dark {
-  --tb-bg: #111827;
+  --tb-bg: #111827;        只改变量值，不用逐个元素写 style
   --tb-text: #f9fafb;
   --tb-card: #1f2937;
 }

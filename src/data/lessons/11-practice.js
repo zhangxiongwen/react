@@ -68,37 +68,42 @@ const practice = {
             type: 'code',
             title: '大 demo：同一件事两种写法（用户列表 + 创建用户）',
             language: 'javascript',
-            body: `const API = 'https://jsonplaceholder.typicode.com'
+            body: `// 练手 API 地址：jsonplaceholder 支持 CORS，浏览器可直接请求
+const API = 'https://jsonplaceholder.typicode.com'
 
 // ============================================================
-// 场景 A：GET 用户列表
+// 场景 A：GET 用户列表 —— 最基础的「拉数据」
 // ============================================================
 
-// ---------- fetch 写法 ----------
+// ---------- fetch 写法（浏览器原生，不用安装）----------
 async function fetchUserList_fetch() {
+  // 第 1 步：发 GET 请求，await 等到「响应头」（还不是 JSON 数据）
   const res = await fetch(\`\${API}/users\`)
-  // ★ fetch 的坑：404 不会 throw，必须自己判断
+  // ★ fetch 最大坑：404/500 不会自动 throw，res.ok 为 false 时仍会继续执行
   if (!res.ok) {
     throw new Error(\`HTTP \${res.status}: \${res.statusText}\`)
   }
-  const data = await res.json() // ★ 还要再 await 一次转 JSON
+  // 第 2 步：再 await 一次，把响应 body 解析成 JS 对象/数组
+  const data = await res.json()
   return data
 }
 
-// ---------- axios 写法 ----------
+// ---------- axios 写法（npm 库，项目里更常用）----------
 import axios from 'axios'
 
 async function fetchUserList_axios() {
+  // axios.get 返回 { data, status, headers... }，解构出 data 就是业务数据
   const { data } = await axios.get(\`\${API}/users\`)
-  // data 已经是数组；404/500 会直接 throw，进 catch
+  // axios 自动解析 JSON；404/500 默认 reject，会进 catch，不用写 res.ok
   return data
 }
 
 // ============================================================
-// 场景 B：GET 带查询参数 ?userId=1
+// 场景 B：GET 带查询参数 ?userId=1 —— 筛选某用户的文章
 // ============================================================
 
 async function fetchPostsByUser_fetch(userId) {
+  // fetch 拼查询参数：用 URL + searchParams，比手动字符串拼接更安全
   const url = new URL(\`\${API}/posts\`)
   url.searchParams.set('userId', String(userId))
   const res = await fetch(url)
@@ -107,27 +112,29 @@ async function fetchPostsByUser_fetch(userId) {
 }
 
 async function fetchPostsByUser_axios(userId) {
+  // axios 用 params 对象，库会自动拼成 ?userId=1
   const { data } = await axios.get(\`\${API}/posts\`, {
-    params: { userId }, // 自动变成 ?userId=1
+    params: { userId },
   })
   return data
 }
 
 // ============================================================
-// 场景 C：POST 创建文章
+// 场景 C：POST 创建文章 —— 往服务器「提交」数据
 // ============================================================
 
 async function createPost_fetch(title, body) {
   const res = await fetch(\`\${API}/posts\`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' }, // ★ 要自己写
-    body: JSON.stringify({ title, body, userId: 1 }), // ★ 要自己 stringify
+    method: 'POST', // 必须指定 POST，默认是 GET
+    headers: { 'Content-Type': 'application/json' }, // ★ 告诉服务器 body 是 JSON
+    body: JSON.stringify({ title, body, userId: 1 }), // ★ 对象要手动转成 JSON 字符串
   })
   if (!res.ok) throw new Error('创建失败')
-  return res.json()
+  return res.json() // 返回服务器创建后的对象（含 id）
 }
 
 async function createPost_axios(title, body) {
+  // axios.post(url, 数据对象) —— 自动 JSON 序列化 + 设置 Content-Type
   const { data } = await axios.post(\`\${API}/posts\`, {
     title,
     body,
@@ -137,20 +144,20 @@ async function createPost_axios(title, body) {
 }
 
 // ============================================================
-// 场景 D：错误处理对比
+// 场景 D：错误处理对比 —— 初学者最容易踩的坑
 // ============================================================
 
 async function demoErrors() {
-  // fetch：404 不 throw
+  // fetch：404 不 throw，只有断网才会进 catch
   try {
     const res = await fetch(\`\${API}/users/99999\`)
-    console.log('fetch res.ok', res.ok) // false
-    // 如果不写 if (!res.ok)，后面 res.json() 可能拿到错误页 HTML
+    console.log('fetch res.ok', res.ok) // false，但代码仍会继续往下走
+    // 如果不写 if (!res.ok)，后面 res.json() 可能解析到错误页 HTML
   } catch (e) {
     console.log('fetch 只有网络错误才到这')
   }
 
-  // axios：404 throw
+  // axios：404/500 默认 throw，和业务代码 try/catch 心智一致
   try {
     await axios.get(\`\${API}/users/99999\`)
   } catch (e) {
@@ -160,13 +167,14 @@ async function demoErrors() {
 }
 
 // ============================================================
-// 场景 E：取消请求（两者写法几乎一样）
+// 场景 E：取消请求 —— 用户快速切页时避免「幽灵 setState」
 // ============================================================
 
 function fetchWithCancel_fetch() {
   const controller = new AbortController()
+  // signal 传给 fetch；组件卸载时调用 abort() 取消进行中的请求
   fetch(\`\${API}/users\`, { signal: controller.signal })
-  return () => controller.abort()
+  return () => controller.abort() // 返回 cleanup 函数，给 useEffect 用
 }
 
 function fetchWithCancel_axios() {
@@ -260,47 +268,52 @@ function fetchWithCancel_axios() {
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
 
+// 公开练手 API，支持跨域（CORS）
 const API = 'https://jsonplaceholder.typicode.com'
 
 function UserListPage() {
-  const [list, setList] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  // ===== 三态 state：任何「拉数据」页面都建议这样声明 =====
+  const [list, setList] = useState([])       // data：成功拿到的列表
+  const [loading, setLoading] = useState(true) // loading：初始 true，一进来就显示加载中
+  const [error, setError] = useState('')     // error：失败时的错误文案
 
   useEffect(() => {
+    // AbortController：组件卸载或依赖变化时取消未完成的请求
     const controller = new AbortController()
 
     async function load() {
       try {
-        setLoading(true)
+        setLoading(true)  // 请求前：打开 loading，清空上次错误
         setError('')
 
         const res = await fetch(\`\${API}/users\`, {
-          signal: controller.signal,
+          signal: controller.signal, // 绑定取消信号
         })
 
+        // fetch 必须手动判断 HTTP 状态码
         if (!res.ok) {
           throw new Error(\`请求失败：HTTP \${res.status}\`)
         }
 
         const data = await res.json()
-        setList(data)
+        setList(data) // 成功：写入 data state
       } catch (e) {
-        // 组件卸载导致的取消，不算错误
+        // 用户切走页面导致的取消，不算业务错误，直接 return
         if (e.name === 'AbortError') return
         setError(e.message || '未知错误')
-        setList([])
+        setList([]) // 失败时清空列表，避免显示旧数据
       } finally {
-        setLoading(false)
+        setLoading(false) // ★ 无论成功失败都要关 loading（别只写在 try 里）
       }
     }
 
     load()
 
+    // cleanup：下次 effect 执行前或组件卸载时取消请求
     return () => controller.abort()
-  }, []) // 空依赖：只在挂载时请求一次
+  }, []) // 空依赖 []：只在组件挂载时请求一次
 
-  // ===== 三态渲染 =====
+  // ===== 三态渲染：顺序固定 loading → error → 正常 UI =====
   if (loading) {
     return (
       <div>
@@ -322,6 +335,7 @@ function UserListPage() {
     )
   }
 
+  // 成功态：map 渲染列表，key 用稳定 id
   return (
     <div>
       <h2>用户列表（共 {list.length} 人）</h2>
@@ -344,13 +358,14 @@ export default UserListPage`,
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
 
+// 详情页：从路由 params 拿到 userId，拉单个用户
 function UserDetailPage({ userId }) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)   // 单条详情，初始 null
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    if (!userId) return
+    if (!userId) return // 没有 id 时不发请求
 
     const controller = new AbortController()
 
@@ -358,8 +373,9 @@ function UserDetailPage({ userId }) {
       try {
         setLoading(true)
         setError('')
-        setUser(null)
+        setUser(null) // ★ 切换用户时先清空，避免短暂显示上一个用户
 
+        // URL 里拼 userId：/users/1、/users/2 ...
         const res = await fetch(
           \`https://jsonplaceholder.typicode.com/users/\${userId}\`,
           { signal: controller.signal }
@@ -377,7 +393,7 @@ function UserDetailPage({ userId }) {
 
     load()
     return () => controller.abort()
-  }, [userId]) // ★ userId 变了重新请求
+  }, [userId]) // ★ 依赖 userId：从列表点进不同用户时会重新请求
 
   if (loading) return <p>加载用户 {userId}...</p>
   if (error) return <p>错误：{error}</p>
@@ -400,15 +416,16 @@ export default UserDetailPage`,
             language: 'jsx',
             body: `import { useState } from 'react'
 
+// POST 表单：提交时用 submitting 态，不要用整页 loading 盖住表单
 function CreatePostForm() {
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  const [submitting, setSubmitting] = useState(false)
+  const [title, setTitle] = useState('')   // 受控输入：标题
+  const [body, setBody] = useState('')     // 受控输入：正文
+  const [submitting, setSubmitting] = useState(false) // 提交中，禁用按钮防重复点
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(null)
+  const [success, setSuccess] = useState(null) // 成功后存服务器返回的对象
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault() // 阻止浏览器默认刷新整页
     if (!title.trim()) {
       setError('标题不能为空')
       return
@@ -419,25 +436,26 @@ function CreatePostForm() {
     setSuccess(null)
 
     try {
+      // fetch POST：method + headers + JSON.stringify 三件套
       const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: title.trim(),
           body: body.trim(),
-          userId: 1,
+          userId: 1, // 练手 API 要求带 userId
         }),
       })
 
       if (!res.ok) throw new Error('提交失败')
       const data = await res.json()
-      setSuccess(data)
-      setTitle('')
+      setSuccess(data) // 显示返回的 id 等字段
+      setTitle('')     // 成功后清空表单
       setBody('')
     } catch (e) {
       setError(e.message)
     } finally {
-      setSubmitting(false)
+      setSubmitting(false) // 无论成败都恢复按钮
     }
   }
 
@@ -537,7 +555,11 @@ export default CreatePostForm`,
             body: `import axios from 'axios'
 
 /**
- * axios 实例 —— 商业项目常见封装
+ * axios 实例 —— 商业 React 项目的标准封装
+ *
+ * 为什么要封装？
+ * - baseURL 改一次，全项目生效
+ * - 拦截器统一加 token、统一剥 response.data
  *
  * 用法：
  *   import http from '../utils/request'
@@ -545,32 +567,37 @@ export default CreatePostForm`,
  *   await http.post('/posts', { title: 'hi' })
  */
 
+// axios.create 创建独立实例，不影响全局 axios
 const http = axios.create({
-  // 所有请求自动加此前缀
-  // 开发时可改成 '/api' + package.json proxy
+  // 所有相对路径请求都会自动加此前缀
+  // 开发配 proxy 时可留空或 '/api'，见 package.json
   baseURL: 'https://jsonplaceholder.typicode.com',
-  timeout: 10000,
+  timeout: 10000, // 10 秒无响应则 reject，避免一直 loading
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', // 默认发 JSON
   },
 })
 
-// ========== 请求拦截：发出去之前 ==========
+// ========== 请求拦截：每个请求「发出去之前」执行 ==========
 http.interceptors.request.use(
   (config) => {
+    // 从 localStorage 读登录 token（真实项目登录成功后写入）
     const token = localStorage.getItem('token')
     if (token) {
+      // 后端约定：Authorization: Bearer <token>
       config.headers.Authorization = \`Bearer \${token}\`
     }
-    return config
+    return config // 必须 return，否则请求发不出去
   },
   (error) => Promise.reject(error)
 )
 
-// ========== 响应拦截：回来之后 ==========
+// ========== 响应拦截：每个响应「回来之后」执行 ==========
 http.interceptors.response.use(
-  (response) => response.data, // ★ 组件里拿到的就是 data
+  // 成功（2xx）：直接 return response.data，组件里不用再 .data
+  (response) => response.data,
   (error) => {
+    // 用户主动取消的请求，原样 reject
     if (axios.isCancel(error)) {
       return Promise.reject(error)
     }
@@ -581,25 +608,29 @@ http.interceptors.response.use(
       error.message ||
       '网络异常，请稍后重试'
 
+    // 401 = 未登录或 token 过期
     if (status === 401) {
       console.warn('未登录或登录已过期')
-      // 真实项目：localStorage.removeItem('token'); navigate('/login')
+      // 真实项目：清 token + 跳登录页
+      // localStorage.removeItem('token'); navigate('/login')
     }
 
+    // 统一包装成 Error，组件 catch 里 e.message 即可
     return Promise.reject(new Error(message))
   }
 )
 
 export default http
-export { axios }`,
+export { axios } // 需要 isCancel 等工具时可一并导出`,
           },
           {
             type: 'code',
             title: '完整可抄 demo：组件里用 http 拉列表',
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
-import http from '../../utils/request' // 路径按你的文件调整
+import http from '../../utils/request' // 路径按你的项目结构调整
 
+// 组件里用封装好的 http —— 三态模板和 fetch 版完全一样，只改请求那一行
 function UserListWithHttp() {
   const [list, setList] = useState([])
   const [loading, setLoading] = useState(true)
@@ -613,13 +644,14 @@ function UserListWithHttp() {
         setLoading(true)
         setError('')
 
-        // ★ 拦截器已返回 data，这里直接是用户数组
+        // ★ 拦截器已 return response.data，await 到的就是用户数组
+        // 写相对路径 '/users'，baseURL 在 request.js 里统一配置
         const data = await http.get('/users', {
           signal: controller.signal,
         })
         setList(data)
       } catch (e) {
-        // axios 取消：CanceledError / ERR_CANCELED
+        // axios 取消：CanceledError 或 ERR_CANCELED（和 fetch 的 AbortError 不同）
         if (e.name === 'CanceledError' || e.code === 'ERR_CANCELED') return
         if (e.name === 'AbortError') return
         setError(e.message || '加载失败')
@@ -654,6 +686,7 @@ export default UserListWithHttp`,
 import { useNavigate } from 'react-router-dom'
 import http from '../../utils/request'
 
+// 演示：登录存 token → 后续 http 请求自动带 Authorization
 function LoginAndFetchPage() {
   const navigate = useNavigate()
   const [account, setAccount] = useState('')
@@ -667,14 +700,14 @@ function LoginAndFetchPage() {
     setError('')
 
     try {
-      // 练手：jsonplaceholder 没有真登录，这里模拟
-      // 真实：const { token } = await http.post('/login', { account, password })
+      // 练手：jsonplaceholder 没有真登录接口，这里用 setTimeout 模拟
+      // 真实项目：const { token } = await http.post('/login', { account, password })
       await new Promise((r) => setTimeout(r, 500))
       const fakeToken = 'demo-token-' + Date.now()
+      // 写入 localStorage，request.js 请求拦截器会读并加到 Header
       localStorage.setItem('token', fakeToken)
 
-      // 之后所有 http 请求会自动带 Authorization（见 request.js 拦截器）
-      navigate('/', { replace: true })
+      navigate('/', { replace: true }) // 登录成功跳首页
     } catch (e) {
       setError(e.message)
     } finally {
@@ -684,6 +717,7 @@ function LoginAndFetchPage() {
 
   async function handleCreatePost() {
     try {
+      // 登录后点这个：拦截器自动带 Bearer token（可在 Network 面板看 Header）
       const result = await http.post('/posts', {
         title: '测试文章',
         body: '内容',
@@ -731,27 +765,29 @@ export default LoginAndFetchPage`,
             language: 'javascript',
             body: `import http from '../utils/request'
 
-// GET + 查询参数 → /users?page=1&keyword=react
+// ========== axios / http 常用 REST 写法速查 ==========
+
+// GET + 查询参数 → 实际请求 /users?page=1&keyword=react
 const users = await http.get('/users', {
   params: { page: 1, keyword: 'react' },
 })
 
-// POST body
+// POST：第二个参数是 JSON body，不用 JSON.stringify
 const post = await http.post('/posts', { title: '标题', body: '内容' })
 
-// PUT 全量更新 / PATCH 部分更新 / DELETE
-await http.put('/users/1', { name: '小明' })
-await http.patch('/users/1', { name: '小明' })
+// PUT 全量替换 / PATCH 部分更新 / DELETE 删除
+await http.put('/users/1', { name: '小明' })       // 整条替换 id=1
+await http.patch('/users/1', { name: '小明' })     // 只改 name 字段
 await http.delete('/users/1')
 
-// 上传 FormData（要改 Content-Type，让浏览器自动带 boundary）
+// 上传文件：用 FormData，Content-Type 让浏览器自动带 boundary
 const form = new FormData()
 form.append('file', file)
 await http.post('/upload', form, {
   headers: { 'Content-Type': 'multipart/form-data' },
 })
 
-// 并发请求
+// 并发多个请求：等全部完成再一起拿结果
 const [users, posts] = await Promise.all([
   http.get('/users'),
   http.get('/posts'),
@@ -855,33 +891,36 @@ const [users, posts] = await Promise.all([
             body: `import { useState, useEffect, useMemo } from 'react'
 import './TodoApp.css'
 
+// 过滤选项：全部 / 未完成 / 已完成
 const FILTERS = [
   { key: 'all', label: '全部' },
   { key: 'active', label: '未完成' },
   { key: 'done', label: '已完成' },
 ]
 
-const STORAGE_KEY = 'react-demo-todos'
+const STORAGE_KEY = 'react-demo-todos' // localStorage 键名，全项目统一
 
 function TodoApp() {
-  // ===== state =====
+  // ===== state：Todo 入门毕业考的核心三块 =====
   const [todos, setTodos] = useState(() => {
+    // 懒初始化：只在首次渲染读 localStorage，刷新不丢数据
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
       return raw ? JSON.parse(raw) : []
     } catch {
-      return []
+      return [] // JSON 损坏时兜底空数组
     }
   })
-  const [text, setText] = useState('')
-  const [filter, setFilter] = useState('all')
+  const [text, setText] = useState('')       // 输入框受控值
+  const [filter, setFilter] = useState('all') // 当前筛选：all | active | done
 
-  // ===== 持久化 =====
+  // ===== 持久化：todos 变化就写回 localStorage =====
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }, [todos])
 
-  // ===== 派生数据 =====
+  // ===== 派生数据：用 useMemo 从 todos 算出「要显示的列表」=====
+  // 不要复制第二份 todos state，filter 只是视图条件
   const visibleTodos = useMemo(() => {
     if (filter === 'active') return todos.filter((t) => !t.done)
     if (filter === 'done') return todos.filter((t) => t.done)
@@ -893,18 +932,19 @@ function TodoApp() {
     [todos]
   )
 
-  // ===== 操作 =====
+  // ===== CRUD 操作：全部用不可变更新（map/filter/spread）=====
   function addTodo() {
     const value = text.trim()
-    if (!value) return
+    if (!value) return // 空输入直接忽略
     setTodos((prev) => [
-      ...prev,
-      { id: Date.now(), text: value, done: false },
+      ...prev, // 展开旧数组
+      { id: Date.now(), text: value, done: false }, // id 用时间戳，别用 index
     ])
-    setText('')
+    setText('') // 清空输入框
   }
 
   function toggleTodo(id) {
+    // map 找到对应项，复制对象并翻转 done
     setTodos((prev) =>
       prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
     )
@@ -919,7 +959,7 @@ function TodoApp() {
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter') addTodo()
+    if (e.key === 'Enter') addTodo() // 回车快捷添加
   }
 
   // ===== 渲染 =====
@@ -928,7 +968,7 @@ function TodoApp() {
       <h1 className="TodoApp-title">Todo List</h1>
       <p className="TodoApp-desc">入门串联练习：state、列表、过滤、持久化</p>
 
-      {/* 输入区 */}
+      {/* 输入区：受控 input + 按钮 */}
       <div className="TodoApp-inputRow">
         <input
           className="TodoApp-input"
@@ -942,7 +982,7 @@ function TodoApp() {
         </button>
       </div>
 
-      {/* 过滤 + 统计 */}
+      {/* 过滤按钮 + 统计条数 */}
       <div className="TodoApp-toolbar">
         <div className="TodoApp-filters">
           {FILTERS.map((f) => (
@@ -965,7 +1005,7 @@ function TodoApp() {
         </span>
       </div>
 
-      {/* 列表 */}
+      {/* 列表：空态 vs 有数据 */}
       {visibleTodos.length === 0 ? (
         <p className="TodoApp-empty">
           {filter === 'all' ? '还没有待办，添加一条吧' : '当前筛选下没有条目'}
@@ -975,6 +1015,7 @@ function TodoApp() {
           {visibleTodos.map((todo) => (
             <li key={todo.id} className="TodoApp-item">
               <label className="TodoApp-itemLabel">
+                {/* 受控 checkbox：checked + onChange，不用 defaultChecked */}
                 <input
                   type="checkbox"
                   checked={todo.done}
@@ -1000,7 +1041,7 @@ function TodoApp() {
         </ul>
       )}
 
-      {/* 底部操作 */}
+      {/* 有已完成项时才显示「清除已完成」 */}
       {todos.some((t) => t.done) && (
         <button type="button" className="TodoApp-clearBtn" onClick={clearCompleted}>
           清除已完成
@@ -1016,7 +1057,8 @@ export default TodoApp`,
             type: 'code',
             title: 'TodoApp.css（配套样式，可直接复制）',
             language: 'css',
-            body: `.TodoApp {
+            body: `/* Todo 应用根容器：居中、限制最大宽度 */
+.TodoApp {
   max-width: 520px;
   margin: 0 auto;
   padding: 24px;
@@ -1032,6 +1074,7 @@ export default TodoApp`,
   margin: 0 0 20px;
 }
 
+/* 输入行：flex 让输入框占满剩余空间 */
 .TodoApp-inputRow {
   display: flex;
   gap: 8px;
@@ -1054,6 +1097,7 @@ export default TodoApp`,
   border-radius: 8px;
 }
 
+/* 工具栏：过滤按钮 + 统计文字左右分布 */
 .TodoApp-toolbar {
   display: flex;
   justify-content: space-between;
@@ -1076,6 +1120,7 @@ export default TodoApp`,
   font-size: 13px;
 }
 
+/* 当前选中的过滤按钮高亮 */
 .TodoApp-filter--active {
   background: #eff6ff;
   border-color: #2563eb;
@@ -1093,6 +1138,7 @@ export default TodoApp`,
   margin: 0;
 }
 
+/* 每条 todo：checkbox + 文字 + 删除按钮 */
 .TodoApp-item {
   display: flex;
   align-items: center;
@@ -1109,6 +1155,7 @@ export default TodoApp`,
   cursor: pointer;
 }
 
+/* 已完成：删除线 + 灰色 */
 .TodoApp-text--done {
   text-decoration: line-through;
   color: #9ca3af;
@@ -1142,8 +1189,9 @@ export default TodoApp`,
             type: 'code',
             title: '进阶：拆组件 + 接 axios（思路代码）',
             language: 'jsx',
-            body: `// 拆成 TodoInput / TodoItem / TodoFilter 三个子组件
-// 父组件 TodoPage 拥有 todos state，props + 回调传下去（第 8 章）
+            body: `// 进阶思路：本地 Todo 练熟后，把 CRUD 换成 http + json-server
+// 拆成 TodoInput / TodoItem / TodoFilter 三个子组件
+// 父组件 TodoPage 拥有 todos state，通过 props + 回调传给子组件（见第 8 章）
 
 import http from '../utils/request'
 
@@ -1151,15 +1199,18 @@ function TodoPageRemote() {
   const [todos, setTodos] = useState([])
   const [loading, setLoading] = useState(true)
 
+  // 挂载时从 json-server 拉列表：GET /todos
   useEffect(() => {
     http.get('/todos').then(setTodos).finally(() => setLoading(false))
   }, [])
 
+  // 新增：POST 成功后把服务器返回的对象（含 id）追加到 state
   async function addTodo(text) {
     const created = await http.post('/todos', { text, done: false })
     setTodos((prev) => [...prev, created])
   }
 
+  // 切换完成：PATCH 部分更新 + 本地 state 同步
   async function toggleTodo(id, done) {
     await http.patch(\`/todos/\${id}\`, { done: !done })
     setTodos((prev) =>
@@ -1167,13 +1218,14 @@ function TodoPageRemote() {
     )
   }
 
+  // 删除：DELETE 后 filter 掉本地项
   async function removeTodo(id) {
     await http.delete(\`/todos/\${id}\`)
     setTodos((prev) => prev.filter((t) => t.id !== id))
   }
 
   if (loading) return <p>加载中...</p>
-  // ... 其余 UI 和本地版相同
+  // ... 其余 UI 和本地版 TodoApp 相同，只是操作函数换成上面的 async 版
 }`,
           },
           {
@@ -1242,9 +1294,12 @@ function TodoPageRemote() {
             type: 'code',
             title: '第 1 步：安装（本项目已装好）',
             language: 'bash',
-            body: `npm install -D json-server
+            body: `# json-server：本地假 REST API，零后端练 CRUD
+# -D 表示装到 devDependencies，打包上线不会带上
 
-# 开发依赖即可，打包上线不会带上 json-server`,
+npm install -D json-server
+
+# 装好后 package.json 里加 scripts（见下文），用 npm run server 启动`,
           },
           {
             type: 'code',
@@ -1263,10 +1318,12 @@ function TodoPageRemote() {
   ]
 }
 
-# 规则：每个「键名」自动变成一个 REST 资源
-# users  → /users
-# posts  → /posts
-# todos  → /todos`,
+# ========== json-server 规则（db.json 放项目根目录）==========
+# 每个顶层「键名」= 一个 REST 资源，自动生成 CRUD 接口：
+#   users  → GET/POST /users，GET/PATCH/DELETE /users/:id
+#   posts  → /posts
+#   todos  → /todos（和 Todo 进阶版联调用）
+# 数组每项建议有 id；POST 新增可不传 id，json-server 自动递增`,
           },
           {
             type: 'table',
@@ -1289,18 +1346,21 @@ function TodoPageRemote() {
             type: 'code',
             title: '第 4 步：启动 mock 服务',
             language: 'bash',
-            body: `# 方式 A：两个终端（推荐初学，看得清楚）
-# 终端 1：启动 mock API（3001 端口）
+            body: `# ========== 方式 A：两个终端（推荐初学，过程看得清楚）==========
+
+# 终端 1：启动 json-server mock API（默认 3001 端口）
+# --watch：改 db.json 后自动重载，不用重启
 npm run server
 
-# 终端 2：启动 React（3000 端口）
+# 终端 2：启动 React 开发服务器（默认 3000 端口）
 npm start
 
-# 方式 B：一条命令同时启动（package.json 已配置）
+# ========== 方式 B：一条命令同时启动（package.json 已配 concurrently）==========
 npm run start:all
 
-# 启动成功后浏览器可访问：
-# http://localhost:3001/users   ← 直接看 JSON 数据`,
+# ========== 验证 mock 是否正常 ==========
+# 浏览器直接打开下面地址，应看到 JSON 数组：
+# http://localhost:3001/users`,
           },
           {
             type: 'text',
@@ -1314,16 +1374,18 @@ npm run start:all
             body: `import { useEffect, useState } from 'react'
 import http from '../utils/request'
 
+// json-server 联调完整 Demo：GET 列表 + POST/PATCH/DELETE CRUD
 function UserPage() {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // GET：查列表
+  // GET：查全部用户 —— 配合三态模板
   async function loadUsers() {
     try {
       setLoading(true)
       setError('')
+      // 相对路径 /users：开发时走 proxy 转发到 localhost:3001
       const data = await http.get('/users')
       setUsers(data)
     } catch (e) {
@@ -1334,26 +1396,26 @@ function UserPage() {
   }
 
   useEffect(() => {
-    loadUsers()
+    loadUsers() // 挂载时拉一次列表
   }, [])
 
-  // POST：新增
+  // POST：新增用户 —— body 是 JSON 对象，json-server 自动分配 id
   async function addUser() {
     await http.post('/users', {
       name: '新用户',
       email: 'new@example.com',
       role: 'user',
     })
-    loadUsers() // 重新拉列表
+    loadUsers() // ★ 增删改后要重新拉列表（或乐观更新 state）
   }
 
-  // PATCH：改部分字段
+  // PATCH：只改部分字段，比 PUT 整条替换更常用
   async function toggleRole(id) {
     await http.patch(\`/users/\${id}\`, { role: 'admin' })
     loadUsers()
   }
 
-  // DELETE：删除
+  // DELETE：按 id 删除
   async function removeUser(id) {
     await http.delete(\`/users/\${id}\`)
     loadUsers()
@@ -1393,7 +1455,13 @@ function UserPage() {
     "start:all": "concurrently \\"npm run server\\" \\"npm start\\" --names api,web"
   },
   "proxy": "http://localhost:3001"
-}`,
+}
+
+# server：读 db.json 启动 mock REST API（3001 端口）
+# start:all：concurrently 同时跑 mock + React，省事
+# proxy：React 开发服务器(3000) 把未知路径转发到 3001，解决跨域
+#   → 组件里 http.get('/users') 实际走 localhost:3000/users → 转发到 3001/users
+#   → 只在 npm start 开发时生效，生产打包后必须配真实 API 地址`,
           },
           {
             type: 'list',
@@ -1489,24 +1557,24 @@ function UserPage() {
             type: 'code',
             title: '常用命令 & 文件速查（复制贴墙）',
             language: 'bash',
-            body: `# 创建项目
+            body: `# ========== 创建新项目 ==========
 npx create-react-app my-app
-# 或
+# 或 Vite（更轻更快）
 npm create vite@latest my-app -- --template react
 
-# 本地 mock 接口（本项目）
-npm run server       # 只启动 json-server（3001）
-npm run start:all    # 同时启动 mock + React
+# ========== 本地 mock 接口（本项目）==========
+npm run server       # 只启动 json-server（3001），React 需另开终端 npm start
+npm run start:all    # 一条命令：mock API + React 同时跑
 
-# 常用依赖
+# ========== 本章常用依赖 ==========
 npm install react-router-dom axios @reduxjs/toolkit react-redux
-npm install -D json-server
+npm install -D json-server   # mock 后端，仅开发用
 
-# 本项目关键文件
-src/utils/request.js       # axios 封装（baseURL 空 = 走 proxy）
-db.json                    # json-server 数据
-src/pages/JsonServerDemo/  # API 演示页 /demo/json-server
-src/routes/index.js        # 路由表（含 /demo/auth）`,
+# ========== 本项目关键文件速查 ==========
+# src/utils/request.js       axios 封装（baseURL 空 = 走 proxy 到 3001）
+# db.json                    json-server 数据源，每个键名 = REST 资源
+# src/pages/JsonServerDemo/  API 演示页，路由 /demo/json-server
+# src/routes/index.js        路由表（含 /demo/auth 登录守卫）`,
           },
           {
             type: 'list',

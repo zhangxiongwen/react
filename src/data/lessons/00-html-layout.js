@@ -36,16 +36,20 @@ const htmlLayout = {
             language: 'html',
             live: true,
             body: `<style>
+  /* .demo-block 是自定义 class 名，用来给多个元素统一加样式 */
   .demo-block {
-    display: block; /* 可省略：div/p 默认就是 */
-    background: #d9ebe1;
-    margin: 8px 0;
-    padding: 8px;
+    display: block; /* 块级：每个元素独占一整行；div/p 默认就是 block，这里写出来是为了强调 */
+    background: #d9ebe1; /* 背景色：填充元素内部区域（含 padding），方便看清盒子范围 */
+    margin: 8px 0; /* 外边距：上下各 8px，把相邻盒子推开；左右为 0 不额外占宽 */
+    padding: 8px; /* 内边距：文字与边框/背景边缘之间留白 8px，让内容不贴边 */
   }
 </style>
 
+<!-- div：通用块级容器，常用来包一块独立区域 -->
 <div class="demo-block">我是 div（块级）</div>
+<!-- 第二个 div 即使文字很短，block 也会让它换到下一行 -->
 <div class="demo-block">我也是 div，即使文字短，也换行</div>
+<!-- p：段落标签，语义上表示一段文字，默认也是 block -->
 <p class="demo-block">我是 p 段落，同样是块级</p>`,
           },
           {
@@ -60,20 +64,23 @@ const htmlLayout = {
             live: true,
             body: `<style>
   .demo-inline {
-    display: inline;
-    background: #f3e6d4;
-    /* ❌ 对纯 inline 基本无效 */
-    width: 200px;
-    height: 80px;
-    margin: 20px;
-    padding: 10px;
+    display: inline; /* 行内：像文字一样排在同一行，不会独占一行 */
+    background: #f3e6d4; /* 背景色仍生效，方便看出 span 的范围 */
+    /* ❌ 下面三项对纯 inline 基本无效——这是和 block 最大的区别 */
+    width: 200px; /* 行内元素设宽度通常被忽略，盒子仍由内容撑开 */
+    height: 80px; /* 行内元素设高度通常也无效 */
+    margin: 20px; /* 上下 margin 几乎推不动布局；左右 margin 可能有一点效果 */
+    padding: 10px; /* 左右 padding 有效；上下 padding 会画出来但不太改变行高布局 */
   }
 </style>
 
+<!-- p 是块级段落；里面的 span/a 是行内，嵌在句子中间 -->
 <p>
   前文
+  <!-- span：无语义的行内标签，常用来给文字的一小段加样式 -->
   <span class="demo-inline">span 一</span>
   <span class="demo-inline">span 二</span>
+  <!-- a：超链接，默认也是 inline，href 是跳转地址 -->
   <a class="demo-inline" href="#">链接</a>
   后文
 </p>`,
@@ -90,22 +97,23 @@ const htmlLayout = {
             live: true,
             body: `<style>
   .chip {
-    display: inline-block;
-    width: 100px;
-    height: 36px;
-    line-height: 36px; /* 单行文字垂直大致居中 */
-    text-align: center;
-    margin: 6px;
-    border-radius: 8px;
-    background: #eef6f1;
+    display: inline-block; /* 行内块：既能并排，又能设宽高（比 inline 灵活） */
+    width: 100px; /* 固定宽度 100px——inline-block 下 width 有效 */
+    height: 36px; /* 固定高度 36px——inline-block 下 height 有效 */
+    line-height: 36px; /* 行高等于高度：单行文字在盒子里垂直大致居中（老办法，没有 flex 时用） */
+    text-align: center; /* 文字水平居中 */
+    margin: 6px; /* 标签之间的外边距，四边各 6px */
+    border-radius: 8px; /* 圆角 8px，让标签看起来像「胶囊/chip」 */
+    background: #eef6f1; /* 浅绿背景，区分每个标签 */
   }
 </style>
 
+<!-- 三个 span 默认是 inline，这里用 inline-block 改成可设宽高的并排标签 -->
 <span class="chip">标签A</span>
 <span class="chip">标签B</span>
 <span class="chip">标签C</span>
 
-<!-- 想两端对齐、垂直居中整组子项 → 改用父级 display:flex -->`,
+<!-- 提示：若要让整组标签两端对齐、垂直居中，应改用父级 display:flex + justify-content / align-items -->`,
           },
           {
             type: 'text',
@@ -123,25 +131,29 @@ const htmlLayout = {
             language: 'html',
             live: true,
             body: `<style>
+  /* 说明文字样式：小字号、灰色，上下留白与 demo 区分 */
   .label { font-size: 12px; color: #5c6b62; margin: 12px 0 4px; }
+  /* .box 是 flex 容器的公共样式（内部子项怎么排） */
   .box {
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    height: 48px;
-    padding: 0 12px;
-    background: #d9ebe1;
-    border: 1px solid #2f6b4f;
+    justify-content: center; /* 主轴方向（默认水平）上，子项整体居中 */
+    align-items: center; /* 交叉轴方向（默认垂直）上，子项垂直居中 */
+    gap: 8px; /* 子项之间的固定间距 8px，比 margin 更干净 */
+    height: 48px; /* 给容器固定高度，align-items 才有「上下对齐」的参照 */
+    padding: 0 12px; /* 左右内边距 12px，上下为 0 */
+    background: #d9ebe1; /* 容器背景色，方便看清 flex 盒子占多大 */
+    border: 1px solid #2f6b4f; /* 1px 实线边框，描出容器边界 */
   }
-  .as-flex { display: flex; }           /* 独占一行 */
-  .as-inline-flex { display: inline-flex; } /* 可并排 */
+  .as-flex { display: flex; } /* flex：容器本身像 block，独占一整行 */
+  .as-inline-flex { display: inline-flex; } /* inline-flex：容器本身可与其他元素并排 */
+  /* 子项样式：每个 span 是一个 flex item */
   .item {
-    padding: 4px 10px;
-    background: #fff;
-    border-radius: 6px;
+    padding: 4px 10px; /* 子项内边距，让文字不贴边 */
+    background: #fff; /* 白色背景，和容器底色对比 */
+    border-radius: 6px; /* 圆角 */
   }
 </style>
 
+<!-- 第一组：display:flex —— 注意两个 .box 各占一行，上下堆叠 -->
 <div class="label">display:flex —— 盒子本身独占一行</div>
 <div class="box as-flex">
   <span class="item">A</span>
@@ -152,6 +164,7 @@ const htmlLayout = {
   <span class="item">D</span>
 </div>
 
+<!-- 第二组：display:inline-flex —— 两个 .box 可以排在同一行 -->
 <div class="label">display:inline-flex —— 两个盒子可以并排</div>
 <div class="box as-inline-flex">
   <span class="item">A</span>
@@ -185,18 +198,20 @@ const htmlLayout = {
             live: true,
             body: `<style>
   .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 三列等分 */
-    gap: 10px;
+    display: grid; /* 开启 Grid 网格布局：同时管「行」和「列」（二维） */
+    grid-template-columns: 1fr 1fr 1fr; /* 三列，每列 1fr 表示等分剩余宽度（像三份一样宽） */
+    gap: 10px; /* 格子之间的行距、列距都是 10px */
   }
+  /* > 表示只选 .grid 的直接子 div，不选更深层嵌套的 div */
   .grid > div {
-    padding: 16px;
-    text-align: center;
-    background: #eef6f1;
-    border-radius: 8px;
+    padding: 16px; /* 卡片内边距 */
+    text-align: center; /* 文字居中 */
+    background: #eef6f1; /* 卡片背景色 */
+    border-radius: 8px; /* 圆角，让卡片更好看 */
   }
 </style>
 
+<!-- .grid 是网格容器；里面每个 div 会自动放进格子里，多了就换行 -->
 <div class="grid">
   <div>卡片1</div>
   <div>卡片2</div>
@@ -217,31 +232,35 @@ const htmlLayout = {
             language: 'html',
             live: true,
             body: `<style>
+  /* 每一行 demo 的外层容器，浅灰背景方便区分两行对比 */
   .row { margin: 10px 0; padding: 8px; background: #f7faf8; }
+  /* 小方块：用 inline-block 方便横排并设固定宽高 */
   .box {
-    display: inline-block;
-    width: 64px; height: 36px; line-height: 36px;
-    text-align: center; margin-right: 8px;
-    background: #d9ebe1; border-radius: 6px;
+    display: inline-block; /* 行内块：A/B/C 可以排在同一行 */
+    width: 64px; height: 36px; line-height: 36px; /* 固定尺寸 + 行高居中文字 */
+    text-align: center; margin-right: 8px; /* 水平居中；右边距与下一个方块隔开 */
+    background: #d9ebe1; border-radius: 6px; /* 背景色 + 圆角 */
   }
-  .gone { display: none; }
-  .invisible { visibility: hidden; }
+  .gone { display: none; } /* 完全从布局中移除：不占空间、不可见、不可交互 */
+  .invisible { visibility: hidden; } /* 只隐藏视觉：仍占位，像透明块一样 */
 </style>
 
+<!-- 第一行：中间 B 用 display:none -->
 <div class="row">
   中间用 display:none：
   <span class="box">A</span>
   <span class="box gone">B</span>
   <span class="box">C</span>
-  <!-- B 完全不占位，A 和 C 靠在一起 -->
+  <!-- 效果：B 像不存在，A 和 C 紧挨在一起 -->
 </div>
 
+<!-- 第二行：中间 B 用 visibility:hidden -->
 <div class="row">
   中间用 visibility:hidden：
   <span class="box">A</span>
   <span class="box invisible">B</span>
   <span class="box">C</span>
-  <!-- B 看不见，但空位还在 -->
+  <!-- 效果：B 看不见，但原来那块位置还空着，C 不会左移过来 -->
 </div>`,
           },
           {
@@ -277,22 +296,26 @@ const htmlLayout = {
             language: 'html',
             live: true,
             body: `<style>
+  /* 把默认 block 的 div 改成 inline-block：两个 div 可以并排 */
   .as-inline-block {
-    display: inline-block;
-    width: 120px;
-    padding: 8px;
+    display: inline-block; /* 覆盖 div 默认的 block，变成行内块 */
+    width: 120px; /* inline-block 下可以设宽度 */
+    padding: 8px; /* 内边距让文字不贴边 */
     background: #d9ebe1;
   }
+  /* 把默认 inline 的 span 改成 block：每个 span 独占一行 */
   .as-block {
-    display: block;
-    margin: 8px 0;
+    display: block; /* 覆盖 span 默认的 inline，变成块级 */
+    margin: 8px 0; /* 上下外边距，块与块之间拉开距离 */
     background: #f3e6d4;
   }
 </style>
 
+<!-- div 默认 block，这里改成 inline-block 后 div1、div2 并排 -->
 <div class="as-inline-block">div1</div>
 <div class="as-inline-block">div2</div>
 
+<!-- span 默认 inline，这里改成 block 后每个 span 各占一行 -->
 <span class="as-block">span 变成块级了</span>
 <span class="as-block">我也独占一行</span>`,
           },
@@ -319,14 +342,15 @@ const htmlLayout = {
     },
     {
       id: 'box-model-sizing',
-      title: '盒子模型与 box-sizing（必须搞懂）',
-      summary: 'content / padding / border / margin 四层，以及 border-box 为什么是默认推荐',
+      title: '盒子模型、单位与 margin/padding（必须搞懂）',
+      summary:
+        'content/padding/border/margin；px 与 %；只有 0 能省略单位；margin/padding 简写与 box-sizing',
       content: {
         sections: [
           {
             type: 'tip',
             title: '一句话记住',
-            body: '每个可见元素都是一个「盒子」。从里到外四层：content → padding → border → margin。box-sizing 决定你写的 width/height 到底量的是「纯内容区」还是「含 padding+border 的总盒子」。',
+            body: '每个可见元素都是一个「盒子」。从里到外四层：content → padding → border → margin。写距离时 CSS 必须带单位（`10px`/`50%`，只有 `0` 可省略）；box-sizing 决定 width/height 量的是内容区还是含 padding+border 的总盒子。',
           },
           {
             type: 'text',
@@ -350,17 +374,19 @@ const htmlLayout = {
             live: true,
             body: `<style>
   .box {
-    width: 200px;
-    padding: 20px;                 /* 内边距：背景色会延伸到这里 */
-    border: 5px solid #2f6b4f;     /* 边框：有宽度，占空间 */
-    margin: 30px;                  /* 外边距：透明，推开邻居 */
-    background: #eef6f1;           /* 背景只覆盖 content + padding */
+    width: 200px; /* 内容区宽度 200px（具体量哪一层取决于 box-sizing，默认是 content-box） */
+    padding: 20px; /* 内边距：文字与边框之间留白；背景色会铺到 padding 区域 */
+    border: 5px solid #2f6b4f; /* 边框：5px 实线，有宽度会占布局空间 */
+    margin: 30px; /* 外边距：透明，把本盒子与周围元素推开 */
+    background: #eef6f1; /* 背景只覆盖 content + padding，不覆盖 margin */
   }
 </style>
 
+<!-- 一个 div 演示盒子模型四层：content → padding → border → margin -->
 <div class="box">内容 content</div>
 
-<!-- Chrome 审查 → Computed → 盒模型图，对照四层数字 -->`,
+<!-- 建议：Chrome 审查元素 → Computed → 盒模型图，对照四层数字 -->
+`,
           },
           {
             type: 'text',
@@ -389,24 +415,28 @@ const htmlLayout = {
             language: 'html',
             live: true,
             body: `<style>
+  /* 父级用 flex 横排，方便并排对比两个盒子 */
   .row { display: flex; gap: 16px; align-items: flex-start; }
 
+  /* A：content-box（浏览器默认）—— width 只量 content，padding/border 会加在外面 */
   .a {
-    box-sizing: content-box; /* 默认：width 不含 padding/border */
-    width: 200px;
-    padding: 20px;
-    border: 5px solid #c53030;
-    background: #fde8e8;
+    box-sizing: content-box; /* 默认模式：width 不含 padding 和 border */
+    width: 200px; /* 仅 content 区 200px */
+    padding: 20px; /* 左右各 +20，总宽还要再加 border */
+    border: 5px solid #c53030; /* 红色边框，方便和 B 对比 */
+    background: #fde8e8; /* 浅红背景 */
   }
+  /* B：border-box（推荐）—— width 含 content+padding+border，总占位就是 200px */
   .b {
-    box-sizing: border-box;  /* 推荐：width 含 padding+border */
-    width: 200px;
-    padding: 20px;
+    box-sizing: border-box; /* 推荐：width 把 padding+border 包在里面 */
+    width: 200px; /* 整个盒子在布局里占的横向宽度就是 200px */
+    padding: 20px; /* padding 变大时，content 区会自动变窄，总宽不变 */
     border: 5px solid #2f6b4f;
     background: #eef6f1;
   }
 </style>
 
+<!-- 并排对比：同样写 width:200px，A 实际更宽，B 总宽固定 -->
 <div class="row">
   <div class="a">content-box<br/>实际更宽（约 250px）</div>
   <div class="b">border-box<br/>总宽就是 200px</div>
@@ -416,45 +446,190 @@ const htmlLayout = {
             type: 'code',
             title: '怎么用：项目 reset 模板',
             language: 'css',
-            body: `/* 几乎所有现代项目的第一段 CSS */
+            body: `/* 几乎所有现代项目的第一段 CSS：统一盒模型，避免 width 被 padding 撑破 */
+/* 通配选择器 *：选中页面上所有元素 */
 *,
+/* ::before / ::after 是伪元素，很多 reset 也会给它们设 box-sizing */
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: border-box; /* 让 width/height 含 padding+border，心算尺寸更简单 */
 }
 
 body {
-  margin: 0; /* 去掉浏览器默认 8px 外边距 */
+  margin: 0; /* 去掉浏览器给 body 的默认 8px 外边距，避免页面四周莫名留白 */
 }`,
           },
           {
             type: 'text',
-            title: '3. margin / padding 简写：四个数字怎么读',
-            body: '是什么：用一条声明同时设四边（或部分边）的 margin 或 padding。\n\n特点：顺时针记忆——上 → 右 → 下 → 左（像钟表从 12 点开始）。值个数不同，含义不同：1 个值 = 四边相同；2 个值 = 第一个管上下、第二个管左右；3 个值 = 上、左右、下；4 个值 = 上、右、下、左。\n\n为什么用简写：代码短、四边统一调整方便；单独某一边用 margin-top 等 longhand 覆盖即可。\n\n易错：padding-top: 10% 的百分比相对的是「父元素宽度」，不是高度——这是 CSS 规范，很反直觉，遇到百分比竖向间距要小心。',
+            title: '3. 长度单位：px、%、只有 0 能省略单位（必背）',
+            body: '写 `width`、`height`、`margin`、`padding`、`top`、`left`、`gap`、`border-width` 等「距离 / 尺寸」时，**数值必须带单位**。\n\n**`.css` 文件里（也包括 `<style>` 标签）：**\n- ✅ `top: 10px;`、`margin: 16px;`、`width: 50%;`\n- ❌ `top: 10;`、`margin: 16;` —— **非法或无效**，浏览器可能直接忽略整条声明\n- ✅ **唯一例外：`0` 可以省略单位**——`margin: 0;`、`top: 0;` 都对（0px、0%、0em 意义相同）\n\n**常用单位：**\n- **`px`（像素）**：固定大小，最常用。设计稿几像素就写几 `px`。例：`padding: 12px;`、`top: 10px;`\n- **`%`（百分比）**：相对**父容器**对应方向的尺寸。`width: 50%` = 父级内容宽度的一半；`height: 50%` = 父级高度的一半（父级高度要先有明确值才好用）。注意：`padding-top: 10%`、`margin-top: 10%` 的百分比也是相对**父级宽度**（不是高度），很反直觉。\n\n后面还会见到 `rem`/`em`/`vh` 等，入门先把 `px` 和 `%` 用熟。',
+          },
+          {
+            type: 'table',
+            title: '单位速查（CSS 文件）',
+            headers: ['写法', '对不对', '说明'],
+            rows: [
+              ['top: 10px;', '✅', '固定 10 像素'],
+              ['top: 10;', '❌', '缺单位，整条常被忽略'],
+              ['top: 0;', '✅', '只有 0 可以省略单位'],
+              ['top: 0px;', '✅', '和 top:0 等价，多写 px 也行'],
+              ['width: 50%;', '✅', '父容器宽度的 50%'],
+              ['margin: 16;', '❌', '必须写成 16px 或其它合法单位'],
+              ['padding: 8px 16px;', '✅', '简写也要每个数字都带单位（0 除外）'],
+            ],
+            note: '记住口诀：CSS 里「有数就要有单位」，零例外。',
           },
           {
             type: 'code',
-            title: 'margin / padding 简写速查',
-            language: 'css',
-            body: `/* 四值：上 右 下 左（顺时针） */
-padding: 10px 20px 10px 20px;
+            title: 'Demo：带单位 vs 漏单位（右侧对照）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  .row { display: flex; gap: 16px; align-items: flex-start; }
+  .card {
+    width: 140px;
+    background: #eef6f1;
+    border: 1px solid #2f6b4f;
+  }
+  .label { font-size: 12px; color: #5c6b62; margin: 0 0 6px; }
 
-/* 三值：上  左右  下 */
-padding: 10px 20px 30px;
+  /* ✅ 正确：距离必须带 px（或 % 等单位） */
+  .ok {
+    margin-top: 20px;   /* 上外边距 20 像素 */
+    padding: 12px;      /* 内边距四边 12px */
+    /* top / left 常配合 position 使用，这里用 margin 演示单位规则即可 */
+  }
 
-/* 两值：上下  左右 */
-margin: 12px 24px;
+  /* ❌ 错误示范：漏写 px —— 多数浏览器会忽略这条声明，等于没写 */
+  .bad {
+    margin-top: 20;     /* 无效！应写成 20px */
+    padding: 12;        /* 无效！应写成 12px */
+  }
 
-/* 单值：四边相同 */
-margin: 16px;
+  /* ✅ 0 可以不写单位 */
+  .zero {
+    margin: 0;          /* 等于 margin: 0px */
+    padding: 12px;
+  }
 
-/* 只改一边 */
-margin-top: 8px;
-padding-left: 12px;`,
+  /* ✅ 百分比：相对父容器宽度 */
+  .half {
+    width: 50%;         /* 父级 .card 宽 140px → 约 70px */
+    margin: 0 auto;     /* 左右 auto：块级盒子水平居中的经典写法 */
+    padding: 8px;
+    background: #d9ebe1;
+    box-sizing: border-box;
+  }
+</style>
+
+<p class="label">左侧 ✅ 带 px；中间 ❌ 漏单位（可能看起来没间距）；右侧 0 与 %</p>
+<div class="row">
+  <div class="card ok">margin-top:20px<br/>padding:12px</div>
+  <div class="card bad">margin-top:20<br/>（缺单位，常无效）</div>
+  <div class="card zero">
+    margin:0
+    <div class="half">width:50%</div>
+  </div>
+</div>`,
           },
           {
             type: 'text',
-            title: '4. margin 合并（collapsing）：空隙「算不对」时先查这个',
+            title: '4. margin / padding：是什么、干什么',
+            body: '**`padding`（内边距）**：内容与边框之间的留白；背景色会铺进 padding 区域。\n\n**`margin`（外边距）**：盒子与盒子之间的空隙；透明、不涂背景。\n\n可写四边统一简写，也可写单边：`margin-top` / `margin-right` / `margin-bottom` / `margin-left`，padding 同理（`padding-top` 等）。\n\n**负 margin**（如 `margin-left: -8px`）可以让盒子「往回拉」，入门少用，知道有这回事即可。',
+          },
+          {
+            type: 'text',
+            title: '4. margin / padding 简写：1～4 个值怎么读',
+            body: '一条声明可同时设四边。**顺时针**记忆：上 → 右 → 下 → 左（从钟表 12 点开始）。\n\n- **1 个值**：四边相同 → `padding: 16px;`\n- **2 个值**：上下 | 左右 → `margin: 12px 24px;`\n- **3 个值**：上 | 左右 | 下 → `padding: 10px 20px 30px;`\n- **4 个值**：上 | 右 | 下 | 左 → `padding: 10px 20px 10px 20px;`\n\n每个非 0 数字都要带单位：`padding: 10px 0;`（上下 10px，左右 0）合法；`padding: 10 0;` 非法。\n\n需要只改一边时，用 longhand 覆盖：`margin-top: 8px;`。',
+          },
+          {
+            type: 'table',
+            title: 'margin / padding 写法全家桶',
+            headers: ['写法', '含义', '等价展开（示意）'],
+            rows: [
+              ['margin: 16px;', '四边都是 16px', 'top/right/bottom/left 全 16px'],
+              ['margin: 12px 24px;', '上下 12，左右 24', 'top/bottom=12px；left/right=24px'],
+              ['margin: 10px 20px 30px;', '上 10，左右 20，下 30', '三值简写'],
+              ['margin: 1px 2px 3px 4px;', '上1 右2 下3 左4', '四值顺时针'],
+              ['margin: 0;', '四边清零（可省单位）', '常用于去掉浏览器默认空隙'],
+              ['margin: 0 auto;', '上下 0，左右自动', '定宽块级盒子水平居中'],
+              ['margin-top: 8px;', '只改上边', '其余边保持原样或继承简写'],
+              ['padding: 8px 16px;', '上下 8，左右 16', '按钮、输入框很常见'],
+              ['padding: 10%;', '四边都是父宽的 10%', '慎用：竖向 % 也相对父宽'],
+            ],
+          },
+          {
+            type: 'code',
+            title: 'Demo：margin / padding 各种写法（可改数字看效果）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  body { font: 13px/1.5 system-ui, sans-serif; color: #1f2a24; }
+  .label { font-size: 12px; color: #5c6b62; margin: 14px 0 6px; }
+  .stage {
+    background: #f7faf8;
+    border: 1px dashed #9bb5a6;
+    padding: 8px; /* 舞台自己的内边距，方便看出子盒子的 margin */
+  }
+  .box {
+    background: #d9ebe1;
+    border: 2px solid #2f6b4f;
+    box-sizing: border-box;
+  }
+
+  /* 1 个值：四边相同 */
+  .m1 { margin: 16px; padding: 12px; }
+
+  /* 2 个值：上下 | 左右 */
+  .m2 { margin: 8px 24px; padding: 8px 16px; }
+
+  /* 4 个值：上 右 下 左（顺时针） */
+  .m4 { margin: 4px 12px 20px 32px; padding: 10px; }
+
+  /* 单边 longhand */
+  .side {
+    margin-top: 20px;      /* 只推上面 */
+    margin-left: 40px;     /* 只推左边 */
+    padding-right: 24px;   /* 只加右边内空 */
+    padding-bottom: 8px;
+  }
+
+  /* 水平居中：定宽 + margin: 0 auto */
+  .center {
+    width: 60%;            /* 相对父容器宽度 */
+    margin: 0 auto;        /* 左右 auto → 居中 */
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* 0 省略单位 */
+  .flush { margin: 0; padding: 10px; }
+</style>
+
+<p class="label">① margin/padding: 单值（四边相同）</p>
+<div class="stage"><div class="box m1">margin:16px; padding:12px</div></div>
+
+<p class="label">② 两值：上下 | 左右</p>
+<div class="stage"><div class="box m2">margin:8px 24px; padding:8px 16px</div></div>
+
+<p class="label">③ 四值：上 右 下 左</p>
+<div class="stage"><div class="box m4">margin:4px 12px 20px 32px</div></div>
+
+<p class="label">④ 单边 + 水平居中 + margin:0</p>
+<div class="stage">
+  <div class="box side">margin-top/left + padding-right</div>
+  <div class="box center">width:60%; margin:0 auto</div>
+  <div class="box flush">margin:0（可贴边）</div>
+</div>`,
+          },
+          {
+            type: 'tip',
+            title: '和 React 行内样式的区别（先记结论）',
+            body: '上面规则针对 **`.css` / `<style>`**。在 React 里写 `style={{ marginTop: 10 }}` 时，**数字会自动当成 px**，等于 `marginTop: \'10px\'`。百分比、或要明确单位时仍要写字符串：`style={{ width: \'50%\' }}`。样式章「动态 className + 内联 style」会展开讲。',
+          },
+          {
+            type: 'text',
+            title: '5. margin 合并（collapsing）：空隙「算不对」时先查这个',
             body: '是什么：两个块级元素的垂直 margin 相遇时，不会简单相加，而是取较大值（有时只留一个）。\n\n特点：主要发生在「上下方向」相邻的块级盒子之间；水平 margin 不合并。父子之间、兄弟之间都可能发生。\n\n为什么存在：历史排版规则，模拟报纸段落间距；现代布局里常让人困惑。\n\n怎么用 / 怎么避：需要精确间距时，用 padding 代替 margin；或父级改 display:flex + gap（Flex 子项之间不发生传统 margin 合并）；或只设一边的 margin（如只设 margin-bottom）。\n\n易错：两个 div 各设 margin-top:20px，中间空隙是 20 不是 40——初学者最常懵的点之一。',
           },
           {
@@ -463,6 +638,7 @@ padding-left: 12px;`,
             ordered: true,
             items: [
               '全局是否已设 box-sizing: border-box？',
+              'CSS 里的宽度/间距是否都带了 px 或 %？（只有 0 可省略单位）',
               '设 width:50% 两列时，有没有额外 padding/border 撑破一行？',
               '间距用 margin 还是 padding？背景要不要延伸到间距区？',
               '垂直空隙异常时，是否发生了 margin 合并？',
@@ -472,15 +648,16 @@ padding-left: 12px;`,
           {
             type: 'tip',
             title: '一句话记忆',
-            body: '盒子四层：content → padding → border → margin。border-box 让 width 含 padding+border，心算简单、布局不撑破。margin 管盒子间距且可能垂直合并；padding 管内容与边框间留白且吃背景色。',
+            body: '盒子四层：content → padding → border → margin。border-box 让 width 含 padding+border。CSS 里距离必须带单位（`10px` / `50%`），只有 `0` 能省略；margin/padding 简写按「上右下左」顺时针读。',
           },
         ],
       },
     },
     {
       id: 'css-selectors',
-      title: 'CSS 选择器详解（怎么选中元素）',
-      summary: '标签、class、id、后代、子代、并列、伪类……写样式前先会「选人」',
+      title: 'CSS 选择器详解（含优先级实战）',
+      summary:
+        '标签/class/id、关系与伪类；优先级怎么算、为何改不动；6 个可编辑 Demo 对照',
       content: {
         sections: [
           {
@@ -504,14 +681,21 @@ padding-left: 12px;`,
             language: 'html',
             live: true,
             body: `<style>
-  p { color: #333; }            /* 标签：所有 p */
-  .title { font-size: 20px; font-weight: 600; }  /* class */
-  #main { max-width: 800px; margin: 0 auto; }     /* id */
-  * { box-sizing: border-box; } /* 通配：所有元素（reset 常用） */
+  /* 标签选择器 p：选中页面上所有 <p> 段落 */
+  p { color: #333; } /* 文字颜色深灰 */
+  /* class 选择器 .title：选中 class="title" 的元素（最常用，可复用） */
+  .title { font-size: 20px; font-weight: 600; } /* 字号 20px，字重半粗 */
+  /* id 选择器 #main：选中 id="main" 的元素（一页建议唯一，优先级高） */
+  #main { max-width: 800px; margin: 0 auto; } /* 最大宽 800px，左右 auto 实现水平居中 */
+  /* 通配 *：所有元素；reset 里常用来统一 box-sizing */
+  * { box-sizing: border-box; }
 </style>
 
+<!-- id 在一个页面里应唯一；这里是主内容区容器 -->
 <div id="main">
+  <!-- 这个 p 同时匹配 p 和 .title 两条规则 -->
   <p class="title">标题（.title + p 都匹配）</p>
+  <!-- 只匹配 p { color: #333 } -->
   <p>正文（只匹配 p）</p>
 </div>`,
           },
@@ -526,23 +710,29 @@ padding-left: 12px;`,
             language: 'html',
             live: true,
             body: `<style>
-  /* 后代：.card 里所有 p（含嵌套很深的） */
-  .card p { color: #5c6b63; }
+  /* 后代选择器（空格）：.card 内部任意层级的 p 都会选中，包括嵌套很深的 */
+  .card p { color: #5c6b63; } /* 灰色正文 */
 
-  /* 子代：只选 .card 的直接孩子 p */
-  .card > p { font-weight: 600; color: #1f2a24; }
+  /* 子代选择器（>）：只选 .card 的直接孩子 p，孙子 p 选不中 */
+  .card > p { font-weight: 600; color: #1f2a24; } /* 更粗、更深，只作用于直接孩子 */
 
-  /* 邻接兄弟：h2 后面紧挨着的第一个 p */
-  h2 + p { margin-top: 0; color: #2f6b4f; }
+  /* 邻接兄弟（+）：h2 后面紧挨着的第一个 p（中间不能夹别的同级元素） */
+  h2 + p { margin-top: 0; color: #2f6b4f; } /* 去掉顶部 margin，标题下第一段更紧凑 */
 
-  /* 通用兄弟：h2 后面所有同级 p */
-  h2 ~ p { line-height: 1.7; }
+  /* 通用兄弟（~）：h2 后面所有同级 p（不要求紧挨着） */
+  h2 ~ p { line-height: 1.7; } /* 行高 1.7，多段正文更易读 */
 </style>
 
+<!-- section：语义化区块；class="card" 供选择器匹配 -->
 <section class="card">
   <h2>标题</h2>
+  <!-- 直接孩子 p：.card p 和 .card > p 都能选中 -->
   <p>直接孩子段落（> 能选中，字更粗）</p>
-  <div><p>孙子段落（后代能选中变灰，> 选不中所以不加粗）</p></div>
+  <div>
+    <!-- 孙子 p：只有 .card p 能选中（变灰），> 选不中所以不加粗 -->
+    <p>孙子段落（后代能选中变灰，> 选不中所以不加粗）</p>
+  </div>
+  <!-- 第二个同级 p：~ 也能选中，行高 1.7 -->
   <p>第二个同级 p（~ 也能选中）</p>
 </section>`,
           },
@@ -555,17 +745,20 @@ padding-left: 12px;`,
             type: 'code',
             title: '并集 / 交集示例',
             language: 'css',
-            body: `/* 并集：标题统一字体 */
-h1, h2, h3 { font-family: Georgia, serif; }
+            body: `/* 并集选择器（逗号）：多个选择器共享同一套样式，减少重复代码 */
+h1, h2, h3 { font-family: Georgia, serif; } /* 所有 h1/h2/h3 标题用衬线字体 */
 
-/* 交集：既是 p 又有 lead class */
-p.lead { font-size: 18px; line-height: 1.6; }
+/* 交集选择器（连写无空格）：必须同时满足——既是 p 标签又有 class="lead" */
+p.lead { font-size: 18px; line-height: 1.6; } /* 导语段落：更大字号、更松行高 */
 
-/* 多 class 交集 */
-.btn.primary { background: #2f6b4f; color: #fff; }
-.btn.ghost { background: transparent; border: 1px solid #2f6b4f; }
+/* 多 class 交集：同一元素同时有 btn 和 primary 两个 class */
+.btn.primary { background: #2f6b4f; color: #fff; } /* 实心主按钮：绿底白字 */
+.btn.ghost { background: transparent; border: 1px solid #2f6b4f; } /* 幽灵按钮：透明底+描边 */
 
-/* HTML：<button class="btn primary">确定</button> */`,
+/* 对应 HTML 写法示例（注释说明，不是可运行标签）：
+   <button class="btn primary">确定</button>
+   class 属性里用空格分隔多个 class 名 */
+`,
           },
           {
             type: 'text',
@@ -576,12 +769,20 @@ p.lead { font-size: 18px; line-height: 1.6; }
             type: 'code',
             title: '属性选择器常用写法',
             language: 'css',
-            body: `input[type="text"] { border: 1px solid #ccc; border-radius: 6px; }
+            body: `/* 属性选择器：按 HTML 属性名/值来「选人」，表单和链接样式特别常用 */
+
+/* [type="text"]：选中 type 属性恰好等于 text 的 input（文本框） */
+input[type="text"] { border: 1px solid #ccc; border-radius: 6px; }
+/* 密码框：字母间距加大，输入时圆点更易区分 */
 input[type="password"] { letter-spacing: 2px; }
-input[disabled] { opacity: 0.5; cursor: not-allowed; }
-a[href^="https"] { color: #2f6b4f; }  /* 外链 */
+/* [disabled]：只要有 disabled 属性就选中，不管值是什么 */
+input[disabled] { opacity: 0.5; cursor: not-allowed; } /* 半透明 + 禁止光标 */
+/* [href^="https"]：href 以 https 开头的外链 */
+a[href^="https"] { color: #2f6b4f; }
+/* [href$=".pdf"]：href 以 .pdf 结尾的链接；::after 在链接文字后面插入内容 */
 a[href$=".pdf"]::after { content: " PDF"; }
-img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
+/* [alt]：有 alt 属性的 img（无障碍相关，有 alt 说明图片有替代文字） */
+img[alt] { outline: 1px dashed #ccc; }`,
           },
           {
             type: 'text',
@@ -594,58 +795,289 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 伪类 :hover —— 鼠标悬停时的状态（交互反馈） */
   .link:hover { color: #2f6b4f; text-decoration: underline; }
+  /* 伪类 :active —— 鼠标按下未松开时的状态 */
   .link:active { opacity: 0.7; }
+  /* :first-child —— 作为父元素第一个孩子的 .item（且标签要匹配） */
   .item:first-child { font-weight: 700; }
-  .item:nth-child(odd) { background: #f7faf8; } /* 奇数行 */
+  /* :nth-child(odd) —— 奇数位置的 .item，做斑马纹背景 */
+  .item:nth-child(odd) { background: #f7faf8; }
+  /* :focus —— 输入框获得键盘焦点时（Tab 切过来） */
   input:focus {
-    outline: 2px solid #2f6b4f;
-    outline-offset: 2px;
+    outline: 2px solid #2f6b4f; /* 焦点描边，比浏览器默认更好看 */
+    outline-offset: 2px; /* 描边与边框之间留 2px 空隙 */
   }
-  .btn::before { content: "→ "; }
+  /* 伪元素 ::before —— 在元素内容前面插入虚拟节点，必须写 content 才显示 */
+  .btn::before { content: "→ "; } /* 按钮文字前加箭头 */
 </style>
 
+<!-- a：超链接；class="link" 供伪类样式使用 -->
 <a class="link" href="#">悬停 / 按下我</a>
+<!-- ul/li：无序列表，每个 li 是一个列表项 -->
 <ul>
   <li class="item">一</li>
   <li class="item">二</li>
   <li class="item">三</li>
 </ul>
+<!-- input：单行输入框；placeholder 是占位提示文字 -->
 <input type="text" placeholder="聚焦看描边" />
 <button class="btn">继续</button>`,
           },
           {
+            type: 'tip',
+            title: '一句话记住',
+            body: '多条 CSS 同时命中同一元素时，不是「后写的一定赢」，而是先比**优先级（特异性）**，优先级相同才看**书写顺序**。粗记：`!important` > 行内 `style` > `#id` > `.class` / 属性 / 伪类 > 标签 > `*`。日常尽量只用 class，少用 id 写样式，几乎不用 `!important`。',
+          },
+          {
             type: 'text',
-            title: '6. 优先级（特异性）：谁覆盖谁',
-            body: '是什么：多条规则同时命中同一元素时，浏览器按「特异性」决定哪条生效。\n\n粗记顺序（高 → 低）：\n!important > 行内 style > id > class / 属性 / 伪类 > 标签 > 通配 *。\n\n特点：同级别、同特异性时，后写的覆盖先写的（源码顺序）。\n\n为什么了解：改样式「怎么改都不生效」，多半是优先级不够或被更具体的选择器盖掉。\n\n怎么用：日常只用 class，避免 id 写样式、避免 !important；需要覆盖时用「同样或更高特异性」的选择器，而不是无脑加 !important。\n\n易错：#nav .item 比 .item Specificity 高——只改 .item 可能赢不了。',
+            title: '6. 是什么：优先级（特异性 Specificity）',
+            body: '当你给同一个元素写了多条会改同一属性的规则，浏览器要决定「听谁的」。这个比较过程叫**特异性计算**。\n\n可以把它想成记分：选择器越「点名到人」，分越高，越高的覆盖越低的。\n\n**记分口诀（四档，从左到右）：**\n1. **行内 style**（写在 HTML 的 `style="..."` 上）—— 极高\n2. **id 选择器**（`#app`）—— 每个 id 记 1 分（这一档）\n3. **class / 属性选择器 / 伪类**（`.btn`、`[type="text"]`、`:hover`）—— 每个记 1 分\n4. **标签 / 伪元素**（`div`、`p`、`::before`）—— 每个记 1 分\n\n比较时从左到右比：先比「有没有行内」；没有再比 id 个数；再比 class 档个数；再比标签档个数。左边已经分出胜负，右边不用再比。\n\n**通配 `*`、组合符（空格、`>`、`+`、`~`）、`:where()` 不计分。**',
           },
           {
             type: 'table',
-            title: '选择器优先级直觉对照',
-            intro: '同一元素被多条规则命中时，谁赢？（简化版，够日常用）',
-            headers: ['选择器示例', '特异性（粗记）', '说明'],
+            title: '常见选择器怎么计分（入门够用）',
+            intro: '下面用「(id数, class档数, 标签数)」表示，数字越大越优先。',
+            headers: ['选择器', '计分示意', '谁更容易赢'],
             rows: [
-              ['*', '最低', '通配，几乎总是输'],
-              ['div', '低', '标签'],
-              ['.card', '中', 'class，日常主力'],
-              ['.card.active', '中+', '多 class 叠加'],
-              ['#header', '高', 'id，慎用写样式'],
-              ['style="..."', '更高', '行内样式'],
-              ['!important', '最高', '能压过普通声明，但难维护'],
+              ['*', '(0,0,0)', '几乎总是输'],
+              ['div / p', '(0,0,1)', '最低档，易被覆盖'],
+              ['.card', '(0,1,0)', '日常主力'],
+              ['p.lead / .btn.primary', '(0,1,1) / (0,2,0)', '多 class 更具体'],
+              ['.card .title', '(0,2,0)', '两个 class，常盖过单独 .title'],
+              ['#header', '(1,0,0)', '轻易盖过所有 class'],
+              ['#nav .item', '(1,1,0)', '比单独 .item 高得多'],
+              ['style="color:red"', '行内档', '普通选择器很难赢它'],
+              ['color: red !important', '另开通道', '能压普通声明，但难维护'],
             ],
-            note: '同等特异性看源码顺序：后写的赢。',
+            note: '伪类 :hover、:nth-child 和 class 同一档；伪元素 ::before 和标签同一档。',
+          },
+          {
+            type: 'text',
+            title: '6. 同优先级怎么办？看源码顺序',
+            body: '如果两条规则**特异性完全相同**，则**后写的覆盖先写的**（同一文件里靠后的、或后加载的样式表）。\n\n所以：\n- `.a { color: red }` 写在前面，`.a { color: blue }` 写在后面 → 最终蓝色\n- 但 `.box .a { color: red }`（两个 class）永远压过后面的单独 `.a { color: blue }`——因为左边分数已经更高，顺序救不了低分那条',
           },
           {
             type: 'code',
-            title: '优先级示例',
-            language: 'css',
-            body: `p { color: black; }        /* 标签：低 */
-.text { color: blue; }     /* class：赢 black */
-#title { color: red; }      /* id：赢 blue */
-/* HTML: <p id="title" class="text"> → 最终红色 */
+            title: 'Demo①：标签 < class < id（颜色谁赢）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  /* (0,0,1) 标签 —— 最低 */
+  p { color: #999; font-size: 16px; }
 
-/* 提高 specificity 的正确方式：加父级，而不是 !important */
-.card .title { color: #1f2a24; }`,
+  /* (0,1,0) class —— 压过标签 */
+  .text { color: #2f6b4f; }
+
+  /* (1,0,0) id —— 压过 class */
+  #hero { color: #c53030; font-weight: 700; }
+
+  .hint { font-size: 12px; color: #5c6b62; margin: 8px 0; }
+</style>
+
+<p class="hint">下面三行都是 p，但命中的选择器不同 → 最终颜色不同</p>
+
+<!-- 只命中 p → 灰色 -->
+<p>① 只有标签 p → 灰色（最低）</p>
+
+<!-- 命中 p + .text → class 赢 → 绿色 -->
+<p class="text">② class="text" → 绿色（class 盖过标签）</p>
+
+<!-- 命中 p + .text + #hero → id 赢 → 红色 -->
+<p id="hero" class="text">③ 同时有 id 和 class → 红色（id 最高）</p>
+
+<p class="hint">试着删掉 #hero 那条规则，或去掉 id="hero"，看颜色怎么变。</p>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo②：更具体的 class 组合 vs 单独 class',
+            language: 'html',
+            live: true,
+            body: `<style>
+  /* (0,1,0) */
+  .title { color: #999; font-size: 18px; }
+
+  /* (0,2,0) —— 两个 class，比上面更具体 */
+  .card .title { color: #2f6b4f; }
+
+  /* (0,3,0) —— 三个 class，再压一层 */
+  .card.featured .title { color: #c53030; }
+
+  .card {
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #9bb5a6;
+    background: #f7faf8;
+  }
+  .card.featured { border-color: #c53030; background: #fde8e8; }
+  .hint { font-size: 12px; color: #5c6b62; }
+</style>
+
+<p class="hint">三个 .title 文字一样，但祖先不同 → 命中规则不同</p>
+
+<!-- 只命中 .title → 灰 -->
+<p class="title">卡片外的 .title → 灰色</p>
+
+<!-- 命中 .title 和 .card .title → 绿 -->
+<div class="card">
+  <p class="title">.card 里的 .title → 绿色（.card .title 赢）</p>
+</div>
+
+<!-- 命中三条，.card.featured .title 最具体 → 红 -->
+<div class="card featured">
+  <p class="title">.card.featured 里的 .title → 红色（三个 class 最具体）</p>
+</div>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo③：同优先级时「后写的赢」',
+            language: 'html',
+            live: true,
+            body: `<style>
+  /* 两条都是 (0,1,0)，特异性相同 → 看书写顺序 */
+  .box { 
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #9bb5a6;
+  }
+
+  .box { background: #fde8e8; color: #c53030; } /* 先写：浅红 */
+  .box { background: #eef6f1; color: #2f6b4f; } /* 后写：同优先级，覆盖上面 → 浅绿 */
+
+  .hint { font-size: 12px; color: #5c6b62; }
+</style>
+
+<p class="hint">两条都是单独的 .box，分数一样 → 以后面那条为准</p>
+<div class="box">最终应是绿底绿字（后写的那条生效）</div>
+
+<p class="hint">把下面注释打开，会再次被「更具体」的规则盖掉——顺序救不了低分。</p>
+<style>
+  /* 取消下面注释试一下：
+  .wrap .box { background: #fff3cd; color: #92400e; }
+  */
+</style>
+<div class="wrap">
+  <div class="box">若启用 .wrap .box，会变成黄底（两个 class 更高）</div>
+</div>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo④：行内 style 压过 class / id',
+            language: 'html',
+            live: true,
+            body: `<style>
+  .btn {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 6px 8px 6px 0;
+    border-radius: 8px;
+    background: #2f6b4f; /* class 想要的绿色 */
+    color: #fff;
+    border: none;
+    font: inherit;
+  }
+  #special {
+    background: #1d4ed8; /* id 想要的蓝色 —— 比 class 高 */
+  }
+  .hint { font-size: 12px; color: #5c6b62; margin: 8px 0; }
+</style>
+
+<p class="hint">三个按钮都带 .btn；有的还有 id / 行内 style</p>
+
+<button class="btn">① 只有 class → 绿色</button>
+
+<button class="btn" id="special">② 有 id → 蓝色（id > class）</button>
+
+<!-- 行内 style 比 id 还高 -->
+<button class="btn" id="special" style="background:#c53030;">
+  ③ 行内 style → 红色（行内最高档）
+</button>
+
+<p class="hint">React 里 style={{}} 最终也会变成这种行内 style，所以能盖过普通 class——这也是「能 class 就别滥用 style」的原因之一。</p>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo⑤：!important 能压过谁？为何少用',
+            language: 'html',
+            live: true,
+            body: `<style>
+  .text { color: #2f6b4f; }           /* 普通 class：绿 */
+  #title { color: #1d4ed8; }          /* id：蓝，本应压过 class */
+  .text-force { color: #c53030 !important; } /* !important：红，能压普通 id/class */
+
+  /* 两个 !important 互相比：仍看特异性，再看顺序 */
+  .a { color: orange !important; }
+  .wrap .a { color: purple !important; } /* 更具体的 !important 赢 */
+
+  .box { padding: 10px; margin: 8px 0; border: 1px solid #ddd; }
+  .hint { font-size: 12px; color: #5c6b62; }
+</style>
+
+<p id="title" class="text box">① id + class，无 !important → 蓝色（id 赢）</p>
+
+<p id="title" class="text text-force box">② 加上 .text-force !important → 红色（important 压过 id）</p>
+
+<div class="wrap">
+  <p class="a box">③ 两个 !important：.wrap .a 更具体 → 紫色</p>
+</div>
+
+<p class="hint">
+  !important 像「作弊器」：一时改得动，团队里会演变成互相加 important 的战争。<br/>
+  正确做法：提高选择器特异性（加父级 class），或调整结构，而不是堆 !important。
+</p>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo⑥：实战翻车 —— 为什么改 .item 不生效？',
+            language: 'html',
+            live: true,
+            body: `<style>
+  /* 组件库 / 旧代码里常见：带 id 的导航 */
+  #nav .item {
+    color: #1d4ed8;          /* (1,1,0) 很高 */
+    padding: 6px 10px;
+    display: inline-block;
+  }
+
+  /* 你后来想改成绿色 —— 只写了 .item */
+  .item {
+    color: #2f6b4f;          /* (0,1,0) 更低 → 赢不了上面 */
+  }
+
+  /* ✅ 正确覆盖：至少达到同等或更高特异性 */
+  #nav .item.is-active,
+  #nav .item:hover {
+    color: #2f6b4f;          /* 仍带 #nav，才能盖过 #nav .item */
+    font-weight: 700;
+  }
+
+  #nav { background: #f4f7f5; padding: 8px; }
+  .hint { font-size: 12px; color: #5c6b62; margin-top: 10px; }
+</style>
+
+<nav id="nav">
+  <a class="item" href="#">首页（仍是蓝：.item 盖不过 #nav .item）</a>
+  <a class="item is-active" href="#">当前页（绿：用了 #nav .item.is-active）</a>
+  <a class="item" href="#">关于（悬停变绿）</a>
+</nav>
+
+<p class="hint">
+  打开开发者工具看 Computed：你会发现「想改的 .item { color }」被划掉，<br/>
+  生效的是 #nav .item。这就是「怎么改都不生效」的最常见原因。
+</p>`,
+          },
+          {
+            type: 'list',
+            title: '优先级实战清单（改不动样式时按序查）',
+            ordered: true,
+            items: [
+              'DevTools → Elements → 右侧 Styles：被划掉的规则就是输了的那条',
+              '数一数对手选择器有几个 id、几个 class，你的是否更低',
+              '同优先级？看你的规则是否写在对方后面（或被更晚加载的 CSS 盖住）',
+              '有没有行内 style / !important 挡着',
+              '覆盖时优先加父级 class（.Card .title），避免新加 !important',
+              '能不用 id 写样式就不用——id 太重，后面难盖',
+            ],
           },
           {
             type: 'list',
@@ -658,12 +1090,13 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
               '伪类：:hover、:focus —— 交互态',
               '伪类：:first-child、:nth-child —— 列表首尾/斑马纹',
               '并集：h1, h2, h3 —— 批量设标题',
+              '优先级：改不动时先比特异性，再比书写顺序',
             ],
           },
           {
             type: 'tip',
             title: '一句话记忆',
-            body: 'class 复用样式；> 只选儿子，空格选所有后代；+ 紧挨的下一个兄弟。伪类管状态（:hover），伪元素管装饰（::before）。优先级：id > class > 标签；少用 !important，多用 class 组合精确命中。',
+            body: 'class 复用样式；`>` 只选儿子，空格选所有后代；`+` 紧挨的下一个兄弟。伪类管状态（`:hover`），伪元素管装饰（`::before`）。优先级：行内 > id > class > 标签；同级比先后；少用 `!important`，多用「更具体的 class 组合」精确命中。',
           },
         ],
       },
@@ -700,27 +1133,29 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
-  /* ❌ 没有 display:flex，justify/align 不会按 Flex 生效 */
+  /* ❌ 错误示范：没有 display:flex，这不是 flex 容器 */
   .wrong {
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    border: 1px solid #c53030;
+    justify-content: center; /* 主轴居中——但父级不是 flex，这些属性不会按 Flex 生效 */
+    align-items: center; /* 交叉轴居中——同样无效 */
+    height: 80px; /* 有高度，但 span 仍是普通 inline，不会垂直居中 */
+    border: 1px solid #c53030; /* 红色边框标记「错误」区域 */
     background: #fde8e8;
   }
 
-  /* ✅ 先开启 flex，再设对齐 */
+  /* ✅ 正确示范：先开启 flex，再写对齐属性 */
   .right {
-    display: flex;           /* 第一步：必须先开 */
-    justify-content: center; /* 第二步：主轴居中 */
-    align-items: center;     /* 第二步：交叉轴居中 */
+    display: flex; /* 第一步：必须把父元素变成 flex 容器，后面属性才有意义 */
+    justify-content: center; /* 第二步：子项在主轴（默认水平）方向居中 */
+    align-items: center; /* 第二步：子项在交叉轴（默认垂直）方向居中 */
     height: 80px;
     border: 1px solid #2f6b4f;
     background: #eef6f1;
   }
 </style>
 
+<!-- 没有 flex 的容器：span 不会真正居中 -->
 <div class="wrong"><span>我没有真正居中</span></div>
+<!-- 有 flex 的容器：span 在 80px 高度里水平+垂直居中 -->
 <div class="right"><span>我居中了</span></div>`,
           },
           {
@@ -745,20 +1180,23 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* display:flex：容器本身像 block，独占一整行 */
   .as-flex {
-    display: flex;          /* 像块级：独占一行 */
-    gap: 8px;
+    display: flex;
+    gap: 8px; /* 子项间距 */
     padding: 8px;
     background: #d9ebe1;
   }
 
+  /* display:inline-flex：容器本身像 inline-block，可嵌在段落里并排 */
   .as-inline-flex {
-    display: inline-flex;   /* 像行内块：可并排、可嵌在段落里 */
+    display: inline-flex;
     gap: 8px;
     padding: 8px;
     background: #f3e6d4;
   }
 
+  /* 两种容器里的 span 子项样式相同——内部 flex 能力完全一样 */
   .as-flex span,
   .as-inline-flex span {
     padding: 4px 8px;
@@ -767,12 +1205,14 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
   }
 </style>
 
+<!-- flex 容器默认独占一行，后面的 p 会被挤到下一行 -->
 <p>display:flex 的容器（自己独占一行）：</p>
 <div class="as-flex">
   <span>A</span><span>B</span><span>C</span>
 </div>
 <p>后面的文字会被挤到下一行。</p>
 
+<!-- inline-flex 可以嵌在 p 段落中间，与前后文字同一段 -->
 <p>
   段落里可以嵌
   <span class="as-inline-flex">
@@ -812,26 +1252,30 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             type: 'code',
             title: '轴示意图（文字版）',
             language: 'text',
-            body: `【flex-direction: row】（像 Flutter Row）
+            body: `# Flex 主轴与交叉轴文字示意图（配合 flex-direction 理解 justify / align）
 
-   主轴 →→→→→→→→→→→→→→→→→→
+【flex-direction: row】（默认，像 Flutter Row）
+
+   主轴 →→→→→→→→→→→→→→→→→→  （子项从左到右排）
   ┌─────────────────────────┐
-  │  [1]   [2]   [3]        │  ↓ 交叉轴
+  │  [1]   [2]   [3]        │  ↓ 交叉轴（垂直方向）
   └─────────────────────────┘
-  justify-content：沿主轴（左右）怎么分布
-  align-items     ：沿交叉轴（上下）怎么对齐
+  justify-content：沿主轴分布（row 时管「左右怎么排」）
+  align-items     ：沿交叉轴对齐（row 时管「上下怎么对齐」）
 
 
 【flex-direction: column】（像 Flutter Column）
 
-  主轴 ↓
+  主轴 ↓  （子项从上到下排）
   ┌─────────┐
   │  [1]    │
-  │  [2]    │  交叉轴 →→→
+  │  [2]    │  交叉轴 →→→  （水平方向）
   │  [3]    │
   └─────────┘
-  justify-content：沿主轴（上下）怎么分布
-  align-items     ：沿交叉轴（左右）怎么对齐`,
+  justify-content：沿主轴分布（column 时管「上下怎么排」）
+  align-items     ：沿交叉轴对齐（column 时管「左右怎么对齐」）
+
+# 记住：justify 永远管主轴，align-items 管交叉轴；方向由 flex-direction 决定`,
           },
           {
             type: 'text',
@@ -897,15 +1341,17 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 公共 flex 容器样式：下面两个 demo 共用 */
   .demo {
-    display: flex;     /* 必须先开 flex */
-    gap: 8px;
-    margin-bottom: 16px;
+    display: flex; /* 必须先开启 flex，direction 等属性才生效 */
+    gap: 8px; /* 子项间距 8px */
+    margin-bottom: 16px; /* 两个 demo 之间拉开距离 */
     padding: 8px;
-    border: 1px dashed #ccc;
+    border: 1px dashed #ccc; /* 虚线框标出 flex 容器范围 */
   }
-  .row-demo { flex-direction: row; }       /* 横排（可省略，默认） */
-  .col-demo { flex-direction: column; }    /* 竖排 */
+  .row-demo { flex-direction: row; } /* 主轴水平：子项横排 1 2 3（默认值，可省略） */
+  .col-demo { flex-direction: column; } /* 主轴垂直：子项竖排，1 在上 3 在下 */
+  /* 只选 .demo 的直接子 div（每个数字块） */
   .demo div {
     padding: 10px 14px;
     background: #eef6f1;
@@ -913,12 +1359,12 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
   }
 </style>
 
-<!-- 横着：1 2 3 -->
+<!-- row：flex-direction 默认就是 row，子项从左到右横排 -->
 <div class="demo row-demo">
   <div>1</div><div>2</div><div>3</div>
 </div>
 
-<!-- 竖着：1 在上，3 在下 -->
+<!-- column：主轴改为垂直，同样的 HTML 变成上下堆叠 -->
 <div class="demo col-demo">
   <div>1</div><div>2</div><div>3</div>
 </div>`,
@@ -945,17 +1391,17 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             live: true,
             body: `<style>
   .box {
-    display: flex;
-    width: 260px;          /* 故意做窄，方便看换行 */
+    display: flex; /* flex 容器 */
+    width: 260px; /* 故意做窄，三个 100px 子项放不下，方便观察换行 */
     gap: 8px;
     margin-bottom: 12px;
     border: 1px solid #ccc;
     padding: 8px;
   }
-  .no-wrap { flex-wrap: nowrap; } /* 不换行：挤在一起或溢出 */
-  .wrap { flex-wrap: wrap; }      /* 换行 */
+  .no-wrap { flex-wrap: nowrap; } /* 默认：不换行，子项可能被挤扁或溢出容器 */
+  .wrap { flex-wrap: wrap; } /* 放不下时折到下一行，像 Flutter Wrap */
   .box span {
-    flex: 0 0 100px;       /* 基础宽 100px，不放大不缩小 */
+    flex: 0 0 100px; /* 简写：不放大(0) 不缩小(0) 基础宽 100px——每个标签固定 100px */
     text-align: center;
     padding: 8px 0;
     background: #f3e6d4;
@@ -963,9 +1409,11 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
   }
 </style>
 
+<!-- nowrap：三个 span 挤在一行（可能溢出或被压缩） -->
 <div class="box no-wrap">
   <span>1</span><span>2</span><span>3</span>
 </div>
+<!-- wrap：放不下的 span 自动换到第二行 -->
 <div class="box wrap">
   <span>1</span><span>2</span><span>3</span>
 </div>`,
@@ -996,10 +1444,10 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             live: true,
             body: `<style>
   .j {
-    display: flex;           /* 先开 flex */
-    justify-content: center; /* ← 改成 flex-start / flex-end / space-between 等 */
-    align-items: center;
-    height: 56px;
+    display: flex; /* 先开 flex */
+    justify-content: center; /* 主轴分布：当前是 center（居中）；可改成 flex-start / space-between 等做实验 */
+    align-items: center; /* 交叉轴：垂直居中（row 时管上下） */
+    height: 56px; /* 给高度，align-items 才有垂直对齐效果 */
     margin-bottom: 8px;
     padding: 0 8px;
     border: 1px solid #e6ddd0;
@@ -1008,7 +1456,7 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
   .j span { padding: 4px 10px; background: #eef6f1; border-radius: 4px; }
 </style>
 
-<!-- 依次试：flex-start | center | flex-end | space-between | space-around | space-evenly -->
+<!-- 实验：把 justify-content 依次改成 flex-start | center | flex-end | space-between | space-around | space-evenly -->
 <div class="j">
   <span>A</span><span>B</span><span>C</span>
 </div>`,
@@ -1038,16 +1486,17 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             body: `<style>
   .cross {
     display: flex;
-    align-items: center;    /* ← 改成 flex-start / flex-end / stretch 对比 */
-    height: 100px;
+    align-items: center; /* 交叉轴对齐：当前 center；可改成 flex-start / flex-end / stretch 对比 */
+    height: 100px; /* ★ 父级必须有交叉轴方向尺寸（row 时要有 height），对齐才看得出差别 */
     gap: 8px;
     border: 1px dashed #999;
     padding: 8px;
   }
   .cross div { background: #d9ebe1; padding: 8px; border-radius: 4px; }
-  .tall { height: 64px; }   /* 故意做一个更高的，方便观察 */
+  .tall { height: 64px; } /* 故意做一个更高的块，方便观察垂直对齐差异 */
 </style>
 
+<!-- 三个子项高度不同：改 align-items 看「短/高/短」如何对齐 -->
 <div class="cross">
   <div>短</div>
   <div class="tall">高</div>
@@ -1082,12 +1531,13 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             type: 'code',
             title: 'gap 写法',
             language: 'css',
-            body: `.box {
-  display: flex;
-  gap: 12px;        /* 行间距和列间距都是 12px */
-  gap: 8px 16px;    /* 第一个：行间距；第二个：列间距 */
-  row-gap: 8px;     /* 只改行间距 */
-  column-gap: 16px; /* 只改列间距 */
+            body: `/* gap：专门控制 flex/grid 子项之间的间距，比 margin 更干净（不会和首尾外边距纠缠） */
+.box {
+  display: flex; /* gap 只在 flex 或 grid 容器上生效 */
+  gap: 12px; /* 行间距和列间距都是 12px（一维 flex 横排时就是子项之间的空隙） */
+  gap: 8px 16px; /* 两个值：第一个是 row-gap（行距），第二个是 column-gap（列距） */
+  row-gap: 8px; /* 只改行与行之间的间距（wrap 多行时有用） */
+  column-gap: 16px; /* 只改列与列之间的间距 */
 }`,
           },
           {
@@ -1096,20 +1546,22 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 典型顶栏：综合运用 flex 容器五大属性 */
   .nav {
-    display: flex;                 /* 1. 开启 flex */
-    flex-direction: row;           /* 2. 主轴水平（默认，可省略） */
-    justify-content: space-between;/* 3. 主轴：两端对齐 */
-    align-items: center;           /* 4. 交叉轴：垂直居中 */
-    gap: 16px;                     /* 5. 子项空隙 */
-    height: 56px;
-    padding: 0 16px;
+    display: flex; /* 1. 开启 flex，默认 row 横排 */
+    flex-direction: row; /* 2. 主轴水平（默认值，写出来是为了对照学习顺序） */
+    justify-content: space-between; /* 3. 主轴：Logo 靠左、按钮靠右，中间均分空隙 */
+    align-items: center; /* 4. 交叉轴：Logo / 链接 / 按钮垂直居中对齐 */
+    gap: 16px; /* 5. 子项之间最小间距 16px（space-between 时 gap 仍生效） */
+    height: 56px; /* 顶栏固定高度 */
+    padding: 0 16px; /* 左右内边距，内容不贴屏幕边缘 */
     background: #fff;
-    border: 1px solid #e6ddd0;
+    border: 1px solid #e6ddd0; /* 底部分割线效果 */
   }
-  .nav a { color: #5c6b63; text-decoration: none; }
+  .nav a { color: #5c6b63; text-decoration: none; } /* 链接去下划线、设颜色 */
 </style>
 
+<!-- header 语义：页面顶部导航区域 -->
 <div class="nav">
   <strong>Logo</strong>
   <a href="#">课程</a>
@@ -1221,35 +1673,36 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 每一行 demo 的 flex 父容器 */
   .line {
-    display: flex;   /* 父级必须是 flex，子项 flex:1 才有效 */
+    display: flex; /* ★ 父级必须是 flex，子项上的 flex:1 等才会生效 */
     gap: 8px;
     margin-bottom: 12px;
   }
   .line > div { background: #eef6f1; padding: 10px; border-radius: 6px; }
 
-  .grow { flex: 1; }           /* 吃剩余，多份均分 */
-  .two { flex: 2; }            /* 占两份 */
+  .grow { flex: 1; } /* 简写 flex: 1 1 0%：能伸能缩，从 0 起分剩余空间（≈ Flutter Expanded） */
+  .two { flex: 2; } /* 占 2 份，旁边 flex:1 占 1 份，比例 1:2 */
   .fixed {
-    width: 80px;
-    flex-shrink: 0;            /* 不要被挤扁 */
+    width: 80px; /* 固定宽度 80px */
+    flex-shrink: 0; /* 空间不够时也不要被挤扁（顶栏 Logo/按钮常用） */
   }
 </style>
 
-<!-- 三个 flex:1 → 三等分 -->
+<!-- 三个 flex:1 → 剩余空间三等分 -->
 <div class="line">
   <div class="grow">1</div>
   <div class="grow">1</div>
   <div class="grow">1</div>
 </div>
 
-<!-- 左边固定，右边 Expanded -->
+<!-- 左边固定 80px，右边 flex:1 吃掉全部剩余（≈ 固定 + Expanded） -->
 <div class="line">
   <div class="fixed">固定</div>
   <div class="grow">剩余全给我</div>
 </div>
 
-<!-- 1:2 -->
+<!-- flex:1 与 flex:2 → 按 1:2 比例分配剩余空间 -->
 <div class="line">
   <div class="grow">1份</div>
   <div class="two">2份</div>
@@ -1268,18 +1721,19 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             body: `<style>
   .row {
     display: flex;
-    align-items: center; /* 默认交叉轴居中 */
-    height: 90px;
+    align-items: center; /* 父级默认：所有子项在交叉轴（垂直）居中 */
+    height: 90px; /* 给高度才能看出垂直对齐差异 */
     gap: 8px;
     border: 1px dashed #999;
     padding: 8px;
   }
   .row div { background: #d9ebe1; padding: 8px; border-radius: 4px; }
   .top {
-    align-self: flex-start; /* 只让我靠上 */
+    align-self: flex-start; /* 只覆盖这一个子项：靠交叉轴起点（row 时是顶部），不理会父级 center */
   }
 </style>
 
+<!-- 中间块用 align-self 单独贴顶，左右仍跟随父级 align-items: center -->
 <div class="row">
   <div>中</div>
   <div class="top">我在顶</div>
@@ -1302,24 +1756,26 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 顶栏行：flex 横排 + 垂直居中 */
   .bar {
     display: flex;
-    align-items: center;
+    align-items: center; /* 标题和按钮垂直居中 */
     padding: 8px 12px;
     border: 1px solid #e6ddd0;
-    margin-bottom: 8px;
+    margin-bottom: 8px; /* 两行 demo 之间间距 */
   }
-  .spacer { flex: 1; } /* 空的弹性空间 */
+  /* 写法 A：空 div 当 Spacer，flex:1 吃掉中间所有剩余空间 */
+  .spacer { flex: 1; }
 </style>
 
-<!-- 写法 A：空 div -->
+<!-- 写法 A：标题 | 空占位(flex:1) | 按钮 —— 按钮被推到最右 -->
 <div class="bar">
   <strong>标题</strong>
   <div class="spacer"></div>
   <button>操作</button>
 </div>
 
-<!-- 写法 B：margin-left:auto（更短，常用） -->
+<!-- 写法 B：margin-left:auto 在 flex 主轴上把元素推到底（row 时推最右），代码更短 -->
 <div class="bar">
   <strong>标题</strong>
   <button style="margin-left: auto">操作</button>
@@ -1336,20 +1792,27 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             language: 'html',
             live: true,
             body: `<style>
+  /* 卡片行：固定图标 + 自适应文字（Feed 列表最常见结构） */
   .card {
-    display: flex;
-    width: 280px;
+    display: flex; /* 横排：图标 | 文字 */
+    width: 280px; /* 限制卡片总宽，才能演示文字被截断 */
     gap: 8px;
     border: 1px solid #ccc;
     padding: 8px;
   }
-  .icon { flex-shrink: 0; width: 40px; background: #2f6b4f; color:#fff; text-align:center; }
+  .icon {
+    flex-shrink: 0; /* 图标不要被挤扁，始终保持 40px */
+    width: 40px;
+    background: #2f6b4f;
+    color:#fff;
+    text-align:center;
+  }
   .text {
-    flex: 1;
-    min-width: 0;              /* 关键：允许比内容更窄 */
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;   /* 超出显示 … */
+    flex: 1; /* 吃掉剩余宽度（Expanded） */
+    min-width: 0; /* ★ 关键：允许比文字内容更窄，否则 ellipsis 永远不触发 */
+    overflow: hidden; /* 超出部分裁切隐藏 */
+    white-space: nowrap; /* 不换行，单行省略才有效 */
+    text-overflow: ellipsis; /* 超出显示 … */
   }
 </style>
 
@@ -1434,7 +1897,8 @@ img[alt] { outline: 1px dashed #ccc; } /* 有 alt 的图片 */`,
             title: 'Demo：同一 UI——Flutter 思维 → HTML',
             language: 'html',
             live: true,
-            body: `<!-- Flutter 等价写法：
+            body: `<!-- 下面 HTML 等价于 Flutter Row + spaceBetween + center + Expanded 的个人资料行 -->
+<!-- Flutter 等价写法：
 Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
   crossAxisAlignment: CrossAxisAlignment.center,
@@ -1447,20 +1911,25 @@ Row(
 -->
 <style>
   .profile {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; /* MainAxisAlignment.spaceBetween */
-    align-items: center;            /* CrossAxisAlignment.center */
-    gap: 12px;
+    display: flex; /* Row：横排容器 */
+    flex-direction: row; /* 主轴水平（可省略，flex 默认就是 row） */
+    justify-content: space-between; /* MainAxisAlignment.spaceBetween：两端对齐 */
+    align-items: center; /* CrossAxisAlignment.center：垂直居中 */
+    gap: 12px; /* 子项间距，类似 Flutter SizedBox 或 spacing */
     padding: 12px 16px;
     border: 1px solid #e6ddd0;
     border-radius: 12px;
   }
   .avatar {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: #2f6b4f; flex-shrink: 0; /* 固定尺寸，不挤扁 */
+    width: 40px; height: 40px; /* 固定 40×40 圆形头像 */
+    border-radius: 50%; /* 50% 圆角 = 正圆 */
+    background: #2f6b4f;
+    flex-shrink: 0; /* 头像不被挤扁（固定尺寸项） */
   }
-  .name { flex: 1; min-width: 0; } /* Expanded：吃剩余 */
+  .name {
+    flex: 1; /* Expanded：吃掉中间剩余空间 */
+    min-width: 0; /* 若名字很长，配合 ellipsis 需要这行（本 demo 名字短可省略效果） */
+  }
 </style>
 
 <div class="profile">
@@ -1491,14 +1960,15 @@ Row(
     },
     {
       id: 'flutter-stack',
-      title: '对照 Flutter：Stack 与定位',
-      summary: '层叠布局：relative 父级 + absolute 子级，角标与封面',
+      title: '对照 Flutter：Stack、定位与 sticky 吸顶',
+      summary:
+        'relative/absolute/fixed/sticky 全讲透；角标、封面、吸顶导航可编辑 Demo',
       content: {
         sections: [
           {
             type: 'tip',
             title: '一句话记住',
-            body: 'Stack ≈ 父 position:relative；Positioned ≈ 子 position:absolute + top/right/bottom/left。z-index 控制谁盖在上面。父级忘记 relative 是最高频 bug。',
+            body: 'Stack ≈ 父 `position:relative`；Positioned ≈ 子 `absolute` + 四边偏移。`fixed` 钉死在视口；`sticky` 是「滚到阈值才吸住」——吸顶导航、表头最常用。父级忘记 `relative` 是 absolute 最高频 bug；sticky 不生效多半是祖先 `overflow` 裁掉了粘滞。',
           },
           {
             type: 'text',
@@ -1508,7 +1978,7 @@ Row(
           {
             type: 'text',
             title: '1. position 五个值：各自干什么',
-            body: 'static（默认）：正常文档流，top/left 无效，不能当 absolute 的参考祖先。\n\nrelative：相对自己原来的位置偏移（top/left 等），仍占着原来的坑。最常用来当 Stack 容器——本身不一定偏移，只是「我成为定位上下文」。\n\nabsolute：脱离文档流，相对「最近的非 static 祖先」定位；找不到则相对初始包含块（常是 viewport）。\n\nfixed：相对视口定位，滚动也不动——固定顶栏、悬浮按钮。\n\nsticky：滚动到阈值前像 relative，超过阈值像 fixed——吸顶标题栏。',
+            body: '**`static`（默认）**：正常文档流，`top`/`left` 无效，不能当 absolute 的参考祖先。\n\n**`relative`**：相对自己原来的位置偏移，仍占着原来的坑。最常用来当 Stack 容器——本身不一定偏移，只是「我成为定位上下文」。\n\n**`absolute`**：脱离文档流，相对「最近的非 static 祖先」定位；找不到则相对初始包含块（常是 viewport）。\n\n**`fixed`**：相对**视口**定位，页面怎么滚它都钉在屏幕上——回到顶部按钮、全局悬浮客服。\n\n**`sticky`（粘性定位）**：滚动过程中的「两段人生」——还没碰到阈值时像 `relative` 待在文档流里；一旦滚到 `top`/`bottom`/`left`/`right` 设定的阈值，就表现得像 `fixed` 吸在那里，直到它的**包含块**滚出视野才松开。',
           },
           {
             type: 'table',
@@ -1519,7 +1989,7 @@ Row(
               ['relative', '否（仍占位）', '自身原位置', 'Stack 容器、微调偏移'],
               ['absolute', '是', '最近定位祖先', '角标、浮层、Positioned'],
               ['fixed', '是', '视口', '固定导航、回到顶部'],
-              ['sticky', '特殊', '滚动容器 + 阈值', '吸顶表头、章节标题'],
+              ['sticky', '特殊（先占位后吸住）', '最近滚动祖先 + 阈值', '吸顶导航、表头、章节标题'],
             ],
           },
           {
@@ -1533,20 +2003,27 @@ Row(
             language: 'html',
             live: true,
             body: `<style>
-  /* Stack：建立定位上下文 */
-  .wrap { position: relative; width: 56px; height: 56px; }
+  /* Stack 容器：position:relative 建立定位参考系，absolute 子元素相对它定位 */
+  .wrap {
+    position: relative; /* 像 Flutter Stack，成为子元素 absolute 的「锚点」 */
+    width: 56px; height: 56px; /* 固定尺寸，否则 absolute 子项可能撑不开父级 */
+  }
   .avatar {
-    width: 56px; height: 56px; border-radius: 50%;
+    width: 56px; height: 56px;
+    border-radius: 50%; /* 圆形头像 */
     background: #2f6b4f;
   }
-  /* Positioned(top:0, right:0) */
+  /* Positioned(top:0, right:0) 等价：角标钉在右上角 */
   .badge {
-    position: absolute;
-    top: 0; right: 0;
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #c53030; border: 2px solid #fff;
+    position: absolute; /* 脱离文档流，相对最近的 non-static 祖先（这里是 .wrap）定位 */
+    top: 0; right: 0; /* 上边缘、右边缘与 .wrap 对齐 */
+    width: 14px; height: 14px;
+    border-radius: 50%; /* 小红点 */
+    background: #c53030;
+    border: 2px solid #fff; /* 白边让角标和头像区分开 */
   }
 </style>
+<!-- .wrap 是 Stack；.avatar 是底图；.badge 是右上角角标 -->
 <div class="wrap">
   <div class="avatar"></div>
   <span class="badge"></span>
@@ -1563,20 +2040,22 @@ Row(
             language: 'html',
             live: true,
             body: `<style>
+  /* 封面区域：relative 容器 + 渐变背景模拟视频封面 */
   .cover {
-    position: relative;
+    position: relative; /* 播放按钮 absolute 相对这个盒子定位 */
     width: 200px; height: 120px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #2f6b4f, #5c9a78);
+    background: linear-gradient(135deg, #2f6b4f, #5c9a78); /* 135° 斜向渐变 */
   }
+  /* 居中播放按钮：50%+50% 定位再 translate 拉回自身中心（经典居中技巧） */
   .play {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; left: 50%; /* 元素的左上角移到容器中心 */
+    transform: translate(-50%, -50%); /* 再向左上移动自身宽高的 50%，实现真正居中 */
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.9); /* 半透明白底 */
+    display: flex; align-items: center; justify-content: center; /* flex 让 ▶ 在圆里居中 */
     font-size: 18px;
   }
 </style>
@@ -1585,20 +2064,161 @@ Row(
 </div>`,
           },
           {
+            type: 'text',
+            title: '4. sticky 吸顶：是什么、和 fixed 差在哪',
+            body: '**是什么**：`position: sticky` 让元素在滚动时「粘」在容器里的某个位置。必须配合 `top` / `bottom` / `left` / `right` 之一作为阈值，例如 `top: 0` 表示滚到贴视口顶就吸住。\n\n**和 fixed 的关键差别**：\n- `fixed`：一开始就钉在视口上，**不占文档流位置**（后面内容要自己加 padding 躲开）。\n- `sticky`：平时仍在文档流里占位；只有滚过阈值才吸住；当它的父级整块滚出屏幕时，sticky 元素也会一起被带走（不会永远钉在屏幕上）。\n\n**典型场景**：顶部导航吸顶、表格表头吸顶、长文每个章节的小标题吸顶、电商详情「商品/评价/详情」锚点条。',
+          },
+          {
+            type: 'text',
+            title: '4. sticky 怎么写才生效（易错必看）',
+            body: '**生效条件（缺一不可的直觉版）：**\n1. 写了 `position: sticky`\n2. 写了至少一个阈值：通常 `top: 0`（或 `top: 56px` 躲开更高的固定栏）\n3. 祖先没有把粘滞「掐死」——最常见凶手是祖先设了 `overflow: hidden / auto / scroll`（会创建新的滚动包含块，sticky 相对它粘，看起来像「坏了」）\n4. 父级还要有足够高度让你「滚得动」——父级刚好和 sticky 一样高，没有滚动空间，也就粘不住\n\n**和 Flutter 对照**：类似「滚到一定位置再固定」的 SliverAppBar / sticky header 插件；Web 用纯 CSS 就能做基础吸顶。',
+          },
+          {
+            type: 'code',
+            title: 'Demo：sticky 吸顶导航（请向下滚动预览区）',
+            language: 'html',
+            live: true,
+            body: `<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+
+  /* 普通顶栏内容：先占位，不吸顶 */
+  .banner {
+    padding: 24px 16px;
+    background: #d9ebe1;
+  }
+
+  /* ★ sticky 吸顶条 */
+  .sticky-nav {
+    position: sticky;   /* 粘性定位 */
+    top: 0;             /* 阈值：滚到贴视口顶部就吸住（必写！） */
+    z-index: 20;        /* 盖住后面滚上来的内容 */
+    padding: 12px 16px;
+    background: #2f6b4f;
+    color: #fff;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .sticky-nav a { color: #fff; text-decoration: none; font-size: 13px; }
+
+  .block {
+    height: 100px;
+    margin: 12px 16px;
+    border-radius: 8px;
+    background: #eef6f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5c6b62;
+  }
+  .hint { padding: 8px 16px; font-size: 12px; color: #5c6b62; }
+</style>
+
+<div class="banner">我是普通横幅 —— 先把我滚出去</div>
+
+<nav class="sticky-nav">
+  <strong>吸顶导航</strong>
+  <a href="#">首页</a>
+  <a href="#">课程</a>
+  <a href="#">关于</a>
+</nav>
+
+<p class="hint">继续向下滚：导航会粘在顶部；若把 top:0 删掉，sticky 会失效。</p>
+<div class="block">内容块 1</div>
+<div class="block">内容块 2</div>
+<div class="block">内容块 3</div>
+<div class="block">内容块 4</div>
+<div class="block">内容块 5</div>`,
+          },
+          {
+            type: 'code',
+            title: 'Demo：sticky vs fixed 对照 + 祖先 overflow 坑',
+            language: 'html',
+            live: true,
+            body: `<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 13px/1.5 system-ui, sans-serif; }
+
+  .row { display: flex; gap: 12px; padding: 12px; height: 260px; }
+  .col {
+    flex: 1;
+    border: 1px solid #9bb5a6;
+    border-radius: 8px;
+    overflow: auto;           /* 各自内部滚动 */
+    background: #f7faf8;
+  }
+  .col h3 { margin: 8px; font-size: 13px; }
+
+  .fixed-bar {
+    position: fixed;          /* 相对整个预览视口钉死 */
+    right: 16px;
+    bottom: 16px;
+    padding: 8px 12px;
+    background: #c53030;
+    color: #fff;
+    border-radius: 999px;
+    z-index: 99;
+    font-size: 12px;
+  }
+
+  .sticky-h {
+    position: sticky;
+    top: 0;
+    background: #2f6b4f;
+    color: #fff;
+    padding: 8px;
+  }
+
+  /* ❌ 易错：外层再包一层 overflow:hidden 时，里面的 sticky 可能不符合预期 */
+  .broken {
+    overflow: hidden;         /* 常见坑：裁切 / 改变 sticky 参照 */
+    height: 120px;
+    border: 1px dashed #c53030;
+    margin: 8px;
+  }
+  .broken .sticky-h { background: #92400e; }
+
+  .pad { height: 80px; margin: 8px; background: #eef6f1; border-radius: 6px; }
+</style>
+
+<div class="row">
+  <div class="col">
+    <h3>左：正常 sticky（滚我）</h3>
+    <div class="sticky-h">我 sticky top:0</div>
+    <div class="pad"></div><div class="pad"></div><div class="pad"></div>
+  </div>
+  <div class="col">
+    <h3>右：祖先 overflow 干扰</h3>
+    <div class="broken">
+      <div class="sticky-h">被 overflow:hidden 包住</div>
+      <div class="pad"></div><div class="pad"></div>
+    </div>
+    <p style="padding:8px;color:#5c6b62;font-size:12px;">
+      右栏外层还能滚，但 broken 里的 sticky 粘滞范围被限制 —— 开发里很常见。
+    </p>
+  </div>
+</div>
+
+<div class="fixed-bar">fixed 悬浮钮</div>`,
+          },
+          {
             type: 'list',
-            title: 'Stack 布局易错清单',
+            title: '定位 / sticky 易错清单',
             ordered: true,
             items: [
               '父级忘记 position:relative → absolute 子项跑到更外层或 viewport',
               'absolute 子项不撑开父高度 → 父要自己设 height 或非 absolute 内容撑开',
-              '只设 top 不设 left → 元素水平位置可能不符合预期',
-              '滥用 fixed 导致移动端视口问题 → 先理解再用于全屏浮层',
+              'sticky 忘写 top/bottom/left/right → 完全不吸顶',
+              '祖先 overflow: hidden/auto/scroll → sticky「失灵」或粘错容器',
+              '父级高度不够 → 没有滚动空间，sticky 表现不出来',
+              '误用 fixed 当吸顶 → 不占位，内容会被挡，还要自己垫 padding',
             ],
           },
           {
             type: 'tip',
             title: '一句话记忆',
-            body: 'Stack = relative 父；Positioned = absolute 子 + 四边偏移。角标、封面、浮层都这套。父没 relative，子就「飘」到别处去了。',
+            body: 'Stack = relative 父 + absolute 子。吸顶用 sticky + top（别忘阈值）；永久钉屏幕用 fixed。sticky 不生效先查祖先 overflow，再查有没有 top。',
           },
         ],
       },
@@ -1646,14 +2266,19 @@ Row(
             language: 'html',
             live: true,
             body: `<style>
+  /* 纵向可滚列表：等价 Flutter ListView 包在固定高度里 */
   .list {
-    height: 200px;      /* 必须有可视高度 —— ListView 的 bounded height */
-    overflow-y: auto;   /* 超出则垂直滚动 */
+    height: 200px; /* ★ 必须有明确高度，否则容器随内容长高，不会出现「超出」 */
+    overflow-y: auto; /* 内容超出时，垂直方向出现滚动条（需要时才显示） */
     border: 1px solid #e6ddd0;
     border-radius: 8px;
   }
-  .item { padding: 12px; border-bottom: 1px solid #f0ebe3; }
+  .item {
+    padding: 12px; /* 每行内边距 */
+    border-bottom: 1px solid #f0ebe3; /* 行间分割线 */
+  }
 </style>
+<!-- 8 个列表项，总高度超过 200px，.list 内部可滚动 -->
 <div class="list">
   <div class="item">1</div><div class="item">2</div>
   <div class="item">3</div><div class="item">4</div>
@@ -1672,21 +2297,23 @@ Row(
             language: 'html',
             live: true,
             body: `<style>
+  /* 横向 chips：等价 SingleChildScrollView(scrollDirection: horizontal) + Row */
   .chips {
-    display: flex;
+    display: flex; /* 横排所有 chip */
     gap: 8px;
-    overflow-x: auto;    /* 横向滚 */
-    overflow-y: hidden;
+    overflow-x: auto; /* 总宽超出容器时出现横向滚动条 */
+    overflow-y: hidden; /* 禁止纵向溢出滚动 */
     padding: 4px 0;
   }
   .chip {
-    flex: 0 0 auto;      /* 不缩小，保持固有宽度 */
-    white-space: nowrap;
+    flex: 0 0 auto; /* 不放大不缩小，保持内容固有宽度（不被 flex 挤扁） */
+    white-space: nowrap; /* 文字不换行，保证每个 chip 是单行 */
     padding: 8px 14px;
-    border-radius: 999px;
+    border-radius: 999px; /* 超大圆角 = 胶囊形 */
     background: #eef6f1;
   }
 </style>
+<!-- 多个 chip 总宽度超过屏幕/容器时，可左右滑动 -->
 <div class="chips">
   <span class="chip">推荐</span>
   <span class="chip">热门</span>
@@ -1748,32 +2375,37 @@ Row(
             language: 'html',
             live: true,
             body: `<!DOCTYPE html>
+<!-- 完整 HTML 文档结构：顶栏案例 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <style>
+    /* 全局 reset：统一盒模型、去掉默认 margin */
     * { box-sizing: border-box; margin: 0; }
-    body { font-family: system-ui, sans-serif; }
+    body { font-family: system-ui, sans-serif; } /* 系统默认无衬线字体 */
     .nav {
-      display: flex;              /* Row */
-      align-items: center;        /* 垂直居中 */
-      gap: 16px;
-      padding: 12px 20px;
-      border-bottom: 1px solid #e6ddd0;
+      display: flex; /* Row：顶栏横排 Logo + 菜单 + 按钮 */
+      align-items: center; /* 交叉轴垂直居中，Logo/链接/按钮对齐 */
+      gap: 16px; /* 子项间距 */
+      padding: 12px 20px; /* 上下 12、左右 20 内边距 */
+      border-bottom: 1px solid #e6ddd0; /* 底部分割线 */
     }
-    .brand { font-weight: 700; text-decoration: none; color: #1f2a24; }
-    .menu { display: flex; gap: 16px; } /* 菜单内部再套一层 flex */
+    .brand { font-weight: 700; text-decoration: none; color: #1f2a24; } /* Logo 链接样式 */
+    /* 菜单本身再套一层 flex，让多个链接横排 */
+    .menu { display: flex; gap: 16px; }
     .menu a { color: #5c6b63; text-decoration: none; font-size: 14px; }
     .btn {
-      margin-left: auto;          /* Spacer 效果：推到最右 */
+      margin-left: auto; /* ★ Spacer 效果：在主轴上把按钮推到最右（≈ Flutter Spacer） */
       padding: 8px 14px; border: 0; border-radius: 8px;
-      background: #2f6b4f; color: #fff; cursor: pointer;
+      background: #2f6b4f; color: #fff; cursor: pointer; /* 手型光标表示可点击 */
     }
   </style>
 </head>
 <body>
+  <!-- header：页面头部语义标签 -->
   <header class="nav">
     <a class="brand" href="#">Web Study</a>
+    <!-- nav：导航链接组 -->
     <nav class="menu">
       <a href="#">首页</a><a href="#">课程</a><a href="#">关于</a>
     </nav>
@@ -1832,15 +2464,17 @@ Row(
             language: 'html',
             live: true,
             body: `<style>
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; } /* 全局 border-box，width 计算更直观 */
+  /* Feed 外层：Column 纵向堆多条卡片 */
   .feed {
-    max-width: 480px;
+    max-width: 480px; /* 限制阅读宽度，大屏上不会过宽 */
     display: flex;
-    flex-direction: column;  /* Column：多条卡片纵向 */
-    gap: 12px;
+    flex-direction: column; /* 主轴垂直：卡片从上到下排列 */
+    gap: 12px; /* 卡片之间的间距 */
   }
+  /* 单条卡片：Row 横排 头像 + 文字区 */
   .card {
-    display: flex;           /* Row：头像 + 文字横排 */
+    display: flex;
     gap: 12px;
     padding: 14px;
     border: 1px solid #e6ddd0;
@@ -1849,24 +2483,25 @@ Row(
   }
   .avatar {
     width: 48px; height: 48px;
-    border-radius: 12px;
+    border-radius: 12px; /* 圆角方形头像 */
     background: #2f6b4f;
-    flex-shrink: 0;          /* 固定尺寸，不被挤扁 */
+    flex-shrink: 0; /* 固定 48px，不被文字区挤扁 */
   }
   .content {
-    flex: 1;                 /* Expanded：吃剩余 */
-    min-width: 0;            /* 允许文字区变窄 → ellipsis 生效 */
+    flex: 1; /* Expanded：文字区吃掉剩余宽度 */
+    min-width: 0; /* ★ 允许比文字更窄，ellipsis 才能生效 */
   }
-  .title { font-weight: 600; }
+  .title { font-weight: 600; } /* 标题加粗 */
   .desc {
-    margin-top: 4px;
+    margin-top: 4px; /* 标题与描述之间小间距 */
     font-size: 13px;
-    color: #5c6b63;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #5c6b63; /* 次要文字灰色 */
+    white-space: nowrap; /* 单行不换行 */
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 … */
   }
 </style>
+<!-- article：语义化表示一条独立内容（Feed 里的一条） -->
 <div class="feed">
   <article class="card">
     <div class="avatar"></div>
@@ -1936,36 +2571,40 @@ Row(
             live: true,
             body: `<style>
   * { box-sizing: border-box; margin: 0; }
+  /* 让 html/body/#app 都能撑满高度，flex 百分比和 100vh 才有参照 */
   html, body, #app { height: 100%; }
+  /* 最外层：Column 布局，占满整个视口高度 */
   #app {
     display: flex;
-    flex-direction: column;
-    height: 100vh;           /* 占满视口 */
+    flex-direction: column; /* 顶栏在上，body 在下 */
+    height: 100vh; /* 100vh = 视口高度 100%，一屏高 */
   }
   .top {
-    flex-shrink: 0;          /* 顶栏不被压缩 */
+    flex-shrink: 0; /* 顶栏高度由内容决定，flex 布局时不要被压缩 */
     padding: 12px 16px;
     background: #1f2a24;
     color: #fff;
   }
+  /* 中间区域：Row 布局，侧栏 + 主区 */
   .body {
-    flex: 1;                 /* 吃掉顶栏以下全部高度 */
-    display: flex;
-    min-height: 0;           /* ★ 关键：允许内部出现滚动 */
+    flex: 1; /* 吃掉顶栏以下的全部剩余高度（≈ Expanded） */
+    display: flex; /* 横向：侧栏 | 主区 */
+    min-height: 0; /* ★ 关键：允许 flex 子项比内容更矮，把溢出交给 .main 滚动 */
   }
   .side {
-    width: 200px;
-    flex-shrink: 0;          /* 侧栏固定宽 */
+    width: 200px; /* 侧栏固定宽 200px */
+    flex-shrink: 0; /* 不要被主区挤窄 */
     background: #24352c;
     color: #c5d4cb;
     padding: 12px;
   }
   .main {
-    flex: 1;
-    overflow: auto;          /* 主区局部滚 */
+    flex: 1; /* 主区吃掉剩余宽度 */
+    overflow: auto; /* 内容超出时在 .main 内部滚动，而不是整页滚 */
     padding: 16px;
     background: #fffaf3;
   }
+  /* 模拟主区里的内容块 */
   .block {
     height: 120px;
     margin-bottom: 12px;
@@ -1974,6 +2613,7 @@ Row(
     border-radius: 10px;
   }
 </style>
+<!-- 后台骨架：#app > .top + .body > .side + .main -->
 <div id="app">
   <header class="top">后台</header>
   <div class="body">

@@ -86,17 +86,17 @@ const conventions = {
             type: 'code',
             title: '2.2 标准目录树（对照本仓库打开看）',
             language: 'text',
-            body: `src/
-  pages/          # 页面：和路由一一对应的一整屏
-  components/     # 可复用 UI：按钮、卡片、代码块、文档渲染器…
-  layouts/        # 布局壳：顶栏 + 侧栏 + <Outlet /> 内容区
-  routes/         # 路由配置：path 与页面对应关系
-  hooks/          # 自定义 Hook：useAuth、useLocalStorage…
-  utils/          # 纯工具函数：请求封装、日期格式化…
-  store/          # 全局状态：Redux slice、store 配置
-  data/           # 静态数据 / 课程配置 / mock 数据
-  assets/         # 图片、字体、图标等静态资源
-  App.js          # 根组件：often 包 Router + Layout
+            body: `src/                              # 源代码根目录，React 项目主要在这里写代码
+  pages/          # 页面：和路由 URL 一一对应的一整屏界面
+  components/     # 可复用 UI：按钮、卡片、代码块、文档渲染器…（多页共用）
+  layouts/        # 布局壳：顶栏 + 侧栏 + <Outlet /> 中间内容区
+  routes/         # 路由配置：定义 path 字符串对应哪个页面组件
+  hooks/          # 自定义 Hook：必须以 use 开头，封装可复用的 state 逻辑
+  utils/          # 纯工具函数：和 UI 无关，不能写 JSX，不能调 Hook
+  store/          # 全局状态：Redux store、slice 等（多页共享的数据）
+  data/           # 静态数据：课程配置、mock 数据、不会频繁变的文案
+  assets/         # 静态资源：图片、字体、图标（import 后由打包工具处理）
+  App.js          # 根组件：通常包 Router，用 useRoutes 渲染当前页面
   index.js        # 入口：ReactDOM.createRoot(...).render(<App />)`,
           },
           {
@@ -168,19 +168,19 @@ const conventions = {
             type: 'code',
             title: '3.2 怎么写：推荐目录结构示例',
             language: 'text',
-            body: `pages/
-  Home/
-    index.js          # 页面主组件，export default function Home() {}
-    index.css         # 只给 Home 页用的样式
-    Banner.js         # （可选）Home 页私有的子组件
-    constants.js      # （可选）Home 页专用常量
-  LessonDetail/
+            body: `pages/                          # 所有「整页」组件放这里
+  Home/                           # 一个页面 = 一个 PascalCase 文件夹
+    index.js          # 页面主组件：export default function Home() { ... }
+    index.css         # 只给 Home 页用的样式，在 index.js 里 import './index.css'
+    Banner.js         # （可选）只有 Home 页会用的私有子组件，不放到全局 components/
+    constants.js      # （可选）Home 页专用常量，如默认分页大小
+  LessonDetail/                   # 另一个页面，同样一页一文件夹
     index.js
     index.css
-  DemoAuth/
-    LoginPage.js      # 同一「业务模块」下多个相关页面也可以
-    ProfilePage.js
-    auth.css          # 模块内共享样式`,
+  DemoAuth/                       # 同一业务模块下多个相关页面，可以共用一个文件夹
+    LoginPage.js      # 登录页组件
+    ProfilePage.js    # 个人资料页
+    auth.css          # DemoAuth 模块内多个页面共用的样式`,
           },
           {
             type: 'text',
@@ -207,20 +207,24 @@ const conventions = {
             type: 'code',
             title: '3.6 反例 vs 正例：页面组织',
             language: 'jsx',
-            body: `// ❌ 反例：页面组件和全局组件混放
-// components/HomePage.js        ← 这是整页，不该在 components
+            body: `// ❌ 反例：整页组件和可复用小组件混放在 components/ 里
+// components/HomePage.js        ← HomePage 是一整屏，应该放 pages/Home/
 // components/HomePage.css
-// components/UserCard.js        ← 这才是 components 该放的
+// components/UserCard.js        ← UserCard 才是可复用 UI，适合放 components/
 
-// ✅ 正例：页面进 pages，组件进 components
+// ✅ 正例：页面进 pages/，可复用 UI 进 components/
 // pages/Home/index.js
-import './index.css'
+import './index.css'   // 引入同目录样式；相对路径 ./ 表示当前文件夹
+// 从 components 引入可复用卡片，../../ 向上两级到 src 再进 components
 import UserCard from '../../components/UserCard'
 
+// export default：页面组件通常默认导出，路由里 import Home from '../pages/Home'
 export default function Home() {
   return (
+    // className 挂 CSS 类名（JSX 里不能写 class）
     <div className="home-page">
       <h1>首页</h1>
+      {/* 传 prop：name="小明" 会作为 props.name 传给 UserCard */}
       <UserCard name="小明" />
     </div>
   )
@@ -254,23 +258,24 @@ export default function Home() {
             type: 'code',
             title: '4.2 反例 vs 正例：组件命名（复制对照）',
             language: 'jsx',
-            body: `// ❌ 反例：小写开头 —— React 当成 HTML 标签 <usercard>
+            body: `// ❌ 反例：组件函数名小写开头 —— React 会当成 HTML 标签，不会执行你的函数
 function userCard({ name }) {
   return <div className="user-card">{name}</div>
 }
-// 使用 <userCard name="Tom" /> 时：
-// → 浏览器渲染一个空的自定义标签 <usercard>
-// → 你的函数不会被调用，控制台可能没有任何报错
+// 在 JSX 里写 <userCard name="Tom" /> 时：
+// → 浏览器会渲染一个空的自定义 HTML 标签 <usercard>（小写）
+// → userCard 函数根本不会被调用，页面可能是空白，且控制台常常不报错
 
-// ✅ 正例：PascalCase —— React 识别为组件
+// ✅ 正例：PascalCase 大写开头 —— React 识别为「自定义组件」
 function UserCard({ name }) {
+  // { name } 是解构 props；className 是 JSX 里的 CSS 类名属性
   return <div className="user-card">{name}</div>
 }
-// 使用 <UserCard name="Tom" /> 时：
-// → React 调用 UserCard 函数，正常渲染
+// 写 <UserCard name="Tom" /> 时：
+// → React 调用 UserCard 函数，传入 { name: 'Tom' }，正常渲染
 
-// ✅ 文件名与组件名一致
-// 文件：components/UserCard.js
+// ✅ 文件名最好和组件名一致，方便查找
+// 文件路径：components/UserCard.js
 export default function UserCard({ name }) {
   return <div className="user-card">{name}</div>
 }`,
@@ -284,18 +289,19 @@ export default function UserCard({ name }) {
             type: 'code',
             title: '4.4 怎么写：return 的各种合法写法',
             language: 'jsx',
-            body: `// ✅ 返回 JSX
+            body: `// ✅ 最常见：return 一段 JSX，React 把它变成 DOM
 function Hello() {
   return <h1>你好</h1>
 }
 
-// ✅ 返回 null：故意什么都不渲染
+// ✅ return null：故意什么都不渲染（比如没权限、数据为空时）
 function Empty({ visible }) {
+  // 条件不满足时提前 return null，下面代码不会执行
   if (!visible) return null
   return <p>可见内容</p>
 }
 
-// ✅ 返回 Fragment：多个根元素不额外包 div
+// ✅ Fragment（<>...</>）：多个并列元素包在一起，DOM 里不会多出一个 div
 function TitleAndDesc() {
   return (
     <>
@@ -305,15 +311,15 @@ function TitleAndDesc() {
   )
 }
 
-// ✅ 返回字符串 / 数字（少见但合法）
+// ✅ 返回字符串或数字也合法（少见，多用于简单文本节点）
 function PlainText() {
   return '纯文字'
 }
 
-// ❌ 反例：没有 return
+// ❌ 反例：函数没有 return，默认返回 undefined，React 无法渲染 → 页面空白
 function Broken() {
   const title = '你好'
-  // 忘记 return → undefined → 页面空白
+  // 只定义了变量，忘记 return JSX → 组件什么都不显示
 }`,
           },
           {
@@ -435,31 +441,37 @@ function Broken() {
             type: 'code',
             title: '6.3 怎么写：handleXxx 与 onXxx 的配合（完整示例）',
             language: 'jsx',
-            body: `// 约定：on = 对外接口（prop），handle = 组件内部真正执行的函数
+            body: `// 命名约定：onXxx = 父组件传进来的回调（对外接口）；handleXxx = 组件内部真正执行的函数
+// 需要从 react 导入 useState（此处省略 import 行，实际文件里要写上）
 
 function LoginForm({ onSuccess, onError }) {
+  // useState(false)：布尔状态，isLoading 表示是否正在提交
   const [isLoading, setIsLoading] = useState(false)
+  // hasError：是否显示错误提示，布尔变量用 is/has 前缀更易读
   const [hasError, setHasError] = useState(false)
 
-  // 内部处理函数：handle 前缀
+  // handleSubmit：组件内部事件处理函数，handle + 事件名
   async function handleSubmit(e) {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault()        // 阻止表单默认刷新页面行为
+    setIsLoading(true)        // 开始提交，按钮显示「提交中…」
     setHasError(false)
     try {
-      await loginApi()
-      onSuccess()   // 成功后通知父组件
+      await loginApi()        // 调用登录接口（示意）
+      onSuccess()             // 成功后通知父组件，由父组件决定跳转等
     } catch {
-      setHasError(true)
-      onError?.()
+      setHasError(true)       // 失败时显示错误
+      onError?.()             // ?. 可选链：父组件没传 onError 也不报错
     } finally {
-      setIsLoading(false)
+      setIsLoading(false)     // 无论成功失败，都要结束 loading 状态
     }
   }
 
   return (
+    // onSubmit 绑定的必须是函数引用，不是字符串 "handleSubmit()"
     <form onSubmit={handleSubmit}>
+      {/* hasError 为 true 时才渲染错误提示（&& 短路） */}
       {hasError && <p className="error">登录失败</p>}
+      {/* disabled={isLoading}：提交中禁用按钮，防止重复点击 */}
       <button type="submit" disabled={isLoading}>
         {isLoading ? '提交中…' : '登录'}
       </button>
@@ -467,12 +479,13 @@ function LoginForm({ onSuccess, onError }) {
   )
 }
 
-// 父组件：把 handle 函数传给子组件的 on prop
+// 父组件：把 handle 函数通过 onXxx prop 传给子组件
 function LoginPage() {
   function handleLoginSuccess() {
-    navigate('/profile')
+    navigate('/profile')   // 登录成功后跳转到个人页（navigate 来自 React Router）
   }
 
+  // onSuccess={handleLoginSuccess}：prop 名 on 开头，值是父组件的 handle 函数
   return <LoginForm onSuccess={handleLoginSuccess} />
 }`,
           },
@@ -521,40 +534,45 @@ function LoginPage() {
             type: 'code',
             title: '7.2 怎么写：清晰的 props + children 完整示例',
             language: 'jsx',
-            body: `function Card({ title, isActive, onClose, children }) {
+            body: `// Card 组件：通过解构 props 拿到 title、isActive、onClose、children
+function Card({ title, isActive, onClose, children }) {
   return (
+    // 三元运算符：根据 isActive 切换不同的 CSS 类名
     <div className={isActive ? 'card card--active' : 'card'}>
       <div className="card__header">
         <h3>{title}</h3>
+        {/* type="button" 防止在 form 里误触提交；aria-label 给读屏软件用 */}
         <button type="button" onClick={onClose} aria-label="关闭">
           ×
         </button>
       </div>
+      {/* children：标签 <Card>...</Card> 中间的内容会自动传到这里 */}
       <div className="card__body">{children}</div>
     </div>
   )
 }
 
-// 使用方式
+// 父组件使用 Card 的完整示例
 function App() {
+  // useState(true)：控制卡片是否高亮/打开
   const [isOpen, setIsOpen] = useState(true)
 
   return (
     <Card
-      title="用户信息"
-      isActive={isOpen}       // 布尔：完整写法
-      onClose={() => setIsOpen(false)}
+      title="用户信息"              // 普通 prop：字符串
+      isActive={isOpen}             // 布尔 prop：完整写法 isActive={true/false}
+      onClose={() => setIsOpen(false)}  // 回调 prop：点击关闭时把 isOpen 设为 false
     >
-      {/* 标签之间的内容 = children */}
+      {/* 下面两行是 children，会显示在 Card 的 body 区域 */}
       <p>姓名：张三</p>
       <p>邮箱：zhang@example.com</p>
     </Card>
   )
 }
 
-// 布尔简写：下面两种等价
-<Card isActive={true} />   // 完整
-<Card isActive />          // 简写：仅当值为 true 时`,
+// 布尔 prop 简写：下面两种写法完全等价（仅当值为 true 时）
+<Card isActive={true} />   // 完整写法
+<Card isActive />          // 简写：省略 ={true}`,
           },
           {
             type: 'table',
@@ -577,14 +595,15 @@ function App() {
             type: 'code',
             title: '7.5 反例 vs 正例',
             language: 'jsx',
-            body: `// ❌ 反例：props 名字模糊
+            body: `// ❌ 反例：props 名字太短（d、fn、x），读代码的人完全猜不出含义
 function Box({ d, fn, x }) {
   return <div onClick={fn}>{d}</div>
 }
 
-// ✅ 正例：解构 + 有意义的名字
+// ✅ 正例：props 用有业务含义的 camelCase 名字
 function Alert({ message, variant, onDismiss }) {
   return (
+    // 模板字符串拼接 className；\${variant} 在真实代码里是 \${variant}，这里演示 BEM 修饰符
     <div className={\`alert alert--\${variant}\`}>
       {message}
       <button type="button" onClick={onDismiss}>关闭</button>
@@ -592,14 +611,15 @@ function Alert({ message, variant, onDismiss }) {
   )
 }
 
-// ❌ 反例：子组件直接改 props（违反单向数据流）
+// ❌ 反例：子组件直接依赖父组件的 setCount 改数据（违反单向数据流）
 function BadCounter({ count, setCount }) {
+  // 子组件不应该「拥有」修改 count 的权力，除非父组件明确传入 setter
   return <button onClick={() => setCount(count + 1)}>+</button>
-  // 若 setCount 没从父组件传来，就不该在子组件里「改 count」
 }
 
-// ✅ 正例：通过 onIncrement 通知父组件
+// ✅ 正例：子组件只负责 UI，通过 onIncrement 通知父组件去改 state
 function GoodCounter({ count, onIncrement }) {
+  // 点击时调用父组件传来的函数，由父组件决定 count 怎么变
   return <button onClick={onIncrement}>{count}</button>
 }`,
           },
@@ -631,41 +651,46 @@ function GoodCounter({ count, onIncrement }) {
             type: 'code',
             title: '8.2 怎么写 vs 反例',
             language: 'javascript',
-            body: `// ✅ 正例：use 开头，里面可以调其它 Hook
+            body: `// ✅ 正例：自定义 Hook 必须以 use 开头，内部可以调用其它 Hook
 function useAuth() {
+  // 用 useState 存当前用户；null 表示未登录
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
+  // useEffect：组件挂载后执行副作用（如发请求）；[] 表示只执行一次
   useEffect(() => {
-    fetchCurrentUser().then(setUser).finally(() => setIsLoading(false))
+    fetchCurrentUser()
+      .then(setUser)           // 请求成功，把用户数据写入 state
+      .finally(() => setIsLoading(false))  // 无论成败，结束 loading
   }, [])
 
-  return { user, isLoading, isLoggedIn: !!user }
+  // 返回对象：组件里 const { user, isLoggedIn } = useAuth() 解构使用
+  return { user, isLoading, isLoggedIn: !!user }  // !!user 把值转成布尔
 }
 
-// ✅ 文件名和 Hook 名一致
-// hooks/useAuth.js
+// ✅ 文件名和 Hook 名一致：hooks/useAuth.js
 
-// ❌ 反例：没有 use 前缀 —— 不算 Hook
+// ❌ 反例：没有 use 前缀 —— React 不认为这是 Hook，ESLint 会报错
 function auth() {
-  const [user, setUser] = useState(null) // ESLint 可能报错：React Hook 只能在 Hook 或组件里调用
+  const [user, setUser] = useState(null) // 规则：Hook 只能在组件或其它 Hook 顶层调用
   return user
 }
 
-// ❌ 反例：getLocalStorage 看起来像普通工具，却里面调 Hook
+// ❌ 反例：名字像普通工具函数，却里面调了 Hook —— 命名误导
 function getLocalStorage(key) {
-  const [value, setValue] = useState(key) // 命名误导 + 违反 Hook 规则
+  const [value, setValue] = useState(key)
   return value
 }
 
-// ✅ 应该是：
+// ✅ 正确做法：需要 Hook 就命名 useLocalStorage，并放 hooks/ 目录
 function useLocalStorage(key, initialValue) {
+  // 惰性初始化：只在首次渲染时读 localStorage
   const [value, setValue] = useState(() => {
     const stored = localStorage.getItem(key)
     return stored ? JSON.parse(stored) : initialValue
   })
-  // ...
-  return [value, setValue]
+  // ... 省略：value 变化时写回 localStorage 的逻辑
+  return [value, setValue]   // 返回方式和 useState 类似，方便使用
 }`,
           },
           {
@@ -720,26 +745,26 @@ function useLocalStorage(key, initialValue) {
             type: 'code',
             title: '9.2 怎么写：className 的几种常见写法',
             language: 'jsx',
-            body: `// ✅ 单个类名：kebab-case
+            body: `// ✅ 单个静态类名：CSS 里定义 .user-card，这里用 className 挂上
 <div className="user-card">
 
-// ✅ 多个类名：模板字符串或 classnames 库
+// ✅ 动态类名：根据 isActive 切换多个类，用三元运算符拼接字符串
 <div className={isActive ? 'user-card user-card--active' : 'user-card'}>
 
-// ✅ BEM 风格：块__元素--修饰符
+// ✅ BEM 命名：块__元素--修饰符，结构清晰，减少全局样式冲突
 <article className="user-card">
   <h2 className="user-card__title">标题</h2>
   <p className="user-card__desc user-card__desc--muted">描述</p>
 </article>
 
-// ✅ CSS Modules：类名编译后带哈希，不易冲突
+// ✅ CSS Modules：import 后 styles.card 会变成带哈希的唯一类名
 import styles from './UserCard.module.css'
 <div className={styles.card}>
 
-// ❌ 反例
-<div class="user-card">           // JSX 里不要用 class
-<div className="UserCard">        // CSS 类名一般不用 PascalCase
-<div className="box">             // 太通用，全局易冲突`,
+// ❌ 反例汇总
+<div class="user-card">           // JSX 里不能用 class，必须用 className
+<div className="UserCard">        // CSS 类名习惯用小写短横线，不用 PascalCase
+<div className="box">             // 太通用，全局 CSS 里 .box 很容易互相覆盖`,
           },
           {
             type: 'table',
@@ -760,7 +785,7 @@ import styles from './UserCard.module.css'
             type: 'code',
             title: '9.5 CSS Modules 完整示例',
             language: 'jsx',
-            body: `// UserCard.module.css
+            body: `// ===== UserCard.module.css（CSS Modules 文件，类名会被编译成唯一哈希）=====
 .card {
   padding: 16px;
   border: 1px solid #e2e8f0;
@@ -771,18 +796,21 @@ import styles from './UserCard.module.css'
   font-weight: 600;
 }
 
-// UserCard.js
+// ===== UserCard.js（组件里 import CSS Modules）=====
+// import styles 后，styles.card 对应 .card，不会和别的文件的 .card 冲突
 import styles from './UserCard.module.css'
 
 export default function UserCard({ title, children }) {
   return (
+    // className={styles.card} 编译后类似 className="UserCard_card_x7f2a"
     <div className={styles.card}>
       <h3 className={styles.title}>{title}</h3>
+      {/* children：卡片正文，由父组件传入 */}
       {children}
     </div>
   )
 }
-// 编译后 className 类似 "UserCard_card_x7f2a"，不会和别的 .card 冲突`,
+// 优点：每个组件的样式局部作用域，几乎不会和全局 .card、.title 打架`,
           },
           {
             type: 'list',
@@ -829,31 +857,32 @@ export default function UserCard({ title, children }) {
             type: 'code',
             title: '10.2 怎么写：常见 export/import 模式',
             language: 'javascript',
-            body: `// ===== 页面：默认导出 =====
+            body: `// ===== 页面组件：通常一个文件一个主组件，用默认导出 =====
 // pages/Home/index.js
 export default function Home() {
   return <h1>首页</h1>
 }
 
-// App.js 导入：名字可以自取，但习惯与组件名一致
+// 导入默认导出：import 后面名字可以自取，但习惯与组件名一致
 import Home from './pages/Home'
 
-// ===== 工具：命名导出（可 tree-shaking）=====
+// ===== 工具函数：一个文件可 export 多个，用命名导出 =====
 // utils/date.js
-export function formatDate(d) { /* ... */ }
-export function formatTime(d) { /* ... */ }
+export function formatDate(d) { /* 格式化为日期字符串 */ }
+export function formatTime(d) { /* 格式化为时间字符串 */ }
 
+// 命名导入：花括号里名字必须和 export 的名字一致
 import { formatDate, formatTime } from './utils/date'
-// 命名导入：名字必须和导出一致，或用 as 别名
+// 或用 as 起别名，避免命名冲突
 import { formatDate as fmt } from './utils/date'
 
-// ===== 桶文件（可选）=====
+// ===== 桶文件 barrel（可选）：在 index.js 里集中 re-export 多个组件 =====
 // components/index.js
 export { default as Button } from './Button'
 export { default as Modal } from './Modal'
 export { default as CodeBlock } from './CodeBlock'
 
-// 外部一次导入多个
+// 外部一次从文件夹导入多个组件，路径更短
 import { Button, Modal } from '../components'`,
           },
           {
@@ -917,23 +946,29 @@ import { Button, Modal } from '../components'`,
             type: 'code',
             title: '11.3 怎么写：路由配置示例',
             language: 'jsx',
-            body: `// routes/index.js
+            body: `// routes/index.js — 路由表：把 URL path 和要渲染的页面组件对应起来
+// 每个页面组件从 pages/ 默认 import
 import Home from '../pages/Home'
 import LessonDetail from '../pages/LessonDetail'
 import LoginPage from '../pages/DemoAuth/LoginPage'
 import NotFoundPage from '../pages/NotFoundPage'
 
+// routes 是数组，每一项描述一条路由规则
 const routes = [
+  // path: '/' 访问首页时，element 指定渲染 <Home /> 组件
   { path: '/', element: <Home /> },
+  // :id 是动态参数，如 /lesson/jsx-basics 里的 jsx-basics
   { path: '/lesson/:id', element: <LessonDetail /> },
+  // 多级 path 用小写 + 短横线，和 PascalCase 组件名是两套命名体系
   { path: '/demo/auth/login', element: <LoginPage /> },
-  { path: '*', element: <NotFoundPage /> },  // 404 兜底放最后
+  // path: '*' 是兜底路由，匹配所有未定义的路径，必须放在数组最后
+  { path: '*', element: <NotFoundPage /> },
 ]
 
 export default routes
 
-// 动态参数命名：常用 camelCase
-// /user/:userId  →  const { userId } = useParams()`,
+// 在页面组件里读取动态参数：
+// /user/:userId  →  const { userId } = useParams()  // useParams 来自 react-router-dom`,
           },
           {
             type: 'list',
@@ -996,29 +1031,33 @@ export default routes
             type: 'code',
             title: '12.2 怎么写：key 与 ref 示例',
             language: 'jsx',
-            body: `const todos = [
+            body: `// 示例数据：每项有稳定唯一的 id，用作列表 key
+const todos = [
   { id: 'a1', text: '学 JSX' },
   { id: 'b2', text: '学组件' },
 ]
 
 function TodoList() {
+  // useRef(null)：创建 ref，用来直接访问 DOM 节点（如 input.focus()）
   const inputRef = useRef(null)
 
   function focusInput() {
+    // optional chaining ?.：inputRef.current 存在时才调用 focus
     inputRef.current?.focus()
   }
 
   return (
     <div>
+      {/* ref={inputRef}：把这个 input 的 DOM 节点存到 inputRef.current */}
       <input ref={inputRef} placeholder="新任务" data-testid="todo-input" />
       <ul>
         {todos.map((todo) => (
-          // ✅ key 用稳定 id
+          // ✅ key 必须用稳定唯一 id；React 靠 key 识别列表项，优化更新
           <li key={todo.id}>{todo.text}</li>
         ))}
       </ul>
-      {/* ❌ key={index} 在列表增删排序 reorder 时会导致状态错乱 */}
-      {/* ❌ key={Math.random()} 每次渲染都变，等于没有 key */}
+      {/* ❌ key={index}：列表增删、排序时，输入框内容可能「错位」到别的行 */}
+      {/* ❌ key={Math.random()}：每次渲染 key 都变，等于没有 key，性能差 */}
     </div>
   )
 }`,
@@ -1027,24 +1066,32 @@ function TodoList() {
             type: 'code',
             title: '12.3 Context 一套命名示例',
             language: 'jsx',
-            body: `import { createContext, useContext, useState } from 'react'
+            body: `// 从 react 导入 Context 相关 API 和 Hook
+import { createContext, useContext, useState } from 'react'
 
-// 1. Context 对象：XxxContext
+// 1. 创建 Context 对象：命名 XxxContext，描述「这是什么上下文」
 const AuthContext = createContext(null)
 
-// 2. Provider 组件：XxxProvider
+// 2. Provider 组件：XxxProvider，用 value 把数据提供给所有子组件
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  // value 里的对象就是子组件通过 useAuth 能读到的全部数据
   const value = { user, setUser, isLoggedIn: !!user }
+  // Provider 包裹的子树都能访问 AuthContext
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-// 3. 消费 Hook：useXxx
+// 3. 自定义 Hook：useXxx，封装 useContext，组件里调用更简洁
 export function useAuth() {
   const ctx = useContext(AuthContext)
+  // 若组件不在 AuthProvider 内部，ctx 为 null，主动抛错提示开发者
   if (!ctx) throw new Error('useAuth 必须在 AuthProvider 内使用')
   return ctx
-}`,
+}
+
+// 使用方式（在 index.js 或 App.js）：
+// <AuthProvider><App /></AuthProvider>
+// 任意子组件：const { user, isLoggedIn } = useAuth()`,
           },
           {
             type: 'text',

@@ -43,39 +43,49 @@ const intro = {
             type: 'code',
             title: '传统写法完整 Demo：手动同步 DOM',
             language: 'javascript',
-            body: `// ===== index.html =====
+            body: `// ===== index.html（HTML 结构，浏览器直接渲染）=====
+// <!-- 整个计数器界面都写在一个 div 里，id 供 JS 查找 -->
 // <div id="app">
+//   <!-- span 用来显示数字，id="count" 方便 JS 改文字 -->
 //   <span id="count">0</span>
+//   <!-- button 是按钮，id 用来绑定点击事件 -->
 //   <button id="add">+1</button>
 //   <button id="reset">归零</button>
+//   <!-- 提示文字区域，初始为空 -->
 //   <p id="hint"></p>
 // </div>
 
-// ===== main.js =====
+// ===== main.js（纯 JavaScript 逻辑，和 HTML 分开写）=====
+// 用 let 声明可变变量：count 是「数据」，界面不会自动跟着变
 let count = 0
 
+// document.getElementById：根据 id 找到 HTML 里的 DOM 节点，存起来复用
 const countEl = document.getElementById('count')
 const hintEl = document.getElementById('hint')
 
-// 每次 count 变化，都要调用这个函数「手动刷新界面」
+// 核心问题：数据变了，界面不会自动更新，必须手动写 render() 同步
 function render() {
+  // textContent：改元素里的文字内容
   countEl.textContent = count
+  // style.color：改文字颜色；三元运算符 ? : 做简单条件判断
   countEl.style.color = count > 5 ? 'red' : 'black'
+  // 超过 5 才显示提示，否则清空
   hintEl.textContent = count > 5 ? '超过 5 了！' : ''
-  // 如果还有列表、按钮禁用状态……这里会继续变长
+  // 页面越复杂，这里要改的 DOM 越多，函数会越来越长
 }
 
+// addEventListener('click', ...)：给按钮绑定「点击时执行的函数」
 document.getElementById('add').addEventListener('click', () => {
-  count += 1
-  render() // 忘写这一行？界面就不更新了
+  count += 1          // 数据 +1
+  render()            // 必须手动刷新界面；忘写这一行，数字不会变
 })
 
 document.getElementById('reset').addEventListener('click', () => {
-  count = 0
-  render()
+  count = 0           // 数据归零
+  render()            // 同样要手动同步到界面
 })
 
-render() // 首次渲染`,
+render() // 页面第一次加载时也要调用，否则初始界面是空的`,
           },
           {
             type: 'text',
@@ -86,32 +96,40 @@ render() // 首次渲染`,
             type: 'code',
             title: 'React 写法完整 Demo：数据驱动界面',
             language: 'jsx',
-            body: `import { useState } from 'react'
+            body: `// 从 react 包导入 useState：React 提供的「状态 Hook」，让函数组件能存可变数据
+import { useState } from 'react'
 
+// 定义一个函数组件：组件名必须大写开头（Counter），这是 React 的硬规则
 function Counter() {
+  // useState(0)：创建状态 count，初始值 0；setCount 用来更新 count
+  // 调用 setCount 后，React 会自动重新渲染这个组件，界面跟着变
   const [count, setCount] = useState(0)
 
+  // return 后面是 JSX：用类似 HTML 的语法「描述界面长什么样」
   return (
+    // style 必须是 JS 对象 {{ }}，外层是 JSX 表达式，内层是对象
     <div style={{ padding: 24, fontFamily: 'sans-serif' }}>
       <h2>React 计数器</h2>
-      {/* 界面直接「描述」count 长什么样，不用 getElementById */}
+      {/* 花括号 {count}：把 JS 变量插进 JSX；颜色随 count 变化，不用手动改 DOM */}
       <span style={{ color: count > 5 ? 'red' : 'black', fontSize: 32 }}>
         {count}
       </span>
 
       <div style={{ marginTop: 12 }}>
+        {/* onClick：点击事件，传函数；setCount(count + 1) 更新状态，React 自动刷新 */}
         <button onClick={() => setCount(count + 1)}>+1</button>
         <button onClick={() => setCount(0)} style={{ marginLeft: 8 }}>
           归零
         </button>
       </div>
 
-      {/* 条件显示：count > 5 才出现提示 */}
+      {/* && 短路：左边为真才渲染右边；count > 5 时才显示这段提示 */}
       {count > 5 && <p style={{ color: 'crimson' }}>超过 5 了！</p>}
     </div>
   )
 }
 
+// 默认导出：别的文件可以用 import Counter from './Counter' 引入
 export default Counter
 
 // 使用方式：在 App.js 里 import Counter from './Counter'，然后 return <Counter />`,
@@ -143,17 +161,21 @@ export default Counter
             title: 'React 的两个核心思想（写在代码注释里对照）',
             language: 'jsx',
             body: `// 【声明式】你告诉 React「我要什么界面」，不是「先改 A 再改 B」
+// Greeting 接收 props：{ name } 是解构写法，等价于 props.name
 function Greeting({ name }) {
-  return <h1>你好，{name}</h1>  // 描述结果，不是一步步操作 DOM
+  // return 直接描述最终界面；{name} 把传入的数据显示出来
+  return <h1>你好，{name}</h1>  // 不用 getElementById，不用 textContent
 }
 
-// 【组件化】页面拆成可复用积木，像搭乐高
+// 【组件化】页面拆成可复用积木，像搭乐高一样组合
 function App() {
+  // App 是根组件，return 只能有一个根节点，这里用 div 包起来
   return (
     <div>
+      {/* 像 HTML 标签一样用组件，name="小明" 是传给 Greeting 的 prop */}
       <Greeting name="小明" />
-      <Greeting name="小红" />  {/* 同一组件，不同数据 */}
-      <Counter />                 {/* 上一节的计数器 */}
+      <Greeting name="小红" />  {/* 同一套代码，换不同 props 就能复用 */}
+      <Counter />                 {/* 引用上一节的计数器组件 */}
     </div>
   )
 }`,
@@ -247,11 +269,15 @@ function App() {
             type: 'code',
             title: '环境检查命令（复制到终端执行）',
             language: 'bash',
-            body: `node -v    # 应输出类似 v20.11.0
+            body: `# node -v：查看 Node.js 版本；React 项目需要 Node 才能运行
+node -v    # 应输出类似 v20.11.0（LTS 长期支持版最稳）
+
+# npm -v：查看 npm 版本；npm 是 Node 自带的包管理器，用来安装依赖
 npm -v     # 应输出类似 10.2.0
 
-# 如果两条都有版本号 → 可以继续
-# 如果报错 command not found → 去 nodejs.org 安装 LTS 版，装完重启终端再试`,
+# 如果两条都有版本号 → 环境 OK，可以继续创建项目
+# 如果报错 command not found → 说明没装 Node，去 nodejs.org 下载 LTS 版
+# 安装后关闭并重新打开终端，再执行上面两条命令`,
           },
           {
             type: 'text',
@@ -262,22 +288,26 @@ npm -v     # 应输出类似 10.2.0
             type: 'code',
             title: '创建项目完整命令（从头到尾复制执行）',
             language: 'bash',
-            body: `# 1. 进入你想放项目的目录（示例：桌面）
+            body: `# 1. cd：切换当前目录；~ 表示用户主目录，~/Desktop 是桌面
 cd ~/Desktop
 
-# 2. 创建项目（my-app 可改成任意英文名，不要中文和空格）
+# 2. npx：临时下载并运行包，不用全局安装 create-react-app
+# create-react-app：官方脚手架，一键生成 React 项目结构
+# my-app：项目文件夹名，可改成任意英文名，不要用中文或空格
 npx create-react-app my-app
 
-# 等待 1～3 分钟，看到 "Happy hacking!" 表示成功
+# 首次创建会下载依赖，等待 1～3 分钟
+# 看到终端输出 "Happy hacking!" 表示创建成功
 
-# 3. 进入项目文件夹
+# 3. 进入刚生成的项目文件夹（名字要和上一步一致）
 cd my-app
 
-# 4. 启动开发服务器
+# 4. npm start：读取 package.json 里的 start 脚本，启动开发服务器
 npm start
 
-# 浏览器会自动打开 http://localhost:3000
-# 看到旋转的 React logo 就成功了`,
+# 成功后浏览器会自动打开 http://localhost:3000
+# 看到旋转的 React logo 说明项目跑起来了
+# 开发服务器会一直占着终端，停止请按 Ctrl+C`,
           },
           {
             type: 'text',
@@ -289,19 +319,22 @@ npm start
             title: 'package.json 里四个脚本分别干什么',
             language: 'json',
             body: `{
+  // name：项目名称，也是 package.json 里的标识
   "name": "my-app",
+  // scripts：npm 命令快捷方式；npm start 实际执行 "react-scripts start"
   "scripts": {
+    // start → 本地开发：启动 Webpack 开发服务器，改代码自动热更新，默认端口 3000
     "start": "react-scripts start",
+    // build → 生产打包：把 src 编译成静态文件，输出到 build/ 文件夹，用于部署上线
     "build": "react-scripts build",
+    // test → 运行单元测试（Jest + Testing Library），写测试文件后才会用到
     "test": "react-scripts test",
+    // eject → 把 CRA 隐藏的配置全部「弹出」到项目里；不可逆，初学绝对不要用
     "eject": "react-scripts eject"
   }
 }
 
-// start  → 本地开发，热更新，端口 3000
-// build  → 打包成静态文件到 build/ 文件夹，可部署到服务器
-// test   → 运行测试（Jest + Testing Library）
-// eject  → 弹出所有配置（不可逆！初学绝对不要用）`,
+// 日常开发最常用：npm start（一直开着）和 npm run build（上线前打包）`,
           },
           {
             type: 'table',
@@ -323,31 +356,37 @@ npm start
             type: 'code',
             title: '入口文件完整代码：从 HTML 到 React 应用',
             language: 'jsx',
-            body: `// ===== public/index.html（只看这一行就够）=====
+            body: `// ===== public/index.html（浏览器真正加载的 HTML 壳子）=====
+// <!-- body 里只有一个空 div，React 会把整个应用「挂载」到这里 -->
 // <body>
-//   <div id="root"></div>   ← React 应用会渲染到这里
+//   <div id="root"></div>   ← 注意 id="root"，后面 JS 会找这个节点
 // </body>
 
-// ===== src/index.js（CRA 默认入口，理解每一行）=====
+// ===== src/index.js（整个 React 应用的入口文件，CRA 默认从这里启动）=====
+// import：从别的文件/包引入代码；React 是核心库
 import React from 'react'
+// ReactDOM/client：React 18 的新 API，负责把组件渲染到真实 DOM
 import ReactDOM from 'react-dom/client'
+// 引入全局 CSS，整个项目共用一份样式
 import './index.css'
+// 引入根组件 App；./App 表示同目录下的 App.js
 import App from './App'
 
-// 1. 找到 HTML 里的 #root 节点
+// createRoot：在 #root 节点上创建 React 18 的根容器
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-// 2. 把 <App /> 组件「渲染」进 root
+// render：把 JSX（<App />）渲染进 root，浏览器里就能看到界面了
 root.render(
+  // StrictMode：开发模式下额外检查潜在问题（如过时 API），不影响线上功能
   <React.StrictMode>
-    <App />
+    <App />   {/* 自定义组件，像 HTML 标签一样写 */}
   </React.StrictMode>
 )
 
-// StrictMode：开发模式下帮你看潜在问题，不影响功能
-
-// ===== src/App.js（你的第一个修改点）=====
+// ===== src/App.js（根组件，初学者最常改的文件）=====
+// 函数组件：名字 App 大写开头，React 才认它是组件
 function App() {
+  // return 后面是 JSX，描述这个组件要显示什么
   return (
     <div>
       <h1>我的第一个 React 页面</h1>
@@ -356,6 +395,7 @@ function App() {
   )
 }
 
+// export default：默认导出，index.js 才能 import App from './App'
 export default App`,
           },
           {
@@ -367,18 +407,25 @@ export default App`,
             type: 'code',
             title: 'react-demo 真实入口（对照 src/index.js 打开看）',
             language: 'jsx',
-            body: `// src/index.js（react-demo 真实代码，简化注释）
+            body: `// src/index.js（react-demo 真实入口，比 CRA 默认多了路由和 Redux）
+// BrowserRouter：来自 react-router-dom，让应用支持前端路由（URL 换页面不刷新）
 import { BrowserRouter } from 'react-router-dom'
+// Provider：Redux 提供的组件，把全局 store 注入到整棵组件树
 import { Provider } from 'react-redux'
+// store：Redux 全局状态仓库，多个页面共享的数据放这里
 import { store } from './store'
 
+// 和 CRA 一样：找到 HTML 里的 #root，创建 React 根
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
+// 从外到内包三层：StrictMode → Provider → BrowserRouter → App
 root.render(
   <React.StrictMode>
-    <Provider store={store}>       {/* Redux 全局状态 */}
-      <BrowserRouter>              {/* 前端路由 */}
-        <App />
+    {/* store={store}：把 Redux 仓库传给所有子组件，子组件才能 useSelector */}
+    <Provider store={store}>
+      {/* BrowserRouter：监听 URL 变化，渲染对应页面 */}
+      <BrowserRouter>
+        <App />   {/* 根组件里通常用 useRoutes 根据 URL 选页面 */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
@@ -444,52 +491,52 @@ root.render(
             type: 'code',
             title: '2）本 react-demo 真实目录结构（打开项目对照看）',
             language: 'text',
-            body: `react-demo/
-├── public/
-│   └── index.html              # 页面壳子，只有 <div id="root">
-├── package.json                # 依赖和 npm 脚本
-└── src/
-    ├── index.js                # 入口：挂载 React + Router + Redux
-    ├── App.js                  # 根组件：用 useRoutes 渲染路由表
-    ├── index.css               # 全局样式、CSS 变量
+            body: `react-demo/                          # 项目根目录
+├── public/                          # 静态资源，不经过 Webpack 编译
+│   └── index.html                   # 页面壳子，只有 <div id="root">，React 挂在这里
+├── package.json                     # 项目配置：依赖列表、npm 脚本（start/build/test）
+└── src/                             # 源代码目录，日常开发主要改这里
+    ├── index.js                     # 入口：ReactDOM.createRoot + 挂载 App
+    ├── App.js                       # 根组件：通常用 useRoutes 渲染路由表
+    ├── index.css                    # 全局样式、CSS 变量（全站共用）
     │
-    ├── routes/
-    │   └── index.js            # 路由表：URL 路径 ↔ 页面组件
+    ├── routes/                      # 路由配置：URL 路径 ↔ 页面组件 的对应关系
+    │   └── index.js                 # export routes 数组，定义每个 path 显示哪个页面
     │
-    ├── layouts/
-    │   └── MainLayout.js       # 公共布局（顶栏 + 内容区）
+    ├── layouts/                     # 布局壳：多页共用的外层结构
+    │   └── MainLayout.js            # 例如：顶栏 Header + 中间内容区 <Outlet />
     │
-    ├── pages/                  # 「一整页」放这里
-    │   ├── Home/index.js       # 首页：章节列表
-    │   ├── LessonDetail/index.js  # 章节详情：知识点内容
-    │   ├── AuthDemo/           # 鉴权 Demo 多页面
-    │   └── JsonServerDemo/     # 请求 Demo
+    ├── pages/                       # 页面组件：一个 URL 通常对应 pages 里一个文件夹
+    │   ├── Home/index.js            # 首页：章节列表
+    │   ├── LessonDetail/index.js    # 章节详情：展示教程内容
+    │   ├── AuthDemo/                # 鉴权 Demo 模块（一个业务下多个页面）
+    │   └── JsonServerDemo/          # 请求 Demo 模块
     │
-    ├── components/             # 多个页面都会用的小组件
-    │   ├── Header/             # 顶栏导航
-    │   ├── CodeBlock/          # 代码高亮块
-    │   ├── DocContent/         # 文档内容渲染（读 sections 数据）
-    │   ├── LessonGroup/        # 章节分组卡片
-    │   ├── LiveDemo/           # 可运行代码预览
-    │   └── auth/               # 鉴权相关小组件
+    ├── components/                  # 可复用 UI 块：多个页面都会用到的小组件
+    │   ├── Header/                  # 顶栏导航
+    │   ├── CodeBlock/               # 代码高亮展示块
+    │   ├── DocContent/              # 读 sections 数据，渲染文字/代码/表格
+    │   ├── LessonGroup/             # 章节分组卡片
+    │   ├── LiveDemo/                # 可运行代码预览
+    │   └── auth/                    # 鉴权相关小组件
     │
-    ├── data/                   # 静态数据、教程文案
-    │   ├── lessons.js          # 汇总所有章节
-    │   └── lessons/            # 各章节独立文件（你现在学的就在这儿）
+    ├── data/                        # 静态数据：教程文案、配置，和 UI 逻辑分离
+    │   ├── lessons.js               # 汇总 import 各章节，export 成 lessons 数组
+    │   └── lessons/                 # 各章节独立文件（你现在读的就是这里）
     │       ├── 01-intro.js
     │       ├── 02-jsx.js
     │       └── ...
     │
-    ├── store/                  # Redux 全局状态（进阶章节讲）
-    │   ├── index.js
-    │   ├── hooks.js
-    │   └── slices/
+    ├── store/                       # Redux 全局状态（进阶章节讲）
+    │   ├── index.js                 # 创建 store、合并 reducer
+    │   ├── hooks.js                 # 封装 useSelector 等
+    │   └── slices/                  # 按功能拆分的 slice（如 counterSlice）
     │
-    └── utils/                  # 纯函数工具、常量
-        ├── helpers.js
-        ├── constants.js
-        ├── request.js
-        └── auth.js`,
+    └── utils/                       # 纯函数工具：不依赖 React，可单独测试
+        ├── helpers.js               # 通用辅助函数
+        ├── constants.js             # 常量（如 API 地址）
+        ├── request.js               # 封装 fetch/axios 发请求
+        └── auth.js                  # 鉴权相关工具函数`,
           },
           {
             type: 'table',
@@ -517,24 +564,29 @@ root.render(
             type: 'code',
             title: '5）对照示例：Home 页面怎么引用 data 和 components',
             language: 'jsx',
-            body: `// src/pages/Home/index.js（简化示意，对照真实文件看）
-import lessons from '../../data/lessons'        // 数据从 data 来
-import LessonGroup from '../../components/LessonGroup'  // UI 从 components 来
+            body: `// src/pages/Home/index.js（首页：把数据和 UI 组件拼成完整页面）
+// ../../ 表示向上两级目录：pages/Home → src，再进 data 或 components
+import lessons from '../../data/lessons'        // 静态数据：所有章节列表
+import LessonGroup from '../../components/LessonGroup'  // 可复用 UI：章节分组卡片
 
+// 页面组件：名字 Home 大写，和文件夹名一致
 function Home() {
   return (
     <div className="home">
       <h1>React 学习路线</h1>
+      {/* map：把 lessons 数组每一项变成 JSX；key 帮助 React 识别列表项 */}
       {lessons.map((lesson) => (
+        // lesson={lesson}：把整条章节数据传给子组件；key 用唯一 id
         <LessonGroup key={lesson.id} lesson={lesson} />
       ))}
     </div>
   )
 }
 
+// 默认导出，路由表里 import Home from '../pages/Home' 就能用
 export default Home
 
-// 规律：page 负责「拼页面」，data 负责「有什么内容」，component 负责「怎么展示一块 UI」`,
+// 分工规律：page 负责「拼页面」，data 负责「有什么内容」，component 负责「怎么展示一块 UI」`,
           },
           {
             type: 'table',
@@ -558,38 +610,44 @@ export default Home
             type: 'code',
             title: '8）从 URL 到页面的完整链路（理解本项目怎么跑起来）',
             language: 'jsx',
-            body: `// 1. src/index.js — 挂载应用，包一层 Router + Redux
+            body: `// ===== 第 1 步：src/index.js — 把 React 应用挂到页面上，并包上全局能力 =====
 root.render(
+  // Provider：Redux 全局状态，子组件里可以用 useSelector 读数据
   <Provider store={store}>
+    // BrowserRouter：前端路由，URL 变了换页面，浏览器不会整页刷新
     <BrowserRouter>
-      <App />
+      <App />   // 根组件，下面根据 URL 决定显示哪个页面
     </BrowserRouter>
   </Provider>
 )
 
-// 2. src/App.js — 根据 URL 选页面
+// ===== 第 2 步：src/App.js — 根据当前 URL 从路由表选出要渲染的页面 =====
 function App() {
-  const element = useRoutes(routes)  // routes 来自 ./routes
-  return element
+  // useRoutes：React Router 的 Hook，传入 routes 数组，返回当前 URL 匹配的 element
+  const element = useRoutes(routes)  // routes 从 ./routes/index.js import
+  return element   // 直接 return 匹配到的页面（或布局+页面）
 }
 
-// 3. src/routes/index.js — 路由表
+// ===== 第 3 步：src/routes/index.js — 路由表：path 和页面对应关系 =====
 const routes = [
   {
-    path: '/',
-    element: <MainLayout />,       // 公共布局
-    children: [
-      { index: true, element: <Home /> },
+    path: '/',                      // 访问根路径 /
+    element: <MainLayout />,        // 先渲染公共布局（带 Header）
+    children: [                     // 嵌套路由：内容渲染在 MainLayout 的 <Outlet /> 里
+      { index: true, element: <Home /> },   // / 默认显示 Home 首页
+      // :categoryId :itemId 是动态参数，URL 里会变，页面里用 useParams 读取
       { path: 'lesson/:categoryId/:itemId', element: <LessonDetail /> },
     ],
   },
 ]
 
-// 4. 用户访问 /lesson/intro/what-is-react
-//    → MainLayout 渲染（带 Header）
-//    → LessonDetail 渲染
-//    → LessonDetail 从 data/lessons 读 intro 章节内容
-//    → DocContent 组件把 sections 渲染成文字/代码/提示块/表格`,
+// ===== 第 4 步：用户访问 /lesson/intro/what-is-react 时发生了什么？ =====
+// → BrowserRouter 解析 URL
+// → useRoutes 匹配到 LessonDetail
+// → MainLayout 渲染（顶栏 Header 始终显示）
+// → LessonDetail 在 Outlet 位置渲染
+// → LessonDetail 从 data/lessons 读取 intro 章节数据
+// → DocContent 组件把 sections 数组渲染成文字块、代码块、表格等`,
           },
           {
             type: 'list',
