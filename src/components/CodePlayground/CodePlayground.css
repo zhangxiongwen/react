@@ -218,6 +218,18 @@
   background: #fff;
 }
 
+/* React 预览不是 iframe，内容直接渲染在页面里，需要自己给容器和滚动条 */
+.CodePlayground-previewFrame--react {
+  overflow: auto;
+}
+
+.CodePlayground-previewFrame--react > * {
+  min-height: 100%;
+  border: 1px solid #e2e9e4;
+  border-radius: 8px;
+  background: #fff;
+}
+
 @media (max-width: 900px) {
   .CodePlayground-grid {
     grid-template-columns: 1fr;

@@ -1,9 +1,9 @@
 /**
- * 第 4 章：State
+ * State 章节
  */
 const state = {
   id: 'state',
-  title: 'State 状态管理',
+  title: 'State：组件自己的数据（useState）',
   summary: 'useState 完整用法、函数式更新、对象/数组不可变更新、状态设计 + 完整表单 Demo',
   order: 7,
   items: [
@@ -172,6 +172,74 @@ function AddThreeDemo() {
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：连点三次，setN(n+1) 只加 1，setN(v => v+1) 加 3',
+            body: `import { useState } from 'react' // 引入 useState，用来保存两个互不影响的计数
+
+export default function Demo() { // live Demo 必须默认导出一个组件
+  const [a, setA] = useState(0) // 左边这份计数用「直接传新值」的写法更新
+  const [b, setB] = useState(0) // 右边这份计数用「函数式更新」的写法更新
+
+  // ❌ 一次点击里连写三次 setA(a + 1)：a 在这一次渲染里从头到尾都是旧值
+  function addThreeWrong() {
+    setA(a + 1) // 假设当前 a = 0，这里预约「把 a 设成 1」
+    setA(a + 1) // a 还是 0（本次渲染的快照不会变），又预约「设成 1」
+    setA(a + 1) // 依旧基于 0，React 合并后最终只 +1
+  }
+
+  // ✅ 一次点击里连写三次 setB(v => v + 1)：v 是「排队中的最新值」
+  function addThreeRight() {
+    setB((v) => v + 1) // v = 0，返回 1
+    setB((v) => v + 1) // v = 1，返回 2
+    setB((v) => v + 1) // v = 2，返回 3，所以稳定 +3
+  }
+
+  const boxStyle = { flex: 1, padding: 16, borderRadius: 8, textAlign: 'center' } // 两个盒子共用的样式
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 12 }}>
+        {/* 左：错误写法，点一次只 +1 */}
+        <div style={{ ...boxStyle, background: '#fff1f0', border: '1px solid #ffa39e' }}>
+          <div style={{ fontSize: 13, color: '#cf1322' }}>❌ setA(a + 1) 连写三次</div>
+          <div style={{ fontSize: 40, margin: '8px 0' }}>{a}</div>
+          <button onClick={addThreeWrong} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+            点我「+3」
+          </button>
+        </div>
+
+        {/* 右：正确写法，点一次真的 +3 */}
+        <div style={{ ...boxStyle, background: '#f6ffed', border: '1px solid #b7eb8f' }}>
+          <div style={{ fontSize: 13, color: '#389e0d' }}>✅ setB(v =&gt; v + 1) 连写三次</div>
+          <div style={{ fontSize: 40, margin: '8px 0' }}>{b}</div>
+          <button onClick={addThreeRight} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+            点我「+3」
+          </button>
+        </div>
+      </div>
+
+      {/* 归零按钮：设成固定值，不依赖旧值，所以直接传 0 就行 */}
+      <button
+        onClick={() => { setA(0); setB(0) }}
+        style={{ marginTop: 12, padding: '6px 12px', cursor: 'pointer' }}
+      >
+        两边都归零
+      </button>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        各点一次就能看到：左边只涨 1，右边涨 3。
+        原因是「a」是本次渲染的快照，一次事件里读到的永远是同一个旧值；
+        而函数式更新的参数 v 由 React 传入，是排队里的最新值。
+        <strong>只要新值依赖旧值，就写 setX(v =&gt; ...)。</strong>
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整 Demo：定时器里的闭包陷阱与函数式修复',
             language: 'jsx',
             body: `import { useState, useEffect } from 'react'
@@ -225,6 +293,72 @@ function TimerTrap() {
   })
 
   return <p>当前用户：{user.name}</p>
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：点「重新渲染」，看惰性初始化的函数只跑一次',
+            body: `import { useState } from 'react' // 引入 useState
+
+// 放在组件外面的两个计数器：记录「初始值计算」各被执行了多少次
+let eagerRuns = 0 // 立即执行版跑了几次
+let lazyRuns = 0 // 惰性版跑了几次
+
+// 假装这是一个很贵的计算：读 localStorage、解析大 JSON、遍历大数组……
+function expensiveCompute(tag) {
+  if (tag === 'eager') eagerRuns += 1 // 每被调用一次就累加，方便在界面上看见
+  else lazyRuns += 1
+  let sum = 0
+  for (let i = 0; i < 100000; i++) sum += i // 故意做点耗时的循环
+  return sum
+}
+
+export default function Demo() { // 默认导出组件
+  const [tick, setTick] = useState(0) // 这个 state 只用来「制造一次重新渲染」
+
+  // ❌ useState(expensiveCompute('eager'))：括号表示「现在就调用」
+  //    组件每渲染一次，这个函数就白跑一次，React 只在首次挂载时用它的返回值
+  const [eagerValue] = useState(expensiveCompute('eager'))
+
+  // ✅ useState(() => expensiveCompute('lazy'))：传进去的是「函数本身」
+  //    React 只在首次挂载时调用它一次，之后再渲染都不会执行
+  const [lazyValue] = useState(() => expensiveCompute('lazy'))
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <button
+        onClick={() => setTick(tick + 1)} // 改 state 触发重新渲染，组件函数会整个重跑一遍
+        style={{ padding: '6px 12px', cursor: 'pointer' }}
+      >
+        重新渲染一次（已渲染 {tick + 1} 次）
+      </button>
+
+      <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
+        <div style={{ flex: 1, padding: 12, borderRadius: 8, background: '#fff1f0', border: '1px solid #ffa39e' }}>
+          <div style={{ fontSize: 13, color: '#cf1322' }}>❌ useState(expensiveCompute())</div>
+          {/* 这个数字会跟着渲染次数一直涨，说明每次渲染都白算了一遍 */}
+          <div style={{ fontSize: 32, margin: '8px 0' }}>{eagerRuns} 次</div>
+          <div style={{ fontSize: 12, color: '#999' }}>初始值：{eagerValue}</div>
+        </div>
+
+        <div style={{ flex: 1, padding: 12, borderRadius: 8, background: '#f6ffed', border: '1px solid #b7eb8f' }}>
+          <div style={{ fontSize: 13, color: '#389e0d' }}>✅ useState(() =&gt; expensiveCompute())</div>
+          {/* 这个数字停在 1 不动，说明初始化函数只在首次挂载时跑了一次 */}
+          <div style={{ fontSize: 32, margin: '8px 0' }}>{lazyRuns} 次</div>
+          <div style={{ fontSize: 12, color: '#999' }}>初始值：{lazyValue}</div>
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        多点几次「重新渲染」：左边次数一直涨，右边始终停着不动。
+        两边的 state 初始值完全一样，区别只在于<strong>你把「计算结果」还是「计算函数」交给 useState</strong>。
+        初始值算起来很便宜（比如 0、''、[]）时随便写；一旦要读 localStorage、解析 JSON、遍历大数组，就写成 useState(() =&gt; ...)。
+      </p>
+    </div>
+  )
 }`,
           },
           {
@@ -413,6 +547,71 @@ setForm({ ...form, name: '小明' })
 setForm((prev) => ({ ...prev, name: '小明' }))`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：直接改对象字段界面不动，展开复制才会更新',
+            body: `import { useState } from 'react' // 引入 useState 存一个对象
+
+let renderTimes = 0 // 组件外的普通变量：每渲染一次 +1，用来看「到底有没有重新渲染」
+
+export default function Demo() { // 默认导出组件
+  renderTimes += 1 // 渲染时累加，纯粹为了演示，真实项目不要这么写
+  const [user, setUser] = useState({ name: '小明', age: 18 }) // 对象类型的 state
+
+  // ❌ 错误：直接改原对象的字段，再把「同一个引用」set 回去
+  function wrongUpdate() {
+    user.age = user.age + 1 // 悄悄改掉了原对象，React 完全不知道
+    setUser(user) // 传进去的还是同一个对象引用，React 用 Object.is 一比：没变 → 不重新渲染
+  }
+
+  // ✅ 正确：展开旧对象生成一个「新对象」，只覆盖要改的字段
+  function rightUpdate() {
+    setUser((prev) => ({ ...prev, age: prev.age + 1 })) // 新引用 → React 判定变了 → 重新渲染
+  }
+
+  // ❌ 另一个高频坑：只传要改的字段，没展开的字段会整个丢失
+  function missingSpread() {
+    setUser({ age: user.age + 1 }) // name 没了！界面上会变成「姓名：（空）」
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ padding: 12, background: '#fafafa', borderRadius: 8, lineHeight: 2 }}>
+        <div>姓名：{user.name || '（空）'}</div>
+        <div>年龄：{user.age}</div>
+        <div style={{ fontSize: 12, color: '#999' }}>组件已渲染 {renderTimes} 次</div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
+        <button onClick={wrongUpdate} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          ❌ user.age++ 后 setUser(user)
+        </button>
+        <button onClick={rightUpdate} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          ✅ setUser({'{'} ...prev, age: prev.age + 1 {'}'})
+        </button>
+        <button onClick={missingSpread} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          ❌ 忘记 ...prev（name 会丢）
+        </button>
+        <button
+          onClick={() => setUser({ name: '小明', age: 18 })} // 重置：直接给一个全新对象
+          style={{ padding: '6px 12px', cursor: 'pointer' }}
+        >
+          重置
+        </button>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        操作顺序建议：先连点三次红色的第一个按钮 → 界面纹丝不动、渲染次数也不涨；
+        再点一次绿色按钮 → 年龄会「一下子跳好几岁」，因为之前偷偷改掉的值这时才一起显示出来。
+        这正说明<strong>数据其实被改了，只是 React 不知道该重画</strong>——所以必须复制出新对象再 set。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '4）第二步：数组 state——增、删、改、查',
             body: '数组同样不能 push/splice 后直接 set——push 改的是原数组，引用不变。\n\n新增：[...list, newItem] 或 setList(prev => [...prev, newItem])。\n\n删除：list.filter(item => item.id !== id)。\n\n修改某项：list.map(item => item.id === id ? { ...item, done: !item.done } : item)。\n\n插入中间：[...list.slice(0, i), newItem, ...list.slice(i)]。\n\n排序：先 [...list] 复制再 sort，不要对 state 原数组直接 .sort()（sort 会 mutate 原数组）。',
@@ -511,6 +710,94 @@ function TodoApp() {
           </li>
         ))}
       </ul>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：数组增删改——push 为什么没反应，concat / filter / map 才行',
+            body: `import { useState } from 'react' // 引入 useState 存一个数组
+
+export default function Demo() { // 默认导出组件
+  const [list, setList] = useState([ // 数组 state，每项是一个对象
+    { id: 1, text: '学 useState', done: true },
+    { id: 2, text: '学不可变更新', done: false },
+  ])
+  const [text, setText] = useState('') // 输入框内容
+  const [nextId, setNextId] = useState(3) // 自增 id，保证 key 唯一
+
+  const newItem = () => ({ id: nextId, text: text.trim() || '新任务 ' + nextId, done: false }) // 造一条新数据
+
+  // ❌ push 是「原地修改」：数组内容确实多了一项，但引用没变，React 认为没变化
+  function addByPush() {
+    list.push(newItem()) // 改的是原数组本身
+    setList(list) // 同一个引用 → 界面不更新（下次因为别的原因重渲染时才会突然冒出来）
+    setNextId((id) => id + 1)
+    setText('')
+  }
+
+  // ✅ concat / [...list, item] 都会返回一个「新数组」，引用变了 React 才会重画
+  function addByConcat() {
+    setList((prev) => [...prev, newItem()]) // 等价写法：prev.concat(newItem())
+    setNextId((id) => id + 1)
+    setText('')
+  }
+
+  // ✅ 删：filter 把不要的那项过滤掉，返回新数组（不要用 splice）
+  function remove(id) {
+    setList((prev) => prev.filter((item) => item.id !== id))
+  }
+
+  // ✅ 改：map 找到目标项，展开这一项再覆盖要改的字段（其它项原样返回）
+  function toggle(id) {
+    setList((prev) => prev.map((item) => (item.id === id ? { ...item, done: !item.done } : item)))
+  }
+
+  // ✅ 排序：先 [...prev] 复制一份再 sort，因为 sort 会原地修改数组
+  function sortByDone() {
+    setList((prev) => [...prev].sort((x, y) => Number(x.done) - Number(y.done)))
+  }
+
+  const doneCount = list.filter((item) => item.done).length // 派生值：算出来的，不用 useState
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)} // 受控输入框
+          placeholder="任务名（留空会自动起名）"
+          style={{ padding: 6, flex: 1, minWidth: 160 }}
+        />
+        <button onClick={addByPush} style={{ padding: '6px 12px', cursor: 'pointer' }}>❌ push 添加</button>
+        <button onClick={addByConcat} style={{ padding: '6px 12px', cursor: 'pointer' }}>✅ 展开添加</button>
+        <button onClick={sortByDone} style={{ padding: '6px 12px', cursor: 'pointer' }}>按完成排序</button>
+      </div>
+
+      <p style={{ fontSize: 13, color: '#666', margin: '10px 0' }}>
+        共 {list.length} 项，已完成 {doneCount} 项
+      </p>
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {list.map((item) => ( // map 出列表，key 用稳定唯一的 id
+          <li key={item.id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 0', borderBottom: '1px solid #eee' }}>
+            <input type="checkbox" checked={item.done} onChange={() => toggle(item.id)} />
+            <span style={{ flex: 1, textDecoration: item.done ? 'line-through' : 'none', color: item.done ? '#999' : '#333' }}>
+              {item.text}
+            </span>
+            <button onClick={() => remove(item.id)} style={{ cursor: 'pointer' }}>删除</button>
+          </li>
+        ))}
+      </ul>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        点「❌ push 添加」列表不会变长；接着随便勾一个复选框触发一次重新渲染，
+        刚才 push 进去的那几条会一起冒出来——这说明数据早就改了，只是 React 没被通知到。
+      </p>
     </div>
   )
 }`,
@@ -681,6 +968,79 @@ function RegisterForm() {
     <div>
       <p>共 {count} 件，合计 ¥{total}</p>
       {isEmpty && <p>购物车是空的</p>}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：搜索过滤——filtered 是算出来的，不要存成 state',
+            body: `import { useState } from 'react' // 引入 useState
+
+const ALL = [ // 原始数据放在组件外：它不会变，所以既不用 state 也不用每次重建
+  { id: 1, name: 'React', type: '框架' },
+  { id: 2, name: 'Vue', type: '框架' },
+  { id: 3, name: 'CSS Grid', type: '样式' },
+  { id: 4, name: 'Flexbox', type: '样式' },
+  { id: 5, name: 'Node.js', type: '后端' },
+]
+
+export default function Demo() { // 默认导出组件
+  const [keyword, setKeyword] = useState('') // 真正的 state ①：用户输入的关键字
+  const [onlyStyle, setOnlyStyle] = useState(false) // 真正的 state ②：是否只看「样式」分类
+
+  // ✅ 派生值：每次渲染时现算。keyword 一变，组件重跑，filtered 自然就是最新的
+  const filtered = ALL.filter((item) => {
+    const hitKeyword = item.name.toLowerCase().includes(keyword.trim().toLowerCase()) // 关键字匹配（忽略大小写）
+    const hitType = !onlyStyle || item.type === '样式' // 没勾选就全放行，勾选了只留「样式」
+    return hitKeyword && hitType
+  })
+
+  const count = filtered.length // 同样是派生值，不用单独存
+  const isEmpty = count === 0 // 「有没有结果」也能算出来
+
+  // ❌ 千万别这样：const [filtered, setFiltered] = useState(ALL)
+  //    那样每次改 keyword 都得记得手动 setFiltered(...)，
+  //    只要漏掉一处，界面就会显示上一次的旧结果——这是新手最常见的状态不同步 bug。
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)} // 只更新关键字这一个 state
+          placeholder="输入关键字，比如 c"
+          style={{ padding: 6, flex: 1, minWidth: 160 }}
+        />
+        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 14 }}>
+          <input type="checkbox" checked={onlyStyle} onChange={(e) => setOnlyStyle(e.target.checked)} />
+          只看「样式」
+        </label>
+      </div>
+
+      <p style={{ fontSize: 13, color: '#666', margin: '10px 0' }}>
+        匹配到 {count} 条（这个数字也是算出来的）
+      </p>
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {filtered.map((item) => ( // 直接渲染派生出来的数组
+          <li key={item.id} style={{ padding: '6px 10px', marginBottom: 6, background: '#fafafa', borderRadius: 6 }}>
+            {item.name} <span style={{ color: '#999', fontSize: 12 }}>· {item.type}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* 空状态也是由派生值驱动的条件渲染 */}
+      {isEmpty && <p style={{ color: '#cf1322', fontSize: 13 }}>没有匹配的结果</p>}
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        这个 Demo 只有两个 state：<code>keyword</code> 和 <code>onlyStyle</code>。
+        列表、条数、空状态全部是<strong>渲染时现算的普通 const</strong>。
+        判断标准很简单：<strong>凡是能从已有 state 推出来的值，就不要再 useState 存一份。</strong>
+      </p>
     </div>
   )
 }`,
@@ -876,6 +1236,98 @@ function Field({ label, type = 'text', value, error, onChange }) {
 
 function ErrorText({ children }) {
   return <span style={{ color: 'crimson', fontSize: 12 }}>{children}</span>
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：多字段用一个对象 state 管理，右侧实时看 state 长什么样',
+            body: `import { useState } from 'react' // 引入 useState
+
+const INITIAL = { username: '', email: '', city: 'shanghai', agree: false } // 初始值抽出来，重置时可以复用
+
+export default function Demo() { // 默认导出组件
+  // 这些字段总是一起提交、一起重置，所以合并成一个对象 state 最省心
+  const [form, setForm] = useState(INITIAL)
+  const [submitted, setSubmitted] = useState(null) // 提交结果：null 表示还没提交过
+
+  // 统一的字段更新入口：[key] 是计算属性名，一个函数搞定所有输入框
+  function update(key, value) {
+    setForm((prev) => ({ ...prev, [key]: value })) // 展开旧对象 + 覆盖这一个字段
+  }
+
+  // 派生值：能算出来就别存 state，改了 form 它自动就是最新的
+  const filled = form.username.trim() !== '' && form.email.includes('@') // 必填是否填好
+  const canSubmit = filled && form.agree // 还要勾了协议才能提交
+
+  function handleSubmit(e) {
+    e.preventDefault() // 阻止浏览器默认提交（会整页刷新）
+    if (!canSubmit) return // 不满足条件直接返回，不做后续处理
+    setSubmitted(form) // 真实项目里这一步是发请求，这里直接把 form 存下来展示
+  }
+
+  const inputStyle = { width: '100%', padding: 6, boxSizing: 'border-box', marginTop: 4 } // 输入框共用样式
+
+  return (
+    <div style={{ display: 'flex', gap: 16, padding: 16, fontFamily: 'system-ui', flexWrap: 'wrap' }}>
+      <form onSubmit={handleSubmit} style={{ flex: 1, minWidth: 220 }}>
+        <label style={{ display: 'block', marginBottom: 10, fontSize: 14 }}>
+          用户名
+          <input value={form.username} onChange={(e) => update('username', e.target.value)} style={inputStyle} />
+        </label>
+
+        <label style={{ display: 'block', marginBottom: 10, fontSize: 14 }}>
+          邮箱
+          <input value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="要含 @" style={inputStyle} />
+        </label>
+
+        <label style={{ display: 'block', marginBottom: 10, fontSize: 14 }}>
+          城市
+          {/* select 也是受控组件：value 绑 state，option 的 value 要对得上 */}
+          <select value={form.city} onChange={(e) => update('city', e.target.value)} style={inputStyle}>
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="chengdu">成都</option>
+          </select>
+        </label>
+
+        <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12, fontSize: 14 }}>
+          {/* 复选框用 checked 绑定，取值用 e.target.checked */}
+          <input type="checkbox" checked={form.agree} onChange={(e) => update('agree', e.target.checked)} />
+          我同意用户协议
+        </label>
+
+        <div style={{ display: 'flex', gap: 8 }}>
+          {/* disabled 由派生值 canSubmit 控制，不需要额外的 state */}
+          <button type="submit" disabled={!canSubmit} style={{ padding: '6px 14px', cursor: canSubmit ? 'pointer' : 'not-allowed' }}>
+            提交
+          </button>
+          {/* 重置只要把整个对象换回初始值，这就是用对象 state 的好处 */}
+          <button type="button" onClick={() => { setForm(INITIAL); setSubmitted(null) }} style={{ padding: '6px 14px', cursor: 'pointer' }}>
+            重置
+          </button>
+        </div>
+      </form>
+
+      <div style={{ flex: 1, minWidth: 220 }}>
+        <div style={{ fontSize: 13, color: '#666', marginBottom: 4 }}>当前 form state（打字就变）：</div>
+        <pre style={{ background: '#f5f5f5', padding: 10, borderRadius: 6, fontSize: 12, margin: 0 }}>
+          {JSON.stringify(form, null, 2)}
+        </pre>
+        <div style={{ fontSize: 13, color: '#666', margin: '10px 0 4px' }}>
+          派生值：canSubmit = {String(canSubmit)}（没有为它单独 useState）
+        </div>
+        {/* 提交结果：submitted 不为 null 时才渲染 */}
+        {submitted && (
+          <div style={{ padding: 10, background: '#f6ffed', border: '1px solid #b7eb8f', borderRadius: 6, fontSize: 13 }}>
+            提交成功：{submitted.username} · {submitted.email}
+          </div>
+        )}
+      </div>
+    </div>
+  )
 }`,
           },
           {

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import ReactPreview from './ReactPreview'
 import './LiveDemo.css'
 
 /** 两侧共用的等宽字体度量，避免光标/选区错位 */
@@ -53,9 +54,12 @@ function resolveLanguage(language = 'html') {
     js: 'javascript',
     javascript: 'javascript',
     jsx: 'jsx',
+    ts: 'tsx',
+    tsx: 'tsx',
     css: 'css',
     html: 'markup',
     markup: 'markup',
+    bash: 'bash',
     text: 'text',
   }
   return map[String(language).toLowerCase()] || 'markup'
@@ -88,7 +92,14 @@ const highlightStyle = buildHighlightStyle(oneLight)
 /**
  * 左侧可编辑代码（语法高亮）+ 右侧实时渲染
  */
-function LiveDemo({ title, language = 'html', initialCode = '' }) {
+function isReactRuntime(runtime, language) {
+  if (runtime === 'react') return true
+  const lang = String(language || '').toLowerCase()
+  return lang === 'tsx' || lang === 'jsx'
+}
+
+function LiveDemo({ title, language = 'html', initialCode = '', runtime }) {
+  const useReactPreview = isReactRuntime(runtime, language)
   const starter = useMemo(
     () => String(initialCode ?? '').replace(/^\n/, '').replace(/\n$/, ''),
     [initialCode]
@@ -260,15 +271,19 @@ function LiveDemo({ title, language = 'html', initialCode = '' }) {
         <div className="LiveDemo-pane LiveDemo-pane--preview">
           <div className="LiveDemo-paneLabel">渲染效果</div>
           <div className="LiveDemo-previewFrame">
-            <iframe
-              key={previewKey}
-              title={title ? `${title} 预览` : '代码预览'}
-              className="LiveDemo-iframe"
-              srcDoc={srcDoc}
-              sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-              onLoad={handleIframeLoad}
-              style={{ height: iframeHeight }}
-            />
+            {useReactPreview ? (
+              <ReactPreview key={previewKey} code={previewCode} />
+            ) : (
+              <iframe
+                key={previewKey}
+                title={title ? `${title} 预览` : '代码预览'}
+                className="LiveDemo-iframe"
+                srcDoc={srcDoc}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
+                onLoad={handleIframeLoad}
+                style={{ height: iframeHeight }}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -33,6 +33,23 @@
   gap: 4px;
 }
 
+.Home-sidebar-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.Home-sidebar-stage + .Home-sidebar-stage {
+  margin-top: 10px;
+}
+
+.Home-sidebar-stage-label {
+  margin: 0 0 4px 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #8aa196;
+}
+
 .Home-sidebar-item {
   display: flex;
   align-items: flex-start;
@@ -125,6 +142,45 @@
   display: block;
 }
 
+/* 阶段分组：把 19 章切成四段，降低目录的压迫感 */
+.Home-stage {
+  margin-bottom: 8px;
+}
+
+.Home-stage-header {
+  margin: 32px 0 8px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #eef6f1 0%, rgba(238, 246, 241, 0.35) 100%);
+  border: 1px solid #dbe8e0;
+}
+
+.Home-stage:first-child .Home-stage-header {
+  margin-top: 0;
+}
+
+.Home-stage-label {
+  margin: 0 0 6px;
+  font-family: "Fraunces", "Songti SC", serif;
+  font-size: 18px;
+  font-weight: 650;
+  color: #1f5c40;
+  letter-spacing: -0.01em;
+}
+
+.Home-stage-desc {
+  margin: 0 0 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4a5a52;
+}
+
+.Home-stage-range {
+  margin: 0;
+  font-size: 12px;
+  color: #8aa196;
+}
+
 @media (max-width: 860px) {
   .Home {
     flex-direction: column;
@@ -146,6 +202,15 @@
     overflow-x: auto;
     gap: 8px;
     padding-bottom: 4px;
+  }
+
+  /* 窄屏时导航横向滚动，阶段容器不参与布局，只留章节按钮 */
+  .Home-sidebar-stage {
+    display: contents;
+  }
+
+  .Home-sidebar-stage-label {
+    display: none;
   }
 
   .Home-sidebar-item {

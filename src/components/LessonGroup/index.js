@@ -23,13 +23,19 @@ function LessonGroup({ category }) {
       </header>
 
       <ul className="LessonGroup-list">
-        {category.items.map((item) => (
+        {category.items.map((item, index) => (
           <li key={item.id}>
             <Link
               to={getLessonPath(category.id, item.id)}
               className="LessonGroup-item"
             >
-              <span className="LessonGroup-item-title">{item.title}</span>
+              <span className="LessonGroup-item-head">
+                {/* 自动编号，文章里的「第 N 节」按这个数字对照 */}
+                <span className="LessonGroup-item-num">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="LessonGroup-item-title">{item.title}</span>
+              </span>
               <span className="LessonGroup-item-summary">{item.summary}</span>
             </Link>
           </li>

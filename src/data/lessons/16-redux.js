@@ -7,7 +7,7 @@ const redux = {
   title: 'Redux 状态管理',
   summary:
     'useState / Context / Redux 怎么选；state / action / reducer 三词；Toolkit 建 store；Provider；useSelector / useDispatch 完整用法',
-  order: 14,
+  order: 16,
   items: [
     {
       id: 'redux-when-to-use',
@@ -165,6 +165,101 @@ function counterReducer(state, action) {
 // 组件里只做两件事：
 //   const value = useSelector(s => s.counter.value)  // 读
 //   dispatch(incrementByAmount(5))                   // 写`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：三十行手写一个迷你 store，把 Redux 原理彻底看穿',
+            body: `import { useState, useEffect } from 'react' // 全程只用 React 自带能力，不装任何 Redux 包
+
+// ========== 迷你版 createStore：Redux 的核心真的就这么点东西 ==========
+// 真实项目里你不手写它，而是用 @reduxjs/toolkit 的 configureStore
+// configureStore = 这段代码 + 合并多个 reducer + DevTools + thunk 中间件
+function createStore(reducer, preloadedState) {
+  let state = preloadedState                 // 仓库里的货：整棵 state 树
+  let listeners = []                         // 订阅者名单：state 一变就挨个通知
+
+  const getState = () => state               // 读：真实项目里 useSelector 内部调的就是它
+
+  function dispatch(action) {                // 写：全应用唯一能改 state 的入口
+    state = reducer(state, action)           // 把「旧 state + action」交给 reducer 算出新 state
+    listeners.forEach((fn) => fn())          // 通知所有订阅者：数据变了，快重新渲染
+    return action
+  }
+
+  function subscribe(listener) {             // 订阅：真实项目里 react-redux 的 <Provider> 内部在用
+    listeners.push(listener)
+    return () => { listeners = listeners.filter((l) => l !== listener) } // 返回「取消订阅」函数
+  }
+
+  return { getState, dispatch, subscribe }   // store 对外就这三个方法
+}
+
+// reducer：纯函数 (旧 state, action) => 新 state。真实项目里由 createSlice 自动生成
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'counter/increment':
+      return { ...state, value: state.value + 1 }                 // ★ 必须返回新对象，不能改旧的
+    case 'counter/decrement':
+      return { ...state, value: state.value - 1 }
+    case 'counter/incrementByAmount':
+      return { ...state, value: state.value + action.payload }    // payload = dispatch 时带的参数
+    case 'counter/reset':
+      return { ...state, value: 0 }
+    default:
+      return state                                                // 不认识的 action 原样返回
+  }
+}
+
+const store = createStore(counterReducer, { value: 0 }) // 真实项目：configureStore({ reducer: { counter: ... } })
+
+export default function Demo() {
+  const [, forceRender] = useState(0)        // 拿来「戳一下」组件，让它重新渲染
+  const [log, setLog] = useState([])         // action 日志，模拟 Redux DevTools 面板
+
+  // 订阅 store：数据变了就重渲染。真实项目里这一步 useSelector 已经替你做了
+  useEffect(() => store.subscribe(() => forceRender((n) => n + 1)), [])
+
+  function send(action) {
+    store.dispatch(action)                                        // 组件只能 dispatch，不能直接改 state
+    setLog((prev) => [JSON.stringify(action), ...prev].slice(0, 6)) // 只留最近 6 条
+  }
+
+  const btn = { padding: '4px 10px', cursor: 'pointer', marginRight: 8 }
+
+  return (
+    <div style={{ display: 'flex', gap: 14 }}>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 26, fontWeight: 700, marginBottom: 10 }}>{store.getState().value}</div>
+        {/* 每个按钮发一个 action，等价于 dispatch(increment()) */}
+        <button style={btn} onClick={() => send({ type: 'counter/increment' })}>+1</button>
+        <button style={btn} onClick={() => send({ type: 'counter/decrement' })}>-1</button>
+        <button style={btn} onClick={() => send({ type: 'counter/incrementByAmount', payload: 5 })}>+5</button>
+        <button style={btn} onClick={() => send({ type: 'counter/reset' })}>归零</button>
+        <button style={btn} onClick={() => send({ type: '不认识的动作' })}>发个无效 action</button>
+
+        <p style={{ fontSize: 13, color: '#666' }}>
+          点最后一个按钮：reducer 走 default 分支原样返回旧 state，界面数字纹丝不动——这就是「reducer 只认识自己声明过的 type」。
+        </p>
+      </div>
+
+      <div style={{ width: 300 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>当前 state（getState）</div>
+        <pre style={{ background: '#f6ffed', padding: 10, borderRadius: 6, margin: 0, fontSize: 12 }}>
+          {JSON.stringify(store.getState(), null, 2)}
+        </pre>
+
+        <div style={{ fontSize: 13, fontWeight: 600, margin: '10px 0 6px' }}>action 日志（DevTools 看到的）</div>
+        <div style={{ background: '#fafafa', padding: 10, borderRadius: 6, fontSize: 12, fontFamily: 'monospace', minHeight: 70 }}>
+          {log.length ? log.map((l, i) => <div key={i} style={{ color: i === 0 ? '#1677ff' : '#999' }}>{l}</div>)
+            : <span style={{ color: '#bbb' }}>还没有 action</span>}
+        </div>
+      </div>
+    </div>
+  )
+}`,
           },
           {
             type: 'table',
@@ -364,6 +459,87 @@ import { increment, incrementByAmount } from './store/slices/counterSlice'
 // 但用 action creator 更安全：不会拼错 type 字符串`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：手写迷你 createSlice，看 action creator 是怎么被「自动生成」的',
+            body: `import { useState, useReducer } from 'react' // useReducer 天生就是「小号 Redux」，正好拿来跑 slice
+
+// ===== 迷你版 createSlice：真实项目里这是 @reduxjs/toolkit 的 createSlice =====
+function createSlice(config) {
+  const { name, initialState, reducers } = config
+  const actions = {}
+
+  Object.keys(reducers).forEach((key) => {
+    // ★ 关键一步：每个 reducer 键名自动生成一个 action creator
+    // increment() → { type: 'counter/increment' }；type 前缀就是 slice 的 name
+    actions[key] = (payload) => ({ type: name + '/' + key, payload })
+  })
+
+  function reducer(state, action) {
+    const [prefix, key] = action.type.split('/')          // 'counter/increment' → ['counter', 'increment']
+    if (prefix !== name || !reducers[key]) return state   // 不是本 slice 的 action，原样返回（多 slice 时很重要）
+    const draft = { ...state }                            // 浅拷贝当草稿；RTK 里这一步由 Immer 完成
+    reducers[key](draft, action)                          // 在草稿上「像直接改一样」写
+    return draft                                          // 交出新对象，满足 Redux 不可变要求
+  }
+
+  return { name, actions, reducer, initialState }
+}
+
+// ===== 用法和真实 createSlice 一模一样 =====
+const counterSlice = createSlice({
+  name: 'counter',                    // action type 的前缀
+  initialState: { value: 0, step: 1 },// 这块业务的初始数据
+  reducers: {                         // 所有「合法改法」，键名 = action 名
+    increment(state) { state.value += state.step },              // 无参数
+    decrement(state) { state.value -= state.step },
+    setStep(state, action) { state.step = action.payload },      // 带参数：payload 就是调用时传的值
+    reset(state) { state.value = 0; state.step = 1 },
+  },
+})
+
+// 真实项目：export const { increment, ... } = counterSlice.actions
+const { increment, decrement, setStep, reset } = counterSlice.actions
+
+export default function Demo() {
+  // useReducer(reducer, 初始值)：本质就是一个「只服务于本组件」的迷你 store
+  const [state, dispatch] = useReducer(counterSlice.reducer, counterSlice.initialState)
+  const [last, setLast] = useState(null) // 记下最近一个 action，让你看清它长什么样
+
+  function send(action) {
+    setLast(action)
+    dispatch(action)
+  }
+
+  const btn = { padding: '4px 10px', cursor: 'pointer', marginRight: 8 }
+
+  return (
+    <div>
+      <div style={{ fontSize: 24, fontWeight: 700, marginBottom: 4 }}>{state.value}</div>
+      <div style={{ fontSize: 12, color: '#888', marginBottom: 10 }}>当前步长 step = {state.step}</div>
+
+      <button style={btn} onClick={() => send(increment())}>increment()</button>
+      <button style={btn} onClick={() => send(decrement())}>decrement()</button>
+      <button style={btn} onClick={() => send(setStep(5))}>setStep(5)</button>
+      <button style={btn} onClick={() => send(setStep(1))}>setStep(1)</button>
+      <button style={btn} onClick={() => send(reset())}>reset()</button>
+
+      <div style={{ marginTop: 12, fontSize: 13 }}>
+        你调用 <code>{last ? last.type.split('/')[1] + '()' : 'increment()'}</code>，它返回的 action 对象是：
+      </div>
+      <pre style={{ background: '#f6ffed', padding: 10, borderRadius: 6, fontSize: 12 }}>
+        {JSON.stringify(last || increment(), null, 2)}
+      </pre>
+      <p style={{ fontSize: 13, color: '#666' }}>
+        注意 type 是「slice名/reducer名」自动拼出来的——这就是你从来不用手写 action type 字符串的原因。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'tip',
             title: '一句话记忆',
             body: 'createSlice 填 name + initialState + reducers；export actions 给组件 dispatch，export default reducer 给 store 注册。',
@@ -447,6 +623,93 @@ export const store = configureStore({
 //   state.counter.value  → configureStore 里 key 是 counter
 //   state.user.name      → configureStore 里 key 是 user
 // key 写错 → useSelector 得到 undefined`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：useReducer + Context 拼出「全局 store + 多 slice」，两个互不相干的组件读同一份数据',
+            body: `import { createContext, useContext, useReducer } from 'react' // Context 负责「往下传」，useReducer 负责「算新 state」
+
+// ===== 两个互不相干的 slice reducer：各管各的那一块 =====
+function counterReducer(state, action) {          // 真实项目：counterSlice.reducer
+  if (action.type === 'counter/increment') return { value: state.value + 1 }
+  if (action.type === 'counter/reset') return { value: 0 }
+  return state                                     // 不是自己的 action 就原样返回（引用不变）
+}
+function userReducer(state, action) {              // 真实项目：userSlice.reducer
+  if (action.type === 'user/login') return { name: action.payload, loggedIn: true }
+  if (action.type === 'user/logout') return { name: '游客', loggedIn: false }
+  return state
+}
+
+// ===== 迷你 combineReducers：configureStore({ reducer: {...} }) 内部干的就是这件事 =====
+function combineReducers(map) {
+  return (state, action) => {
+    const next = {}
+    Object.keys(map).forEach((key) => {
+      next[key] = map[key](state[key], action)     // ★ 每个 slice 只拿到 state 里自己那一块
+    })
+    return next
+  }
+}
+
+// key 决定 state 路径：counter → state.counter，user → state.user
+const rootReducer = combineReducers({ counter: counterReducer, user: userReducer })
+const initialState = { counter: { value: 0 }, user: { name: '游客', loggedIn: false } }
+
+// StoreContext：真实项目里是 react-redux 的 <Provider store={store}>
+const StoreContext = createContext(null)
+const useSelector = (selector) => selector(useContext(StoreContext).state) // 真实项目：react-redux 的 useSelector
+const useDispatch = () => useContext(StoreContext).dispatch                // 真实项目：react-redux 的 useDispatch
+
+// ===== 组件 A：顶栏。它和下面的面板没有任何父子关系，也不接收任何 props =====
+function HeaderBar() {
+  const name = useSelector((s) => s.user.name)      // 路径第一段 user = combineReducers 里的 key
+  const count = useSelector((s) => s.counter.value)
+  return (
+    <div style={{ padding: 10, background: '#e6f4ff', borderRadius: 6, fontSize: 13 }}>
+      顶栏：你好 {name}，购物车里有 {count} 件商品
+    </div>
+  )
+}
+
+// ===== 组件 B：操作面板。它只 dispatch，不关心谁在读 =====
+function ActionPanel() {
+  const dispatch = useDispatch()
+  const loggedIn = useSelector((s) => s.user.loggedIn)
+  const btn = { padding: '4px 10px', cursor: 'pointer', marginRight: 8 }
+  return (
+    <div style={{ marginTop: 10 }}>
+      <button style={btn} onClick={() => dispatch({ type: 'counter/increment' })}>加入购物车</button>
+      <button style={btn} onClick={() => dispatch({ type: 'counter/reset' })}>清空购物车</button>
+      {loggedIn
+        ? <button style={btn} onClick={() => dispatch({ type: 'user/logout' })}>退出登录</button>
+        : <button style={btn} onClick={() => dispatch({ type: 'user/login', payload: '小明' })}>登录</button>}
+    </div>
+  )
+}
+
+export default function Demo() {
+  // 整个应用只建一次 store —— 真实项目里是 src/store/index.js 里的 configureStore
+  const [state, dispatch] = useReducer(rootReducer, initialState)
+
+  return (
+    // value 里同时给出 state 和 dispatch，等价于把 store 注入整棵树
+    <StoreContext.Provider value={{ state, dispatch }}>
+      <HeaderBar />
+      <ActionPanel />
+      <div style={{ fontSize: 13, fontWeight: 600, margin: '12px 0 6px' }}>合并后的根 state 树</div>
+      <pre style={{ background: '#fafafa', padding: 10, borderRadius: 6, fontSize: 12 }}>
+        {JSON.stringify(state, null, 2)}
+      </pre>
+      <p style={{ fontSize: 13, color: '#666' }}>
+        HeaderBar 和 ActionPanel 之间没有 props、没有父子关系，却共享同一份数据——这就是「全局 store」的意义。
+      </p>
+    </StoreContext.Provider>
+  )
+}`,
           },
           {
             type: 'tip',
@@ -605,6 +868,105 @@ function CounterPanel() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：useSelector 只订阅自己关心的那块——改 counter 时，读 user 的组件渲染次数不涨',
+            body: `import { useState, useEffect, useRef } from 'react' // useRef 用来统计「这个组件被渲染了几次」
+
+// 迷你 store（和上一节手写的那个同款），这里重点看「订阅粒度」
+function createStore(reducer, initial) {
+  let state = initial
+  let listeners = []
+  return {
+    getState: () => state,
+    dispatch(action) {
+      state = reducer(state, action)
+      listeners.forEach((fn) => fn())                 // 通知所有订阅者：store 变了
+      return action
+    },
+    subscribe(fn) {
+      listeners.push(fn)
+      return () => { listeners = listeners.filter((l) => l !== fn) }
+    },
+  }
+}
+
+// 两块互不相干的数据放在同一个 store 里
+function rootReducer(state, action) {
+  if (action.type === 'counter/increment') return { ...state, counter: { value: state.counter.value + 1 } }
+  if (action.type === 'user/rename') return { ...state, user: { name: action.payload } }
+  return state
+}
+const store = createStore(rootReducer, { counter: { value: 0 }, user: { name: '小明' } })
+
+// ===== 迷你 useSelector：react-redux 的核心优化就是这几行 =====
+function useSelector(selector) {
+  const ref = useRef(null)                             // 记住上一次挑出来的值
+  const [value, setValue] = useState(() => {
+    ref.current = selector(store.getState())
+    return ref.current
+  })
+  useEffect(() => store.subscribe(() => {
+    const next = selector(store.getState())            // store 一变，就重算「我关心的那一小块」
+    if (next === ref.current) return                   // ★ 我关心的没变 → 不 setState → 组件不重渲染
+    ref.current = next                                 // 变了才更新缓存
+    setValue(next)                                     // 变了才触发重渲染
+  }), [])
+  return value
+}
+
+// 组件 A：只读 counter
+function CounterBox() {
+  const value = useSelector((s) => s.counter.value)    // 只订阅 counter.value
+  const renders = useRef(0)
+  renders.current += 1                                 // 每渲染一次就 +1
+  return (
+    <div style={{ flex: 1, padding: 12, background: '#e6f4ff', borderRadius: 6 }}>
+      <div style={{ fontWeight: 600 }}>CounterBox</div>
+      <div>只读 counter.value = {value}</div>
+      <div style={{ fontSize: 12, color: '#888' }}>渲染次数：{renders.current}</div>
+    </div>
+  )
+}
+
+// 组件 B：只读 user
+function UserBox() {
+  const name = useSelector((s) => s.user.name)         // 只订阅 user.name
+  const renders = useRef(0)
+  renders.current += 1
+  return (
+    <div style={{ flex: 1, padding: 12, background: '#f6ffed', borderRadius: 6 }}>
+      <div style={{ fontWeight: 600 }}>UserBox</div>
+      <div>只读 user.name = {name}</div>
+      <div style={{ fontSize: 12, color: '#888' }}>渲染次数：{renders.current}</div>
+    </div>
+  )
+}
+
+export default function Demo() {
+  const btn = { padding: '4px 10px', cursor: 'pointer', marginRight: 8 }
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 12, marginBottom: 12 }}>
+        <CounterBox />
+        <UserBox />
+      </div>
+      {/* 连点几次「counter +1」，观察 UserBox 的渲染次数一直不动 */}
+      <button style={btn} onClick={() => store.dispatch({ type: 'counter/increment' })}>counter +1</button>
+      <button style={btn} onClick={() => store.dispatch({ type: 'user/rename', payload: '小红' + Date.now() % 100 })}>
+        改 user.name
+      </button>
+      <p style={{ fontSize: 13, color: '#666' }}>
+        两个组件订阅同一个 store，但各自只挑一小块。改 counter 时 UserBox 的 selector 返回值没变，所以它压根不重渲染——
+        这正是「selector 要返回 primitive、别每次返回新对象」的原因。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '5）坑 1：useSelector 路径写错',
             body: '错误：useSelector(s => s.counterSlice.value) —— configureStore 里没有 counterSlice 这个 key。\n\n正确：useSelector(s => s.counter.value) —— counter 是 reducer 注册 key。\n\n调试：临时 useSelector(s => s) 打印整个 state，看 key 到底叫什么。',
@@ -719,6 +1081,90 @@ export default CounterPanel
 // 数据流：点击 → dispatch(action) → reducer 算新 state → useSelector 触发重渲染`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：完整计数器（加 / 减 / 加 5 / 异步加），右侧同步显示数据流',
+            body: `import { useReducer, useState } from 'react' // useReducer 就是一个「本地版 store」，数据流和 Redux 完全一致
+
+// reducer：真实项目里这段由 createSlice 的 reducers 自动生成
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'counter/increment':
+      return { ...state, value: state.value + 1 }
+    case 'counter/decrement':
+      return { ...state, value: state.value - 1 }
+    case 'counter/incrementByAmount':
+      return { ...state, value: state.value + action.payload }   // +5 走这条，payload 就是 5
+    case 'counter/setLoading':
+      return { ...state, loading: action.payload }               // 异步加时的 loading 开关
+    case 'counter/reset':
+      return { value: 0, loading: false }
+    default:
+      return state
+  }
+}
+
+// 真实项目：export const { increment, decrement, incrementByAmount, reset } = counterSlice.actions
+const increment = () => ({ type: 'counter/increment' })
+const decrement = () => ({ type: 'counter/decrement' })
+const incrementByAmount = (n) => ({ type: 'counter/incrementByAmount', payload: n })
+const setLoading = (b) => ({ type: 'counter/setLoading', payload: b })
+const reset = () => ({ type: 'counter/reset' })
+
+export default function Demo() {
+  const [state, rawDispatch] = useReducer(counterReducer, { value: 0, loading: false })
+  const [log, setLog] = useState([])                             // 记录数据流，方便对照讲解
+
+  function dispatch(action) {                                    // 包一层只为记日志，真实项目直接用 dispatch
+    setLog((prev) => [action.type + (action.payload !== undefined ? ' payload=' + action.payload : ''), ...prev].slice(0, 6))
+    rawDispatch(action)
+  }
+
+  // 异步加：真实项目里这是 createAsyncThunk，或直接在事件里 await 完再 dispatch
+  function incrementAsync() {
+    dispatch(setLoading(true))                                   // ① 先进 loading
+    setTimeout(() => {
+      dispatch(incrementByAmount(10))                            // ② 一秒后拿到「接口结果」再改数据
+      dispatch(setLoading(false))                                // ③ 关掉 loading
+    }, 1000)
+  }
+
+  const btn = { padding: '4px 12px', cursor: 'pointer', marginRight: 8 }
+
+  return (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 32, fontWeight: 700, marginBottom: 12 }}>
+          {state.value}
+          {state.loading && <span style={{ fontSize: 13, color: '#d46b08', marginLeft: 10 }}>请求中…</span>}
+        </div>
+        <button style={btn} onClick={() => dispatch(increment())} disabled={state.loading}>+1</button>
+        <button style={btn} onClick={() => dispatch(decrement())} disabled={state.loading}>-1</button>
+        <button style={btn} onClick={() => dispatch(incrementByAmount(5))} disabled={state.loading}>+5</button>
+        <button style={btn} onClick={incrementAsync} disabled={state.loading}>异步 +10</button>
+        <button style={btn} onClick={() => dispatch(reset())} disabled={state.loading}>归零</button>
+        <p style={{ fontSize: 13, color: '#666' }}>
+          注意「异步 +10」：等待的那一秒里 reducer 什么都没做——异步永远发生在 reducer 外面，拿到结果才 dispatch。
+        </p>
+      </div>
+
+      <div style={{ width: 260 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>dispatch 过的 action</div>
+        <div style={{ background: '#fafafa', borderRadius: 6, padding: 10, fontSize: 12, fontFamily: 'monospace', minHeight: 110 }}>
+          {log.length ? log.map((l, i) => <div key={i} style={{ color: i === 0 ? '#1677ff' : '#999' }}>{l}</div>)
+            : <span style={{ color: '#bbb' }}>点按钮试试</span>}
+        </div>
+        <div style={{ fontSize: 12, color: '#888', marginTop: 8 }}>
+          点击 → dispatch(action) → reducer 算新 state → 订阅者重渲染
+        </div>
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '3）点击「+5」时发生了什么？（逐步）',
             body: '① 用户 click → onClick 执行 dispatch(incrementByAmount(5))。\n\n② incrementByAmount(5) 返回 action { type: \'counter/incrementByAmount\', payload: 5 }。\n\n③ store 把当前 state 和 action 交给 counterReducer，reducer 里 state.value += action.payload，得到新 state（value 旧值 + 5）。\n\n④ store 更新内部 state，通知所有订阅者。\n\n⑤ CounterPanel 的 useSelector 重新执行 selector，发现 value 从旧变新，组件 re-render，界面数字更新。',
@@ -817,6 +1263,79 @@ reducers: {
 
 // ★ Immer 只在 createSlice 的 reducer 回调里生效
 // 组件里 useSelector 拿到的 state 仍然只读，不能直接 counter.value++`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：直接改 state 界面纹丝不动，返回新对象才更新（Immer 的原理也在里面）',
+            body: `import { useState, useRef } from 'react' // useRef 用来偷看「对象内部其实已经被改了」
+
+// ===== 迷你版 produce：Immer 的核心思路就是「给你一份草稿，改完我生成新对象」=====
+// 真实项目里这是 immer 库的 produce，Redux Toolkit 的 createSlice 已经内置调用了它
+function produce(base, recipe) {
+  const draft = { ...base }   // ① 先浅拷一份草稿（真 Immer 是深层惰性代理，这里简化）
+  recipe(draft)               // ② 让你在草稿上「像直接改一样」写
+  return draft                // ③ 交出全新对象，引用变了，React 才知道要重渲染
+}
+
+export default function Demo() {
+  const [user, setUser] = useState({ name: '小明', score: 0 })
+  const renders = useRef(0)
+  renders.current += 1        // 统计渲染次数，用来证明「有没有真的重渲染」
+
+  // ❌ 错误写法：直接修改原对象，再把同一个引用塞回去
+  function wrongUpdate() {
+    user.score += 1           // 对象内部确实变了……
+    setUser(user)             // ……但引用没变，React 用 Object.is 一比：一样嘛，跳过渲染
+  }
+
+  // ✅ 正确写法一：展开旧对象，覆盖要改的字段，得到全新引用
+  function rightUpdate() {
+    setUser({ ...user, score: user.score + 1 })
+  }
+
+  // ✅ 正确写法二：用 produce，写法像直接改，结果仍是新对象
+  // 这正是你能在 RTK 的 reducers 里写 state.value += 1 的原因
+  function immerUpdate() {
+    setUser((prev) => produce(prev, (draft) => {
+      draft.score += 1        // 看起来在 mutate，其实改的是草稿
+    }))
+  }
+
+  const btn = { padding: '6px 12px', cursor: 'pointer', marginRight: 8, marginBottom: 8 }
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 12, marginBottom: 12 }}>
+        <div style={{ flex: 1, padding: 12, background: '#f6ffed', borderRadius: 6 }}>
+          <div style={{ fontSize: 13, color: '#666' }}>界面上显示的 score</div>
+          <div style={{ fontSize: 30, fontWeight: 700 }}>{user.score}</div>
+        </div>
+        <div style={{ flex: 1, padding: 12, background: '#fff7e6', borderRadius: 6 }}>
+          <div style={{ fontSize: 13, color: '#666' }}>组件渲染次数</div>
+          <div style={{ fontSize: 30, fontWeight: 700 }}>{renders.current}</div>
+        </div>
+      </div>
+
+      <button style={{ ...btn, borderColor: '#cf1322', color: '#cf1322' }} onClick={wrongUpdate}>
+        ❌ user.score += 1 然后 setUser(user)
+      </button>
+      <button style={btn} onClick={rightUpdate}>✅ setUser({'{'} ...user, score: user.score + 1 {'}'})</button>
+      <button style={btn} onClick={immerUpdate}>✅ produce(draft =&gt; draft.score += 1)</button>
+
+      <p style={{ fontSize: 13, color: '#d46b08' }}>
+        先连点三次红色按钮：数字一动不动，渲染次数也不涨。再点一次绿色按钮——数字会「一次性跳好几格」，
+        因为前面那几次修改其实已经悄悄写进对象里了，只是 React 不知道。这种「数据和界面对不上」的 bug 最难查。
+      </p>
+      <p style={{ fontSize: 13, color: '#666' }}>
+        Redux 的规矩和这里一模一样：reducer 必须返回新对象，store 才能用 === 判断出「变了」并通知订阅者。
+        RTK 里之所以能写 state.value += 1，是因为 Immer 在外面替你套了一层 produce。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'text',
@@ -980,6 +1499,101 @@ const userSlice = createSlice({
 
 // 组件里触发：dispatch(fetchUser(123))
 // configureStore 默认已加 thunk 中间件，支持 dispatch 异步函数`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：pending → fulfilled / rejected 三个阶段，看清 createAsyncThunk 到底自动做了什么',
+            body: `import { useReducer, useState } from 'react' // 沙箱里发不了真请求，用 setTimeout 造一个「接口」
+
+// 真实项目：createAsyncThunk('user/fetch', ...) 会自动生成这三个 action type
+const PENDING = 'user/fetch/pending'
+const FULFILLED = 'user/fetch/fulfilled'
+const REJECTED = 'user/fetch/rejected'
+
+// 真实项目：这三段写在 slice 的 extraReducers 里，用 builder.addCase 分别监听
+function userReducer(state, action) {
+  switch (action.type) {
+    case PENDING:
+      return { loading: true, data: null, error: '' }              // 请求开始：清空旧数据和旧错误
+    case FULFILLED:
+      return { loading: false, data: action.payload, error: '' }   // 成功：payload 就是异步函数的返回值
+    case REJECTED:
+      return { loading: false, data: null, error: action.error }   // 失败：记下错误信息
+    default:
+      return state
+  }
+}
+
+// 假接口：1 秒后返回数据，shouldFail 为 true 时抛错
+function fakeApi(shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) reject(new Error('网络开小差了（500）'))
+      else resolve({ id: 7, name: '小明', city: '深圳' })
+    }, 1000)
+  })
+}
+
+export default function Demo() {
+  const [state, dispatch] = useReducer(userReducer, { loading: false, data: null, error: '' })
+  const [log, setLog] = useState([])
+  const [shouldFail, setShouldFail] = useState(false) // 勾上就让接口失败，看 rejected 分支
+
+  function send(action) {
+    setLog((prev) => [action.type, ...prev].slice(0, 6))
+    dispatch(action)
+  }
+
+  // 这个函数就是 createAsyncThunk 帮你写好的那一坨：自动派发 pending / fulfilled / rejected
+  async function fetchUser() {
+    send({ type: PENDING })                                        // ① 请求发出前
+    try {
+      const data = await fakeApi(shouldFail)                       // ② 等接口（reducer 在这期间什么都没做）
+      send({ type: FULFILLED, payload: data })                     // ③ 成功
+    } catch (e) {
+      send({ type: REJECTED, error: e.message })                   // ④ 失败
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <div style={{ flex: 1 }}>
+        <button onClick={fetchUser} disabled={state.loading} style={{ padding: '6px 14px', cursor: 'pointer' }}>
+          {state.loading ? '请求中…' : 'dispatch(fetchUser())'}
+        </button>
+        <label style={{ marginLeft: 12, fontSize: 13 }}>
+          <input type="checkbox" checked={shouldFail} onChange={(e) => setShouldFail(e.target.checked)} />
+          让接口失败
+        </label>
+
+        <div style={{ marginTop: 12, border: '1px solid #d9d9d9', borderRadius: 8, padding: 14, minHeight: 96 }}>
+          {state.loading && <p style={{ margin: 0, color: '#d46b08' }}>⏳ loading = true（pending 阶段）</p>}
+          {!state.loading && state.data && (
+            <div style={{ color: '#389e0d' }}>
+              ✅ fulfilled：{state.data.name} · {state.data.city}（id={state.data.id}）
+            </div>
+          )}
+          {!state.loading && state.error && <div style={{ color: '#cf1322' }}>❌ rejected：{state.error}</div>}
+          {!state.loading && !state.data && !state.error && <p style={{ margin: 0, color: '#999' }}>还没发起请求</p>}
+        </div>
+      </div>
+
+      <div style={{ width: 260 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>自动派发的 action</div>
+        <div style={{ background: '#fafafa', borderRadius: 6, padding: 10, fontSize: 12, fontFamily: 'monospace', minHeight: 80 }}>
+          {log.length ? log.map((l, i) => <div key={i} style={{ color: i === 0 ? '#1677ff' : '#999' }}>{l}</div>)
+            : <span style={{ color: '#bbb' }}>点左边按钮</span>}
+        </div>
+        <p style={{ fontSize: 12, color: '#888' }}>
+          你只写了一个 async 函数，三条 action 是「框架替你发的」——这就是 createAsyncThunk 的全部价值。
+        </p>
+      </div>
+    </div>
+  )
+}`,
           },
           {
             type: 'text',

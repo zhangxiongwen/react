@@ -1,11 +1,12 @@
 /**
- * 第 11 章：请求数据与工程实践
+ * 数据请求与接口联调章节
  * 每个条目 = 一句话总结 + 详细步骤 + 完整可抄 demo + 易错点
  */
 const practice = {
   id: 'practice',
-  title: '请求数据与工程实践',
-  summary: 'fetch vs axios、json-server 本地 mock、axios 封装、Todolist 骨架、入门毕业清单',
+  title: '数据请求与接口联调',
+  summary:
+    'fetch vs axios、三态模板与竞态处理、手写 axios 拦截器、json-server 本地 mock、Todolist 串联练习与乐观更新、阶段自检与后续路线',
   order: 15,
   items: [
     {
@@ -184,6 +185,202 @@ function fetchWithCancel_axios() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：同一个「取用户列表」，fetch 写一遍、axios 写一遍，并排比代码量',
+            body: `import { useState } from 'react' // 沙箱里没有后端，所有请求都用 setTimeout 造假数据
+
+// 假数据：真实项目里这是后端返回的用户表
+const USERS = [
+  { id: 1, name: '小明', email: 'ming@example.com' },
+  { id: 2, name: '小红', email: 'hong@example.com' },
+]
+
+// 模拟 fetch：注意它 resolve 出来的是「响应对象」，数据还包在里面
+function fakeFetch() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        ok: true,                           // fetch 用 ok 表示状态码是不是 2xx
+        status: 200,
+        json: () => Promise.resolve(USERS), // ★ 想拿数据还得再 await 一次
+      })
+    }, 600)                                 // 600ms 模拟网络耗时
+  })
+}
+
+// 模拟 axios 实例：直接给你 { data }，JSON 已经帮你解析好
+const axios = {
+  get: () =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve({ data: USERS, status: 200 }), 600)
+    }),
+}
+
+export default function Demo() {
+  const [fetchLog, setFetchLog] = useState('还没请求') // 左栏：fetch 写法的结果
+  const [axiosLog, setAxiosLog] = useState('还没请求') // 右栏：axios 写法的结果
+
+  // ---------- 写法 A：fetch，四步走 ----------
+  async function runFetch() {
+    setFetchLog('请求中...')                            // 请求前先给个反馈
+    try {
+      const res = await fakeFetch()                     // 真实项目：fetch(/api/users)
+      if (!res.ok) throw new Error('HTTP ' + res.status) // ★ 必须自己检查，fetch 不会替你抛错
+      const data = await res.json()                     // ★ 第二次 await 才拿到数组
+      setFetchLog('成功：' + data.map((u) => u.name).join('、'))
+    } catch (e) {
+      setFetchLog('失败：' + e.message)                 // 只有断网这类网络错误才会到这
+    }
+  }
+
+  // ---------- 写法 B：axios，一步到位 ----------
+  async function runAxios() {
+    setAxiosLog('请求中...')
+    try {
+      const { data } = await axios.get('/api/users')    // 真实项目：axios.get(/api/users)
+      setAxiosLog('成功：' + data.map((u) => u.name).join('、'))
+    } catch (e) {
+      setAxiosLog('失败：' + e.message)                 // 4xx/5xx 会自动 reject 到这里
+    }
+  }
+
+  // 两栏公共样式：抽出来避免重复写 style
+  const box = { flex: 1, border: '1px solid #e5e7eb', borderRadius: 8, padding: 12 }
+  const log = { background: '#f9fafb', padding: 8, marginTop: 8, fontSize: 12, minHeight: 34 }
+
+  return (
+    <div style={{ display: 'flex', gap: 12, fontSize: 14, flexWrap: 'wrap' }}>
+      <div style={box}>
+        <b>fetch（浏览器原生）</b>
+        <p style={{ color: '#666', margin: '6px 0' }}>要检查 res.ok，还要两次 await</p>
+        <button type="button" onClick={runFetch} style={{ padding: '6px 12px' }}>
+          用 fetch 取列表
+        </button>
+        <pre style={log}>{fetchLog}</pre>
+      </div>
+      <div style={box}>
+        <b>axios（第三方库）</b>
+        <p style={{ color: '#666', margin: '6px 0' }}>自动解析 JSON，错误自动进 catch</p>
+        <button type="button" onClick={runAxios} style={{ padding: '6px 12px' }}>
+          用 axios 取列表
+        </button>
+        <pre style={log}>{axiosLog}</pre>
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：fetch 最大的坑——404/500 不进 catch，看错误页被当成数据渲染',
+            body: `import { useState } from 'react' // 沙箱里没有后端，四种服务端结果全部用 setTimeout 模拟
+
+// 可切换的四种「服务端结果」：真实项目里由后端决定，这里让你自己点
+const CASES = [
+  { key: '200', label: '返回 200 正常' },
+  { key: '404', label: '返回 404 找不到' },
+  { key: '500', label: '返回 500 服务器错误' },
+  { key: 'offline', label: '网络断了' },
+]
+
+// 模拟 fetch 的真实行为：只有网络层失败才 reject，404/500 一律 resolve
+function fakeFetch(kind) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (kind === 'offline') {
+        reject(new TypeError('Failed to fetch')) // ★ 只有断网/跨域这类问题才 reject
+        return
+      }
+      if (kind === '200') {
+        resolve({ ok: true, status: 200, json: () => Promise.resolve([{ id: 1, name: '小明' }]) })
+        return
+      }
+      // ★ 关键：404 / 500 也是 resolve！fetch 认为「服务器答话了 = 请求成功」
+      resolve({
+        ok: false,
+        status: Number(kind),
+        json: () => Promise.resolve({ error: kind === '404' ? 'Not Found' : 'Server Error' }),
+      })
+    }, 400)
+  })
+}
+
+export default function Demo() {
+  const [kind, setKind] = useState('404')     // 当前选中的服务端结果
+  const [bad, setBad] = useState('还没请求')  // 错误写法的输出
+  const [good, setGood] = useState('还没请求') // 正确写法的输出
+
+  async function run() {
+    setBad('请求中...')
+    setGood('请求中...')
+
+    // ---------- 错误写法：不检查 res.ok，直接把 body 当数据用 ----------
+    try {
+      const res = await fakeFetch(kind)                    // 真实项目：fetch(/api/users)
+      const data = await res.json()                        // 404 时这里拿到的是错误对象
+      setBad('渲染出来的「数据」：' + JSON.stringify(data)) // ★ 错误页就这样被当成列表渲染了
+    } catch (e) {
+      setBad('进了 catch：' + e.message)                   // 只有断网才会走到这
+    }
+
+    // ---------- 正确写法：先看 res.ok，不对就自己 throw ----------
+    try {
+      const res = await fakeFetch(kind)
+      if (!res.ok) throw new Error('请求失败：HTTP ' + res.status) // ★ 这一行是必需的
+      const data = await res.json()
+      setGood('成功：' + JSON.stringify(data))
+    } catch (e) {
+      setGood('正确地进了 catch：' + e.message)            // 404/500/断网都能被拦住
+    }
+  }
+
+  const log = { background: '#f9fafb', padding: 8, fontSize: 12, minHeight: 34, whiteSpace: 'pre-wrap' }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
+        {CASES.map((c) => (
+          <button
+            key={c.key}
+            type="button"
+            onClick={() => setKind(c.key)}                 // 切换要模拟的服务端结果
+            style={{
+              padding: '6px 10px',
+              border: '1px solid ' + (kind === c.key ? '#2563eb' : '#e5e7eb'), // 选中态高亮
+              background: kind === c.key ? '#eff6ff' : '#fff',
+              borderRadius: 6,
+            }}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      <button type="button" onClick={run} style={{ padding: '6px 14px', marginBottom: 10 }}>
+        用这个结果发一次请求
+      </button>
+
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div style={{ flex: 1, border: '1px solid #fecaca', borderRadius: 8, padding: 10 }}>
+          <b style={{ color: '#b91c1c' }}>❌ 不写 if (!res.ok)</b>
+          <pre style={log}>{bad}</pre>
+        </div>
+        <div style={{ flex: 1, border: '1px solid #bbf7d0', borderRadius: 8, padding: 10 }}>
+          <b style={{ color: '#15803d' }}>✅ 写了 if (!res.ok)</b>
+          <pre style={log}>{good}</pre>
+        </div>
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'list',
             title: '5. 怎么用：怎么选（决策顺序）',
             ordered: true,
@@ -354,6 +551,94 @@ export default UserListPage`,
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：三态模板跑一遍——骨架屏 → 列表 / 错误 + 重试，带「让请求失败」开关',
+            body: `import { useState } from 'react' // 沙箱没有后端，请求用 setTimeout 模拟
+
+// 模拟接口：真实项目里这一行是 axios.get(/api/users)
+function loadUsers(shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) {
+        reject(new Error('请求失败：HTTP 500')) // 打开开关时固定失败，方便你看错误态
+        return
+      }
+      resolve([
+        { id: 1, name: '小明', email: 'ming@example.com' },
+        { id: 2, name: '小红', email: 'hong@example.com' },
+        { id: 3, name: '小刚', email: 'gang@example.com' },
+      ])
+    }, 900) // 900ms 让你看清 loading 骨架
+  })
+}
+
+export default function Demo() {
+  const [list, setList] = useState([])          // data：成功拿到的列表
+  const [loading, setLoading] = useState(false) // loading：请求进行中
+  const [error, setError] = useState('')        // error：失败文案
+  const [fail, setFail] = useState(false)       // 「让请求失败」开关
+
+  async function load() {
+    try {
+      setLoading(true)           // 第 1 步：打开 loading
+      setError('')               // 第 2 步：清空上次的错误，重试时才不会残留
+      const data = await loadUsers(fail)
+      setList(data)              // 第 3 步：成功写入 data
+    } catch (e) {
+      setError(e.message)        // 失败写入 error
+      setList([])                // 顺手清空旧数据，避免「报错了还显示老列表」
+    } finally {
+      setLoading(false)          // ★ 无论成败都要关 loading，写在 finally 里最稳
+    }
+  }
+
+  // 骨架屏：几个灰条，比「加载中...」三个字体验好得多
+  const skeleton = { height: 14, background: '#e5e7eb', borderRadius: 4, marginBottom: 8 }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        <input type="checkbox" checked={fail} onChange={(e) => setFail(e.target.checked)} />
+        {' '}让这次请求失败（勾上再点加载，看错误态）
+      </label>
+
+      <button type="button" onClick={load} disabled={loading} style={{ padding: '6px 14px' }}>
+        {loading ? '加载中...' : '加载用户列表'} {/* 按钮自身也反映 loading，防止重复点击 */}
+      </button>
+
+      <div style={{ marginTop: 12, border: '1px solid #e5e7eb', borderRadius: 8, padding: 12 }}>
+        {/* ★ 渲染顺序固定：loading → error → 空态 → 数据 */}
+        {loading ? (
+          <div>
+            <div style={skeleton} />
+            <div style={{ ...skeleton, width: '80%' }} />
+            <div style={{ ...skeleton, width: '60%' }} />
+          </div>
+        ) : error ? (
+          <div>
+            <p style={{ color: 'crimson', margin: 0 }}>加载失败：{error}</p>
+            <button type="button" onClick={load} style={{ marginTop: 8, padding: '4px 10px' }}>
+              重试 {/* 重试就是再调一次同一个 load，不用刷新整页 */}
+            </button>
+          </div>
+        ) : list.length === 0 ? (
+          <p style={{ color: '#9ca3af', margin: 0 }}>还没有数据，点上面的按钮加载</p>
+        ) : (
+          <ul style={{ margin: 0, paddingLeft: 18 }}>
+            {list.map((u) => (
+              <li key={u.id}>{u.name} — {u.email}</li> // key 用稳定 id，不要用下标
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整可抄 demo：fetch 详情页（依赖 id 重新请求）',
             language: 'jsx',
             body: `import { useEffect, useState } from 'react'
@@ -492,6 +777,98 @@ function CreatePostForm() {
 export default CreatePostForm`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：竞态 bug——快速切 tab，慢请求后到会覆盖新数据；打开开关修好它',
+            body: `import { useState, useRef } from 'react' // useRef 存「最新一次请求的编号」，改它不会触发重渲染
+
+// 两个 tab：文章慢（1500ms），评论快（300ms）——先点文章再点评论，就能复现竞态
+const TABS = [
+  { key: 'posts', label: '文章（慢，1.5 秒）', delay: 1500, data: '文章列表：React 入门 / Hooks 详解' },
+  { key: 'comments', label: '评论（快，0.3 秒）', delay: 300, data: '评论列表：写得不错 / 求更新' },
+]
+
+// 模拟接口：真实项目里这是 axios.get(/api/ + tab.key)
+function loadTab(tab) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(tab.data), tab.delay) // 不同 tab 耗时不同，这是竞态的根源
+  })
+}
+
+export default function Demo() {
+  const [fixed, setFixed] = useState(false)   // 是否启用「忽略过期响应」修复
+  const [active, setActive] = useState('')    // 用户当前选中的 tab（界面高亮用）
+  const [content, setContent] = useState('还没请求') // 实际渲染出来的内容
+  const [logs, setLogs] = useState([])        // 请求流水日志，方便你看谁先谁后
+  const reqId = useRef(0)                     // ★ 请求编号：每发一次 +1，只认最新那个
+
+  function addLog(text) {
+    setLogs((prev) => [...prev, text].slice(-6)) // 只留最近 6 条，界面不会越堆越长
+  }
+
+  async function clickTab(tab) {
+    const myId = reqId.current + 1 // 本次请求的编号
+    reqId.current = myId           // 记录「最新请求」是我
+    setActive(tab.key)
+    setContent('加载中...')
+    addLog('发出 → ' + tab.label)
+
+    const data = await loadTab(tab)
+
+    // ★ 修复的关键：回来时先问一句「我还是最新的那次请求吗？」
+    if (fixed && myId !== reqId.current) {
+      addLog('丢弃 ← ' + tab.label + '（已过期）') // 过期响应直接扔掉，不写 state
+      return
+    }
+
+    setContent(data)
+    addLog('渲染 ← ' + tab.label)
+  }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        <input type="checkbox" checked={fixed} onChange={(e) => setFixed(e.target.checked)} />
+        {' '}启用修复：忽略过期响应（真实项目里也可以用 AbortController 直接取消请求）
+      </label>
+
+      <p style={{ color: '#666', margin: '0 0 8px' }}>
+        玩法：先点「文章」，立刻再点「评论」。不修复时，慢的文章后到会把评论盖掉。
+      </p>
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+        {TABS.map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            onClick={() => clickTab(t)}
+            style={{
+              padding: '6px 10px',
+              borderRadius: 6,
+              border: '1px solid ' + (active === t.key ? '#2563eb' : '#e5e7eb'),
+              background: active === t.key ? '#eff6ff' : '#fff',
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* 期望：这里显示的内容应该始终等于你最后点的那个 tab */}
+      <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 12 }}>
+        <b>当前渲染内容：</b>{content}
+      </div>
+
+      <pre style={{ background: '#f9fafb', padding: 8, fontSize: 12, marginTop: 8 }}>
+        {logs.join('\\n') || '（请求日志会出现在这里）'}
+      </pre>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '5. 易错：三态模板',
             body: '**finally 里 setLoading(false)**——别只在 try 里写。\n\n**AbortError 要 return**——别显示成错误。\n\n**依赖数组漏写 userId**——切换详情不刷新。\n\n**loading 和空列表混淆**——文案要区分「加载中」和「暂无数据」。\n\n**POST 用 submitting 不用 loading**——避免整页被 loading 盖住表单（见上面 demo）。',
@@ -622,6 +999,205 @@ http.interceptors.response.use(
 
 export default http
 export { axios } // 需要 isCancel 等工具时可一并导出`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：手写一个迷你 axios——create + 双拦截器，看清执行顺序',
+            body: `import { useState } from 'react' // 沙箱里没有 axios 也没有后端，两样都手写模拟
+
+// ========== 迷你 axios：真实的 axios 核心也就是这套「请求前/响应后」的钩子 ==========
+function createClient(config, log) {
+  const reqHooks = []  // 请求拦截器队列
+  const resHooks = []  // 响应拦截器队列
+
+  return {
+    interceptors: {
+      request: { use: (fn) => reqHooks.push(fn) },   // 注册请求拦截器
+      response: { use: (fn) => resHooks.push(fn) },  // 注册响应拦截器
+    },
+    async get(url) {
+      // 第 1 步：组装配置，baseURL 在这里拼上，组件里只写相对路径
+      let cfg = { url: config.baseURL + url, headers: {} }
+      log('① 组件调用 http.get(' + url + ')')
+
+      // 第 2 步：依次跑请求拦截器（加 token 就发生在这一步）
+      for (const fn of reqHooks) cfg = fn(cfg)
+
+      // 第 3 步：真正发请求。真实项目里是 XMLHttpRequest，这里用 setTimeout 假装
+      log('③ 真正发出：' + cfg.url + '，Header=' + JSON.stringify(cfg.headers))
+      const response = await new Promise((resolve) => {
+        setTimeout(() => resolve({ status: 200, data: [{ id: 1, name: '小明' }] }), 500)
+      })
+
+      // 第 4 步：依次跑响应拦截器（剥 data 就发生在这一步）
+      let result = response
+      for (const fn of resHooks) result = fn(result)
+      return result // 返回给组件的，是被拦截器处理过的结果
+    },
+  }
+}
+
+export default function Demo() {
+  const [logs, setLogs] = useState([])         // 执行顺序日志
+  const [result, setResult] = useState('')     // 组件最终 await 到的东西
+  const [token, setToken] = useState('')       // 假的登录 token
+
+  async function run() {
+    const lines = []
+    const log = (t) => lines.push(t)           // 收集日志，跑完一次性 setState
+
+    // 和 request.js 一样：create 出实例 → 注册两个拦截器
+    const http = createClient({ baseURL: 'https://api.example.com' }, log)
+
+    http.interceptors.request.use((cfg) => {
+      log('② 请求拦截器：' + (token ? '带上 Authorization' : '没有 token，跳过'))
+      if (token) cfg.headers.Authorization = 'Bearer ' + token // 统一加登录凭证
+      return cfg                                                // ★ 必须 return，否则请求发不出去
+    })
+
+    http.interceptors.response.use((res) => {
+      log('④ 响应拦截器：剥掉外层，只把 res.data 交给组件')
+      return res.data                                           // ★ 组件里就不用再写 .data 了
+    })
+
+    const data = await http.get('/users')
+    log('⑤ 组件拿到：' + JSON.stringify(data))
+    setLogs(lines)
+    setResult(JSON.stringify(data))
+  }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        假 token：
+        <input
+          value={token}
+          onChange={(e) => setToken(e.target.value)} // 留空 = 未登录，填任意字符 = 已登录
+          placeholder="留空表示未登录"
+          style={{ marginLeft: 6, padding: '4px 8px' }}
+        />
+      </label>
+
+      <button type="button" onClick={run} style={{ padding: '6px 14px' }}>
+        发一次 http.get(/users)
+      </button>
+
+      <pre style={{ background: '#f9fafb', padding: 10, fontSize: 12, marginTop: 10 }}>
+        {logs.length ? logs.join('\\n') : '（点按钮看拦截器的执行顺序）'}
+      </pre>
+
+      {result && (
+        <p style={{ color: '#15803d', margin: 0 }}>
+          组件里 await 到的已经是业务数据：{result}
+        </p>
+      )}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：拦截器统一处理错误——401 踢回登录、403 无权限、500 弹提示',
+            body: `import { useState } from 'react' // 沙箱里没有后端，各种状态码都用 setTimeout 模拟
+
+// 下拉可选的状态码：真实项目里由后端返回，这里让你手动挑
+const STATUS_LIST = [200, 401, 403, 500]
+
+// 模拟一次请求：真实项目里这是 axios 实例发出的请求
+function fakeRequest(status) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (status === 200) {
+        resolve({ status, data: { name: '小明' } })
+        return
+      }
+      // axios 的行为：非 2xx 一律 reject，错误对象里带着 response
+      reject({ response: { status, data: { message: '服务端返回 ' + status } } })
+    }, 400)
+  })
+}
+
+export default function Demo() {
+  const [status, setStatus] = useState(401) // 想模拟哪个状态码
+  const [page, setPage] = useState('用户列表页') // 假的当前页面，用来演示 401 跳登录
+  const [toast, setToast] = useState('')    // 全局提示条
+  const [logs, setLogs] = useState([])      // 拦截器做了什么
+
+  async function run() {
+    const lines = []
+    setToast('')
+    try {
+      const res = await fakeRequest(status)
+      lines.push('响应拦截器（成功分支）：return res.data')
+      lines.push('组件拿到：' + JSON.stringify(res.data))
+    } catch (err) {
+      // ===== 这一整段在真实项目里写在响应拦截器的失败分支，全项目只写一次 =====
+      const code = err.response?.status
+      const message = err.response?.data?.message || '网络异常，请稍后重试'
+
+      if (code === 401) {
+        lines.push('401：token 无效 → 清掉 token，跳登录页')
+        setPage('登录页')                    // 真实项目：navigate(/login)
+        setToast('登录已过期，请重新登录')
+      } else if (code === 403) {
+        lines.push('403：登录了但没权限 → 只提示，不跳登录')
+        setToast('你没有权限访问这个资源')    // 403 千万别跳登录，否则用户会反复登录
+      } else if (code >= 500) {
+        lines.push('500：服务端出错 → 弹提示，可上报监控')
+        setToast('服务器开小差了：' + message)
+      }
+      lines.push('组件的 catch 里只需要写 e.message，脏活拦截器全包了')
+    }
+    setLogs(lines)
+  }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <div style={{ marginBottom: 8 }}>
+        让服务端返回：
+        <select
+          value={status}
+          onChange={(e) => setStatus(Number(e.target.value))} // select 的 value 是字符串，要转数字
+          style={{ margin: '0 8px', padding: '4px 8px' }}
+        >
+          {STATUS_LIST.map((s) => (
+            <option key={s} value={s}>{s}</option>
+          ))}
+        </select>
+        <button type="button" onClick={run} style={{ padding: '4px 12px' }}>发请求</button>
+      </div>
+
+      <p style={{ margin: '0 0 8px' }}>
+        当前页面：<b>{page}</b>
+        {page === '登录页' && (
+          <button
+            type="button"
+            onClick={() => setPage('用户列表页')} // 假装重新登录成功
+            style={{ marginLeft: 8, padding: '2px 8px' }}
+          >
+            重新登录
+          </button>
+        )}
+      </p>
+
+      {toast && (
+        <div style={{ background: '#fef2f2', color: '#b91c1c', padding: 8, borderRadius: 6, marginBottom: 8 }}>
+          {toast} {/* 真实项目里这是 antd 的 message.error 或全局 Toast */}
+        </div>
+      )}
+
+      <pre style={{ background: '#f9fafb', padding: 10, fontSize: 12 }}>
+        {logs.length ? logs.join('\\n') : '（选一个状态码，点发请求）'}
+      </pre>
+    </div>
+  )
+}`,
           },
           {
             type: 'code',
@@ -1191,7 +1767,7 @@ export default TodoApp`,
             language: 'jsx',
             body: `// 进阶思路：本地 Todo 练熟后，把 CRUD 换成 http + json-server
 // 拆成 TodoInput / TodoItem / TodoFilter 三个子组件
-// 父组件 TodoPage 拥有 todos state，通过 props + 回调传给子组件（见第 8 章）
+// 父组件 TodoPage 拥有 todos state，通过 props + 回调传给子组件（见「组件通信」那一章）
 
 import http from '../utils/request'
 
@@ -1226,6 +1802,254 @@ function TodoPageRemote() {
 
   if (loading) return <p>加载中...</p>
   // ... 其余 UI 和本地版 TodoApp 相同，只是操作函数换成上面的 async 版
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：Todolist 接「模拟接口」——增删改查各有 loading，失败能重试',
+            body: `import { useState, useEffect } from 'react' // 沙箱没有后端，接口层用 setTimeout 模拟
+
+// ========== 假后端：一份放在内存里的 todos，模拟 json-server ==========
+let db = [
+  { id: 1, text: '学会三态模板', done: true },
+  { id: 2, text: '搞懂 axios 拦截器', done: false },
+]
+let nextId = 3
+
+// 统一的假请求：真实项目里这四个函数就是 http.get / post / patch / delete
+function api(action, payload, shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) {
+        reject(new Error(action + ' 失败：HTTP 500'))
+        return
+      }
+      if (action === 'list') resolve([...db])                                  // GET /todos
+      if (action === 'add') {
+        const item = { id: nextId++, text: payload.text, done: false }
+        db = [...db, item]
+        resolve(item)                                                          // POST /todos
+      }
+      if (action === 'toggle') {
+        db = db.map((t) => (t.id === payload.id ? { ...t, done: !t.done } : t))
+        resolve(db.find((t) => t.id === payload.id))                           // PATCH /todos/:id
+      }
+      if (action === 'remove') {
+        db = db.filter((t) => t.id !== payload.id)
+        resolve(true)                                                          // DELETE /todos/:id
+      }
+    }, 700)
+  })
+}
+
+export default function Demo() {
+  const [todos, setTodos] = useState([])       // 列表数据
+  const [listLoading, setListLoading] = useState(true) // 整页加载态
+  const [busyId, setBusyId] = useState(null)   // ★ 哪一行正在请求：单行 loading 靠它
+  const [adding, setAdding] = useState(false)  // 新增按钮的 loading
+  const [text, setText] = useState('')
+  const [error, setError] = useState('')       // 最近一次失败的提示
+  const [fail, setFail] = useState(false)      // 「让请求失败」开关
+
+  async function loadList() {
+    try {
+      setListLoading(true)
+      setError('')
+      setTodos(await api('list'))              // 列表接口不受失败开关影响，方便你继续操作
+    } finally {
+      setListLoading(false)
+    }
+  }
+
+  useEffect(() => { loadList() }, [])          // 挂载时拉一次列表
+
+  async function handleAdd() {
+    if (!text.trim()) return                   // 空输入直接忽略
+    setAdding(true)
+    setError('')
+    try {
+      const created = await api('add', { text: text.trim() }, fail)
+      setTodos((prev) => [...prev, created])   // 用服务端返回的对象（带真实 id）入列
+      setText('')
+    } catch (e) {
+      setError(e.message + '（内容还在输入框里，可以直接重试）') // 失败不清空输入，用户不用重打
+    } finally {
+      setAdding(false)
+    }
+  }
+
+  async function handleToggle(id) {
+    setBusyId(id)                              // 只锁这一行，其它行还能点
+    setError('')
+    try {
+      const updated = await api('toggle', { id }, fail)
+      setTodos((prev) => prev.map((t) => (t.id === id ? updated : t))) // 用服务端结果覆盖本地
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setBusyId(null)
+    }
+  }
+
+  async function handleRemove(id) {
+    setBusyId(id)
+    setError('')
+    try {
+      await api('remove', { id }, fail)
+      setTodos((prev) => prev.filter((t) => t.id !== id))
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setBusyId(null)
+    }
+  }
+
+  if (listLoading) return <p style={{ fontSize: 14 }}>列表加载中...</p>
+
+  return (
+    <div style={{ fontSize: 14, maxWidth: 460 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        <input type="checkbox" checked={fail} onChange={(e) => setFail(e.target.checked)} />
+        {' '}让写操作（增/改/删）失败
+      </label>
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="输入待办"
+          style={{ flex: 1, padding: '6px 10px' }}
+        />
+        <button type="button" onClick={handleAdd} disabled={adding} style={{ padding: '6px 12px' }}>
+          {adding ? '提交中...' : '添加'} {/* 提交中禁用按钮，防止连点提交两条 */}
+        </button>
+      </div>
+
+      {error && (
+        <p style={{ color: 'crimson', margin: '0 0 8px' }}>
+          {error}
+          <button type="button" onClick={loadList} style={{ marginLeft: 8, padding: '2px 8px' }}>
+            刷新列表
+          </button>
+        </p>
+      )}
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {todos.map((t) => (
+          <li key={t.id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 0' }}>
+            <input
+              type="checkbox"
+              checked={t.done}
+              disabled={busyId === t.id}          // 这一行请求中就禁用，避免重复提交
+              onChange={() => handleToggle(t.id)}
+            />
+            <span style={{ flex: 1, textDecoration: t.done ? 'line-through' : 'none' }}>{t.text}</span>
+            {busyId === t.id && <span style={{ color: '#9ca3af' }}>处理中...</span>}
+            <button type="button" onClick={() => handleRemove(t.id)} disabled={busyId === t.id}>
+              删除
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：乐观更新——先改界面再发请求，失败自动回滚',
+            body: `import { useState } from 'react' // 沙箱没有后端，请求用 setTimeout 模拟
+
+// 模拟「保存完成状态」接口：真实项目里是 axios.patch(/api/todos/1)
+function saveDone(shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) reject(new Error('保存失败'))
+      else resolve(true)
+    }, 1200) // 故意慢一点，好看清「先改界面」和「后收到结果」的时间差
+  })
+}
+
+const INIT = [
+  { id: 1, text: '喝水', done: false },
+  { id: 2, text: '写代码', done: false },
+]
+
+export default function Demo() {
+  const [todos, setTodos] = useState(INIT)
+  const [fail, setFail] = useState(false)       // 「让请求失败」开关
+  const [optimistic, setOptimistic] = useState(true) // 切换：乐观更新 vs 老实等接口
+  const [tip, setTip] = useState('')            // 提示条
+  const [pending, setPending] = useState(false) // 老实模式下的等待态
+
+  async function toggle(id) {
+    const before = todos                         // ★ 先把旧数据存下来，失败时用它回滚
+    setTip('')
+
+    if (optimistic) {
+      // ===== 乐观更新：假设一定会成功，立刻改界面，用户感觉「秒响应」=====
+      setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
+      try {
+        await saveDone(fail)
+        setTip('保存成功（界面早就变了，用户全程无感）')
+      } catch (e) {
+        setTodos(before)                         // ★ 回滚：把界面恢复成请求前的样子
+        setTip(e.message + '，已自动回滚到修改前')
+      }
+      return
+    }
+
+    // ===== 保守写法：等接口回来再改界面，用户要盯着 loading 等 1.2 秒 =====
+    setPending(true)
+    try {
+      await saveDone(fail)
+      setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
+      setTip('保存成功（等了 1.2 秒界面才动）')
+    } catch (e) {
+      setTip(e.message + '（界面本来就没动，不用回滚）')
+    } finally {
+      setPending(false)
+    }
+  }
+
+  return (
+    <div style={{ fontSize: 14, maxWidth: 420 }}>
+      <label style={{ display: 'block' }}>
+        <input type="checkbox" checked={optimistic} onChange={(e) => setOptimistic(e.target.checked)} />
+        {' '}使用乐观更新（关掉对比保守写法）
+      </label>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        <input type="checkbox" checked={fail} onChange={(e) => setFail(e.target.checked)} />
+        {' '}让保存请求失败（看回滚效果）
+      </label>
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 8px' }}>
+        {todos.map((t) => (
+          <li key={t.id} style={{ padding: '4px 0' }}>
+            <label>
+              <input
+                type="checkbox"
+                checked={t.done}
+                disabled={pending}              // 保守模式下请求期间禁用，避免状态错乱
+                onChange={() => toggle(t.id)}
+              />
+              {' '}
+              <span style={{ textDecoration: t.done ? 'line-through' : 'none' }}>{t.text}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+
+      {pending && <p style={{ color: '#9ca3af', margin: 0 }}>保存中，请稍候...</p>}
+      {tip && <p style={{ margin: 0, color: fail ? 'crimson' : '#15803d' }}>{tip}</p>}
+    </div>
+  )
 }`,
           },
           {
@@ -1441,6 +2265,193 @@ function UserPage() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：迷你 json-server——左边看你发的请求，右边看服务端返回',
+            body: `import { useState } from 'react' // 沙箱没有后端，用一个内存数组当 db.json
+
+// ========== 这就是「db.json」：一个 users 数组 ==========
+let db = [
+  { id: 1, name: '小明', role: 'admin' },
+  { id: 2, name: '小红', role: 'user' },
+  { id: 3, name: '小刚', role: 'user' },
+]
+let nextId = 4
+
+// 迷你 json-server：按 method + path 分发，规则和真的 json-server 一致
+function server(method, path, body) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const [pathname, query] = path.split('?')          // 把 /users?q=小 拆成路径和查询串
+      const params = new URLSearchParams(query || '')    // 浏览器自带的查询串解析器
+      const id = Number(pathname.split('/')[2] || 0)     // /users/2 里的 2
+
+      if (method === 'GET') {
+        let rows = [...db]
+        const q = params.get('q')                        // json-server 的全文搜索参数
+        if (q) rows = rows.filter((u) => u.name.includes(q))
+        const page = Number(params.get('_page') || 1)    // 分页参数 _page
+        const limit = Number(params.get('_limit') || 2)  // 每页条数 _limit
+        const total = rows.length
+        rows = rows.slice((page - 1) * limit, page * limit)
+        resolve({ status: 200, body: rows, headers: { 'X-Total-Count': total } })
+        return
+      }
+      if (method === 'POST') {                           // 新增：id 由服务端自动分配
+        const item = { id: nextId++, ...body }
+        db = [...db, item]
+        resolve({ status: 201, body: item })
+        return
+      }
+      if (method === 'PATCH') {                          // 部分更新：只改传来的字段
+        db = db.map((u) => (u.id === id ? { ...u, ...body } : u))
+        resolve({ status: 200, body: db.find((u) => u.id === id) })
+        return
+      }
+      if (method === 'DELETE') {                         // 删除：返回空对象
+        db = db.filter((u) => u.id !== id)
+        resolve({ status: 200, body: {} })
+      }
+    }, 400)
+  })
+}
+
+export default function Demo() {
+  const [req, setReq] = useState('还没发请求')   // 左栏：请求报文
+  const [res, setRes] = useState('')             // 右栏：响应报文
+  const [page, setPage] = useState(1)            // 当前页码
+  const [keyword, setKeyword] = useState('')     // 搜索关键字
+
+  async function send(method, path, body) {
+    setReq(method + ' ' + path + (body ? '\\n\\n' + JSON.stringify(body, null, 2) : ''))
+    setRes('等待响应...')
+    const r = await server(method, path, body)
+    setRes(r.status + ' ' + (r.status === 201 ? 'Created' : 'OK') + '\\n\\n' + JSON.stringify(r.body, null, 2))
+  }
+
+  const btn = { padding: '5px 10px', marginRight: 6, marginBottom: 6 } // 按钮公共样式
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <div style={{ marginBottom: 8 }}>
+        搜索：
+        <input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)} // 对应 json-server 的 ?q= 参数
+          placeholder="按名字搜，如 小"
+          style={{ margin: '0 8px', padding: '4px 8px', width: 120 }}
+        />
+        页码：
+        <input
+          type="number"
+          min={1}
+          value={page}
+          onChange={(e) => setPage(Number(e.target.value))} // 对应 ?_page= 参数
+          style={{ margin: '0 8px', padding: '4px 8px', width: 60 }}
+        />
+      </div>
+
+      <div>
+        {/* 每个按钮对应一种 RESTful 操作：路径 + 方法决定「对谁做什么」 */}
+        <button type="button" style={btn} onClick={() => send('GET', '/users?_page=' + page + '&_limit=2&q=' + keyword)}>
+          GET 列表（分页+搜索）
+        </button>
+        <button type="button" style={btn} onClick={() => send('POST', '/users', { name: '新同学', role: 'user' })}>
+          POST 新增
+        </button>
+        <button type="button" style={btn} onClick={() => send('PATCH', '/users/2', { role: 'admin' })}>
+          PATCH 改 id=2 的角色
+        </button>
+        <button type="button" style={btn} onClick={() => send('DELETE', '/users/3')}>
+          DELETE 删 id=3
+        </button>
+      </div>
+
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 8 }}>
+        <div style={{ flex: 1, minWidth: 200 }}>
+          <b>你发出的请求</b>
+          <pre style={{ background: '#f9fafb', padding: 10, fontSize: 12, minHeight: 90 }}>{req}</pre>
+        </div>
+        <div style={{ flex: 1, minWidth: 200 }}>
+          <b>服务端返回</b>
+          <pre style={{ background: '#f0fdf4', padding: 10, fontSize: 12, minHeight: 90 }}>{res}</pre>
+        </div>
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：URLSearchParams 拼查询参数——分页 + 搜索 + 排序，别再手动拼字符串',
+            body: `import { useState } from 'react' // 纯前端演示：只看 URL 怎么拼，不真的发请求
+
+export default function Demo() {
+  const [keyword, setKeyword] = useState('小 明') // 故意带空格，看编码差异
+  const [page, setPage] = useState(2)
+  const [limit, setLimit] = useState(10)
+  const [sort, setSort] = useState('createdAt')   // 排序字段
+  const [order, setOrder] = useState('desc')      // 排序方向
+
+  // ===== 正确姿势：URLSearchParams 自动处理空格、中文、& 等特殊字符 =====
+  const params = new URLSearchParams()
+  params.set('_page', String(page))               // 值必须是字符串
+  params.set('_limit', String(limit))
+  params.set('_sort', sort)
+  params.set('_order', order)
+  if (keyword.trim()) params.set('q', keyword.trim()) // ★ 空关键字就不要拼上去，别发 q=
+  const goodUrl = '/users?' + params.toString()
+
+  // ===== 错误姿势：手动拼字符串，空格和中文没编码，还可能多一个 & =====
+  const badUrl = '/users?_page=' + page + '&_limit=' + limit + '&q=' + keyword
+
+  const box = { background: '#f9fafb', padding: 10, fontSize: 12, wordBreak: 'break-all' }
+  const row = { display: 'block', marginBottom: 6 }
+
+  return (
+    <div style={{ fontSize: 14 }}>
+      <label style={row}>
+        关键字：
+        <input value={keyword} onChange={(e) => setKeyword(e.target.value)} style={{ padding: '4px 8px' }} />
+      </label>
+      <label style={row}>
+        页码：
+        <input type="number" min={1} value={page} onChange={(e) => setPage(Number(e.target.value))} style={{ width: 60, padding: '4px 8px' }} />
+        {' '}每页：
+        <input type="number" min={1} value={limit} onChange={(e) => setLimit(Number(e.target.value))} style={{ width: 60, padding: '4px 8px' }} />
+      </label>
+      <label style={row}>
+        排序字段：
+        <select value={sort} onChange={(e) => setSort(e.target.value)} style={{ padding: '4px 8px' }}>
+          <option value="createdAt">createdAt</option>
+          <option value="name">name</option>
+        </select>
+        {' '}方向：
+        <select value={order} onChange={(e) => setOrder(e.target.value)} style={{ padding: '4px 8px' }}>
+          <option value="asc">asc 升序</option>
+          <option value="desc">desc 降序</option>
+        </select>
+      </label>
+
+      <p style={{ margin: '10px 0 4px', color: '#15803d' }}>✅ URLSearchParams 拼出来的：</p>
+      <pre style={box}>{goodUrl}</pre>
+
+      <p style={{ margin: '10px 0 4px', color: '#b91c1c' }}>❌ 手动加号拼出来的（空格没编码，关键字为空时还会留个空 q=）：</p>
+      <pre style={box}>{badUrl}</pre>
+
+      <p style={{ color: '#666', marginTop: 10 }}>
+        用 axios 时更省事：把这些参数放进 params 对象，库会自动拼成上面绿色那一行。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '对照本项目可运行演示页',
             body: '顶部导航点 **「API 演示」**，或访问 **/demo/json-server**。页面已实现：GET 用户列表、POST 新增、DELETE 删除。\n\n完整代码见 **src/pages/JsonServerDemo/index.js**——建议先 npm run start:all 启动双服务，再打开演示页点按钮看 Network 面板。',
@@ -1491,19 +2502,19 @@ function UserPage() {
     },
     {
       id: 'graduation-checklist',
-      title: '入门毕业清单：你能写什么、下一步学什么',
-      summary: '对照清单自检；推荐练手项目由易到难；知道学完本笔记后该往哪走',
+      title: '阶段自检：会写页面了吗？接着往哪走',
+      summary: '对照清单自检当前能力；练手项目由易到难；看清后面四章分别解决什么问题',
       content: {
         sections: [
           {
             type: 'tip',
             title: '一句话记住',
-            body: '能独立搭项目、函数组件、useState/useEffect、列表 CRUD、React Router、axios 三态、Redux 基础——并完成 Todolist 或简易商品列表之一，就算 React 入门合格，可以学 TypeScript 或 Next.js。',
+            body: '能独立搭项目、写函数组件、用 useState/useEffect、做列表 CRUD、配 React Router、写 axios 三态——并完成 Todolist 或用户列表之一，你已经能独立写出能连后端的页面了，这是一个重要节点；后面还有 Redux、TypeScript、Ant Design、完整项目实战四章等着你。',
           },
           {
             type: 'text',
-            title: '1. 是什么：怎样算「入门过关」',
-            body: '「看过教程」和「能写出来」差很远。入门过关的标志是：给你一个新需求（比如带登录的用户列表），你能**独立拆页面、配路由、发请求、处理 loading/error**——不需要每步都翻文档。\n\n本笔记按 order 顺序覆盖这些能力。下面清单逐项自检；推荐练手项目从 Todolist 到带登录后台，难度递增。',
+            title: '1. 是什么：怎样算「这一阶段过关」',
+            body: '「看过教程」和「能写出来」差很远。这一阶段过关的标志是：给你一个新需求（比如带登录的用户列表），你能**独立拆页面、配路由、发请求、处理 loading/error**——不需要每步都翻文档。\n\n到这里为止，你已经能独立写出能连后端的页面了，这是一个重要节点，值得停下来盘一盘。下面清单逐项自检；练手项目从 Todolist 到带登录后台，难度递增；最后一节告诉你接下来四章分别解决什么问题。',
           },
           {
             type: 'list',
@@ -1535,15 +2546,15 @@ function UserPage() {
               ['带登录后台列表', '表单、token、拦截器、RequireAuth', '2～3 天', '未登录跳登录、401 处理'],
               ['react-demo 知识手册', '读源码、改 lessons、加章节', '随时', '能自己加一篇教程条目'],
             ],
-            note: '带登录项目可直接参考本章 axios 封装 + 第 9 章 /demo/auth 守卫。',
+            note: '带登录项目可直接参考本章 axios 封装 + 「路由实战」那一章的 /demo/auth 守卫。',
           },
           {
             type: 'table',
             title: '4. 下一步学什么（按优先级）',
-            intro: '先别贪多——下面按「投入产出比」排序。',
+            intro: '先别贪多——下面按「投入产出比」排序；打了「本站第 N 章」的，后面就有现成教程。',
             headers: ['方向', '解决什么问题', '建议时机'],
             rows: [
-              ['TypeScript + React', '类型安全、IDE 提示、少低级 bug', '入门后立即'],
+              ['TypeScript + React', '类型安全、IDE 提示、少低级 bug', '本站第 17 章'],
               ['TanStack Query', '请求缓存、refetch、少写三态样板', 'axios 熟练后'],
               ['React Router 进阶', 'lazy、loader/action、useBlocker', '守卫熟练后'],
               ['RTK Query', '和 Redux 一体的请求方案', '已用 Redux 的项目'],
@@ -1577,6 +2588,111 @@ npm install -D json-server   # mock 后端，仅开发用
 # src/routes/index.js        路由表（含 /demo/auth 登录守卫）`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：迷你用户管理页——把本章知识点串成一个能跑的小页面',
+            body: `import { useState, useEffect } from 'react' // 沙箱没有后端，接口层用 setTimeout 模拟
+
+// ========== 假接口层：真实项目里这一整块就是 http.get / http.post / http.delete ==========
+let db = [
+  { id: 1, name: '小明', role: 'admin' },
+  { id: 2, name: '小红', role: 'user' },
+]
+let nextId = 3
+
+function request(action, payload, shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) { reject(new Error('接口出错了：HTTP 500')); return } // 统一的错误对象
+      if (action === 'list') resolve(db.filter((u) => u.name.includes(payload?.q || '')))
+      if (action === 'add') { const u = { id: nextId++, ...payload }; db = [...db, u]; resolve(u) }
+      if (action === 'remove') { db = db.filter((u) => u.id !== payload.id); resolve(true) }
+    }, 700)
+  })
+}
+
+export default function Demo() {
+  const [list, setList] = useState([])          // data
+  const [loading, setLoading] = useState(true)  // loading
+  const [error, setError] = useState('')        // error —— 老三样，一个都不能少
+  const [q, setQ] = useState('')                // 搜索关键字
+  const [name, setName] = useState('')          // 新增表单的受控输入
+  const [fail, setFail] = useState(false)       // 「让请求失败」开关
+
+  // 拉列表：三态模板 + 搜索参数，和真实列表页一模一样
+  async function load(keyword) {
+    try {
+      setLoading(true)
+      setError('')
+      setList(await request('list', { q: keyword }, fail))
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => { load(q) }, []) // 挂载时拉一次；真实项目里搜索会加防抖再放进依赖
+
+  async function add() {
+    if (!name.trim()) return
+    try {
+      await request('add', { name: name.trim(), role: 'user' }, fail) // POST
+      setName('')
+      load(q)                                     // ★ 写操作成功后重新拉列表，保证和服务端一致
+    } catch (e) { setError(e.message) }
+  }
+
+  async function remove(id) {
+    try {
+      await request('remove', { id }, fail)       // DELETE
+      load(q)
+    } catch (e) { setError(e.message) }
+  }
+
+  return (
+    <div style={{ fontSize: 14, maxWidth: 440 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        <input type="checkbox" checked={fail} onChange={(e) => setFail(e.target.checked)} />
+        {' '}让接口失败（看错误态和重试）
+      </label>
+
+      <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="搜名字" style={{ flex: 1, padding: '6px 8px' }} />
+        <button type="button" onClick={() => load(q)} style={{ padding: '6px 10px' }}>搜索</button>
+      </div>
+
+      <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
+        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="新用户名字" style={{ flex: 1, padding: '6px 8px' }} />
+        <button type="button" onClick={add} style={{ padding: '6px 10px' }}>新增</button>
+      </div>
+
+      {loading ? (
+        <p style={{ color: '#9ca3af' }}>加载中...</p>
+      ) : error ? (
+        <p style={{ color: 'crimson' }}>
+          {error}
+          <button type="button" onClick={() => load(q)} style={{ marginLeft: 8 }}>重试</button>
+        </p>
+      ) : list.length === 0 ? (
+        <p style={{ color: '#9ca3af' }}>没有匹配的用户</p>
+      ) : (
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          {list.map((u) => (
+            <li key={u.id} style={{ display: 'flex', gap: 8, padding: '6px 0', borderBottom: '1px solid #f3f4f6' }}>
+              <span style={{ flex: 1 }}>{u.name}（{u.role}）</span>
+              <button type="button" onClick={() => remove(u.id)}>删除</button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}`,
+          },
+          {
             type: 'list',
             title: '5. 怎么用：这份笔记最高效',
             ordered: true,
@@ -1595,9 +2711,27 @@ npm install -D json-server   # mock 后端，仅开发用
             body: '**报错先看控制台红字**，复制去搜，比瞎改有效。\n\n**改一处运行看一处**——别一次改十个文件找不到 bug。\n\n**概念不懂先跑通 demo 再回头理解**——编程是螺旋上升。\n\n**别过早学十个状态管理库**——useState + Context + Redux Toolkit 练熟足够。\n\n**看完 ≠ 会**——动手 hours 远大于看书 hours。',
           },
           {
+            type: 'text',
+            title: '7. 接下来的四章分别解决什么问题',
+            body: '到这里你已经能独立写出能连后端的页面了，这是一个重要节点——但离「能接手一个真实项目」还差四块拼图，后面四章正好一块一块补上。\n\n**第 16 章 Redux 状态管理**：页面一多，登录信息、购物车、主题这些数据要在很多组件之间共享，props 一层层往下传会传疯。Redux Toolkit 把它们放进一个全局仓库，任何组件都能直接读写。\n\n**第 17 章 TypeScript**：你现在写 user.nmae 拼错了，只有页面白屏才发现。加上类型之后编辑器当场标红，接口字段、props、hooks 都有提示——这是本阶段之后投入产出比最高的一步。\n\n**第 18 章 Ant Design**：表格、分页、弹窗、表单校验、日期选择器，自己手写要写到天荒地老。组件库直接给你一整套，重点是学会「怎么按需改造别人的组件」。\n\n**第 19 章 完整项目实战**：把前面所有东西拼成一个真项目——目录怎么分、请求层怎么封装、路由和权限怎么组织、环境变量怎么配、最后怎么打包上线。',
+          },
+          {
+            type: 'list',
+            title: '8. 建议的推进顺序',
+            ordered: true,
+            intro: '不用一口气学完，按这个顺序推进最省力。',
+            items: [
+              '先把本章的三态模板和 axios 封装用熟（做一遍用户列表 + 详情页）',
+              '第 16 章 Redux 全局状态：跨页面共享数据不再靠层层传 props',
+              '第 17 章 TypeScript：给已有代码加类型，错误提前到写代码时暴露',
+              '第 18 章 Ant Design：用组件库快速搭出像样的后台界面',
+              '第 19 章 完整项目实战：从架构、联调到上线走完一整轮',
+            ],
+          },
+          {
             type: 'tip',
             title: '一句话记忆',
-            body: '清单打勾 + Todolist 毕业 + 用户列表练 axios + /demo/auth 练守卫——四条都做过，就可以自信学 TS 和 Next 了。',
+            body: '清单打勾 + Todolist 跑通 + 用户列表练 axios + /demo/auth 练守卫——四条都做过，你已经能独立写出能连后端的页面了，这是一个重要节点；接着按 Redux（第 16 章）→ TypeScript（第 17 章）→ Ant Design（第 18 章）→ 完整项目实战（第 19 章）往下走。',
           },
         ],
       },

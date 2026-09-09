@@ -27,6 +27,15 @@
   margin: 0 0 8px;
   font-size: 13px;
   color: #2f6b4f;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.LessonDetail-position {
+  font-size: 12px;
+  color: #8aa196;
 }
 
 .LessonDetail-title {

@@ -71,6 +71,20 @@
   transform: translateY(-1px);
 }
 
+.LessonGroup-item-head {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.LessonGroup-item-num {
+  flex-shrink: 0;
+  font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8aa196;
+}
+
 .LessonGroup-item-title {
   font-size: 15px;
   font-weight: 600;
@@ -81,6 +95,13 @@
   font-size: 13px;
   line-height: 1.5;
   color: #5c6b63;
+  padding-left: 30px;
+}
+
+@media (max-width: 640px) {
+  .LessonGroup-item-summary {
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 640px) {

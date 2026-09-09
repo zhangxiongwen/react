@@ -1,5 +1,5 @@
 /**
- * 第 5 章：事件与表单
+ * 事件与表单章节
  */
 const events = {
   id: 'events',
@@ -203,6 +203,170 @@ function TagList() {
 
       {/* ❌ 错误：handleClick(123) 同样在渲染时就执行了 */}
       {/* <button onClick={handleClick(123)}>错</button> */}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：事件传参的三种写法——箭头函数 / bind / data 属性',
+            body: `import { useState } from 'react' // 引入 useState 记录点了哪个按钮
+
+const FRUITS = ['苹果', '香蕉', '橙子'] // 列表数据，用来演示 map 里怎么传参
+
+export default function Demo() { // 默认导出组件
+  const [msg, setMsg] = useState('还没点，点下面任意按钮试试') // 显示最近一次点击结果
+
+  // 公共处理函数：需要两个参数，这就是「传参」的由来
+  function pick(name, way) {
+    setMsg('选中了「' + name + '」　←　用的是：' + way) // 拼一句话显示出来
+  }
+
+  // 写法三专用：不接收自定义参数，改成从事件对象里读 DOM 上的 data-* 属性
+  function pickFromDataset(e) {
+    // currentTarget 是「绑事件的那个元素」，dataset.name 对应 JSX 上的 data-name
+    pick(e.currentTarget.dataset.name, 'data 属性 + dataset')
+  }
+
+  const btn = { padding: '6px 12px', cursor: 'pointer' } // 按钮共用样式
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      {/* 写法一：箭头函数包一层（最常用）。点击时才执行 pick(...)，渲染阶段只是创建了个函数 */}
+      <div style={{ marginBottom: 10 }}>
+        <span style={{ fontSize: 13, color: '#666', marginRight: 8 }}>① 箭头函数包一层：</span>
+        {FRUITS.map((name) => (
+          <button key={name} onClick={() => pick(name, '箭头函数包一层')} style={{ ...btn, marginRight: 6 }}>
+            {name}
+          </button>
+        ))}
+      </div>
+
+      {/* 写法二：bind 预先绑定参数，返回一个新函数。第一个参数是 this，函数组件里传 null 即可 */}
+      <div style={{ marginBottom: 10 }}>
+        <span style={{ fontSize: 13, color: '#666', marginRight: 8 }}>② bind 预绑参数：</span>
+        {FRUITS.map((name) => (
+          <button key={name} onClick={pick.bind(null, name, 'bind 预绑参数')} style={{ ...btn, marginRight: 6 }}>
+            {name}
+          </button>
+        ))}
+      </div>
+
+      {/* 写法三：参数写在 DOM 的 data-* 属性上，处理函数从 e.currentTarget.dataset 里读 */}
+      <div style={{ marginBottom: 10 }}>
+        <span style={{ fontSize: 13, color: '#666', marginRight: 8 }}>③ data 属性：</span>
+        {FRUITS.map((name) => (
+          <button key={name} data-name={name} onClick={pickFromDataset} style={{ ...btn, marginRight: 6 }}>
+            {name}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ padding: 10, background: '#e6f4ff', borderRadius: 6, fontSize: 14 }}>{msg}</div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        三种写法效果一样，日常 <strong>99% 用第一种</strong>。
+        千万不要写成 <code>onClick={'{'}pick(name){'}'}</code>：带括号表示「渲染时就调用」，
+        页面一加载就会执行一遍，还会因为不停 setState 而无限循环。
+        写成 <code>{'{'}() =&gt; pick(name){'}'}</code>，交给 React 的才是一个「等着被调用」的函数。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：点击冒泡三层盒子 + stopPropagation / preventDefault 开关',
+            body: `import { useState } from 'react' // 引入 useState 记录日志和开关
+
+export default function Demo() { // 默认导出组件
+  const [logs, setLogs] = useState([]) // 事件触发日志，新的放最前面
+  const [stop, setStop] = useState(false) // 开关①：中层要不要 stopPropagation
+  const [prevent, setPrevent] = useState(true) // 开关②：链接要不要 preventDefault
+
+  function log(text) {
+    setLogs((prev) => [text, ...prev].slice(0, 8)) // 只保留最近 8 条，避免越堆越长
+  }
+
+  function onOuter() {
+    log('③ 外层（最外面的灰盒子）') // 冒泡的最后一站
+  }
+
+  function onMiddle(e) {
+    log('② 中层（蓝盒子）')
+    // stopPropagation：阻止事件继续往父级冒泡，外层的 onOuter 就不会被触发
+    if (stop) {
+      e.stopPropagation()
+      log('　↑ 已 stopPropagation，事件到此为止')
+    }
+  }
+
+  function onInner() {
+    log('① 内层按钮') // 事件从这里开始，然后一层层往外传
+  }
+
+  function onLink(e) {
+    // preventDefault：阻止元素的「默认行为」，<a> 的默认行为就是按 href 跳转
+    if (prevent) {
+      e.preventDefault()
+      log('🔗 已 preventDefault：地址栏没变，页面留在原地')
+    } else {
+      log('🔗 没有 preventDefault：浏览器会按 href 走，地址栏后面会多出 #jump')
+    }
+  }
+
+  const box = { padding: 16, borderRadius: 8, cursor: 'pointer' } // 三层盒子共用的内边距
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: 14, flexWrap: 'wrap' }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <input type="checkbox" checked={stop} onChange={(e) => setStop(e.target.checked)} />
+          中层调用 e.stopPropagation()
+        </label>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <input type="checkbox" checked={prevent} onChange={(e) => setPrevent(e.target.checked)} />
+          链接调用 e.preventDefault()
+        </label>
+      </div>
+
+      {/* 三层嵌套：点最里面的按钮，事件会依次触发 内层 → 中层 → 外层（这就是冒泡） */}
+      <div onClick={onOuter} style={{ ...box, background: '#f0f0f0' }}>
+        外层
+        <div onClick={onMiddle} style={{ ...box, background: '#e6f4ff', marginTop: 8 }}>
+          中层
+          <button onClick={onInner} style={{ padding: '6px 12px', cursor: 'pointer', marginTop: 8 }}>
+            内层按钮（点我看冒泡）
+          </button>
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 14 }}>
+        {/* href="#jump" 页面上没有这个锚点，不勾开关时点它只会在地址栏加个 #jump，方便你观察默认行为 */}
+        <a href="#jump" onClick={onLink} style={{ color: '#1677ff' }}>
+          我是一个 &lt;a&gt; 链接，点我
+        </a>
+      </p>
+
+      <button onClick={() => setLogs([])} style={{ padding: '4px 10px', cursor: 'pointer' }}>清空日志</button>
+
+      <ul style={{ fontSize: 13, color: '#555', paddingLeft: 18, marginTop: 8, lineHeight: 1.9 }}>
+        {logs.map((item, i) => (
+          <li key={i}>{item}</li> // 纯展示的日志列表，顺序不会变，用 index 当 key 没问题
+        ))}
+      </ul>
+
+      <p style={{ fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        不勾第一个开关：点内层按钮会连着打出 ①②③ 三条日志——事件一路往外冒泡。
+        勾上以后只剩 ①②，外层收不到了。真实场景就是「卡片整体可点，卡片里的删除按钮不能连带触发卡片点击」。
+        <strong>stopPropagation 管的是「往上传」，preventDefault 管的是「浏览器自带的动作」，两件完全不同的事。</strong>
+      </p>
     </div>
   )
 }`,
@@ -530,6 +694,113 @@ function PreferenceForm() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：受控表单全家桶——文本 / 下拉 / 复选 / 单选 / 多选，实时看 state',
+            body: `import { useState } from 'react' // 引入 useState 存整个表单
+
+const SKILLS = ['React', 'Vue', 'Node', 'CSS'] // 多选用的候选项
+const LEVELS = [ // 单选用的候选项，value 是存进 state 的值，label 是显示给用户看的
+  { value: 'beginner', label: '入门' },
+  { value: 'advanced', label: '进阶' },
+]
+
+export default function Demo() { // 默认导出组件
+  // 所有字段的初值都写明类型：文本用 ''、布尔用 false、多选用 []，绝不要留 undefined
+  const [form, setForm] = useState({
+    name: '',
+    city: 'shanghai',
+    agree: false,
+    level: 'beginner',
+    skills: [],
+  })
+
+  function update(key, value) {
+    setForm((prev) => ({ ...prev, [key]: value })) // 通用更新：展开旧对象，只覆盖这一个字段
+  }
+
+  // 多选 checkbox：在数组里做「有就删掉、没有就加上」的 toggle
+  function toggleSkill(skill) {
+    setForm((prev) => ({
+      ...prev,
+      skills: prev.skills.includes(skill)
+        ? prev.skills.filter((s) => s !== skill) // 已选中 → 过滤掉
+        : [...prev.skills, skill], // 未选中 → 追加
+    }))
+  }
+
+  const inputStyle = { width: '100%', padding: 6, boxSizing: 'border-box', marginTop: 4 }
+
+  return (
+    <div style={{ display: 'flex', gap: 16, padding: 16, fontFamily: 'system-ui', flexWrap: 'wrap' }}>
+      <div style={{ flex: 1, minWidth: 220, fontSize: 14 }}>
+        {/* ① 文本框：绑 value，取 e.target.value */}
+        <label style={{ display: 'block', marginBottom: 10 }}>
+          姓名（input text）
+          <input value={form.name} onChange={(e) => update('name', e.target.value)} style={inputStyle} />
+        </label>
+
+        {/* ② 下拉：同样绑 value，option 的 value 要和 state 的取值一一对应 */}
+        <label style={{ display: 'block', marginBottom: 10 }}>
+          城市（select）
+          <select value={form.city} onChange={(e) => update('city', e.target.value)} style={inputStyle}>
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="chengdu">成都</option>
+          </select>
+        </label>
+
+        {/* ③ 单个复选框：绑的是 checked，取的是 e.target.checked（不是 value！） */}
+        <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+          <input type="checkbox" checked={form.agree} onChange={(e) => update('agree', e.target.checked)} />
+          同意用户协议（checkbox）
+        </label>
+
+        {/* ④ 单选 radio：checked 写成「state === 这个选项的值」，选中时把 state 设成该值 */}
+        <div style={{ marginBottom: 10 }}>
+          水平（radio）：
+          {LEVELS.map((lv) => (
+            <label key={lv.value} style={{ marginLeft: 10 }}>
+              <input
+                type="radio"
+                name="demo-level" // 同一组 radio 用同一个 name，浏览器才知道它们互斥
+                checked={form.level === lv.value}
+                onChange={() => update('level', lv.value)}
+              />
+              {' ' + lv.label}
+            </label>
+          ))}
+        </div>
+
+        {/* ⑤ 多选：checked 用「数组里有没有这一项」判断 */}
+        <div>
+          技能（多选 checkbox）：
+          {SKILLS.map((skill) => (
+            <label key={skill} style={{ marginLeft: 10 }}>
+              <input type="checkbox" checked={form.skills.includes(skill)} onChange={() => toggleSkill(skill)} />
+              {' ' + skill}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ flex: 1, minWidth: 220 }}>
+        <div style={{ fontSize: 13, color: '#666', marginBottom: 4 }}>整个表单对象（改哪都会立刻变）：</div>
+        <pre style={{ background: '#f5f5f5', padding: 10, borderRadius: 6, fontSize: 12, margin: 0 }}>
+          {JSON.stringify(form, null, 2)}
+        </pre>
+        <p style={{ fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+          受控组件的核心就是这条闭环：<strong>界面显示 state → 用户操作触发 onChange → setState → 重新渲染</strong>。
+          所以任何时刻 state 都等于你在界面上看到的内容，校验、重置、联动都变得很简单。
+        </p>
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'table',
             title: '4）各控件 value 来源对照表',
             headers: ['控件', '绑定属性', 'onChange 取值'],
@@ -586,6 +857,72 @@ const [name, setName] = useState()  // undefined，没有明确初值
 const [name, setName] = useState('')       // 文本用空字符串
 const [agree, setAgree] = useState(false)  // 复选框用 false
 const [city, setCity] = useState('shanghai') // 下拉要有默认 option 值对应`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：为什么这个输入框打不进字？漏写 onChange / 正确受控 / 非受控 三格对照',
+            body: `import { useState } from 'react' // 引入 useState
+
+export default function Demo() { // 默认导出组件
+  const [good, setGood] = useState('正确的受控输入框') // 正确受控：state 就是输入框的内容
+  const [bad] = useState('这里一个字也打不进去') // 故意不解构 setter：没人能改这个 state
+  const [keyCount, setKeyCount] = useState(0) // 统计在左边敲了多少次键，证明「事件有，只是没 setState」
+
+  const box = { flex: 1, minWidth: 220, padding: 12, borderRadius: 8 } // 三个格子共用样式
+  const input = { width: '100%', padding: 6, boxSizing: 'border-box', marginTop: 6 }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        {/* ❌ 只写了 value，没有 onChange：value 被 state 锁死，用户敲什么都会被 React 覆盖回去 */}
+        <div style={{ ...box, background: '#fff1f0', border: '1px solid #ffa39e' }}>
+          <div style={{ fontSize: 13, color: '#cf1322' }}>❌ 只有 value，没有 onChange</div>
+          <input
+            value={bad} // 每次渲染都把内容强行设回 state 的值
+            onKeyDown={() => setKeyCount((c) => c + 1)} // 只用来计数，不改 bad，所以内容纹丝不动
+            style={input}
+          />
+          <div style={{ fontSize: 12, color: '#999', marginTop: 6 }}>
+            你已经敲了 {keyCount} 次键，内容却没变（控制台还会有一条 React 警告）
+          </div>
+        </div>
+
+        {/* ✅ value + onChange 配套：敲键 → setState → 重新渲染 → value 变成新内容 */}
+        <div style={{ ...box, background: '#f6ffed', border: '1px solid #b7eb8f' }}>
+          <div style={{ fontSize: 13, color: '#389e0d' }}>✅ value + onChange 配套</div>
+          <input
+            value={good}
+            onChange={(e) => setGood(e.target.value)} // e.target.value 是用户刚敲出来的最新内容
+            style={input}
+          />
+          <div style={{ fontSize: 12, color: '#999', marginTop: 6 }}>
+            state 现在是：「{good}」（长度 {good.length}）
+          </div>
+        </div>
+
+        {/* 🟡 非受控：defaultValue 只提供初始内容，之后由 DOM 自己保管，React 不掺和 */}
+        <div style={{ ...box, background: '#fffbe6', border: '1px solid #ffe58f' }}>
+          <div style={{ fontSize: 13, color: '#d48806' }}>🟡 非受控：defaultValue，没有 value</div>
+          <input defaultValue="能打字，但 React 不知道内容" style={input} />
+          <div style={{ fontSize: 12, color: '#999', marginTop: 6 }}>
+            能正常输入，可 React 读不到它的值，要提交时得靠 ref 去 DOM 里取
+          </div>
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        为什么左边打不进字？因为 <code>value={'{'}state{'}'}</code> 的意思是
+        <strong>「这个框永远显示 state 的值」</strong>。你按下按键，浏览器刚要改内容，
+        React 下一次渲染又把它设回 state——而 state 从来没被更新过，所以看起来像卡死了。
+        <strong>受控组件的 value 和 onChange 必须成对出现</strong>：value 负责显示，onChange 负责写回 state，缺一不可。
+        中间那格才是标准写法；如果确实只想展示不让改，请用 <code>readOnly</code> 或 <code>disabled</code>，而不是省略 onChange。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'text',
@@ -892,6 +1229,124 @@ function App() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：登录表单全流程——失焦校验、提交拦截、loading、成功页',
+            body: `import { useState } from 'react' // 引入 useState
+
+const EMPTY = { account: '', password: '' } // 初始表单值，重置时复用
+
+// 校验函数放在组件外：纯函数，进什么值出什么错，好读也好测
+function validateField(key, value) {
+  if (key === 'account') {
+    if (!value.trim()) return '请输入账号'
+    if (value.trim().length < 3) return '账号至少 3 个字符'
+  }
+  if (key === 'password') {
+    if (!value) return '请输入密码'
+    if (value.length < 6) return '密码至少 6 位'
+  }
+  return '' // 空字符串表示这个字段没问题
+}
+
+export default function Demo() { // 默认导出组件
+  const [form, setForm] = useState(EMPTY) // 表单字段
+  const [errors, setErrors] = useState({}) // 字段级错误文案，和 form 分开存
+  const [formError, setFormError] = useState('') // 整表单错误（模拟接口返回的「账号密码不对」）
+  const [loading, setLoading] = useState(false) // 是否正在提交，控制 loading 文案和禁用
+  const [user, setUser] = useState(null) // 登录成功后的结果，null 表示还没登录
+
+  function update(key, value) {
+    setForm((prev) => ({ ...prev, [key]: value }))
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: '' })) // 用户一改就清掉旧错误，别让红字一直挂着
+    if (formError) setFormError('')
+  }
+
+  // 失焦校验：离开输入框时才提示，比每敲一个字就报红友好得多
+  function handleBlur(key) {
+    setErrors((prev) => ({ ...prev, [key]: validateField(key, form[key]) }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault() // 第一步：必须阻止浏览器默认提交，否则整页刷新、state 全丢
+    // 第二步：提交前把所有字段再校验一遍（用户可能一个都没碰过，blur 从没触发）
+    const next = { account: validateField('account', form.account), password: validateField('password', form.password) }
+    setErrors(next)
+    if (next.account || next.password) return // 有错就拦下来，不发请求
+
+    setLoading(true) // 第三步：进入 loading，按钮禁用防重复提交
+    try {
+      // 用 setTimeout 假装网络请求，1 秒后根据账号密码决定成功还是失败
+      const result = await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (form.account === 'admin' && form.password === '123456') resolve({ name: '管理员' })
+          else reject(new Error('账号或密码错误（试试 admin / 123456）'))
+        }, 1000)
+      })
+      setUser(result) // 第四步：成功，切换到结果视图
+    } catch (err) {
+      setFormError(err.message) // 失败：整表单错误显示在顶部
+    } finally {
+      setLoading(false) // 不管成功失败都要关掉 loading，否则会永远卡在「登录中…」
+    }
+  }
+
+  // 成功后展示结果视图（真实项目里这一步通常是跳转路由）
+  if (user) {
+    return (
+      <div style={{ padding: 24, fontFamily: 'system-ui', textAlign: 'center' }}>
+        <div style={{ fontSize: 18, marginBottom: 8 }}>登录成功，欢迎 {user.name} 👋</div>
+        <button
+          onClick={() => { setUser(null); setForm(EMPTY); setErrors({}) }} // 退出：把所有状态复位
+          style={{ padding: '6px 14px', cursor: 'pointer' }}
+        >
+          退出，再试一次
+        </button>
+      </div>
+    )
+  }
+
+  const field = (key, label, type) => ( // 小工具函数：两个字段结构一样，抽出来少写一半代码
+    <label style={{ display: 'block', marginBottom: 12, fontSize: 14 }}>
+      {label}
+      <input
+        type={type}
+        value={form[key]} // 受控：显示 state
+        onChange={(e) => update(key, e.target.value)} // 受控：写回 state
+        onBlur={() => handleBlur(key)} // 失焦时校验这一个字段
+        disabled={loading} // 提交中禁止修改
+        style={{ width: '100%', padding: 6, boxSizing: 'border-box', marginTop: 4, border: errors[key] ? '1px solid #ff4d4f' : '1px solid #d9d9d9', borderRadius: 4 }}
+      />
+      {/* && 短路：有错误文案才渲染这行红字 */}
+      {errors[key] && <span style={{ color: '#ff4d4f', fontSize: 12 }}>{errors[key]}</span>}
+    </label>
+  )
+
+  return (
+    <form onSubmit={handleSubmit} noValidate style={{ padding: 16, maxWidth: 340, fontFamily: 'system-ui' }}>
+      <div style={{ fontSize: 13, color: '#999', marginBottom: 10 }}>测试账号：admin / 123456</div>
+      {formError && (
+        <div style={{ background: '#fff2f0', border: '1px solid #ffccc7', color: '#cf1322', padding: '6px 10px', borderRadius: 4, marginBottom: 12, fontSize: 13 }}>
+          {formError}
+        </div>
+      )}
+      {field('account', '账号', 'text')}
+      {field('password', '密码', 'password')}
+      <button type="submit" disabled={loading} style={{ padding: '6px 16px', cursor: loading ? 'not-allowed' : 'pointer' }}>
+        {loading ? '登录中…' : '登录'}
+      </button>
+      <p style={{ fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        试试这几种情况：直接点「登录」（会被校验拦住）、随便填个错密码（顶部出现接口错误）、
+        填对了看按钮变成「登录中…」并且输入框被禁用。这套骨架
+        <strong>form + errors + formError + loading</strong> 可以原样搬到注册、改密码等任何表单里。
+      </p>
+    </form>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '4）代码 Walkthrough：关键逻辑在哪',
             body: 'update()：统一更新 form 并清错误——避免每个 input 重复四行逻辑。\n\nvalidate()：返回 boolean，true 才继续；错误集中 setErrors(next)，UI 自动显示。\n\nhandleSubmit：async + try/catch/finally 保证 submitting 一定复位，即使抛错也不会卡在「登录中...」。\n\nformError vs errors.account：前者是接口/业务整体失败，后者是单字段格式问题——用户能区分「邮箱格式错了」和「账号密码不对」。\n\nnoValidate：关闭浏览器原生校验气泡，用我们自己的中文 validate 文案。\n\ndisabled={submitting}：提交中禁止改输入和重复点，防双份请求。',
@@ -929,6 +1384,82 @@ function App() {
   } finally {
     setSubmitting(false)  // 第五步：无论成败都复位 loading
   }
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：表单提交为什么第一行必须 e.preventDefault()',
+            body: `import { useState } from 'react' // 引入 useState
+
+export default function Demo() { // 默认导出组件
+  const [usePrevent, setUsePrevent] = useState(true) // 开关：模拟「写不写 e.preventDefault()」
+  const [keyword, setKeyword] = useState('') // 输入框内容，用来演示刷新后会丢什么
+  const [times, setTimes] = useState(0) // 提交次数，同样是「刷新就会清零」的 state
+  const [tip, setTip] = useState('') // 提示文案
+
+  function handleSubmit(e) {
+    // 注意：这里无论开关是什么都调用 preventDefault，
+    // 否则这个教学页面会被真的刷新掉，你就看不到下面的说明了。
+    // 真实项目里，你「不写这一行」时的效果就等于下面 else 分支描述的那样。
+    e.preventDefault()
+
+    setTimes((n) => n + 1) // 提交次数 +1
+
+    if (usePrevent) {
+      setTip('✅ 写了 e.preventDefault()：页面没刷新，输入框内容和提交次数都还在，可以安心去发请求。')
+    } else {
+      setTip(
+        '❌ 如果没写 e.preventDefault()：浏览器会执行 form 的默认行为——' +
+          '带着表单数据向当前地址发一次 GET 并整页刷新。' +
+          '结果就是输入框被清空、提交次数归零、React 应用整个重新挂载，你的 fetch 往往还没发出去就被打断了。'
+      )
+    }
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 460 }}>
+      <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12, fontSize: 14 }}>
+        <input type="checkbox" checked={usePrevent} onChange={(e) => setUsePrevent(e.target.checked)} />
+        handleSubmit 里写了 e.preventDefault()
+      </label>
+
+      {/* onSubmit 绑在 form 上：点 type="submit" 的按钮、或在输入框里按回车都会触发 */}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8 }}>
+        <input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)} // 受控输入框
+          placeholder="随便输点字，再按回车"
+          style={{ flex: 1, padding: 6 }}
+        />
+        {/* type="submit"（或省略 type）会触发表单提交 */}
+        <button type="submit" style={{ padding: '6px 12px', cursor: 'pointer' }}>提交</button>
+        {/* type="button" 不会触发提交，所以「清空」不会走 handleSubmit */}
+        <button
+          type="button"
+          onClick={() => { setKeyword(''); setTimes(0); setTip('') }}
+          style={{ padding: '6px 12px', cursor: 'pointer' }}
+        >
+          清空
+        </button>
+      </form>
+
+      <div style={{ marginTop: 12, padding: 10, background: '#fafafa', borderRadius: 6, fontSize: 13, lineHeight: 1.9 }}>
+        <div>已提交 {times} 次，输入框里现在是：「{keyword || '（空）'}」</div>
+        <div style={{ color: usePrevent ? '#389e0d' : '#cf1322' }}>{tip}</div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666', lineHeight: 1.8 }}>
+        &lt;form&gt; 的默认行为是「提交给服务器并刷新页面」——这是 React 出现之前的网页玩法。
+        单页应用里我们要自己接管这个过程：<strong>onSubmit 的第一行永远是 e.preventDefault()</strong>，
+        然后再校验、发请求、更新 state。
+        另外记住 <code>type="button"</code> 的按钮不会触发提交，「取消 / 重置 / 清空」这类按钮一定要写上它，
+        否则在 form 里它默认就是 submit，会莫名其妙把表单提交出去。
+      </p>
+    </div>
+  )
 }`,
           },
           {

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import ReactPreview from '../LiveDemo/ReactPreview'
 import './CodePlayground.css'
 
 const EDITOR_FONT =
@@ -45,6 +46,28 @@ ${trimmed}
 </html>`
 }
 
+function resolveLanguage(language = 'html') {
+  const map = {
+    js: 'javascript',
+    javascript: 'javascript',
+    jsx: 'jsx',
+    ts: 'tsx',
+    tsx: 'tsx',
+    css: 'css',
+    html: 'markup',
+    markup: 'markup',
+    text: 'text',
+  }
+  return map[String(language).toLowerCase()] || 'markup'
+}
+
+/** React Demo 走 Babel 编译后直接渲染；其余仍旧塞进 iframe */
+function isReactRuntime(runtime, language) {
+  if (runtime === 'react') return true
+  const lang = String(language || '').toLowerCase()
+  return lang === 'tsx' || lang === 'jsx'
+}
+
 function buildHighlightStyle(theme) {
   const next = { ...theme }
   Object.keys(next).forEach((key) => {
@@ -76,8 +99,11 @@ const highlightStyle = buildHighlightStyle(oneLight)
 function CodePlayground({
   initialCode = '',
   title = '代码演练',
+  language = 'html',
+  runtime,
   onCodeChange,
 }) {
+  const useReactPreview = isReactRuntime(runtime, language)
   const starter = useMemo(
     () => String(initialCode ?? '').replace(/^\n/, '').replace(/\n$/, ''),
     [initialCode]
@@ -167,7 +193,9 @@ function CodePlayground({
       <div className="CodePlayground-toolbar">
         <div className="CodePlayground-toolbarMain">
           <span className="CodePlayground-title">{title}</span>
-          <span className="CodePlayground-badge">HTML · CSS · JS</span>
+          <span className="CodePlayground-badge">
+            {useReactPreview ? 'React · JSX' : 'HTML · CSS · JS'}
+          </span>
         </div>
         <div className="CodePlayground-toolbarActions">
           <button type="button" className="CodePlayground-btn" onClick={handleRunNow}>
@@ -193,7 +221,7 @@ function CodePlayground({
               aria-hidden="true"
             >
               <SyntaxHighlighter
-                language="markup"
+                language={resolveLanguage(useReactPreview ? 'tsx' : language)}
                 style={highlightStyle}
                 PreTag="pre"
                 CodeTag="code"
@@ -243,15 +271,27 @@ function CodePlayground({
         </div>
 
         <div className="CodePlayground-pane CodePlayground-pane--preview">
-          <div className="CodePlayground-paneLabel">实时预览（支持 JS）</div>
-          <div className="CodePlayground-previewFrame">
-            <iframe
-              key={previewKey}
-              title="代码实时预览"
-              className="CodePlayground-iframe"
-              srcDoc={srcDoc}
-              sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
-            />
+          <div className="CodePlayground-paneLabel">
+            {useReactPreview ? '实时预览（React 编译后渲染）' : '实时预览（支持 JS）'}
+          </div>
+          <div
+            className={
+              useReactPreview
+                ? 'CodePlayground-previewFrame CodePlayground-previewFrame--react'
+                : 'CodePlayground-previewFrame'
+            }
+          >
+            {useReactPreview ? (
+              <ReactPreview key={previewKey} code={previewCode} />
+            ) : (
+              <iframe
+                key={previewKey}
+                title="代码实时预览"
+                className="CodePlayground-iframe"
+                srcDoc={srcDoc}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
+              />
+            )}
           </div>
         </div>
       </div>

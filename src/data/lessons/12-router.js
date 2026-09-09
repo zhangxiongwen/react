@@ -1,11 +1,12 @@
 /**
- * 第 9 章：路由
+ * 路由章节
  * 每个条目 = 一句话总结 + 详细步骤 + 完整可抄 demo + 易错点
  */
 const router = {
   id: 'router',
   title: '路由实战（react-router-dom）',
-  summary: '从定义路由、useRoutes，到守卫、403、404、登录回跳——含可运行 Demo',
+  summary:
+    '从定义路由、useRoutes，到守卫、403、404、登录回跳、lazy + Suspense 懒加载——每节都有可交互 Demo',
   order: 12,
   items: [
     {
@@ -186,6 +187,74 @@ export default App
 //     <Route path="*" element={<Navigate to="/" replace />} />
 //   </Route>
 // </Routes>`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：手写一个迷你路由，看懂 BrowserRouter + Routes 在干什么',
+            body: `import { useState } from 'react' // 迷你路由只靠一个 state 记住「当前路径」，不需要装任何库
+
+// ① 三个页面组件 —— 真实项目里它们分别是 src/pages/Home、About、Users
+function HomePage() {                                          // 首页组件
+  return <p style={{ margin: 0 }}>🏠 首页内容（真实项目里是 &lt;Home /&gt;）</p>
+}
+function AboutPage() {                                         // 关于页组件
+  return <p style={{ margin: 0 }}>ℹ️ 关于页内容（真实项目里是 &lt;About /&gt;）</p>
+}
+function UsersPage() {                                         // 用户页组件
+  return <p style={{ margin: 0 }}>👥 用户页内容（真实项目里是 &lt;Users /&gt;）</p>
+}
+
+// ② 路由表：path → 要渲染的组件。真实项目里这就是 src/routes/index.js 导出的 routes 数组
+const routes = [
+  { path: '/', label: '首页', element: <HomePage /> },         // 真实写法：{ path: '/', element: <Home /> }
+  { path: '/about', label: '关于', element: <AboutPage /> },   // 真实写法：{ path: 'about', element: <About /> }
+  { path: '/users', label: '用户', element: <UsersPage /> },   // 真实写法：{ path: 'users', element: <Users /> }
+]
+
+export default function Demo() {
+  // ③ 当前路径存在 state 里；真实项目里这份数据由 BrowserRouter 从地址栏读出来并保持同步
+  const [path, setPath] = useState('/')
+
+  // ④ 查表匹配：找出 path 相同的那一条。真实项目里这一步是 <Routes> / useRoutes 内部的匹配算法
+  const matched = routes.find((r) => r.path === path)
+
+  return (
+    <div style={{ border: '1px solid #d9d9d9', borderRadius: 8, overflow: 'hidden' }}>
+      {/* ⑤ 顶栏：切路由时它不会卸载，等价于 MainLayout 里那个固定不动的 <Header /> */}
+      <div style={{ display: 'flex', gap: 8, padding: 10, background: '#fafafa', borderBottom: '1px solid #eee' }}>
+        {routes.map((r) => (
+          <button
+            key={r.path}                                        // 列表渲染要给稳定的 key
+            onClick={() => setPath(r.path)}                     // 真实项目里这是 <Link to={r.path}>，点击后改地址栏
+            style={{
+              padding: '4px 10px',
+              cursor: 'pointer',
+              borderRadius: 4,
+              border: '1px solid #d9d9d9',
+              background: path === r.path ? '#1677ff' : '#fff', // 当前项高亮，等价于 NavLink 的 isActive
+              color: path === r.path ? '#fff' : '#333',
+            }}
+          >
+            {r.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ⑥ 假地址栏：让你直观看到「先是路径变了，页面才跟着换」 */}
+      <div style={{ padding: '6px 10px', fontSize: 12, color: '#888', fontFamily: 'monospace' }}>
+        地址栏：http://localhost:3000{path}
+      </div>
+
+      {/* ⑦ 内容区就是 MainLayout 里的 <Outlet /> 插槽：匹配到谁就把谁渲染在这里 */}
+      <div style={{ padding: 16, minHeight: 60 }}>
+        {matched ? matched.element : <p style={{ margin: 0, color: '#cf1322' }}>404：没有匹配到 {path}</p>}
+      </div>
+    </div>
+  )
+}`,
           },
           {
             type: 'code',
@@ -376,6 +445,95 @@ JSX 写法                         useRoutes 写法
 
 # 匹配规则、嵌套、Outlet、useParams 完全相同
 # 选哪个 = 项目规模 + 团队习惯，不是谁更「高级」`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：路由表数组 vs JSX 写法，并排渲染出同一个结果',
+            body: `import { useState, Children } from 'react' // Children：把 JSX 子元素列表转成数组，方便读它们的 props
+
+// 三个页面组件，两种写法共用同一批组件，方便对比结果
+function HomePage() { return <span>🏠 首页</span> }              // 对应 <Home />
+function ListPage() { return <span>📄 列表页</span> }            // 对应 <List />
+function DetailPage() { return <span>🔍 详情页</span> }          // 对应 <Detail />
+
+// 匹配函数：给一份「配置数组 + 当前路径」，算出该渲染哪个元素
+// 真实项目里这段逻辑藏在 react-router-dom 内部，两种写法共用的就是它
+function matchRoute(table, path) {
+  const hit = table.find((r) => r.path === path)                 // 逐条比对 path
+  return hit ? hit.element : <span style={{ color: '#cf1322' }}>404</span> // 没命中就兜底
+}
+
+// ===== 写法 A：路由表数组（真实项目里交给 useRoutes(routes) 渲染）=====
+const routeTable = [
+  { path: '/', element: <HomePage /> },                          // 等价于 <Route path="/" element={<Home />} />
+  { path: '/list', element: <ListPage /> },                      // 等价于 <Route path="/list" ... />
+  { path: '/detail', element: <DetailPage /> },                  // 等价于 <Route path="/detail" ... />
+]
+
+// ===== 写法 B：JSX 声明（真实项目里是 <Routes><Route /></Routes>）=====
+function MiniRoute() { return null }                             // 只当「配置载体」，自己不渲染任何东西
+function MiniRoutes({ path, children }) {
+  // 把每个 <MiniRoute path element /> 的 props 收集成数组 —— 收完就和写法 A 的数组长得一模一样
+  const table = Children.toArray(children).map((child) => ({
+    path: child.props.path,                                      // 读 JSX 上写的 path 属性
+    element: child.props.element,                                // 读 JSX 上写的 element 属性
+  }))
+  return matchRoute(table, path)                                 // 复用同一个匹配函数，证明「同一个引擎，两张皮」
+}
+
+const boxStyle = { flex: 1, border: '1px solid #d9d9d9', borderRadius: 8, padding: 12 } // 两栏共用样式
+
+export default function Demo() {
+  const [path, setPath] = useState('/')                          // 当前路径，两栏共用同一个值
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+        {['/', '/list', '/detail', '/oops'].map((p) => (         // 最后一个是故意写错的路径，用来看 404
+          <button
+            key={p}
+            onClick={() => setPath(p)}                           // 真实项目里点的是 <Link to={p}>
+            style={{
+              padding: '4px 10px', cursor: 'pointer', borderRadius: 4,
+              border: '1px solid #d9d9d9',
+              background: path === p ? '#1677ff' : '#fff',       // 当前路径高亮
+              color: path === p ? '#fff' : '#333',
+            }}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', gap: 12 }}>
+        <div style={boxStyle}>
+          <div style={{ fontWeight: 600, marginBottom: 8 }}>写法 A：useRoutes(路由表数组)</div>
+          {/* 直接把数组交给匹配函数，相当于 const element = useRoutes(routes) */}
+          <div style={{ padding: 10, background: '#f6ffed', borderRadius: 6 }}>{matchRoute(routeTable, path)}</div>
+        </div>
+
+        <div style={boxStyle}>
+          <div style={{ fontWeight: 600, marginBottom: 8 }}>写法 B：&lt;Routes&gt;&lt;Route /&gt;&lt;/Routes&gt;</div>
+          <div style={{ padding: 10, background: '#e6f4ff', borderRadius: 6 }}>
+            {/* JSX 写法：结构一眼能看懂，但内部会被转成和写法 A 一样的配置数组 */}
+            <MiniRoutes path={path}>
+              <MiniRoute path="/" element={<HomePage />} />
+              <MiniRoute path="/list" element={<ListPage />} />
+              <MiniRoute path="/detail" element={<DetailPage />} />
+            </MiniRoutes>
+          </div>
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666' }}>
+        两栏永远显示同一个页面：说明两种写法只是「配置形式」不同，匹配能力完全一样。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'code',
@@ -642,6 +800,96 @@ function ForbiddenPage() {
 { path: 'demo/auth/403', element: <ForbiddenPage /> }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：登录守卫 + 登录回跳 + 角色 403（未登录先点「用户管理」试试）',
+            body: `import { useState } from 'react' // 用普通 state 手写守卫，把 RequireAuth 的判断逻辑摊开给你看
+
+// 菜单表：need 表示这条路由的准入要求。真实项目里这份信息写在 routes 数组的守卫层里
+const MENUS = [
+  { path: '/', label: '首页', need: 'public' },                    // 公开页，谁都能进
+  { path: '/profile', label: '个人中心', need: 'login' },          // 需要登录 → RequireAuth
+  { path: '/users', label: '用户管理', need: 'admin' },            // 需要 admin 角色 → RequireAuth + RequireRole
+]
+
+export default function Demo() {
+  const [user, setUser] = useState(null)      // null = 未登录；真实项目里这份数据来自 localStorage / Redux
+  const [path, setPath] = useState('/')       // 当前路径；真实项目里由 BrowserRouter 管理
+  const [from, setFrom] = useState('')        // 被拦截前想去的地址；真实项目里是 Navigate 的 state={{ from: location }}
+  const [tip, setTip] = useState('')          // 界面上解释「刚刚为什么被拦」，方便你观察守卫行为
+
+  // 守卫本体：真实项目里就是 RequireAuth / RequireRole 里那几行 if，通过返回 <Outlet />，不通过返回 <Navigate />
+  function guard(target) {
+    const menu = MENUS.find((m) => m.path === target)              // 找到目标路由的准入要求
+    if (menu.need !== 'public' && !user) {                         // 要登录却没登录 → 踢去登录页
+      return { pass: false, to: '/login', why: '未登录：RequireAuth 把你重定向到登录页，并记下 from=' + target }
+    }
+    if (menu.need === 'admin' && user.role !== 'admin') {          // 登录了但角色不够 → 403（不是 404）
+      return { pass: false, to: '/403', why: '当前角色是 ' + user.role + '，RequireRole 只放行 admin' }
+    }
+    return { pass: true }                                          // 检查通过，正常渲染目标页
+  }
+
+  function go(target) {                                            // 点菜单：先过守卫，再决定真正去哪
+    const r = guard(target)
+    if (r.pass) { setPath(target); setTip(''); return }            // 放行
+    if (r.to === '/login') setFrom(target)                         // 记住原目标，登录成功后跳回去
+    setPath(r.to)                                                  // 真实项目里这一步是 <Navigate to={r.to} replace />
+    setTip(r.why)
+  }
+
+  function login(role) {
+    setUser({ name: role === 'admin' ? '管理员' : '小明', role })   // 真实项目：写入 token 后 setUser
+    const back = from || '/'                                       // 有 from 就回原目标，没有就回首页
+    setPath(back)                                                  // 真实项目：navigate(from, { replace: true })
+    setTip('登录成功，自动跳回被拦截前想去的地址：' + back)
+    setFrom('')                                                    // 用完清掉，避免下次误跳
+  }
+
+  const box = { border: '1px solid #d9d9d9', borderRadius: 8, padding: 14, minHeight: 90, marginTop: 12 }
+
+  return (
+    <div>
+      <div style={{ marginBottom: 8, fontSize: 13 }}>
+        当前身份：{user ? user.name + '（' + user.role + '）' : '未登录'}
+        {user && (
+          <button onClick={() => { setUser(null); setPath('/'); setTip('已退出登录') }} style={{ marginLeft: 8 }}>
+            退出登录
+          </button>
+        )}
+      </div>
+
+      <div style={{ display: 'flex', gap: 8 }}>
+        {MENUS.map((m) => (
+          <button key={m.path} onClick={() => go(m.path)} style={{ padding: '4px 10px', cursor: 'pointer' }}>
+            {m.label}
+          </button>
+        ))}
+      </div>
+
+      {tip && <p style={{ color: '#d46b08', fontSize: 13, marginTop: 8 }}>守卫提示：{tip}</p>}
+
+      <div style={box}>
+        <div style={{ fontSize: 12, color: '#888', fontFamily: 'monospace', marginBottom: 8 }}>地址栏：{path}</div>
+        {path === '/' && <p style={{ margin: 0 }}>🏠 首页：公开内容，谁都能看。</p>}
+        {path === '/profile' && <p style={{ margin: 0 }}>🙋 个人中心：只有登录用户能看到（RequireAuth 放行）。</p>}
+        {path === '/users' && <p style={{ margin: 0 }}>🛠️ 用户管理：admin 专属后台（RequireRole 放行）。</p>}
+        {path === '/403' && <p style={{ margin: 0, color: '#cf1322' }}>403 没有权限：路径存在，但你的角色不够。</p>}
+        {path === '/login' && (
+          <div>
+            <p style={{ marginTop: 0 }}>🔐 登录页{from && '（登录后会自动回到 ' + from + '）'}</p>
+            <button onClick={() => login('user')} style={{ marginRight: 8 }}>以 user 登录</button>
+            <button onClick={() => login('admin')}>以 admin 登录</button>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'list',
             title: '4. 怎么用：自己项目加守卫的步骤',
             ordered: true,
@@ -710,6 +958,66 @@ function NotFoundPage() {
 // { path: '*', element: <Navigate to="/" replace /> }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：地址栏里随便敲一个不存在的路径，看 404 兜底是怎么生效的',
+            body: `import { useState } from 'react' // 用 state 假装地址栏，观察「匹配不上就走 * 兜底」的过程
+
+// 已注册的路由表；真实项目里 path:'*' 那条必须放在同级 children 的最后
+const routes = [
+  { path: '/', title: '首页', text: '欢迎回来～' },
+  { path: '/about', title: '关于我们', text: '这是一个教学项目。' },
+  { path: '/lesson/router', title: '路由章节', text: '正在阅读路由课程。' },
+]
+
+export default function Demo() {
+  const [input, setInput] = useState('/lesson/router') // 输入框里正在编辑的路径
+  const [path, setPath] = useState('/')                // 已经「回车跳转」过去的当前路径
+
+  const matched = routes.find((r) => r.path === path)  // 逐条匹配；真实项目里这是路由器内部做的
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <span style={{ fontSize: 12, color: '#888' }}>地址栏</span>
+        <input
+          value={input}                                                  // 受控输入框
+          onChange={(e) => setInput(e.target.value)}                     // 输入时同步到 state
+          onKeyDown={(e) => { if (e.key === 'Enter') setPath(input) }}   // 回车 = 真正跳转
+          style={{ flex: 1, padding: '4px 8px', fontFamily: 'monospace' }}
+        />
+        <button onClick={() => setPath(input)}>前往</button>
+        {/* 快捷按钮：一键试一个肯定不存在的路径 */}
+        <button onClick={() => { setInput('/no-such-page'); setPath('/no-such-page') }}>试个不存在的</button>
+      </div>
+
+      <div style={{ marginTop: 12, border: '1px solid #d9d9d9', borderRadius: 8, padding: 16, minHeight: 90 }}>
+        {matched ? (
+          <div>
+            <h4 style={{ margin: '0 0 6px' }}>{matched.title}</h4>
+            <p style={{ margin: 0 }}>{matched.text}</p>
+          </div>
+        ) : (
+          // 这一整块就是 NotFoundPage：告诉用户「哪个路径」没匹配上，比静默跳首页友好得多
+          <div>
+            <h4 style={{ margin: '0 0 6px', color: '#cf1322' }}>404 页面不存在</h4>
+            <p style={{ margin: '0 0 10px' }}>没有匹配到：<code>{path}</code></p>
+            {/* 真实项目里这是 <Link to="/">回首页</Link> */}
+            <button onClick={() => { setInput('/'); setPath('/') }}>回首页</button>
+          </div>
+        )}
+      </div>
+
+      <p style={{ fontSize: 13, color: '#666', marginTop: 10 }}>
+        已注册路径只有 / 、/about 、/lesson/router，其余全部落到 path:'*' 这条兜底规则上。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '2. 是什么：表单未保存离开',
             body: '用户填了表单还没保存，就要关标签页、刷新、或点链接离开——应该提示「有未保存更改」。\n\n**关标签页 / 刷新**：浏览器原生 beforeunload 事件（本项目 /demo/auth/unsaved 已演示）。\n\n**应用内跳转（点 Link）**：BrowserRouter 下完整方案是 useBlocker（v6.4+ 数据路由更完整）；本项目用「脏标记 dirty + confirm」演示核心思路。\n\n打开 **/demo/auth/unsaved**，输入文字后尝试刷新或离开，观察浏览器提示。',
@@ -736,6 +1044,89 @@ useEffect(() => {
 
 // 用户输入时 setDirty(true)；保存成功 setDirty(false)
 // 注意：beforeunload 拦不住 SPA 内 Link 跳转，完整方案需 useBlocker（进阶）`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：表单没保存就想离开？自己画一个确认弹层拦住他',
+            body: `import { useState } from 'react' // 不用浏览器原生 confirm（它会阻塞线程、样式也丑），自己画一层
+
+export default function Demo() {
+  const [path, setPath] = useState('/edit')  // 当前页面；真实项目里由路由管理
+  const [text, setText] = useState('')       // 表单内容
+  const [saved, setSaved] = useState('')     // 上次保存下来的内容
+  const [pending, setPending] = useState('') // 「待确认要去的那个路径」，非空时弹层可见
+
+  const dirty = text !== saved               // 脏标记：输入框内容和已保存内容不一致 = 有未保存改动
+
+  // 统一的跳转入口：真实项目里这里是 useBlocker 的回调，或在 navigate 前手动拦一道
+  function tryGo(target) {
+    if (path === '/edit' && dirty) { setPending(target); return } // 有未保存改动 → 先弹确认层，不跳
+    setPath(target)                                               // 干净 → 直接跳
+  }
+
+  const btn = { padding: '4px 10px', cursor: 'pointer', marginRight: 8 }
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <div style={{ marginBottom: 10 }}>
+        <button style={btn} onClick={() => tryGo('/edit')}>编辑页</button>
+        <button style={btn} onClick={() => tryGo('/list')}>列表页</button>
+        <span style={{ fontSize: 12, color: dirty ? '#d46b08' : '#389e0d' }}>
+          {dirty ? '● 有未保存改动' : '○ 已保存'}
+        </span>
+      </div>
+
+      <div style={{ border: '1px solid #d9d9d9', borderRadius: 8, padding: 14, minHeight: 110 }}>
+        {path === '/edit' ? (
+          <div>
+            <p style={{ marginTop: 0 }}>📝 编辑页：改点东西，然后去点「列表页」试试</p>
+            <input
+              value={text}
+              onChange={(e) => setText(e.target.value)}   // 每次输入都会让 dirty 变 true
+              placeholder="随便输点内容"
+              style={{ padding: '4px 8px', width: '60%' }}
+            />
+            <button style={{ ...btn, marginLeft: 8 }} onClick={() => setSaved(text)}>
+              保存
+            </button>
+          </div>
+        ) : (
+          <p style={{ margin: 0 }}>📄 列表页：你已经安全离开编辑页了。</p>
+        )}
+      </div>
+
+      {/* 自己画的确认弹层：比 window.confirm 可控（能自定义文案、样式、第三个按钮） */}
+      {pending && (
+        <div
+          style={{
+            position: 'absolute', inset: 0, background: 'rgba(0,0,0,.45)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8,
+          }}
+        >
+          <div style={{ background: '#fff', borderRadius: 8, padding: 18, width: 300 }}>
+            <div style={{ fontWeight: 600, marginBottom: 6 }}>离开前确认</div>
+            <p style={{ fontSize: 13, color: '#666', marginTop: 0 }}>
+              当前表单有未保存的修改，确定要离开去 {pending} 吗？
+            </p>
+            <div style={{ textAlign: 'right' }}>
+              <button style={btn} onClick={() => setPending('')}>留下继续编辑</button>
+              {/* 确认离开：把内容丢弃（真实项目也可以「先保存再跳」） */}
+              <button
+                style={{ ...btn, marginRight: 0, background: '#cf1322', color: '#fff', border: 'none' }}
+                onClick={() => { setText(saved); setPath(pending); setPending('') }}
+              >
+                放弃修改并离开
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}`,
           },
           {
             type: 'table',
@@ -816,6 +1207,338 @@ const routes = [
             type: 'tip',
             title: '一句话记忆',
             body: '404 用 * 兜底 + 友好页；守卫分层 RequireAuth 套 RequireRole；登录回跳靠 state.from；打开顶部「路由演示」按表逐项点 /demo/auth 比只看文档快。',
+          },
+        ],
+      },
+    },
+    {
+      id: 'route-lazy-suspense',
+      title: '路由懒加载：React.lazy + Suspense（首屏提速）',
+      summary:
+        '不做懒加载，首屏要下载整站代码；React.lazy 把每个页面拆成单独 chunk，用到才下载，Suspense 负责下载期间的占位',
+      content: {
+        sections: [
+          {
+            type: 'tip',
+            title: '一句话记住',
+            body: 'const Report = React.lazy(() => import(\'./pages/Report\'))，再用 <Suspense fallback={骨架屏}> 包住路由出口——页面代码被拆成独立 chunk（代码块），用户点到那个路由才去下载，首屏因此变小变快。',
+          },
+          {
+            type: 'text',
+            title: '1. 为什么需要：不拆包时首屏在下载整个网站',
+            body: '打包工具（Webpack / Vite）默认会把你 import 进来的所有页面**打进同一个 JS 文件**。假设你有 30 个页面，其中「报表页」引了一个 500KB 的图表库——那么用户只是想看首页，浏览器也得先把这 500KB 一起下载、解析、执行完，首屏才出得来。\n\n**代码分割（code splitting）** 就是把这一个大包切成很多小 chunk：首屏只下载首屏要的那块，其余的等用户真正点进去再下载。路由是最自然的切割线，因为「一个路由 = 一个页面 = 一整块用户当下不一定需要的代码」。\n\n效果很直观：首屏 JS 从 1.2MB 降到 200KB，白屏时间可能从 3 秒降到 1 秒以内；代价是切换到没访问过的页面时，会多一次几十到几百毫秒的 chunk 下载——这就是 Suspense fallback 要盖住的那段时间。',
+          },
+          {
+            type: 'text',
+            title: '2. 怎么写：React.lazy 只做一件事',
+            body: 'React.lazy(fn) 接收一个「返回 Promise 的函数」，这个 Promise 要 resolve 出一个含 default 导出的模块。**动态 import() 刚好就返回这样的 Promise**，所以标准写法永远是 React.lazy(() => import(\'./pages/Report\'))。\n\n注意 import(\'...\') 带括号，是**动态导入**（运行时才发请求），和文件顶部那种静态 import 完全不是一回事——打包工具看到动态 import() 就会自动把这个模块单独打成一个 chunk 文件。\n\nlazy 返回的是一个「占位组件」。第一次渲染它时模块还没到，React 会把渲染**挂起（suspend）**，向上找最近的 <Suspense>，先渲染 fallback；等 chunk 下载完，再把真正的组件换上去。**所以没有 Suspense 就会直接报错**：A component suspended while responding to synchronous input。',
+          },
+          {
+            type: 'code',
+            title: '基本写法：lazy + Suspense 三行看懂',
+            language: 'jsx',
+            body: `// lazy：声明「这个组件的代码单独打包，用到再下载」
+// Suspense：声明「下载期间先显示什么」
+import { lazy, Suspense } from 'react'
+
+// ★ 动态 import() 返回 Promise，打包工具会把 Report.js 单独打成一个 chunk 文件
+// ★ Report.js 必须是 export default 一个组件，否则运行时报 undefined
+const Report = lazy(() => import('./pages/Report'))
+
+function App() {
+  return (
+    // fallback：chunk 还在下载时渲染的内容，必须给，且建议带最小高度
+    <Suspense fallback={<div style={{ minHeight: 300 }}>加载中…</div>}>
+      {/* 第一次渲染 Report 时 React 会「挂起」，先显示 fallback；chunk 到了再换成真组件 */}
+      <Report />
+    </Suspense>
+  )
+}
+
+export default App`,
+          },
+          {
+            type: 'code',
+            title: '完整可抄：整份懒加载路由表（含首屏不懒加载的取舍）',
+            language: 'jsx',
+            body: `// ---------- src/routes/index.js：懒加载版路由表（可直接抄）----------
+import { lazy, Suspense } from 'react'
+import { Navigate } from 'react-router-dom'
+
+// 布局壳和首页「不」懒加载：它们首屏必然要用，拆出去反而多一次请求
+import MainLayout from '../layouts/MainLayout'
+import Home from '../pages/Home'
+
+// 其余页面统统懒加载：每个 lazy() 都会生成一个独立 chunk
+const LessonDetail = lazy(() => import('../pages/LessonDetail'))
+const Report = lazy(() => import('../pages/Report'))       // 这个页面引了很大的图表库
+const Settings = lazy(() => import('../pages/Settings'))
+const NotFound = lazy(() => import('../pages/NotFound'))
+
+/**
+ * 小工具：给懒加载页面套一层 Suspense
+ * 为什么写成函数：每个路由都手写一遍 <Suspense fallback={...}> 太啰嗦
+ */
+function lazyPage(node) {
+  return (
+    // minHeight 很关键：占住位置，chunk 到了内容撑开时不会「跳一下」
+    <Suspense fallback={<div style={{ minHeight: 320, padding: 24, color: '#999' }}>页面加载中…</div>}>
+      {node}
+    </Suspense>
+  )
+}
+
+const routes = [
+  {
+    path: '/',
+    element: <MainLayout />,                       // 布局同步加载，切页时顶栏始终在
+    children: [
+      { index: true, element: <Home /> },          // 首页同步加载，首屏零等待
+      { path: 'lesson/:categoryId/:itemId', element: lazyPage(<LessonDetail />) },
+      { path: 'report', element: lazyPage(<Report />) },
+      { path: 'settings', element: lazyPage(<Settings />) },
+      { path: '*', element: lazyPage(<NotFound />) },  // 404 页也可以懒加载
+    ],
+  },
+]
+
+export default routes
+
+// ★ 另一种更省事的写法：只在 MainLayout 的 <Outlet /> 外面包一层 Suspense
+// function MainLayout() {
+//   return (
+//     <div>
+//       <Header />
+//       <Suspense fallback={<PageSkeleton />}>
+//         <Outlet />   {/* 所有子路由共用这一个 fallback */}
+//       </Suspense>
+//     </div>
+//   )
+// }`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：亲眼看懒加载——第一次点要等 chunk 下载，第二次点秒开',
+            body: `import { useState } from 'react' // 沙箱里没法真的发网络请求，用 setTimeout 模拟「下载 chunk」的耗时
+
+// 假装这是三个路由页面，size 表示这个页面的 chunk 有多大（越大下载越久）
+const PAGES = [
+  { key: 'home', label: '首页', size: 40, ms: 400, text: '🏠 首页内容（真实项目里通常不懒加载，首屏直接给）' },
+  { key: 'report', label: '报表页', size: 620, ms: 1400, text: '📊 报表页内容（引了很大的图表库，最该懒加载）' },
+  { key: 'setting', label: '设置页', size: 90, ms: 600, text: '⚙️ 设置页内容（用户不一定会点开）' },
+]
+
+export default function Demo() {
+  const [current, setCurrent] = useState('')   // 当前显示的页面 key
+  const [loaded, setLoaded] = useState([])     // 已经下载过 chunk 的页面：React 内部也维护着这样一份缓存
+  const [loading, setLoading] = useState(null) // 正在下载的那个页面对象，非空时显示 Suspense 的 fallback
+
+  function open(page) {
+    if (loaded.includes(page.key)) {           // ★ 已经下载过 → 直接切换，零等待（第二次点就是这条路径）
+      setCurrent(page.key)
+      return
+    }
+    setLoading(page)                           // ★ 第一次点 → React 把渲染「挂起」，显示 fallback
+    // 真实项目里这段等待是浏览器在下载 import('./pages/Xxx') 拆出来的那个 chunk 文件
+    setTimeout(() => {
+      setLoaded((prev) => [...prev, page.key]) // chunk 到位，记进缓存
+      setLoading(null)
+      setCurrent(page.key)                     // 真正的组件替换掉 fallback
+    }, page.ms)
+  }
+
+  const page = PAGES.find((p) => p.key === current) // 当前要渲染的页面数据
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+        {PAGES.map((p) => (
+          <button key={p.key} onClick={() => open(p)} disabled={!!loading} style={{ padding: '4px 10px', cursor: 'pointer' }}>
+            {p.label}
+            {/* 已下载过的标个勾，提示这次点击不会再等 */}
+            <span style={{ marginLeft: 6, fontSize: 12, color: loaded.includes(p.key) ? '#389e0d' : '#999' }}>
+              {loaded.includes(p.key) ? '✓已缓存' : p.size + 'KB'}
+            </span>
+          </button>
+        ))}
+        <button onClick={() => { setLoaded([]); setCurrent('') }} style={{ padding: '4px 10px', cursor: 'pointer' }}>
+          清空缓存（相当于刷新页面）
+        </button>
+      </div>
+
+      {/* minHeight 固定：这就是 fallback 要给最小高度的原因，内容到位时布局不会跳动 */}
+      <div style={{ border: '1px solid #d9d9d9', borderRadius: 8, padding: 16, minHeight: 130 }}>
+        {loading ? (
+          // ↓↓↓ 这一整块就是 <Suspense fallback={...}> 里写的东西：骨架屏
+          <div>
+            <p style={{ marginTop: 0, color: '#d46b08', fontSize: 13 }}>
+              ⏳ 这段等待就是在下载 {loading.label} 的 chunk（约 {loading.size}KB）
+            </p>
+            {[100, 85, 60].map((w) => (
+              <div key={w} style={{ height: 14, width: w + '%', background: '#f0f0f0', borderRadius: 4, marginBottom: 8 }} />
+            ))}
+          </div>
+        ) : page ? (
+          <div>
+            <p style={{ margin: 0 }}>{page.text}</p>
+            <p style={{ fontSize: 12, color: '#888', marginBottom: 0 }}>
+              再点一次「{page.label}」试试：chunk 已在内存里，React 直接渲染，不会再有等待。
+            </p>
+          </div>
+        ) : (
+          <p style={{ margin: 0, color: '#999' }}>点上面的菜单，观察第一次点和第二次点的区别。</p>
+        )}
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'text',
+            title: '3. 加载失败怎么办：chunk 请求会失败，必须兜底',
+            body: '懒加载把「渲染组件」变成了一次**网络请求**，网络请求就会失败：用户网差、断网、或者你刚发布新版本导致旧 chunk 文件名已经不存在（这个非常常见，用户开着旧页面不刷新，点进新页面就 404）。\n\nSuspense 只管「还没到」，**不管「到不了」**。要处理失败必须再包一层**错误边界（Error Boundary，一个能捕获子树渲染错误的类组件）**：捕获到错误就显示「加载失败，点击重试」，重试按钮改一个 key 强制重新挂载，React 会重新发起那次 import()。\n\n生产上还有个常用兜底：错误信息里包含 ChunkLoadError 或 Loading chunk failed 时，直接 window.location.reload() 拉一次最新的 index.html——因为这多半是版本更新导致的旧 chunk 失效。',
+          },
+          {
+            type: 'code',
+            title: '错误边界 + 重试（可直接抄进项目）',
+            language: 'jsx',
+            body: `import { Component, Suspense, lazy, useState } from 'react'
+
+/**
+ * ChunkErrorBoundary：错误边界必须是 class 组件（函数组件目前没有等价 API）
+ * 它捕获子树渲染阶段抛出的错误，包括 lazy 下载失败抛出的错误
+ */
+class ChunkErrorBoundary extends Component {
+  state = { error: null }                       // error 非空表示子树炸了
+
+  // 静态方法：子组件抛错时被调用，返回值会合并进 state，触发降级 UI
+  static getDerivedStateFromError(error) {
+    return { error }
+  }
+
+  // 副作用位置：上报监控。chunk 失效多半是发版导致，可以在这里直接刷新页面
+  componentDidCatch(error) {
+    if (/ChunkLoadError|Loading chunk .* failed/.test(error.message)) {
+      // window.location.reload()   // 生产环境常用兜底：拉一次最新的 index.html
+    }
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 24 }}>
+          <p>页面加载失败，请检查网络后重试。</p>
+          {/* 清空 error 让子树重新渲染，lazy 会重新发起一次 import() */}
+          <button onClick={() => this.setState({ error: null })}>重试</button>
+        </div>
+      )
+    }
+    return this.props.children               // 没出错就正常渲染子树
+  }
+}
+
+const Report = lazy(() => import('./pages/Report'))
+
+function App() {
+  const [retryKey, setRetryKey] = useState(0)  // 改 key 可以强制整棵子树重新挂载
+
+  return (
+    // ★ 顺序：ErrorBoundary 在外，Suspense 在内 —— 先接住错误，再接住「还没到」
+    <ChunkErrorBoundary key={retryKey}>
+      <Suspense fallback={<div style={{ minHeight: 320 }}>加载中…</div>}>
+        <Report />
+      </Suspense>
+    </ChunkErrorBoundary>
+  )
+}
+
+export default App`,
+          },
+          {
+            type: 'table',
+            title: '哪些该懒加载，哪些不该',
+            intro: '不是拆得越碎越好——每个 chunk 都是一次额外的 HTTP 请求。',
+            headers: ['模块', '建议', '原因'],
+            rows: [
+              ['首页 / 布局壳 MainLayout', '不懒加载', '首屏必然要用，拆出去反而多一次往返'],
+              ['登录页', '通常不懒加载', '未登录用户第一站，等待感最明显'],
+              ['报表 / 富文本编辑器 / 地图页', '强烈建议懒加载', '依赖体积大，且多数用户不会点开'],
+              ['后台管理、设置页', '建议懒加载', '低频访问'],
+              ['404 页', '可懒加载', '正常用户几乎不会触发'],
+              ['一个页面里的小组件', '看情况', '低于 30KB 拆了收益不大，反而多请求'],
+            ],
+            note: '判断标准：这块代码「多数用户在首屏用不到」且「体积不小」，就值得 lazy。',
+          },
+          {
+            type: 'list',
+            title: '4. 易错点清单（踩过的人都点头）',
+            ordered: true,
+            items: [
+              'lazy 的模块必须是 default export：export default function Report(){} —— 只有具名导出会拿到 undefined，报错 Element type is invalid',
+              '具名导出要用 lazy(() => import(\'./x\').then(m => ({ default: m.Report })))——手动包一层 default',
+              '不要在组件内部调用 lazy()：写在组件里每次渲染都会生成新的 lazy 组件，导致整页反复卸载重挂、loading 闪个不停。lazy 一定放模块顶层',
+              'fallback 要有最小高度（minHeight）：否则 loading 时容器塌成一条线，内容到位又撑开，页面「跳一下」，体验很差',
+              '忘了包 Suspense：报错 A component suspended while responding to synchronous input',
+              'import() 里不能写完全动态的变量路径：import(path) 打包工具分析不了，至少要写成 import(\'./pages/\' + name) 这种带静态前缀的形式',
+              '开发环境感觉不到效果：本地 chunk 秒下，要在 Network 面板把网速调成 Slow 3G 才看得出差别',
+            ],
+          },
+          {
+            type: 'text',
+            title: '5. 顺带解决：切换路由后页面停在半山腰',
+            body: '懒加载做完你多半会碰到另一个体验 bug：从一篇长文章的底部点进另一个页面，新页面**打开时滚动条还停在中间**。因为 SPA 切路由并不刷新浏览器，滚动位置自然不会重置。\n\n解决办法是一个「什么都不渲染、只干副作用」的小组件：监听 pathname 变化，变了就 window.scrollTo({ top: 0 })。本项目已经写好了，就在 **src/components/ScrollToTop.js**，挂在布局层即可。\n\n它还多做了一件事：如果 URL 带 hash（如 /doc#faq），就不强制回顶，而是滚到对应锚点元素——因为用户点锚点链接的本意就是跳到那一段。\n\n和懒加载配合时注意顺序：chunk 还在下载时 fallback 高度可能很小，此时滚动无处可去；等真实内容撑开后位置才准。给 fallback 一个接近真实内容的 minHeight，能顺带让滚动恢复更稳。',
+          },
+          {
+            type: 'code',
+            title: '本项目 src/components/ScrollToTop.js（照抄即可）',
+            language: 'jsx',
+            body: `import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
+/**
+ * 路由切换时把页面滚回顶部
+ * 若 URL 带 hash（如 /#contact），滚到对应锚点，不强制回顶
+ */
+function ScrollToTop() {
+  // useLocation：URL 一变这个组件就重新渲染，effect 依赖因此被触发
+  const { pathname, search, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')          // #faq → faq
+      // 等一帧：确保目标元素（尤其是懒加载刚到位的内容）已经挂载，否则找不到
+      const timer = window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 0)
+      return () => window.clearTimeout(timer)   // 清理定时器，避免组件卸载后还执行
+    }
+
+    // 普通换页：立刻回到顶部。用 'auto' 而不是 'smooth'，避免换页时看到一段多余的滚动动画
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    return undefined
+  }, [pathname, search, hash])                  // 三者任一变化都重新执行
+
+  return null                                   // 只做副作用，不渲染任何 DOM
+}
+
+export default ScrollToTop
+
+// 用法：挂在布局层，和 <Outlet /> 同级即可
+// <MainLayout>
+//   <ScrollToTop />
+//   <Outlet />
+// </MainLayout>`,
+          },
+          {
+            type: 'tip',
+            title: '一句话记忆',
+            body: 'lazy 放模块顶层 + 目标组件 default export + Suspense fallback 带 minHeight + 外面再套错误边界防 chunk 下载失败；首页和布局别懒加载；顺手挂个 ScrollToTop 让换页回到顶部。',
           },
         ],
       },
@@ -1004,6 +1727,97 @@ function ProtectedPage() {
 }
 
 export { LoginPage, CreatePostPage, ProtectedPage }`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：Link / NavLink / useNavigate 三者对照（右边能看到历史栈的变化）',
+            body: `import { useState } from 'react' // 用一个数组当「浏览器历史栈」，把三种跳转的区别摊开看
+
+const PAGES = {                                    // 路径 → 页面内容，省掉写三个组件
+  '/': '🏠 首页内容',
+  '/about': 'ℹ️ 关于页内容',
+  '/users': '👥 用户列表内容',
+  '/login': '🔐 登录页内容',
+}
+
+export default function Demo() {
+  const [stack, setStack] = useState(['/'])        // 历史记录栈；真实项目里这份数据由浏览器 history 维护
+  const [idx, setIdx] = useState(0)                // 当前停在栈的第几条
+  const path = stack[idx]                          // 当前路径
+
+  // 迷你 navigate：真实项目里是 const navigate = useNavigate() 拿到的那个函数
+  function navigate(to, options) {
+    const opt = options || {}
+    if (to === -1) {                               // navigate(-1)：后退一页，等同浏览器返回按钮
+      setIdx((i) => Math.max(0, i - 1))
+      return
+    }
+    const next = stack.slice(0, idx + 1)           // 从当前位置截断：后退后再跳转，前进历史作废
+    if (opt.replace) {
+      next[next.length - 1] = to                   // replace: true → 替换当前这条，不新增记录
+    } else {
+      next.push(to)                                // 默认 push：往历史栈里加一条
+    }
+    setStack(next)
+    setIdx(next.length - 1)
+  }
+
+  const linkStyle = (to, active) => ({             // NavLink 的 style 也可以写成函数，接收 { isActive }
+    padding: '4px 10px', cursor: 'pointer', borderRadius: 4, border: '1px solid #d9d9d9',
+    background: active ? '#1677ff' : '#fff',
+    color: active ? '#fff' : '#333',
+  })
+
+  return (
+    <div style={{ display: 'flex', gap: 14 }}>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>① Link：普通声明式跳转，不高亮</div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+          {/* 真实写法：<Link to="/about">关于</Link> —— 渲染成 <a>，但会拦截点击不刷新整页 */}
+          <button onClick={() => navigate('/about')} style={linkStyle('/about', false)}>关于</button>
+          <button onClick={() => navigate('/users')} style={linkStyle('/users', false)}>用户列表</button>
+        </div>
+
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>② NavLink：当前项自动高亮</div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+          {['/', '/about', '/users'].map((p) => (
+            // 真实写法：<NavLink to={p} style={({ isActive }) => ...}>；首页那条还要加 end 防止误高亮
+            <button key={p} onClick={() => navigate(p)} style={linkStyle(p, path === p)}>{p}</button>
+          ))}
+        </div>
+
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>③ useNavigate：代码里逻辑触发</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {/* 登录成功后常用 replace: true，用户点返回不会又回到登录页 */}
+          <button onClick={() => navigate('/login')} style={linkStyle('', false)}>去登录页</button>
+          <button onClick={() => navigate('/', { replace: true })} style={linkStyle('', false)}>
+            登录成功 navigate('/', &#123; replace: true &#125;)
+          </button>
+          <button onClick={() => navigate(-1)} disabled={idx === 0} style={linkStyle('', false)}>
+            navigate(-1) 返回上一页
+          </button>
+        </div>
+      </div>
+
+      <div style={{ width: 210 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>历史栈（← 当前位置）</div>
+        <div style={{ border: '1px solid #d9d9d9', borderRadius: 8, padding: 10, fontFamily: 'monospace', fontSize: 12 }}>
+          {stack.map((p, i) => (
+            <div key={i} style={{ color: i === idx ? '#1677ff' : '#999' }}>
+              {i + 1}. {p} {i === idx ? '←' : ''}
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 10, padding: 10, background: '#fafafa', borderRadius: 8, minHeight: 50 }}>
+          {PAGES[path]}
+        </div>
+      </div>
+    </div>
+  )
+}`,
           },
           {
             type: 'code',
@@ -1208,6 +2022,80 @@ function LessonDetail() {
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：列表点进详情，看 :id 参数是怎么从 URL 里被读出来的',
+            body: `import { useState, useEffect } from 'react' // useEffect 用来演示「id 变了要重新取数据」
+
+// 假数据；真实项目里详情数据是根据 id 去后端请求回来的
+const USERS = [
+  { id: '1', name: '张三', city: '北京', job: '前端工程师' },
+  { id: '2', name: '李四', city: '上海', job: '后端工程师' },
+  { id: '3', name: '王五', city: '深圳', job: '产品经理' },
+]
+
+// 详情页组件：真实项目里它的 userId 来自 const { userId } = useParams()
+function UserDetail({ userId, onBack }) {
+  const [user, setUser] = useState(null)          // 详情数据
+  const [loading, setLoading] = useState(true)    // 加载态
+
+  useEffect(() => {
+    setLoading(true)
+    // 模拟一次请求；真实项目里是 fetch('/api/users/' + userId)
+    const timer = setTimeout(() => {
+      setUser(USERS.find((u) => u.id === userId)) // 注意 u.id 和 userId 都是字符串
+      setLoading(false)
+    }, 500)
+    return () => clearTimeout(timer)              // 清理：id 快速切换时取消上一次，防止旧数据覆盖新数据
+  }, [userId])                                    // ★ 关键：依赖 userId。漏写会一直显示第一个用户的数据
+
+  return (
+    <div>
+      <button onClick={onBack} style={{ marginBottom: 10 }}>← 返回列表</button>
+      <div style={{ fontSize: 12, color: '#888', fontFamily: 'monospace', marginBottom: 8 }}>
+        {/* 真实项目：路由配 path="users/:userId"，页面里 useParams() 得到 {'{'} userId: '{userId}' {'}'} */}
+        地址栏 /users/{userId} → useParams() 读出 userId = "{userId}"（永远是字符串！）
+      </div>
+      {loading ? <p>加载用户 {userId} 的资料…</p> : user ? (
+        <div style={{ padding: 12, background: '#f6ffed', borderRadius: 6 }}>
+          <div style={{ fontWeight: 600 }}>{user.name}</div>
+          <div style={{ fontSize: 13, color: '#666' }}>{user.city} · {user.job}</div>
+        </div>
+      ) : <p style={{ color: '#cf1322' }}>没有找到 id 为 {userId} 的用户</p>}
+    </div>
+  )
+}
+
+export default function Demo() {
+  const [currentId, setCurrentId] = useState(null) // null 表示停在列表页；真实项目里靠 URL 区分
+
+  return (
+    <div style={{ border: '1px solid #d9d9d9', borderRadius: 8, padding: 14, minHeight: 170 }}>
+      {currentId === null ? (
+        <div>
+          <div style={{ fontSize: 12, color: '#888', fontFamily: 'monospace', marginBottom: 8 }}>地址栏 /users</div>
+          {USERS.map((u) => (
+            // 真实写法：<Link to={'/users/' + u.id}>{u.name}</Link>
+            <div key={u.id} style={{ padding: '6px 0', borderBottom: '1px solid #f0f0f0' }}>
+              <button onClick={() => setCurrentId(u.id)} style={{ cursor: 'pointer' }}>
+                {u.name}（点进详情，URL 会变成 /users/{u.id}）
+              </button>
+            </div>
+          ))}
+          <p style={{ fontSize: 13, color: '#666' }}>
+            进详情后直接点「返回列表」再点另一个人：组件不卸载，只是 userId 变了，所以必须靠 useEffect 依赖它重新取数。
+          </p>
+        </div>
+      ) : (
+        <UserDetail userId={currentId} onBack={() => setCurrentId(null)} />
+      )}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整可抄 demo：搜索页（useSearchParams 读写）',
             language: 'jsx',
             body: `// useSearchParams：读写 URL 问号后面的查询参数 ?q=react&page=2
@@ -1332,6 +2220,99 @@ function SearchPage() {
 
 // 路由配置：{ path: 'search', element: <SearchPage /> }
 export default SearchPage`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：?keyword=xx&page=2 —— useSearchParams 的等价逻辑（URL 会跟着筛选变）',
+            body: `import { useState, useMemo } from 'react' // 用 state 存一份 params 对象，模拟 useSearchParams
+
+const ALL = [                                          // 假数据源
+  { id: 1, name: 'React 基础', tag: 'react' },
+  { id: 2, name: 'React Router 实战', tag: 'router' },
+  { id: 3, name: 'Redux 入门', tag: 'redux' },
+  { id: 4, name: 'Router 守卫进阶', tag: 'router' },
+  { id: 5, name: 'axios 请求封装', tag: 'http' },
+]
+const PAGE_SIZE = 2                                    // 每页两条，方便看分页效果
+
+export default function Demo() {
+  // 真实项目：const [params, setParams] = useSearchParams()，params 是 URLSearchParams 对象
+  const [params, setParams] = useState({ keyword: '', tag: '', page: '1' })
+
+  const keyword = params.keyword || ''                 // 真实项目：params.get('keyword') || ''
+  const tag = params.tag || ''                         // 真实项目：params.get('tag') || ''
+  const page = Number(params.page || '1')              // ★ 查询参数取出来也是字符串，要转数字
+
+  // 只改部分 key、保留其它筛选条件；真实项目里用 new URLSearchParams(params) 复制后再 set
+  function updateParams(partial) {
+    setParams((prev) => {
+      const next = { ...prev, ...partial }             // 复制旧参数再覆盖，避免把别的筛选冲掉
+      Object.keys(next).forEach((k) => { if (next[k] === '') delete next[k] }) // 空值就从 URL 里去掉
+      return next
+    })
+  }
+
+  const filtered = useMemo(() => {                     // keyword/tag 变了才重算，避免每次渲染都过滤
+    return ALL.filter((item) => {
+      const hitKeyword = !keyword || item.name.toLowerCase().includes(keyword.toLowerCase())
+      const hitTag = !tag || item.tag === tag
+      return hitKeyword && hitTag
+    })
+  }, [keyword, tag])
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const safePage = Math.min(page, totalPages)          // 防止筛选后页码越界
+  const rows = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
+
+  // 把参数对象拼回 URL 字符串，纯粹为了让你直观看到地址栏的变化
+  const query = Object.keys(params).map((k) => k + '=' + encodeURIComponent(params[k])).join('&')
+
+  return (
+    <div>
+      <div style={{ fontSize: 12, color: '#888', fontFamily: 'monospace', marginBottom: 10 }}>
+        地址栏：/search{query ? '?' + query : ''}
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+        <input
+          value={keyword}
+          placeholder="输入关键词"
+          onChange={(e) => updateParams({ keyword: e.target.value, page: '1' })} // ★ 换关键词要重置到第 1 页
+          style={{ padding: '4px 8px' }}
+        />
+        {['', 'router', 'redux'].map((t) => (
+          <button
+            key={t || 'all'}
+            onClick={() => updateParams({ tag: t, page: '1' })}
+            style={{ padding: '4px 10px', cursor: 'pointer', background: tag === t ? '#1677ff' : '#fff', color: tag === t ? '#fff' : '#333' }}
+          >
+            {t === '' ? '全部标签' : t}
+          </button>
+        ))}
+        {/* 真实项目：setParams({}) 直接清空所有查询参数 */}
+        <button onClick={() => setParams({ page: '1' })} style={{ padding: '4px 10px', cursor: 'pointer' }}>清空筛选</button>
+      </div>
+
+      <ul style={{ margin: 0, paddingLeft: 20, minHeight: 60 }}>
+        {rows.length ? rows.map((r) => <li key={r.id}>{r.name} <small style={{ color: '#999' }}>#{r.tag}</small></li>)
+          : <li style={{ listStyle: 'none', color: '#999', marginLeft: -20 }}>没有匹配结果</li>}
+      </ul>
+
+      <div style={{ marginTop: 10 }}>
+        <button disabled={safePage <= 1} onClick={() => updateParams({ page: String(safePage - 1) })}>上一页</button>
+        <span style={{ margin: '0 12px' }}>{safePage} / {totalPages}</span>
+        <button disabled={safePage >= totalPages} onClick={() => updateParams({ page: String(safePage + 1) })}>下一页</button>
+      </div>
+
+      <p style={{ fontSize: 13, color: '#666' }}>
+        筛选状态全写在 URL 里，所以刷新、收藏、发给同事都能还原同一个列表——这就是查询参数比组件内 state 强的地方。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'list',

@@ -1,5 +1,5 @@
 /**
- * 第 3 章：组件与 Props
+ * 组件与 Props 章节
  */
 const components = {
   id: 'components',
@@ -92,6 +92,70 @@ function App() {
 }
 
 export default App`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：同一个组件用很多次，每个都是独立的实例',
+            body: `import { useState } from 'react' // 引入 useState，让每个计数器有自己的数据
+
+// 【定义组件】首字母大写的函数 + return 一段 JSX，就是一个 React 组件
+function CounterCard({ title }) {
+  // 每次 <CounterCard /> 被渲染，React 都会重新调用一次这个函数
+  // 所以每个卡片都有一份「自己的」count，互不影响
+  const [count, setCount] = useState(0)
+
+  return (
+    <div
+      style={{
+        border: '1px solid #e8e8e8',
+        borderRadius: 8,
+        padding: 12,
+        minWidth: 130,
+        textAlign: 'center',
+      }}
+    >
+      {/* title 是父组件传进来的数据，让同一个组件显示不同文字 */}
+      <div style={{ fontWeight: 700, marginBottom: 8 }}>{title}</div>
+      <button
+        onClick={() => setCount(count + 1)} // 只改当前这张卡片的 count
+        style={{ padding: '6px 12px', cursor: 'pointer' }}
+      >
+        点了 {count} 次
+      </button>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出的父组件
+  const [names, setNames] = useState(['第一张', '第二张']) // 要渲染哪几张卡片
+
+  function addCard() { // 往数组里加一项，就会多渲染一张卡片
+    setNames([...names, '第 ' + (names.length + 1) + ' 张'])
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <button onClick={addCard} style={{ padding: '6px 12px', marginBottom: 12, cursor: 'pointer' }}>
+        再加一张卡片（复用同一个组件）
+      </button>
+
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        {/* 【使用组件】写 <CounterCard /> 就是让 React 调用 CounterCard() 并渲染返回值 */}
+        {names.map((name) => (
+          <CounterCard key={name} title={name} />
+        ))}
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        组件写一次、用无数次；每次使用都是一个独立实例，
+        点其中一个按钮不会影响别的卡片的数字。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'text',
@@ -331,6 +395,58 @@ function MyButton() {
 // 修复：Button.js 末尾加 export default Button；App.js 顶部加 import`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：大写才是组件，小写会被当成 HTML 标签',
+            body: `import { useState } from 'react' // 引入 useState，用来切换「正确写法 / 错误写法」
+
+// ✅ 首字母大写：React 认得出这是自定义组件，会调用这个函数
+function MyButton() {
+  return (
+    <button
+      type="button"
+      style={{ padding: '8px 16px', background: '#1677ff', color: '#fff', border: 'none', borderRadius: 6 }}
+    >
+      我是真正的按钮
+    </button>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  const [wrong, setWrong] = useState(false) // false = 用大写写法，true = 用小写写法
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <button
+        onClick={() => setWrong(!wrong)} // 切换两种写法做对照
+        style={{ padding: '6px 12px', marginBottom: 12, cursor: 'pointer' }}
+      >
+        当前：{wrong ? '<mybutton /> 小写（错误）' : '<MyButton /> 大写（正确）'}（点我切换）
+      </button>
+
+      <div style={{ padding: 16, background: '#fafafa', borderRadius: 6, minHeight: 60 }}>
+        {wrong ? (
+          // ❌ 小写标签：React 把它当成一个「不认识的 HTML 标签」丢给浏览器，
+          // 完全不会去调用上面的 MyButton 函数，所以样式和按钮行为全都没有
+          <mybutton>我只是一段普通文字，不是按钮</mybutton>
+        ) : (
+          // ✅ 大写标签：React 调用 MyButton()，把返回的 JSX 渲染出来
+          <MyButton />
+        )}
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        切到小写时，页面上只剩没有样式、点不动的纯文字——
+        React 就是靠「首字母是否大写」来区分自定义组件和 div / span 这类原生标签的。
+        所以组件名一律用 PascalCase：UserCard、MyButton，不要写成 userCard。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'table',
             title: '10）常见报错速查',
             headers: ['报错 / 现象', '原因', '修复'],
@@ -460,6 +576,79 @@ function UserBadge({ user }) {
   return (
     <div style={{ marginTop: 8 }}>
       <strong>{user.name}</strong> · Lv.{user.level}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：父组件改一个字，三个子组件同时跟着变',
+            body: `import { useState } from 'react' // state 放在父组件，props 往下传
+
+// 子组件：只负责展示，数据全部来自 props（父组件传进来的参数）
+function Greeting({ name, age, isStudent }) {
+  return (
+    <p style={{ margin: '4px 0' }}>
+      你好，<strong>{name}</strong>！你 {age} 岁了。
+      {/* && 短路：isStudent 为 true 时才显示后面的文字 */}
+      {isStudent && <span style={{ color: '#1677ff' }}>（学生）</span>}
+    </p>
+  )
+}
+
+// 另一个子组件：同样的 props，换一种展示方式，说明数据和展示是分开的
+function AgeBar({ age }) {
+  return (
+    <div style={{ background: '#f0f0f0', borderRadius: 4, overflow: 'hidden', height: 12 }}>
+      {/* 用 props 算出宽度百分比：Math.min 防止超过 100% */}
+      <div style={{ width: Math.min(age, 100) + '%', height: '100%', background: '#52c41a' }} />
+    </div>
+  )
+}
+
+export default function Demo() { // 父组件：数据的「主人」
+  const [name, setName] = useState('小明') // 姓名 state
+  const [age, setAge] = useState(18) // 年龄 state
+  const [isStudent, setIsStudent] = useState(true) // 是否学生 state
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)} // 改父组件的 state
+          placeholder="改名字"
+          style={{ padding: 6, flex: 1, minWidth: 120 }}
+        />
+        <input
+          type="number"
+          value={age}
+          onChange={(e) => setAge(Number(e.target.value))} // 输入框拿到的是字符串，要转数字
+          style={{ padding: 6, width: 80 }}
+        />
+        <label style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+          <input type="checkbox" checked={isStudent} onChange={(e) => setIsStudent(e.target.checked)} />
+          学生
+        </label>
+      </div>
+
+      <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 6 }}>
+        {/* 字符串 prop 可以直接写引号；数字和布尔必须用花括号包起来 */}
+        <Greeting name={name} age={age} isStudent={isStudent} />
+        {/* 同一份数据传给不同子组件，父组件一变，所有用到它的子组件一起重渲染 */}
+        <Greeting name={name + ' 的同桌'} age={age + 1} isStudent={isStudent} />
+        <div style={{ marginTop: 8 }}>
+          <AgeBar age={age} />
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        数据只在父组件这一处（state），子组件只负责展示（props）——
+        这就是单向数据流：父 → 子。
+      </p>
     </div>
   )
 }`,
@@ -684,6 +873,71 @@ function Parent() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：默认值 + {...obj} 展开传参 + 子组件靠回调请父组件改数据',
+            body: `import { useState } from 'react' // state 只放在父组件，子组件一律只读 props
+
+// 子组件：level 和 color 都写了解构默认值，父组件不传就用默认
+function UserTag({ name, level = 1, color = '#1677ff', onLevelUp }) {
+  function handleClick() {
+    // ❌ 错误示范（不要这么写）：level = level + 1 / props 直接改，React 不会刷新界面
+    // ✅ 正确：调用父组件传下来的回调，请父组件用 setState 改数据
+    onLevelUp(name)
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 8,
+        padding: 8,
+        border: '1px solid ' + color, // 用 props 里的颜色画边框
+        borderRadius: 6,
+        marginBottom: 8,
+      }}
+    >
+      <strong style={{ color }}>{name}</strong>
+      <span style={{ color: '#999' }}>Lv.{level}</span>
+      <button onClick={handleClick} style={{ marginLeft: 'auto', cursor: 'pointer' }}>
+        升级
+      </button>
+    </div>
+  )
+}
+
+export default function Demo() { // 父组件：唯一能改数据的地方
+  const [users, setUsers] = useState([
+    { name: '小明', level: 3, color: '#cf1322' }, // 三个字段都会展开成 props
+    { name: '小红', level: 1 }, // 没有 color，子组件用默认值 #1677ff
+    { name: '小刚' }, // 连 level 都没有，level 用默认值 1
+  ])
+
+  function handleLevelUp(name) { // 子组件请求升级时执行
+    // map 生成新数组（不可变更新）：匹配到的那项复制一份并把 level +1
+    setUsers(users.map((u) => (u.name === name ? { ...u, level: (u.level || 1) + 1 } : u)))
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      {users.map((user) => (
+        // {...user} 展开：等价于逐个写 name={user.name} level={user.level} color={user.color}
+        <UserTag key={user.name} {...user} onLevelUp={handleLevelUp} />
+      ))}
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        点「升级」时，子组件并没有改自己的 props，
+        而是调用 onLevelUp 通知父组件改 state，父组件再把新的 props 传下来——
+        这就是 props 只读 + 回调通知的标准套路。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '8）props 变化会怎样？',
             body: '父组件 state 变了 → 父组件重新渲染 → 传入新的 props → 子组件也重新渲染（除非被 React.memo 等优化跳过，初学先默认都会重渲染）。\n\n所以「数据的主人」是持有 state 的那个组件，props 只是传递通道。子组件显示的 todo.done 永远来自父组件最近一次传入的 todo 对象，不是子组件自己「记住」的旧值。',
@@ -810,6 +1064,75 @@ function App() {
 
       {/* 自闭合 <Card /> 没有 children，props.children 为 undefined */}
       <Card title="空内容" />
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：Card 外壳不变，切换塞进插槽里的内容',
+            body: `import { useState } from 'react' // 用 state 决定往插槽里塞什么内容
+
+// Card：只负责「外壳」——边框、标题栏、内边距，正文完全交给使用者
+function Card({ title, children }) {
+  return (
+    <section style={{ border: '1px solid #e8e8e8', borderRadius: 8, overflow: 'hidden' }}>
+      {/* title 有值才渲染标题栏；这是普通 prop */}
+      {title && (
+        <header style={{ padding: '10px 14px', background: '#fafafa', fontWeight: 700 }}>
+          {title}
+        </header>
+      )}
+      {/* children 就是写在 <Card>...</Card> 中间的所有内容 */}
+      <div style={{ padding: 14 }}>{children}</div>
+    </section>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  const [tab, setTab] = useState('text') // 当前要往插槽里放哪种内容
+  const [count, setCount] = useState(0) // 给「按钮内容」用的计数器
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+        {/* 三个按钮切换 children 的内容 */}
+        {['text', 'list', 'button'].map((key) => (
+          <button
+            key={key}
+            onClick={() => setTab(key)}
+            style={{ padding: '6px 12px', cursor: 'pointer', fontWeight: key === tab ? 700 : 400 }}
+          >
+            {key === 'text' ? '纯文字' : key === 'list' ? '列表' : '交互按钮'}
+          </button>
+        ))}
+      </div>
+
+      {/* Card 的外壳一直没变，变的只是标签之间的 children */}
+      <Card title="我是固定不变的外壳">
+        {tab === 'text' && <p style={{ margin: 0 }}>children 可以是一段纯文字。</p>}
+
+        {tab === 'list' && (
+          <ul style={{ margin: 0, paddingLeft: 20 }}>
+            <li>children 也可以是多个元素</li>
+            <li>Card 完全不需要知道里面是什么</li>
+          </ul>
+        )}
+
+        {tab === 'button' && (
+          <button onClick={() => setCount(count + 1)} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+            children 甚至可以是能交互的组件：点了 {count} 次
+          </button>
+        )}
+      </Card>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        外壳固定、内容自定义，就是 children 插槽最典型的用途——
+        不用为每种内容都写一个新的 Card 组件。
+      </p>
     </div>
   )
 }`,
@@ -1004,6 +1327,85 @@ function App() {
         <button type="button" onClick={() => setModalOpen(false)}>
           我知道了
         </button>
+      </Modal>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：简易 Modal，弹窗正文由 children 决定',
+            body: `import { useState } from 'react' // 用 state 控制弹窗开关
+
+// Modal：open / title / onClose 是普通 prop，弹窗正文用 children 传
+function Modal({ open, title, onClose, children }) {
+  if (!open) return null // 没打开就返回 null，一个 DOM 都不渲染
+
+  return (
+    // 遮罩层：这里用 absolute 铺满外层容器（真实项目里通常用 position: 'fixed' 铺满整屏）
+    <div
+      onClick={onClose} // 点遮罩关闭
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'rgba(0,0,0,0.45)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()} // 阻止冒泡：点弹窗内部不会触发遮罩的关闭
+        style={{ background: '#fff', borderRadius: 8, minWidth: 260, maxWidth: '90%' }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '10px 14px',
+            borderBottom: '1px solid #eee',
+          }}
+        >
+          <strong>{title}</strong>
+          <button onClick={onClose} style={{ cursor: 'pointer' }}>✕</button>
+        </div>
+        {/* 弹窗正文：写在 <Modal>...</Modal> 之间的内容都会出现在这里 */}
+        <div style={{ padding: 14 }}>{children}</div>
+      </div>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  const [open, setOpen] = useState(false) // 弹窗是否打开
+  const [result, setResult] = useState('还没有操作') // 记录用户点了什么
+
+  return (
+    // position: relative：给上面的绝对定位遮罩一个定位参照，弹窗只盖住这块区域
+    <div style={{ padding: 16, fontFamily: 'system-ui', position: 'relative', minHeight: 220 }}>
+      <button onClick={() => setOpen(true)} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+        打开弹窗
+      </button>
+      <p style={{ color: '#666' }}>操作结果：{result}</p>
+
+      <Modal open={open} title="确认删除" onClose={() => setOpen(false)}>
+        {/* 下面这些全是 children：换成表单、图片、列表都行，Modal 一行代码都不用改 */}
+        <p style={{ marginTop: 0 }}>确定要删除这条记录吗？此操作不可撤销。</p>
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+          <button onClick={() => { setResult('已取消'); setOpen(false) }} style={{ cursor: 'pointer' }}>
+            取消
+          </button>
+          <button
+            onClick={() => { setResult('已删除 ✅'); setOpen(false) }} // 先记结果，再关弹窗
+            style={{ cursor: 'pointer', background: '#ff4d4f', color: '#fff', border: 'none', padding: '4px 12px', borderRadius: 4 }}
+          >
+            确定删除
+          </button>
+        </div>
       </Modal>
     </div>
   )

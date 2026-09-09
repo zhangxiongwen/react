@@ -77,6 +77,36 @@
   box-shadow: 0 0 0 3px rgba(47, 107, 79, 0.15);
 }
 
+.Playground-kinds {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.Playground-kind {
+  flex: 1;
+  padding: 5px 4px;
+  font: inherit;
+  font-size: 11px;
+  color: #5c6b62;
+  background: #fff;
+  border: 1px solid #c5d2ca;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.Playground-kind:hover {
+  border-color: #2f6b4f;
+  color: #2f6b4f;
+}
+
+.Playground-kind.is-active {
+  background: #2f6b4f;
+  border-color: #2f6b4f;
+  color: #fff;
+}
+
 .Playground-empty {
   margin: 12px 8px;
   font-size: 12px;

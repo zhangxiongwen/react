@@ -19,6 +19,7 @@ function resolveLanguage(language = 'jsx') {
     css: 'css',
     json: 'json',
     html: 'markup',
+    nginx: 'text',
     text: 'text',
     plaintext: 'text',
   }

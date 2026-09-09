@@ -5,13 +5,13 @@
 const conventions = {
   id: 'conventions',
   title: '命名与目录规范',
-  order: 4,
+  order: 14,
   summary:
     'React 项目里约定很多：文件夹怎么分、组件为什么必须大写、事件叫 handle 还是 on、CSS 怎么写 className……这一章按「为什么 → 怎么写 → 反例」讲透，让你写得整齐、别人也一眼能看懂。',
   items: [
     {
       id: 'why-conventions',
-      title: '1. 为什么要统一命名与目录？',
+      title: '为什么要统一命名与目录？',
       summary: '规范不是语法强制，但组件大写是 React 硬规则；统一约定 = 少踩坑 + 好协作',
       content: {
         sections: [
@@ -68,7 +68,7 @@ const conventions = {
     },
     {
       id: 'folder-structure',
-      title: '2. 常见目录怎么分？（pages / components / hooks…）',
+      title: '常见目录怎么分？（pages / components / hooks…）',
       summary: '先问「这是什么类型的代码」，再决定进哪个文件夹；附决策对照表',
       content: {
         sections: [
@@ -150,7 +150,7 @@ const conventions = {
     },
     {
       id: 'page-folder',
-      title: '3. 一个页面 = 一个文件夹（index.js + CSS）',
+      title: '一个页面 = 一个文件夹（index.js + CSS）',
       summary: 'pages/Home/index.js + index.css；导入路径短、相关文件聚在一起',
       content: {
         sections: [
@@ -240,7 +240,7 @@ export default function Home() {
     },
     {
       id: 'component-naming',
-      title: '4. 组件必须大写开头 + 必须 return 可渲染内容（硬规则）',
+      title: '组件必须大写开头 + 必须 return 可渲染内容（硬规则）',
       summary: 'PascalCase 是 React 识别组件的开关；小写 = 被当成 HTML 标签',
       content: {
         sections: [
@@ -354,7 +354,7 @@ function Broken() {
     },
     {
       id: 'file-naming',
-      title: '5. 文件名怎么写？（对照表）',
+      title: '文件名怎么写？（对照表）',
       summary: '组件 PascalCase、工具 camelCase、Hook useXxx、测试 *.test.js',
       content: {
         sections: [
@@ -410,7 +410,7 @@ function Broken() {
     },
     {
       id: 'js-identifiers',
-      title: '6. 变量、函数、布尔、常量、事件命名',
+      title: '变量、函数、布尔、常量、事件命名',
       summary: 'camelCase 为主；布尔 is/has/can；事件 handleXxx 对内、onXxx 对外',
       content: {
         sections: [
@@ -516,7 +516,7 @@ function LoginPage() {
     },
     {
       id: 'props-children',
-      title: '7. Props 与 children 命名',
+      title: 'Props 与 children 命名',
       summary: 'props 用 camelCase；嵌套内容用 children；布尔可简写',
       content: {
         sections: [
@@ -633,7 +633,7 @@ function GoodCounter({ count, onIncrement }) {
     },
     {
       id: 'hooks-naming',
-      title: '8. Hook 命名：必须以 use 开头',
+      title: 'Hook 命名：必须以 use 开头',
       summary: 'useAuth、useLocalStorage；缺 use 就不算 Hook，不能随便调其它 Hook',
       content: {
         sections: [
@@ -727,7 +727,7 @@ function useLocalStorage(key, initialValue) {
     },
     {
       id: 'css-class-naming',
-      title: '9. CSS：className、kebab-case、BEM、Modules',
+      title: 'CSS：className、kebab-case、BEM、Modules',
       summary: 'JSX 里写 className 不是 class；类名用短横线；Modules 防冲突',
       content: {
         sections: [
@@ -833,7 +833,7 @@ export default function UserCard({ title, children }) {
     },
     {
       id: 'export-import',
-      title: '10. export / import 与 barrel 桶文件',
+      title: 'export / import 与 barrel 桶文件',
       summary: '页面 default export；工具 named export；index.js 可集中再导出',
       content: {
         sections: [
@@ -916,7 +916,7 @@ import { Button, Modal } from '../components'`,
     },
     {
       id: 'route-naming',
-      title: '11. 路由 path 与页面文件的对应关系',
+      title: '路由 path 与页面文件的对应关系',
       summary: 'URL 用小写短横线；页面组件仍 PascalCase；两套命名不要混',
       content: {
         sections: [
@@ -1002,7 +1002,7 @@ export default routes
     },
     {
       id: 'list-key-ref',
-      title: '12. 其它容易忽略的约定（key、ref、Context、环境变量…）',
+      title: '其它容易忽略的约定（key、ref、Context、环境变量…）',
       summary: '列表 key 要稳定；ref 叫 xxxRef；Context 叫 XxxContext；CRA 环境变量 REACT_APP_ 前缀',
       content: {
         sections: [
@@ -1120,7 +1120,7 @@ export function useAuth() {
     },
     {
       id: 'anti-patterns',
-      title: '13. 常见反例汇总（尽量别这样）',
+      title: '常见反例汇总（尽量别这样）',
       summary: '小写组件、目录混乱、模糊命名、全局裸 class——对照表一次看清',
       content: {
         sections: [
@@ -1173,7 +1173,7 @@ export function useAuth() {
     },
     {
       id: 'cheatsheet',
-      title: '14. 一张表速查（收藏本章）',
+      title: '一张表速查（收藏本章）',
       summary: '对象 → 风格 → 例子；入门记住三句话',
       content: {
         sections: [

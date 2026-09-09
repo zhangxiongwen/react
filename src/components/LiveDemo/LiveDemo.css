@@ -227,6 +227,37 @@
   background: #fff;
 }
 
+.LiveDemo-reactStage {
+  min-height: 160px;
+  padding: 14px 16px;
+  border: 1px solid #e2e9e4;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.LiveDemo-runHint,
+.LiveDemo-runError {
+  min-height: 120px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.LiveDemo-runHint {
+  color: #5b6b63;
+  background: #f4f7f5;
+  border: 1px dashed #c5d2ca;
+}
+
+.LiveDemo-runError {
+  color: #8a1f1f;
+  background: #fdecec;
+  border: 1px solid #f0c2c2;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 @media (max-width: 860px) {
   .LiveDemo-grid {
     grid-template-columns: 1fr;

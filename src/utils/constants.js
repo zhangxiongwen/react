@@ -4,8 +4,9 @@
  */
 export const APP_NAME = '知趣集'
 /** 首页主标题（导航品牌仍用 APP_NAME） */
-export const HOME_TITLE = 'React 入门学习'
-export const APP_DESC = '由浅入深、带完整示例与易错点的 React 初学者手册，学完能写基础项目'
+export const HOME_TITLE = 'React 入门到能写项目'
+export const APP_DESC =
+  '从 HTML/CSS、JavaScript 地基讲到 React、TypeScript、Ant Design，最后用一个完整后台项目串起路由、请求、权限和国际化'
 
 /** 路由路径前缀 */
 export const ROUTES = {

@@ -44,7 +44,13 @@ function LessonDetail() {
       </nav>
 
       <header className="LessonDetail-header">
-        <p className="LessonDetail-category">{category.title}</p>
+        <p className="LessonDetail-category">
+          {category.title}
+          {/* 章内序号：文章里的「第 N 节」按这个数字对照 */}
+          <span className="LessonDetail-position">
+            第 {currentIndex + 1} 节 / 共 {category.items.length} 节
+          </span>
+        </p>
         <h1 className="LessonDetail-title">{item.title}</h1>
         <p className="LessonDetail-summary">{item.summary}</p>
       </header>

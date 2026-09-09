@@ -1,5 +1,5 @@
 /**
- * 第 8 章：组件通信
+ * 组件通信章节
  * 每个条目 = 一句话总结 + 详细步骤 + 完整可抄 demo + 易错点
  */
 const communicate = {
@@ -130,6 +130,89 @@ export default UserPage`,
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：父组件动一下控件，三个子组件同时更新（单向数据流）',
+            body: `import { useState } from 'react' // 引入 useState，数据的「所有权」在父组件手里
+
+// 子组件 ①：只把 props 里的用户名画成一个标题
+function Header({ name, mood }) {
+  return (
+    <div style={{ padding: 10, background: '#e6f4ff', borderRadius: 6, marginBottom: 8 }}>
+      顶部栏：你好，{name}！今天心情 {mood} 分
+    </div>
+  )
+}
+
+// 子组件 ②：同样只读 props，把心情分数画成一根进度条
+function MoodBar({ mood }) {
+  return (
+    <div style={{ marginBottom: 8 }}>
+      <div style={{ height: 10, background: '#f0f0f0', borderRadius: 5, overflow: 'hidden' }}>
+        {/* 宽度百分比由 props 算出来：mood 是 0~10，乘 10 就是百分比 */}
+        <div style={{ width: mood * 10 + '%', height: '100%', background: '#52c41a', transition: 'width .2s' }} />
+      </div>
+    </div>
+  )
+}
+
+// 子组件 ③：连一句话都是从 props 推导出来的，自己不存任何 state
+function Advice({ name, mood }) {
+  const text = mood >= 7 ? '状态不错，继续写代码' : mood >= 4 ? '喝杯水休息一下' : '今天先别写 bug 了' // 三元推导建议
+
+  return (
+    <div style={{ padding: 10, background: '#fafafa', borderRadius: 6, fontSize: 14 }}>
+      给 {name} 的建议：{text}
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  // ★ 这两份数据只在父组件里 useState 一次，就是「唯一数据源」
+  const [name, setName] = useState('小明')
+  const [mood, setMood] = useState(6)
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 420 }}>
+      <div style={{ padding: 12, background: '#fffbe6', borderRadius: 8, marginBottom: 12 }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#874d00' }}>父组件的控件（数据只住在这里）</p>
+
+        <label style={{ display: 'block', marginBottom: 8 }}>
+          名字：
+          <input
+            value={name} // 受控：输入框显示的值来自父组件的 state
+            onChange={(e) => setName(e.target.value)} // 改 state → 三个子组件的 props 一起变
+            style={{ padding: 4 }}
+          />
+        </label>
+
+        <label>
+          心情 {mood} 分：
+          <input
+            type="range" // 滑块，拖动时连续触发 onChange
+            min={0}
+            max={10}
+            value={mood}
+            onChange={(e) => setMood(Number(e.target.value))} // e.target.value 是字符串，Number 转成数字
+          />
+        </label>
+      </div>
+
+      {/* 同一份 name / mood 通过 props 分别流向三个子组件：这就是「单向数据流」 */}
+      <Header name={name} mood={mood} />
+      <MoodBar mood={mood} />
+      <Advice name={name} mood={mood} />
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666' }}>
+        三个子组件里一个 useState 都没有 —— 它们只是「展示窗口」，改数据永远是父组件的活。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整可抄 demo：计数器（父管 state，子管展示）',
             language: 'jsx',
             body: `import { useState } from 'react'
@@ -169,6 +252,82 @@ function Parent() {
 }
 
 export default Parent`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：写一个星星评分组件，父组件传不同 props 复用四次',
+            body: `import { useState } from 'react' // 引入 useState，只有父组件需要它
+
+/**
+ * 子组件 Stars：一个纯展示组件（Presentational Component）
+ * 它自己不存任何数据，只负责「把收到的 props 画成 UI」
+ * - score：几颗星（必填）
+ * - label：左边的说明文字
+ * - max：满分多少颗，给个默认值 5，父组件不传也能用
+ * - color：星星颜色，默认金色
+ */
+function Stars({ score, label, max = 5, color = '#faad14' }) {
+  // Array.from 造一个长度为 max 的数组，用来 map 出 max 颗星星
+  const slots = Array.from({ length: max }, (_, i) => i) // i 从 0 开始
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+      <span style={{ width: 84, fontSize: 13, color: '#666' }}>{label}</span>
+
+      <span style={{ fontSize: 20, letterSpacing: 2 }}>
+        {slots.map((i) => (
+          // i < score 的位置画实心星，其余画空心星；key 用下标（这个列表长度固定、不增删，才可以用）
+          <span key={i} style={{ color: i < score ? color : '#d9d9d9' }}>
+            ★
+          </span>
+        ))}
+      </span>
+
+      <span style={{ fontSize: 13, color: '#999' }}>
+        {score} / {max}
+      </span>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  const [score, setScore] = useState(3) // 只有第一行的分数需要变，所以只有它用 state
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 430 }}>
+      {/* 第 1 次复用：分数由父组件的按钮控制，props 一变子组件立刻重画 */}
+      <Stars label="我的评分" score={score} />
+
+      <div style={{ margin: '4px 0 16px' }}>
+        {/* Math.min / Math.max 把分数夹在 0~5 之间，避免星星越界 */}
+        <button type="button" onClick={() => setScore((s) => Math.max(0, s - 1))} style={{ marginRight: 6 }}>
+          少一颗
+        </button>
+        <button type="button" onClick={() => setScore((s) => Math.min(5, s + 1))}>
+          多一颗
+        </button>
+      </div>
+
+      <p style={{ fontSize: 13, color: '#666', margin: '0 0 8px' }}>下面是同一个组件、不同 props 的复用：</p>
+
+      {/* 第 2 次：只传必填 props，max 和 color 走默认值 */}
+      <Stars label="商品质量" score={5} />
+
+      {/* 第 3 次：把满分改成 10 颗，颜色换成蓝色 —— 组件代码一行没改，只是 props 不同 */}
+      <Stars label="物流速度" score={7} max={10} color="#1677ff" />
+
+      {/* 第 4 次：0 分也能正常渲染成一排空心星 */}
+      <Stars label="客服态度" score={0} color="#cf1322" />
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666' }}>
+        子组件里没有 useState，也没有业务逻辑 —— 这种组件最好复用、最好测试，也最容易被别的页面拿去用。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'table',
@@ -349,6 +508,90 @@ export default SearchPage`,
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：子组件按钮调用父传下来的回调，父组件把操作记成日志',
+            body: `import { useState } from 'react' // 引入 useState：日志和点赞数都由父组件保管
+
+/**
+ * 子组件 ActionBar：自己一个 state 都没有
+ * onAction 是父组件传下来的「回调 props」，子组件只在点击时调用它、把参数传上去
+ */
+function ActionBar({ onAction, likes }) {
+  return (
+    <div style={{ padding: 12, border: '1px dashed #91caff', borderRadius: 8, background: '#f0f8ff' }}>
+      <p style={{ margin: '0 0 8px', fontSize: 13, color: '#0958d9' }}>我是子组件（不存数据，只负责通知父组件）</p>
+
+      {/* 点赞：把动作名 '点赞' 作为参数传给父组件 */}
+      <button type="button" onClick={() => onAction('点赞')} style={{ marginRight: 6 }}>
+        👍 点赞（{likes}）
+      </button>
+
+      {/* 收藏 / 分享：同一个回调，靠参数区分是哪个动作 —— 比传三个回调更省事 */}
+      <button type="button" onClick={() => onAction('收藏')} style={{ marginRight: 6 }}>
+        ⭐ 收藏
+      </button>
+      <button type="button" onClick={() => onAction('分享')}>
+        🔗 分享
+      </button>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  const [logs, setLogs] = useState([]) // 操作日志数组，父组件是它的唯一 owner
+  const [likes, setLikes] = useState(0) // 点赞数也归父组件管
+
+  // ★ 这个函数会被当成 props 传下去，子组件调用它时，真正 setState 的还是父组件
+  function handleAction(actionName) {
+    // 不可变更新：用 [新项, ...prev] 生成新数组，最新的记录排在最前面
+    setLogs((prev) => [{ id: Date.now(), text: actionName, at: new Date().toLocaleTimeString() }, ...prev])
+
+    if (actionName === '点赞') {
+      setLikes((n) => n + 1) // 父组件可以在回调里顺便做别的业务逻辑，子组件完全不用知道
+    }
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 430 }}>
+      {/* 传函数引用 handleAction，不是 handleAction() —— 加括号就变成渲染时立刻执行了 */}
+      <ActionBar onAction={handleAction} likes={likes} />
+
+      <div style={{ marginTop: 12 }}>
+        <p style={{ fontSize: 13, color: '#666', margin: '0 0 6px' }}>
+          父组件收到的操作日志（共 {logs.length} 条）
+          {/* 有日志才显示清空按钮：&& 短路的典型用法 */}
+          {logs.length > 0 && (
+            <button type="button" onClick={() => setLogs([])} style={{ marginLeft: 8, fontSize: 12 }}>
+              清空
+            </button>
+          )}
+        </p>
+
+        {/* 三元：没日志给一句提示，有日志就 map 出来 */}
+        {logs.length === 0 ? (
+          <p style={{ color: '#999', fontSize: 13 }}>点上面的按钮试试，通知会「冒泡」到这里</p>
+        ) : (
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, maxHeight: 140, overflowY: 'auto' }}>
+            {logs.map((log) => ( // key 用 Date.now() 生成的 id，稳定唯一
+              <li key={log.id} style={{ fontSize: 13, padding: '4px 8px', background: '#fafafa', borderRadius: 4, marginBottom: 4 }}>
+                {log.at} —— 子组件通知：{log.text}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#666' }}>
+        数据流闭环：子组件点击 → 调 onAction(参数) → 父组件 setState → 新的 props 流回子组件（点赞数变了）。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整可抄 demo：待办项删除（子通知父删哪一条）',
             language: 'jsx',
             body: `import { useState } from 'react'
@@ -406,6 +649,104 @@ function TodoList() {
 }
 
 export default TodoList`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：子组件表单提交时把值回传父组件，父组件加进列表',
+            body: `import { useState } from 'react' // 引入 useState：父子各存各自该存的东西
+
+/**
+ * 子组件 AddForm：只管「输入中的草稿」这一份本地 state
+ * 草稿是子组件自己的临时数据，父组件不关心，所以放在子组件里是合理的；
+ * 真正要「入库」的那一刻，才通过 onSubmit 回调把值交给父组件。
+ */
+function AddForm({ onSubmit }) {
+  const [name, setName] = useState('') // 草稿 ①：书名
+  const [author, setAuthor] = useState('') // 草稿 ②：作者
+
+  const canSubmit = name.trim() !== '' // 派生值：书名非空才允许提交
+
+  function handleSubmit(e) {
+    e.preventDefault() // 阻止表单默认提交行为（浏览器会整页刷新）
+    if (!canSubmit) return // 不满足条件直接返回
+
+    // ★ 子传父的关键一步：把整理好的对象交给父组件，剩下的事父组件决定
+    onSubmit({ name: name.trim(), author: author.trim() || '佚名' })
+
+    setName('') // 交出去之后清空草稿，方便继续录入
+    setAuthor('')
+  }
+
+  return (
+    // 用 form + onSubmit，这样按回车也能提交，比只绑 button 的 onClick 更规范
+    <form onSubmit={handleSubmit} style={{ padding: 12, border: '1px dashed #91caff', borderRadius: 8, background: '#f0f8ff' }}>
+      <p style={{ margin: '0 0 8px', fontSize: 13, color: '#0958d9' }}>子组件表单（草稿存在子组件里）</p>
+
+      <input
+        value={name} // 受控输入框：值来自子组件自己的 state
+        onChange={(e) => setName(e.target.value)}
+        placeholder="书名（必填）"
+        style={{ padding: 5, marginRight: 6 }}
+      />
+      <input
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+        placeholder="作者（可空）"
+        style={{ padding: 5, marginRight: 6 }}
+      />
+
+      {/* disabled 用派生值控制：没填书名时按钮点不动 */}
+      <button type="submit" disabled={!canSubmit}>
+        添加
+      </button>
+    </form>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  // ★ 列表是「大家共享的正式数据」，所以归父组件所有
+  const [books, setBooks] = useState([{ id: 1, name: 'React 学习笔记', author: '小明' }])
+  const [nextId, setNextId] = useState(2) // 自增 id，保证每项 key 稳定唯一
+
+  // 子组件提交时会调用它，参数 book 就是子组件传上来的对象
+  function handleAdd(book) {
+    setBooks((prev) => [...prev, { id: nextId, ...book }]) // 展开旧数组 + 追加新项，不修改原数组
+    setNextId((id) => id + 1) // id 往后挪一位
+  }
+
+  function handleRemove(id) {
+    setBooks((prev) => prev.filter((b) => b.id !== id)) // filter 返回新数组，去掉这一项
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 440 }}>
+      {/* 传函数引用给子组件；子组件只知道「提交时要喊一声」，不知道父组件拿去干什么 */}
+      <AddForm onSubmit={handleAdd} />
+
+      <p style={{ fontSize: 13, color: '#666', margin: '12px 0 6px' }}>父组件的书单（共 {books.length} 本）</p>
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {books.map((b) => (
+          <li key={b.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 10px', border: '1px solid #eee', borderRadius: 6, marginBottom: 6 }}>
+            <span style={{ fontSize: 14 }}>
+              《{b.name}》<span style={{ color: '#999', fontSize: 12 }}>／{b.author}</span>
+            </span>
+            {/* 列表里传参必须用箭头函数包一层：onClick={() => handleRemove(b.id)} */}
+            <button type="button" onClick={() => handleRemove(b.id)} style={{ fontSize: 12 }}>
+              删除
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {/* 空列表给个占位，别让界面空着 */}
+      {books.length === 0 && <p style={{ color: '#999', fontSize: 13 }}>书单空了，上面加一本吧</p>}
+    </div>
+  )
+}`,
           },
           {
             type: 'table',
@@ -574,6 +915,84 @@ export default CatalogPage`,
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：输入框组件 + 实时预览组件，state 提到共同父组件',
+            body: `import { useState } from 'react' // 引入 useState，写在「共同父组件」里
+
+/**
+ * 兄弟 A：Editor —— 只负责输入 UI
+ * 它不存 text，靠 value + onChange 受控；改的请求交给父组件
+ */
+function Editor({ value, onChange }) {
+  return (
+    <div style={{ flex: 1, padding: 12, background: '#f0f8ff', borderRadius: 8 }}>
+      <p style={{ margin: '0 0 8px', fontSize: 13, color: '#0958d9' }}>兄弟 A：编辑器</p>
+
+      <textarea
+        value={value} // 显示的内容来自父组件的 state
+        onChange={(e) => onChange(e.target.value)} // 把新值交给父组件，父组件负责 setState
+        rows={5}
+        placeholder="随便打点字，右边同步变"
+        style={{ width: '100%', padding: 6, boxSizing: 'border-box', fontFamily: 'inherit' }}
+      />
+
+      {/* 清空也是「请求父组件改数据」，传空字符串上去即可 */}
+      <button type="button" onClick={() => onChange('')} style={{ marginTop: 6, fontSize: 12 }}>
+        清空
+      </button>
+    </div>
+  )
+}
+
+/**
+ * 兄弟 B：Preview —— 只负责展示，同样不存 text
+ * 它和 Editor 是平级关系，读不到 Editor 内部的东西，只能读父组件传下来的 props
+ */
+function Preview({ value }) {
+  const chars = value.length // 派生值：字数现算，不用单独 useState
+  const words = value.trim() === '' ? 0 : value.trim().split(/\\s+/).length // 按空白切分数「词数」
+
+  return (
+    <div style={{ flex: 1, padding: 12, background: '#f6ffed', borderRadius: 8 }}>
+      <p style={{ margin: '0 0 8px', fontSize: 13, color: '#237804' }}>兄弟 B：实时预览</p>
+
+      <div style={{ minHeight: 82, padding: 8, background: '#fff', borderRadius: 6, fontSize: 14, whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
+        {/* 三元：空内容时给灰色占位提示，而不是留一片空白 */}
+        {value === '' ? <span style={{ color: '#bbb' }}>（还没有内容）</span> : value}
+      </div>
+
+      <p style={{ margin: '8px 0 0', fontSize: 12, color: '#666' }}>
+        {chars} 个字符 · {words} 个词
+      </p>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件 —— 它就是两个兄弟的「共同父组件」
+  // ★ 状态提升：text 既不放在 Editor 里，也不放在 Preview 里，而是提到它们的共同父组件
+  const [text, setText] = useState('')
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <p style={{ margin: '0 0 10px', fontSize: 13, color: '#666' }}>
+        text 住在父组件：往下用 props 发给两个兄弟，往上用 onChange 收兄弟 A 的修改。
+      </p>
+
+      <div style={{ display: 'flex', gap: 12 }}>
+        {/* 父 → 子：值给 A；子 → 父：A 的修改通过 setText 直接回来（setState 本身就接收新值） */}
+        <Editor value={text} onChange={setText} />
+
+        {/* 父 → 子：同一份值也给 B，两个兄弟永远同步，因为读的是同一个 state */}
+        <Preview value={text} />
+      </div>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '完整可抄 demo：摄氏 ↔ 华氏温度换算（经典状态提升）',
             language: 'jsx',
             body: `import { useState } from 'react'
@@ -612,6 +1031,91 @@ function TemperatureConverter() {
 }
 
 export default TemperatureConverter`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：左边「没提升」两边数据不同步，右边「提升后」永远一致',
+            body: `import { useState } from 'react' // 引入 useState，两栏用法完全不同
+
+const box = { flex: 1, padding: 12, borderRadius: 8 } // 左右两栏共用的外框
+const panel = { padding: 10, background: '#fff', borderRadius: 6, marginBottom: 8, fontSize: 14 } // 每个兄弟的小面板
+
+// ===== 左栏：没提升 —— 两个兄弟各自 useState，各存一份，谁也看不见谁 =====
+function BadCounterA() {
+  const [count, setCount] = useState(0) // ❌ 数据锁在兄弟 A 内部
+
+  return (
+    <div style={panel}>
+      兄弟 A 的计数：<strong>{count}</strong>
+      <button type="button" onClick={() => setCount((c) => c + 1)} style={{ marginLeft: 8 }}>
+        +1
+      </button>
+    </div>
+  )
+}
+
+function BadCounterB() {
+  const [count, setCount] = useState(0) // ❌ 兄弟 B 又存了一份，和 A 毫无关系
+
+  return (
+    <div style={panel}>
+      兄弟 B 的计数：<strong>{count}</strong>
+      <button type="button" onClick={() => setCount((c) => c + 1)} style={{ marginLeft: 8 }}>
+        +1
+      </button>
+    </div>
+  )
+}
+
+// ===== 右栏：提升后 —— 两个兄弟都不存数据，只收 props + 调回调 =====
+function GoodCounter({ who, count, onAdd }) {
+  return (
+    <div style={panel}>
+      兄弟 {who} 看到的计数：<strong>{count}</strong> {/* 值来自父组件 */}
+      <button type="button" onClick={onAdd} style={{ marginLeft: 8 }}>
+        +1
+      </button>
+      {/* 点击只是「通知父组件」，真正 setState 的是父组件 */}
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  // ★ 提升后的那一份 state：住在两个兄弟的共同父组件（也就是这里）
+  const [count, setCount] = useState(0)
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <p style={{ margin: '0 0 10px', fontSize: 13, color: '#d46b08' }}>
+        两边都点几下「+1」：左边两个数字各走各的，右边两个数字永远一样。
+      </p>
+
+      <div style={{ display: 'flex', gap: 12 }}>
+        <div style={{ ...box, background: '#fff1f0', border: '1px solid #ffa39e' }}>
+          <p style={{ margin: '0 0 8px', fontSize: 13, color: '#a8071a', fontWeight: 'bold' }}>❌ 没提升：state 在各自兄弟里</p>
+          <BadCounterA />
+          <BadCounterB />
+          <p style={{ margin: 0, fontSize: 12, color: '#a8071a' }}>
+            A 和 B 是平级，读不到彼此的 useState，于是出现两份「各自为政」的数据。
+          </p>
+        </div>
+
+        <div style={{ ...box, background: '#f6ffed', border: '1px solid #b7eb8f' }}>
+          <p style={{ margin: '0 0 8px', fontSize: 13, color: '#237804', fontWeight: 'bold' }}>✅ 提升后：state 在共同父组件</p>
+          {/* 同一个 count 传给两个兄弟，同一个修改函数也传给两个兄弟 */}
+          <GoodCounter who="A" count={count} onAdd={() => setCount((c) => c + 1)} />
+          <GoodCounter who="B" count={count} onAdd={() => setCount((c) => c + 1)} />
+          <p style={{ margin: 0, fontSize: 12, color: '#237804' }}>
+            数据只有一份（父组件的 count），两个兄弟读的是同一个源，天然同步。
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}`,
           },
           {
             type: 'table',
@@ -829,6 +1333,97 @@ export default App`,
           },
           {
             type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：点一下切换主题，三层嵌套的子组件全部一起变色',
+            body: `import { createContext, useContext, useState, useMemo } from 'react' // Context 三件套 + useMemo
+
+// ① createContext：建一条「数据管道」，参数 null 是没包 Provider 时的默认值
+const ThemeContext = createContext(null)
+
+const THEMES = { // 两套配色
+  light: { bg: '#ffffff', card: '#f5f5f5', text: '#1f2937', accent: '#2563eb', name: '浅色' },
+  dark: { bg: '#111827', card: '#1f2937', text: '#f9fafb', accent: '#60a5fa', name: '深色' },
+}
+
+// ② Provider 组件：把 state 和修改方法一起注入子树
+function ThemeProvider({ children }) {
+  const [mode, setMode] = useState('light') // 真正的 state 在这里
+
+  // useMemo：只有 mode 变了才生成新的 value 对象。否则每次渲染都新建对象，
+  // 所有 useContext 的组件都会白白重渲染一次
+  const value = useMemo(
+    () => ({
+      mode,
+      colors: THEMES[mode],
+      toggle: () => setMode((m) => (m === 'light' ? 'dark' : 'light')), // 把「修改数据的方法」也放进管道
+    }),
+    [mode]
+  )
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+}
+
+// ③ 自定义 Hook：包一层 useContext，顺手检查「有没有忘记包 Provider」
+function useTheme() {
+  const ctx = useContext(ThemeContext)
+  if (!ctx) throw new Error('useTheme 必须在 ThemeProvider 内部使用') // 忘包 Provider 时给出人话报错
+  return ctx
+}
+
+// 第 3 层（最深）：直接 useTheme 读主题，没有收到任何 props
+function DeepButton() {
+  const { mode, colors, toggle } = useTheme()
+
+  return (
+    <button
+      type="button"
+      onClick={toggle} // 切换方法也是从 Context 里拿的，不用父组件传
+      style={{ padding: '6px 14px', background: colors.accent, color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}
+    >
+      我在第 3 层 · 当前 {colors.name}（点我切换）
+    </button>
+  )
+}
+
+// 第 2 层：中间层 —— 注意它的参数列表是空的，一个 props 都没有
+function MiddleLayer() {
+  const { colors } = useTheme() // 想用就自己取，不想用就完全不用管主题这件事
+
+  return (
+    <div style={{ marginTop: 10, padding: 12, background: colors.card, borderRadius: 8 }}>
+      <p style={{ margin: '0 0 8px', fontSize: 13 }}>我是第 2 层，没有接收任何 theme props</p>
+      <DeepButton />
+    </div>
+  )
+}
+
+// 第 1 层：页面外壳，背景色也来自 Context
+function Page() {
+  const { colors, mode } = useTheme()
+
+  return (
+    <div style={{ padding: 16, background: colors.bg, color: colors.text, borderRadius: 8, transition: 'background .2s, color .2s' }}>
+      <p style={{ marginTop: 0, fontSize: 13 }}>我是第 1 层，mode = {mode}</p>
+      <MiddleLayer />
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件：入口负责把 Provider 包在最外层
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      {/* 所有想读主题的组件都必须在 Provider 的子树里面，否则 useTheme 会抛错 */}
+      <ThemeProvider>
+        <Page />
+      </ThemeProvider>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
             title: '对照：不用 Context 时 props 要穿 3 层（props drilling）',
             language: 'jsx',
             body: `// ❌ 没有 Context：props drilling（属性钻取）
@@ -863,6 +1458,126 @@ function Layout() {
 function Child() {
   const { theme, toggle } = useTheme() // 深层直接读取 Context
   return <button onClick={toggle}>{theme}</button>
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：Context 里同时放 state 和「改它的方法」，深层组件直接调用',
+            body: `import { createContext, useContext, useState, useMemo } from 'react' // Context 三件套 + useMemo
+
+// 购物车 Context：管道里既有数据（items），也有操作数据的函数（add / remove / clear）
+const CartContext = createContext(null)
+
+function CartProvider({ children }) {
+  const [items, setItems] = useState([]) // 购物车数组，唯一数据源在这里
+
+  // useMemo 的依赖是 [items]：items 没变就复用同一个 value 对象，避免消费者无意义重渲染
+  const value = useMemo(() => {
+    // 加购：已有就数量 +1（map 返回新数组），没有就追加一项
+    function add(name) {
+      setItems((prev) => {
+        const hit = prev.find((it) => it.name === name)
+        if (hit) return prev.map((it) => (it.name === name ? { ...it, qty: it.qty + 1 } : it))
+        return [...prev, { id: Date.now(), name, qty: 1 }]
+      })
+    }
+
+    function remove(id) {
+      setItems((prev) => prev.filter((it) => it.id !== id)) // filter 返回新数组
+    }
+
+    const total = items.reduce((sum, it) => sum + it.qty, 0) // 派生值：总件数，reduce 累加
+
+    // ★ 关键：state、派生值、修改方法全部塞进同一个 value，深层组件一次拿全
+    return { items, total, add, remove, clear: () => setItems([]) }
+  }, [items])
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+}
+
+function useCart() {
+  const ctx = useContext(CartContext)
+  if (!ctx) throw new Error('useCart 必须在 CartProvider 内部使用') // 忘包 Provider 时快速定位
+  return ctx
+}
+
+// 深层组件 ①：商品卡，直接调 Context 里的 add，不需要父组件传 onAdd
+function ProductCard({ name }) {
+  const { add } = useCart() // 只取用得到的那个方法
+
+  return (
+    <button type="button" onClick={() => add(name)} style={{ padding: '6px 10px', marginRight: 6 }}>
+      加购 {name}
+    </button>
+  )
+}
+
+// 深层组件 ②：购物车角标，和 ProductCard 是平级，靠 Context 共享同一份数据
+function CartBadge() {
+  const { total } = useCart()
+
+  return (
+    <span style={{ padding: '2px 8px', background: '#1677ff', color: '#fff', borderRadius: 10, fontSize: 12 }}>
+      🛒 {total} 件
+    </span>
+  )
+}
+
+// 中间层：一个 props 都不传 —— 这就是 Context 省下来的「搬运工代码」
+function Shelf() {
+  return (
+    <div style={{ marginTop: 10 }}>
+      {['键盘', '鼠标', '显示器'].map((n) => (
+        <ProductCard key={n} name={n} /> // 列表 map 记得给 key
+      ))}
+    </div>
+  )
+}
+
+// 中间层：同样零 props
+function CartList() {
+  const { items, remove, clear } = useCart() // 数据和两个方法一起取
+
+  if (items.length === 0) return <p style={{ fontSize: 13, color: '#999' }}>购物车是空的</p> // 提前 return 处理空态
+
+  return (
+    <div>
+      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 6px' }}>
+        {items.map((it) => (
+          <li key={it.id} style={{ fontSize: 13, marginBottom: 4 }}>
+            {it.name} × {it.qty}
+            {/* 直接调 Context 里的 remove，父组件完全没参与 */}
+            <button type="button" onClick={() => remove(it.id)} style={{ marginLeft: 8, fontSize: 12 }}>
+              移除
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button type="button" onClick={clear} style={{ fontSize: 12 }}>
+        清空购物车
+      </button>
+    </div>
+  )
+}
+
+export default function Demo() { // 默认导出组件
+  return (
+    <CartProvider>
+      <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 420 }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>
+          Header 和货架是兄弟、和购物车列表隔着好几层，但都不用 props —— 数据和方法都从 Context 取。
+        </p>
+        <CartBadge />
+        <Shelf />
+        <div style={{ marginTop: 12, padding: 10, background: '#fafafa', borderRadius: 8 }}>
+          <CartList />
+        </div>
+      </div>
+    </CartProvider>
+  )
 }`,
           },
           {

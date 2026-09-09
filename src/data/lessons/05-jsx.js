@@ -1,5 +1,5 @@
 /**
- * 第 2 章：JSX
+ * JSX 章节
  * 目标：能熟练在组件里写 JSX，知道花括号、属性、Fragment 的正确用法
  */
 const jsx = {
@@ -106,6 +106,60 @@ function App() {
 }
 
 export default App`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：切换 Fragment 和 div，看多出来的那层容器',
+            body: `import { useState } from 'react' // 引入 useState，用来记住当前选了哪种包裹方式
+
+// 写法一：用 <> </>（Fragment 短语法）把两个并列元素包起来
+function WithFragment() {
+  return (
+    <> {/* Fragment 只是「满足单根节点」的语法外壳，不会生成真实 DOM 节点 */}
+      <h4 style={{ margin: 0 }}>我是标题</h4>
+      <p style={{ margin: '4px 0 0', color: '#666' }}>我是正文</p>
+    </>
+  )
+}
+
+// 写法二：用 div 包起来，同样满足单根节点，但真实 DOM 里多了一层
+function WithDiv() {
+  return (
+    // 这层橙色虚线框就是「多出来的那层 div」，故意画出来让你看见
+    <div style={{ border: '2px dashed #fa8c16', padding: 8, borderRadius: 6 }}>
+      <h4 style={{ margin: 0 }}>我是标题</h4>
+      <p style={{ margin: '4px 0 0', color: '#666' }}>我是正文</p>
+    </div>
+  )
+}
+
+export default function Demo() { // live Demo 必须默认导出一个组件
+  const [useFragment, setUseFragment] = useState(true) // true = 用 Fragment，false = 用 div
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      {/* 点按钮就切换包裹方式：把 state 取反 */}
+      <button
+        onClick={() => setUseFragment(!useFragment)}
+        style={{ padding: '6px 12px', marginBottom: 12, cursor: 'pointer' }}
+      >
+        当前：{useFragment ? '<>...</> Fragment' : '<div>...</div>'}（点我切换）
+      </button>
+
+      {/* 三元表达式：条件为真渲染 <WithFragment />，否则渲染 <WithDiv /> */}
+      {useFragment ? <WithFragment /> : <WithDiv />}
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        {/* 两种写法页面内容一样，区别只在 DOM 结构上 */}
+        用 Fragment 时没有虚线框，说明 DOM 里少了一层容器；
+        flex / grid / dl / table 这些对「直接子元素」有要求的场景就必须用 Fragment。
+      </p>
+    </div>
+  )
+}`,
           },
           {
             type: 'text',
@@ -216,6 +270,54 @@ function GlossaryWithDiv() {
 
       ❌ 错误：HTML 注释 <!-- --> 在 JSX 里无效，可能显示在页面上
       <!-- 这不是 JSX 注释 --> */}
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：渲染开关 + 自闭合标签 + JSX 注释的真实效果',
+            body: `import { useState } from 'react' // 引入 useState 做一个「显示 / 隐藏」的开关
+
+export default function Demo() { // 默认导出组件
+  const [show, setShow] = useState(true) // 控制那段 JSX 要不要出现在页面上
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      {/* 这一行是 JSX 注释：写成「花括号 + 块注释」，页面上看不到它 */}
+      <button
+        onClick={() => setShow(!show)} // 点一下把开关取反
+        style={{ padding: '6px 12px', cursor: 'pointer' }}
+      >
+        {show ? '隐藏下面那段内容' : '显示下面那段内容'}
+      </button>
+
+      <hr style={{ margin: '12px 0' }} /> {/* hr 在 HTML 里可以写 <hr>，JSX 里必须自闭合 */}
+
+      {/* && 短路：show 为 true 才渲染右边这段 JSX，false 时整段消失 */}
+      {show && (
+        <div style={{ padding: 12, background: '#f6ffed', borderRadius: 6 }}>
+          <p style={{ margin: 0 }}>我出现了！</p>
+          <br /> {/* br 同样必须写成自闭合，漏掉 / 会报 Expected corresponding JSX closing tag */}
+          <input
+            type="text" // input 也是自闭合标签
+            placeholder="我也是自闭合标签"
+            style={{ padding: 6, width: '100%', boxSizing: 'border-box' }}
+          />
+        </div>
+      )}
+
+      {/* 下面这段被注释掉了，所以既不会渲染也不会报错，可以当作「临时屏蔽代码」用
+      <p style={{ color: 'crimson' }}>我被注释掉了，页面上找不到我</p>
+      */}
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        页面上看不到任何注释文字，说明 {'{/* */}'} 才是 JSX 的正确注释写法；
+        HTML 的注释写法在 JSX 里无效。
+      </p>
     </div>
   )
 }`,
@@ -332,6 +434,61 @@ function GlossaryWithDiv() {
 export default ProfileCard`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：改输入框，看花括号里的变量 / 运算 / 三元 / 函数调用一起变',
+            body: `import { useState } from 'react' // 引入 useState，让输入框的值可以驱动界面变化
+
+// 普通函数：接收分数返回一句话，函数调用是表达式，可以直接放进花括号
+function formatScore(n) {
+  return n >= 60 ? n + ' 分（及格）' : n + ' 分（不及格）' // 三元运算符拼出结果字符串
+}
+
+export default function Demo() { // 默认导出组件
+  const [name, setName] = useState('小明') // 姓名，跟着输入框实时变
+  const [score, setScore] = useState(86) // 分数，用数字输入框改
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+        {/* 受控输入框：value 来自 state，onChange 把新值写回 state */}
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)} // e.target.value 是输入框最新文字
+          placeholder="改个名字试试"
+          style={{ padding: 6, flex: 1 }}
+        />
+        <input
+          type="number" // 数字输入框
+          value={score}
+          onChange={(e) => setScore(Number(e.target.value))} // 输入框拿到的是字符串，要转成数字
+          style={{ padding: 6, width: 90 }}
+        />
+      </div>
+
+      <div style={{ padding: 12, background: '#fafafa', borderRadius: 6, lineHeight: 2 }}>
+        <div>① 放变量：你好，{name}</div>
+        <div>② 放运算：名字有 {name.length} 个字，加 10 分是 {score + 10}</div>
+        <div>③ 放三元：{score >= 60 ? '恭喜通过 ✅' : '还需努力 ❌'}</div>
+        <div>④ 放函数调用：{formatScore(score)}</div>
+        <div>⑤ 放方法调用：大写名字 {name.toUpperCase()}</div>
+        <div>
+          {/* 布尔值本身不会被渲染，所以要转成字符串才看得见 */}
+          ⑥ 布尔值不渲染：{String(score >= 60)}（直接写 {'{score >= 60}'} 页面上什么都不显示）
+        </div>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        花括号里放的全是「能算出一个值」的表达式；
+        if / for / const 这类语句要写在 return 之前，不能塞进花括号。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '4）条件渲染：在 JSX 里做 if/else',
             body: 'JSX 的 {} 里不能直接写 if 语句，但有三种常用模式实现条件渲染：\n\n① 提前 return（分支多、逻辑复杂时最清晰）：在 return JSX 之前用 if 判断，满足条件就 return 另一段 JSX。② 三元运算符 ? :（二选一）：{ ok ? <Success /> : <Error /> }。③ && 短路（有就显示）：{ isLoggedIn && <Dashboard /> }，左侧为真才渲染右侧。\n\n选择建议：2～3 个互斥分支用提前 return；简单二选一 inline 用三元；「有就显示、没有就不显示」用 &&。',
@@ -397,7 +554,7 @@ function App() {
           {
             type: 'text',
             title: '6）列表渲染：用 map 把数组变成 JSX',
-            body: '数组.map() 是 JSX 里最常用的「循环」。map 回调 return 一段 JSX，外层用 {} 包起来。每项必须有唯一的 key 属性（第 6 章列表渲染会细讲 key 的原理，这里先会用）。\n\nkey 帮助 React 识别哪一项变了、哪一项是新增的，优化更新性能。用数据的唯一 id 做 key，不要用数组 index（除非列表静态且不会重排）。\n\nmap 返回的是一个 JSX 数组，React 可以直接渲染数组。',
+            body: '数组.map() 是 JSX 里最常用的「循环」。map 回调 return 一段 JSX，外层用 {} 包起来。每项必须有唯一的 key 属性（「条件渲染与列表」那一章会细讲 key 的原理，这里先会用）。\n\nkey 帮助 React 识别哪一项变了、哪一项是新增的，优化更新性能。用数据的唯一 id 做 key，不要用数组 index（除非列表静态且不会重排）。\n\nmap 返回的是一个 JSX 数组，React 可以直接渲染数组。',
           },
           {
             type: 'code',
@@ -429,6 +586,66 @@ function App() {
         </li>
       ))}
     </ul>
+  )
+}`,
+          },
+          {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：花括号里 map 出列表 + 对象为什么不能直接渲染',
+            body: `import { useState } from 'react' // 引入 useState 存放列表数据
+
+export default function Demo() { // 默认导出组件
+  const [fruits, setFruits] = useState([ // 数组里每项是一个对象，id 用来当 key
+    { id: 1, name: '苹果', price: 5 },
+    { id: 2, name: '香蕉', price: 3 },
+  ])
+  const [text, setText] = useState('') // 输入框内容：要新增的水果名
+
+  function add() { // 新增一项
+    if (!text.trim()) return // 空内容直接返回，避免加进空数据
+    // 用展开运算符生成「新数组」，不要用 push 改原数组，否则 React 认不出变化
+    setFruits([...fruits, { id: Date.now(), name: text, price: 1 }])
+    setText('') // 清空输入框
+  }
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)} // 受控输入框
+          onKeyDown={(e) => e.key === 'Enter' && add()} // 回车也能提交
+          placeholder="输入水果名后回车"
+          style={{ padding: 6, flex: 1 }}
+        />
+        <button onClick={add} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          添加
+        </button>
+      </div>
+
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {/* 花括号里放 map：数组的每一项都变成一段 JSX，React 能直接渲染 JSX 数组 */}
+        {fruits.map((item) => (
+          <li
+            key={item.id} // key 必须唯一，帮 React 认出哪一项变了
+            style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0' }}
+          >
+            {/* ✅ 正确：渲染对象的某个字段，而不是整个对象 */}
+            <span>{item.name}</span>
+            <span style={{ color: '#999' }}>{item.price} 元</span>
+          </li>
+        ))}
+      </ul>
+
+      <div style={{ marginTop: 12, padding: 10, background: '#fff7e6', borderRadius: 6, fontSize: 13 }}>
+        {/* ❌ 写 {fruits[0]} 会报错：Objects are not valid as a React child */}
+        {/* ✅ 调试时想看整个对象，用 JSON.stringify 转成字符串 */}
+        第一项转成字符串看：{JSON.stringify(fruits[0])}
+      </div>
+    </div>
   )
 }`,
           },
@@ -670,6 +887,73 @@ function App() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：点按钮切主题，看动态 className 和 style 对象怎么变',
+            body: `import { useState } from 'react' // 引入 useState 存当前主题
+
+// 主题配置表：每种主题对应一组样式值，切换时整组一起换
+const themes = {
+  blue: { label: '蓝色', bg: '#e6f4ff', text: '#1677ff', border: '#91caff' },
+  green: { label: '绿色', bg: '#f6ffed', text: '#389e0d', border: '#b7eb8f' },
+  red: { label: '红色', bg: '#fff1f0', text: '#cf1322', border: '#ffa39e' },
+}
+
+export default function Demo() { // 默认导出组件
+  const [theme, setTheme] = useState('blue') // 当前主题名，作为 themes 的键
+  const [big, setBig] = useState(false) // 是否放大字号
+
+  const t = themes[theme] // 取出当前主题的那组配置
+
+  // className 是「字符串」：条件多时用数组 filter + join 拼更清晰
+  const className = ['card', 'card-' + theme, big ? 'card-big' : '']
+    .filter(Boolean) // 去掉空字符串
+    .join(' ') // 拼成 "card card-blue card-big"
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+        {/* Object.keys 拿到所有主题名，map 出三个切换按钮 */}
+        {Object.keys(themes).map((key) => (
+          <button
+            key={key}
+            onClick={() => setTheme(key)} // 点击换主题
+            style={{ padding: '6px 12px', cursor: 'pointer', fontWeight: key === theme ? 700 : 400 }}
+          >
+            {themes[key].label}
+          </button>
+        ))}
+        <button onClick={() => setBig(!big)} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          {big ? '恢复字号' : '放大字号'}
+        </button>
+      </div>
+
+      <div
+        className={className} // 动态 className：值是变量，所以要用花括号包起来
+        style={{
+          background: t.bg, // 键名驼峰；值来自 state，所以每次切换都会重新计算
+          color: t.text,
+          border: '2px solid ' + t.border, // 带单位 / 复合值必须写成字符串
+          padding: 16, // 纯数字，React 自动补成 16px
+          borderRadius: 8,
+          fontSize: big ? 22 : 14, // 用三元根据 state 决定字号
+          transition: 'all .2s', // 加个过渡，切换时更直观
+        }}
+      >
+        我的样式全由 state 决定
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        当前 className = "{className}"（真实项目里这些类名写在 CSS 文件里，
+        本 Demo 没有 CSS 文件，所以视觉效果由 style 对象负责）。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'table',
             title: '5）style 常见错误对照表',
             headers: ['错误写法', '现象', '正确写法'],
@@ -736,6 +1020,70 @@ function App() {
 }`,
           },
           {
+            type: 'code',
+            live: true,
+            runtime: 'react',
+            language: 'tsx',
+            title: 'Live Demo：htmlFor 点标签聚焦 + disabled / placeholder 由 state 控制',
+            body: `import { useState } from 'react' // 引入 useState 控制表单的各种动态属性
+
+export default function Demo() { // 默认导出组件
+  const [locked, setLocked] = useState(false) // 是否锁定输入框（控制 disabled）
+  const [email, setEmail] = useState('') // 邮箱输入内容
+  const [agree, setAgree] = useState(false) // 是否勾选同意
+
+  const valid = email.includes('@') // 简单校验：含 @ 才算填对
+
+  return (
+    <div style={{ padding: 16, fontFamily: 'system-ui', maxWidth: 380 }}>
+      {/* htmlFor 的值必须和下面 input 的 id 一致，点这行文字光标会自动跳进输入框 */}
+      <label htmlFor="demo-email" style={{ display: 'block', marginBottom: 4, cursor: 'pointer' }}>
+        邮箱（点这行字试试，光标会跳进输入框）
+      </label>
+      <input
+        id="demo-email" // 和上面的 htmlFor="demo-email" 配对
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} // 受控输入
+        disabled={locked} // 布尔属性：值是 JS 变量，必须用花括号，不能写 disabled="false"
+        placeholder={locked ? '已锁定，不能输入' : '请输入邮箱'} // 占位文字也能动态切换
+        style={{
+          width: '100%',
+          padding: 8,
+          boxSizing: 'border-box',
+          background: locked ? '#f5f5f5' : '#fff', // 锁定时变灰，给用户视觉反馈
+        }}
+      />
+
+      <label style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '12px 0' }}>
+        {/* label 直接包住 checkbox，点文字也能勾选，这是另一种关联方式 */}
+        <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
+        我已阅读并同意用户协议
+      </label>
+
+      <div style={{ display: 'flex', gap: 8 }}>
+        <button onClick={() => setLocked(!locked)} style={{ padding: '6px 12px', cursor: 'pointer' }}>
+          {locked ? '解锁输入框' : '锁定输入框'}
+        </button>
+        <button
+          type="button"
+          disabled={!valid || !agree} // 两个条件都满足才可点：属性值是表达式
+          onClick={() => alert('提交：' + email)}
+          style={{ padding: '6px 12px', cursor: !valid || !agree ? 'not-allowed' : 'pointer' }}
+        >
+          提交
+        </button>
+      </div>
+
+      <p style={{ marginTop: 12, fontSize: 13, color: '#999' }}>
+        提交按钮的 disabled 由「邮箱是否含 @」和「是否勾选」共同决定，
+        属性值就是一个普通的 JS 表达式。
+      </p>
+    </div>
+  )
+}`,
+          },
+          {
             type: 'text',
             title: '7）展开属性：把对象键值批量变成 JSX 属性',
             body: '当你有一组属性存在对象里，可以用 {...obj} 展开到 JSX 标签上，等价于逐个写属性。展开后还可以覆盖：后面的属性优先级更高。\n\n常见场景：封装通用组件时透传 props（<Input {...rest} />）、复用链接配置、合并默认属性和用户传入属性。',
@@ -780,7 +1128,7 @@ function App() {
               ['性能', '更好（CSS 类可缓存）', '每次渲染创建新对象（小项目无感）'],
               ['伪类/媒体查询', '✅ :hover、@media', '❌ 不支持'],
               ['维护性', '样式和逻辑分离，好维护', '样式混在 JS 里，多了难读'],
-              ['动态值', '切换类名', '直接写表达式，如 width: percent + "%"'],
+              ['动态值', '切换类名', '直接写表达式，如 `width: percent + "%"`'],
               ['建议', '默认首选', '仅动态值或调试时用'],
             ],
           },

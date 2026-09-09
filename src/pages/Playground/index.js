@@ -6,8 +6,19 @@ import './Playground.css'
 /**
  * 代码演练台页面：左侧 Demo 菜单 + 右主区编辑/预览
  */
+const isReactDemo = (demo) => demo.runtime === 'react'
+const REACT_TOTAL = playgroundDemos.filter(isReactDemo).length
+const HTML_TOTAL = playgroundDemos.length - REACT_TOTAL
+
+const KINDS = [
+  { key: 'all', label: `全部 ${playgroundDemos.length}` },
+  { key: 'html', label: `HTML/CSS ${HTML_TOTAL}` },
+  { key: 'react', label: `React ${REACT_TOTAL}` },
+]
+
 function Playground() {
   const [keyword, setKeyword] = useState('')
+  const [kind, setKind] = useState('all')
   const [activeId, setActiveId] = useState(playgroundDemos[0]?.id || 'blank')
 
   const groups = useMemo(() => {
@@ -22,22 +33,25 @@ function Playground() {
 
   const filteredGroups = useMemo(() => {
     const q = keyword.trim().toLowerCase()
-    if (!q) return groups
     return groups
       .map(([groupName, demos]) => {
-        const hitGroup = groupName.toLowerCase().includes(q)
-        const next = hitGroup
-          ? demos
-          : demos.filter(
-              (d) =>
-                d.title.toLowerCase().includes(q) ||
-                d.summary.toLowerCase().includes(q) ||
-                d.id.toLowerCase().includes(q)
-            )
+        // 先按类型（HTML / React）过滤，再按关键字过滤
+        let next = demos
+        if (kind !== 'all') {
+          next = next.filter((d) => (kind === 'react' ? isReactDemo(d) : !isReactDemo(d)))
+        }
+        if (q && !groupName.toLowerCase().includes(q)) {
+          next = next.filter(
+            (d) =>
+              d.title.toLowerCase().includes(q) ||
+              d.summary.toLowerCase().includes(q) ||
+              d.id.toLowerCase().includes(q)
+          )
+        }
         return [groupName, next]
       })
       .filter(([, demos]) => demos.length > 0)
-  }, [groups, keyword])
+  }, [groups, keyword, kind])
 
   const activeDemo =
     playgroundDemos.find((d) => d.id === activeId) || playgroundDemos[0]
@@ -48,9 +62,9 @@ function Playground() {
         <div className="Playground-sidebarHead">
           <h1 className="Playground-sidebarTitle">代码演练台</h1>
           <p className="Playground-sidebarDesc">
-            共 {playgroundDemos.length} 个练习，从基础布局到聊天 / Tab / 轮播 /
-            拖拽，以及伪类与伪元素实战。点选即可填入编辑器，支持 HTML / CSS /
-            JS。
+            共 {playgroundDemos.length} 个练习：前 {HTML_TOTAL} 个是 HTML / CSS /
+            JS（布局、Tab、轮播、伪类），后 {REACT_TOTAL} 个是 React（状态管理、组件传值、Hooks、网络请求、实战案例）。
+            点选即可填入编辑器，改完右侧立刻重新渲染。
           </p>
           <label className="Playground-searchLabel">
             <span className="Playground-srOnly">搜索 Demo</span>
@@ -62,6 +76,20 @@ function Playground() {
               onChange={(e) => setKeyword(e.target.value)}
             />
           </label>
+          <div className="Playground-kinds" role="group" aria-label="按类型筛选">
+            {KINDS.map((k) => (
+              <button
+                key={k.key}
+                type="button"
+                className={
+                  kind === k.key ? 'Playground-kind is-active' : 'Playground-kind'
+                }
+                onClick={() => setKind(k.key)}
+              >
+                {k.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <nav className="Playground-menu">
@@ -102,6 +130,8 @@ function Playground() {
           key={activeDemo.id}
           initialCode={activeDemo.code}
           title={activeDemo.title}
+          language={activeDemo.language}
+          runtime={activeDemo.runtime}
         />
       </div>
     </div>
