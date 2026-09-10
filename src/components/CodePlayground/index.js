@@ -2,12 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import ReactPreview from '../LiveDemo/ReactPreview'
+import {
+  buildHighlightStyle,
+  normalizeEditorCode,
+  syntaxHighlighterCodeStyle,
+  syntaxHighlighterSurfaceStyle,
+  useHighlightCode,
+  useOverlayScrollSync,
+} from '../shared/overlayCodeEditor'
 import './CodePlayground.css'
-
-const EDITOR_FONT =
-  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace'
-const EDITOR_FONT_SIZE = 13
-const EDITOR_LINE_HEIGHT = 21
 
 /** 允许脚本：演练台需要跑 JS；与课程 LiveDemo 共用同一套包装逻辑 */
 function buildSrcDoc(code) {
@@ -68,25 +71,6 @@ function isReactRuntime(runtime, language) {
   return lang === 'tsx' || lang === 'jsx'
 }
 
-function buildHighlightStyle(theme) {
-  const next = { ...theme }
-  Object.keys(next).forEach((key) => {
-    const rule = next[key]
-    if (!rule || typeof rule !== 'object') return
-    next[key] = {
-      ...rule,
-      fontWeight: '400',
-      fontStyle: 'normal',
-      textDecoration: 'none',
-      letterSpacing: 'normal',
-      fontFamily: EDITOR_FONT,
-      fontSize: `${EDITOR_FONT_SIZE}px`,
-      lineHeight: `${EDITOR_LINE_HEIGHT}px`,
-    }
-  })
-  return next
-}
-
 const highlightStyle = buildHighlightStyle(oneLight)
 
 /**
@@ -113,7 +97,9 @@ function CodePlayground({
   const [previewKey, setPreviewKey] = useState(0)
 
   const editorRef = useRef(null)
-  const highlightRef = useRef(null)
+  const highlightContentRef = useRef(null)
+  const highlightCode = useHighlightCode(code)
+  const syncOverlayScroll = useOverlayScrollSync(editorRef, highlightContentRef, code)
   // 挂载后第一次 debounce 与 starter 同步时，若内容没变就不要触发预览更新
   const isFirstDebounceRef = useRef(true)
   const previewCodeRef = useRef(previewCode)
@@ -142,22 +128,10 @@ function CodePlayground({
     return () => window.clearTimeout(timer)
   }, [code, onCodeChange])
 
-  useEffect(() => {
-    const editor = editorRef.current
-    const highlight = highlightRef.current
-    if (!editor || !highlight) return
-    highlight.scrollTop = editor.scrollTop
-    highlight.scrollLeft = editor.scrollLeft
-  }, [code])
-
   const srcDoc = useMemo(() => buildSrcDoc(previewCode), [previewCode])
 
-  function syncHighlightScroll() {
-    const editor = editorRef.current
-    const highlight = highlightRef.current
-    if (!editor || !highlight) return
-    highlight.scrollTop = editor.scrollTop
-    highlight.scrollLeft = editor.scrollLeft
+  function handleCodeChange(event) {
+    setCode(normalizeEditorCode(event.target.value))
   }
 
   function handleReset() {
@@ -215,51 +189,29 @@ function CodePlayground({
         <div className="CodePlayground-pane CodePlayground-pane--code">
           <div className="CodePlayground-paneLabel">代码（可编辑）</div>
           <div className="CodePlayground-editorShell">
-            <div
-              ref={highlightRef}
-              className="CodePlayground-highlight"
-              aria-hidden="true"
-            >
-              <SyntaxHighlighter
-                language={resolveLanguage(useReactPreview ? 'tsx' : language)}
-                style={highlightStyle}
-                PreTag="pre"
-                CodeTag="code"
-                showLineNumbers={false}
-                wrapLongLines={false}
-                wrapLines={false}
-                customStyle={{
-                  margin: 0,
-                  padding: 0,
-                  background: 'transparent',
-                  fontFamily: EDITOR_FONT,
-                  fontSize: EDITOR_FONT_SIZE,
-                  lineHeight: `${EDITOR_LINE_HEIGHT}px`,
-                  fontWeight: 400,
-                  overflow: 'visible',
-                  whiteSpace: 'pre',
-                }}
-                codeTagProps={{
-                  style: {
-                    fontFamily: EDITOR_FONT,
-                    fontSize: EDITOR_FONT_SIZE,
-                    lineHeight: `${EDITOR_LINE_HEIGHT}px`,
-                    fontWeight: 400,
-                    background: 'transparent',
-                    display: 'block',
-                    whiteSpace: 'pre',
-                  },
-                }}
-              >
-                {code}
-              </SyntaxHighlighter>
+            <div className="CodePlayground-highlight" aria-hidden="true">
+              <div ref={highlightContentRef} className="CodePlayground-highlightContent">
+                <SyntaxHighlighter
+                  language={resolveLanguage(useReactPreview ? 'tsx' : language)}
+                  style={highlightStyle}
+                  PreTag="pre"
+                  CodeTag="code"
+                  showLineNumbers={false}
+                  wrapLongLines={false}
+                  wrapLines={false}
+                  customStyle={syntaxHighlighterSurfaceStyle}
+                  codeTagProps={{ style: syntaxHighlighterCodeStyle }}
+                >
+                  {highlightCode}
+                </SyntaxHighlighter>
+              </div>
             </div>
             <textarea
               ref={editorRef}
               className="CodePlayground-editor"
               value={code}
-              onChange={(e) => setCode(e.target.value)}
-              onScroll={syncHighlightScroll}
+              onChange={handleCodeChange}
+              onScroll={syncOverlayScroll}
               onKeyDown={handleKeyDown}
               spellCheck={false}
               autoCapitalize="off"

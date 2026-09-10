@@ -121,6 +121,7 @@
   overflow: hidden;
 }
 
+/* 高亮层与 textarea 必须同宽同高同 padding，否则越往下错位越大 */
 .CodePlayground-highlight,
 .CodePlayground-editor {
   margin: 0;
@@ -139,8 +140,6 @@
   overflow-wrap: normal;
   tab-size: 2;
   -moz-tab-size: 2;
-  overflow: auto;
-  scrollbar-gutter: stable;
 }
 
 .CodePlayground-highlight {
@@ -148,12 +147,13 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  scrollbar-width: none;
+  color: #1f2a24;
+  overflow: hidden;
 }
 
-.CodePlayground-highlight::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.CodePlayground-highlightContent {
+  transform-origin: 0 0;
+  will-change: transform;
 }
 
 .CodePlayground-highlight pre,
@@ -161,15 +161,26 @@
   margin: 0 !important;
   padding: 0 !important;
   background: transparent !important;
+  border: 0 !important;
   font-family: var(--ed-font) !important;
   font-size: var(--ed-size) !important;
   font-weight: 400 !important;
   font-style: normal !important;
   line-height: var(--ed-line) !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
   white-space: pre !important;
+  tab-size: 2 !important;
+  -moz-tab-size: 2 !important;
   display: block !important;
+  float: none !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  text-shadow: none !important;
 }
 
+/* 主题 token 禁止改变字形度量（粗体/斜体是错位主因） */
 .CodePlayground-highlight span {
   font-family: inherit !important;
   font-size: inherit !important;
@@ -177,11 +188,16 @@
   font-style: normal !important;
   line-height: inherit !important;
   letter-spacing: inherit !important;
+  word-spacing: inherit !important;
   text-decoration: none !important;
   display: inline !important;
+  float: none !important;
   background: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .CodePlayground-editor {
@@ -191,6 +207,8 @@
   width: 100%;
   height: 100%;
   resize: none;
+  overflow: auto;
+  scrollbar-gutter: stable;
   background: transparent;
   color: transparent;
   caret-color: #1f2a24;
