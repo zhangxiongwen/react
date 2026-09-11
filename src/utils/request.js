@@ -33,7 +33,17 @@ http.interceptors.request.use(
 )
 
 http.interceptors.response.use(
-  (response) => response.data,
+  (response) => {
+    const data = response.data
+    // SPA 的 nginx try_files 会把未知路径（比如 /users）回成 index.html 且状态码 200。
+    // 若不拦截，业务代码会把 HTML 字符串当数组 .map，整页白屏。
+    if (typeof data === 'string' && /^\s*</.test(data)) {
+      return Promise.reject(
+        new Error('接口返回了网页而不是 JSON（多半是线上没有 mock 后端）')
+      )
+    }
+    return data
+  },
   (error) => {
     if (axios.isCancel(error)) {
       return Promise.reject(error)

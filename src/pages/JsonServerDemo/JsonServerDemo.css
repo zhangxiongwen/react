@@ -36,6 +36,12 @@
   color: #2f6b4f !important;
 }
 
+.JsonServerDemo-hint--warn {
+  background: #fff6e8;
+  color: #7a4b12 !important;
+  border: 1px solid #f0d6a8;
+}
+
 .JsonServerDemo-panel {
   margin-bottom: 24px;
   padding: 18px;
