@@ -54,6 +54,7 @@ function Home() {
     <div className="Home">
       <aside className="Home-sidebar" aria-label="React 入门学习">
         <p className="Home-sidebar-label">React 入门学习</p>
+        <p className="Home-sidebar-swipe">左右滑动可切换章节</p>
         <nav className="Home-sidebar-nav">
           {stageGroups.map(({ stage, categories: list }) => (
             <div key={stage.id} className="Home-sidebar-stage">

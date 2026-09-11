@@ -27,6 +27,10 @@
   color: #1f2a24;
 }
 
+.Home-sidebar-swipe {
+  display: none;
+}
+
 .Home-sidebar-nav {
   display: flex;
   flex-direction: column;
@@ -193,15 +197,44 @@
     z-index: 5;
     width: 100%;
     max-height: none;
-    padding: 12px;
+    /* 覆盖桌面的 overflow-y:auto，否则 overflow-x 会被一起裁切，横滑失效 */
+    overflow: hidden;
+    padding: 10px 0 8px 12px;
+    background: #fffaf3;
+    box-shadow: 0 8px 20px rgba(31, 42, 36, 0.08);
+  }
+
+  .Home-sidebar-label {
+    margin: 0 12px 4px 8px;
+  }
+
+  .Home-sidebar-swipe {
+    display: block;
+    margin: 0 12px 8px 8px;
+    font-size: 12px;
+    color: #8aa196;
   }
 
   .Home-sidebar-nav {
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: auto;
     gap: 8px;
-    padding-bottom: 4px;
+    padding: 0 28px 10px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #c5d2ca transparent;
+  }
+
+  .Home-sidebar-nav::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .Home-sidebar-nav::-webkit-scrollbar-thumb {
+    background: #c5d2ca;
+    border-radius: 999px;
   }
 
   /* 窄屏时导航横向滚动，阶段容器不参与布局，只留章节按钮 */
@@ -215,7 +248,8 @@
 
   .Home-sidebar-item {
     flex: 0 0 auto;
-    max-width: 200px;
+    align-items: center;
+    max-width: 168px;
     padding: 8px 10px;
     border: 1px solid #e0d6c8;
     background: #fff;
@@ -227,5 +261,7 @@
 
   .Home-sidebar-title {
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
