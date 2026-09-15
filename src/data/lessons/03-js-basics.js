@@ -6,7 +6,7 @@ const jsBasics = {
   id: 'js-basics',
   title: 'JavaScript / ES6 必备语法',
   summary:
-    'React 代码里到处是箭头函数、解构、展开运算符、map、async/await——这一章把这些语法从零讲清，配可运行 Demo，学完再看 React 就不再「看不懂符号」',
+    'React 代码里到处是箭头函数、解构、展开运算符、map、async/await；另外补上浏览器里怎么存数据（localStorage / sessionStorage / Cookie）和怎么从 URL 取值——学完再看 React 就不再「看不懂符号」',
   order: 3,
   items: [
     {
@@ -2974,6 +2974,297 @@ class ErrorBoundary extends React.Component {
             type: 'tip',
             title: '本节小结',
             body: '`class` 是模板、`new` 造实例、`constructor` 初始化、`this` 指当前实例、`extends` + `super` 继承。`this` 会因为「脱离了调用者」而丢失，修法是 `bind` 或箭头函数——**箭头函数没有自己的 `this`，这就是它成为 React 默认写法的根本原因。** 新业务写函数组件，只在错误边界时把类拿出来用。',
+          },
+        ],
+      },
+    },
+    {
+      id: 'js-storage-url',
+      title: '浏览器存数据与 URL 取值：localStorage / Cookie / 路径参数',
+      summary:
+        'localStorage、sessionStorage、Cookie 各自干什么；地址栏里的路径、?查询、#哈希分别怎么读；React 里对应 useParams / useSearchParams',
+      content: {
+        sections: [
+          {
+            type: 'tip',
+            title: '一句话记住',
+            body: '**刷新还要在 → localStorage；关标签就丢 → sessionStorage；要让服务器每次请求都带上（登录态）→ HttpOnly Cookie。** 资源 id 放路径（`/users/42`），筛选条件放问号（`?q=react&page=2`）。React 里路径用 `useParams`，问号用 `useSearchParams`——详见「路由实战」那一章的「动态路由」一节。',
+          },
+          {
+            type: 'text',
+            title: '1. 浏览器能帮你「记住」东西吗？',
+            body: 'React 的 `useState` 存在内存里：一点刷新、一切页，数据就没了。用户名、主题色、购物车、登录 token 这类「关了页还想在」的数据，要交给浏览器的存储。\n\n常见三种：\n\n- **localStorage**：硬盘上的小仓库，同源（同一协议+域名+端口）共享，**关浏览器、刷新、换标签页都还在**，直到你主动删或用户清缓存。\n- **sessionStorage**：也是键值仓库，但**只活在当前标签页**。关掉这个标签就没了；新开一个同样的网址是另一份，互不影响。\n- **Cookie**：很小的纸条，可以设过期时间。**每次请求这个网站，符合条件的 Cookie 都会自动塞进请求头**——这是它和前两个最大的区别。登录态后端常用「HttpOnly Cookie」，JS 读不到，更防 XSS。\n\n另外还有 IndexedDB（能存大量结构化数据，API 复杂，入门阶段用不到）。',
+          },
+          {
+            type: 'table',
+            title: '2. 三种存储对照',
+            headers: ['对比', 'localStorage', 'sessionStorage', 'Cookie'],
+            rows: [
+              ['活多久', '主动删 / 清缓存才没', '关这个标签页就没', '可设 expires / max-age；不设就是会话 Cookie'],
+              ['容量大概', '约 5MB', '约 5MB', '约 4KB，很小'],
+              ['会不会跟着 HTTP 请求走', '不会', '不会', '会（符合 path/domain 的都会带上）'],
+              ['JS 能不能读写', '能', '能', '普通 Cookie 能；HttpOnly 的 JS 读不到'],
+              ['适合存什么', '主题、语言、草稿、token（有 XSS 风险）', '当前页的临时向导进度', '登录态（建议后端设 HttpOnly）'],
+              ['React 里常见用法', 'useState 惰性初始化读，useEffect 里写', '同左，换 sessionStorage', '登录一般不自己 document.cookie，交给后端 Set-Cookie'],
+            ],
+            note: '三者都按「同源」隔离：http://a.com 读不到 https://a.com 或 http://b.com 的仓库。',
+          },
+          {
+            type: 'text',
+            title: '3. localStorage 怎么读写（必会）',
+            body: 'API 只有几句，但有两个硬规矩：\n\n1. **只能存字符串。** 对象、数组必须先 `JSON.stringify`，读出来再 `JSON.parse`。忘了 stringify，存进去会变成 `"[object Object]"`，读回来就是一堆废字符。\n2. **可能抛错。** 隐私模式、容量满了、被禁用时 `setItem` 会抛 `QuotaExceededError`。生产代码用 try/catch 包一下。\n\n常用四个方法：\n\n- `localStorage.setItem("theme", "dark")` 写入\n- `localStorage.getItem("theme")` 读出，没有这个 key 时返回 `null`（不是空字符串）\n- `localStorage.removeItem("theme")` 删一个\n- `localStorage.clear()` 清空这个源下全部（慎用，会把别人的 key 也清掉）\n\nsessionStorage 方法名完全一样，只是换了个对象。',
+          },
+          {
+            type: 'code',
+            live: true,
+            language: 'html',
+            title: '4. 动手跑一跑：localStorage 刷新还在，sessionStorage 关标签就没',
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+  input { padding: 6px 10px; border: 1px solid #c5d2ca; border-radius: 6px; }
+  button { padding: 6px 12px; border: 0; border-radius: 6px; background: #2f6b4f; color: #fff; cursor: pointer; }
+  button.ghost { background: #fff; color: #1f2a24; border: 1px solid #c5d2ca; }
+  pre { margin: 0; padding: 10px; background: #f4f7f5; border-radius: 8px; white-space: pre-wrap; }
+</style>
+
+<p>在下面输入框写点东西点「写入」，再点浏览器的刷新——local 还在，session 也还在（同一标签）。</p>
+<div class="row">
+  <input id="name" placeholder="你的名字" />
+  <button type="button" id="save">写入两种仓库</button>
+  <button type="button" class="ghost" id="clearLs">清空 local</button>
+  <button type="button" class="ghost" id="clearSs">清空 session</button>
+</div>
+<pre id="out"></pre>
+
+<script>
+  const KEY = 'js-storage-demo-name' // 键名自己起，项目里建议加前缀避免撞车
+  const nameInput = document.getElementById('name')
+  const out = document.getElementById('out')
+
+  function render() {
+    // getItem 没有这个 key 时返回 null，不是空字符串
+    const fromLocal = localStorage.getItem(KEY)
+    const fromSession = sessionStorage.getItem(KEY)
+    out.textContent =
+      'localStorage：' + (fromLocal ?? '（空）') + '\\n' +
+      'sessionStorage：' + (fromSession ?? '（空）') + '\\n\\n' +
+      '刷新这个预览：两个都还在。\\n' +
+      '关掉整个浏览器标签再打开这个页面：local 还在，session 没了。'
+    if (fromLocal) nameInput.value = fromLocal
+  }
+
+  document.getElementById('save').onclick = () => {
+    const value = nameInput.value.trim() || '小明'
+    try {
+      localStorage.setItem(KEY, value)      // 只能存字符串
+      sessionStorage.setItem(KEY, value)
+    } catch (e) {
+      out.textContent = '写入失败：' + e.message // 隐私模式 / 容量满了会走这里
+      return
+    }
+    render()
+  }
+  document.getElementById('clearLs').onclick = () => {
+    localStorage.removeItem(KEY)
+    render()
+  }
+  document.getElementById('clearSs').onclick = () => {
+    sessionStorage.removeItem(KEY)
+    render()
+  }
+  render() // 一进来先把仓库里已有的值画出来
+</script>`,
+          },
+          {
+            type: 'code',
+            title: '5. 对象怎么存：stringify / parse（React 里也是这一套）',
+            language: 'js',
+            body: `const KEY = 'cart'
+
+// 写入：先把对象变成 JSON 字符串
+const cart = [{ id: 1, name: 'React 书', count: 2 }]
+localStorage.setItem(KEY, JSON.stringify(cart))
+
+// 读出：先拿字符串，再 parse 回对象；没有 key 时是 null
+function loadCart() {
+  try {
+    const raw = localStorage.getItem(KEY)
+    if (raw == null) return []          // 第一次来，给个默认值
+    const data = JSON.parse(raw)
+    return Array.isArray(data) ? data : []  // 防止有人改成了乱七八糟的字符串
+  } catch (e) {
+    console.warn('cart 损坏，回退空数组', e)
+    return []
+  }
+}
+
+// React 里标准写法：惰性初始化读一次，effect 里同步写回去
+// const [cart, setCart] = useState(() => loadCart())
+// useEffect(() => {
+//   localStorage.setItem(KEY, JSON.stringify(cart))
+// }, [cart])`,
+          },
+          {
+            type: 'text',
+            title: '6. Cookie 到底是什么？（和 localStorage 别混）',
+            body: 'Cookie 是服务器和浏览器之间的「小纸条」。登录成功后，后端通常在响应头里写 `Set-Cookie: token=abc; HttpOnly; Secure; SameSite=Lax`。之后你访问这个站的每个请求，浏览器都会自动带上 `Cookie: token=abc`，后端据此认出你是谁。\n\n前端也能写：`document.cookie = "theme=dark; max-age=31536000; path=/"`。但注意：\n\n- **读的时候很原始**：`document.cookie` 是一长串 `a=1; b=2`，没有 getItem，要自己拆。\n- **HttpOnly 的 Cookie，JS 完全看不见**——这是优点：XSS 偷不走登录态。所以**真正的登录 token 不要自己 `localStorage.setItem("token")` 完事**，能让后端种 HttpOnly Cookie 更稳。\n- **别存大对象**：4KB 上限，而且每次请求都带上，多了会拖慢接口。\n- **path / domain / Secure / SameSite** 决定「哪些请求会带上」。`SameSite=Lax` 是现代默认，能挡一部分跨站请求伪造（CSRF）。\n\n入门阶段记住分工即可：偏好设置 → localStorage；登录态 → 后端 Cookie（HttpOnly）；当前页临时状态 → sessionStorage 或 React state。',
+          },
+          {
+            type: 'code',
+            live: true,
+            language: 'html',
+            title: '7. 动手跑一跑：document.cookie 读写（只能动非 HttpOnly 的）',
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+  input { padding: 6px 10px; border: 1px solid #c5d2ca; border-radius: 6px; }
+  button { padding: 6px 12px; border: 0; border-radius: 6px; background: #2f6b4f; color: #fff; cursor: pointer; }
+  pre { margin: 0; padding: 10px; background: #f4f7f5; border-radius: 8px; white-space: pre-wrap; }
+</style>
+
+<p>这里写的是「普通 Cookie」。真正登录用的 HttpOnly Cookie 不会出现在 document.cookie 里。</p>
+<div class="row">
+  <input id="theme" placeholder="dark 或 light" value="dark" />
+  <button type="button" id="write">写入 Cookie</button>
+  <button type="button" id="read">读全部 Cookie</button>
+</div>
+<pre id="out"></pre>
+
+<script>
+  const out = document.getElementById('out')
+
+  function readAll() {
+    // document.cookie 是 "a=1; b=2" 这种字符串，空的时候是 ""
+    const raw = document.cookie
+    out.textContent = raw ? ('当前能看到的 Cookie：\\n' + raw) : '（这个预览里还没有可读的 Cookie）'
+  }
+
+  document.getElementById('write').onclick = () => {
+    const theme = document.getElementById('theme').value.trim() || 'dark'
+    // max-age 单位是秒；path=/ 表示整个站点都能带上
+    document.cookie = 'demo-theme=' + encodeURIComponent(theme) + '; max-age=3600; path=/'
+    readAll()
+  }
+  document.getElementById('read').onclick = readAll
+  readAll()
+</script>`,
+          },
+          {
+            type: 'text',
+            title: '8. URL 里其实有三段：路径、问号、井号',
+            body: '拿这一条拆开：\n\n`https://sgzxw.xyz/users/42?tab=posts&sort=new#bio`\n\n- **路径 pathname**：`/users/42` ——「这是哪一个资源」。React Router 配 `path: "users/:userId"`，页面 `const { userId } = useParams()` 得到 `"42"`（永远是字符串）。\n- **查询 search**：`?tab=posts&sort=new` ——「怎么看这个资源」（筛选、分页、Tab）。不换路由组件，复制链接别人打开是同一筛选。原生用 `new URLSearchParams(location.search)`；React 里用 `useSearchParams()`。\n- **哈希 hash**：`#bio` —— 页内锚点，**不会发给服务器**。React 里较少用来传业务参数。\n\n怎么选：id、slug 放路径；q、page、sort、tab 放问号；不要把一大段 JSON 塞进 URL。',
+          },
+          {
+            type: 'table',
+            title: '9. 原生取值 vs React Router',
+            headers: ['你想要的', '原生浏览器', 'React Router（本项目）'],
+            rows: [
+              ['当前路径 /users/42', 'location.pathname', 'useLocation().pathname'],
+              ['路径里的 42', '自己 split("/") 很脆', '路由写 :userId，useParams()'],
+              ['?tab=posts', 'new URLSearchParams(location.search).get("tab")', 'useSearchParams() 的 params.get("tab")'],
+              ['改查询参数不刷新', 'history.replaceState + 自己同步', 'setSearchParams({ tab: "posts" })'],
+              ['跳到详情', 'location.href = "/users/42"（整页刷新）', 'navigate("/users/42") 或 <Link to>'],
+            ],
+            note: '本项目详情页 /lesson/:categoryId/:itemId 就是 useParams。完整可跑 Demo 在「路由实战 → 动态路由：useParams + useSearchParams」。',
+          },
+          {
+            type: 'code',
+            live: true,
+            language: 'html',
+            title: '10. 动手跑一跑：URLSearchParams 拆 ?q= 和 &page=',
+            body: `<style>
+  body { margin: 16px; font: 14px/1.6 system-ui, sans-serif; color: #1f2a24; }
+  input, button { padding: 6px 10px; border-radius: 6px; font: inherit; }
+  input { border: 1px solid #c5d2ca; min-width: 220px; }
+  button { border: 0; background: #2f6b4f; color: #fff; cursor: pointer; }
+  pre { margin: 12px 0 0; padding: 10px; background: #f4f7f5; border-radius: 8px; white-space: pre-wrap; }
+</style>
+
+<p>假装这是地址栏问号后面的部分。改输入再点解析，看 q / page 各是多少。</p>
+<div>
+  <input id="raw" value="?q=react 入门&page=2&sort=new" />
+  <button type="button" id="parse">解析</button>
+</div>
+<pre id="out"></pre>
+
+<script>
+  const rawInput = document.getElementById('raw')
+  const out = document.getElementById('out')
+
+  function parse() {
+    // URLSearchParams 能吃 "?a=1" 也能吃 "a=1"，还会自动 decode 中文和空格
+    const params = new URLSearchParams(rawInput.value)
+    const q = params.get('q')         // 没有这个 key 时是 null
+    const page = params.get('page')
+    const sort = params.get('sort')
+
+    // 改某一个、保留其它：先复制，再 set，再 toString
+    const next = new URLSearchParams(params)
+    next.set('page', String(Number(page || 1) + 1))
+
+    out.textContent =
+      'q = ' + JSON.stringify(q) + '\\n' +
+      'page = ' + JSON.stringify(page) + '  ← 注意是字符串，不是数字\\n' +
+      'sort = ' + JSON.stringify(sort) + '\\n\\n' +
+      '页码 +1 之后拼回去：?' + next.toString()
+  }
+
+  document.getElementById('parse').onclick = parse
+  parse()
+</script>`,
+          },
+          {
+            type: 'code',
+            title: '11. React 里怎么取（抄完去路由章看完整 Demo）',
+            language: 'tsx',
+            body: `import { Link, useParams, useSearchParams, useNavigate } from 'react-router-dom'
+
+// 路由表要先声明动态段，否则 useParams 里没有这个名字
+// { path: 'users/:userId', element: <UserPage /> }
+
+function UserPage() {
+  const { userId } = useParams()                 // "/users/42" → "42"（字符串）
+  const [params, setParams] = useSearchParams()  // "?tab=posts"
+  const tab = params.get('tab') || 'profile'
+  const navigate = useNavigate()
+
+  function openPosts() {
+    const next = new URLSearchParams(params)     // 复制，避免把别的筛选冲掉
+    next.set('tab', 'posts')
+    setParams(next)
+  }
+
+  return (
+    <div>
+      <p>当前用户 id：{userId}</p>
+      <p>当前 tab：{tab}</p>
+      <button type="button" onClick={openPosts}>切到帖子（只改 ?tab=）</button>
+      <Link to={\`/users/\${userId}?tab=posts\`}>同样效果的 Link</Link>
+      <button type="button" onClick={() => navigate('/users/1')}>去用户 1</button>
+    </div>
+  )
+}`,
+          },
+          {
+            type: 'list',
+            title: '12. 易错清单',
+            ordered: true,
+            items: [
+              'localStorage 只能存字符串：对象先 JSON.stringify，读出来再 parse；getItem 没有 key 时是 null',
+              '两个组件各写一遍 useState 读同一 key，并不会自动同步——要自己监听 storage 事件，或抽自定义 Hook',
+              '登录 token 放 localStorage 能用，但 XSS 能偷走；能种 HttpOnly Cookie 更安全',
+              'Cookie 很小，别当数据库用；HttpOnly 的用 JS 读永远是空的，不是 bug',
+              'useParams / URLSearchParams 拿到的全是字符串："2" + 1 会变成 "21"，要比大小先 Number',
+              '从 /users/1 点到 /users/2，组件可能不卸载：useEffect 依赖必须带上 userId',
+              'setSearchParams({ page: 2 }) 会覆盖其它 query，改一个就先 new URLSearchParams(params) 再 set',
+              '重要状态放 URL 才能分享；只放 useState 的筛选，别人打开链接对不上',
+            ],
+          },
+          {
+            type: 'tip',
+            title: '本节小结',
+            body: '刷新还要在用 `localStorage`，标签页级用 `sessionStorage`，登录态优先 HttpOnly Cookie。URL：资源 id 走路径（React：`useParams`），筛选走 `?`（原生 `URLSearchParams`，React：`useSearchParams`）。下一步打开「路由实战」那章的「动态路由」一节，把这两套 Hook 跑一遍。',
           },
         ],
       },

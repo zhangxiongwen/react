@@ -1884,7 +1884,7 @@ export default Header
           {
             type: 'tip',
             title: '一句话记住',
-            body: '路径参数 /users/42 → 路由写 :userId，useParams() 读；查询参数 ?q=react → useSearchParams() 读写——params 值永远是字符串，换 id 要 useEffect 重新请求。',
+            body: '路径参数 /users/42 → 路由写 :userId，useParams() 读；查询参数 ?q=react → useSearchParams() 读写——params 值永远是字符串，换 id 要 useEffect 重新请求。浏览器原生怎么拆 URL、怎么存 localStorage，见「JavaScript / ES6 必备语法」里「浏览器存数据与 URL 取值」那一节。',
           },
           {
             type: 'text',

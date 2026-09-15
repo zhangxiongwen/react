@@ -62,8 +62,7 @@ function Playground() {
         <div className="Playground-sidebarHead">
           <h1 className="Playground-sidebarTitle">代码演练台</h1>
           <p className="Playground-sidebarDesc">
-            共 {playgroundDemos.length} 个练习：前 {HTML_TOTAL} 个是 HTML / CSS /
-            JS（布局、Tab、轮播、伪类），后 {REACT_TOTAL} 个是 React（状态管理、组件传值、Hooks、网络请求、实战案例）。
+            共 {playgroundDemos.length} 个练习：HTML / CSS / JS（布局、Tab、轮播、伪类、localStorage / Cookie / URL）和 React（状态、传值、Hooks、请求、实战）。
             点选即可填入编辑器，改完右侧立刻重新渲染。
           </p>
           <label className="Playground-searchLabel">

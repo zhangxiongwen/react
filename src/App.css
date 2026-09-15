@@ -1,1 +1,6 @@
 /* App 层样式留空：具体样式分散在 layouts / pages / components 中 */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

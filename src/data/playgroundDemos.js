@@ -12,6 +12,7 @@ import part6 from './playgroundDemos/part6-react-props'
 import part7 from './playgroundDemos/part7-react-hooks'
 import part8 from './playgroundDemos/part8-react-data'
 import part9 from './playgroundDemos/part9-react-cases'
+import part10 from './playgroundDemos/part10-storage-url'
 
 const playgroundDemos = [
   ...part1,
@@ -23,6 +24,7 @@ const playgroundDemos = [
   ...part7,
   ...part8,
   ...part9,
+  ...part10,
 ]
 
 export default playgroundDemos

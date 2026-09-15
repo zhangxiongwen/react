@@ -1,0 +1,26 @@
+
+
+/*
+- `100vh`：**相对于浏览器窗口，自给自足，不看父盒子**
+- `100%`：**相对于直接父元素，父没高度它就废**
+*/
+.tab-demo-layout-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* 垂直排列：导航在上，滚动区域在下 */
+}
+
+.tab-demo-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid #d9e0d8;
+  flex-shrink: 0; /* 禁止压缩 */
+}
+
+.tab-demo-layout-content {
+    flex: 1; /* 占据剩余空间 */
+    overflow-y: auto; /* 内容区域可滚动 */
+    padding: 0 20px ;
+}
